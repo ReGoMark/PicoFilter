@@ -479,8 +479,6 @@ Public Class Form1
             TopMost = False
         End If
     End Sub
-    '————————————————————
-    ' 在 Form1 的代码中
 
     ' 用于存储当前排序的列和顺序
     Private currentColumn As Integer = -1
