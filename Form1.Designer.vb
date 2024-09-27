@@ -57,10 +57,10 @@ Partial Class Form1
         Me.CheckBox6 = New System.Windows.Forms.CheckBox()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
         Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         Me.CheckBox9 = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
@@ -77,6 +77,8 @@ Partial Class Form1
         'ListView1
         '
         Me.ListView1.AllowColumnReorder = True
+        Me.ListView1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ListView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8})
         Me.ListView1.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -132,6 +134,7 @@ Partial Class Form1
         '
         'CheckBox3
         '
+        Me.CheckBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox3.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -144,6 +147,7 @@ Partial Class Form1
         '
         'Label4
         '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label4.Location = New System.Drawing.Point(838, 482)
@@ -154,6 +158,7 @@ Partial Class Form1
         '
         'TextBox3
         '
+        Me.TextBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox3.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox3.Location = New System.Drawing.Point(866, 480)
@@ -164,6 +169,7 @@ Partial Class Form1
         '
         'TextBox2
         '
+        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox2.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox2.Location = New System.Drawing.Point(788, 480)
@@ -174,6 +180,7 @@ Partial Class Form1
         '
         'CheckBox2
         '
+        Me.CheckBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox2.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -186,6 +193,7 @@ Partial Class Form1
         '
         'CheckBox1
         '
+        Me.CheckBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox1.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -218,6 +226,9 @@ Partial Class Form1
         'ListView2
         '
         Me.ListView2.AllowColumnReorder = True
+        Me.ListView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListView2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.ListView2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.ListView2.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -254,6 +265,7 @@ Partial Class Form1
         '
         'Button3
         '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button3.CausesValidation = False
         Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -272,24 +284,24 @@ Partial Class Form1
         '
         'Label5
         '
-        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.IndianRed
-        Me.Label5.Location = New System.Drawing.Point(12, 443)
+        Me.Label5.Location = New System.Drawing.Point(12, 403)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(446, 39)
+        Me.Label5.Size = New System.Drawing.Size(446, 35)
         Me.Label5.TabIndex = 15
         Me.Label5.Text = "已选定"
         Me.ToolTip1.SetToolTip(Me.Label5, "单击复制路径。")
         '
         'Label6
         '
-        Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label6.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.Label6.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(12, 405)
+        Me.Label6.Location = New System.Drawing.Point(12, 423)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(446, 33)
         Me.Label6.TabIndex = 14
@@ -297,11 +309,12 @@ Partial Class Form1
         '
         'Label2
         '
-        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.Label2.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(464, 405)
+        Me.Label2.Location = New System.Drawing.Point(461, 423)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(446, 33)
         Me.Label2.TabIndex = 16
@@ -309,10 +322,11 @@ Partial Class Form1
         '
         'Label8
         '
-        Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label8.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.IndianRed
-        Me.Label8.Location = New System.Drawing.Point(464, 440)
+        Me.Label8.Location = New System.Drawing.Point(461, 403)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(446, 39)
         Me.Label8.TabIndex = 17
@@ -321,6 +335,7 @@ Partial Class Form1
         '
         'ProgressBar1
         '
+        Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.Location = New System.Drawing.Point(12, 482)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(446, 19)
@@ -328,6 +343,7 @@ Partial Class Form1
         '
         'Button5
         '
+        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button5.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button5.CausesValidation = False
         Me.Button5.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -346,6 +362,7 @@ Partial Class Form1
         '
         'Button4
         '
+        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button4.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button4.CausesValidation = False
         Me.Button4.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -400,6 +417,7 @@ Partial Class Form1
         '
         'CheckBox6
         '
+        Me.CheckBox6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox6.Appearance = System.Windows.Forms.Appearance.Button
         Me.CheckBox6.BackColor = System.Drawing.Color.Gainsboro
         Me.CheckBox6.CausesValidation = False
@@ -420,6 +438,7 @@ Partial Class Form1
         '
         'Button9
         '
+        Me.Button9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button9.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button9.CausesValidation = False
         Me.Button9.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -438,6 +457,7 @@ Partial Class Form1
         '
         'Button6
         '
+        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.Button6.CausesValidation = False
         Me.Button6.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -454,8 +474,23 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.Button6, "说明")
         Me.Button6.UseVisualStyleBackColor = False
         '
+        'CheckBox7
+        '
+        Me.CheckBox7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox7.AutoSize = True
+        Me.CheckBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox7.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CheckBox7.Location = New System.Drawing.Point(574, 482)
+        Me.CheckBox7.Name = "CheckBox7"
+        Me.CheckBox7.Size = New System.Drawing.Size(49, 19)
+        Me.CheckBox7.TabIndex = 23
+        Me.CheckBox7.Text = "ICO"
+        Me.ToolTip1.SetToolTip(Me.CheckBox7, "可能不支持预览。")
+        Me.CheckBox7.UseVisualStyleBackColor = True
+        '
         'CheckBox4
         '
+        Me.CheckBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox4.AutoSize = True
         Me.CheckBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox4.Location = New System.Drawing.Point(788, 460)
@@ -481,6 +516,7 @@ Partial Class Form1
         '
         'CheckBox5
         '
+        Me.CheckBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox5.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -491,21 +527,9 @@ Partial Class Form1
         Me.CheckBox5.Text = "BMP"
         Me.CheckBox5.UseVisualStyleBackColor = True
         '
-        'CheckBox7
-        '
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox7.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox7.Location = New System.Drawing.Point(574, 482)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(49, 19)
-        Me.CheckBox7.TabIndex = 23
-        Me.CheckBox7.Text = "ICO"
-        Me.ToolTip1.SetToolTip(Me.CheckBox7, "可能不支持预览。")
-        Me.CheckBox7.UseVisualStyleBackColor = True
-        '
         'CheckBox8
         '
+        Me.CheckBox8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox8.AutoSize = True
         Me.CheckBox8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox8.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -518,6 +542,7 @@ Partial Class Form1
         '
         'CheckBox9
         '
+        Me.CheckBox9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox9.AutoSize = True
         Me.CheckBox9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox9.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -565,7 +590,6 @@ Partial Class Form1
         Me.Controls.Add(Me.Label5)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PicoFilter 1.2 (仅限PAA内部使用) "
