@@ -1,12 +1,15 @@
-﻿Imports OfficeOpenXml ' 引入 EPPlus 库
-Imports System.IO
+﻿Imports System.IO
+Imports OfficeOpenXml ' 引入 EPPlus 库(for .xlsx output)
 Imports OfficeOpenXml.Table
+
+'ver 1.2,2024/9/26
 
 Public Class Form1
 
-    ' 加载指定文件夹中的图片，listview1
+    ' 加载图片从指定文件夹，到listview1
     Private Sub 加载图片(folderPath As String)
         ListView1.Items.Clear()
+        '修改此处同时在26，57修改
         Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".cur", ".ani", ".ico"}
         Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower()))
         ' 计数
@@ -14,25 +17,28 @@ Public Class Form1
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
         Dim gifCount As Integer = 0
-
+        '### 1.2 new ###
         Dim bmpCount As Integer = 0
         Dim curCount As Integer = 0
         Dim aniCount As Integer = 0
         Dim icoCount As Integer = 0
 
+        'progressbar for scanning files
         ProgressBar1.Maximum = files.Count()
         ProgressBar1.Value = 0
 
-
+        'items filling to listview1
         For Each file In files
             Try
                 Using img As Image = Image.FromFile(file)
                     Dim fileName As String = Path.GetFileName(file)
                     Dim resolution As String = $"{img.Width}×{img.Height}"
                     Dim format As String = Path.GetExtension(file).ToUpper()
+                    '显示文件大小，暂未解决，留在此处。
                     'Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
                     ''Dim sizeInMB As Double = fileSize / (1024 * 1024) ' 转换为MB
                     'Dim sizeInKB As Double = fileSize / 1024 ' 转换为KB
+
                     ' 计数不同格式
                     Select Case format
                         Case ".JPG", ".JPEG"
@@ -52,7 +58,6 @@ Public Class Form1
                             bmpCount += 1
                     End Select
 
-                    ' 添加子项
                     Dim item As New ListViewItem(index.ToString()) ' 添加序号
                     item.SubItems.Add(fileName) ' 添加文件名
                     item.SubItems.Add(resolution) ' 添加分辨率
@@ -68,7 +73,7 @@ Public Class Form1
                 End Using
 
             Catch ex As Exception
-                ' 忽略无法读取的文件
+                ' 忽略无法读取的文件(文件本身有问题而不是格式不支持)
                 MsgBox("加载失败。无法读取: " & ex.Message, MsgBoxStyle.OkOnly)
             End Try
 
@@ -78,14 +83,12 @@ Public Class Form1
         Label6.Text = $"[总数 {files.Count()}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[CUR] {curCount},[ANI] {aniCount},[ICO] {icoCount}"
     End Sub
 
-    ' 筛选符合条件的
+    ' 加载图片从指定文件夹，到listview2
     Private Sub 筛选图片()
         ListView2.Items.Clear()
-
+        ' 分辨率
         Dim widthFilter As Integer
         Dim heightFilter As Integer
-
-        ' 分辨率
         If Integer.TryParse(TextBox2.Text, widthFilter) AndAlso Integer.TryParse(TextBox3.Text, heightFilter) Then
         Else
             widthFilter = 0 ' 如果未设置分辨率，则设置为0
@@ -96,13 +99,13 @@ Public Class Form1
         Dim pngSelected As Boolean = CheckBox2.Checked
         Dim gifSelected As Boolean = CheckBox3.Checked
         Dim resolutionSelected As Boolean = CheckBox4.Checked
+        '低于某个分辨率筛选，未解决。
         'Dim underrslnSelected As Boolean = CheckBox10.Checked
 
         Dim bmpSelected As Boolean = CheckBox5.Checked
         Dim aniSelected As Boolean = CheckBox9.Checked
         Dim icoSelected As Boolean = CheckBox7.Checked
         Dim curSelected As Boolean = CheckBox8.Checked
-
 
         ' 符合筛选条件的计数
         Dim matchingFileCount As Integer = 0
@@ -121,13 +124,10 @@ Public Class Form1
             Dim width As Integer = Integer.Parse(resolution(0))
             Dim height As Integer = Integer.Parse(resolution(1))
             Dim format As String = item.SubItems(3).Text
-
             '处理是否勾选了分辨率作为筛选条件
             Dim matchesResolution As Boolean = Not resolutionSelected OrElse (width = widthFilter AndAlso height = heightFilter)
-
             ' 处理文件格式筛选
             Dim matchesFormat As Boolean = (jpgSelected AndAlso format = ".JPG") OrElse (jpgSelected AndAlso format = ".JPEG") OrElse (pngSelected AndAlso format = ".PNG") OrElse (bmpSelected AndAlso format = ".BMP") OrElse (curSelected AndAlso format = ".CUR") OrElse (aniSelected AndAlso format = ".ANI") OrElse (icoSelected AndAlso format = ".ICO") OrElse (gifSelected AndAlso format = ".GIF")
-
 
             If resolutionSelected Then
                 ' 如果勾选了分辨率则直接添加
@@ -136,7 +136,6 @@ Public Class Form1
                     newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
                     newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
                     newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-
                     ListView2.Items.Add(newItem)
                     matchingFileCount += 1 ' 符合条件的文件计数自增
 
@@ -148,7 +147,7 @@ Public Class Form1
                             pngCount += 1
                         Case ".GIF"
                             gifCount += 1
-
+                        '### 1.2 new ###
                         Case ".ANI"
                             aniCount += 1
                         Case ".ICO"
@@ -169,7 +168,6 @@ Public Class Form1
                 newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
                 newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
                 newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-
                 ListView2.Items.Add(newItem)
                 matchingFileCount += 1 ' 符合条件的文件计数自增
 
@@ -181,7 +179,7 @@ Public Class Form1
                         pngCount += 1
                     Case ".GIF"
                         gifCount += 1
-
+                        '### 1.2 new ###
                     Case ".ANI"
                         aniCount += 1
                     Case ".ICO"
@@ -194,11 +192,9 @@ Public Class Form1
             End If
         Next
 
-        ' 在 Label2 显示符合条件的
+        ' 在 Label2 显示
         Label2.Text = $"[结果 {matchingFileCount}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[CUR] {curCount},[ANI] {aniCount},[ICO] {icoCount}"
     End Sub
-
-
 
     ' 当 ListView1 中的项被选中时，在 Label5 显示选中的序号和文件名
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
@@ -274,14 +270,13 @@ Public Class Form1
         End If
     End Sub
 
-
-    ' 在 Form_Load 事件中启用按钮的拖放功能
+    ' 启用按钮的拖放功能
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Button1.AllowDrop = True ' 启用拖放功能
     End Sub
 
 
-    ' 在 Label5 上单击时复制 ListView1 选中的文件路径
+    ' 在 Label5 上单击复制 ListView1 选中的文件路径
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
         If ListView1.SelectedItems.Count > 0 Then
             ' 获取选中的文件名
@@ -369,13 +364,9 @@ Public Class Form1
 
                     End Try
                 Next
-
-                'Label1.Text = "提示：" & ("复制完成")
-                'Label1.BackColor = Color.FromArgb(0, 120, 215)
             End If
         End Using
     End Sub
-
 
     ' Button4 点击事件：移动筛选结果到指定文件夹
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -394,13 +385,9 @@ Public Class Form1
 
                     End Try
                 Next
-
-                'Label1.Text = "提示：" & ("移动完成")
-                'Label1.BackColor = Color.FromArgb(0, 120, 215)
             End If
         End Using
     End Sub
-
 
     ' Button5 点击事件：将筛选结果移动到扫描文件夹下的“筛选结果”文件夹内
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -427,7 +414,6 @@ Public Class Form1
 
     End Sub
 
-
     ' Button7 点击事件：将 ListView1 中选中的文件添加到 ListView2 中
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         ' 遍历 ListView1 中的选中项
@@ -448,11 +434,9 @@ Public Class Form1
                 newItem.ForeColor = Color.FromArgb(0, 120, 215)
             End If
         Next
-
         ' 更新筛选结果的计数
         UpdateLabel2()
     End Sub
-
 
     ' Button8 点击事件：删除 ListView2 中选中的项
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
@@ -466,8 +450,6 @@ Public Class Form1
             'Label1.BackColor = Color.FromArgb(0, 120, 215)
         Else
             MsgBox("请选择一个项", MsgBoxStyle.OkOnly)
-
-
         End If
         UpdateLabel2()
     End Sub
@@ -487,7 +469,6 @@ Public Class Form1
     ' ListView1 的列标题单击事件
     Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
         SortListView(ListView1, e.Column)
-
     End Sub
 
     ' ListView2 的列标题单击事件
@@ -516,7 +497,6 @@ Public Class Form1
     ' 创建 ListViewItemComparer 类
     Public Class ListViewItemComparer
         Implements IComparer
-
         Private col As Integer
         Private order As SortOrder
 
@@ -546,7 +526,6 @@ Public Class Form1
             If order = SortOrder.Descending Then
                 returnVal *= -1
             End If
-
             Return returnVal
         End Function
     End Class
@@ -628,7 +607,6 @@ Public Class Form1
         End If
     End Sub
 
-
     ' Button9 的点击事件，用于将 ListView2 导出为 .xlsx 文件
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         ' 设置许可证上下文为非商业用途
@@ -691,5 +669,4 @@ Public Class Form1
             Button8.PerformClick() ' 触发 Button8 的点击事件
         End If
     End Sub
-
 End Class
