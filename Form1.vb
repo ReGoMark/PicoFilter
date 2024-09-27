@@ -10,7 +10,8 @@ Public Class Form1
     Private Sub 加载图片(folderPath As String)
         ListView1.Items.Clear()
         '修改此处同时在26，57修改
-        Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".cur", ".ani", ".ico"}
+        Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
+        'Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".cur", ".ani", ".ico"}
         Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower()))
         ' 计数
         Dim index As Integer = 1
@@ -19,8 +20,8 @@ Public Class Form1
         Dim gifCount As Integer = 0
         '### 1.2 new ###
         Dim bmpCount As Integer = 0
-        Dim curCount As Integer = 0
-        Dim aniCount As Integer = 0
+        'Dim curCount As Integer = 0
+        'Dim aniCount As Integer = 0
         Dim icoCount As Integer = 0
 
         'progressbar for scanning files
@@ -34,10 +35,9 @@ Public Class Form1
                     Dim fileName As String = Path.GetFileName(file)
                     Dim resolution As String = $"{img.Width}×{img.Height}"
                     Dim format As String = Path.GetExtension(file).ToUpper()
-                    '显示文件大小，暂未解决，留在此处。
-                    'Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
-                    ''Dim sizeInMB As Double = fileSize / (1024 * 1024) ' 转换为MB
-                    'Dim sizeInKB As Double = fileSize / 1024 ' 转换为KB
+                    '显示文件大小
+                    Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
+                    Dim sizeInKB As Double = Int(fileSize / 1024) ' 转换为KB
 
                     ' 计数不同格式
                     Select Case format
@@ -48,12 +48,12 @@ Public Class Form1
                         Case ".GIF"
                             gifCount += 1
 
-                        Case ".ANI"
-                            aniCount += 1
+                        'Case ".ANI"
+                        '    aniCount += 1
                         Case ".ICO"
                             icoCount += 1
-                        Case ".CUR"
-                            curCount += 1
+                        'Case ".CUR"
+                        '    curCount += 1
                         Case ".BMP"
                             bmpCount += 1
                     End Select
@@ -62,7 +62,7 @@ Public Class Form1
                     item.SubItems.Add(fileName) ' 添加文件名
                     item.SubItems.Add(resolution) ' 添加分辨率
                     item.SubItems.Add(format) ' 添加格式
-                    'item.SubItems.Add($"{sizeInKB:F2} KB") ' 添加文件大小
+                    item.SubItems.Add(sizeInKB & " KB") ' 添加文件大小
 
                     ' 添加到 listview1
                     ListView1.Items.Add(item)
@@ -80,7 +80,7 @@ Public Class Form1
         Next
 
         ' 显示文件总数和各格式数量
-        Label6.Text = $"[总数 {files.Count()}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[CUR] {curCount},[ANI] {aniCount},[ICO] {icoCount}"
+        Label6.Text = $"[总数 {files.Count()}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR]{curCount},[ANI] {aniCount}"
     End Sub
 
     ' 加载图片从指定文件夹，到listview2
@@ -103,9 +103,9 @@ Public Class Form1
         'Dim underrslnSelected As Boolean = CheckBox10.Checked
 
         Dim bmpSelected As Boolean = CheckBox5.Checked
-        Dim aniSelected As Boolean = CheckBox9.Checked
+        'Dim aniSelected As Boolean = CheckBox9.Checked
         Dim icoSelected As Boolean = CheckBox7.Checked
-        Dim curSelected As Boolean = CheckBox8.Checked
+        'Dim curSelected As Boolean = CheckBox8.Checked
 
         ' 符合筛选条件的计数
         Dim matchingFileCount As Integer = 0
@@ -114,8 +114,8 @@ Public Class Form1
         Dim gifCount As Integer = 0
 
         Dim bmpCount As Integer = 0
-        Dim curCount As Integer = 0
-        Dim aniCount As Integer = 0
+        'Dim curCount As Integer = 0
+        'Dim aniCount As Integer = 0
         Dim icoCount As Integer = 0
 
         ' 遍历 ListView1 中的每一项，进行筛选
@@ -124,10 +124,11 @@ Public Class Form1
             Dim width As Integer = Integer.Parse(resolution(0))
             Dim height As Integer = Integer.Parse(resolution(1))
             Dim format As String = item.SubItems(3).Text
+
             '处理是否勾选了分辨率作为筛选条件
             Dim matchesResolution As Boolean = Not resolutionSelected OrElse (width = widthFilter AndAlso height = heightFilter)
             ' 处理文件格式筛选
-            Dim matchesFormat As Boolean = (jpgSelected AndAlso format = ".JPG") OrElse (jpgSelected AndAlso format = ".JPEG") OrElse (pngSelected AndAlso format = ".PNG") OrElse (bmpSelected AndAlso format = ".BMP") OrElse (curSelected AndAlso format = ".CUR") OrElse (aniSelected AndAlso format = ".ANI") OrElse (icoSelected AndAlso format = ".ICO") OrElse (gifSelected AndAlso format = ".GIF")
+            Dim matchesFormat As Boolean = (jpgSelected AndAlso format = ".JPG") OrElse (jpgSelected AndAlso format = ".JPEG") OrElse (pngSelected AndAlso format = ".PNG") OrElse (bmpSelected AndAlso format = ".BMP") OrElse (icoSelected AndAlso format = ".ICO") OrElse (gifSelected AndAlso format = ".GIF") 'OrElse (curSelected AndAlso format = ".CUR") OrElse (aniSelected AndAlso format = ".ANI") 
 
             If resolutionSelected Then
                 ' 如果勾选了分辨率则直接添加
@@ -148,12 +149,12 @@ Public Class Form1
                         Case ".GIF"
                             gifCount += 1
                         '### 1.2 new ###
-                        Case ".ANI"
-                            aniCount += 1
+                        'Case ".ANI"
+                        '    aniCount += 1
                         Case ".ICO"
                             icoCount += 1
-                        Case ".CUR"
-                            curCount += 1
+                        'Case ".CUR"
+                        '    curCount += 1
                         Case ".BMP"
                             bmpCount += 1
                     End Select
@@ -180,12 +181,12 @@ Public Class Form1
                     Case ".GIF"
                         gifCount += 1
                         '### 1.2 new ###
-                    Case ".ANI"
-                        aniCount += 1
+                    'Case ".ANI"
+                    '    aniCount += 1
                     Case ".ICO"
                         icoCount += 1
-                    Case ".CUR"
-                        curCount += 1
+                    'Case ".CUR"
+                    '    curCount += 1
                     Case ".BMP"
                         bmpCount += 1
                 End Select
@@ -193,7 +194,7 @@ Public Class Form1
         Next
 
         ' 在 Label2 显示
-        Label2.Text = $"[结果 {matchingFileCount}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[CUR] {curCount},[ANI] {aniCount},[ICO] {icoCount}"
+        Label2.Text = $"[结果 {matchingFileCount}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR] {curCount},[ANI] {aniCount},
     End Sub
 
     ' 当 ListView1 中的项被选中时，在 Label5 显示选中的序号和文件名
@@ -667,6 +668,22 @@ Public Class Form1
             Button7.PerformClick() ' 触发 Button7 的点击事件
         ElseIf e.KeyCode = Keys.Delete Then ' 检测 "Delete" 按键
             Button8.PerformClick() ' 触发 Button8 的点击事件
+        End If
+    End Sub
+
+    Private Sub CheckBox10_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox10.CheckStateChanged
+        If CheckBox10.Checked = True Then
+            CheckBox1.Checked = True
+            CheckBox2.Checked = True
+            CheckBox3.Checked = True
+            CheckBox5.Checked = True
+            CheckBox7.Checked = True
+        Else
+            CheckBox1.Checked = False
+            CheckBox2.Checked = False
+            CheckBox3.Checked = False
+            CheckBox5.Checked = False
+            CheckBox7.Checked = False
         End If
     End Sub
 End Class
