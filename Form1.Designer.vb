@@ -59,11 +59,11 @@ Partial Class Form1
         Me.Button6 = New System.Windows.Forms.Button()
         Me.CheckBox7 = New System.Windows.Forms.CheckBox()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.CheckBox5 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -309,26 +309,24 @@ Partial Class Form1
         Me.Label6.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.Label6.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(12, 446)
+        Me.Label6.Location = New System.Drawing.Point(12, 449)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(446, 33)
         Me.Label6.TabIndex = 14
         Me.Label6.Text = "共计："
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label2
         '
         Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(464, 446)
+        Me.Label2.Location = New System.Drawing.Point(464, 449)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(447, 33)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "共计："
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label8
         '
@@ -518,19 +516,6 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.CheckBox4, "以分辨率为条件筛选。可以作为单独筛选条件。")
         Me.CheckBox4.UseVisualStyleBackColor = True
         '
-        'Label1
-        '
-        Me.Label1.BackColor = System.Drawing.SystemColors.Highlight
-        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label1.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(668, 437)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(103, 51)
-        Me.Label1.TabIndex = 23
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Visible = False
-        '
         'CheckBox5
         '
         Me.CheckBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -544,6 +529,33 @@ Partial Class Form1
         Me.CheckBox5.Text = "BMP"
         Me.ToolTip1.SetToolTip(Me.CheckBox5, "位图")
         Me.CheckBox5.UseVisualStyleBackColor = True
+        '
+        'CheckBox10
+        '
+        Me.CheckBox10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox10.AutoSize = True
+        Me.CheckBox10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox10.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CheckBox10.Location = New System.Drawing.Point(717, 482)
+        Me.CheckBox10.Name = "CheckBox10"
+        Me.CheckBox10.Size = New System.Drawing.Size(55, 19)
+        Me.CheckBox10.TabIndex = 28
+        Me.CheckBox10.Text = "全选"
+        Me.ToolTip1.SetToolTip(Me.CheckBox10, "勾选所有文件格式，不包括分辨率。")
+        Me.CheckBox10.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.BackColor = System.Drawing.SystemColors.Highlight
+        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label1.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(668, 437)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(103, 51)
+        Me.Label1.TabIndex = 23
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label1.Visible = False
         '
         'CheckBox8
         '
@@ -575,32 +587,20 @@ Partial Class Form1
         Me.CheckBox9.UseVisualStyleBackColor = True
         Me.CheckBox9.Visible = False
         '
-        'CheckBox10
-        '
-        Me.CheckBox10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.CheckBox10.AutoSize = True
-        Me.CheckBox10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox10.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox10.Location = New System.Drawing.Point(717, 482)
-        Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(55, 19)
-        Me.CheckBox10.TabIndex = 28
-        Me.CheckBox10.Text = "全选"
-        Me.ToolTip1.SetToolTip(Me.CheckBox10, "勾选所有文件格式，不包括分辨率。")
-        Me.CheckBox10.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(924, 515)
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.CheckBox4)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.CheckBox10)
         Me.Controls.Add(Me.CheckBox9)
         Me.Controls.Add(Me.CheckBox8)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CheckBox7)
         Me.Controls.Add(Me.CheckBox5)
@@ -611,7 +611,6 @@ Partial Class Form1
         Me.Controls.Add(Me.CheckBox6)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.CheckBox4)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.CheckBox3)
         Me.Controls.Add(Me.ListView1)
@@ -624,7 +623,6 @@ Partial Class Form1
         Me.Controls.Add(Me.ListView2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"

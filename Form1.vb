@@ -686,4 +686,12 @@ Public Class Form1
             CheckBox7.Checked = False
         End If
     End Sub
+
+    Private Sub Label6_MouseHover(sender As Object, e As EventArgs) Handles Label6.MouseHover
+        ToolTip1.SetToolTip(Label6, Label6.Text)
+    End Sub
+
+    Private Sub Label2_MouseHover(sender As Object, e As EventArgs) Handles Label2.MouseHover
+        ToolTip1.SetToolTip(Label2, Label2.Text)
+    End Sub
 End Class
