@@ -779,7 +779,12 @@ Public Class Form1
     End Sub
     Private Sub SplitContainer1_MouseUp(sender As Object, e As MouseEventArgs) Handles SplitContainer1.MouseUp
         If e.Button = MouseButtons.Middle Then
-            SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
+            If Me.WindowState = FormWindowState.Normal Then
+                SplitContainer1.SplitterDistance = 446
+            ElseIf Me.WindowState = FormWindowState.Maximized Then
+                SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
+            End If
+
         End If
     End Sub
 
