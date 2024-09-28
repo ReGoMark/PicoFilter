@@ -161,6 +161,7 @@ Partial Class Form1
         Me.Label4.Size = New System.Drawing.Size(22, 15)
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "×"
+        Me.ToolTip1.SetToolTip(Me.Label4, "双击×高度与宽度一致。")
         '
         'TextBox3
         '
@@ -512,7 +513,7 @@ Partial Class Form1
         Me.CheckBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox4.AutoSize = True
         Me.CheckBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox4.Location = New System.Drawing.Point(827, 460)
+        Me.CheckBox4.Location = New System.Drawing.Point(828, 460)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(70, 19)
         Me.CheckBox4.TabIndex = 25

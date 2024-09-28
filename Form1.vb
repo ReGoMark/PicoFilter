@@ -436,7 +436,7 @@ Public Class Form1
     ' Button5 点击事件：将筛选结果移动到扫描文件夹下的“筛选结果”文件夹内
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim sourceFolder As String = TextBox1.Text ' 源文件夹路径
-        Dim resultFolder As String = Path.Combine(sourceFolder, "筛选结果")
+        Dim resultFolder As String = Path.Combine(sourceFolder, "筛选结果" & Now.Month & “-” & Now.Day & "-" & Now.Hour & "-" & Now.Minute)
 
         ' 创建“筛选结果”文件夹（如果不存在）
         If Not Directory.Exists(resultFolder) Then
@@ -752,5 +752,9 @@ Public Class Form1
 
     Private Sub Label2_MouseHover(sender As Object, e As EventArgs) Handles Label2.MouseHover
         ToolTip1.SetToolTip(Label2, Label2.Text)
+    End Sub
+
+    Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick
+        TextBox3.Text = Val（TextBox2.Text）
     End Sub
 End Class
