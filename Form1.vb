@@ -242,9 +242,10 @@ Public Class Form1
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
         If ListView1.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
-            Label5.Text = $"[{selectedItem.SubItems(0).Text}] {selectedItem.SubItems(1).Text}"
+            Dim selectedCount As Integer = ListView1.SelectedItems.Count
+            Label5.Text = $"[已选 {selectedCount}][{selectedItem.SubItems(0).Text}] {selectedItem.SubItems(1).Text}"
         Else
-            Label5.Text = ""
+            Label5.Text = "等待选中"
         End If
     End Sub
 
@@ -252,7 +253,8 @@ Public Class Form1
     Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
         If ListView2.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
-            Label8.Text = $"[{selectedItem.SubItems(0).Text}] {selectedItem.SubItems(1).Text}"
+            Dim selectedCount As Integer = ListView1.SelectedItems.Count
+            Label8.Text = $"[已选 {selectedCount}][{selectedItem.SubItems(0).Text}] {selectedItem.SubItems(1).Text}"
         Else
             Label8.Text = ""
         End If
@@ -642,10 +644,10 @@ Public Class Form1
             Dim fileName As String = selectedItem.SubItems(1).Text ' 假设第2列是文件名
 
             ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(Label5, fileName & vbCrLf & "点击复制路径。")
+            ToolTip1.SetToolTip(Label5, fileName & vbCrLf & "单击复制路径。复选状态下只能复制头文件路径。")
         Else
             ' 如果没有选中项，显示默认提示
-            ToolTip1.SetToolTip(Label5, "点击复制路径。")
+            ToolTip1.SetToolTip(Label5, "单击复制路径。复选状态下只能复制头文件路径。")
         End If
     End Sub
 
@@ -658,10 +660,10 @@ Public Class Form1
             Dim fileName As String = selectedItem.SubItems(1).Text ' 假设第2列是文件名
 
             ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(Label8, fileName & vbCrLf & "点击复制路径。")
+            ToolTip1.SetToolTip(Label8, fileName & vbCrLf & "单击复制路径。复选状态下只能复制头文件路径。")
         Else
             ' 如果没有选中项，显示默认提示
-            ToolTip1.SetToolTip(Label8, "点击复制路径。")
+            ToolTip1.SetToolTip(Label8, "单击复制路径。复选状态下只能复制头文件路径。")
         End If
     End Sub
 

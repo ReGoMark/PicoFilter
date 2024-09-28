@@ -61,10 +61,10 @@ Partial Class Form1
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.CheckBox5 = New System.Windows.Forms.CheckBox()
         Me.CheckBox10 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox11 = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox11 = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -156,7 +156,7 @@ Partial Class Form1
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label4.Location = New System.Drawing.Point(849, 482)
+        Me.Label4.Location = New System.Drawing.Point(848, 484)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(22, 15)
         Me.Label4.TabIndex = 6
@@ -302,9 +302,9 @@ Partial Class Form1
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(446, 43)
         Me.Label5.TabIndex = 15
-        Me.Label5.Text = "已选定"
+        Me.Label5.Text = "等待选中"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ToolTip1.SetToolTip(Me.Label5, "单击复制路径。")
+        Me.ToolTip1.SetToolTip(Me.Label5, "单击复制路径。注意，复选状态下只能复制头文件路径。")
         '
         'Label6
         '
@@ -343,9 +343,9 @@ Partial Class Form1
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(447, 43)
         Me.Label8.TabIndex = 17
-        Me.Label8.Text = "已选定"
+        Me.Label8.Text = "等待选中"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ToolTip1.SetToolTip(Me.Label8, "单击复制路径。")
+        Me.ToolTip1.SetToolTip(Me.Label8, "单击复制路径。注意，复选状态下只能复制头文件路径。")
         '
         'ProgressBar1
         '
@@ -549,6 +549,20 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.CheckBox10, "勾选/反选所有文件格式，不包括分辨率。")
         Me.CheckBox10.UseVisualStyleBackColor = True
         '
+        'CheckBox11
+        '
+        Me.CheckBox11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox11.AutoSize = True
+        Me.CheckBox11.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.CheckBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox11.Location = New System.Drawing.Point(897, 463)
+        Me.CheckBox11.Name = "CheckBox11"
+        Me.CheckBox11.Size = New System.Drawing.Size(14, 13)
+        Me.CheckBox11.TabIndex = 29
+        Me.CheckBox11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip1.SetToolTip(Me.CheckBox11, "排除设定的分辨率筛选，依赖于分辨率复选框。")
+        Me.CheckBox11.UseVisualStyleBackColor = True
+        '
         'Label1
         '
         Me.Label1.BackColor = System.Drawing.SystemColors.Highlight
@@ -591,20 +605,6 @@ Partial Class Form1
         Me.CheckBox9.Text = "ANI"
         Me.CheckBox9.UseVisualStyleBackColor = True
         Me.CheckBox9.Visible = False
-        '
-        'CheckBox11
-        '
-        Me.CheckBox11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CheckBox11.AutoSize = True
-        Me.CheckBox11.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox11.Location = New System.Drawing.Point(897, 463)
-        Me.CheckBox11.Name = "CheckBox11"
-        Me.CheckBox11.Size = New System.Drawing.Size(14, 13)
-        Me.CheckBox11.TabIndex = 29
-        Me.CheckBox11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip1.SetToolTip(Me.CheckBox11, "排除设定的分辨率筛选，依赖于分辨率复选框。")
-        Me.CheckBox11.UseVisualStyleBackColor = True
         '
         'Form1
         '
