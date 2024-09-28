@@ -77,7 +77,7 @@ Partial Class Form1
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(342, 26)
         Me.TextBox1.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.TextBox1, "按下Enter键刷新和确认。")
+        Me.ToolTip1.SetToolTip(Me.TextBox1, "按下Enter键刷新和确认，鼠标中键打开文件夹。")
         '
         'ListView1
         '

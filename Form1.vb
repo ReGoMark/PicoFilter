@@ -757,4 +757,24 @@ Public Class Form1
     Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick
         TextBox3.Text = Val（TextBox2.Text）
     End Sub
+
+    Private Sub TextBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseUp
+        ' 判断是否为鼠标中键点击
+        If e.Button = MouseButtons.Middle Then
+            ' 调试输出，确认事件触发
+            'MsgBox("鼠标中键点击触发")
+
+            ' 获取文件夹路径
+            Dim folderPath As String = TextBox1.Text
+
+            ' 检查路径是否为空并且文件夹是否存在
+            If Not String.IsNullOrEmpty(folderPath) AndAlso Directory.Exists(folderPath) Then
+                ' 打开文件夹
+                Process.Start("explorer.exe", folderPath)
+            Else
+                ' 如果路径无效或文件夹不存在，提示错误信息
+                MsgBox("文件夹路径无效或未选择。", MsgBoxStyle.OkOnly,)
+            End If
+        End If
+    End Sub
 End Class
