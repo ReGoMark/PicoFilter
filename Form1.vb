@@ -777,4 +777,19 @@ Public Class Form1
             End If
         End If
     End Sub
+    Private Sub SplitContainer1_MouseUp(sender As Object, e As MouseEventArgs) Handles SplitContainer1.MouseUp
+        If e.Button = MouseButtons.Middle Then
+            SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
+        End If
+    End Sub
+
+    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        If Me.WindowState = FormWindowState.Maximized Then
+            ListView1.Columns(1).Width = ListView1.Width / 2
+            ListView2.Columns(1).Width = ListView2.Width / 2
+        ElseIf Me.WindowState = FormWindowState.Normal Then
+            ListView1.Columns(1).Width = 150
+            ListView2.Columns(1).Width = 150
+        End If
+    End Sub
 End Class

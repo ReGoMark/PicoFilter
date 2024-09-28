@@ -37,7 +37,7 @@ Partial Class Form2
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(402, 499)
+        Me.TextBox1.Size = New System.Drawing.Size(402, 511)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         '
