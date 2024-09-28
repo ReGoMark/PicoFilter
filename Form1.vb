@@ -98,8 +98,9 @@ Public Class Form1
         Dim pngSelected As Boolean = CheckBox2.Checked
         Dim gifSelected As Boolean = CheckBox3.Checked
         Dim resolutionSelected As Boolean = CheckBox4.Checked
-        '低于某个分辨率筛选，未解决。
-        'Dim underrslnSelected As Boolean = CheckBox10.Checked
+
+        '分辨率不达标筛选
+        Dim excludeResolution As Boolean = CheckBox11.Checked ' 获取CheckBox11的状态
 
         Dim bmpSelected As Boolean = CheckBox5.Checked
         'Dim aniSelected As Boolean = CheckBox9.Checked
@@ -134,10 +135,38 @@ Public Class Form1
                 (pngSelected AndAlso format = ".PNG") OrElse
                 (bmpSelected AndAlso format = ".BMP") OrElse
                 (icoSelected AndAlso format = ".ICO") OrElse
-                (gifSelected AndAlso format = ".GIF") 'OrElse
-            '(webpSelected AndAlso format = ".WEBP") 'OrElse (curSelected AndAlso format = ".CUR") OrElse (aniSelected AndAlso format = ".ANI") 
+                (gifSelected AndAlso format = ".GIF")
+            'OrElse(webpSelected AndAlso format = ".WEBP") 'OrElse (curSelected AndAlso format = ".CUR") OrElse (aniSelected AndAlso format = ".ANI") 
 
-            If resolutionSelected Then
+            If excludeResolution And resolutionSelected Then
+                If width <> widthFilter OrElse height <> heightFilter Then
+                    ' 分辨率不符合要求，将文件添加到ListView2
+                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
+                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
+                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
+                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
+                    ListView2.Items.Add(newItem)
+                    matchingFileCount += 1 ' 符合条件的文件计数自增
+
+                    ' 更新格式计数
+                    Select Case format
+                        Case ".JPG", ".JPEG"
+                            jpgCount += 1
+                        Case ".PNG"
+                            pngCount += 1
+                        Case ".GIF"
+                            gifCount += 1
+                        Case ".BMP"
+                            bmpCount += 1
+                        Case ".ICO"
+                            icoCount += 1
+                    End Select
+
+                    Continue For ' 跳过本次循环，继续下一个文件
+                End If
+            End If
+
+            If resolutionSelected And Not excludeResolution Then
                 ' 如果勾选了分辨率则直接添加
                 If width = widthFilter AndAlso height = heightFilter Then
                     Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
@@ -566,9 +595,15 @@ Public Class Form1
         Dim totalFiles As Integer = ListView2.Items.Count
 
         ' 各种格式的文件数量
+        Dim index As Integer = 1
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
         Dim gifCount As Integer = 0
+        '### 1.2 new ###
+        Dim bmpCount As Integer = 0
+        'Dim curCount As Integer = 0
+        'Dim aniCount As Integer = 0
+        Dim icoCount As Integer = 0
 
         ' 遍历 ListView2 统计文件格式数量
         For Each item As ListViewItem In ListView2.Items
@@ -581,11 +616,21 @@ Public Class Form1
                     pngCount += 1
                 Case ".GIF"
                     gifCount += 1
+
+                        'Case ".ANI"
+                        '    aniCount += 1
+                Case ".ICO"
+                    icoCount += 1
+                        'Case ".CUR"
+                        '    curCount += 1
+                Case ".BMP"
+                    bmpCount += 1
+
             End Select
         Next
 
         ' 更新 Label2 的文本
-        Label2.Text = $"[结果 {totalFiles}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount}"
+        Label2.Text = $"[结果 {totalFiles}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR] {curCount},[ANI] {aniCount},
     End Sub
 
     ' Label5 的 MouseHover 事件
@@ -627,7 +672,7 @@ Public Class Form1
 
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
-            saveFileDialog.FileName = "Pico筛选结果" & Now.Month & "/" & Now.Day & "_" & Now.Hour & ":" & Now.Minute & ":" & Now.Second & ".xlsx"
+            saveFileDialog.FileName = "筛选结果" & Now.Month & “-” & Now.Day & "-" & Now.Hour & "-" & Now.Minute & ".xlsx"
             saveFileDialog.Filter = "Excel 文件 (*.xlsx)|*.xlsx"
             saveFileDialog.Title = "导出为 Excel 文件"
 

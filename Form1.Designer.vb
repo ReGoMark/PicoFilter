@@ -64,17 +64,20 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         Me.CheckBox9 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox11 = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox1.Font = New System.Drawing.Font("宋体", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(12, 9)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(342, 26)
         Me.TextBox1.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.TextBox1, "按下回车刷新和确认。")
+        Me.ToolTip1.SetToolTip(Me.TextBox1, "按下Enter键刷新和确认。")
         '
         'ListView1
         '
@@ -89,11 +92,10 @@ Partial Class Form1
         Me.ListView1.GridLines = True
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(12, 41)
-        Me.ListView1.MultiSelect = False
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(446, 359)
         Me.ListView1.TabIndex = 12
-        Me.ToolTip1.SetToolTip(Me.ListView1, "双击预览")
+        Me.ToolTip1.SetToolTip(Me.ListView1, "双击预览，按住Ctrl点选，按住Shift区选。")
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Details
         '
@@ -118,6 +120,7 @@ Partial Class Form1
         '
         'Button1
         '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button1.CausesValidation = False
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -213,6 +216,7 @@ Partial Class Form1
         '
         'Button2
         '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button2.CausesValidation = False
         Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -242,11 +246,10 @@ Partial Class Form1
         Me.ListView2.GridLines = True
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(464, 41)
-        Me.ListView2.MultiSelect = False
         Me.ListView2.Name = "ListView2"
         Me.ListView2.Size = New System.Drawing.Size(447, 359)
         Me.ListView2.TabIndex = 13
-        Me.ToolTip1.SetToolTip(Me.ListView2, "双击预览")
+        Me.ToolTip1.SetToolTip(Me.ListView2, "双击预览，按住Ctrl点选，按住Shift区选。")
         Me.ListView2.UseCompatibleStateImageBehavior = False
         Me.ListView2.View = System.Windows.Forms.View.Details
         '
@@ -324,7 +327,7 @@ Partial Class Form1
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(464, 449)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(371, 33)
+        Me.Label2.Size = New System.Drawing.Size(357, 33)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "共计："
         '
@@ -351,6 +354,7 @@ Partial Class Form1
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(446, 19)
         Me.ProgressBar1.TabIndex = 12
+        Me.ToolTip1.SetToolTip(Me.ProgressBar1, "指示读取进度。")
         '
         'Button5
         '
@@ -392,6 +396,7 @@ Partial Class Form1
         '
         'Button7
         '
+        Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button7.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button7.CausesValidation = False
         Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -405,11 +410,12 @@ Partial Class Form1
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(25, 26)
         Me.Button7.TabIndex = 4
-        Me.ToolTip1.SetToolTip(Me.Button7, "添加项")
+        Me.ToolTip1.SetToolTip(Me.Button7, "添加项，绑定+键。")
         Me.Button7.UseVisualStyleBackColor = False
         '
         'Button8
         '
+        Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button8.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button8.CausesValidation = False
         Me.Button8.FlatAppearance.BorderColor = System.Drawing.Color.Gray
@@ -423,7 +429,7 @@ Partial Class Form1
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(25, 26)
         Me.Button8.TabIndex = 5
-        Me.ToolTip1.SetToolTip(Me.Button8, "删除项")
+        Me.ToolTip1.SetToolTip(Me.Button8, "删除项，绑定Delete键。")
         Me.Button8.UseVisualStyleBackColor = False
         '
         'CheckBox6
@@ -505,15 +511,14 @@ Partial Class Form1
         '
         Me.CheckBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.CheckBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox4.Location = New System.Drawing.Point(841, 460)
+        Me.CheckBox4.Location = New System.Drawing.Point(827, 460)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(70, 19)
         Me.CheckBox4.TabIndex = 25
         Me.CheckBox4.Text = "分辨率"
         Me.CheckBox4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip1.SetToolTip(Me.CheckBox4, "以分辨率为条件筛选。可以作为单独筛选条件。")
+        Me.ToolTip1.SetToolTip(Me.CheckBox4, "分辨率条件筛选，可以作为单独筛选条件。")
         Me.CheckBox4.UseVisualStyleBackColor = True
         '
         'CheckBox5
@@ -536,11 +541,12 @@ Partial Class Form1
         Me.CheckBox10.AutoSize = True
         Me.CheckBox10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox10.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox10.Location = New System.Drawing.Point(715, 485)
+        Me.CheckBox10.Location = New System.Drawing.Point(708, 482)
         Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(14, 13)
+        Me.CheckBox10.Size = New System.Drawing.Size(93, 19)
         Me.CheckBox10.TabIndex = 28
-        Me.ToolTip1.SetToolTip(Me.CheckBox10, "勾选所有文件格式，不包括分辨率。")
+        Me.CheckBox10.Text = "全选/不选"
+        Me.ToolTip1.SetToolTip(Me.CheckBox10, "勾选/反选所有文件格式，不包括分辨率。")
         Me.CheckBox10.UseVisualStyleBackColor = True
         '
         'Label1
@@ -586,11 +592,26 @@ Partial Class Form1
         Me.CheckBox9.UseVisualStyleBackColor = True
         Me.CheckBox9.Visible = False
         '
+        'CheckBox11
+        '
+        Me.CheckBox11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox11.AutoSize = True
+        Me.CheckBox11.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.CheckBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox11.Location = New System.Drawing.Point(897, 463)
+        Me.CheckBox11.Name = "CheckBox11"
+        Me.CheckBox11.Size = New System.Drawing.Size(14, 13)
+        Me.CheckBox11.TabIndex = 29
+        Me.CheckBox11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip1.SetToolTip(Me.CheckBox11, "排除设定的分辨率筛选，依赖于分辨率复选框。")
+        Me.CheckBox11.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(924, 515)
+        Me.Controls.Add(Me.CheckBox11)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.Label4)
@@ -671,4 +692,5 @@ Partial Class Form1
     Friend WithEvents CheckBox8 As CheckBox
     Friend WithEvents CheckBox9 As CheckBox
     Friend WithEvents CheckBox10 As CheckBox
+    Friend WithEvents CheckBox11 As CheckBox
 End Class
