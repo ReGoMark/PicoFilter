@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports OfficeOpenXml ' 引入 EPPlus 库(for .xlsx output)
 Imports OfficeOpenXml.Table
-
+'考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
 
 Public Class Form1
@@ -11,7 +11,6 @@ Public Class Form1
         ListView1.Items.Clear()
         '修改此处同时在26，57修改
         Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
-        'Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".cur", ".ani", ".ico"}
         Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower()))
         ' 计数
         Dim index As Integer = 1
@@ -36,8 +35,8 @@ Public Class Form1
                     Dim resolution As String = $"{img.Width}×{img.Height}"
                     Dim format As String = Path.GetExtension(file).ToUpper()
                     '显示文件大小
-                    Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
-                    Dim sizeInKB As Double = Int(fileSize / 1024) ' 转换为KB
+                    'Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
+                    'Dim sizeInKB As Double = Int(fileSize / 1024) ' 转换为KB
 
                     ' 计数不同格式
                     Select Case format
@@ -62,7 +61,7 @@ Public Class Form1
                     item.SubItems.Add(fileName) ' 添加文件名
                     item.SubItems.Add(resolution) ' 添加分辨率
                     item.SubItems.Add(format) ' 添加格式
-                    item.SubItems.Add(sizeInKB & " KB") ' 添加文件大小
+                    'item.SubItems.Add(sizeInKB & " KB") ' 添加文件大小
 
                     ' 添加到 listview1
                     ListView1.Items.Add(item)
@@ -106,6 +105,7 @@ Public Class Form1
         'Dim aniSelected As Boolean = CheckBox9.Checked
         Dim icoSelected As Boolean = CheckBox7.Checked
         'Dim curSelected As Boolean = CheckBox8.Checked
+        'Dim webpSelected As Boolean = CheckBox11.Checked
 
         ' 符合筛选条件的计数
         Dim matchingFileCount As Integer = 0
@@ -117,6 +117,7 @@ Public Class Form1
         'Dim curCount As Integer = 0
         'Dim aniCount As Integer = 0
         Dim icoCount As Integer = 0
+        'Dim webpCount As Integer = 0
 
         ' 遍历 ListView1 中的每一项，进行筛选
         For Each item As ListViewItem In ListView1.Items
@@ -128,7 +129,13 @@ Public Class Form1
             '处理是否勾选了分辨率作为筛选条件
             Dim matchesResolution As Boolean = Not resolutionSelected OrElse (width = widthFilter AndAlso height = heightFilter)
             ' 处理文件格式筛选
-            Dim matchesFormat As Boolean = (jpgSelected AndAlso format = ".JPG") OrElse (jpgSelected AndAlso format = ".JPEG") OrElse (pngSelected AndAlso format = ".PNG") OrElse (bmpSelected AndAlso format = ".BMP") OrElse (icoSelected AndAlso format = ".ICO") OrElse (gifSelected AndAlso format = ".GIF") 'OrElse (curSelected AndAlso format = ".CUR") OrElse (aniSelected AndAlso format = ".ANI") 
+            Dim matchesFormat As Boolean = (jpgSelected AndAlso format = ".JPG") OrElse
+                (jpgSelected AndAlso format = ".JPEG") OrElse
+                (pngSelected AndAlso format = ".PNG") OrElse
+                (bmpSelected AndAlso format = ".BMP") OrElse
+                (icoSelected AndAlso format = ".ICO") OrElse
+                (gifSelected AndAlso format = ".GIF") 'OrElse
+            '(webpSelected AndAlso format = ".WEBP") 'OrElse (curSelected AndAlso format = ".CUR") OrElse (aniSelected AndAlso format = ".ANI") 
 
             If resolutionSelected Then
                 ' 如果勾选了分辨率则直接添加
@@ -157,6 +164,9 @@ Public Class Form1
                         '    curCount += 1
                         Case ".BMP"
                             bmpCount += 1
+                            'Case ".WEBP"
+                            '    webpCount += 1
+
                     End Select
 
                     Continue For ' 继续下一个文件
@@ -189,6 +199,8 @@ Public Class Form1
                     '    curCount += 1
                     Case ".BMP"
                         bmpCount += 1
+                        'Case ".WEBP"
+                        '    webpCount += 1
                 End Select
             End If
         Next
