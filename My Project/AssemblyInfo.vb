@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("图片筛选工具")>
 <Assembly: AssemblyCompany("ReGoMark，内部使用严禁商用。")>
 <Assembly: AssemblyProduct("PicoFilter")>
-<Assembly: AssemblyCopyright("Copyright ©  2024  ReGoMark")>
+<Assembly: AssemblyCopyright("Copyright © 2024 ReGoMark")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -27,5 +27,5 @@ Imports System.Runtime.InteropServices
 '      修订号
 '
 
-<Assembly: AssemblyVersion("1.2.0.0")>
-<Assembly: AssemblyFileVersion("1.2.0.0")>
+<Assembly: AssemblyVersion("1.3.3.0")>
+<Assembly: AssemblyFileVersion("1.3.3.0")>
