@@ -35,8 +35,8 @@ Public Class Form1
                     Dim resolution As String = $"{img.Width}×{img.Height}"
                     Dim format As String = Path.GetExtension(file).ToUpper()
                     '显示文件大小
-                    'Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
-                    'Dim sizeInKB As Double = Int(fileSize / 1024) ' 转换为KB
+                    Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
+                    Dim sizeInKB As Double = Int(fileSize / 1024) ' 转换为KB
 
                     ' 计数不同格式
                     Select Case format
@@ -304,7 +304,7 @@ Public Class Form1
 
     '按下回车键刷新
     Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
-        If e.KeyCode = Keys.Enter Then
+        If e.KeyCode = Keys.F5 Then
             Dim folderPath As String = TextBox1.Text
             If Directory.Exists(folderPath) Then
                 加载图片(folderPath)
@@ -728,6 +728,8 @@ Public Class Form1
         ElseIf e.KeyCode = Keys.Delete Then ' 检测 "Delete" 按键
             Button8.PerformClick() ' 触发 Button8 的点击事件
         End If
+        If e.KeyCode = Keys.F3 Then Button1.PerformClick()
+
     End Sub
 
     Private Sub CheckBox10_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox10.CheckStateChanged

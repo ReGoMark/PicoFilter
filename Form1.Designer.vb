@@ -83,7 +83,7 @@ Partial Class Form1
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(342, 26)
         Me.TextBox1.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.TextBox1, "按下Enter键刷新和确认，鼠标中键打开文件夹。")
+        Me.ToolTip1.SetToolTip(Me.TextBox1, "输入一个路径。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按下F5键刷新和确认，鼠标中键打开文件夹。")
         '
         'ListView1
         '
@@ -141,7 +141,7 @@ Partial Class Form1
         Me.Button1.Size = New System.Drawing.Size(98, 26)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "拖入或打开"
-        Me.ToolTip1.SetToolTip(Me.Button1, "拖放文件夹到此处或选择一个文件夹。")
+        Me.ToolTip1.SetToolTip(Me.Button1, "拖放文件夹到此处或选择一个文件夹。绑定F3键。")
         Me.Button1.UseVisualStyleBackColor = False
         '
         'CheckBox3
@@ -255,7 +255,7 @@ Partial Class Form1
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(0, -1)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(447, 357)
+        Me.ListView2.Size = New System.Drawing.Size(443, 357)
         Me.ListView2.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListView2, "双击预览，按住Ctrl点选，按住Shift区选。")
         Me.ListView2.UseCompatibleStateImageBehavior = False
@@ -337,7 +337,7 @@ Partial Class Form1
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(0, 394)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(353, 38)
+        Me.Label2.Size = New System.Drawing.Size(345, 38)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "共计："
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -351,7 +351,7 @@ Partial Class Form1
         Me.Label8.ForeColor = System.Drawing.Color.RoyalBlue
         Me.Label8.Location = New System.Drawing.Point(-1, 357)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(448, 37)
+        Me.Label8.Size = New System.Drawing.Size(444, 37)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "等待选中"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
