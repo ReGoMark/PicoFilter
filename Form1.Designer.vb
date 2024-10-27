@@ -255,7 +255,7 @@ Partial Class Form1
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(0, -1)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(443, 357)
+        Me.ListView2.Size = New System.Drawing.Size(447, 357)
         Me.ListView2.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListView2, "双击预览，按住Ctrl点选，按住Shift区选。")
         Me.ListView2.UseCompatibleStateImageBehavior = False
@@ -337,7 +337,7 @@ Partial Class Form1
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(0, 394)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(345, 38)
+        Me.Label2.Size = New System.Drawing.Size(343, 38)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "共计："
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -351,7 +351,7 @@ Partial Class Form1
         Me.Label8.ForeColor = System.Drawing.Color.RoyalBlue
         Me.Label8.Location = New System.Drawing.Point(-1, 357)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(444, 37)
+        Me.Label8.Size = New System.Drawing.Size(447, 37)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "等待选中"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -408,7 +408,7 @@ Partial Class Form1
         'Button7
         '
         Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button7.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button7.CausesValidation = False
         Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.Gray
         Me.Button7.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
@@ -523,12 +523,12 @@ Partial Class Form1
         Me.CheckBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox4.AutoSize = True
         Me.CheckBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox4.Location = New System.Drawing.Point(824, 455)
+        Me.CheckBox4.Location = New System.Drawing.Point(372, 396)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(70, 19)
         Me.CheckBox4.TabIndex = 25
         Me.CheckBox4.Text = "分辨率"
-        Me.CheckBox4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.CheckBox4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.CheckBox4, "分辨率条件筛选，可以作为单独筛选条件。")
         Me.CheckBox4.UseVisualStyleBackColor = True
         '
@@ -564,13 +564,13 @@ Partial Class Form1
         '
         Me.CheckBox11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox11.AutoSize = True
-        Me.CheckBox11.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.CheckBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox11.Location = New System.Drawing.Point(892, 458)
+        Me.CheckBox11.Location = New System.Drawing.Point(372, 413)
         Me.CheckBox11.Name = "CheckBox11"
-        Me.CheckBox11.Size = New System.Drawing.Size(14, 13)
+        Me.CheckBox11.Size = New System.Drawing.Size(70, 19)
         Me.CheckBox11.TabIndex = 29
-        Me.CheckBox11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.CheckBox11.Text = "排除法"
+        Me.CheckBox11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.CheckBox11, "排除设定的分辨率筛选，依赖于分辨率复选框。")
         Me.CheckBox11.UseVisualStyleBackColor = True
         '
@@ -591,9 +591,11 @@ Partial Class Form1
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox11)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox4)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Label8)
         Me.SplitContainer1.Panel2.Controls.Add(Me.ListView2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label2)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.Label8)
         Me.SplitContainer1.Size = New System.Drawing.Size(899, 435)
         Me.SplitContainer1.SplitterDistance = 446
         Me.SplitContainer1.SplitterWidth = 6
@@ -656,8 +658,6 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(924, 515)
-        Me.Controls.Add(Me.CheckBox11)
-        Me.Controls.Add(Me.CheckBox4)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.Splitter1)
         Me.Controls.Add(Me.TextBox2)
@@ -688,9 +688,10 @@ Partial Class Form1
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "PicoFilter 1.3  (仅限PAA内部使用) "
+        Me.Text = "PicoFilter 1.3  (授权给PAA像素艺术大赛许可) "
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
+        Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)

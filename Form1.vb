@@ -725,10 +725,13 @@ Public Class Form1
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Add Then ' 检测 "+" 按键
             Button7.PerformClick() ' 触发 Button7 的点击事件
-        ElseIf e.KeyCode = Keys.Delete Then ' 检测 "Delete" 按键
+        End If
+        If e.KeyCode = Keys.Delete Then ' 检测 "Delete" 按键
             Button8.PerformClick() ' 触发 Button8 的点击事件
         End If
-        If e.KeyCode = Keys.F3 Then Button1.PerformClick()
+        If e.KeyCode = Keys.F3 Then
+            Button1.PerformClick()
+        End If
 
     End Sub
 
