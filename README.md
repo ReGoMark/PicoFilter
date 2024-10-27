@@ -1,6 +1,6 @@
 # PicoFilter
  images filter tool.图片筛选工具，支持常用图片格式，小规模文件夹可用。
-![QQ20241027-180528](https://github.com/user-attachments/assets/772e3536-fefa-478d-8c44-99a4ecd170d4)
+![QQ20241027-180921](https://github.com/user-attachments/assets/aac9ef84-1124-4a9f-8b57-260e3455a09c)
 
  1.3.3，2024/9/28
 + 增加分隔条，自由调整尺寸（未编译）
