@@ -67,6 +67,7 @@ Partial Class Form1
         Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         Me.CheckBox9 = New System.Windows.Forms.CheckBox()
         Me.Splitter1 = New System.Windows.Forms.Splitter()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -81,7 +82,7 @@ Partial Class Form1
         Me.TextBox1.Font = New System.Drawing.Font("宋体", 16.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(12, 9)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(342, 26)
+        Me.TextBox1.Size = New System.Drawing.Size(346, 26)
         Me.TextBox1.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.TextBox1, "输入一个路径。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按下F5键刷新和确认，鼠标中键打开文件夹。")
         '
@@ -136,21 +137,21 @@ Partial Class Form1
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("宋体", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Button1.Location = New System.Drawing.Point(360, 9)
+        Me.Button1.Location = New System.Drawing.Point(364, 9)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(98, 26)
+        Me.Button1.Size = New System.Drawing.Size(94, 26)
         Me.Button1.TabIndex = 2
-        Me.Button1.Text = "拖入或打开"
+        Me.Button1.Text = "拖入/打开"
         Me.ToolTip1.SetToolTip(Me.Button1, "拖放文件夹到此处或选择一个文件夹。绑定F3键。")
         Me.Button1.UseVisualStyleBackColor = False
         '
         'CheckBox3
         '
-        Me.CheckBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox3.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox3.Location = New System.Drawing.Point(660, 482)
+        Me.CheckBox3.Location = New System.Drawing.Point(419, 486)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(49, 19)
         Me.CheckBox3.TabIndex = 20
@@ -163,7 +164,7 @@ Partial Class Form1
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label4.Location = New System.Drawing.Point(848, 484)
+        Me.Label4.Location = New System.Drawing.Point(845, 489)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(22, 15)
         Me.Label4.TabIndex = 6
@@ -175,7 +176,7 @@ Partial Class Form1
         Me.TextBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox3.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(867, 480)
+        Me.TextBox3.Location = New System.Drawing.Point(867, 485)
         Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(44, 21)
@@ -187,7 +188,7 @@ Partial Class Form1
         Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox2.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(807, 480)
+        Me.TextBox2.Location = New System.Drawing.Point(801, 485)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(44, 21)
@@ -196,11 +197,11 @@ Partial Class Form1
         '
         'CheckBox2
         '
-        Me.CheckBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox2.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox2.Location = New System.Drawing.Point(464, 482)
+        Me.CheckBox2.Location = New System.Drawing.Point(199, 486)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(49, 19)
         Me.CheckBox2.TabIndex = 19
@@ -210,11 +211,11 @@ Partial Class Form1
         '
         'CheckBox1
         '
-        Me.CheckBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox1.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(513, 482)
+        Me.CheckBox1.Location = New System.Drawing.Point(254, 486)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(49, 19)
         Me.CheckBox1.TabIndex = 18
@@ -337,7 +338,7 @@ Partial Class Form1
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(0, 394)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(343, 38)
+        Me.Label2.Size = New System.Drawing.Size(447, 38)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "共计："
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -351,7 +352,7 @@ Partial Class Form1
         Me.Label8.ForeColor = System.Drawing.Color.RoyalBlue
         Me.Label8.Location = New System.Drawing.Point(-1, 357)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(447, 37)
+        Me.Label8.Size = New System.Drawing.Size(448, 37)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "等待选中"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -359,11 +360,11 @@ Partial Class Form1
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(12, 482)
+        Me.ProgressBar1.Location = New System.Drawing.Point(-2, -14)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(446, 19)
+        Me.ProgressBar1.Size = New System.Drawing.Size(940, 19)
         Me.ProgressBar1.TabIndex = 12
         Me.ToolTip1.SetToolTip(Me.ProgressBar1, "指示读取进度。")
         '
@@ -506,11 +507,11 @@ Partial Class Form1
         '
         'CheckBox7
         '
-        Me.CheckBox7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox7.AutoSize = True
         Me.CheckBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox7.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox7.Location = New System.Drawing.Point(611, 482)
+        Me.CheckBox7.Location = New System.Drawing.Point(364, 486)
         Me.CheckBox7.Name = "CheckBox7"
         Me.CheckBox7.Size = New System.Drawing.Size(49, 19)
         Me.CheckBox7.TabIndex = 23
@@ -523,7 +524,7 @@ Partial Class Form1
         Me.CheckBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox4.AutoSize = True
         Me.CheckBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox4.Location = New System.Drawing.Point(372, 396)
+        Me.CheckBox4.Location = New System.Drawing.Point(725, 486)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(70, 19)
         Me.CheckBox4.TabIndex = 25
@@ -534,11 +535,11 @@ Partial Class Form1
         '
         'CheckBox5
         '
-        Me.CheckBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox5.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox5.Location = New System.Drawing.Point(562, 482)
+        Me.CheckBox5.Location = New System.Drawing.Point(309, 486)
         Me.CheckBox5.Name = "CheckBox5"
         Me.CheckBox5.Size = New System.Drawing.Size(49, 19)
         Me.CheckBox5.TabIndex = 24
@@ -548,11 +549,11 @@ Partial Class Form1
         '
         'CheckBox10
         '
-        Me.CheckBox10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox10.AutoSize = True
         Me.CheckBox10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox10.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox10.Location = New System.Drawing.Point(708, 482)
+        Me.CheckBox10.Location = New System.Drawing.Point(100, 486)
         Me.CheckBox10.Name = "CheckBox10"
         Me.CheckBox10.Size = New System.Drawing.Size(93, 19)
         Me.CheckBox10.TabIndex = 28
@@ -565,11 +566,11 @@ Partial Class Form1
         Me.CheckBox11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox11.AutoSize = True
         Me.CheckBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox11.Location = New System.Drawing.Point(372, 413)
+        Me.CheckBox11.Location = New System.Drawing.Point(619, 486)
         Me.CheckBox11.Name = "CheckBox11"
-        Me.CheckBox11.Size = New System.Drawing.Size(70, 19)
+        Me.CheckBox11.Size = New System.Drawing.Size(100, 19)
         Me.CheckBox11.TabIndex = 29
-        Me.CheckBox11.Text = "排除法"
+        Me.CheckBox11.Text = "反向分辨率"
         Me.CheckBox11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.CheckBox11, "排除设定的分辨率筛选，依赖于分辨率复选框。")
         Me.CheckBox11.UseVisualStyleBackColor = True
@@ -591,8 +592,6 @@ Partial Class Form1
         '
         'SplitContainer1.Panel2
         '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox11)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox4)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label8)
         Me.SplitContainer1.Panel2.Controls.Add(Me.ListView2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label2)
@@ -653,11 +652,25 @@ Partial Class Form1
         Me.Splitter1.TabIndex = 30
         Me.Splitter1.TabStop = False
         '
+        'Label3
+        '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(12, 488)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(82, 15)
+        Me.Label3.TabIndex = 32
+        Me.Label3.Text = "筛选条件："
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(924, 515)
+        Me.Controls.Add(Me.CheckBox11)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.CheckBox4)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.Splitter1)
         Me.Controls.Add(Me.TextBox2)
@@ -682,7 +695,6 @@ Partial Class Form1
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -691,7 +703,6 @@ Partial Class Form1
         Me.Text = "PicoFilter 1.3  (授权给PAA像素艺术大赛许可) "
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -741,4 +752,5 @@ Partial Class Form1
     Friend WithEvents CheckBox11 As CheckBox
     Friend WithEvents Splitter1 As Splitter
     Friend WithEvents SplitContainer1 As SplitContainer
+    Friend WithEvents Label3 As Label
 End Class
