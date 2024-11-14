@@ -1,6 +1,6 @@
 # PicoFilter
  images filter tool.图片筛选工具，支持常用图片格式，小规模文件夹可用。
-![QQ20241027-180921](https://github.com/user-attachments/assets/aac9ef84-1124-4a9f-8b57-260e3455a09c)
+![QQ20241114-190735](https://github.com/user-attachments/assets/1d486b27-b104-4790-ab6b-d4d0d68a6591)
 # Available Functions
 考虑到一些强迫症用户，在两个列表之间，按下鼠标中键可以平均分配尺寸。
 在“×”位置鼠标左键双击可以自动输入宽度值。
