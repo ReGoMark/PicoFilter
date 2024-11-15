@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Xml
 Imports OfficeOpenXml ' 引入 EPPlus 库(for .xlsx output)
 Imports OfficeOpenXml.Table
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
@@ -317,6 +318,7 @@ Public Class Form1
     ' 启用按钮的拖放功能
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Button1.AllowDrop = True ' 启用拖放功能
+        ComboBox1.SelectedIndex = 0
     End Sub
 
 
@@ -802,4 +804,59 @@ Public Class Form1
             ListView2.Columns(1).Width = 150
         End If
     End Sub
+
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        If ComboBox1.SelectedIndex = 0 Then
+            配色1()
+        End If
+        If ComboBox1.SelectedIndex = 1 Then
+            配色2()
+        End If
+        If ComboBox1.SelectedIndex = 2 Then
+            配色3()
+        End If
+        'If ComboBox1.SelectedIndex = 3 Then
+        '    配色4()
+        'End If
+    End Sub
+    Private Sub 配色1()
+        BackColor = Color.Lavender
+    End Sub
+    Private Sub 配色2()
+        BackColor = Color.Wheat
+    End Sub
+    Private Sub 配色3()
+        BackColor = Color.WhiteSmoke
+    End Sub
+    'Private Sub 配色4()
+    '    BackColor = Color.FromArgb(64, 64, 64)
+    '    CheckBox1.ForeColor = Color.White
+    '    CheckBox2.ForeColor = Color.White
+    '    CheckBox3.ForeColor = Color.White
+    '    CheckBox4.ForeColor = Color.White
+    '    CheckBox5.ForeColor = Color.White
+    '    CheckBox6.ForeColor = Color.White
+    '    CheckBox7.ForeColor = Color.White
+    '    CheckBox8.ForeColor = Color.White
+    '    CheckBox9.ForeColor = Color.White
+    '    CheckBox10.ForeColor = Color.White
+    '    CheckBox11.ForeColor = Color.White
+
+    '    Label3.ForeColor = Color.White
+    '    Label4.ForeColor = Color.White
+    '    Label7.ForeColor = Color.White
+
+    '    Button1.FlatAppearance.BorderColor = Color.Gray
+    '    Button2.FlatAppearance.BorderColor = Color.Gray
+    '    Button3.FlatAppearance.BorderColor = Color.Gray
+    '    Button4.FlatAppearance.BorderColor = Color.Gray
+    '    Button5.FlatAppearance.BorderColor = Color.Gray
+    '    Button6.FlatAppearance.BorderColor = Color.Gray
+    '    Button7.FlatAppearance.BorderColor = Color.Gray
+    '    Button8.FlatAppearance.BorderColor = Color.Gray
+
+    '    ListView1.BackColor = Color.DimGray
+    '    ListView1.col
+    'End Sub
 End Class
