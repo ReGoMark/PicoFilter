@@ -6,7 +6,7 @@ Imports OfficeOpenXml.Table
 'ver 1.2,2024/9/26
 
 Public Class Form1
-
+    Dim NUM As Integer
     ' 加载图片从指定文件夹，到listview1
     Private Sub 加载图片(folderPath As String)
         ListView1.Items.Clear()
@@ -70,6 +70,8 @@ Public Class Form1
 
                     ' 更新进度条
                     ProgressBar1.Value += 1
+                    NUM += 1
+                    Me.Text = "PicoFilter 1.3 (授权给PAA像素艺术大赛许可), (已加载 " & NUM & “ 项)”
                 End Using
 
             Catch ex As Exception
@@ -676,7 +678,7 @@ Public Class Form1
 
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
-            saveFileDialog.FileName = "筛选结果" & Now.Month & “-” & Now.Day & "-" & Now.Hour & "-" & Now.Minute & ".xlsx"
+            saveFileDialog.FileName = "筛选结果" & Now.Month & “-” & Now.Day & "，" & Now.Hour & “时” & ".xlsx"
             saveFileDialog.Filter = "Excel 文件 (*.xlsx)|*.xlsx"
             saveFileDialog.Title = "导出为 Excel 文件"
 
@@ -690,7 +692,7 @@ Public Class Form1
                     ' 使用 EPPlus 创建 Excel 文件
                     Using package As New ExcelPackage(fileInfo)
                         ' 创建一个新的工作表
-                        Dim worksheet = package.Workbook.Worksheets.Add("ListView2数据")
+                        Dim worksheet = package.Workbook.Worksheets.Add("筛选结果")
 
                         ' 设置表头（对应 ListView2 的列）
                         For i As Integer = 0 To ListView2.Columns.Count - 1
