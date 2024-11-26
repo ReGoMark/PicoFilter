@@ -696,7 +696,7 @@ Public Class Form1
 
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
-            saveFileDialog.FileName = "筛选结果" & Now.Month & “-” & Now.Day & "，" & Now.Hour & “时” & ".xlsx"
+            saveFileDialog.FileName = "筛选结果" & Now.Month & Now.Day & Now.Hour & Now.Minute & ".xlsx"
             saveFileDialog.Filter = "Excel 文件 (*.xlsx)|*.xlsx"
             saveFileDialog.Title = "导出为 Excel 文件"
 

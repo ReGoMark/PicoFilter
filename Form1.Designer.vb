@@ -104,7 +104,7 @@ Partial Class Form1
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(-1, -1)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(445, 353)
+        Me.ListView1.Size = New System.Drawing.Size(445, 350)
         Me.ListView1.TabIndex = 12
         Me.ToolTip1.SetToolTip(Me.ListView1, "双击预览，按住Ctrl点选，按住Shift区选。")
         Me.ListView1.UseCompatibleStateImageBehavior = False
@@ -257,7 +257,7 @@ Partial Class Form1
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(0, -1)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(447, 353)
+        Me.ListView2.Size = New System.Drawing.Size(445, 350)
         Me.ListView2.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListView2, "双击预览，按住Ctrl点选，按住Shift区选。")
         Me.ListView2.UseCompatibleStateImageBehavior = False
@@ -308,13 +308,13 @@ Partial Class Form1
         Me.Label5.BackColor = System.Drawing.Color.AliceBlue
         Me.Label5.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.Label5.Location = New System.Drawing.Point(0, 353)
+        Me.Label5.Location = New System.Drawing.Point(-1, 348)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(446, 37)
+        Me.Label5.Size = New System.Drawing.Size(446, 41)
         Me.Label5.TabIndex = 15
         Me.Label5.Text = "等待选中"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ToolTip1.SetToolTip(Me.Label5, "单击复制路径。注意，复选状态下只能复制头文件路径。")
+        Me.ToolTip1.SetToolTip(Me.Label5, "单击复制路径。")
         '
         'Label6
         '
@@ -325,7 +325,7 @@ Partial Class Form1
         Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(0, 389)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(446, 40)
+        Me.Label6.Size = New System.Drawing.Size(446, 41)
         Me.Label6.TabIndex = 14
         Me.Label6.Text = "共计："
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -339,7 +339,7 @@ Partial Class Form1
         Me.Label2.ForeColor = System.Drawing.Color.Black
         Me.Label2.Location = New System.Drawing.Point(0, 389)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(447, 39)
+        Me.Label2.Size = New System.Drawing.Size(445, 41)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "共计："
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -351,13 +351,13 @@ Partial Class Form1
         Me.Label8.BackColor = System.Drawing.Color.AliceBlue
         Me.Label8.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.Label8.Location = New System.Drawing.Point(-1, 352)
+        Me.Label8.Location = New System.Drawing.Point(-1, 348)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(448, 37)
+        Me.Label8.Size = New System.Drawing.Size(446, 41)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "等待选中"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ToolTip1.SetToolTip(Me.Label8, "单击复制路径。注意，复选状态下只能复制头文件路径。")
+        Me.ToolTip1.SetToolTip(Me.Label8, "单击复制路径。")
         '
         'ProgressBar1
         '
@@ -674,7 +674,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(468, 485)
+        Me.Label7.Location = New System.Drawing.Point(465, 485)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(82, 15)
         Me.Label7.TabIndex = 34
