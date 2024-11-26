@@ -2,11 +2,15 @@
 Imports System.Xml
 Imports OfficeOpenXml ' 引入 EPPlus 库(for .xlsx output)
 Imports OfficeOpenXml.Table
+Imports System.Diagnostics
+Imports System.Windows.Forms.DataVisualization.Charting
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
 
 Public Class Form1
     Dim NUM As Integer
+
+
     ' 加载图片从指定文件夹，到listview1
     Private Sub 加载图片(folderPath As String)
         ListView1.Items.Clear()
@@ -27,6 +31,7 @@ Public Class Form1
         'progressbar for scanning files
         ProgressBar1.Maximum = files.Count()
         ProgressBar1.Value = 0
+        NUM = 0
 
         'items filling to listview1
         For Each file In files
@@ -71,14 +76,23 @@ Public Class Form1
                     ' 更新进度条
                     ProgressBar1.Value += 1
                     NUM += 1
-                    Me.Text = "PicoFilter 1.3 (授权给PAA像素艺术大赛许可), (已加载 " & NUM & “ 项)”
+
+                    ' 获取当前进程
+                    Dim currentProcess As Process = Process.GetCurrentProcess()
+
+                    ' 获取工作集内存占用（以字节为单位）
+                    Dim memoryUsage As Long = currentProcess.WorkingSet64
+
+                    ' 转换为 MB
+                    Dim memoryUsageMB As Double = (Int（memoryUsage / 1024 / 1024 * 10)) / 10
+                    Dim per As Int64 = Int(memoryUsage / My.Computer.Info.TotalPhysicalMemory * 10) / 10 * 100
+                    Me.Text = "PicoFilter 1.4，授权给PAA像素艺术大赛许可，已使用" & memoryUsageMB & “MB，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
                 End Using
 
             Catch ex As Exception
                 ' 忽略无法读取的文件(文件本身有问题而不是格式不支持)
                 MsgBox("加载失败。无法读取: " & ex.Message, MsgBoxStyle.OkOnly)
             End Try
-
         Next
 
         ' 显示文件总数和各格式数量
@@ -321,7 +335,11 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Button1.AllowDrop = True ' 启用拖放功能
         ComboBox1.SelectedIndex = 0
+        ProgressBar1.Maximum = 0
+
     End Sub
+
+
 
 
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
@@ -831,6 +849,24 @@ Public Class Form1
     Private Sub 配色3()
         BackColor = Color.WhiteSmoke
     End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+
+        ' 获取当前进程
+        Dim currentProcess As Process = Process.GetCurrentProcess()
+
+        ' 获取工作集内存占用（以字节为单位）
+        Dim memoryUsage As Long = currentProcess.WorkingSet64
+
+        ' 转换为 MB
+        Dim memoryUsageMB As Double = (Int（memoryUsage / 1024 / 1024 * 10)) / 10
+        Dim per As Int64 = Int(memoryUsage / My.Computer.Info.TotalPhysicalMemory * 10) / 10 * 100
+        Me.Text = "PicoFilter 1.4，授权给PAA像素艺术大赛许可，已使用" & memoryUsageMB & “MB，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
+
+    End Sub
+
+
+
     'Private Sub 配色4()
     '    BackColor = Color.FromArgb(64, 64, 64)
     '    CheckBox1.ForeColor = Color.White
