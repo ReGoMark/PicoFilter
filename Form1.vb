@@ -1,9 +1,5 @@
 ﻿Imports System.IO
-Imports System.Xml
-Imports OfficeOpenXml ' 引入 EPPlus 库(for .xlsx output)
-Imports OfficeOpenXml.Table
-Imports System.Diagnostics
-Imports System.Windows.Forms.DataVisualization.Charting
+Imports OfficeOpenXml
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
 
@@ -693,10 +689,11 @@ Public Class Form1
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         ' 设置许可证上下文为非商业用途
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial
-
+        Dim now As DateTime = DateTime.Now
+        Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
-            saveFileDialog.FileName = "筛选结果" & Now.Month & Now.Day & Now.Hour & Now.Minute & ".xlsx"
+            saveFileDialog.FileName = "筛选结果" & formattedDateTime & ".xlsx"
             saveFileDialog.Filter = "Excel 文件 (*.xlsx)|*.xlsx"
             saveFileDialog.Title = "导出为 Excel 文件"
 
@@ -710,11 +707,14 @@ Public Class Form1
                     ' 使用 EPPlus 创建 Excel 文件
                     Using package As New ExcelPackage(fileInfo)
                         ' 创建一个新的工作表
-                        Dim worksheet = package.Workbook.Worksheets.Add("筛选结果")
+                        Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
 
                         ' 设置表头（对应 ListView2 的列）
                         For i As Integer = 0 To ListView2.Columns.Count - 1
                             worksheet.Cells(1, i + 1).Value = ListView2.Columns(i).Text
+                            ' 将 ListView2 的列宽同步到 Excel
+                            Dim columnWidth As Double = ListView2.Columns(i).Width / 7 ' 调整比例使宽度接近视觉一致
+                            worksheet.Column(i + 1).Width = columnWidth
                         Next
 
                         ' 填充 ListView2 的数据
@@ -844,10 +844,10 @@ Public Class Form1
         BackColor = Color.Lavender
     End Sub
     Private Sub 配色2()
-        BackColor = Color.Wheat
+        BackColor = Color.Cornsilk
     End Sub
     Private Sub 配色3()
-        BackColor = Color.WhiteSmoke
+        BackColor = Color.FromArgb(227, 227, 227)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -865,36 +865,4 @@ Public Class Form1
 
     End Sub
 
-
-
-    'Private Sub 配色4()
-    '    BackColor = Color.FromArgb(64, 64, 64)
-    '    CheckBox1.ForeColor = Color.White
-    '    CheckBox2.ForeColor = Color.White
-    '    CheckBox3.ForeColor = Color.White
-    '    CheckBox4.ForeColor = Color.White
-    '    CheckBox5.ForeColor = Color.White
-    '    CheckBox6.ForeColor = Color.White
-    '    CheckBox7.ForeColor = Color.White
-    '    CheckBox8.ForeColor = Color.White
-    '    CheckBox9.ForeColor = Color.White
-    '    CheckBox10.ForeColor = Color.White
-    '    CheckBox11.ForeColor = Color.White
-
-    '    Label3.ForeColor = Color.White
-    '    Label4.ForeColor = Color.White
-    '    Label7.ForeColor = Color.White
-
-    '    Button1.FlatAppearance.BorderColor = Color.Gray
-    '    Button2.FlatAppearance.BorderColor = Color.Gray
-    '    Button3.FlatAppearance.BorderColor = Color.Gray
-    '    Button4.FlatAppearance.BorderColor = Color.Gray
-    '    Button5.FlatAppearance.BorderColor = Color.Gray
-    '    Button6.FlatAppearance.BorderColor = Color.Gray
-    '    Button7.FlatAppearance.BorderColor = Color.Gray
-    '    Button8.FlatAppearance.BorderColor = Color.Gray
-
-    '    ListView1.BackColor = Color.DimGray
-    '    ListView1.col
-    'End Sub
 End Class

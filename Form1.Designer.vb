@@ -71,21 +71,25 @@ Partial Class Form1
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBox1
         '
         Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.Font = New System.Drawing.Font("等线", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(12, 9)
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox1.Font = New System.Drawing.Font("等线", 9.0!)
+        Me.TextBox1.Location = New System.Drawing.Point(4, 4)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(354, 26)
+        Me.TextBox1.Size = New System.Drawing.Size(345, 16)
         Me.TextBox1.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.TextBox1, "输入一个路径。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按下F5键刷新和确认，鼠标中键打开文件夹。")
         '
@@ -164,10 +168,10 @@ Partial Class Form1
         '
         'Label4
         '
-        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label4.Location = New System.Drawing.Point(845, 482)
+        Me.Label4.Location = New System.Drawing.Point(44, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(23, 21)
         Me.Label4.TabIndex = 6
@@ -176,23 +180,23 @@ Partial Class Form1
         '
         'TextBox3
         '
-        Me.TextBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox3.Font = New System.Drawing.Font("等线", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(867, 482)
+        Me.TextBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox3.Font = New System.Drawing.Font("等线", 9.0!)
+        Me.TextBox3.Location = New System.Drawing.Point(63, 3)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(44, 21)
+        Me.TextBox3.Size = New System.Drawing.Size(44, 16)
         Me.TextBox3.TabIndex = 27
         Me.ToolTip1.SetToolTip(Me.TextBox3, "高度")
         '
         'TextBox2
         '
-        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox2.Font = New System.Drawing.Font("等线", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(801, 482)
+        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox2.Font = New System.Drawing.Font("等线", 9.0!)
+        Me.TextBox2.Location = New System.Drawing.Point(2, 3)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(44, 21)
+        Me.TextBox2.Size = New System.Drawing.Size(44, 16)
         Me.TextBox2.TabIndex = 26
         Me.ToolTip1.SetToolTip(Me.TextBox2, "宽度")
         '
@@ -410,7 +414,7 @@ Partial Class Form1
         'Button7
         '
         Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button7.BackColor = System.Drawing.Color.Moccasin
+        Me.Button7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button7.CausesValidation = False
         Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.Gray
         Me.Button7.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
@@ -499,11 +503,11 @@ Partial Class Form1
         Me.Button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
         Me.Button6.Location = New System.Drawing.Point(853, 9)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(25, 26)
         Me.Button6.TabIndex = 10
-        Me.Button6.Text = "i"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.ToolTip1.SetToolTip(Me.Button6, "说明")
         Me.Button6.UseVisualStyleBackColor = False
@@ -697,6 +701,31 @@ Partial Class Form1
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1500
         '
+        'Panel1
+        '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Location = New System.Drawing.Point(12, 9)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(354, 26)
+        Me.Panel1.TabIndex = 35
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.TextBox3)
+        Me.Panel2.Controls.Add(Me.TextBox2)
+        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Location = New System.Drawing.Point(800, 481)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(111, 23)
+        Me.Panel2.TabIndex = 36
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
@@ -704,6 +733,8 @@ Partial Class Form1
         Me.BackColor = System.Drawing.Color.Lavender
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(924, 515)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.CheckBox11)
@@ -712,9 +743,6 @@ Partial Class Form1
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.Splitter1)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.CheckBox10)
         Me.Controls.Add(Me.CheckBox9)
         Me.Controls.Add(Me.CheckBox8)
@@ -728,7 +756,6 @@ Partial Class Form1
         Me.Controls.Add(Me.CheckBox6)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.CheckBox3)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Button3)
@@ -744,6 +771,10 @@ Partial Class Form1
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -795,4 +826,6 @@ Partial Class Form1
     Friend WithEvents Label7 As Label
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
 End Class
