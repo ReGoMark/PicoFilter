@@ -82,7 +82,7 @@ Public Class Form1
                     ' 转换为 MB
                     Dim memoryUsageMB As Double = (Int（memoryUsage / 1024 / 1024 * 10)) / 10
                     Dim per As Int64 = Int(memoryUsage / My.Computer.Info.TotalPhysicalMemory * 10) / 10 * 100
-                    Me.Text = "PicoFilter 1.4，授权给PAA像素艺术大赛许可，已使用" & memoryUsageMB & “MB，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
+                    Me.Text = "PicoFilter 1.4，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
                 End Using
 
             Catch ex As Exception
@@ -91,8 +91,19 @@ Public Class Form1
             End Try
         Next
 
-        ' 显示文件总数和各格式数量
-        Label6.Text = $"[总数 {files.Count()}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR]{curCount},[ANI] {aniCount}"
+        Dim result As New List(Of String)
+        result.Add($"[RSLT {files.Count}]")
+
+        If jpgCount > 0 Then result.Add($"[JPG]{jpgCount}")
+        If pngCount > 0 Then result.Add($"[PNG]{pngCount}")
+        If gifCount > 0 Then result.Add($"[GIF]{gifCount}")
+        If bmpCount > 0 Then result.Add($"[BMP]{bmpCount}")
+        If icoCount > 0 Then result.Add($"[ICO]{icoCount}")
+
+        Label6.Text = String.Join(" | ", result)
+
+        '' 显示文件总数和各格式数量
+        'Label6.Text = $"[总数 {files.Count()}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR]{curCount},[ANI] {aniCount}"
     End Sub
 
     ' 加载图片从指定文件夹，到listview2
@@ -246,9 +257,19 @@ Public Class Form1
                 End Select
             End If
         Next
+        Dim result As New List(Of String)
 
-        ' 在 Label2 显示
-        Label2.Text = $"[结果 {matchingFileCount}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR] {curCount},[ANI] {aniCount},
+        result.Add($"[RSLT {matchingFileCount}]")
+
+        If jpgCount > 0 Then result.Add($"[JPG]{jpgCount}")
+        If pngCount > 0 Then result.Add($"[PNG]{pngCount}")
+        If gifCount > 0 Then result.Add($"[GIF]{gifCount}")
+        If bmpCount > 0 Then result.Add($"[BMP]{bmpCount}")
+        If icoCount > 0 Then result.Add($"[ICO]{icoCount}")
+
+        Label2.Text = String.Join(" | ", result)
+        '' 在 Label2 显示
+        'Label2.Text = $"[结果 {matchingFileCount}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR] {curCount},[ANI] {aniCount},
     End Sub
 
     ' 当 ListView1 中的项被选中时，在 Label5 显示选中的序号和文件名
@@ -256,7 +277,7 @@ Public Class Form1
         If ListView1.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
             Dim selectedCount As Integer = ListView1.SelectedItems.Count
-            Label5.Text = $"[已选 {selectedCount}][{selectedItem.SubItems(0).Text}] {selectedItem.SubItems(1).Text}"
+            Label5.Text = $"[{selectedCount}] [{selectedItem.SubItems(0).Text}] {selectedItem.SubItems(1).Text}"
         Else
             Label5.Text = "等待选中"
         End If
@@ -267,7 +288,7 @@ Public Class Form1
         If ListView2.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
             Dim selectedCount As Integer = ListView1.SelectedItems.Count
-            Label8.Text = $"[已选 {selectedCount}][{selectedItem.SubItems(0).Text}] {selectedItem.SubItems(1).Text}"
+            Label8.Text = $"[{selectedCount}] [{selectedItem.SubItems(0).Text}] {selectedItem.SubItems(1).Text}"
         Else
             Label8.Text = ""
         End If
@@ -332,7 +353,7 @@ Public Class Form1
         Button1.AllowDrop = True ' 启用拖放功能
         ComboBox1.SelectedIndex = 0
         ProgressBar1.Maximum = 0
-
+        'Form3.Show()
     End Sub
 
 
@@ -662,10 +683,10 @@ Public Class Form1
             Dim fileName As String = selectedItem.SubItems(1).Text ' 假设第2列是文件名
 
             ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(Label5, fileName & vbCrLf & "单击复制路径。复选状态下只能复制头文件路径。")
+            ToolTip1.SetToolTip(Label5, fileName & vbCrLf & "单击复制路径。")
         Else
             ' 如果没有选中项，显示默认提示
-            ToolTip1.SetToolTip(Label5, "单击复制路径。复选状态下只能复制头文件路径。")
+            ToolTip1.SetToolTip(Label5, "单击复制路径。")
         End If
     End Sub
 
@@ -678,10 +699,10 @@ Public Class Form1
             Dim fileName As String = selectedItem.SubItems(1).Text ' 假设第2列是文件名
 
             ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(Label8, fileName & vbCrLf & "单击复制路径。复选状态下只能复制头文件路径。")
+            ToolTip1.SetToolTip(Label8, fileName & vbCrLf & "单击复制路径。")
         Else
             ' 如果没有选中项，显示默认提示
-            ToolTip1.SetToolTip(Label8, "单击复制路径。复选状态下只能复制头文件路径。")
+            ToolTip1.SetToolTip(Label8, "单击复制路径。")
         End If
     End Sub
 
@@ -691,6 +712,7 @@ Public Class Form1
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
+
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
             saveFileDialog.FileName = "筛选结果" & formattedDateTime & ".xlsx"
@@ -699,7 +721,6 @@ Public Class Form1
 
             ' 确认用户选择了保存路径
             If saveFileDialog.ShowDialog() = DialogResult.OK Then
-                ' 确保文件路径有效
                 Try
                     Dim filePath As String = saveFileDialog.FileName
                     Dim fileInfo As New FileInfo(filePath)
@@ -709,18 +730,24 @@ Public Class Form1
                         ' 创建一个新的工作表
                         Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
 
-                        ' 设置表头（对应 ListView2 的列）
+                        ' 添加 Label6 和 Label2 的内容在顶部
+                        worksheet.Cells("B1").Value = Label6.Text
+                        worksheet.Cells("B2").Value = Label2.Text
+                        worksheet.Cells("A1").Value = "左列"
+                        worksheet.Cells("A2").Value = “右列”
+                        worksheet.Cells("A1:A2").Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left
+
+                        ' 设置表头（对应 ListView2 的列，从第3行开始）
                         For i As Integer = 0 To ListView2.Columns.Count - 1
-                            worksheet.Cells(1, i + 1).Value = ListView2.Columns(i).Text
-                            ' 将 ListView2 的列宽同步到 Excel
+                            worksheet.Cells(3, i + 1).Value = ListView2.Columns(i).Text
                             Dim columnWidth As Double = ListView2.Columns(i).Width / 7 ' 调整比例使宽度接近视觉一致
                             worksheet.Column(i + 1).Width = columnWidth
                         Next
-
-                        ' 填充 ListView2 的数据
+                        worksheet.Column(2).Width = ListView2.Columns(2).Width / 2
+                        ' 填充 ListView2 的数据（从第4行开始）
                         For i As Integer = 0 To ListView2.Items.Count - 1
                             For j As Integer = 0 To ListView2.Items(i).SubItems.Count - 1
-                                worksheet.Cells(i + 2, j + 1).Value = ListView2.Items(i).SubItems(j).Text
+                                worksheet.Cells(i + 4, j + 1).Value = ListView2.Items(i).SubItems(j).Text
                             Next
                         Next
 
@@ -728,15 +755,15 @@ Public Class Form1
                         package.Save()
                     End Using
 
-                    MessageBox.Show("导出为xlsx成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("导出为 xlsx 成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Catch ex As Exception
-                    ' 捕获并显示异常
                     MessageBox.Show("导出文件时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End If
         End Using
     End Sub
+
 
     Public Sub New()
         InitializeComponent()
@@ -861,7 +888,7 @@ Public Class Form1
         ' 转换为 MB
         Dim memoryUsageMB As Double = (Int（memoryUsage / 1024 / 1024 * 10)) / 10
         Dim per As Int64 = Int(memoryUsage / My.Computer.Info.TotalPhysicalMemory * 10) / 10 * 100
-        Me.Text = "PicoFilter 1.4，授权给PAA像素艺术大赛许可，已使用" & memoryUsageMB & “MB，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
+        Me.Text = "PicoFilter 1.4，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
 
     End Sub
 

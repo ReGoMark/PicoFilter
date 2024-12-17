@@ -120,9 +120,16 @@
   <data name="TextBox1.Text" xml:space="preserve">
     <value>https://github.com/MoonPixelTeam/Mp-PicoFilter
 ——————
+2024/12/17
+修正UI设计
+优化excel导出
+优化结果显示
+修正显示bug
+——————
 2024/11/26
 修正UI设计
 累计更新，版本号修正
+优化结果显示
 修改标题栏文本，添加项目显示、内存占用显示
 ——————
 2024/11/13
