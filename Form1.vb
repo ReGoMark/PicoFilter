@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports OfficeOpenXml
+
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
 
@@ -72,17 +73,6 @@ Public Class Form1
                     ' 更新进度条
                     ProgressBar1.Value += 1
                     NUM += 1
-
-                    ' 获取当前进程
-                    Dim currentProcess As Process = Process.GetCurrentProcess()
-
-                    ' 获取工作集内存占用（以字节为单位）
-                    Dim memoryUsage As Long = currentProcess.WorkingSet64
-
-                    ' 转换为 MB
-                    Dim memoryUsageMB As Double = (Int（memoryUsage / 1024 / 1024 * 10)) / 10
-                    Dim per As Int64 = Int(memoryUsage / My.Computer.Info.TotalPhysicalMemory * 10) / 10 * 100
-                    Me.Text = "PicoFilter 1.4，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
                 End Using
 
             Catch ex As Exception
@@ -92,15 +82,13 @@ Public Class Form1
         Next
 
         Dim result As New List(Of String)
-        result.Add($"[RSLT {files.Count}]")
-
+        result.Add($"[SUM {files.Count}]")
         If jpgCount > 0 Then result.Add($"[JPG]{jpgCount}")
         If pngCount > 0 Then result.Add($"[PNG]{pngCount}")
         If gifCount > 0 Then result.Add($"[GIF]{gifCount}")
         If bmpCount > 0 Then result.Add($"[BMP]{bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO]{icoCount}")
-
-        Label6.Text = String.Join(" | ", result)
+        Label6.Text = String.Join(" ", result)
 
         '' 显示文件总数和各格式数量
         'Label6.Text = $"[总数 {files.Count()}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR]{curCount},[ANI] {aniCount}"
@@ -122,27 +110,18 @@ Public Class Form1
         Dim pngSelected As Boolean = CheckBox2.Checked
         Dim gifSelected As Boolean = CheckBox3.Checked
         Dim resolutionSelected As Boolean = CheckBox4.Checked
-
+        Dim bmpSelected As Boolean = CheckBox5.Checked
+        Dim icoSelected As Boolean = CheckBox7.Checked
         '分辨率不达标筛选
         Dim excludeResolution As Boolean = CheckBox11.Checked ' 获取CheckBox11的状态
-
-        Dim bmpSelected As Boolean = CheckBox5.Checked
-        'Dim aniSelected As Boolean = CheckBox9.Checked
-        Dim icoSelected As Boolean = CheckBox7.Checked
-        'Dim curSelected As Boolean = CheckBox8.Checked
-        'Dim webpSelected As Boolean = CheckBox11.Checked
 
         ' 符合筛选条件的计数
         Dim matchingFileCount As Integer = 0
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
         Dim gifCount As Integer = 0
-
         Dim bmpCount As Integer = 0
-        'Dim curCount As Integer = 0
-        'Dim aniCount As Integer = 0
         Dim icoCount As Integer = 0
-        'Dim webpCount As Integer = 0
 
         ' 遍历 ListView1 中的每一项，进行筛选
         For Each item As ListViewItem In ListView1.Items
@@ -160,7 +139,6 @@ Public Class Form1
                 (bmpSelected AndAlso format = ".BMP") OrElse
                 (icoSelected AndAlso format = ".ICO") OrElse
                 (gifSelected AndAlso format = ".GIF")
-            'OrElse(webpSelected AndAlso format = ".WEBP") 'OrElse (curSelected AndAlso format = ".CUR") OrElse (aniSelected AndAlso format = ".ANI") 
 
             If excludeResolution And resolutionSelected Then
                 If width <> widthFilter OrElse height <> heightFilter Then
@@ -208,18 +186,10 @@ Public Class Form1
                             pngCount += 1
                         Case ".GIF"
                             gifCount += 1
-                        '### 1.2 new ###
-                        'Case ".ANI"
-                        '    aniCount += 1
                         Case ".ICO"
                             icoCount += 1
-                        'Case ".CUR"
-                        '    curCount += 1
                         Case ".BMP"
                             bmpCount += 1
-                            'Case ".WEBP"
-                            '    webpCount += 1
-
                     End Select
 
                     Continue For ' 继续下一个文件
@@ -243,17 +213,10 @@ Public Class Form1
                         pngCount += 1
                     Case ".GIF"
                         gifCount += 1
-                        '### 1.2 new ###
-                    'Case ".ANI"
-                    '    aniCount += 1
                     Case ".ICO"
                         icoCount += 1
-                    'Case ".CUR"
-                    '    curCount += 1
                     Case ".BMP"
                         bmpCount += 1
-                        'Case ".WEBP"
-                        '    webpCount += 1
                 End Select
             End If
         Next
@@ -267,7 +230,7 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP]{bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO]{icoCount}")
 
-        Label2.Text = String.Join(" | ", result)
+        Label2.Text = String.Join(" ", result)
         '' 在 Label2 显示
         'Label2.Text = $"[结果 {matchingFileCount}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR] {curCount},[ANI] {aniCount},
     End Sub
@@ -300,8 +263,6 @@ Public Class Form1
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 TextBox1.Text = folderBrowserDialog.SelectedPath
                 加载图片(folderBrowserDialog.SelectedPath)
-                'Label1.BackColor = Color.FromArgb(0, 120, 215)
-                'Label1.Text = "提示:" & "已加载"
             End If
         End Using
     End Sub
@@ -318,8 +279,6 @@ Public Class Form1
             Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
             If Directory.Exists(droppedItems(0)) Then
                 e.Effect = DragDropEffects.Copy
-                'Label1.BackColor = Color.FromArgb(0, 120, 215)
-                'Label1.Text = "提示:" & "已加载"
             Else
                 e.Effect = DragDropEffects.None
             End If
@@ -356,9 +315,6 @@ Public Class Form1
         'Form3.Show()
     End Sub
 
-
-
-
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
         If ListView1.SelectedItems.Count > 0 Then
@@ -372,7 +328,7 @@ Public Class Form1
 
             ' 复制文件路径到剪贴板
             Clipboard.SetText(filePath)
-            MsgBox("文件路径已复制: " & filePath, MessageBoxIcon.Information)
+            MsgBox("文件路径已复制: " & vbCrLf & filePath, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -389,7 +345,7 @@ Public Class Form1
 
             ' 复制文件路径到剪贴板
             Clipboard.SetText(filePath)
-            MsgBox("文件路径已复制: " & filePath, MessageBoxIcon.Information)
+            MsgBox("文件路径已复制: " & vbCrLf & filePath, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -513,8 +469,9 @@ Public Class Form1
                 newItem.SubItems.Add(selectedItem.SubItems(3).Text) ' 格式
 
                 ListView2.Items.Add(newItem) ' 添加到 ListView2
-                ' 将新项目的字体颜色设置为红色
-                newItem.ForeColor = Color.FromArgb(0, 120, 215)
+                ' 将新项目的字体颜色设置
+                newItem.ForeColor = Color.Black
+                newItem.BackColor = Color.FromArgb(255, 224, 192)
             End If
         Next
         ' 更新筛选结果的计数
@@ -529,8 +486,6 @@ Public Class Form1
             For Each selectedItem As ListViewItem In ListView2.SelectedItems
                 ListView2.Items.Remove(selectedItem)
             Next
-            'Label1.Text = "提示：" & ("已删除选中的项")
-            'Label1.BackColor = Color.FromArgb(0, 120, 215)
         Else
             MsgBox("请选择一个项", MsgBoxStyle.OkOnly)
         End If
@@ -669,9 +624,16 @@ Public Class Form1
 
             End Select
         Next
+        Dim result As New List(Of String)
+        result.Add($"[RSLT {totalFiles}]")
 
-        ' 更新 Label2 的文本
-        Label2.Text = $"[结果 {totalFiles}],[JPG] {jpgCount},[PNG] {pngCount},[GIF] {gifCount},[BMP] {bmpCount},[ICO] {icoCount}" '[CUR] {curCount},[ANI] {aniCount},
+        If jpgCount > 0 Then result.Add($"[JPG]{jpgCount}")
+        If pngCount > 0 Then result.Add($"[PNG]{pngCount}")
+        If gifCount > 0 Then result.Add($"[GIF]{gifCount}")
+        If bmpCount > 0 Then result.Add($"[BMP]{bmpCount}")
+        If icoCount > 0 Then result.Add($"[ICO]{icoCount}")
+
+        Label2.Text = String.Join(" ", result)
     End Sub
 
     ' Label5 的 MouseHover 事件
@@ -713,6 +675,27 @@ Public Class Form1
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
 
+        Dim jpgSelected As Boolean = CheckBox1.Checked
+        Dim pngSelected As Boolean = CheckBox2.Checked
+        Dim gifSelected As Boolean = CheckBox3.Checked
+        Dim resolutionSelected As Boolean = CheckBox4.Checked
+        Dim bmpSelected As Boolean = CheckBox5.Checked
+        Dim icoSelected As Boolean = CheckBox7.Checked
+        Dim inreslnSelected As Boolean = CheckBox11.Checked
+
+        Dim result As New List(Of String)
+
+        If jpgSelected = True Then result.Add($"[JPG]")
+        If pngSelected = True Then result.Add($"[PNG]")
+        If gifSelected = True Then result.Add($"[GIF]")
+        If bmpSelected = True Then result.Add($"[BMP]")
+        If icoSelected = True Then result.Add($"[ICO]")
+        If inreslnSelected = True And resolutionSelected = True Then
+            result.Add($"[IN-RSLN " & TextBox2.Text & “ × ” & TextBox3.Text & "]")
+        Else
+            If resolutionSelected = True And inreslnSelected = False Then result.Add($"[RSLN " & TextBox2.Text & “ × ” & TextBox3.Text & "]")
+        End If
+
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
             saveFileDialog.FileName = "筛选结果" & formattedDateTime & ".xlsx"
@@ -733,21 +716,23 @@ Public Class Form1
                         ' 添加 Label6 和 Label2 的内容在顶部
                         worksheet.Cells("B1").Value = Label6.Text
                         worksheet.Cells("B2").Value = Label2.Text
-                        worksheet.Cells("A1").Value = "左列"
-                        worksheet.Cells("A2").Value = “右列”
+                        worksheet.Cells("A1").Value = "全部"
+                        worksheet.Cells("A2").Value = “筛选”
+                        worksheet.Cells("A3").Value = "条件"
+                        worksheet.Cells("B3").Value = String.Join(" ", result)
                         worksheet.Cells("A1:A2").Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left
 
-                        ' 设置表头（对应 ListView2 的列，从第3行开始）
+                        ' 设置表头（对应 ListView2 的列，从第4行开始）
                         For i As Integer = 0 To ListView2.Columns.Count - 1
-                            worksheet.Cells(3, i + 1).Value = ListView2.Columns(i).Text
+                            worksheet.Cells(4, i + 1).Value = ListView2.Columns(i).Text
                             Dim columnWidth As Double = ListView2.Columns(i).Width / 7 ' 调整比例使宽度接近视觉一致
                             worksheet.Column(i + 1).Width = columnWidth
                         Next
                         worksheet.Column(2).Width = ListView2.Columns(2).Width / 2
-                        ' 填充 ListView2 的数据（从第4行开始）
+                        ' 填充 ListView2 的数据（从第5行开始）
                         For i As Integer = 0 To ListView2.Items.Count - 1
                             For j As Integer = 0 To ListView2.Items(i).SubItems.Count - 1
-                                worksheet.Cells(i + 4, j + 1).Value = ListView2.Items(i).SubItems(j).Text
+                                worksheet.Cells(i + 5, j + 1).Value = ListView2.Items(i).SubItems(j).Text
                             Next
                         Next
 
@@ -763,7 +748,6 @@ Public Class Form1
             End If
         End Using
     End Sub
-
 
     Public Sub New()
         InitializeComponent()
@@ -852,7 +836,6 @@ Public Class Form1
         End If
     End Sub
 
-
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         If ComboBox1.SelectedIndex = 0 Then
             配色1()
@@ -863,9 +846,6 @@ Public Class Form1
         If ComboBox1.SelectedIndex = 2 Then
             配色3()
         End If
-        'If ComboBox1.SelectedIndex = 3 Then
-        '    配色4()
-        'End If
     End Sub
     Private Sub 配色1()
         BackColor = Color.Lavender
@@ -874,11 +854,10 @@ Public Class Form1
         BackColor = Color.Cornsilk
     End Sub
     Private Sub 配色3()
-        BackColor = Color.FromArgb(227, 227, 227)
+        BackColor = Color.WhiteSmoke
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-
         ' 获取当前进程
         Dim currentProcess As Process = Process.GetCurrentProcess()
 
@@ -888,8 +867,7 @@ Public Class Form1
         ' 转换为 MB
         Dim memoryUsageMB As Double = (Int（memoryUsage / 1024 / 1024 * 10)) / 10
         Dim per As Int64 = Int(memoryUsage / My.Computer.Info.TotalPhysicalMemory * 10) / 10 * 100
-        Me.Text = "PicoFilter 1.4，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
-
+        Me.Text = "PicoFilter 1.5，” & "已加载" & NUM & “/” & ProgressBar1.Maximum & “项”
     End Sub
 
 End Class
