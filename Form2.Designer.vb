@@ -41,11 +41,11 @@ Partial Class Form2
         Me.TextBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(12, 171)
+        Me.TextBox1.Location = New System.Drawing.Point(13, 199)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(369, 372)
+        Me.TextBox1.Size = New System.Drawing.Size(369, 344)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseSystemPasswordChar = True
@@ -77,17 +77,17 @@ Partial Class Form2
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label3.Location = New System.Drawing.Point(12, 48)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(363, 107)
+        Me.Label3.Size = New System.Drawing.Size(363, 120)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "授权使用：PAA像素艺术大赛，不得用于商业目的。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "构建日期：2024/9/25" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "作者：ReGoMark" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "在以往的比赛工作中，时常遇到尺寸不合格、格式等等的问" &
-    "题。为此专门开发一个小工具来解决。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+    "题。为此专门开发一个小工具来解决。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体文件：方正黑体GBK、微软雅黑"
         '
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(-11, 158)
+        Me.Label4.Location = New System.Drawing.Point(-11, 182)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(440, 421)
+        Me.Label4.Size = New System.Drawing.Size(440, 397)
         Me.Label4.TabIndex = 4
         '
         'PictureBox1
@@ -102,9 +102,10 @@ Partial Class Form2
         'Label5
         '
         Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Consolas", 42.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label5.Location = New System.Drawing.Point(335, -20)
+        Me.Label5.Location = New System.Drawing.Point(338, -33)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(73, 82)
         Me.Label5.TabIndex = 6
@@ -114,15 +115,15 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.AliceBlue
+        Me.BackColor = System.Drawing.Color.LightCyan
         Me.ClientSize = New System.Drawing.Size(387, 555)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label5)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

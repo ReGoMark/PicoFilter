@@ -14,4 +14,8 @@
         Me.StartPosition = FormStartPosition.Manual
         Me.Location = New Point(newX, newY)
     End Sub
+
+    Private Sub Label3_DoubleClick(sender As Object, e As EventArgs) Handles Label3.DoubleClick
+        Me.Close()
+    End Sub
 End Class
