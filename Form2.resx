@@ -118,10 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="TextBox1.Text" xml:space="preserve">
-    <value>https://github.com/MoonPixelTeam/Mp-PicoFilter
+    <value>滚动查看更新日志。
+https://github.com/MoonPixelTeam/Mp-PicoFilter
+——————
+2024/12/23
+新增统计信息
+优化结果显示
+——————
+2024/12/21
+新增旋转图像筛选
+修改导出表格内容
 ——————
 2024/12/18
-优化到处表格数据内容，更直观
+优化导出表格数据内容，更直观
 优化UI设计
 新增简易搜索
 ——————
