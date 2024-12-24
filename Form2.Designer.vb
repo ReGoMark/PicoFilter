@@ -34,8 +34,10 @@ Partial Class Form2
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label44 = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -47,13 +49,13 @@ Partial Class Form2
         Me.TextBox1.BackColor = System.Drawing.Color.GhostWhite
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.TextBox1.ForeColor = System.Drawing.Color.Black
         Me.TextBox1.Location = New System.Drawing.Point(13, 18)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(290, 298)
+        Me.TextBox1.Size = New System.Drawing.Size(290, 236)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseSystemPasswordChar = True
@@ -77,7 +79,7 @@ Partial Class Form2
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(131, 19)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "PicoFilter 1.5 fix3"
+        Me.Label2.Text = "PicoFilter 1.5 fix4"
         '
         'Label3
         '
@@ -95,7 +97,7 @@ Partial Class Form2
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Lavender
         Me.Label5.Font = New System.Drawing.Font("Consolas", 42.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(1, Byte), True)
-        Me.Label5.ForeColor = System.Drawing.Color.SlateBlue
+        Me.Label5.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label5.Location = New System.Drawing.Point(9, 9)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(73, 82)
@@ -142,7 +144,7 @@ Partial Class Form2
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(220, 20)
         Me.Label8.TabIndex = 10
-        Me.Label8.Text = "当前流版本：1.5.2，2024/12/22"
+        Me.Label8.Text = "当前流版本：1.5.2，2024/12/24"
         '
         'Panel1
         '
@@ -155,12 +157,33 @@ Partial Class Form2
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel2.Controls.Add(Me.Label44)
+        Me.Panel2.Controls.Add(Me.Button2)
         Me.Panel2.Controls.Add(Me.Panel1)
         Me.Panel2.Controls.Add(Me.TextBox1)
         Me.Panel2.Location = New System.Drawing.Point(471, -6)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(380, 395)
+        Me.Panel2.Size = New System.Drawing.Size(380, 369)
         Me.Panel2.TabIndex = 15
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.White
+        Me.Button2.CausesValidation = False
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button2.Location = New System.Drawing.Point(211, 290)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(65, 26)
+        Me.Button2.TabIndex = 42
+        Me.Button2.Text = "确认"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'Label4
         '
@@ -176,13 +199,26 @@ Partial Class Form2
         '
         'Label9
         '
+        Me.Label9.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Label9.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label9.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label9.Location = New System.Drawing.Point(93, 71)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(372, 43)
         Me.Label9.TabIndex = 17
         Me.Label9.Text = "支援链接：https://github.com/MoonPixelTeam/Mp-PicoFilter"
+        '
+        'Label44
+        '
+        Me.Label44.BackColor = System.Drawing.Color.GhostWhite
+        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label44.Location = New System.Drawing.Point(50, 292)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(155, 20)
+        Me.Label44.TabIndex = 47
+        Me.Label44.Text = "点击左侧链接访问"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Form2
         '
@@ -229,4 +265,6 @@ Partial Class Form2
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label4 As Label
     Friend WithEvents Label9 As Label
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Label44 As Label
 End Class

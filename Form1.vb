@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports OfficeOpenXml
-'Imports TheArtOfDev.HtmlRenderer.WinForms
+Imports System.Threading
+
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
@@ -109,6 +110,7 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
         Label6.Text = String.Join("  ", result)
+        PlayNotificationSound()
 
         output1 = files.Count
         jpg1 = jpgCount
@@ -117,6 +119,7 @@ Public Class Form1
         gif1 = gifCount
         ico1 = icoCount
         Timer1.Enabled = False
+
     End Sub
 
     ' 加载图片从指定文件夹，到listview2
@@ -155,11 +158,6 @@ Public Class Form1
             Dim height As Integer = Integer.Parse(resolution(1))
             Dim format As String = item.SubItems(3).Text
             Dim sizeInKB As String = item.SubItems(4).Text ' 获取大小列的值
-
-            'Dim volh As Integer = Integer.Parse(resolution(1))
-            'Dim volw As Integer = Integer.Parse(resolution(0))
-
-
             '处理是否勾选了分辨率作为筛选条件
             Dim matchesResolution As Boolean = Not resolutionSelected OrElse
                 (width = widthFilter AndAlso height = heightFilter)
@@ -321,7 +319,7 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
         Label2.Text = String.Join("  ", result)
-
+        PlayNotificationSound2()
         jpg0 = jpgCount
         png0 = pngCount
         bmp0 = bmpCount
@@ -366,6 +364,7 @@ Public Class Form1
     ' 筛选按钮点击事件，用于开始筛选
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         筛选图片()
+
     End Sub
 
     ' 启用按钮的拖放功能
@@ -410,6 +409,7 @@ Public Class Form1
         ProgressBar1.Maximum = 0
         NUM = 0
         Me.Text = “PicoFilter 1.5”
+        'Label10.Width = 0
     End Sub
 
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
@@ -567,11 +567,11 @@ Public Class Form1
                 newItem.SubItems.Add(fileName) ' 文件名
                 newItem.SubItems.Add(selectedItem.SubItems(2).Text) ' 分辨率
                 newItem.SubItems.Add(selectedItem.SubItems(3).Text) ' 格式
-
+                newItem.SubItems.Add(selectedItem.SubItems(4).Text)
                 ListView2.Items.Add(newItem) ' 添加到 ListView2
                 ' 将新项目的字体颜色设置
                 newItem.ForeColor = Color.Black
-                newItem.BackColor = Color.FromArgb(255, 224, 192)
+                newItem.BackColor = Color.Lavender
             End If
         Next
         ' 更新筛选结果的计数
@@ -871,7 +871,19 @@ Public Class Form1
         If e.KeyCode = Keys.Return Then
             Button2.PerformClick()
         End If
-
+        If e.KeyCode = Keys.S Then
+            Button11.PerformClick()
+        End If
+        If e.KeyCode = Keys.E Then
+            Button9.PerformClick()
+        End If
+        If e.KeyCode = Keys.L Then
+            If CheckBox12.Checked = True Then
+                CheckBox12.CheckState = CheckState.Unchecked
+            Else
+                CheckBox12.CheckState = CheckState.Checked
+            End If
+        End If
     End Sub
     '条件全选
     Private Sub CheckBox10_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox10.CheckStateChanged
@@ -998,11 +1010,19 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub 复制ToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
         Dim keyword As String = TextBoxSearch.Text.Trim()
         If Not String.IsNullOrEmpty(keyword) Then
             SearchListView2(keyword)
         End If
+    End Sub
+
+    Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
+        If CheckBox6.Checked = True Then PlayNotificationSound3()
     End Sub
 
     '搜索结果选定
@@ -1045,7 +1065,7 @@ Public Class Form1
         Form3.Label13.Text = bmp1
         Form3.Label14.Text = ico1
         Form3.Label15.Text = gif1
-        Form3.Label16.Text = output1 & " - " & output0 & " = " & output1 - output0
+        Form3.Label16.Text = output1 & " → " & output0 & " = " & output1 - output0
 
         Form3.Label28.Text = png0
         Form3.Label27.Text = jpg0
@@ -1058,13 +1078,34 @@ Public Class Form1
         Form3.Label19.Text = Int(bmp1 / output1 * 1000) / 10 & " %"
         Form3.Label20.Text = Int(ico1 / output1 * 1000) / 10 & " %"
         Form3.Label21.Text = Int(gif1 / output1 * 1000) / 10 & " %"
-        Form3.Label22.Text = Int(output0 / output1 * 1000) / 10 & " %"
+        Form3.Label22.Text = “-” & (100 - (Int((output1 - output0) / output1 * 1000) / 10)) & " %"
 
         Form3.Label40.Text = Int(png0 / output0 * 1000) / 10 & " %"
         Form3.Label39.Text = Int(jpg0 / output0 * 1000) / 10 & " %"
         Form3.Label38.Text = Int(bmp0 / output0 * 1000) / 10 & " %"
         Form3.Label37.Text = Int(ico0 / output0 * 1000) / 10 & " %"
         Form3.Label36.Text = Int(gif0 / output0 * 1000) / 10 & " %"
+
+        If png1 > 0 Then
+            Form3.Label3.Text += " √"
+        Else
+        End If
+        If jpg1 > 0 Then
+            Form3.Label4.Text += " √"
+        Else
+        End If
+        If bmp1 > 0 Then
+            Form3.Label5.Text += " √"
+        Else
+        End If
+        If ico1 > 0 Then
+            Form3.Label6.Text += " √"
+        Else
+        End If
+        If gif1 > 0 Then
+            Form3.Label7.Text += " √"
+        Else
+        End If
 
         If png1 - png0 <> png1 Then
             Form3.Label33.Text += " √"
@@ -1094,5 +1135,26 @@ Public Class Form1
         End If
 
         Form3.Show()
+    End Sub
+    Private Sub PlayNotificationSound()
+        Try
+            ' 从资源播放音效
+            My.Computer.Audio.Play(My.Resources.NFP, AudioPlayMode.Background)
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub PlayNotificationSound2()
+        Try
+            ' 从资源播放音效
+            My.Computer.Audio.Play(My.Resources.BG, AudioPlayMode.Background)
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub PlayNotificationSound3()
+        Try
+            ' 从资源播放音效
+            My.Computer.Audio.Play(My.Resources.NSG, AudioPlayMode.Background)
+        Catch ex As Exception
+        End Try
     End Sub
 End Class
