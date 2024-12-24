@@ -319,7 +319,7 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
         Label2.Text = String.Join("  ", result)
-        PlayNotificationSound2()
+        PlayNotificationSound3()
         jpg0 = jpgCount
         png0 = pngCount
         bmp0 = bmpCount

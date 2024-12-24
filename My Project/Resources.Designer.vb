@@ -70,81 +70,11 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property all() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("all", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         '''</summary>
         Friend ReadOnly Property BG() As System.IO.UnmanagedMemoryStream
             Get
                 Return ResourceManager.GetStream("BG", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property del0() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("del0", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property exresln() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("exresln", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property informa() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("informa", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property locked() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("locked", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property logoNEW() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("logoNEW", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property magi() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("magi", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
             End Get
         End Property
         
@@ -163,76 +93,6 @@ Namespace My.Resources
         Friend ReadOnly Property NSG() As System.IO.UnmanagedMemoryStream
             Get
                 Return ResourceManager.GetStream("NSG", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property p1n() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("p1n", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property p1us() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("p1us", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property pin() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("pin", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property prompt() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("prompt", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property unlocked() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("unlocked", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property vol() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("vol", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property x1sx() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("x1sx", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
             End Get
         End Property
     End Module

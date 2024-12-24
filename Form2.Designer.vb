@@ -34,10 +34,10 @@ Partial Class Form2
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label44 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label44 = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -111,9 +111,9 @@ Partial Class Form2
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label6.Location = New System.Drawing.Point(93, 196)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(285, 40)
+        Me.Label6.Size = New System.Drawing.Size(330, 40)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "鸣谢：EEPlus，版本7.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体GBK、Consola、微软雅黑"
+        Me.Label6.Text = "鸣谢：EEPlus，版本7.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体GBK、Consola、微软雅黑、等线"
         '
         'PictureBox2
         '
@@ -144,7 +144,7 @@ Partial Class Form2
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(220, 20)
         Me.Label8.TabIndex = 10
-        Me.Label8.Text = "当前流版本：1.5.2，2024/12/24"
+        Me.Label8.Text = "当前流版本：1.5.4，2024/12/24"
         '
         'Panel1
         '
@@ -165,6 +165,18 @@ Partial Class Form2
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(380, 369)
         Me.Panel2.TabIndex = 15
+        '
+        'Label44
+        '
+        Me.Label44.BackColor = System.Drawing.Color.GhostWhite
+        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label44.Location = New System.Drawing.Point(50, 292)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(155, 20)
+        Me.Label44.TabIndex = 47
+        Me.Label44.Text = "点击左侧链接访问"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
         '
@@ -208,22 +220,10 @@ Partial Class Form2
         Me.Label9.TabIndex = 17
         Me.Label9.Text = "支援链接：https://github.com/MoonPixelTeam/Mp-PicoFilter"
         '
-        'Label44
-        '
-        Me.Label44.BackColor = System.Drawing.Color.GhostWhite
-        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(50, 292)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(155, 20)
-        Me.Label44.TabIndex = 47
-        Me.Label44.Text = "点击左侧链接访问"
-        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
         'Form2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(761, 322)
         Me.Controls.Add(Me.Label9)

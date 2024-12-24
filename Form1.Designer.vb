@@ -311,7 +311,7 @@ Partial Class Form1
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(0, 0)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(512, 354)
+        Me.ListView2.Size = New System.Drawing.Size(504, 354)
         Me.ListView2.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListView2, "双击项预览。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListView2.UseCompatibleStateImageBehavior = False
@@ -404,7 +404,7 @@ Partial Class Form1
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(-1, 395)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(513, 42)
+        Me.Label2.Size = New System.Drawing.Size(505, 42)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = " RSLT"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -419,7 +419,7 @@ Partial Class Form1
         Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label8.Location = New System.Drawing.Point(-1, 354)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(513, 42)
+        Me.Label8.Size = New System.Drawing.Size(505, 42)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = " Wait"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -427,7 +427,7 @@ Partial Class Form1
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.Location = New System.Drawing.Point(-5, 529)
         Me.ProgressBar1.Name = "ProgressBar1"
@@ -614,9 +614,9 @@ Partial Class Form1
         Me.CheckBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox4.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox4.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox4.Location = New System.Drawing.Point(853, 492)
+        Me.CheckBox4.Location = New System.Drawing.Point(847, 492)
         Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(65, 26)
+        Me.CheckBox4.Size = New System.Drawing.Size(71, 26)
         Me.CheckBox4.TabIndex = 25
         Me.CheckBox4.Text = "分辨率"
         Me.CheckBox4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -678,7 +678,7 @@ Partial Class Form1
         Me.CheckBox11.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox11.ForeColor = System.Drawing.Color.SlateBlue
         Me.CheckBox11.Image = CType(resources.GetObject("CheckBox11.Image"), System.Drawing.Image)
-        Me.CheckBox11.Location = New System.Drawing.Point(821, 492)
+        Me.CheckBox11.Location = New System.Drawing.Point(815, 492)
         Me.CheckBox11.Name = "CheckBox11"
         Me.CheckBox11.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox11.TabIndex = 29
@@ -732,7 +732,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-3, 387)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-11, 387)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(27, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -775,7 +775,7 @@ Partial Class Form1
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(225, 383)
+        Me.ComboBox1.Location = New System.Drawing.Point(217, 383)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(73, 24)
         Me.ComboBox1.TabIndex = 33
@@ -801,7 +801,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(167, 386)
+        Me.Label7.Location = New System.Drawing.Point(159, 386)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -936,7 +936,7 @@ Partial Class Form1
         Me.CheckBox13.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox13.ForeColor = System.Drawing.Color.SlateBlue
         Me.CheckBox13.Image = CType(resources.GetObject("CheckBox13.Image"), System.Drawing.Image)
-        Me.CheckBox13.Location = New System.Drawing.Point(788, 492)
+        Me.CheckBox13.Location = New System.Drawing.Point(782, 492)
         Me.CheckBox13.Name = "CheckBox13"
         Me.CheckBox13.Size = New System.Drawing.Size(27, 26)
         Me.CheckBox13.TabIndex = 40
@@ -1002,8 +1002,8 @@ Partial Class Form1
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CausesValidation = False

@@ -564,13 +564,13 @@ Partial Class Form3
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(174, 20)
         Me.Label44.TabIndex = 46
-        Me.Label44.Text = "按““开始筛选””刷新数据"
+        Me.Label44.Text = "按""开始筛选""刷新数据"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Form3
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 18.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(353, 429)
         Me.Controls.Add(Me.Label44)
