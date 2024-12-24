@@ -3,7 +3,10 @@
  ![QQ20241224-152350](https://github.com/user-attachments/assets/62cd48a7-404b-4d9a-93d5-974c482400ca)
  
 当前版本分支为：1.5(fix4)；1.5 comp。
- 
+ ![未标题-12](https://github.com/user-attachments/assets/9c9dbcb9-1607-48db-8f8f-d7c894f413bc)
+![未标题-122](https://github.com/user-attachments/assets/49c5b12e-f9ff-4303-a07d-ac9c847b6250)
+![未标题-2](https://github.com/user-attachments/assets/0d68a291-df0a-46ef-93ee-1c10e33becf4)
+
  由于开发之初采用了强制125缩放比例，导致其他人在使用时产生了显示错误。所以在今后的Release中我会发布两个版本，带comp后缀(格式为7z)的即为100缩放正常显示版本，默认命名的(.zip)为125缩放版本。
 
 # 开发初衷
