@@ -2,7 +2,7 @@
 ![QQ20241224-163948](https://github.com/user-attachments/assets/90dc8a1c-ee80-4ff8-b503-1d46d53d0a1a)
  一款图片筛选工具，支持常用图片格式如 JPEG & JPG，PNG，GIF，ICO，BMP，对于中等文件数目的文件夹是可用。
  
- 当前版本分支为：1.5(fix4) 正式版；1.5 comp 兼容模式版本。
+ 当前版本分支为：1.5full正式版本；1.5comp兼容模式版本，当前修订版次为4。
  ## 特性
 ![QQ20241224-162915](https://github.com/user-attachments/assets/8520cb3d-5ddc-4179-9ae2-a445a2dcc311)
 ![QQ20241224-162944](https://github.com/user-attachments/assets/cbbfe498-ced8-48e8-a21b-b91a3915504d)
