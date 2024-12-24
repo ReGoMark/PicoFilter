@@ -10,8 +10,9 @@
 ![QQ20241224-162944](https://github.com/user-attachments/assets/47936a19-19cf-4339-9541-bec8ec040cb7)
 ![QQ20241224-162915](https://github.com/user-attachments/assets/fee14bff-5477-41f6-96c9-f6e4bfa7d42f)
 
+无论是界面设计还是允许平台，均遵循标准的 Win32 设计规范，完全基于 .net Framework 的原生开发。
 
-除此之外，几乎肉眼可见的所有控件，作者都添加了工具提示，方便用户查看、使用。
+除此之外，几乎肉眼可见的所有控件，都添加了工具提示，方便用户查看、使用。
 
 另外集成了一些鼠标功能（例如中键、双击等），提升用户体验。
 
