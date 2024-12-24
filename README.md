@@ -3,12 +3,15 @@
  
  当前版本分支为：1.5(fix4) 正式版；1.5 comp 兼容模式版本。
  ## 特性
-![QQ20241224-163338](https://github.com/user-attachments/assets/ddfbd2e0-3d5e-4d2a-be39-8a42bcb789ea)
-![QQ20241224-163215](https://github.com/user-attachments/assets/73222c13-0e56-455b-88fe-78e0c87c69b4)
-![QQ20241224-163055](https://github.com/user-attachments/assets/e998b418-093d-4131-9482-20a13001675f)
-![QQ20241224-163010](https://github.com/user-attachments/assets/6f56016f-1d80-4ab3-ae38-50b16616362f)
-![QQ20241224-162944](https://github.com/user-attachments/assets/47936a19-19cf-4339-9541-bec8ec040cb7)
-![QQ20241224-162915](https://github.com/user-attachments/assets/fee14bff-5477-41f6-96c9-f6e4bfa7d42f)
+![QQ20241224-163948](https://github.com/user-attachments/assets/90dc8a1c-ee80-4ff8-b503-1d46d53d0a1a)
+![QQ20241224-162915](https://github.com/user-attachments/assets/8520cb3d-5ddc-4179-9ae2-a445a2dcc311)
+![QQ20241224-162944](https://github.com/user-attachments/assets/cbbfe498-ced8-48e8-a21b-b91a3915504d)
+![QQ20241224-163010](https://github.com/user-attachments/assets/d366e397-2426-42f3-9d34-bf639fe7771a)
+![QQ20241224-163055](https://github.com/user-attachments/assets/1a386175-ea09-49ae-8ae6-1ad620ec35ca)
+![QQ20241224-163215](https://github.com/user-attachments/assets/4a76b72a-e837-4c84-bc36-6739c3200c48)
+![QQ20241224-163215](https://github.com/user-attachments/assets/c7a590aa-90a4-499f-af90-b6945ff1430d)
+![QQ20241224-163338](https://github.com/user-attachments/assets/7b607b31-a668-4996-aad0-64ca21bc0898)
+![QQ20241224-164020](https://github.com/user-attachments/assets/e8d2e040-04c7-4289-8d05-bcbd4e720468)
 
 无论是界面设计还是允许平台，均遵循标准的 Win32 设计规范，完全基于 .net Framework 的原生开发。
 
