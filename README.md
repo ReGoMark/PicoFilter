@@ -9,7 +9,6 @@
 ![QQ20241224-163010](https://github.com/user-attachments/assets/d366e397-2426-42f3-9d34-bf639fe7771a)
 ![QQ20241224-163055](https://github.com/user-attachments/assets/1a386175-ea09-49ae-8ae6-1ad620ec35ca)
 ![QQ20241224-163215](https://github.com/user-attachments/assets/4a76b72a-e837-4c84-bc36-6739c3200c48)
-![QQ20241224-163215](https://github.com/user-attachments/assets/c7a590aa-90a4-499f-af90-b6945ff1430d)
 ![QQ20241224-163338](https://github.com/user-attachments/assets/7b607b31-a668-4996-aad0-64ca21bc0898)
 ![QQ20241224-164020](https://github.com/user-attachments/assets/e8d2e040-04c7-4289-8d05-bcbd4e720468)
 
