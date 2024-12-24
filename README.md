@@ -3,10 +3,14 @@
  
  当前版本分支为：1.5(fix4) 正式版；1.5 comp 兼容模式版本。
  ## 特性
- ![QQ20241224-152350](https://github.com/user-attachments/assets/62cd48a7-404b-4d9a-93d5-974c482400ca)
- ![未标题-12](https://github.com/user-attachments/assets/9c9dbcb9-1607-48db-8f8f-d7c894f413bc)
-![未标题-122](https://github.com/user-attachments/assets/49c5b12e-f9ff-4303-a07d-ac9c847b6250)
-![未标题-2](https://github.com/user-attachments/assets/0d68a291-df0a-46ef-93ee-1c10e33becf4)
+![QQ20241224-163338](https://github.com/user-attachments/assets/ddfbd2e0-3d5e-4d2a-be39-8a42bcb789ea)
+![QQ20241224-163215](https://github.com/user-attachments/assets/73222c13-0e56-455b-88fe-78e0c87c69b4)
+![QQ20241224-163055](https://github.com/user-attachments/assets/e998b418-093d-4131-9482-20a13001675f)
+![QQ20241224-163010](https://github.com/user-attachments/assets/6f56016f-1d80-4ab3-ae38-50b16616362f)
+![QQ20241224-162944](https://github.com/user-attachments/assets/47936a19-19cf-4339-9541-bec8ec040cb7)
+![QQ20241224-162915](https://github.com/user-attachments/assets/fee14bff-5477-41f6-96c9-f6e4bfa7d42f)
+
+
 除此之外，几乎肉眼可见的所有控件，作者都添加了工具提示，方便用户查看、使用。
 
 另外集成了一些鼠标功能（例如中键、双击等），提升用户体验。
