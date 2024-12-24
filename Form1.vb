@@ -8,17 +8,22 @@ Imports OfficeOpenXml
 Public Class Form1
     Dim NUM As Integer
     Dim sumsize As Double
-    Dim output0 As Integer
-    Dim output1 As Integer
-    Dim jpg0, jpg1 As Integer
-    Dim png0, png1 As Integer
-    Dim gif0, gif1 As Integer
-    Dim bmp0, bmp1 As Integer
-    Dim ico0, ico1 As Integer
+    Dim output0 As Double
+    Dim output1 As Double
+    Dim jpg0, jpg1 As Double
+    Dim png0, png1 As Double
+    Dim gif0, gif1 As Double
+    Dim bmp0, bmp1 As Double
+    Dim ico0, ico1 As Double
+    Dim min As Integer
     ' 加载图片从指定文件夹，到listview1
     Private Sub 加载图片(folderPath As String)
         ListView1.Items.Clear()
+        min = 0
         sumsize = 0
+        Dim stopwatch As New Stopwatch()
+        stopwatch.Start()
+
         Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
         Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower()))
         ' 计数
@@ -78,6 +83,8 @@ Public Class Form1
                 MsgBox("加载失败。无法读取: " & ex.Message, MsgBoxStyle.OkOnly)
             End Try
         Next
+        stopwatch.Stop()
+        min = stopwatch.ElapsedMilliseconds
 
         Dim fileName1 As String = Path.GetFileName(TextBox1.Text)
         Dim sumsizestr As String
@@ -109,6 +116,7 @@ Public Class Form1
         bmp1 = bmpCount
         gif1 = gifCount
         ico1 = icoCount
+        Timer1.Enabled = False
     End Sub
 
     ' 加载图片从指定文件夹，到listview2
@@ -314,7 +322,13 @@ Public Class Form1
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
         Label2.Text = String.Join("  ", result)
 
+        jpg0 = jpgCount
+        png0 = pngCount
+        bmp0 = bmpCount
+        gif0 = gifCount
+        ico0 = icoCount
         output0 = matchingFileCount
+
     End Sub
 
     ' 当 ListView1 中的项被选中时，在 Label5 显示选中的序号和文件名
@@ -972,6 +986,10 @@ Public Class Form1
         Next
     End Sub
 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        min += 1
+    End Sub
+
     ' 在按钮单击或文本框文本更改事件中调用
     Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
         Dim keyword As String = TextBoxSearch.Text.Trim()
@@ -1004,32 +1022,77 @@ Public Class Form1
     End Sub
 
     Private Sub 更新标题()
-        Me.Text = "PicoFilter 1.5 , ” & "已扫描 " & NUM & “ / ” & ProgressBar1.Maximum & “ 项”
+        Me.Text = "PicoFilter 1.5 , ” & "已扫描 " & NUM & “ / ” & ProgressBar1.Maximum & “ 项 , ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
-        Dim stac As New List(Of String)
-        Dim stac1 As New List(Of String)
-        If (output1 - output0) <> output1 Then stac.Add("差值：" & output1 - output0)
-        If png1 > 0 Then stac1.Add("PNG：" & png1)
-        If jpg1 > 0 Then stac1.Add("JPG：" & jpg1)
-        If bmp1 > 0 Then stac1.Add("BMP：" & bmp1)
-        If ico1 > 0 Then stac1.Add("ICO：" & ico1)
-        If gif1 > 0 Then stac1.Add("GIF：" & gif1)
-
         Dim sumsizestr As String
-        Dim stacmsg As String
+        'Dim stacmsg As String
         If Int(sumsize / 1024 / 1024) > 1024 Then
-            sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & "GB"
+            sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & " GB"
         Else
             If Int(sumsize / 1024 / 1024) > 1 Then
-                sumsizestr = Int(sumsize * 100 / 1024 / 1024) / 100 & "MB"
+                sumsizestr = Int(sumsize * 100 / 1024 / 1024) / 100 & " MB"
             Else
-                sumsizestr = Int(sumsize * 100 / 1024) / 100 & "KB"
+                sumsizestr = Int(sumsize * 100 / 1024) / 100 & " KB"
             End If
         End If
 
-        stacmsg = “扫描：” & output1 & vbCrLf & "大小：" & sumsizestr & vbCrLf & String.Join(vbCrLf, stac1) & vbCrLf & "————" & vbCrLf & String.Join(vbCrLf, stac)
-        MessageBox.Show(stacmsg, "统计", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Form3.Label9.Text = output1
+        Form3.Label10.Text = sumsizestr
+        Form3.Label11.Text = png1
+        Form3.Label12.Text = jpg1
+        Form3.Label13.Text = bmp1
+        Form3.Label14.Text = ico1
+        Form3.Label15.Text = gif1
+        Form3.Label16.Text = output1 & " - " & output0 & " = " & output1 - output0
+
+        Form3.Label28.Text = png0
+        Form3.Label27.Text = jpg0
+        Form3.Label26.Text = bmp0
+        Form3.Label25.Text = ico0
+        Form3.Label24.Text = gif0
+
+        Form3.Label17.Text = Int(png1 / output1 * 1000) / 10 & " %"
+        Form3.Label18.Text = Int(jpg1 / output1 * 1000) / 10 & " %"
+        Form3.Label19.Text = Int(bmp1 / output1 * 1000) / 10 & " %"
+        Form3.Label20.Text = Int(ico1 / output1 * 1000) / 10 & " %"
+        Form3.Label21.Text = Int(gif1 / output1 * 1000) / 10 & " %"
+        Form3.Label22.Text = Int(output0 / output1 * 1000) / 10 & " %"
+
+        Form3.Label40.Text = Int(png0 / output0 * 1000) / 10 & " %"
+        Form3.Label39.Text = Int(jpg0 / output0 * 1000) / 10 & " %"
+        Form3.Label38.Text = Int(bmp0 / output0 * 1000) / 10 & " %"
+        Form3.Label37.Text = Int(ico0 / output0 * 1000) / 10 & " %"
+        Form3.Label36.Text = Int(gif0 / output0 * 1000) / 10 & " %"
+
+        If png1 - png0 <> png1 Then
+            Form3.Label33.Text += " √"
+        Else
+        End If
+        If jpg1 - jpg0 <> jpg1 Then
+            Form3.Label32.Text += " √"
+        Else
+        End If
+        If bmp1 - bmp0 <> bmp1 Then
+            Form3.Label31.Text += " √"
+        Else
+        End If
+        If ico1 - ico0 <> ico1 Then
+            Form3.Label30.Text += " √"
+        Else
+        End If
+        If gif1 - gif0 <> gif1 Then
+            Form3.Label29.Text += " √"
+        Else
+        End If
+
+        If min < 1000 Then
+            Form3.Label23.Text = min & " ms"
+        Else
+            Form3.Label23.Text = min / 1000 & " s"
+        End If
+
+        Form3.Show()
     End Sub
 End Class

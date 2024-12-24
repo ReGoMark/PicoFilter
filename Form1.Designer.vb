@@ -313,7 +313,7 @@ Partial Class Form1
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(0, 0)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(510, 358)
+        Me.ListView2.Size = New System.Drawing.Size(504, 358)
         Me.ListView2.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListView2, "双击预览，按住Ctrl点选，按住Shift区选。")
         Me.ListView2.UseCompatibleStateImageBehavior = False
@@ -406,7 +406,7 @@ Partial Class Form1
         Me.Label2.ForeColor = System.Drawing.Color.Crimson
         Me.Label2.Location = New System.Drawing.Point(-1, 399)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(511, 42)
+        Me.Label2.Size = New System.Drawing.Size(505, 42)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = " RSLT"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -421,7 +421,7 @@ Partial Class Form1
         Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label8.Location = New System.Drawing.Point(-1, 358)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(511, 42)
+        Me.Label8.Size = New System.Drawing.Size(505, 42)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = " Wait"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -730,7 +730,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(19, 387)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(13, 387)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(27, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -773,7 +773,7 @@ Partial Class Form1
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(247, 387)
+        Me.ComboBox1.Location = New System.Drawing.Point(241, 387)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(73, 24)
         Me.ComboBox1.TabIndex = 33
@@ -799,7 +799,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(189, 390)
+        Me.Label7.Location = New System.Drawing.Point(183, 390)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -867,7 +867,7 @@ Partial Class Form1
         Me.TextBoxSearch.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBoxSearch.Location = New System.Drawing.Point(4, 4)
         Me.TextBoxSearch.Name = "TextBoxSearch"
-        Me.TextBoxSearch.Size = New System.Drawing.Size(229, 17)
+        Me.TextBoxSearch.Size = New System.Drawing.Size(206, 17)
         Me.TextBoxSearch.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.TextBoxSearch, "输入一个查找目标。")
         '
@@ -885,10 +885,12 @@ Partial Class Form1
         Me.ButtonSearch.ForeColor = System.Drawing.Color.DarkOrchid
         Me.ButtonSearch.Image = CType(resources.GetObject("ButtonSearch.Image"), System.Drawing.Image)
         Me.ButtonSearch.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ButtonSearch.Location = New System.Drawing.Point(358, 489)
+        Me.ButtonSearch.Location = New System.Drawing.Point(335, 489)
         Me.ButtonSearch.Name = "ButtonSearch"
-        Me.ButtonSearch.Size = New System.Drawing.Size(27, 26)
+        Me.ButtonSearch.Size = New System.Drawing.Size(45, 26)
         Me.ButtonSearch.TabIndex = 38
+        Me.ButtonSearch.Text = "1"
+        Me.ButtonSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.ButtonSearch, "左侧搜索")
         Me.ButtonSearch.UseVisualStyleBackColor = False
         '
@@ -906,11 +908,13 @@ Partial Class Form1
         Me.Button10.ForeColor = System.Drawing.Color.DarkOrchid
         Me.Button10.Image = CType(resources.GetObject("Button10.Image"), System.Drawing.Image)
         Me.Button10.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button10.Location = New System.Drawing.Point(391, 489)
+        Me.Button10.Location = New System.Drawing.Point(386, 489)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(27, 26)
+        Me.Button10.Size = New System.Drawing.Size(45, 26)
         Me.Button10.TabIndex = 39
         Me.Button10.Tag = ""
+        Me.Button10.Text = "2"
+        Me.Button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button10, "右侧搜索")
         Me.Button10.UseVisualStyleBackColor = False
         '
@@ -982,8 +986,12 @@ Partial Class Form1
         Me.Panel4.Controls.Add(Me.TextBoxSearch)
         Me.Panel4.Location = New System.Drawing.Point(114, 489)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(238, 26)
+        Me.Panel4.Size = New System.Drawing.Size(215, 26)
         Me.Panel4.TabIndex = 37
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1000
         '
         'Form1
         '
@@ -1099,6 +1107,6 @@ Partial Class Form1
     Friend WithEvents ColumnHeader10 As ColumnHeader
     Friend WithEvents ImageList2 As ImageList
     Friend WithEvents CheckBox_LoadThumbnails As CheckBox
-    Friend WithEvents Timer1 As Timer
     Friend WithEvents CheckBox13 As CheckBox
+    Friend WithEvents Timer1 As Timer
 End Class

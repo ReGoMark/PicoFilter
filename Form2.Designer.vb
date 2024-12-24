@@ -44,7 +44,7 @@ Partial Class Form2
         '
         Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.BackColor = System.Drawing.Color.Lavender
+        Me.TextBox1.BackColor = System.Drawing.Color.GhostWhite
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -53,7 +53,7 @@ Partial Class Form2
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(364, 298)
+        Me.TextBox1.Size = New System.Drawing.Size(290, 298)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseSystemPasswordChar = True
@@ -93,10 +93,10 @@ Partial Class Form2
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.BackColor = System.Drawing.Color.Lavender
         Me.Label5.Font = New System.Drawing.Font("Consolas", 42.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(1, Byte), True)
         Me.Label5.ForeColor = System.Drawing.Color.SlateBlue
-        Me.Label5.Location = New System.Drawing.Point(12, 32)
+        Me.Label5.Location = New System.Drawing.Point(9, 9)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(73, 82)
         Me.Label5.TabIndex = 6
@@ -119,7 +119,7 @@ Partial Class Form2
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox2.Location = New System.Drawing.Point(-5, -6)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(92, 27)
+        Me.PictureBox2.Size = New System.Drawing.Size(92, 369)
         Me.PictureBox2.TabIndex = 8
         Me.PictureBox2.TabStop = False
         '
@@ -146,15 +146,16 @@ Partial Class Form2
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Lavender
-        Me.Panel1.Location = New System.Drawing.Point(826, -6)
+        Me.Panel1.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel1.Location = New System.Drawing.Point(282, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(125, 369)
+        Me.Panel1.Size = New System.Drawing.Size(161, 369)
         Me.Panel1.TabIndex = 14
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.Lavender
+        Me.Panel2.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel2.Controls.Add(Me.Panel1)
         Me.Panel2.Controls.Add(Me.TextBox1)
         Me.Panel2.Location = New System.Drawing.Point(471, -6)
         Me.Panel2.Name = "Panel2"
@@ -166,9 +167,9 @@ Partial Class Form2
         Me.Label4.BackColor = System.Drawing.Color.Cornsilk
         Me.Label4.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(91, 249)
+        Me.Label4.Location = New System.Drawing.Point(93, 249)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(372, 65)
+        Me.Label4.Size = New System.Drawing.Size(372, 64)
         Me.Label4.TabIndex = 16
         Me.Label4.Text = "在以往的比赛工作中，时常遇到尺寸不合格、格式等等的问题。为此专门开发了这款小工具来解决。"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -188,10 +189,8 @@ Partial Class Form2
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(837, 322)
+        Me.ClientSize = New System.Drawing.Size(761, 322)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label8)
@@ -201,6 +200,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.Label4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
