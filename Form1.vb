@@ -1085,6 +1085,8 @@ Public Class Form1
         Form3.Label38.Text = Int(bmp0 / output0 * 1000) / 10 & " %"
         Form3.Label37.Text = Int(ico0 / output0 * 1000) / 10 & " %"
         Form3.Label36.Text = Int(gif0 / output0 * 1000) / 10 & " %"
+        Dim result As Double = 100 - (Int(png0 / output0 * 1000) / 10 + Int(jpg0 / output0 * 1000) / 10 + Int(bmp0 / output0 * 1000) / 10 + Int(ico0 / output0 * 1000) / 10 + Int(gif0 / output0 * 1000) / 10)
+        Form3.Label42.Text = Math.Round(result, 1) & “ %”
 
         If png1 > 0 Then
             Form3.Label3.Text += " √"
