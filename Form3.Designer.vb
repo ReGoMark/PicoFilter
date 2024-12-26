@@ -92,9 +92,9 @@ Partial Class Form3
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(12, 38)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(54, 20)
+        Me.Label2.Size = New System.Drawing.Size(39, 20)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "大小差"
+        Me.Label2.Text = "大小"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label3
@@ -604,6 +604,7 @@ Partial Class Form3
         Me.Label44.TabIndex = 46
         Me.Label44.Text = "按""开始筛选""刷新数据"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label44.Visible = False
         '
         'Form3
         '

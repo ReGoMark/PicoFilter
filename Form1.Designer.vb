@@ -82,7 +82,6 @@ Partial Class Form1
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -311,7 +310,7 @@ Partial Class Form1
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(0, 0)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(514, 354)
+        Me.ListView2.Size = New System.Drawing.Size(512, 354)
         Me.ListView2.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListView2, "双击项预览。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListView2.UseCompatibleStateImageBehavior = False
@@ -404,7 +403,7 @@ Partial Class Form1
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(-1, 395)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(515, 42)
+        Me.Label2.Size = New System.Drawing.Size(513, 42)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = " RSLT"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -419,7 +418,7 @@ Partial Class Form1
         Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label8.Location = New System.Drawing.Point(-1, 354)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(515, 42)
+        Me.Label8.Size = New System.Drawing.Size(513, 42)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = " Wait"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -732,7 +731,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-13, 387)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-15, 387)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(27, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -775,7 +774,7 @@ Partial Class Form1
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(215, 383)
+        Me.ComboBox1.Location = New System.Drawing.Point(213, 383)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(73, 24)
         Me.ComboBox1.TabIndex = 33
@@ -801,7 +800,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(157, 386)
+        Me.Label7.Location = New System.Drawing.Point(155, 386)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -996,10 +995,6 @@ Partial Class Form1
         Me.Panel4.Size = New System.Drawing.Size(371, 26)
         Me.Panel4.TabIndex = 37
         '
-        'Timer1
-        '
-        Me.Timer1.Interval = 1000
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -1113,5 +1108,4 @@ Partial Class Form1
     Friend WithEvents ColumnHeader10 As ColumnHeader
     Friend WithEvents CheckBox_LoadThumbnails As CheckBox
     Friend WithEvents CheckBox13 As CheckBox
-    Friend WithEvents Timer1 As Timer
 End Class

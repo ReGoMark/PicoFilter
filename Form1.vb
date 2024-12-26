@@ -2,7 +2,6 @@
 Imports OfficeOpenXml
 Imports System.Threading
 
-
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
 
@@ -83,6 +82,10 @@ Public Class Form1
                 ' 忽略无法读取的文件(文件本身有问题而不是格式不支持)
                 MsgBox("加载失败。无法读取: " & ex.Message, MsgBoxStyle.OkOnly)
             End Try
+            If index Mod 5 = 0 Then
+                GC.Collect()
+                GC.WaitForPendingFinalizers()
+            End If
         Next
         stopwatch.Stop()
         min = stopwatch.ElapsedMilliseconds
@@ -110,6 +113,7 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
         Label6.Text = String.Join("  ", result)
+
         PlayNotificationSound()
 
         output1 = files.Count
@@ -118,8 +122,7 @@ Public Class Form1
         bmp1 = bmpCount
         gif1 = gifCount
         ico1 = icoCount
-        Timer1.Enabled = False
-
+        更新统计信息()
     End Sub
 
     ' 加载图片从指定文件夹，到listview2
@@ -319,7 +322,9 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
         Label2.Text = String.Join("  ", result)
+
         PlayNotificationSound3()
+
         jpg0 = jpgCount
         png0 = pngCount
         bmp0 = bmpCount
@@ -364,7 +369,7 @@ Public Class Form1
     ' 筛选按钮点击事件，用于开始筛选
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         筛选图片()
-
+        更新统计信息()
     End Sub
 
     ' 启用按钮的拖放功能
@@ -817,34 +822,53 @@ Public Class Form1
                         Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
 
                         ' 添加 Label6 和 Label2 的内容在顶部
-                        worksheet.Cells("B1").Value = Label6.Text
-                        worksheet.Cells("B2").Value = Label2.Text
-                        worksheet.Cells("A1").Value = "全部"
-                        worksheet.Cells("A2").Value = “筛选”
-                        worksheet.Cells("A3").Value = "条件"
-                        worksheet.Cells("B3").Value = String.Join(" ", result)
-                        worksheet.Cells("A1:A2").Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left
+                        worksheet.Cells("H1").Value = Label6.Text
+                        worksheet.Cells("H2").Value = Form3.Label10.Text
+                        worksheet.Cells("H3").Value = Form3.Label23.Text
+                        worksheet.Cells("H4").Value = Label2.Text
+                        worksheet.Cells("H5").Value = String.Join(" ", result)
 
-                        ' 设置表头（对应 ListView2 的列，从第4行开始）
+
+                        worksheet.Cells("G1").Value = "已扫描"
+                        worksheet.Cells("G2").Value = "大小"
+                        worksheet.Cells("G3").Value = "耗时"
+                        worksheet.Cells("G4").Value = “筛选结果”
+                        worksheet.Cells("G5").Value = "筛选条件"
+
+                        worksheet.Cells("G1:G5").Style.Font.Bold = True
+                        worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                        worksheet.Cells("G1:G5").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+
+                        worksheet.Cells("A1:A2").Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left
+                        ' 设置表头（对应 ListView2 的列，从第1行开始）
                         For i As Integer = 0 To ListView2.Columns.Count - 1
-                            worksheet.Cells(4, i + 1).Value = ListView2.Columns(i).Text
+                            worksheet.Cells(1, i + 1).Value = ListView2.Columns(i).Text
                             Dim columnWidth As Double = ListView2.Columns(i).Width / 7 ' 调整比例使宽度接近视觉一致
                             worksheet.Column(i + 1).Width = columnWidth
+                            worksheet.Column(i + 3).Style.HorizontalAlignment = Style.ExcelHorizontalAlignment.Right
                         Next
                         worksheet.Column(2).Width = ListView2.Columns(2).Width / 2
-                        ' 填充 ListView2 的数据（从第5行开始）
+                        worksheet.Column(8).Width = ListView2.Columns(2).Width / 2
+
+                        worksheet.Cells("A1:E1").Style.Font.Bold = True
+                        worksheet.Cells("A1:E1").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                        worksheet.Cells("A1:E1").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+
+                        ' 填充 ListView2 的数据（从第2行开始）
                         For i As Integer = 0 To ListView2.Items.Count - 1
                             For j As Integer = 0 To ListView2.Items(i).SubItems.Count - 1
-                                worksheet.Cells(i + 5, j + 1).Value = ListView2.Items(i).SubItems(j).Text
+                                worksheet.Cells(i + 2, j + 1).Value = ListView2.Items(i).SubItems(j).Text
                             Next
                         Next
-
                         ' 保存 Excel 文件
                         package.Save()
                     End Using
 
-                    MessageBox.Show("导出为xlsx文件成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+                    Dim opt = MessageBox.Show("文件已导出成功！点击按钮立即打开", "导出完成", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                    If opt = DialogResult.Yes Then
+                        ' 打开文件
+                        Process.Start("explorer.exe", filePath)
+                    End If
                 Catch ex As Exception
                     MessageBox.Show("导出文件时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -998,7 +1022,7 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs)
         min += 1
     End Sub
 
@@ -1046,6 +1070,32 @@ Public Class Form1
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        更新统计信息()
+        Form3.Show()
+    End Sub
+    Private Sub PlayNotificationSound()
+        Try
+            ' 从资源播放音效
+            My.Computer.Audio.Play(My.Resources.NFP, AudioPlayMode.Background)
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub PlayNotificationSound2()
+        Try
+            ' 从资源播放音效
+            My.Computer.Audio.Play(My.Resources.BG, AudioPlayMode.Background)
+        Catch ex As Exception
+        End Try
+    End Sub
+    Private Sub PlayNotificationSound3()
+        Try
+            ' 从资源播放音效
+            My.Computer.Audio.Play(My.Resources.NSG, AudioPlayMode.Background)
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub 更新统计信息()
         Dim sumsizestr As String
         'Dim stacmsg As String
         If Int(sumsize / 1024 / 1024) > 1024 Then
@@ -1078,7 +1128,7 @@ Public Class Form1
         Form3.Label19.Text = Int(bmp1 / output1 * 1000) / 10 & " %"
         Form3.Label20.Text = Int(ico1 / output1 * 1000) / 10 & " %"
         Form3.Label21.Text = Int(gif1 / output1 * 1000) / 10 & " %"
-        Form3.Label22.Text = “-” & (100 - (Int((output1 - output0) / output1 * 1000) / 10)) & " %"
+        Form3.Label22.Text = “- ” & (Int(output0 / output1 * 1000) / 10) & " %"
 
         Form3.Label40.Text = Int(png0 / output0 * 1000) / 10 & " %"
         Form3.Label39.Text = Int(jpg0 / output0 * 1000) / 10 & " %"
@@ -1089,45 +1139,55 @@ Public Class Form1
         Form3.Label42.Text = Math.Round(result, 1) & “ %”
 
         If png1 > 0 Then
-            Form3.Label3.Text += " √"
+            Form3.Label3.Text = "...PNG √"
         Else
+            Form3.Label3.Text = "...PNG"
         End If
         If jpg1 > 0 Then
-            Form3.Label4.Text += " √"
+            Form3.Label4.Text = "...JPG √"
         Else
+            Form3.Label4.Text = "...JPG"
         End If
         If bmp1 > 0 Then
-            Form3.Label5.Text += " √"
+            Form3.Label5.Text = "...BMP √"
         Else
+            Form3.Label5.Text = "...BMP"
         End If
         If ico1 > 0 Then
-            Form3.Label6.Text += " √"
+            Form3.Label6.Text = "...ICO √"
         Else
+            Form3.Label6.Text = "...ICO"
         End If
         If gif1 > 0 Then
-            Form3.Label7.Text += " √"
+            Form3.Label7.Text = "...GIF √"
         Else
+            Form3.Label7.Text = "...GIF"
         End If
 
         If png1 - png0 <> png1 Then
-            Form3.Label33.Text += " √"
+            Form3.Label33.Text = "...PNG √"
         Else
+            Form3.Label33.Text = "...PNG"
         End If
         If jpg1 - jpg0 <> jpg1 Then
-            Form3.Label32.Text += " √"
+            Form3.Label32.Text = "...JPG √"
         Else
+            Form3.Label32.Text = "...JPG"
         End If
         If bmp1 - bmp0 <> bmp1 Then
-            Form3.Label31.Text += " √"
+            Form3.Label31.Text = "...BMP √"
         Else
+            Form3.Label31.Text = "...BMP"
         End If
         If ico1 - ico0 <> ico1 Then
-            Form3.Label30.Text += " √"
+            Form3.Label30.Text = "...ICO √"
         Else
+            Form3.Label30.Text = "...ICO"
         End If
         If gif1 - gif0 <> gif1 Then
-            Form3.Label29.Text += " √"
+            Form3.Label29.Text = "...GIF √"
         Else
+            Form3.Label29.Text = "...GIF"
         End If
 
         If min < 1000 Then
@@ -1135,28 +1195,5 @@ Public Class Form1
         Else
             Form3.Label23.Text = min / 1000 & " s"
         End If
-
-        Form3.Show()
-    End Sub
-    Private Sub PlayNotificationSound()
-        Try
-            ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.NFP, AudioPlayMode.Background)
-        Catch ex As Exception
-        End Try
-    End Sub
-    Private Sub PlayNotificationSound2()
-        Try
-            ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.BG, AudioPlayMode.Background)
-        Catch ex As Exception
-        End Try
-    End Sub
-    Private Sub PlayNotificationSound3()
-        Try
-            ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.NSG, AudioPlayMode.Background)
-        Catch ex As Exception
-        End Try
     End Sub
 End Class

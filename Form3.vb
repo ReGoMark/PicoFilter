@@ -1,4 +1,6 @@
-﻿Public Class Form3
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class Form3
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.Close()
     End Sub
