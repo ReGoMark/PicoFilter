@@ -7,36 +7,34 @@ Imports System.Threading
 
 Public Class Form1
     Dim NUM As Integer
-    Dim sumsize As Double
-    Dim output0 As Double
-    Dim output1 As Double
-    Dim jpg0, jpg1 As Double
+    Dim min As Integer
+    Dim sumsize As Double '计量扫描总大小
+    Dim output0, output1 As Double '右侧总和，左侧总和
+    Dim jpg0, jpg1 As Double '计量右侧jpg数量，左侧jpg数量。下同
     Dim png0, png1 As Double
     Dim gif0, gif1 As Double
     Dim bmp0, bmp1 As Double
     Dim ico0, ico1 As Double
-    Dim min As Integer
-    ' 加载图片从指定文件夹，到listview1
+
+    ' 加载图片从指定文件夹到listview1
     Private Sub 加载图片(folderPath As String)
-        ListView1.Items.Clear()
+        NUM = 0
         min = 0
         sumsize = 0
+        ListView1.Items.Clear()
+        ProgressBar1.Value = 0
         Dim stopwatch As New Stopwatch()
-        stopwatch.Start()
-
         Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
         Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower()))
-        ' 计数
-        Dim index As Integer = 1
+        Dim index As Integer = 1 ' 计数。下同
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
         Dim gifCount As Integer = 0
         Dim bmpCount As Integer = 0
         Dim icoCount As Integer = 0
-        '进度条和标题计数器重置
         ProgressBar1.Maximum = files.Count()
-        ProgressBar1.Value = 0
-        NUM = 0
+
+        stopwatch.Start()
         '填充数据到listview1
         For Each file In files
             Try
@@ -44,10 +42,9 @@ Public Class Form1
                     Dim fileName As String = Path.GetFileName(file)
                     Dim resolution As String = $"{img.Width}×{img.Height}"
                     Dim format As String = Path.GetExtension(file).ToUpper()
-                    '显示文件大小
                     Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
                     Dim sizeInKB As Double = Int(fileSize / 1024) ' 转换为KB
-                    sumsize += fileSize
+
                     ' 计数不同格式
                     Select Case format
                         Case ".JPG", ".JPEG"
@@ -61,26 +58,26 @@ Public Class Form1
                         Case ".BMP"
                             bmpCount += 1
                     End Select
-
                     Dim item As New ListViewItem(index.ToString()) ' 添加序号
                     item.SubItems.Add(fileName) ' 添加文件名
                     item.SubItems.Add(resolution) ' 添加分辨率
                     item.SubItems.Add(format) ' 添加格式
                     item.SubItems.Add(sizeInKB & " KB") ' 添加文件大小
 
-                    ' 添加到 listview1
-                    ListView1.Items.Add(item)
+                    sumsize += fileSize
+                    ListView1.Items.Add(item) ' 添加到 listview1
                     index += 1 ' 序号自增
-
-                    ' 更新进度条、标题计数器
-                    ProgressBar1.Value += 1
+                    ProgressBar1.Value += 1 ' 更新进度条、标题计数器
                     NUM = NUM + 1
                     更新标题()
                 End Using
 
             Catch ex As Exception
                 ' 忽略无法读取的文件(文件本身有问题而不是格式不支持)
-                MsgBox("加载失败。无法读取: " & ex.Message, MsgBoxStyle.OkOnly)
+                Dim opt = MessageBox.Show(ex.Message & vbCrLf & "点击是继续，点击否终止。", "加载失败", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
+                If opt = DialogResult.No Then
+                    Exit For
+                End If
             End Try
             If index Mod 5 = 0 Then
                 GC.Collect()
@@ -101,19 +98,17 @@ Public Class Form1
                 sumsizestr = Int(sumsize * 100 / 1024) / 100 & "KB"
             End If
         End If
-        Me.Text = "PicoFilter 1.5" & "  [" & fileName1 & " ," & “ ” & sumsizestr & "]"
-
-        '更新label6
-        Dim result As New List(Of String)
+        Dim result As New List(Of String)  '更新label6
         result.Add($" 【SUM {files.Count}】 -")
-
         If jpgCount > 0 Then result.Add($"[JPG] {jpgCount}")
         If pngCount > 0 Then result.Add($"[PNG] {pngCount}")
         If gifCount > 0 Then result.Add($"[GIF] {gifCount}")
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
-        Label6.Text = String.Join("  ", result)
 
+        Label6.Text = String.Join("  ", result)
+        Me.Text = "PicoFilter 1.5" & "  [" & fileName1 & " ," & “ ” & sumsizestr & "]"
+        更新统计信息()
         PlayNotificationSound()
 
         output1 = files.Count
@@ -122,32 +117,28 @@ Public Class Form1
         bmp1 = bmpCount
         gif1 = gifCount
         ico1 = icoCount
-        更新统计信息()
     End Sub
 
     ' 加载图片从指定文件夹，到listview2
     Private Sub 筛选图片()
         ListView2.Items.Clear()
-        ' 分辨率
-        Dim widthFilter As Integer
+
+        Dim widthFilter As Integer ' 分辨率
         Dim heightFilter As Integer
         If Integer.TryParse(TextBox2.Text, widthFilter) AndAlso Integer.TryParse(TextBox3.Text, heightFilter) Then
         Else
             widthFilter = 0 ' 如果未设置分辨率，则设置为0
             heightFilter = 0
         End If
-
         Dim jpgSelected As Boolean = CheckBox1.Checked
         Dim pngSelected As Boolean = CheckBox2.Checked
         Dim gifSelected As Boolean = CheckBox3.Checked
         Dim resolutionSelected As Boolean = CheckBox4.Checked
         Dim bmpSelected As Boolean = CheckBox5.Checked
         Dim icoSelected As Boolean = CheckBox7.Checked
-        '分辨率反选筛选
-        Dim excludeResolution As Boolean = CheckBox11.Checked ' 获取CheckBox11的状态
+        Dim excludeResolution As Boolean = CheckBox11.Checked '分辨率反选筛选
         Dim volResolution As Boolean = CheckBox13.Checked
-        ' 符合筛选条件的计数
-        Dim matchingFileCount As Integer = 0
+        Dim matchingFileCount As Integer = 0 ' 符合筛选条件的计数
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
         Dim gifCount As Integer = 0
@@ -161,17 +152,15 @@ Public Class Form1
             Dim height As Integer = Integer.Parse(resolution(1))
             Dim format As String = item.SubItems(3).Text
             Dim sizeInKB As String = item.SubItems(4).Text ' 获取大小列的值
-            '处理是否勾选了分辨率作为筛选条件
-            Dim matchesResolution As Boolean = Not resolutionSelected OrElse
+            Dim matchesResolution As Boolean = Not resolutionSelected OrElse '处理是否勾选了分辨率作为筛选条件
                 (width = widthFilter AndAlso height = heightFilter)
-
-            ' 处理文件格式筛选
-            Dim matchesFormat As Boolean = (jpgSelected AndAlso format = ".JPG") OrElse
+            Dim matchesFormat As Boolean = (jpgSelected AndAlso format = ".JPG") OrElse ' 处理文件格式筛选
                 (jpgSelected AndAlso format = ".JPEG") OrElse
                 (pngSelected AndAlso format = ".PNG") OrElse
                 (bmpSelected AndAlso format = ".BMP") OrElse
                 (icoSelected AndAlso format = ".ICO") OrElse
                 (gifSelected AndAlso format = ".GIF")
+
             '排除筛选
             If excludeResolution And resolutionSelected And Not volResolution Then
                 If width <> widthFilter OrElse height <> heightFilter Then
@@ -201,6 +190,7 @@ Public Class Form1
                     Continue For ' 跳过本次循环，继续下一个文件
                 End If
             End If
+
             '默认筛选
             If resolutionSelected And Not excludeResolution And Not volResolution Then
                 ' 如果勾选了分辨率则直接添加
@@ -230,6 +220,7 @@ Public Class Form1
                     Continue For ' 继续下一个文件
                 End If
             End If
+
             '互换筛选
             If volResolution And resolutionSelected And Not excludeResolution Then
                 If width = heightFilter AndAlso height = widthFilter Or width = widthFilter AndAlso height = heightFilter Then
@@ -258,6 +249,7 @@ Public Class Form1
                     Continue For ' 继续下一个文件
                 End If
             End If
+
             '分辨率条件全选
             If resolutionSelected And volResolution And excludeResolution Then
                 If Not ((width = widthFilter And height = heightFilter) Or (width = heightFilter And height = widthFilter)) Then
@@ -321,17 +313,16 @@ Public Class Form1
         If gifCount > 0 Then result.Add($"[GIF] {gifCount}")
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
-        Label2.Text = String.Join("  ", result)
 
+        Label2.Text = String.Join("  ", result)
         PlayNotificationSound3()
 
+        output0 = matchingFileCount
         jpg0 = jpgCount
         png0 = pngCount
         bmp0 = bmpCount
         gif0 = gifCount
         ico0 = icoCount
-        output0 = matchingFileCount
-
     End Sub
 
     ' 当 ListView1 中的项被选中时，在 Label5 显示选中的序号和文件名
@@ -414,7 +405,7 @@ Public Class Form1
         ProgressBar1.Maximum = 0
         NUM = 0
         Me.Text = “PicoFilter 1.5”
-        'Label10.Width = 0
+        PositionForm3()
     End Sub
 
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
@@ -784,6 +775,22 @@ Public Class Form1
         Dim inreslnSelected As Boolean = CheckBox11.Checked
         Dim volreslnSelected As Boolean = CheckBox13.Checked
 
+        Dim sumsizestr As String
+        If Int(sumsize / 1024 / 1024) > 1024 Then
+            sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & " GB"
+        Else
+            If Int(sumsize / 1024 / 1024) > 1 Then
+                sumsizestr = Int(sumsize * 100 / 1024 / 1024) / 100 & " MB"
+            Else
+                sumsizestr = Int(sumsize * 100 / 1024) / 100 & " KB"
+            End If
+        End If
+        Dim minstr As String
+        If min < 1000 Then
+            minstr = min & " ms"
+        Else
+            minstr = min / 1000 & " s"
+        End If
         Dim result As New List(Of String)
         If jpgSelected = True Then result.Add($"[JPG]")
         If pngSelected = True Then result.Add($"[PNG]")
@@ -792,8 +799,6 @@ Public Class Form1
         If icoSelected = True Then result.Add($"[ICO]")
         If inreslnSelected = True And resolutionSelected = True And volreslnSelected = False Then
             result.Add($"[IN-RSLN " & TextBox2.Text & “ × ” & TextBox3.Text & "]")
-        Else
-
         End If
         If resolutionSelected = True And inreslnSelected = False And volreslnSelected = False Then
             result.Add($"[RSLN " & TextBox2.Text & “ × ” & TextBox3.Text & "]")
@@ -823,17 +828,17 @@ Public Class Form1
 
                         ' 添加 Label6 和 Label2 的内容在顶部
                         worksheet.Cells("H1").Value = Label6.Text
-                        worksheet.Cells("H2").Value = Form3.Label10.Text
-                        worksheet.Cells("H3").Value = Form3.Label23.Text
+                        worksheet.Cells("H2").Value = sumsizestr
+                        worksheet.Cells("H3").Value = minstr
                         worksheet.Cells("H4").Value = Label2.Text
                         worksheet.Cells("H5").Value = String.Join(" ", result)
 
 
-                        worksheet.Cells("G1").Value = "已扫描"
+                        worksheet.Cells("G1").Value = "扫描"
                         worksheet.Cells("G2").Value = "大小"
                         worksheet.Cells("G3").Value = "耗时"
-                        worksheet.Cells("G4").Value = “筛选结果”
-                        worksheet.Cells("G5").Value = "筛选条件"
+                        worksheet.Cells("G4").Value = “筛选”
+                        worksheet.Cells("G5").Value = "条件"
 
                         worksheet.Cells("G1:G5").Style.Font.Bold = True
                         worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
@@ -1034,10 +1039,6 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub 复制ToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
         Dim keyword As String = TextBoxSearch.Text.Trim()
         If Not String.IsNullOrEmpty(keyword) Then
@@ -1071,7 +1072,11 @@ Public Class Form1
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
         更新统计信息()
-        Form3.Show()
+        If Form3.Visible = True Then
+            Form3.Close()
+        Else
+            Form3.Show()
+        End If
     End Sub
     Private Sub PlayNotificationSound()
         Try
@@ -1107,9 +1112,15 @@ Public Class Form1
                 sumsizestr = Int(sumsize * 100 / 1024) / 100 & " KB"
             End If
         End If
-
+        Dim minstr As String
+        If min < 1000 Then
+            minstr = min & " ms"
+        Else
+            minstr = min / 1000 & " s"
+        End If
         Form3.Label9.Text = output1
         Form3.Label10.Text = sumsizestr
+        Form3.Label23.Text = minstr
         Form3.Label11.Text = png1
         Form3.Label12.Text = jpg1
         Form3.Label13.Text = bmp1
@@ -1189,11 +1200,14 @@ Public Class Form1
         Else
             Form3.Label29.Text = "...GIF"
         End If
+    End Sub
 
-        If min < 1000 Then
-            Form3.Label23.Text = min & " ms"
-        Else
-            Form3.Label23.Text = min / 1000 & " s"
+    Private Sub Form1_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+        PositionForm3()
+    End Sub
+    Private Sub PositionForm3()
+        If Form3.CheckBox2.Checked = True Then
+            Form3.Location = New Point(Me.Right, Me.Top)
         End If
     End Sub
 End Class
