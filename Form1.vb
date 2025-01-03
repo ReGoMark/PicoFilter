@@ -1206,8 +1206,6 @@ Public Class Form1
         PositionForm3()
     End Sub
     Private Sub PositionForm3()
-        If Form3.CheckBox2.Checked = True Then
-            Form3.Location = New Point(Me.Right, Me.Top)
-        End If
+        Form3.Location = New Point(Me.Right, Me.Top)
     End Sub
 End Class

@@ -628,6 +628,7 @@ Partial Class Form3
         Me.CheckBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.CheckBox2, "吸附到主窗体。")
         Me.CheckBox2.UseVisualStyleBackColor = False
+        Me.CheckBox2.Visible = False
         '
         'Form3
         '
