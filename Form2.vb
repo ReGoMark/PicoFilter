@@ -11,14 +11,14 @@
         Me.Close()
     End Sub
 
-    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
-        Dim url As String = "https://github.com/MoonPixelTeam/Mp-PicoFilter"
-        Try
-            ' 使用默认浏览器打开网页
-            Process.Start(url)
-        Catch ex As Exception
-        End Try
-    End Sub
+    'Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+    '    Dim url As String = "https://github.com/MoonPixelTeam/Mp-PicoFilter"
+    '    Try
+    '        ' 使用默认浏览器打开网页
+    '        Process.Start(url)
+    '    Catch ex As Exception
+    '    End Try
+    'End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.Close()

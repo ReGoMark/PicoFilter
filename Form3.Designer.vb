@@ -70,7 +70,6 @@ Partial Class Form3
         Me.Label43 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label44 = New System.Windows.Forms.Label()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -263,7 +262,7 @@ Partial Class Form3
         'Label17
         '
         Me.Label17.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label17.ForeColor = System.Drawing.Color.Black
         Me.Label17.Location = New System.Drawing.Point(207, 85)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(133, 28)
@@ -274,7 +273,7 @@ Partial Class Form3
         'Label18
         '
         Me.Label18.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label18.ForeColor = System.Drawing.Color.Black
         Me.Label18.Location = New System.Drawing.Point(207, 109)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(133, 28)
@@ -285,7 +284,7 @@ Partial Class Form3
         'Label19
         '
         Me.Label19.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label19.ForeColor = System.Drawing.Color.Black
         Me.Label19.Location = New System.Drawing.Point(207, 133)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(133, 28)
@@ -296,7 +295,7 @@ Partial Class Form3
         'Label20
         '
         Me.Label20.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label20.ForeColor = System.Drawing.Color.Black
         Me.Label20.Location = New System.Drawing.Point(207, 157)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(133, 28)
@@ -307,7 +306,7 @@ Partial Class Form3
         'Label21
         '
         Me.Label21.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label21.ForeColor = System.Drawing.Color.Black
         Me.Label21.Location = New System.Drawing.Point(207, 181)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(133, 28)
@@ -318,7 +317,7 @@ Partial Class Form3
         'Label22
         '
         Me.Label22.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label22.ForeColor = System.Drawing.Color.Black
         Me.Label22.Location = New System.Drawing.Point(207, 229)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(133, 28)
@@ -490,7 +489,7 @@ Partial Class Form3
         'Label36
         '
         Me.Label36.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label36.ForeColor = System.Drawing.Color.Black
         Me.Label36.Location = New System.Drawing.Point(253, 349)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(87, 28)
@@ -501,7 +500,7 @@ Partial Class Form3
         'Label37
         '
         Me.Label37.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label37.ForeColor = System.Drawing.Color.Black
         Me.Label37.Location = New System.Drawing.Point(253, 325)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(87, 28)
@@ -512,7 +511,7 @@ Partial Class Form3
         'Label38
         '
         Me.Label38.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label38.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label38.ForeColor = System.Drawing.Color.Black
         Me.Label38.Location = New System.Drawing.Point(253, 301)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(87, 28)
@@ -523,7 +522,7 @@ Partial Class Form3
         'Label39
         '
         Me.Label39.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label39.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label39.ForeColor = System.Drawing.Color.Black
         Me.Label39.Location = New System.Drawing.Point(253, 277)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(87, 28)
@@ -534,7 +533,7 @@ Partial Class Form3
         'Label40
         '
         Me.Label40.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label40.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label40.ForeColor = System.Drawing.Color.Black
         Me.Label40.Location = New System.Drawing.Point(253, 253)
         Me.Label40.Name = "Label40"
         Me.Label40.Size = New System.Drawing.Size(87, 28)
@@ -557,7 +556,7 @@ Partial Class Form3
         'Label42
         '
         Me.Label42.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label42.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label42.ForeColor = System.Drawing.Color.Black
         Me.Label42.Location = New System.Drawing.Point(253, 373)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(87, 28)
@@ -608,35 +607,12 @@ Partial Class Form3
         Me.Label44.Text = "按""开始筛选""刷新数据"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'CheckBox2
-        '
-        Me.CheckBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CheckBox2.Appearance = System.Windows.Forms.Appearance.Button
-        Me.CheckBox2.BackColor = System.Drawing.Color.White
-        Me.CheckBox2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
-        Me.CheckBox2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.CheckBox2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox2.Image = CType(resources.GetObject("CheckBox2.Image"), System.Drawing.Image)
-        Me.CheckBox2.Location = New System.Drawing.Point(314, 12)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(27, 26)
-        Me.CheckBox2.TabIndex = 50
-        Me.CheckBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.CheckBox2, "吸附到主窗体。")
-        Me.CheckBox2.UseVisualStyleBackColor = False
-        Me.CheckBox2.Visible = False
-        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(353, 454)
-        Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Label43)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.Label41)
@@ -684,7 +660,7 @@ Partial Class Form3
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Label35)
         Me.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -745,6 +721,5 @@ Partial Class Form3
     Friend WithEvents Label43 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Label44 As Label
-    Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents ToolTip1 As ToolTip
 End Class

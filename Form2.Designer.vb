@@ -34,7 +34,6 @@ Partial Class Form2
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label44 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -55,7 +54,7 @@ Partial Class Form2
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(290, 236)
+        Me.TextBox1.Size = New System.Drawing.Size(290, 266)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseSystemPasswordChar = True
@@ -157,7 +156,6 @@ Partial Class Form2
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.GhostWhite
-        Me.Panel2.Controls.Add(Me.Label44)
         Me.Panel2.Controls.Add(Me.Button2)
         Me.Panel2.Controls.Add(Me.Panel1)
         Me.Panel2.Controls.Add(Me.TextBox1)
@@ -165,18 +163,6 @@ Partial Class Form2
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(380, 369)
         Me.Panel2.TabIndex = 15
-        '
-        'Label44
-        '
-        Me.Label44.BackColor = System.Drawing.Color.GhostWhite
-        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(50, 292)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(155, 20)
-        Me.Label44.TabIndex = 47
-        Me.Label44.Text = "点击左侧链接访问"
-        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
         '
@@ -266,5 +252,4 @@ Partial Class Form2
     Friend WithEvents Label4 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Button2 As Button
-    Friend WithEvents Label44 As Label
 End Class

@@ -99,7 +99,7 @@ Public Class Form1
             End If
         End If
         Dim result As New List(Of String)  '更新label6
-        result.Add($" 【SUM {files.Count}】 -")
+        result.Add($" [SUM {files.Count}] -")
         If jpgCount > 0 Then result.Add($"[JPG] {jpgCount}")
         If pngCount > 0 Then result.Add($"[PNG] {pngCount}")
         If gifCount > 0 Then result.Add($"[GIF] {gifCount}")
@@ -122,7 +122,6 @@ Public Class Form1
     ' 加载图片从指定文件夹，到listview2
     Private Sub 筛选图片()
         ListView2.Items.Clear()
-
         Dim widthFilter As Integer ' 分辨率
         Dim heightFilter As Integer
         If Integer.TryParse(TextBox2.Text, widthFilter) AndAlso Integer.TryParse(TextBox3.Text, heightFilter) Then
@@ -138,6 +137,8 @@ Public Class Form1
         Dim icoSelected As Boolean = CheckBox7.Checked
         Dim excludeResolution As Boolean = CheckBox11.Checked '分辨率反选筛选
         Dim volResolution As Boolean = CheckBox13.Checked
+        Dim plsResoulution As Boolean = CheckBox15.Checked
+        Dim mnsResoulution As Boolean = CheckBox16.Checked
         Dim matchingFileCount As Integer = 0 ' 符合筛选条件的计数
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
@@ -162,7 +163,9 @@ Public Class Form1
                 (gifSelected AndAlso format = ".GIF")
 
             '排除筛选
-            If excludeResolution And resolutionSelected And Not volResolution Then
+            If excludeResolution And resolutionSelected And
+                Not volResolution And Not plsResoulution And Not mnsResoulution Then
+
                 If width <> widthFilter OrElse height <> heightFilter Then
                     ' 分辨率不符合要求，将文件添加到ListView2
                     Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
@@ -192,7 +195,9 @@ Public Class Form1
             End If
 
             '默认筛选
-            If resolutionSelected And Not excludeResolution And Not volResolution Then
+            If resolutionSelected And Not excludeResolution And
+                Not volResolution And Not mnsResoulution And Not plsResoulution And Not matchesFormat Then
+
                 ' 如果勾选了分辨率则直接添加
                 If width = widthFilter AndAlso height = heightFilter Then
                     Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
@@ -222,7 +227,9 @@ Public Class Form1
             End If
 
             '互换筛选
-            If volResolution And resolutionSelected And Not excludeResolution Then
+            If volResolution And resolutionSelected And
+                Not excludeResolution And Not mnsResoulution And Not plsResoulution Then
+
                 If width = heightFilter AndAlso height = widthFilter Or width = widthFilter AndAlso height = heightFilter Then
                     Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
                     newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
@@ -279,8 +286,66 @@ Public Class Form1
                 End If
             End If
 
+            '大于条件全选
+            If plsResoulution And resolutionSelected And Not mnsResoulution Then
+                If (width > widthFilter And height > heightFilter) Then
+                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
+                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
+                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
+                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
+                    newItem.SubItems.Add(sizeInKB) ' 文件大小
+                    ListView2.Items.Add(newItem)
+                    matchingFileCount += 1 ' 符合条件的文件计数自增
+
+                    ' 更新各格式计数
+                    Select Case format
+                        Case ".JPG", ".JPEG"
+                            jpgCount += 1
+                        Case ".PNG"
+                            pngCount += 1
+                        Case ".GIF"
+                            gifCount += 1
+                        Case ".ICO"
+                            icoCount += 1
+                        Case ".BMP"
+                            bmpCount += 1
+                    End Select
+
+                    Continue For ' 继续下一个文件
+                End If
+            End If
+
+            '小于条件全选
+            If mnsResoulution And resolutionSelected And Not plsResoulution Then
+                If (width < widthFilter And height < heightFilter) Then
+                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
+                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
+                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
+                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
+                    newItem.SubItems.Add(sizeInKB) ' 文件大小
+                    ListView2.Items.Add(newItem)
+                    matchingFileCount += 1 ' 符合条件的文件计数自增
+
+                    ' 更新各格式计数
+                    Select Case format
+                        Case ".JPG", ".JPEG"
+                            jpgCount += 1
+                        Case ".PNG"
+                            pngCount += 1
+                        Case ".GIF"
+                            gifCount += 1
+                        Case ".ICO"
+                            icoCount += 1
+                        Case ".BMP"
+                            bmpCount += 1
+                    End Select
+
+                    Continue For ' 继续下一个文件
+                End If
+            End If
+
             ' 处理文件格式筛选
-            If matchesResolution AndAlso matchesFormat Then
+            If matchesFormat Then
                 Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
                 newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
                 newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
@@ -307,7 +372,7 @@ Public Class Form1
 
         '更新label2
         Dim result As New List(Of String)
-        result.Add($" 【RSLT {matchingFileCount}】 -")
+        result.Add($" [RSLT {matchingFileCount}] -")
         If jpgCount > 0 Then result.Add($"[JPG] {jpgCount}")
         If pngCount > 0 Then result.Add($"[PNG] {pngCount}")
         If gifCount > 0 Then result.Add($"[GIF] {gifCount}")
@@ -330,7 +395,7 @@ Public Class Form1
         If ListView1.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
             Dim selectedCount As Integer = ListView1.SelectedItems.Count
-            Label5.Text = $" 【{selectedCount}】 [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
+            Label5.Text = $" [{selectedCount}] [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
         Else
             Label5.Text = " Ready"
         End If
@@ -341,7 +406,7 @@ Public Class Form1
         If ListView2.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
             Dim selectedCount As Integer = ListView2.SelectedItems.Count
-            Label8.Text = $" 【{selectedCount}】 [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
+            Label8.Text = $" [{selectedCount}] [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
         Else
             Label8.Text = " Wait"
         End If
@@ -359,6 +424,8 @@ Public Class Form1
 
     ' 筛选按钮点击事件，用于开始筛选
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If checkbox15.Checked = True And TextBox3.Text = "" Then TextBox3.Text = "0"
+        If checkbox15.Checked = True And TextBox2.Text = "" Then TextBox2.Text = "0"
         筛选图片()
         更新统计信息()
     End Sub
@@ -405,7 +472,6 @@ Public Class Form1
         ProgressBar1.Maximum = 0
         NUM = 0
         Me.Text = “PicoFilter 1.5”
-        PositionForm3()
     End Sub
 
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
@@ -832,14 +898,11 @@ Public Class Form1
                         worksheet.Cells("H3").Value = minstr
                         worksheet.Cells("H4").Value = Label2.Text
                         worksheet.Cells("H5").Value = String.Join(" ", result)
-
-
                         worksheet.Cells("G1").Value = "扫描"
                         worksheet.Cells("G2").Value = "大小"
                         worksheet.Cells("G3").Value = "耗时"
                         worksheet.Cells("G4").Value = “筛选”
                         worksheet.Cells("G5").Value = "条件"
-
                         worksheet.Cells("G1:G5").Style.Font.Bold = True
                         worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
                         worksheet.Cells("G1:G5").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
@@ -854,7 +917,6 @@ Public Class Form1
                         Next
                         worksheet.Column(2).Width = ListView2.Columns(2).Width / 2
                         worksheet.Column(8).Width = ListView2.Columns(2).Width / 2
-
                         worksheet.Cells("A1:E1").Style.Font.Bold = True
                         worksheet.Cells("A1:E1").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
                         worksheet.Cells("A1:E1").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
@@ -1046,9 +1108,9 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
-        If CheckBox6.Checked = True Then PlayNotificationSound3()
-    End Sub
+    'Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
+    '    If CheckBox6.Checked = True Then PlayNotificationSound2()
+    'End Sub
 
     '搜索结果选定
     Private Sub SearchListView2(keyword As String)
@@ -1085,6 +1147,11 @@ Public Class Form1
         Catch ex As Exception
         End Try
     End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        Form4.Show()
+    End Sub
+
     Private Sub PlayNotificationSound2()
         Try
             ' 从资源播放音效
@@ -1202,10 +1269,19 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Form1_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
-        PositionForm3()
+    Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox14.CheckStateChanged
+        If CheckBox14.Checked = True Then
+            Panel3.Visible = True
+        ElseIf CheckBox14.Checked = False Then
+            Panel3.Visible = False
+        End If
     End Sub
-    Private Sub PositionForm3()
-        Form3.Location = New Point(Me.Right, Me.Top)
+
+    Private Sub TextBox2_MouseHover(sender As Object, e As EventArgs) Handles TextBox2.MouseHover
+        ToolTip1.SetToolTip(TextBox2, "宽度 " & TextBox2.Text)
+    End Sub
+
+    Private Sub TextBox3_MouseHover(sender As Object, e As EventArgs) Handles TextBox3.MouseHover
+        ToolTip1.SetToolTip(TextBox3, "高度 " & TextBox3.Text)
     End Sub
 End Class
