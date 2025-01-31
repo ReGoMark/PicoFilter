@@ -318,7 +318,7 @@ Partial Class Form1
         Me.ListView2.HideSelection = False
         Me.ListView2.Location = New System.Drawing.Point(0, 0)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(507, 350)
+        Me.ListView2.Size = New System.Drawing.Size(508, 350)
         Me.ListView2.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListView2, "双击项预览。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListView2.UseCompatibleStateImageBehavior = False
@@ -426,7 +426,7 @@ Partial Class Form1
         Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label8.Location = New System.Drawing.Point(-1, 350)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(508, 45)
+        Me.Label8.Size = New System.Drawing.Size(509, 45)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = " Wait"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -741,7 +741,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.CheckBox15)
         Me.Panel3.Controls.Add(Me.CheckBox11)
         Me.Panel3.Controls.Add(Me.Button6)
-        Me.Panel3.Location = New System.Drawing.Point(180, 356)
+        Me.Panel3.Location = New System.Drawing.Point(176, 356)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(202, 72)
         Me.Panel3.TabIndex = 44
@@ -861,7 +861,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(100, 303)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(96, 303)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(27, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -904,7 +904,7 @@ Partial Class Form1
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(155, 389)
+        Me.ComboBox1.Location = New System.Drawing.Point(151, 389)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(73, 24)
         Me.ComboBox1.TabIndex = 33
@@ -930,7 +930,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(97, 392)
+        Me.Label7.Location = New System.Drawing.Point(93, 392)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
