@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports OfficeOpenXml
-Imports System.Threading
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
@@ -79,10 +78,6 @@ Public Class Form1
                     Exit For
                 End If
             End Try
-            If index Mod 5 = 0 Then
-                GC.Collect()
-                GC.WaitForPendingFinalizers()
-            End If
         Next
         stopwatch.Stop()
         min = stopwatch.ElapsedMilliseconds
@@ -118,7 +113,6 @@ Public Class Form1
         gif1 = gifCount
         ico1 = icoCount
     End Sub
-
     ' 加载图片从指定文件夹，到listview2
     Private Sub 筛选图片()
         ListView2.Items.Clear()
@@ -137,8 +131,8 @@ Public Class Form1
         Dim icoSelected As Boolean = CheckBox7.Checked
         Dim excludeResolution As Boolean = CheckBox11.Checked '分辨率反选筛选
         Dim volResolution As Boolean = CheckBox13.Checked
-        Dim plsResoulution As Boolean = CheckBox15.Checked
-        Dim mnsResoulution As Boolean = CheckBox16.Checked
+        Dim plsResolution As Boolean = CheckBox15.Checked
+        Dim mnsResolution As Boolean = CheckBox16.Checked
         Dim matchingFileCount As Integer = 0 ' 符合筛选条件的计数
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
@@ -153,199 +147,36 @@ Public Class Form1
             Dim height As Integer = Integer.Parse(resolution(1))
             Dim format As String = item.SubItems(3).Text
             Dim sizeInKB As String = item.SubItems(4).Text ' 获取大小列的值
-            Dim matchesResolution As Boolean = Not resolutionSelected OrElse '处理是否勾选了分辨率作为筛选条件
-                (width = widthFilter AndAlso height = heightFilter)
-            Dim matchesFormat As Boolean = (jpgSelected AndAlso format = ".JPG") OrElse ' 处理文件格式筛选
-                (jpgSelected AndAlso format = ".JPEG") OrElse
-                (pngSelected AndAlso format = ".PNG") OrElse
-                (bmpSelected AndAlso format = ".BMP") OrElse
-                (icoSelected AndAlso format = ".ICO") OrElse
-                (gifSelected AndAlso format = ".GIF")
+            Dim matchesFormat As Boolean = (jpgSelected And (format = ".JPG" Or format = ".JPEG")) OrElse
+                                       (pngSelected And format = ".PNG") OrElse
+                                       (bmpSelected And format = ".BMP") OrElse
+                                       (icoSelected And format = ".ICO") OrElse
+                                       (gifSelected And format = ".GIF")
 
-            '排除筛选
-            If excludeResolution And resolutionSelected And
-                Not volResolution And Not plsResoulution And Not mnsResoulution Then
+            Dim isMatch As Boolean = False
 
-                If width <> widthFilter OrElse height <> heightFilter Then
-                    ' 分辨率不符合要求，将文件添加到ListView2
-                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
-                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
-                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
-                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-                    newItem.SubItems.Add(sizeInKB) ' 文件大小
-                    ListView2.Items.Add(newItem)
-                    matchingFileCount += 1 ' 符合条件的文件计数自增
-
-                    ' 更新格式计数
-                    Select Case format
-                        Case ".JPG", ".JPEG"
-                            jpgCount += 1
-                        Case ".PNG"
-                            pngCount += 1
-                        Case ".GIF"
-                            gifCount += 1
-                        Case ".BMP"
-                            bmpCount += 1
-                        Case ".ICO"
-                            icoCount += 1
-                    End Select
-
-                    Continue For ' 跳过本次循环，继续下一个文件
+            ' 统一处理筛选逻辑
+            If resolutionSelected Then
+                If excludeResolution Then
+                    isMatch = (width <> widthFilter And height <> heightFilter)
+                ElseIf volResolution Then
+                    isMatch = (width = heightFilter AndAlso height = widthFilter) Or (width = widthFilter AndAlso height = heightFilter)
+                ElseIf plsResolution Then
+                    isMatch = (width > widthFilter And height > heightFilter)
+                ElseIf mnsResolution Then
+                    isMatch = (width < widthFilter And height < heightFilter)
+                Else
+                    isMatch = (width = widthFilter AndAlso height = heightFilter)
                 End If
+
+                If matchesFormat Then
+                    isMatch = isMatch And matchesFormat
+                End If
+            Else
+                isMatch = matchesFormat
             End If
 
-            '默认筛选
-            If resolutionSelected And Not excludeResolution And
-                Not volResolution And Not mnsResoulution And Not plsResoulution And Not matchesFormat Then
-
-                ' 如果勾选了分辨率则直接添加
-                If width = widthFilter AndAlso height = heightFilter Then
-                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
-                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
-                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
-                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-                    newItem.SubItems.Add(sizeInKB) ' 文件大小
-                    ListView2.Items.Add(newItem)
-                    matchingFileCount += 1 ' 符合条件的文件计数自增
-
-                    ' 更新各格式计数
-                    Select Case format
-                        Case ".JPG", ".JPEG"
-                            jpgCount += 1
-                        Case ".PNG"
-                            pngCount += 1
-                        Case ".GIF"
-                            gifCount += 1
-                        Case ".ICO"
-                            icoCount += 1
-                        Case ".BMP"
-                            bmpCount += 1
-                    End Select
-
-                    Continue For ' 继续下一个文件
-                End If
-            End If
-
-            '互换筛选
-            If volResolution And resolutionSelected And
-                Not excludeResolution And Not mnsResoulution And Not plsResoulution Then
-
-                If width = heightFilter AndAlso height = widthFilter Or width = widthFilter AndAlso height = heightFilter Then
-                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
-                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
-                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
-                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-                    newItem.SubItems.Add(sizeInKB) ' 文件大小
-                    ListView2.Items.Add(newItem)
-                    matchingFileCount += 1 ' 符合条件的文件计数自增
-
-                    ' 更新各格式计数
-                    Select Case format
-                        Case ".JPG", ".JPEG"
-                            jpgCount += 1
-                        Case ".PNG"
-                            pngCount += 1
-                        Case ".GIF"
-                            gifCount += 1
-                        Case ".ICO"
-                            icoCount += 1
-                        Case ".BMP"
-                            bmpCount += 1
-                    End Select
-
-                    Continue For ' 继续下一个文件
-                End If
-            End If
-
-            '分辨率条件全选
-            If resolutionSelected And volResolution And excludeResolution Then
-                If Not ((width = widthFilter And height = heightFilter) Or (width = heightFilter And height = widthFilter)) Then
-                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
-                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
-                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
-                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-                    newItem.SubItems.Add(sizeInKB) ' 文件大小
-                    ListView2.Items.Add(newItem)
-                    matchingFileCount += 1 ' 符合条件的文件计数自增
-
-                    ' 更新各格式计数
-                    Select Case format
-                        Case ".JPG", ".JPEG"
-                            jpgCount += 1
-                        Case ".PNG"
-                            pngCount += 1
-                        Case ".GIF"
-                            gifCount += 1
-                        Case ".ICO"
-                            icoCount += 1
-                        Case ".BMP"
-                            bmpCount += 1
-                    End Select
-
-                    Continue For ' 继续下一个文件
-                End If
-            End If
-
-            '大于条件全选
-            If plsResoulution And resolutionSelected And Not mnsResoulution Then
-                If (width > widthFilter And height > heightFilter) Then
-                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
-                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
-                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
-                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-                    newItem.SubItems.Add(sizeInKB) ' 文件大小
-                    ListView2.Items.Add(newItem)
-                    matchingFileCount += 1 ' 符合条件的文件计数自增
-
-                    ' 更新各格式计数
-                    Select Case format
-                        Case ".JPG", ".JPEG"
-                            jpgCount += 1
-                        Case ".PNG"
-                            pngCount += 1
-                        Case ".GIF"
-                            gifCount += 1
-                        Case ".ICO"
-                            icoCount += 1
-                        Case ".BMP"
-                            bmpCount += 1
-                    End Select
-
-                    Continue For ' 继续下一个文件
-                End If
-            End If
-
-            '小于条件全选
-            If mnsResoulution And resolutionSelected And Not plsResoulution Then
-                If (width < widthFilter And height < heightFilter) Then
-                    Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
-                    newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
-                    newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
-                    newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-                    newItem.SubItems.Add(sizeInKB) ' 文件大小
-                    ListView2.Items.Add(newItem)
-                    matchingFileCount += 1 ' 符合条件的文件计数自增
-
-                    ' 更新各格式计数
-                    Select Case format
-                        Case ".JPG", ".JPEG"
-                            jpgCount += 1
-                        Case ".PNG"
-                            pngCount += 1
-                        Case ".GIF"
-                            gifCount += 1
-                        Case ".ICO"
-                            icoCount += 1
-                        Case ".BMP"
-                            bmpCount += 1
-                    End Select
-
-                    Continue For ' 继续下一个文件
-                End If
-            End If
-
-            ' 处理文件格式筛选
-            If matchesFormat Then
+            If isMatch Then
                 Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
                 newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
                 newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
@@ -381,7 +212,6 @@ Public Class Form1
 
         Label2.Text = String.Join("  ", result)
         PlayNotificationSound3()
-
         output0 = matchingFileCount
         jpg0 = jpgCount
         png0 = pngCount
@@ -389,6 +219,7 @@ Public Class Form1
         gif0 = gifCount
         ico0 = icoCount
     End Sub
+
 
     ' 当 ListView1 中的项被选中时，在 Label5 显示选中的序号和文件名
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
@@ -828,7 +659,6 @@ Public Class Form1
 
     ' Button9 的点击事件，用于将 ListView2 导出为 .xlsx 文件
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        ' 设置许可证上下文为非商业用途
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
@@ -841,40 +671,10 @@ Public Class Form1
         Dim inreslnSelected As Boolean = CheckBox11.Checked
         Dim volreslnSelected As Boolean = CheckBox13.Checked
 
-        Dim sumsizestr As String
-        If Int(sumsize / 1024 / 1024) > 1024 Then
-            sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & " GB"
-        Else
-            If Int(sumsize / 1024 / 1024) > 1 Then
-                sumsizestr = Int(sumsize * 100 / 1024 / 1024) / 100 & " MB"
-            Else
-                sumsizestr = Int(sumsize * 100 / 1024) / 100 & " KB"
-            End If
-        End If
-        Dim minstr As String
-        If min < 1000 Then
-            minstr = min & " ms"
-        Else
-            minstr = min / 1000 & " s"
-        End If
-        Dim result As New List(Of String)
-        If jpgSelected = True Then result.Add($"[JPG]")
-        If pngSelected = True Then result.Add($"[PNG]")
-        If gifSelected = True Then result.Add($"[GIF]")
-        If bmpSelected = True Then result.Add($"[BMP]")
-        If icoSelected = True Then result.Add($"[ICO]")
-        If inreslnSelected = True And resolutionSelected = True And volreslnSelected = False Then
-            result.Add($"[IN-RSLN " & TextBox2.Text & “ × ” & TextBox3.Text & "]")
-        End If
-        If resolutionSelected = True And inreslnSelected = False And volreslnSelected = False Then
-            result.Add($"[RSLN " & TextBox2.Text & “ × ” & TextBox3.Text & "]")
-        End If
-        If volreslnSelected = True And resolutionSelected = True And inreslnSelected = True Then
-            result.Add($"[VO,IN-RSLN " & TextBox2.Text & “ × ” & TextBox3.Text & "]")
-        End If
-        If volreslnSelected = True And resolutionSelected = True And inreslnSelected = False Then
-            result.Add($"[VO-RSLN " & TextBox2.Text & “ × ” & TextBox3.Text & "]")
-        End If
+        Dim sumsizestr = FormatSize(sumsize)
+        Dim minstr = FormatTime(min)
+        Dim result = GetFilterConditions(jpgSelected, pngSelected, gifSelected, bmpSelected, icoSelected, inreslnSelected, volreslnSelected, resolutionSelected)
+
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
             saveFileDialog.FileName = "筛选结果" & formattedDateTime & ".xlsx"
@@ -893,40 +693,14 @@ Public Class Form1
                         Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
 
                         ' 添加 Label6 和 Label2 的内容在顶部
-                        worksheet.Cells("H1").Value = Label6.Text
-                        worksheet.Cells("H2").Value = sumsizestr
-                        worksheet.Cells("H3").Value = minstr
-                        worksheet.Cells("H4").Value = Label2.Text
-                        worksheet.Cells("H5").Value = String.Join(" ", result)
-                        worksheet.Cells("G1").Value = "扫描"
-                        worksheet.Cells("G2").Value = "大小"
-                        worksheet.Cells("G3").Value = "耗时"
-                        worksheet.Cells("G4").Value = “筛选”
-                        worksheet.Cells("G5").Value = "条件"
-                        worksheet.Cells("G1:G5").Style.Font.Bold = True
-                        worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
-                        worksheet.Cells("G1:G5").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+                        AddHeaderInfo(worksheet, Label6.Text, sumsizestr, minstr, Label2.Text, String.Join(" ", result))
 
-                        worksheet.Cells("A1:A2").Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left
                         ' 设置表头（对应 ListView2 的列，从第1行开始）
-                        For i As Integer = 0 To ListView2.Columns.Count - 1
-                            worksheet.Cells(1, i + 1).Value = ListView2.Columns(i).Text
-                            Dim columnWidth As Double = ListView2.Columns(i).Width / 7 ' 调整比例使宽度接近视觉一致
-                            worksheet.Column(i + 1).Width = columnWidth
-                            worksheet.Column(i + 3).Style.HorizontalAlignment = Style.ExcelHorizontalAlignment.Right
-                        Next
-                        worksheet.Column(2).Width = ListView2.Columns(2).Width / 2
-                        worksheet.Column(8).Width = ListView2.Columns(2).Width / 2
-                        worksheet.Cells("A1:E1").Style.Font.Bold = True
-                        worksheet.Cells("A1:E1").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
-                        worksheet.Cells("A1:E1").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+                        SetListViewHeaders(worksheet, ListView2)
 
                         ' 填充 ListView2 的数据（从第2行开始）
-                        For i As Integer = 0 To ListView2.Items.Count - 1
-                            For j As Integer = 0 To ListView2.Items(i).SubItems.Count - 1
-                                worksheet.Cells(i + 2, j + 1).Value = ListView2.Items(i).SubItems(j).Text
-                            Next
-                        Next
+                        FillListViewData(worksheet, ListView2)
+
                         ' 保存 Excel 文件
                         package.Save()
                     End Using
@@ -941,6 +715,90 @@ Public Class Form1
                 End Try
             End If
         End Using
+    End Sub
+
+    ' 格式化文件大小
+    Private Function FormatSize(size As Long) As String
+        If Int(size / 1024 / 1024 / 1024) > 0 Then
+            Return Int(size * 100 / 1024 / 1024 / 1024) / 100 & " GB"
+        ElseIf Int(size / 1024 / 1024) > 0 Then
+            Return Int(size * 100 / 1024 / 1024) / 100 & " MB"
+        Else
+            Return Int(size * 100 / 1024) / 100 & " KB"
+        End If
+    End Function
+
+    ' 格式化时间
+    Private Function FormatTime(time As Long) As String
+        If time < 1000 Then
+            Return time & " ms"
+        Else
+            Return time / 1000 & " s"
+        End If
+    End Function
+
+    ' 获取筛选条件字符串列表
+    Private Function GetFilterConditions(jpgSelected As Boolean, pngSelected As Boolean, gifSelected As Boolean, bmpSelected As Boolean, icoSelected As Boolean, inreslnSelected As Boolean, volreslnSelected As Boolean, resolutionSelected As Boolean) As List(Of String)
+        Dim result As New List(Of String)
+        If jpgSelected Then result.Add("[JPG]")
+        If pngSelected Then result.Add("[PNG]")
+        If gifSelected Then result.Add("[GIF]")
+        If bmpSelected Then result.Add("[BMP]")
+        If icoSelected Then result.Add("[ICO]")
+
+        Dim resolutionStr = $" {TextBox2.Text} × {TextBox3.Text}"
+        If inreslnSelected And resolutionSelected And Not volreslnSelected Then
+            result.Add($"[IN-RSLN{resolutionStr}]")
+        ElseIf resolutionSelected And Not inreslnSelected And Not volreslnSelected Then
+            result.Add($"[RSLN{resolutionStr}]")
+        ElseIf volreslnSelected And resolutionSelected And inreslnSelected Then
+            result.Add($"[VO,IN-RSLN{resolutionStr}]")
+        ElseIf volreslnSelected And resolutionSelected And Not inreslnSelected Then
+            result.Add($"[VO-RSLN{resolutionStr}]")
+        End If
+
+        Return result
+    End Function
+
+    ' 添加表头信息到 Excel 工作表
+    Private Sub AddHeaderInfo(worksheet As ExcelWorksheet, label6Text As String, sumsizestr As String, minstr As String, label2Text As String, filterConditions As String)
+        worksheet.Cells("H1").Value = label6Text
+        worksheet.Cells("H2").Value = sumsizestr
+        worksheet.Cells("H3").Value = minstr
+        worksheet.Cells("H4").Value = label2Text
+        worksheet.Cells("H5").Value = filterConditions
+        worksheet.Cells("G1").Value = "扫描"
+        worksheet.Cells("G2").Value = "大小"
+        worksheet.Cells("G3").Value = "耗时"
+        worksheet.Cells("G4").Value = "筛选"
+        worksheet.Cells("G5").Value = "条件"
+        worksheet.Cells("G1:G5").Style.Font.Bold = True
+        worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+        worksheet.Cells("G1:G5").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+    End Sub
+
+    ' 设置 ListView 的表头到 Excel 工作表
+    Private Sub SetListViewHeaders(worksheet As ExcelWorksheet, listView As ListView)
+        For i As Integer = 0 To listView.Columns.Count - 1
+            worksheet.Cells(1, i + 1).Value = listView.Columns(i).Text
+            Dim columnWidth As Double = listView.Columns(i).Width / 7 ' 调整比例使宽度接近视觉一致
+            worksheet.Column(i + 1).Width = columnWidth
+            worksheet.Column(i + 3).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right
+        Next
+        worksheet.Column(2).Width = listView.Columns(2).Width / 2
+        worksheet.Column(8).Width = listView.Columns(2).Width / 2
+        worksheet.Cells("A1:E1").Style.Font.Bold = True
+        worksheet.Cells("A1:E1").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+        worksheet.Cells("A1:E1").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+    End Sub
+
+    ' 填充 ListView 的数据到 Excel 工作表
+    Private Sub FillListViewData(worksheet As ExcelWorksheet, listView As ListView)
+        For i As Integer = 0 To listView.Items.Count - 1
+            For j As Integer = 0 To listView.Items(i).SubItems.Count - 1
+                worksheet.Cells(i + 2, j + 1).Value = listView.Items(i).SubItems(j).Text
+            Next
+        Next
     End Sub
 
     Public Sub New()

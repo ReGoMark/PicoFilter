@@ -34,6 +34,7 @@ Partial Class Form2
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label44 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -87,9 +88,9 @@ Partial Class Form2
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label3.Location = New System.Drawing.Point(93, 156)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(152, 40)
+        Me.Label3.Size = New System.Drawing.Size(123, 40)
         Me.Label3.TabIndex = 3
-        Me.Label3.Text = "基础构建：2024/9/25" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "作者：ReGoMark"
+        Me.Label3.Text = "起始：2024/9/25" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "作者：ReGoMark"
         '
         'Label5
         '
@@ -141,9 +142,9 @@ Partial Class Form2
         Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label8.Location = New System.Drawing.Point(93, 51)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(220, 20)
+        Me.Label8.Size = New System.Drawing.Size(212, 20)
         Me.Label8.TabIndex = 10
-        Me.Label8.Text = "当前流版本：1.5.4，2024/12/24"
+        Me.Label8.Text = "当前流版本：1.5.4，2025/1/27"
         '
         'Panel1
         '
@@ -156,6 +157,7 @@ Partial Class Form2
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel2.Controls.Add(Me.Label44)
         Me.Panel2.Controls.Add(Me.Button2)
         Me.Panel2.Controls.Add(Me.Panel1)
         Me.Panel2.Controls.Add(Me.TextBox1)
@@ -163,6 +165,18 @@ Partial Class Form2
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(380, 369)
         Me.Panel2.TabIndex = 15
+        '
+        'Label44
+        '
+        Me.Label44.BackColor = System.Drawing.Color.Transparent
+        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label44.Location = New System.Drawing.Point(31, 292)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(174, 20)
+        Me.Label44.TabIndex = 47
+        Me.Label44.Text = "点击左侧链接访问"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
         '
@@ -252,4 +266,5 @@ Partial Class Form2
     Friend WithEvents Label4 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Button2 As Button
+    Friend WithEvents Label44 As Label
 End Class

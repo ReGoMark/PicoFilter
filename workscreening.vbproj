@@ -243,15 +243,8 @@
     <None Include="NFP.wav" />
     <None Include="x1sx.ico" />
     <None Include="unlocked.ico" />
-    <None Include="prompt.ico" />
     <None Include="pin.ico" />
-    <None Include="p1us.ico" />
-    <None Include="p1n.ico" />
-    <None Include="magi.ico" />
-    <None Include="all.ico" />
-    <None Include="del0.ico" />
     <None Include="exresln.ico" />
-    <None Include="informa.ico" />
     <None Include="locked.ico" />
     <None Include="BG.wav" />
     <Content Include="logoNEW.ico" />
