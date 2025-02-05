@@ -20,7 +20,7 @@ Public Class Form1
         NUM = 0
         min = 0
         sumsize = 0
-        ListView1.Items.Clear()
+        ListView0.Items.Clear()
         ProgressBar1.Value = 0
         Dim stopwatch As New Stopwatch()
         Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
@@ -64,7 +64,7 @@ Public Class Form1
                     item.SubItems.Add(sizeInKB & " KB") ' 添加文件大小
 
                     sumsize += fileSize
-                    ListView1.Items.Add(item) ' 添加到 listview1
+                    ListView0.Items.Add(item) ' 添加到 listview1
                     index += 1 ' 序号自增
                     ProgressBar1.Value += 1 ' 更新进度条、标题计数器
                     NUM = NUM + 1
@@ -82,7 +82,7 @@ Public Class Form1
         stopwatch.Stop()
         min = stopwatch.ElapsedMilliseconds
 
-        Dim fileName1 As String = Path.GetFileName(TextBox1.Text)
+        Dim fileName1 As String = Path.GetFileName(openText.Text)
         Dim sumsizestr As String
         If Int(sumsize / 1024 / 1024) > 1024 Then
             sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & "GB"
@@ -101,7 +101,7 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
 
-        Label6.Text = String.Join("  ", result)
+        sumLabel0.Text = String.Join(" ", result)
         Me.Text = "PicoFilter 1.5" & "  [" & fileName1 & " ," & “ ” & sumsizestr & "]"
         更新统计信息()
         PlayNotificationSound()
@@ -115,24 +115,24 @@ Public Class Form1
     End Sub
     ' 加载图片从指定文件夹，到listview2
     Private Sub 筛选图片()
-        ListView2.Items.Clear()
+        ListView1.Items.Clear()
         Dim widthFilter As Integer ' 分辨率
         Dim heightFilter As Integer
-        If Integer.TryParse(TextBox2.Text, widthFilter) AndAlso Integer.TryParse(TextBox3.Text, heightFilter) Then
+        If Integer.TryParse(wideButton.Text, widthFilter) AndAlso Integer.TryParse(htButton.Text, heightFilter) Then
         Else
             widthFilter = 0 ' 如果未设置分辨率，则设置为0
             heightFilter = 0
         End If
-        Dim jpgSelected As Boolean = CheckBox1.Checked
-        Dim pngSelected As Boolean = CheckBox2.Checked
-        Dim gifSelected As Boolean = CheckBox3.Checked
-        Dim resolutionSelected As Boolean = CheckBox4.Checked
-        Dim bmpSelected As Boolean = CheckBox5.Checked
-        Dim icoSelected As Boolean = CheckBox7.Checked
-        Dim excludeResolution As Boolean = CheckBox11.Checked '分辨率反选筛选
-        Dim volResolution As Boolean = CheckBox13.Checked
-        Dim plsResolution As Boolean = CheckBox15.Checked
-        Dim mnsResolution As Boolean = CheckBox16.Checked
+        Dim jpgSelected As Boolean = jpgButton.Checked
+        Dim pngSelected As Boolean = pngButton.Checked
+        Dim gifSelected As Boolean = gifButton.Checked
+        Dim resolutionSelected As Boolean = reslnButton.Checked
+        Dim bmpSelected As Boolean = bmpButton.Checked
+        Dim icoSelected As Boolean = icoButton.Checked
+        Dim excludeResolution As Boolean = exButton.Checked '分辨率反选筛选
+        Dim volResolution As Boolean = volButton.Checked
+        Dim plsResolution As Boolean = moreButton.Checked
+        Dim mnsResolution As Boolean = mnsButton.Checked
         Dim matchingFileCount As Integer = 0 ' 符合筛选条件的计数
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
@@ -141,7 +141,7 @@ Public Class Form1
         Dim icoCount As Integer = 0
 
         ' 遍历 ListView1 中的每一项，进行筛选
-        For Each item As ListViewItem In ListView1.Items
+        For Each item As ListViewItem In ListView0.Items
             Dim resolution As String() = item.SubItems(2).Text.Split("×"c)
             Dim width As Integer = Integer.Parse(resolution(0))
             Dim height As Integer = Integer.Parse(resolution(1))
@@ -152,9 +152,7 @@ Public Class Form1
                                        (bmpSelected And format = ".BMP") OrElse
                                        (icoSelected And format = ".ICO") OrElse
                                        (gifSelected And format = ".GIF")
-
             Dim isMatch As Boolean = False
-
             ' 统一处理筛选逻辑
             If resolutionSelected Then
                 If excludeResolution Then
@@ -182,7 +180,7 @@ Public Class Form1
                 newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
                 newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
                 newItem.SubItems.Add(sizeInKB) ' 文件大小
-                ListView2.Items.Add(newItem)
+                ListView1.Items.Add(newItem)
                 matchingFileCount += 1 ' 符合条件的文件计数自增
 
                 ' 更新各格式计数
@@ -200,7 +198,6 @@ Public Class Form1
                 End Select
             End If
         Next
-
         '更新label2
         Dim result As New List(Of String)
         result.Add($" [RSLT {matchingFileCount}] -")
@@ -210,7 +207,7 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
 
-        Label2.Text = String.Join("  ", result)
+        sumLabel1.Text = String.Join(" ", result)
         PlayNotificationSound3()
         output0 = matchingFileCount
         jpg0 = jpgCount
@@ -222,47 +219,57 @@ Public Class Form1
 
 
     ' 当 ListView1 中的项被选中时，在 Label5 显示选中的序号和文件名
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-        If ListView1.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
-            Dim selectedCount As Integer = ListView1.SelectedItems.Count
-            Label5.Text = $" [{selectedCount}] [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView0.SelectedIndexChanged
+        If ListView0.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
+            Dim selectedCount As Integer = ListView0.SelectedItems.Count
+            If ListView0.SelectedItems.Count > 1 Then
+                sltLabel0.Text = $" MULTISELECT [{selectedCount}]"
+
+            Else
+                sltLabel0.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
+            End If
         Else
-            Label5.Text = " Ready"
+            sltLabel0.Text = " Ready"
         End If
     End Sub
 
     ' 当 ListView2 中的项被选中时，在 Label8 显示选中的序号和文件名
-    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
-        If ListView2.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
-            Dim selectedCount As Integer = ListView2.SelectedItems.Count
-            Label8.Text = $" [{selectedCount}] [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
+    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+        If ListView1.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+            Dim selectedCount As Integer = ListView1.SelectedItems.Count
+            If ListView1.SelectedItems.Count > 1 Then
+                sltLabel0.Text = $" MULTISELECT [{selectedCount}]"
+
+            Else
+                sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
+            End If
         Else
-            Label8.Text = " Wait"
+                sltLabel1.Text = " Wait"
         End If
     End Sub
 
     ' Button1 点击事件：选择文件夹并加载图片
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles openButton.Click
         Using folderBrowserDialog As New FolderBrowserDialog
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
-                TextBox1.Text = folderBrowserDialog.SelectedPath
+                openText.Text = folderBrowserDialog.SelectedPath
                 加载图片(folderBrowserDialog.SelectedPath)
             End If
         End Using
     End Sub
 
     ' 筛选按钮点击事件，用于开始筛选
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        If checkbox15.Checked = True And TextBox3.Text = "" Then TextBox3.Text = "0"
-        If checkbox15.Checked = True And TextBox2.Text = "" Then TextBox2.Text = "0"
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles fltButton.Click
+        If moreButton.Checked = True And htButton.Text = "" Then htButton.Text = "0"
+        If moreButton.Checked = True And wideButton.Text = "" Then wideButton.Text = "0"
         筛选图片()
         更新统计信息()
     End Sub
 
     ' 启用按钮的拖放功能
-    Private Sub Button1_DragEnter(sender As Object, e As DragEventArgs) Handles Button1.DragEnter
+    Private Sub Button1_DragEnter(sender As Object, e As DragEventArgs) Handles openButton.DragEnter
         ' 判断拖入的是否是文件夹
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -275,30 +282,18 @@ Public Class Form1
     End Sub
 
     ' 拖入识别
-    Private Sub Button1_DragDrop(sender As Object, e As DragEventArgs) Handles Button1.DragDrop
+    Private Sub Button1_DragDrop(sender As Object, e As DragEventArgs) Handles openButton.DragDrop
         Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If Directory.Exists(droppedItems(0)) Then
             Dim folderPath As String = droppedItems(0)
-            TextBox1.Text = folderPath
+            openText.Text = folderPath
             加载图片(folderPath)
-        End If
-    End Sub
-
-    '按下回车键刷新
-    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
-        If e.KeyCode = Keys.F5 Then
-            Dim folderPath As String = TextBox1.Text
-            If Directory.Exists(folderPath) Then
-                加载图片(folderPath)
-            Else
-                MsgBox("加载失败。无效路径", MsgBoxStyle.OkOnly)
-            End If
         End If
     End Sub
 
     ' 启用按钮的拖放功能
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Button1.AllowDrop = True ' 启用拖放功能
+        openButton.AllowDrop = True ' 启用拖放功能
         ComboBox1.SelectedIndex = 0
         ProgressBar1.Maximum = 0
         NUM = 0
@@ -306,14 +301,14 @@ Public Class Form1
     End Sub
 
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-        If ListView1.SelectedItems.Count > 0 Then
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles sltLabel0.Click
+        If ListView0.SelectedItems.Count > 0 Then
             ' 获取选中的文件名
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
 
             ' 拼接完整的文件路径
-            Dim folderPath As String = TextBox1.Text ' 文件夹路径
+            Dim folderPath As String = openText.Text ' 文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
             ' 复制文件路径到剪贴板
@@ -323,14 +318,14 @@ Public Class Form1
     End Sub
 
     ' 在 Label8 上单击时复制 ListView2 选中的文件路径
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-        If ListView2.SelectedItems.Count > 0 Then
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles sltLabel1.Click
+        If ListView1.SelectedItems.Count > 0 Then
             ' 获取选中的文件名
-            Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
+            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
 
             ' 拼接完整的文件路径
-            Dim folderPath As String = TextBox1.Text ' 文件夹路径
+            Dim folderPath As String = openText.Text ' 文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
             ' 复制文件路径到剪贴板
@@ -340,13 +335,13 @@ Public Class Form1
     End Sub
 
     ' 双击 ListView1 中的项以打开文件
-    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
-        If ListView1.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView0.DoubleClick
+        If ListView0.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
 
             ' 拼接完整的文件路径
-            Dim folderPath As String = TextBox1.Text ' 文件夹路径
+            Dim folderPath As String = openText.Text ' 文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
             ' 检查文件是否存在
@@ -360,11 +355,11 @@ Public Class Form1
     End Sub
 
     ' 双击 ListView2 选中项打开文件
-    Private Sub ListView2_DoubleClick(sender As Object, e As EventArgs) Handles ListView2.DoubleClick
-        If ListView2.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
+    Private Sub ListView2_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
+        If ListView1.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
-            Dim folderPath As String = TextBox1.Text ' 文件夹路径
+            Dim folderPath As String = openText.Text ' 文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
             ' 使用默认程序打开文件
@@ -376,15 +371,43 @@ Public Class Form1
         End If
     End Sub
 
+    '点击按钮删除文件
+    Private Sub delButton_Click(sender As Object, e As EventArgs) Handles delbutton.Click
+        If ListView1.Items.Count = 0 Then
+            MsgBox("没有可删除的文件！", MsgBoxStyle.Exclamation, "提示")
+            Exit Sub
+        End If
+
+        Dim result As DialogResult = MessageBox.Show("确定要删除选定项吗？操作不可逆！", "删除文件", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+        If result = DialogResult.Yes Then
+            For Each item As ListViewItem In ListView1.Items
+                Dim fileName As String = item.SubItems(1).Text
+                Dim sourcePath As String = Path.Combine(openText.Text, fileName) ' 获取完整路径
+
+                Try
+                    If File.Exists(sourcePath) Then
+                        File.Delete(sourcePath) ' 删除文件
+                    End If
+                Catch ex As Exception
+                    MsgBox("删除失败: " & ex.Message, MsgBoxStyle.Critical, "错误")
+                End Try
+            Next
+
+            ' 删除成功后，从 ListView1 中移除项
+            ListView1.Items.Clear()
+        End If
+    End Sub
+
     ' Button3 点击事件：复制筛选结果到指定文件夹
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles copyButton.Click
         Using folderBrowserDialog As New FolderBrowserDialog
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 Dim targetFolder As String = folderBrowserDialog.SelectedPath
 
-                For Each item As ListViewItem In ListView2.Items
+                For Each item As ListViewItem In ListView1.Items
                     Dim fileName As String = item.SubItems(1).Text
-                    Dim sourcePath As String = Path.Combine(TextBox1.Text, fileName) ' 源文件路径
+                    Dim sourcePath As String = Path.Combine(openText.Text, fileName) ' 源文件路径
 
                     Try
                         File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
@@ -398,14 +421,14 @@ Public Class Form1
     End Sub
 
     ' Button4 点击事件：移动筛选结果到指定文件夹
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles moveButton.Click
         Using folderBrowserDialog As New FolderBrowserDialog
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 Dim targetFolder As String = folderBrowserDialog.SelectedPath
 
-                For Each item As ListViewItem In ListView2.Items
+                For Each item As ListViewItem In ListView1.Items
                     Dim fileName As String = item.SubItems(1).Text
-                    Dim sourcePath As String = Path.Combine(TextBox1.Text, fileName) ' 源文件路径
+                    Dim sourcePath As String = Path.Combine(openText.Text, fileName) ' 源文件路径
 
                     Try
                         File.Move(sourcePath, Path.Combine(targetFolder, fileName))
@@ -420,10 +443,10 @@ Public Class Form1
     End Sub
 
     ' Button5 点击事件：将筛选结果移动到扫描文件夹下的“筛选结果”文件夹内
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles dvdButton.Click
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
-        Dim sourceFolder As String = TextBox1.Text ' 源文件夹路径
+        Dim sourceFolder As String = openText.Text ' 源文件夹路径
         Dim resultFolder As String = Path.Combine(sourceFolder, "筛选结果" & formattedDateTime)
 
         ' 创建“筛选结果”文件夹（如果不存在）
@@ -431,7 +454,7 @@ Public Class Form1
             Directory.CreateDirectory(resultFolder)
         End If
 
-        For Each item As ListViewItem In ListView2.Items
+        For Each item As ListViewItem In ListView1.Items
             Dim fileName As String = item.SubItems(1).Text
             Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
 
@@ -447,12 +470,12 @@ Public Class Form1
     End Sub
 
     ' Button7 点击事件：将 ListView1 中选中的文件添加到 ListView2 中
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles addButton.Click
         ' 遍历 ListView1 中的选中项
-        For Each selectedItem As ListViewItem In ListView1.SelectedItems
+        For Each selectedItem As ListViewItem In ListView0.SelectedItems
             ' 检查 ListView2 中是否已经存在该文件
             Dim fileName As String = selectedItem.SubItems(1).Text
-            Dim existsInListView2 As Boolean = ListView2.Items.Cast(Of ListViewItem)().Any(Function(item) item.SubItems(1).Text = fileName)
+            Dim existsInListView2 As Boolean = ListView1.Items.Cast(Of ListViewItem)().Any(Function(item) item.SubItems(1).Text = fileName)
 
             ' 如果 ListView2 中不存在该文件，则添加
             If Not existsInListView2 Then
@@ -461,7 +484,7 @@ Public Class Form1
                 newItem.SubItems.Add(selectedItem.SubItems(2).Text) ' 分辨率
                 newItem.SubItems.Add(selectedItem.SubItems(3).Text) ' 格式
                 newItem.SubItems.Add(selectedItem.SubItems(4).Text)
-                ListView2.Items.Add(newItem) ' 添加到 ListView2
+                ListView1.Items.Add(newItem) ' 添加到 ListView2
                 ' 将新项目的字体颜色设置
                 newItem.ForeColor = Color.Black
                 newItem.BackColor = Color.Lavender
@@ -472,12 +495,12 @@ Public Class Form1
     End Sub
 
     ' Button8 点击事件：删除 ListView2 中选中的项
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
         ' 确保 ListView2 中有选中的项
-        If ListView2.SelectedItems.Count > 0 Then
+        If ListView1.SelectedItems.Count > 0 Then
             ' 从 ListView2 中删除选中的项
-            For Each selectedItem As ListViewItem In ListView2.SelectedItems
-                ListView2.Items.Remove(selectedItem)
+            For Each selectedItem As ListViewItem In ListView1.SelectedItems
+                ListView1.Items.Remove(selectedItem)
             Next
         Else
             MsgBox("请选择一个项", MsgBoxStyle.OkOnly)
@@ -485,8 +508,8 @@ Public Class Form1
         UpdateLabel2()
     End Sub
     '总在最前
-    Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckStateChanged
-        If CheckBox6.Checked = True Then
+    Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
+        If topButton.Checked = True Then
             TopMost = True
         Else
             TopMost = False
@@ -498,13 +521,13 @@ Public Class Form1
     Private currentOrder As SortOrder = SortOrder.Ascending
 
     ' ListView1 的列标题单击事件
-    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
-        SortListView(ListView1, e.Column)
+    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView0.ColumnClick
+        SortListView(ListView0, e.Column)
     End Sub
 
     ' ListView2 的列标题单击事件
-    Private Sub ListView2_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView2.ColumnClick
-        SortListView(ListView2, e.Column)
+    Private Sub ListView2_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
+        SortListView(ListView1, e.Column)
     End Sub
 
     '排序
@@ -566,27 +589,27 @@ Public Class Form1
     End Class
 
 
-    Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox2.KeyPress
+    Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles wideButton.KeyPress
         ' 检查输入的字符是否是数字或控制字符（如退格）
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True ' 如果不是，则取消该输入
         End If
     End Sub
 
-    Private Sub TextBox3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox3.KeyPress
+    Private Sub TextBox3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles htButton.KeyPress
         ' 检查输入的字符是否是数字或控制字符（如退格）
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True ' 如果不是，则取消该输入
         End If
     End Sub
     '关于
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles infoButton.Click
         Form2.Show()
     End Sub
 
     Private Sub UpdateLabel2()
         ' 总文件数
-        Dim totalFiles As Integer = ListView2.Items.Count
+        Dim totalFiles As Integer = ListView1.Items.Count
 
         ' 各种格式的文件数量
         Dim index As Integer = 1
@@ -598,7 +621,7 @@ Public Class Form1
         Dim icoCount As Integer = 0
 
         ' 遍历 ListView2 统计文件格式数量
-        For Each item As ListViewItem In ListView2.Items
+        For Each item As ListViewItem In ListView1.Items
             Dim format As String = item.SubItems(3).Text.ToUpper()
 
             Select Case format
@@ -624,52 +647,52 @@ Public Class Form1
         If bmpCount > 0 Then result.Add($"[BMP]{bmpCount}")
         If icoCount > 0 Then result.Add($"[ICO]{icoCount}")
 
-        Label2.Text = String.Join(" ", result)
+        sumLabel1.Text = String.Join(" ", result)
     End Sub
 
     ' Label5 的 MouseHover 事件
-    Private Sub Label5_MouseHover(sender As Object, e As EventArgs) Handles Label5.MouseHover
+    Private Sub Label5_MouseHover(sender As Object, e As EventArgs) Handles sltLabel0.MouseHover
         ' 检查 ListView1 是否有选中项
-        If ListView1.SelectedItems.Count > 0 Then
+        If ListView0.SelectedItems.Count > 0 Then
             ' 获取 ListView1 选中项的文件名
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
             ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(Label5, fileName & vbCrLf & "单击复制路径。")
+            ToolTip1.SetToolTip(sltLabel0, fileName & vbCrLf & "单击复制路径。")
         Else
             ' 如果没有选中项，显示默认提示
-            ToolTip1.SetToolTip(Label5, "单击复制路径。")
+            ToolTip1.SetToolTip(sltLabel0, "单击复制路径。")
         End If
     End Sub
 
     ' Label8 的 MouseHover 事件
-    Private Sub Label8_MouseHover(sender As Object, e As EventArgs) Handles Label8.MouseHover
+    Private Sub Label8_MouseHover(sender As Object, e As EventArgs) Handles sltLabel1.MouseHover
         ' 检查 ListView2 是否有选中项
-        If ListView2.SelectedItems.Count > 0 Then
+        If ListView1.SelectedItems.Count > 0 Then
             ' 获取 ListView2 选中项的文件名
-            Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
+            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
             ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(Label8, fileName & vbCrLf & "单击复制路径。")
+            ToolTip1.SetToolTip(sltLabel1, fileName & vbCrLf & "单击复制路径。")
         Else
             ' 如果没有选中项，显示默认提示
-            ToolTip1.SetToolTip(Label8, "单击复制路径。")
+            ToolTip1.SetToolTip(sltLabel1, "单击复制路径。")
         End If
     End Sub
 
-    ' Button9 的点击事件，用于将 ListView2 导出为 .xlsx 文件
-    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+    ' xlsxButton 的点击事件，用于将 ListView2 导出为 .xlsx 文件
+    Private Sub xlsxButton_Click(sender As Object, e As EventArgs) Handles xlsxButton.Click
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
-        Dim jpgSelected As Boolean = CheckBox1.Checked
-        Dim pngSelected As Boolean = CheckBox2.Checked
-        Dim gifSelected As Boolean = CheckBox3.Checked
-        Dim resolutionSelected As Boolean = CheckBox4.Checked
-        Dim bmpSelected As Boolean = CheckBox5.Checked
-        Dim icoSelected As Boolean = CheckBox7.Checked
-        Dim inreslnSelected As Boolean = CheckBox11.Checked
-        Dim volreslnSelected As Boolean = CheckBox13.Checked
+        Dim jpgSelected As Boolean = jpgButton.Checked
+        Dim pngSelected As Boolean = pngButton.Checked
+        Dim gifSelected As Boolean = gifButton.Checked
+        Dim resolutionSelected As Boolean = reslnButton.Checked
+        Dim bmpSelected As Boolean = bmpButton.Checked
+        Dim icoSelected As Boolean = icoButton.Checked
+        Dim inreslnSelected As Boolean = exButton.Checked
+        Dim volreslnSelected As Boolean = volButton.Checked
 
         Dim sumsizestr = FormatSize(sumsize)
         Dim minstr = FormatTime(min)
@@ -693,13 +716,13 @@ Public Class Form1
                         Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
 
                         ' 添加 Label6 和 Label2 的内容在顶部
-                        AddHeaderInfo(worksheet, Label6.Text, sumsizestr, minstr, Label2.Text, String.Join(" ", result))
+                        AddHeaderInfo(worksheet, sumLabel0.Text, sumsizestr, minstr, sumLabel1.Text, String.Join(" ", result))
 
                         ' 设置表头（对应 ListView2 的列，从第1行开始）
-                        SetListViewHeaders(worksheet, ListView2)
+                        SetListViewHeaders(worksheet, ListView1)
 
                         ' 填充 ListView2 的数据（从第2行开始）
-                        FillListViewData(worksheet, ListView2)
+                        FillListViewData(worksheet, ListView1)
 
                         ' 保存 Excel 文件
                         package.Save()
@@ -746,7 +769,7 @@ Public Class Form1
         If bmpSelected Then result.Add("[BMP]")
         If icoSelected Then result.Add("[ICO]")
 
-        Dim resolutionStr = $" {TextBox2.Text} × {TextBox3.Text}"
+        Dim resolutionStr = $" {wideButton.Text} × {htButton.Text}"
         If inreslnSelected And resolutionSelected And Not volreslnSelected Then
             result.Add($"[IN-RSLN{resolutionStr}]")
         ElseIf resolutionSelected And Not inreslnSelected And Not volreslnSelected Then
@@ -809,68 +832,68 @@ Public Class Form1
     ' 窗体的 KeyDown 事件
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Add Then ' 检测 "+" 按键
-            Button7.PerformClick() ' 触发 Button7 的点击事件
+            addButton.PerformClick() ' 触发 Button7 的点击事件
         End If
         If e.KeyCode = Keys.Delete Then ' 检测 "Delete" 按键
-            Button8.PerformClick() ' 触发 Button8 的点击事件
+            bksbutton.PerformClick() ' 触发 Button8 的点击事件
         End If
         If e.KeyCode = Keys.F2 Then
-            Button1.PerformClick()
+            openButton.PerformClick()
         End If
         If e.KeyCode = Keys.Return Then
-            Button2.PerformClick()
+            fltButton.PerformClick()
         End If
         If e.KeyCode = Keys.S Then
-            Button11.PerformClick()
+            stsButton.PerformClick()
         End If
         If e.KeyCode = Keys.E Then
-            Button9.PerformClick()
+            xlsxButton.PerformClick()
         End If
         If e.KeyCode = Keys.L Then
-            If CheckBox12.Checked = True Then
-                CheckBox12.CheckState = CheckState.Unchecked
+            If lockButton.Checked = True Then
+                lockButton.CheckState = CheckState.Unchecked
             Else
-                CheckBox12.CheckState = CheckState.Checked
+                lockButton.CheckState = CheckState.Checked
             End If
         End If
     End Sub
     '条件全选
-    Private Sub CheckBox10_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox10.CheckStateChanged
-        If CheckBox10.Checked = True Then
-            CheckBox1.Checked = True
-            CheckBox2.Checked = True
-            CheckBox3.Checked = True
-            CheckBox5.Checked = True
-            CheckBox7.Checked = True
+    Private Sub CheckBox10_CheckStateChanged(sender As Object, e As EventArgs) Handles mentionButton.CheckStateChanged
+        If mentionButton.Checked = True Then
+            jpgButton.Checked = True
+            pngButton.Checked = True
+            gifButton.Checked = True
+            bmpButton.Checked = True
+            icoButton.Checked = True
         Else
-            CheckBox1.Checked = False
-            CheckBox2.Checked = False
-            CheckBox3.Checked = False
-            CheckBox5.Checked = False
-            CheckBox7.Checked = False
+            jpgButton.Checked = False
+            pngButton.Checked = False
+            gifButton.Checked = False
+            bmpButton.Checked = False
+            icoButton.Checked = False
         End If
     End Sub
     '注册tooltip
-    Private Sub Label6_MouseHover(sender As Object, e As EventArgs) Handles Label6.MouseHover
-        ToolTip1.SetToolTip(Label6, Label6.Text)
+    Private Sub Label6_MouseHover(sender As Object, e As EventArgs) Handles sumLabel0.MouseHover
+        ToolTip1.SetToolTip(sumLabel0, sumLabel0.Text)
     End Sub
     '注册tooltip
-    Private Sub Label2_MouseHover(sender As Object, e As EventArgs) Handles Label2.MouseHover
-        ToolTip1.SetToolTip(Label2, Label2.Text)
+    Private Sub Label2_MouseHover(sender As Object, e As EventArgs) Handles sumLabel1.MouseHover
+        ToolTip1.SetToolTip(sumLabel1, sumLabel1.Text)
     End Sub
     '双击填充分辨率
     Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick
-        TextBox3.Text = Val（TextBox2.Text）
+        htButton.Text = Val（wideButton.Text）
     End Sub
     '中键打开
-    Private Sub TextBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseUp
+    Private Sub TextBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles openText.MouseUp
         ' 判断是否为鼠标中键点击
         If e.Button = MouseButtons.Middle Then
             ' 调试输出，确认事件触发
             'MsgBox("鼠标中键点击触发")
 
             ' 获取文件夹路径
-            Dim folderPath As String = TextBox1.Text
+            Dim folderPath As String = openText.Text
 
             ' 检查路径是否为空并且文件夹是否存在
             If Not String.IsNullOrEmpty(folderPath) AndAlso Directory.Exists(folderPath) Then
@@ -896,19 +919,19 @@ Public Class Form1
 
     Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         If Me.WindowState = FormWindowState.Maximized Then
+            ListView0.Columns(1).Width = ListView0.Width / 1.75
             ListView1.Columns(1).Width = ListView1.Width / 1.75
-            ListView2.Columns(1).Width = ListView2.Width / 1.75
         ElseIf Me.WindowState = FormWindowState.Normal Then
+            ListView0.Columns(1).Width = 135
             ListView1.Columns(1).Width = 135
-            ListView2.Columns(1).Width = 135
         End If
     End Sub
 
     '双重锁定
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If CheckBox12.Checked = True Then
+        If lockButton.Checked = True Then
             ' 检查 ListView1 和 ListView2 是否有内容
-            If ListView2.Items.Count > 0 Then
+            If ListView1.Items.Count > 0 Then
                 ' 弹出消息框
                 Dim result As DialogResult = MessageBox.Show("确定要关闭吗？", "确认关闭", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
                 If result = DialogResult.Cancel Then
@@ -923,18 +946,18 @@ Public Class Form1
     End Sub
 
     '双重锁定判定
-    Private Sub CheckBox12_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox12.CheckStateChanged
-        If CheckBox12.Checked = True Then
-            CheckBox12.ImageIndex = 0
+    Private Sub CheckBox12_CheckStateChanged(sender As Object, e As EventArgs) Handles lockButton.CheckStateChanged
+        If lockButton.Checked = True Then
+            lockButton.ImageIndex = 0
         Else
-            CheckBox12.ImageIndex = 1
+            lockButton.ImageIndex = 1
         End If
     End Sub
 
     '简单搜索
     Private Sub SearchListView(keyword As String)
         ' 遍历ListView中的每一行
-        For Each item As ListViewItem In ListView1.Items
+        For Each item As ListViewItem In ListView0.Items
             If item.Text.ToLower().Contains(keyword.ToLower()) OrElse
            item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
            Any(Function(subItem) subItem.Text.ToLower().Contains(keyword.ToLower())) Then
@@ -952,15 +975,15 @@ Public Class Form1
     End Sub
 
     ' 在按钮单击或文本框文本更改事件中调用
-    Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles ButtonSearch.Click
-        Dim keyword As String = TextBoxSearch.Text.Trim()
+    Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles searchButton0.Click
+        Dim keyword As String = searchText.Text.Trim()
         If Not String.IsNullOrEmpty(keyword) Then
             SearchListView(keyword)
         End If
     End Sub
 
-    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
-        Dim keyword As String = TextBoxSearch.Text.Trim()
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles searchButton1.Click
+        Dim keyword As String = searchText.Text.Trim()
         If Not String.IsNullOrEmpty(keyword) Then
             SearchListView2(keyword)
         End If
@@ -973,7 +996,7 @@ Public Class Form1
     '搜索结果选定
     Private Sub SearchListView2(keyword As String)
         ' 遍历ListView中的每一行
-        For Each item As ListViewItem In ListView2.Items
+        For Each item As ListViewItem In ListView1.Items
             If item.Text.ToLower().Contains(keyword.ToLower()) OrElse
            item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
            Any(Function(subItem) subItem.Text.ToLower().Contains(keyword.ToLower())) Then
@@ -990,7 +1013,7 @@ Public Class Form1
         Me.Text = "PicoFilter 1.5 , ” & "已扫描 " & NUM & “ / ” & ProgressBar1.Maximum & “ 项 , ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
     End Sub
 
-    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles stsButton.Click
         更新统计信息()
         If Form3.Visible = True Then
             Form3.Close()
@@ -1006,8 +1029,17 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles setting.Click
         Form4.Show()
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim folderPath As String = openText.Text
+        If Directory.Exists(folderPath) Then
+            加载图片(folderPath)
+        Else
+            MsgBox("加载失败。无效路径", MsgBoxStyle.OkOnly)
+        End If
     End Sub
 
     Private Sub PlayNotificationSound2()
@@ -1127,19 +1159,19 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox14.CheckStateChanged
-        If CheckBox14.Checked = True Then
+    Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
+        If plsButton.Checked = True Then
             Panel3.Visible = True
-        ElseIf CheckBox14.Checked = False Then
+        ElseIf plsButton.Checked = False Then
             Panel3.Visible = False
         End If
     End Sub
 
-    Private Sub TextBox2_MouseHover(sender As Object, e As EventArgs) Handles TextBox2.MouseHover
-        ToolTip1.SetToolTip(TextBox2, "宽度 " & TextBox2.Text)
+    Private Sub TextBox2_MouseHover(sender As Object, e As EventArgs) Handles wideButton.MouseHover
+        ToolTip1.SetToolTip(wideButton, "宽度 " & wideButton.Text)
     End Sub
 
-    Private Sub TextBox3_MouseHover(sender As Object, e As EventArgs) Handles TextBox3.MouseHover
-        ToolTip1.SetToolTip(TextBox3, "高度 " & TextBox3.Text)
+    Private Sub TextBox3_MouseHover(sender As Object, e As EventArgs) Handles htButton.MouseHover
+        ToolTip1.SetToolTip(htButton, "高度 " & htButton.Text)
     End Sub
 End Class
