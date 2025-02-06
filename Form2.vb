@@ -1,7 +1,7 @@
 ﻿Public Class Form2
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim currentUser As String = Environment.UserName
-        Label7.Text = "授权给：" & currentUser & "，仅限PAA像素艺术大赛内部，不得用于商业目的。"
+        Label7.Text = "授权给：" & currentUser
         TextBox1.SelectionStart = 0
         TextBox1.SelectionLength = 0 ' 确保未选中文本
         PlayNotificationSound()
