@@ -34,6 +34,7 @@ Partial Class Form2
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -57,9 +58,10 @@ Partial Class Form2
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.White
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(12, 169)
+        Me.Label1.Location = New System.Drawing.Point(12, 109)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(274, 20)
         Me.Label1.TabIndex = 1
@@ -68,6 +70,7 @@ Partial Class Form2
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.White
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(12, 12)
@@ -90,9 +93,10 @@ Partial Class Form2
         'Label6
         '
         Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.White
         Me.Label6.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(12, 109)
+        Me.Label6.Location = New System.Drawing.Point(12, 129)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(330, 60)
         Me.Label6.TabIndex = 7
@@ -112,6 +116,7 @@ Partial Class Form2
         'Label8
         '
         Me.Label8.AutoSize = True
+        Me.Label8.BackColor = System.Drawing.Color.White
         Me.Label8.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(12, 49)
@@ -123,7 +128,7 @@ Partial Class Form2
         'Label44
         '
         Me.Label44.AutoSize = True
-        Me.Label44.BackColor = System.Drawing.Color.Transparent
+        Me.Label44.BackColor = System.Drawing.Color.White
         Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label44.Location = New System.Drawing.Point(12, 317)
@@ -173,11 +178,19 @@ Partial Class Form2
         Me.Label5.TabIndex = 48
         Me.Label5.Text = resources.GetString("Label5.Text")
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Location = New System.Drawing.Point(-16, -24)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(365, 435)
+        Me.Panel1.TabIndex = 49
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.BackColor = System.Drawing.Color.White
+        Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(711, 355)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox1)
@@ -190,6 +203,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -213,4 +227,5 @@ Partial Class Form2
     Friend WithEvents Button2 As Button
     Friend WithEvents Label44 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents Panel1 As Panel
 End Class

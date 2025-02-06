@@ -14,9 +14,10 @@ Public Class Form1
     Dim gif0, gif1 As Double
     Dim bmp0, bmp1 As Double
     Dim ico0, ico1 As Double
+    Public toform5path As String
 
     ' 加载图片从指定文件夹到listview1
-    Private Sub 加载图片(folderPath As String)
+    Public Sub 加载图片(folderPath As String)
         NUM = 0
         min = 0
         sumsize = 0
@@ -73,14 +74,18 @@ Public Class Form1
 
             Catch ex As Exception
                 ' 忽略无法读取的文件(文件本身有问题而不是格式不支持)
-                Dim opt = MessageBox.Show(ex.Message & vbCrLf & "点击是继续，点击否终止。", "加载失败", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
+                Dim opt = MessageBox.Show(ex.Message & vbCrLf & "点击是继续，点击否终止。", "失败", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
                 If opt = DialogResult.No Then
                     Exit For
                 End If
             End Try
         Next
+
         stopwatch.Stop()
         min = stopwatch.ElapsedMilliseconds
+
+        Me.openText.SelectionStart = Me.openText.Text.Length
+        Me.openText.ScrollToCaret()
 
         Dim fileName1 As String = Path.GetFileName(openText.Text)
         Dim sumsizestr As String
@@ -94,15 +99,15 @@ Public Class Form1
             End If
         End If
         Dim result As New List(Of String)  '更新label6
-        result.Add($" [SUM {files.Count}] -")
-        If jpgCount > 0 Then result.Add($"[JPG] {jpgCount}")
-        If pngCount > 0 Then result.Add($"[PNG] {pngCount}")
-        If gifCount > 0 Then result.Add($"[GIF] {gifCount}")
-        If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
-        If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
+        result.Add($" [SUM {files.Count}]")
+        If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
+        If pngCount > 0 Then result.Add($"PNG {pngCount}")
+        If gifCount > 0 Then result.Add($"GIF {gifCount}")
+        If bmpCount > 0 Then result.Add($"BMP {bmpCount}")
+        If icoCount > 0 Then result.Add($"ICO {icoCount}")
 
-        sumLabel0.Text = String.Join(" ", result)
-        Me.Text = "PicoFilter 1.5" & "  [" & fileName1 & " ," & “ ” & sumsizestr & "]"
+        sumLabel0.Text = String.Join("  |  ", result)
+        Me.Text = "PicoFilter 1.5" & "  [" & fileName1 & " - " & “” & sumsizestr & "]"
         更新统计信息()
         PlayNotificationSound()
 
@@ -112,6 +117,11 @@ Public Class Form1
         bmp1 = bmpCount
         gif1 = gifCount
         ico1 = icoCount
+
+        'If Form5.Visible = True Then
+        '    Form5.TextBox1.Text = toform5path
+        '    Form5.LoadTreeView(toform5path)
+        'End If
     End Sub
     ' 加载图片从指定文件夹，到listview2
     Private Sub 筛选图片()
@@ -198,16 +208,17 @@ Public Class Form1
                 End Select
             End If
         Next
+
         '更新label2
         Dim result As New List(Of String)
-        result.Add($" [RSLT {matchingFileCount}] -")
-        If jpgCount > 0 Then result.Add($"[JPG] {jpgCount}")
-        If pngCount > 0 Then result.Add($"[PNG] {pngCount}")
-        If gifCount > 0 Then result.Add($"[GIF] {gifCount}")
-        If bmpCount > 0 Then result.Add($"[BMP] {bmpCount}")
-        If icoCount > 0 Then result.Add($"[ICO] {icoCount}")
+        result.Add($" [RSLT {matchingFileCount}]")
+        If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
+        If pngCount > 0 Then result.Add($"PNG {pngCount}")
+        If gifCount > 0 Then result.Add($"GIF {gifCount}")
+        If bmpCount > 0 Then result.Add($"BMP {bmpCount}")
+        If icoCount > 0 Then result.Add($"ICO {icoCount}")
 
-        sumLabel1.Text = String.Join(" ", result)
+        sumLabel1.Text = String.Join("  |  ", result)
         PlayNotificationSound3()
         output0 = matchingFileCount
         jpg0 = jpgCount
@@ -251,11 +262,17 @@ Public Class Form1
     End Sub
 
     ' Button1 点击事件：选择文件夹并加载图片
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles openButton.Click
+    Private Sub openButton_Click(sender As Object, e As EventArgs) Handles openButton.Click
         Using folderBrowserDialog As New FolderBrowserDialog
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 openText.Text = folderBrowserDialog.SelectedPath
                 加载图片(folderBrowserDialog.SelectedPath)
+                toform5path = folderBrowserDialog.SelectedPath
+            End If
+            If Form5.Visible = True Then
+                Form5.TextBox1.Text = Me.toform5path
+                Form5.toform1path = Me.toform5path
+                Form5.LoadTreeView(Form5.toform1path)
             End If
         End Using
     End Sub
@@ -288,6 +305,12 @@ Public Class Form1
             Dim folderPath As String = droppedItems(0)
             openText.Text = folderPath
             加载图片(folderPath)
+            toform5path = folderPath
+            If Form5.Visible = True Then
+                Form5.TextBox1.Text = Me.toform5path
+                Form5.toform1path = Me.toform5path
+                Form5.LoadTreeView(Form5.toform1path)
+            End If
         End If
     End Sub
 
@@ -313,7 +336,7 @@ Public Class Form1
 
             ' 复制文件路径到剪贴板
             Clipboard.SetText(filePath)
-            MsgBox("路径已复制: " & vbCrLf & filePath, MessageBoxIcon.Information)
+            MessageBox.Show("路径已复制。" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -330,7 +353,7 @@ Public Class Form1
 
             ' 复制文件路径到剪贴板
             Clipboard.SetText(filePath)
-            MsgBox("路径已复制: " & vbCrLf & filePath, MessageBoxIcon.Information)
+            MessageBox.Show("路径已复制。" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -349,7 +372,7 @@ Public Class Form1
                 ' 使用默认程序打开文件
                 Process.Start(filePath)
             Else
-                MessageBox.Show("文件不存在: " & filePath)
+                MessageBox.Show("文件不存在: " & filePath， “错误”, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
@@ -366,7 +389,7 @@ Public Class Form1
             Try
                 Process.Start(filePath)
             Catch ex As Exception
-                MsgBox("无法打开: " & ex.Message)
+                MessageBox.Show("无法打开。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
     End Sub
@@ -374,11 +397,11 @@ Public Class Form1
     '点击按钮删除文件
     Private Sub delButton_Click(sender As Object, e As EventArgs) Handles delbutton.Click
         If ListView1.Items.Count = 0 Then
-            MsgBox("没有可删除的文件！", MsgBoxStyle.Exclamation, "提示")
+            MessageBox.Show("没有可删除的文件。", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End If
 
-        Dim result As DialogResult = MessageBox.Show("确定要删除选定项吗？操作不可逆！", "删除文件", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        Dim result As DialogResult = MessageBox.Show("确定要删除选定项吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
         If result = DialogResult.Yes Then
             For Each item As ListViewItem In ListView1.Items
@@ -390,7 +413,7 @@ Public Class Form1
                         File.Delete(sourcePath) ' 删除文件
                     End If
                 Catch ex As Exception
-                    MsgBox("删除失败: " & ex.Message, MsgBoxStyle.Critical, "错误")
+                    MessageBox.Show("删除失败。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             Next
 
@@ -412,8 +435,7 @@ Public Class Form1
                     Try
                         File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
                     Catch ex As Exception
-                        MsgBox("复制失败: " & ex.Message)
-
+                        MessageBox.Show("复制失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 Next
             End If
@@ -433,8 +455,7 @@ Public Class Form1
                     Try
                         File.Move(sourcePath, Path.Combine(targetFolder, fileName))
                     Catch ex As Exception
-                        MsgBox("移动失败: " & ex.Message)
-
+                        MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 Next
             End If
@@ -461,11 +482,10 @@ Public Class Form1
             Try
                 File.Move(sourcePath, Path.Combine(resultFolder, fileName))
             Catch ex As Exception
-                MsgBox("移动失败: " & ex.Message)
-
+                MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Next
-        MessageBox.Show("隔离成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("隔离成功。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
     End Sub
 
@@ -514,7 +534,7 @@ Public Class Form1
                 End If
             End If
         Else
-            MsgBox("请选择一个项", MsgBoxStyle.OkOnly)
+            MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         ' 更新筛选结果的计数
         UpdateLabel2()
@@ -652,14 +672,13 @@ Public Class Form1
         Next
         '更新label2
         Dim result As New List(Of String)
-        result.Add($" [RSLT {totalFiles}] -")
-        If jpgCount > 0 Then result.Add($"[JPG]{jpgCount}")
-        If pngCount > 0 Then result.Add($"[PNG]{pngCount}")
-        If gifCount > 0 Then result.Add($"[GIF]{gifCount}")
-        If bmpCount > 0 Then result.Add($"[BMP]{bmpCount}")
-        If icoCount > 0 Then result.Add($"[ICO]{icoCount}")
-
-        sumLabel1.Text = String.Join(" ", result)
+        result.Add($" [RSLT {totalFiles}]")
+        If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
+        If pngCount > 0 Then result.Add($"PNG {pngCount}")
+        If gifCount > 0 Then result.Add($"GIF {gifCount}")
+        If bmpCount > 0 Then result.Add($"BMP {bmpCount}")
+        If icoCount > 0 Then result.Add($"ICO {icoCount}")
+        sumLabel1.Text = String.Join("  |  ", result)
     End Sub
 
     ' Label5 的 MouseHover 事件
@@ -740,7 +759,7 @@ Public Class Form1
                         package.Save()
                     End Using
 
-                    Dim opt = MessageBox.Show("文件已导出成功！点击按钮立即打开", "导出完成", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                    Dim opt = MessageBox.Show("文件已导出成功！点击按钮立即打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                     If opt = DialogResult.Yes Then
                         ' 打开文件
                         Process.Start("explorer.exe", filePath)
@@ -787,7 +806,7 @@ Public Class Form1
         ElseIf resolutionSelected And Not inreslnSelected And Not volreslnSelected Then
             result.Add($"[RSLN{resolutionStr}]")
         ElseIf volreslnSelected And resolutionSelected And inreslnSelected Then
-            result.Add($"[VO,IN-RSLN{resolutionStr}]")
+            result.Add($"[VO&IN-RSLN{resolutionStr}]")
         ElseIf volreslnSelected And resolutionSelected And Not inreslnSelected Then
             result.Add($"[VO-RSLN{resolutionStr}]")
         End If
@@ -796,16 +815,16 @@ Public Class Form1
     End Function
 
     ' 添加表头信息到 Excel 工作表
-    Private Sub AddHeaderInfo(worksheet As ExcelWorksheet, label6Text As String, sumsizestr As String, minstr As String, label2Text As String, filterConditions As String)
-        worksheet.Cells("H1").Value = label6Text
-        worksheet.Cells("H2").Value = sumsizestr
-        worksheet.Cells("H3").Value = minstr
-        worksheet.Cells("H4").Value = label2Text
-        worksheet.Cells("H5").Value = filterConditions
-        worksheet.Cells("G1").Value = "扫描"
+    Private Sub AddHeaderInfo(worksheet As ExcelWorksheet, sumlabel0 As String, sumsizestr As String, minstr As String, sumlabel1 As String, filterConditions As String)
+        worksheet.Cells("H1").Value = sumlabel0
+        worksheet.Cells("H2").Value = " " & sumsizestr
+        worksheet.Cells("H3").Value = " " & minstr
+        worksheet.Cells("H4").Value = sumlabel1
+        worksheet.Cells("H5").Value = " " & filterConditions
+        worksheet.Cells("G1").Value = "已扫描"
         worksheet.Cells("G2").Value = "大小"
         worksheet.Cells("G3").Value = "耗时"
-        worksheet.Cells("G4").Value = "筛选"
+        worksheet.Cells("G4").Value = "筛选结果"
         worksheet.Cells("G5").Value = "条件"
         worksheet.Cells("G1:G5").Style.Font.Bold = True
         worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
@@ -913,7 +932,7 @@ Public Class Form1
                 Process.Start("explorer.exe", folderPath)
             Else
                 ' 如果路径无效或文件夹不存在，提示错误信息
-                MsgBox("文件夹路径无效或未选择。", MsgBoxStyle.OkOnly,)
+                MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
@@ -945,7 +964,7 @@ Public Class Form1
             ' 检查 ListView1 和 ListView2 是否有内容
             If ListView1.Items.Count > 0 Then
                 ' 弹出消息框
-                Dim result As DialogResult = MessageBox.Show("确定要关闭吗？", "确认关闭", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                Dim result As DialogResult = MessageBox.Show("确定要关闭吗？", "关闭", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
                 If result = DialogResult.Cancel Then
                     ' 用户选择了取消，阻止关闭
                     e.Cancel = True
@@ -1045,12 +1064,12 @@ Public Class Form1
         Form4.Show()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub rfhbutton_Click(sender As Object, e As EventArgs) Handles rfhButton.Click
         Dim folderPath As String = openText.Text
         If Directory.Exists(folderPath) Then
             加载图片(folderPath)
         Else
-            MsgBox("加载失败。无效路径", MsgBoxStyle.OkOnly)
+            MessageBox.Show("路径无效或不存在。", "路径错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -1061,6 +1080,11 @@ Public Class Form1
         Catch ex As Exception
         End Try
     End Sub
+
+    Private Sub treebutton_Click_1(sender As Object, e As EventArgs) Handles treeButton.Click
+        Form5.Show()
+    End Sub
+
     Private Sub PlayNotificationSound3()
         Try
             ' 从资源播放音效
@@ -1215,5 +1239,33 @@ Public Class Form1
 
     Private Sub TextBox3_MouseHover(sender As Object, e As EventArgs) Handles htButton.MouseHover
         ToolTip1.SetToolTip(htButton, "高度 " & htButton.Text)
+    End Sub
+
+    Private Sub Form1_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+        ' 获取 Form3 实例
+        Dim subForm As Form3 = TryCast(Application.OpenForms("Form3"), Form3)
+        If subForm IsNot Nothing Then
+            If Form3.absbButton.CheckState = CheckState.Checked Then
+                ' 让 Form3 吸附在 Form1 右侧
+                subForm.Location = New Point(Me.Location.X + Me.Width, Me.Location.Y)
+            End If
+        End If
+        ' 获取 Form5 实例
+        Dim subForm1 As Form5 = TryCast(Application.OpenForms("Form5"), Form5)
+        If subForm1 IsNot Nothing Then
+            If Form5.absbButton.CheckState = CheckState.Checked Then
+                ' 让 Form5 吸附在 Form1 右侧
+                subForm1.Location = New Point(Me.Location.X - Form5.Width, Me.Location.Y)
+            End If
+        End If
+    End Sub
+
+    Private Sub openText_TextChanged(sender As Object, e As EventArgs) Handles openText.TextChanged
+        Me.openText.SelectionStart = Me.openText.Text.Length
+        Me.openText.ScrollToCaret()
+        'If Form5.Visible = True Then
+        '    Form5.toform1path = toform5path
+        '    Form5.LoadTreeView(toform5path)
+        'End If
     End Sub
 End Class

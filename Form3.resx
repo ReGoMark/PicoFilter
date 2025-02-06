@@ -121,6 +121,20 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="absbButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        cQAAEnEB89x6jgAAAFJJREFUOE/Nj0EKwCAQA/dj3v1bH61o0lskylrowFwkIxqDWp526gxf1MDJFKiB
+        kylQAydTIA8XfHvBiUyBGjiZ/pHU81J/vBbvyhSogZNplogOsRP0+p1gj/4AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="topButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        cQAAEnEB89x6jgAAADtJREFUOE9jQAYett3/8WGoMtwAmyZkDFWGG+BSOGrAkDAApoBYDNWGANgU4cNQ
+        bfgBSYqxgRFjAAMDAK/joJNF+MzqAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAAAAAAAEAIAAoIAQAhgAAAICAAAABACAAKAgBAK4gBABgYAAAAQAgAKiUAADWKAUAQEAAAAEA

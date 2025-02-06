@@ -68,8 +68,9 @@ Partial Class Form3
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label44 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.absbButton = New System.Windows.Forms.CheckBox()
+        Me.topButton = New System.Windows.Forms.CheckBox()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -554,7 +555,7 @@ Partial Class Form3
         '
         'Label43
         '
-        Me.Label43.BackColor = System.Drawing.Color.White
+        Me.Label43.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Label43.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label43.ForeColor = System.Drawing.Color.Black
         Me.Label43.Location = New System.Drawing.Point(93, 362)
@@ -576,35 +577,71 @@ Partial Class Form3
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.Location = New System.Drawing.Point(278, 401)
+        Me.Button2.Location = New System.Drawing.Point(276, 401)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(65, 26)
         Me.Button2.TabIndex = 41
         Me.Button2.Text = "确认"
         Me.Button2.UseVisualStyleBackColor = False
         '
-        'Label44
+        'absbButton
         '
-        Me.Label44.BackColor = System.Drawing.Color.White
-        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(98, 403)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(174, 20)
-        Me.Label44.TabIndex = 46
-        Me.Label44.Text = "按""开始筛选""刷新数据"
-        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.absbButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
+        Me.absbButton.BackColor = System.Drawing.Color.White
+        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.absbButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.absbButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.absbButton.ForeColor = System.Drawing.Color.SlateBlue
+        Me.absbButton.Image = CType(resources.GetObject("absbButton.Image"), System.Drawing.Image)
+        Me.absbButton.Location = New System.Drawing.Point(212, 401)
+        Me.absbButton.Name = "absbButton"
+        Me.absbButton.Size = New System.Drawing.Size(26, 26)
+        Me.absbButton.TabIndex = 50
+        Me.absbButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.absbButton, "吸附窗体")
+        Me.absbButton.UseVisualStyleBackColor = False
+        '
+        'topButton
+        '
+        Me.topButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.topButton.Appearance = System.Windows.Forms.Appearance.Button
+        Me.topButton.BackColor = System.Drawing.Color.White
+        Me.topButton.CausesValidation = False
+        Me.topButton.Checked = True
+        Me.topButton.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.topButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.topButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.topButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.topButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.topButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.topButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.topButton.ForeColor = System.Drawing.Color.SlateBlue
+        Me.topButton.Image = CType(resources.GetObject("topButton.Image"), System.Drawing.Image)
+        Me.topButton.Location = New System.Drawing.Point(244, 401)
+        Me.topButton.Name = "topButton"
+        Me.topButton.Size = New System.Drawing.Size(26, 26)
+        Me.topButton.TabIndex = 51
+        Me.topButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.topButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.topButton, "置顶窗体")
+        Me.topButton.UseVisualStyleBackColor = False
         '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.BackColor = System.Drawing.Color.White
+        Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(353, 439)
+        Me.Controls.Add(Me.topButton)
+        Me.Controls.Add(Me.absbButton)
         Me.Controls.Add(Me.Label43)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.Label41)
-        Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Label14)
@@ -706,6 +743,7 @@ Partial Class Form3
     Friend WithEvents Label42 As Label
     Friend WithEvents Label43 As Label
     Friend WithEvents Button2 As Button
-    Friend WithEvents Label44 As Label
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents absbButton As CheckBox
+    Friend WithEvents topButton As CheckBox
 End Class
