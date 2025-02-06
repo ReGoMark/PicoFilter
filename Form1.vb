@@ -246,7 +246,7 @@ Public Class Form1
                 sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
             End If
         Else
-                sltLabel1.Text = " Wait"
+            sltLabel1.Text = " Wait"
         End If
     End Sub
 
@@ -492,6 +492,7 @@ Public Class Form1
         Next
         ' 更新筛选结果的计数
         UpdateLabel2()
+        更新统计信息()
     End Sub
 
     ' Button8 点击事件：删除 ListView2 中选中的项
@@ -499,13 +500,25 @@ Public Class Form1
         ' 确保 ListView2 中有选中的项
         If ListView1.SelectedItems.Count > 0 Then
             ' 从 ListView2 中删除选中的项
+            Dim index As Integer = ListView1.SelectedItems(0).Index
             For Each selectedItem As ListViewItem In ListView1.SelectedItems
                 ListView1.Items.Remove(selectedItem)
             Next
+            If ListView1.Items.Count > 0 Then
+                If index < ListView1.Items.Count Then
+                    ListView1.Items(index).Selected = True
+                    ListView1.Items(index).Focused = True
+                Else
+                    ListView1.Items(ListView1.Items.Count - 1).Selected = True
+                    ListView1.Items(ListView1.Items.Count - 1).Focused = True
+                End If
+            End If
         Else
             MsgBox("请选择一个项", MsgBoxStyle.OkOnly)
         End If
+        ' 更新筛选结果的计数
         UpdateLabel2()
+        更新统计信息()
     End Sub
     '总在最前
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
@@ -610,7 +623,6 @@ Public Class Form1
     Private Sub UpdateLabel2()
         ' 总文件数
         Dim totalFiles As Integer = ListView1.Items.Count
-
         ' 各种格式的文件数量
         Dim index As Integer = 1
         Dim jpgCount As Integer = 0
@@ -830,33 +842,33 @@ Public Class Form1
     End Sub
 
     ' 窗体的 KeyDown 事件
-    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-        If e.KeyCode = Keys.Add Then ' 检测 "+" 按键
-            addButton.PerformClick() ' 触发 Button7 的点击事件
-        End If
-        If e.KeyCode = Keys.Delete Then ' 检测 "Delete" 按键
-            bksbutton.PerformClick() ' 触发 Button8 的点击事件
-        End If
-        If e.KeyCode = Keys.F2 Then
-            openButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.Return Then
-            fltButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.S Then
-            stsButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.E Then
-            xlsxButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.L Then
-            If lockButton.Checked = True Then
-                lockButton.CheckState = CheckState.Unchecked
-            Else
-                lockButton.CheckState = CheckState.Checked
-            End If
-        End If
-    End Sub
+    'Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+    '    If e.KeyCode = Keys.Add Then ' 检测 "+" 按键
+    '        addButton.PerformClick() ' 触发 Button7 的点击事件
+    '    End If
+    '    If e.KeyCode = Keys.Delete Then ' 检测 "Delete" 按键
+    '        bksbutton.PerformClick() ' 触发 Button8 的点击事件
+    '    End If
+    '    If e.KeyCode = Keys.F2 Then
+    '        openButton.PerformClick()
+    '    End If
+    '    If e.KeyCode = Keys.Return Then
+    '        fltButton.PerformClick()
+    '    End If
+    '    If e.KeyCode = Keys.S Then
+    '        stsButton.PerformClick()
+    '    End If
+    '    If e.KeyCode = Keys.E Then
+    '        xlsxButton.PerformClick()
+    '    End If
+    '    If e.KeyCode = Keys.L Then
+    '        If lockButton.Checked = True Then
+    '            lockButton.CheckState = CheckState.Unchecked
+    '        Else
+    '            lockButton.CheckState = CheckState.Checked
+    '        End If
+    '    End If
+    'End Sub
     '条件全选
     Private Sub CheckBox10_CheckStateChanged(sender As Object, e As EventArgs) Handles mentionButton.CheckStateChanged
         If mentionButton.Checked = True Then
@@ -1058,8 +1070,38 @@ Public Class Form1
     End Sub
 
     Private Sub 更新统计信息()
+        ' 各种格式的文件数量
+        Dim index As Integer = 1
+        Dim jpgCount As Integer = 0
+        Dim pngCount As Integer = 0
+        Dim gifCount As Integer = 0
+        Dim bmpCount As Integer = 0
+        Dim icoCount As Integer = 0
+
+        ' 遍历 ListView2 统计文件格式数量
+        For Each item As ListViewItem In ListView1.Items
+            Dim format As String = item.SubItems(3).Text.ToUpper()
+            Select Case format
+                Case ".JPG", ".JPEG"
+                    jpgCount += 1
+                Case ".PNG"
+                    pngCount += 1
+                Case ".GIF"
+                    gifCount += 1
+                Case ".ICO"
+                    icoCount += 1
+                Case ".BMP"
+                    bmpCount += 1
+            End Select
+        Next
+        output0 = ListView1.Items.Count
+        jpg0 = jpgCount
+        png0 = pngCount
+        bmp0 = bmpCount
+        gif0 = gifCount
+        ico0 = icoCount
+
         Dim sumsizestr As String
-        'Dim stacmsg As String
         If Int(sumsize / 1024 / 1024) > 1024 Then
             sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & " GB"
         Else
