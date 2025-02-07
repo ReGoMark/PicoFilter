@@ -1,13 +1,11 @@
-# PicoFilter
-简易图片筛选工具，由ReGoMark开发。要了解更多信息，请阅读说明文档和更新日志。
+# 布告板
 
-本项目已从原有组织迁移到该公共仓库，欢迎大家使用。
+注意本项目已从原有组织迁移到该公共仓库，欢迎大家使用。
 
 # 介绍
 ![QQ20250207-132040](https://github.com/user-attachments/assets/23cd403a-5f84-451b-bc5c-34a73283ede7)
- 一款图片筛选工具，支持常用图片格式如 JPEG & JPG，PNG，GIF，ICO，BMP，对于中等文件数目的文件夹可用(大约3000张2.5MB的图像)。
+ 一款图片筛选工具，当前版本：1.6，支持常用图片格式如 JPEG & JPG，PNG，GIF，ICO，BMP，对于中等文件数目的文件夹可用(大约3000张2.5MB的图像)。
  
- 当前版本：1.6
  ## 特性(1.6特性未展示，见更新日志)
 ![QQ20241224-162915](https://github.com/user-attachments/assets/8520cb3d-5ddc-4179-9ae2-a445a2dcc311)
 ![QQ20241224-162944](https://github.com/user-attachments/assets/cbbfe498-ced8-48e8-a21b-b91a3915504d)
