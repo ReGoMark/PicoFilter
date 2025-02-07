@@ -15,6 +15,7 @@ Public Class Form1
     Dim bmp0, bmp1 As Double
     Dim ico0, ico1 As Double
     Public toform5path As String
+    Public verinfo As String = "PicoFilter 1.6"
 
     ' 加载图片从指定文件夹到listview1
     Public Sub 加载图片(folderPath As String)
@@ -107,7 +108,7 @@ Public Class Form1
         If icoCount > 0 Then result.Add($"ICO {icoCount}")
 
         sumLabel0.Text = String.Join("  |  ", result)
-        Me.Text = "PicoFilter 1.5" & "  [" & fileName1 & " - " & “” & sumsizestr & "]"
+        Me.Text = verinfo & "  [" & fileName1 & " - " & “” & sumsizestr & "]"
         更新统计信息()
         PlayNotificationSound()
 
@@ -320,7 +321,7 @@ Public Class Form1
         ComboBox1.SelectedIndex = 0
         ProgressBar1.Maximum = 0
         NUM = 0
-        Me.Text = “PicoFilter 1.5”
+        Me.Text = verinfo
     End Sub
 
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
@@ -724,10 +725,12 @@ Public Class Form1
         Dim icoSelected As Boolean = icoButton.Checked
         Dim inreslnSelected As Boolean = exButton.Checked
         Dim volreslnSelected As Boolean = volButton.Checked
+        Dim plsreslnSelected As Boolean = moreButton.Checked
+        Dim mnsreslnSelected As Boolean = mnsButton.Checked
 
         Dim sumsizestr = FormatSize(sumsize)
         Dim minstr = FormatTime(min)
-        Dim result = GetFilterConditions(jpgSelected, pngSelected, gifSelected, bmpSelected, icoSelected, inreslnSelected, volreslnSelected, resolutionSelected)
+        Dim result = GetFilterConditions(jpgSelected, pngSelected, gifSelected, bmpSelected, icoSelected, inreslnSelected, volreslnSelected, resolutionSelected, plsreslnSelected, mnsreslnSelected)
 
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
@@ -792,7 +795,7 @@ Public Class Form1
     End Function
 
     ' 获取筛选条件字符串列表
-    Private Function GetFilterConditions(jpgSelected As Boolean, pngSelected As Boolean, gifSelected As Boolean, bmpSelected As Boolean, icoSelected As Boolean, inreslnSelected As Boolean, volreslnSelected As Boolean, resolutionSelected As Boolean) As List(Of String)
+    Private Function GetFilterConditions(jpgSelected As Boolean, pngSelected As Boolean, gifSelected As Boolean, bmpSelected As Boolean, icoSelected As Boolean, inreslnSelected As Boolean, volreslnSelected As Boolean, resolutionSelected As Boolean, plsreslnSelected As Boolean, mnsreslnSelected As Boolean) As List(Of String)
         Dim result As New List(Of String)
         If jpgSelected Then result.Add("[JPG]")
         If pngSelected Then result.Add("[PNG]")
@@ -802,13 +805,17 @@ Public Class Form1
 
         Dim resolutionStr = $" {wideButton.Text} × {htButton.Text}"
         If inreslnSelected And resolutionSelected And Not volreslnSelected Then
-            result.Add($"[IN-RSLN{resolutionStr}]")
-        ElseIf resolutionSelected And Not inreslnSelected And Not volreslnSelected Then
+            result.Add($"[EX-RSLN{resolutionStr}]")
+        ElseIf resolutionSelected And Not inreslnSelected And Not volreslnSelected And Not plsreslnSelected And Not mnsreslnSelected Then
             result.Add($"[RSLN{resolutionStr}]")
         ElseIf volreslnSelected And resolutionSelected And inreslnSelected Then
-            result.Add($"[VO&IN-RSLN{resolutionStr}]")
+            result.Add($"[VO&EX-RSLN{resolutionStr}]")
         ElseIf volreslnSelected And resolutionSelected And Not inreslnSelected Then
             result.Add($"[VO-RSLN{resolutionStr}]")
+        ElseIf plsreslnSelected And resolutionSelected And Not volreslnSelected And Not inreslnSelected And Not mnsreslnSelected Then
+            result.Add($"[PLS-RSLN{resolutionStr}]")
+        ElseIf mnsreslnSelected And resolutionSelected And Not volreslnSelected And Not inreslnSelected And Not plsreslnSelected Then
+            result.Add($"[MNS-RSLN{resolutionStr}]")
         End If
 
         Return result
@@ -824,7 +831,7 @@ Public Class Form1
         worksheet.Cells("G1").Value = "已扫描"
         worksheet.Cells("G2").Value = "大小"
         worksheet.Cells("G3").Value = "耗时"
-        worksheet.Cells("G4").Value = "筛选结果"
+        worksheet.Cells("G4").Value = "结果"
         worksheet.Cells("G5").Value = "条件"
         worksheet.Cells("G1:G5").Style.Font.Bold = True
         worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
@@ -855,39 +862,6 @@ Public Class Form1
         Next
     End Sub
 
-    Public Sub New()
-        InitializeComponent()
-        Me.KeyPreview = True ' 启用键盘事件捕获
-    End Sub
-
-    ' 窗体的 KeyDown 事件
-    'Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-    '    If e.KeyCode = Keys.Add Then ' 检测 "+" 按键
-    '        addButton.PerformClick() ' 触发 Button7 的点击事件
-    '    End If
-    '    If e.KeyCode = Keys.Delete Then ' 检测 "Delete" 按键
-    '        bksbutton.PerformClick() ' 触发 Button8 的点击事件
-    '    End If
-    '    If e.KeyCode = Keys.F2 Then
-    '        openButton.PerformClick()
-    '    End If
-    '    If e.KeyCode = Keys.Return Then
-    '        fltButton.PerformClick()
-    '    End If
-    '    If e.KeyCode = Keys.S Then
-    '        stsButton.PerformClick()
-    '    End If
-    '    If e.KeyCode = Keys.E Then
-    '        xlsxButton.PerformClick()
-    '    End If
-    '    If e.KeyCode = Keys.L Then
-    '        If lockButton.Checked = True Then
-    '            lockButton.CheckState = CheckState.Unchecked
-    '        Else
-    '            lockButton.CheckState = CheckState.Checked
-    '        End If
-    '    End If
-    'End Sub
     '条件全选
     Private Sub CheckBox10_CheckStateChanged(sender As Object, e As EventArgs) Handles mentionButton.CheckStateChanged
         If mentionButton.Checked = True Then
@@ -1041,7 +1015,7 @@ Public Class Form1
     End Sub
 
     Private Sub 更新标题()
-        Me.Text = "PicoFilter 1.5 , ” & "已扫描 " & NUM & “ / ” & ProgressBar1.Maximum & “ 项 , ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
+        Me.Text = verinfo & "  已扫描 " & NUM & “ / ” & ProgressBar1.Maximum & “ 项 , ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles stsButton.Click
@@ -1082,7 +1056,11 @@ Public Class Form1
     End Sub
 
     Private Sub treebutton_Click_1(sender As Object, e As EventArgs) Handles treeButton.Click
-        Form5.Show()
+        If Form5.Visible = False Then
+            Form5.Show()
+        Else
+            Form5.Close()
+        End If
     End Sub
 
     Private Sub PlayNotificationSound3()

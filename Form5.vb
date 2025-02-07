@@ -4,7 +4,6 @@ Public Class Form5
     Public oripath As String
     ' 在 Form5 加载时，显示目录结构
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         ' 加载当前路径的目录结构
         toform1path = Form1.toform5path
         LoadTreeView(Form1.toform5path)
@@ -64,6 +63,11 @@ Public Class Form5
         ' 设置 SelectionStart 到文本末尾，确保滚动到末尾
         TextBox1.SelectionStart = TextBox1.Text.Length
         TextBox1.ScrollToCaret()
+        If TreeView1.SelectedNode IsNot Nothing Then
+            sltLabel0.Text = " " & TreeView1.SelectedNode.Text ' 显示选中节点名称
+        Else
+            sltLabel0.Text = " CRNT" ' 没有选中时显示 "CRNT"
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -146,5 +150,11 @@ Public Class Form5
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Close()
+    End Sub
+
+    Private Sub sltLabel0_MouseHover(sender As Object, e As EventArgs) Handles sltLabel0.MouseHover
+        If TreeView1.SelectedNode IsNot Nothing Then
+            ToolTip1.SetToolTip(sltLabel0, TreeView1.SelectedNode.Text)
+        End If
     End Sub
 End Class

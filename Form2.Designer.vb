@@ -121,9 +121,9 @@ Partial Class Form2
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(12, 49)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(152, 60)
+        Me.Label8.Size = New System.Drawing.Size(144, 60)
         Me.Label8.TabIndex = 10
-        Me.Label8.Text = "with Service Pack 5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "版本：1.5.5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "构建日期：2025/1/27"
+        Me.Label8.Text = "with Service Pack 6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "版本：1.6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "构建日期：2025/2/7"
         '
         'Label44
         '
