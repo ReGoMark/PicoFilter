@@ -220,7 +220,7 @@ Public Class Form1
         If icoCount > 0 Then result.Add($"ICO {icoCount}")
 
         sumLabel1.Text = String.Join("  |  ", result)
-        PlayNotificationSound3()
+        PlayNotificationSound()
         output0 = matchingFileCount
         jpg0 = jpgCount
         png0 = pngCount
@@ -1029,7 +1029,7 @@ Public Class Form1
     Private Sub PlayNotificationSound()
         Try
             ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.NFP, AudioPlayMode.Background)
+            My.Computer.Audio.Play(My.Resources.RESOLVED, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
     End Sub
@@ -1055,7 +1055,7 @@ Public Class Form1
     Private Sub PlayNotificationSound2()
         Try
             ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.BG, AudioPlayMode.Background)
+            My.Computer.Audio.Play(My.Resources.ALERT, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
     End Sub
@@ -1071,7 +1071,7 @@ Public Class Form1
     Private Sub PlayNotificationSound3()
         Try
             ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.NSG, AudioPlayMode.Background)
+            My.Computer.Audio.Play(My.Resources.ALERT, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
     End Sub

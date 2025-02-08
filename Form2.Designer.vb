@@ -98,16 +98,16 @@ Partial Class Form2
         Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(12, 129)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(330, 60)
+        Me.Label6.Size = New System.Drawing.Size(302, 60)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "鸣谢" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持库：EEPlus，版本7.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体GBK、Consola、微软雅黑、等线"
+        Me.Label6.Text = "鸣谢" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持库：EEPlus，版本7.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体、Consola、微软雅黑、等线"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label7.Location = New System.Drawing.Point(356, 89)
+        Me.Label7.Location = New System.Drawing.Point(355, 69)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(69, 20)
         Me.Label7.TabIndex = 9
@@ -166,7 +166,7 @@ Partial Class Form2
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(351, 40)
         Me.Label9.TabIndex = 17
-        Me.Label9.Text = "支持：https://github.com/MoonPixelTeam/Mp-PicoFilter"
+        Me.Label9.Text = "支持：https://github.com/ReGoMark/PicoFilter"
         '
         'Label5
         '
@@ -192,6 +192,7 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(711, 355)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label5)
@@ -202,7 +203,6 @@ Partial Class Form2
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

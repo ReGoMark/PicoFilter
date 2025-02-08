@@ -119,14 +119,14 @@
   </resheader>
   <data name="TextBox1.Text" xml:space="preserve">
     <value>全部版本：
-1.6 Aura (with Service Pack 6);
-1.5 Luna (with  Service Pack 4)；
+1.6  (with Service Pack 6);
+1.5  (with  Service Pack 4)；
 ——————————
 说明：
 +“新增”；-“删去”；~“优化”；=“修正”
 ——————————
-1.5
-2025/2/
+1.6
+2025/2/7
 +目录结构预览
 =修正若干错误
 ~统计结果显示
@@ -135,6 +135,8 @@
 ~代码运行效率
 +重载功能
 ~UI排版设计
+——————————
+1.5
 2024/12/23
 +统计信息显示
 ~底部标签显示
