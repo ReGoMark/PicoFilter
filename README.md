@@ -12,6 +12,8 @@
 
 支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，对于中等文件数目的文件夹可用(大约3000张2.5MB的图像)。
 
+<div align="center">
+    
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/commits/main">
