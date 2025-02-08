@@ -50,7 +50,7 @@ Partial Class Form2
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(330, 122)
+        Me.TextBox1.Size = New System.Drawing.Size(324, 122)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseSystemPasswordChar = True
@@ -100,7 +100,7 @@ Partial Class Form2
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(302, 60)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "鸣谢" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持库：EEPlus，版本7.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体、Consola、微软雅黑、等线"
+        Me.Label6.Text = "鸣谢" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持库：EPPlus，版本7.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体、Consola、微软雅黑、等线"
         '
         'Label7
         '
