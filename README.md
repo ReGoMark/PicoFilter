@@ -8,22 +8,18 @@
 
 ## 一款图片筛选工具，当前版本：![GitHub Release](https://img.shields.io/github/v/release/ReGoMark/PicoFilter)
 
-</div>
-
 支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，对于中等文件数目的文件夹可用(大约3000张2.5MB的图像)。
 
 <a href="./LICENSE">
-    <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license">
-</a>
+    <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/commits/main">
-    <img src="https://img.shields.io/github/last-commit/ReGoMark/PicoFilter?style=for-the-badge">
-</a>
+    <img src="https://img.shields.io/github/last-commit/ReGoMark/PicoFilter?style=for-the-badge"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/stargazers">
-    <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars">
-</a>
+    <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/issues">
-    <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues">
-</a>
+    <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues"></a>
+
+</div>
 
 # 功能(1.6特性未展示，见更新日志)
 
@@ -33,7 +29,8 @@
 
 集成了一些鼠标功能（例如`中键`、`双击`等），提升用户体验。
 
-推荐安装 [方正黑体_GBK](./Fonts/方正黑体GBK.ttf)、[Consola](./Fonts/Consola.ttf)、[等线](./Fonts/灯线.ttf)、`微软雅黑`字体提升视觉效果体验。字体文件已经附在 [Fonts 文件夹](./Fonts) 中。
+>[!CAUTION]
+>推荐安装 [方正黑体_GBK](./Fonts/方正黑体GBK.ttf)、[Consola](./Fonts/Consola.ttf)、[等线](./Fonts/灯线.ttf)、`微软雅黑`字体提升视觉效果体验。字体文件已经附在 [Fonts 文件夹](./Fonts) 中。
 
 感谢开源社区的支持，没有开源社区就没有 PicoFilter 的诞生。
 
@@ -49,14 +46,13 @@
 
 ### 备注
 
->~~由于开发之初采用了强制125缩放比例，导致在其他缩放比例下(尤其是100)时会产生显示错误。所以在今后的 Release 中我会发布两个版本，带comp后缀(格式为.7z)的即为100缩放显示版本，带full后缀的(格式为.zip)为125缩放显示版本。由于时间精力有限，通常情况下兼容模式版本的功能和版次可能会落后于125缩放版本，具体以 Release 和更新日志为准。~~
  
 >本人是强迫症患者，所以在软件排版布局上也有些考究。在两个列表之间，按下鼠标中键可以平均分配尺寸。其他的一些细微功能我都放到工具提示里面了，只要鼠标悬停就可以看得到，如在“×”位置鼠标左键双击可以自动输入宽度值。所以使用时要细心观察呐！   
 
 >由于水平一般、能力有限，软件可能会存在内存泄漏、回收不充分的问题，不过不影响使用。
  
 # 开发初衷
-开发初衷是针对 PAA 像素艺术大赛中的尺寸不合规、格式不合规文件进行筛选，便于后续工作的开展。因为当前社区网站还未完全建立起来，选手的投稿作品都是通过第三方网站上传，我们的收集工作也是手工从网站内下载的。对于分辨率不合规的作品，在放大的时候可能会比较模糊；同样的，PNG和JPG格式的不同，也影响了放大或展示质量。希望有一天我们的社区网站能够建成，那么我的软件的使命也就结束了，~~届时我会考虑将软件放入public仓库。~~ 已公开仓库。
+开发初衷是针对 PAA 像素艺术大赛中的尺寸不合规、格式不合规文件进行筛选，便于后续工作的开展。因为当前社区网站还未完全建立起来，选手的投稿作品都是通过第三方网站上传，我们的收集工作也是手工从网站内下载的。对于分辨率不合规的作品，在放大的时候可能会比较模糊；同样的，PNG和JPG格式的不同，也影响了放大或展示质量。
 
 # 更新日志
 >[!WARNING]
