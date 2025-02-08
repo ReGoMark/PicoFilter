@@ -32,7 +32,6 @@
 集成了一些鼠标功能（例如`中键`、`双击`等），提升用户体验。
 
 >[!CAUTION]
-
 >推荐安装 [方正黑体_GBK](./Fonts/方正黑体GBK.ttf)、[Consola](./Fonts/Consola.ttf)、[等线](./Fonts/灯线.ttf)、`微软雅黑`字体提升视觉效果体验。字体文件已经附在 [Fonts 文件夹](./Fonts) 中。
 
 感谢开源社区的支持，没有开源社区就没有 PicoFilter 的诞生。
