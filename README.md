@@ -13,17 +13,15 @@
 支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，对于中等文件数目的文件夹可用(大约3000张2.5MB的图像)。
 
 <a href="./LICENSE">
-    <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license">
-</a>
+    <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/commits/main">
-    <img src="https://img.shields.io/github/last-commit/ReGoMark/PicoFilter?style=for-the-badge">
-</a>
+    <img src="https://img.shields.io/github/last-commit/ReGoMark/PicoFilter?style=for-the-badge"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/stargazers">
-    <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars">
-</a>
+    <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/issues">
-    <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues">
-</a>
+    <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues"></a>
+
+</div>
 
 # 功能(1.6特性未展示，见更新日志)
 
