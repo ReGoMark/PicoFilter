@@ -6,6 +6,8 @@
 
 ![ICON](./Resources/ICON.ico)
 
+<div align="center">
+
 ## 一款图片筛选工具，当前版本：![GitHub Release](https://img.shields.io/github/v/release/ReGoMark/PicoFilter)
 
 </div>
