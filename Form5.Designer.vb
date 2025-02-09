@@ -46,7 +46,6 @@ Partial Class Form5
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
@@ -61,11 +60,11 @@ Partial Class Form5
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.Black
-        Me.TextBox1.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox1.Location = New System.Drawing.Point(3, 4)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
-        Me.TextBox1.Size = New System.Drawing.Size(289, 17)
+        Me.TextBox1.Size = New System.Drawing.Size(291, 17)
         Me.TextBox1.TabIndex = 50
         '
         'TreeView1
@@ -164,11 +163,11 @@ Partial Class Form5
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.Location = New System.Drawing.Point(12, 497)
+        Me.Button5.Location = New System.Drawing.Point(134, 497)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(100, 26)
+        Me.Button5.Size = New System.Drawing.Size(65, 26)
         Me.Button5.TabIndex = 54
-        Me.Button5.Text = "全部展开"
+        Me.Button5.Text = "展开"
         Me.Button5.UseVisualStyleBackColor = False
         '
         'topButton
@@ -185,7 +184,7 @@ Partial Class Form5
         Me.topButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.topButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.topButton.Image = CType(resources.GetObject("topButton.Image"), System.Drawing.Image)
-        Me.topButton.Location = New System.Drawing.Point(173, 497)
+        Me.topButton.Location = New System.Drawing.Point(44, 497)
         Me.topButton.Name = "topButton"
         Me.topButton.Size = New System.Drawing.Size(26, 26)
         Me.topButton.TabIndex = 56
@@ -209,7 +208,7 @@ Partial Class Form5
         Me.absbButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.absbButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.absbButton.Image = CType(resources.GetObject("absbButton.Image"), System.Drawing.Image)
-        Me.absbButton.Location = New System.Drawing.Point(141, 497)
+        Me.absbButton.Location = New System.Drawing.Point(12, 497)
         Me.absbButton.Name = "absbButton"
         Me.absbButton.Size = New System.Drawing.Size(26, 26)
         Me.absbButton.TabIndex = 55
@@ -233,7 +232,7 @@ Partial Class Form5
         '
         'sltLabel0
         '
-        Me.sltLabel0.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.sltLabel0.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.sltLabel0.BackColor = System.Drawing.Color.GhostWhite
         Me.sltLabel0.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -251,10 +250,10 @@ Partial Class Form5
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(353, 535)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
-        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.btnGoUp)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button1)

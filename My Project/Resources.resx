@@ -121,13 +121,13 @@
     <value />
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BG.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ALERT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ALERT.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NFP" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\NFP.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="INFO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\INFO.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NSG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\NSG.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="RESOLVED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RESOLVED.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

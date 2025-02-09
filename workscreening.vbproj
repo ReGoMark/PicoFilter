@@ -64,7 +64,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logoNEW.ico</ApplicationIcon>
+    <ApplicationIcon>ICON.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E4FC3EC70BD2386052EA4F38A2C9D7C0D710B8E1</ManifestCertificateThumbprint>
@@ -251,17 +251,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NSG.wav" />
-    <None Include="NFP.wav" />
-    <None Include="x1sx.ico" />
-    <None Include="unlocked.ico" />
-    <None Include="pin.ico" />
-    <None Include="exresln.ico" />
-    <None Include="locked.ico" />
-    <None Include="BG.wav" />
-    <Content Include="logoNEW.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
@@ -275,7 +264,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
-    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ALERT.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\INFO.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RESOLVED.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ICON.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -11,14 +11,14 @@
         Me.Close()
     End Sub
 
-    'Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
-    '    Dim url As String = "https://github.com/MoonPixelTeam/Mp-PicoFilter"
-    '    Try
-    '        ' 使用默认浏览器打开网页
-    '        Process.Start(url)
-    '    Catch ex As Exception
-    '    End Try
-    'End Sub
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+        Dim url As String = "https://github.com/ReGoMark/PicoFilter"
+        Try
+            ' 使用默认浏览器打开网页
+            Process.Start(url)
+        Catch ex As Exception
+        End Try
+    End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.Close()
@@ -26,7 +26,7 @@
     Private Sub PlayNotificationSound()
         Try
             ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.BG, AudioPlayMode.Background)
+            My.Computer.Audio.Play(My.Resources.INFO, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
     End Sub
