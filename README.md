@@ -6,10 +6,6 @@
 
 ![ICON](./Resources/ICON.ico)
 
-## 一款图片筛选工具，当前版本：![GitHub Release](https://img.shields.io/github/v/release/ReGoMark/PicoFilter)
-
-支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，对于中等文件数目的文件夹可用(大约3000张2.5MB的图像)。
-
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/commits/main">
@@ -19,22 +15,22 @@
 <a href="https://github.com/ReGoMark/PicoFilter/issues">
     <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues"></a>
 
-</div>
+## 一款图片筛选工具，当前版本：![GitHub Release](https://img.shields.io/github/v/release/ReGoMark/PicoFilter)
 
-# 功能(1.6特性未展示，见更新日志)
+支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，对于中等文件数目的文件夹可用(大约3000张2.5MB的图像)。
 
-无论是界面设计还是运行平台均遵循标准的 Win32 设计规范，完全基于 `.net Framework` 的原生开发。
-
-除此之外，几乎肉眼可见的所有控件，都添加了工具提示，方便用户查看、使用。
-
-集成了一些鼠标功能（例如`中键`、`双击`等），提升用户体验。
+无论是界面设计还是运行平台均遵循标准的 Win32 设计规范，完全基于 `.net Framework` 的原生开发。除此之外，几乎肉眼可见的所有控件，都添加了工具提示并集成了一些鼠标功能（例如`中键`、`双击`等），提升用户体验，方便用户查看、使用。
 
 >[!CAUTION]
 >推荐安装 [方正黑体_GBK](./Fonts/方正黑体GBK.ttf)、[Consola](./Fonts/Consola.ttf)、[等线](./Fonts/灯线.ttf)、`微软雅黑`字体提升视觉效果体验。字体文件已经附在 [Fonts 文件夹](./Fonts) 中。
 
 感谢开源社区的支持，没有开源社区就没有 PicoFilter 的诞生。
 
-## 截图
+
+
+</div>
+
+# 功能
 
 ![总览图](./Assets/410770485-23cd403a-5f84-451b-bc5c-34a73283ede7.png "总览图")
 ![](./Assets/398368099-8520cb3d-5ddc-4179-9ae2-a445a2dcc311.png)
@@ -46,7 +42,6 @@
 
 ### 备注
 
- 
 >本人是强迫症患者，所以在软件排版布局上也有些考究。在两个列表之间，按下鼠标中键可以平均分配尺寸。其他的一些细微功能我都放到工具提示里面了，只要鼠标悬停就可以看得到，如在“×”位置鼠标左键双击可以自动输入宽度值。所以使用时要细心观察呐！   
 
 >由于水平一般、能力有限，软件可能会存在内存泄漏、回收不充分的问题，不过不影响使用。
