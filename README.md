@@ -6,6 +6,8 @@
 
 ![ICON](./Resources/ICON.ico)
 
+## 一款图片筛选工具，当前版本：![GitHub Release](https://img.shields.io/github/v/release/ReGoMark/PicoFilter)
+
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/commits/main">
@@ -14,23 +16,38 @@
     <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/issues">
     <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues"></a>
-
-## 一款图片筛选工具，当前版本：![GitHub Release](https://img.shields.io/github/v/release/ReGoMark/PicoFilter)
+    
+</div>
 
 支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，对于中等文件数目的文件夹可用(大约3000张2.5MB的图像)。
+
 
 无论是界面设计还是运行平台均遵循标准的 Win32 设计规范，完全基于 `.net Framework` 的原生开发。除此之外，几乎肉眼可见的所有控件，都添加了工具提示并集成了一些鼠标功能（例如`中键`、`双击`等），提升用户体验，方便用户查看、使用。
 
 >[!CAUTION]
->推荐安装 [方正黑体_GBK](./Fonts/方正黑体GBK.ttf)、[Consola](./Fonts/Consola.ttf)、[等线](./Fonts/灯线.ttf)、`微软雅黑`字体提升视觉效果体验。字体文件已经附在 [Fonts 文件夹](./Fonts) 中。
+>安装 [方正黑体_GBK](./Fonts/方正黑体GBK.ttf)字体提升视觉效果体验。字体文件已经附在 [Fonts 文件夹](./Fonts) 中。
 
-感谢开源社区的支持，没有开源社区就没有 PicoFilter 的诞生。
-
-
+  感谢开源社区的支持，没有开源社区就没有 PicoFilter 的诞生。
 
 </div>
 
 # 功能
+
+1.指定格式筛选（支持`jpg`、`bmp`、`png`、`ico`和`gif`图像，自动加载到列表中）
+
+2.指定分辨率筛选（`宽度`、`高度`，或者是大于设定值、等于设定值、排除设定值、小于设定值，以及忽略图像方向筛选）
+
+3.查看统计分析（自动统计分析筛选结果，轻松查看占比等信息）
+
+4.一键跳转（自动加载当前目录的文件夹结构，轻松跳转至上一级/下一级目录）
+
+5.导出筛选结果（导出筛选结果为`xlsx`文件，方便统计和比对）
+
+6.一键整理（对筛选结果实现一键隔离、移动和复制、删除）
+
+7.集成鼠标功能（如鼠标中键打开当前扫描文件夹，鼠标拖拽文件夹自动扫描、鼠标中键分配列表宽度、鼠标中键填充分辨率等
+
+# 截图
 
 ![总览图](./Assets/410770485-23cd403a-5f84-451b-bc5c-34a73283ede7.png "总览图")
 ![](./Assets/398368099-8520cb3d-5ddc-4179-9ae2-a445a2dcc311.png)
