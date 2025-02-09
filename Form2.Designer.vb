@@ -45,7 +45,7 @@ Partial Class Form2
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(12, 192)
+        Me.TextBox1.Location = New System.Drawing.Point(11, 192)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
@@ -133,9 +133,9 @@ Partial Class Form2
         Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label44.Location = New System.Drawing.Point(12, 317)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(186, 20)
+        Me.Label44.Size = New System.Drawing.Size(231, 20)
         Me.Label44.TabIndex = 47
-        Me.Label44.Text = "单击""支持""访问支援链接。"
+        Me.Label44.Text = "单击""支持""查看许可证书和更新。"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
@@ -172,11 +172,13 @@ Partial Class Form2
         '
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(356, 116)
+        Me.Label5.Location = New System.Drawing.Point(356, 113)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(341, 225)
+        Me.Label5.Size = New System.Drawing.Size(341, 221)
         Me.Label5.TabIndex = 48
-        Me.Label5.Text = resources.GetString("Label5.Text")
+        Me.Label5.Text = "版权声明" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "本软件及其相关内容由 ReGoMark 开发和维护，受著作权法及相关国际条约的保护。此外软件本身可能包含由方正公司、中易公司、美国蒙娜视觉字体设计、美" &
+    "国微软公司等的提供的字体或其他相关资源，这些字体版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应商的使用许可。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "© 2025 R" &
+    "eGoMark，版权所有。"
         '
         'Panel1
         '

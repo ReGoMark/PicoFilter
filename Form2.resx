@@ -190,12 +190,6 @@
 +UI微调整
 +对部分按钮增加了按键绑定</value>
   </data>
-  <data name="Label5.Text" xml:space="preserve">
-    <value>版权声明
-本软件及其相关内容由 ReGoMark 开发和维护，受著作权法及相关国际条约的保护。此外软件本身可能包含由北大方正公司、中易公司、美国蒙娜视觉字体设计、美国微软公司等的提供的字体或其他相关资源。这些字体及相关资源的版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应商的使用许可，如有疑问，请参考相关公司的官方声明或联系版权方。
-
-© 2025 ReGoMark，版权所有。</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
