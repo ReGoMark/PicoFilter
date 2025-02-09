@@ -12,7 +12,7 @@ Public Class Form3
     Private Sub PlayNotificationSound()
         Try
             ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.BG, AudioPlayMode.Background)
+            My.Computer.Audio.Play(My.Resources.INFO, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
     End Sub
@@ -21,7 +21,7 @@ Public Class Form3
         If absbButton.Checked = True Then
             Me.Location = New Point(Form1.Location.X + Form1.Width, Form1.Location.Y)
         Else
-            Me.CenterToScreen()
+            'Me.CenterToScreen()
         End If
     End Sub
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged

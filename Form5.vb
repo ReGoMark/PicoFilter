@@ -84,7 +84,7 @@ Public Class Form5
         If absbButton.Checked = True Then
             Me.Location = New Point(Form1.Location.X - Me.Width, Form1.Location.Y)
         Else
-            Me.CenterToScreen()
+            'Me.CenterToScreen()
         End If
     End Sub
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
@@ -126,11 +126,11 @@ Public Class Form5
         If isExpanded Then
             ' 如果已经展开，则折叠所有节点
             TreeView1.CollapseAll()
-            Button5.Text = "全部展开"
+            Button5.Text = "展开"
         Else
             ' 如果是折叠状态，则展开所有节点
             TreeView1.ExpandAll()
-            Button5.Text = "全部折叠"
+            Button5.Text = "折叠"
         End If
 
         ' 切换展开状态
@@ -155,6 +155,26 @@ Public Class Form5
     Private Sub sltLabel0_MouseHover(sender As Object, e As EventArgs) Handles sltLabel0.MouseHover
         If TreeView1.SelectedNode IsNot Nothing Then
             ToolTip1.SetToolTip(sltLabel0, TreeView1.SelectedNode.Text)
+        End If
+    End Sub
+
+    Private Sub TextBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseUp
+        ' 判断是否为鼠标中键点击
+        If e.Button = MouseButtons.Middle Then
+            ' 调试输出，确认事件触发
+            'MsgBox("鼠标中键点击触发")
+
+            ' 获取文件夹路径
+            Dim folderPath As String = TextBox1.Text
+
+            ' 检查路径是否为空并且文件夹是否存在
+            If Not String.IsNullOrEmpty(folderPath) AndAlso Directory.Exists(folderPath) Then
+                ' 打开文件夹
+                Process.Start("explorer.exe", folderPath)
+            Else
+                ' 如果路径无效或文件夹不存在，提示错误信息
+                MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         End If
     End Sub
 End Class

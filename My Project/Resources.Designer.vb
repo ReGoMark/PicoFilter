@@ -72,27 +72,27 @@ Namespace My.Resources
         '''<summary>
         '''  查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property BG() As System.IO.UnmanagedMemoryStream
+        Friend ReadOnly Property ALERT() As System.IO.UnmanagedMemoryStream
             Get
-                Return ResourceManager.GetStream("BG", resourceCulture)
+                Return ResourceManager.GetStream("ALERT", resourceCulture)
             End Get
         End Property
         
         '''<summary>
         '''  查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property NFP() As System.IO.UnmanagedMemoryStream
+        Friend ReadOnly Property INFO() As System.IO.UnmanagedMemoryStream
             Get
-                Return ResourceManager.GetStream("NFP", resourceCulture)
+                Return ResourceManager.GetStream("INFO", resourceCulture)
             End Get
         End Property
         
         '''<summary>
         '''  查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property NSG() As System.IO.UnmanagedMemoryStream
+        Friend ReadOnly Property RESOLVED() As System.IO.UnmanagedMemoryStream
             Get
-                Return ResourceManager.GetStream("NSG", resourceCulture)
+                Return ResourceManager.GetStream("RESOLVED", resourceCulture)
             End Get
         End Property
     End Module

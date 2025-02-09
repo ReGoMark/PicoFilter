@@ -119,14 +119,14 @@
   </resheader>
   <data name="TextBox1.Text" xml:space="preserve">
     <value>全部版本：
-1.6 Aura (with Service Pack 6);
-1.5 Luna (with  Service Pack 4)；
+1.6  (with Service Pack 6);
+1.5  (with  Service Pack 4)；
 ——————————
 说明：
 +“新增”；-“删去”；~“优化”；=“修正”
 ——————————
-1.5
-2025/2/
+1.6
+2025/2/7
 +目录结构预览
 =修正若干错误
 ~统计结果显示
@@ -135,6 +135,8 @@
 ~代码运行效率
 +重载功能
 ~UI排版设计
+——————————
+1.5
 2024/12/23
 +统计信息显示
 ~底部标签显示
@@ -187,12 +189,6 @@
 +调整：
 +UI微调整
 +对部分按钮增加了按键绑定</value>
-  </data>
-  <data name="Label5.Text" xml:space="preserve">
-    <value>版权声明
-本软件及其相关内容由 ReGoMark 开发和维护，受著作权法及相关国际条约的保护。此外软件本身可能包含由北大方正公司、中易公司、美国蒙娜视觉字体设计、美国微软公司等的提供的字体或其他相关资源。这些字体及相关资源的版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应商的使用许可，如有疑问，请参考相关公司的官方声明或联系版权方。
-
-© 2025 ReGoMark，版权所有。</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

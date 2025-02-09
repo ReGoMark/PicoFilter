@@ -45,12 +45,12 @@ Partial Class Form2
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(12, 192)
+        Me.TextBox1.Location = New System.Drawing.Point(11, 192)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(330, 122)
+        Me.TextBox1.Size = New System.Drawing.Size(324, 122)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseSystemPasswordChar = True
@@ -98,16 +98,16 @@ Partial Class Form2
         Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(12, 129)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(330, 60)
+        Me.Label6.Size = New System.Drawing.Size(302, 60)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "鸣谢" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持库：EEPlus，版本7.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体GBK、Consola、微软雅黑、等线"
+        Me.Label6.Text = "鸣谢" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持库：EPPlus，版本7.3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体、Consola、微软雅黑、等线"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label7.Location = New System.Drawing.Point(356, 89)
+        Me.Label7.Location = New System.Drawing.Point(355, 69)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(69, 20)
         Me.Label7.TabIndex = 9
@@ -133,9 +133,9 @@ Partial Class Form2
         Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label44.Location = New System.Drawing.Point(12, 317)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(186, 20)
+        Me.Label44.Size = New System.Drawing.Size(231, 20)
         Me.Label44.TabIndex = 47
-        Me.Label44.Text = "单击""支持""访问支援链接。"
+        Me.Label44.Text = "单击""支持""查看许可证书和更新。"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
@@ -166,17 +166,19 @@ Partial Class Form2
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(351, 40)
         Me.Label9.TabIndex = 17
-        Me.Label9.Text = "支持：https://github.com/MoonPixelTeam/Mp-PicoFilter"
+        Me.Label9.Text = "支持：https://github.com/ReGoMark/PicoFilter"
         '
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(356, 116)
+        Me.Label5.Location = New System.Drawing.Point(356, 113)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(341, 225)
+        Me.Label5.Size = New System.Drawing.Size(341, 221)
         Me.Label5.TabIndex = 48
-        Me.Label5.Text = resources.GetString("Label5.Text")
+        Me.Label5.Text = "版权声明" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "本软件及其相关内容由 ReGoMark 开发和维护，受著作权法及相关国际条约的保护。此外软件本身可能包含由方正公司、中易公司、美国蒙娜视觉字体设计、美" &
+    "国微软公司等的提供的字体或其他相关资源，这些字体版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应商的使用许可。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "© 2025 R" &
+    "eGoMark，版权所有。"
         '
         'Panel1
         '
@@ -192,6 +194,7 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(711, 355)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label5)
@@ -202,9 +205,8 @@ Partial Class Form2
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
