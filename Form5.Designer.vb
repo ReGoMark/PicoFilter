@@ -134,9 +134,10 @@ Partial Class Form5
         'btnGoUp
         '
         Me.btnGoUp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnGoUp.BackColor = System.Drawing.Color.White
+        Me.btnGoUp.BackColor = System.Drawing.Color.WhiteSmoke
         Me.btnGoUp.CausesValidation = False
         Me.btnGoUp.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.btnGoUp.FlatAppearance.BorderSize = 0
         Me.btnGoUp.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
         Me.btnGoUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.btnGoUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro

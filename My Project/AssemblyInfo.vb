@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 '查看程序集特性的值
 
 <Assembly: AssemblyTitle("PicoFilter")>
-<Assembly: AssemblyDescription("图片筛选工具，授权给 PAA像素艺术大赛 内部使用。")>
+<Assembly: AssemblyDescription("图片筛选工具")>
 <Assembly: AssemblyCompany("2025 ReGoMark")>
 <Assembly: AssemblyProduct("PicoFilter")>
 <Assembly: AssemblyCopyright("Copyright © 2024 ReGoMark")>

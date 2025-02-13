@@ -35,6 +35,9 @@ Partial Class Form2
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -54,6 +57,7 @@ Partial Class Form2
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseSystemPasswordChar = True
+        Me.TextBox1.Visible = False
         '
         'Label1
         '
@@ -131,7 +135,7 @@ Partial Class Form2
         Me.Label44.BackColor = System.Drawing.Color.White
         Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(12, 317)
+        Me.Label44.Location = New System.Drawing.Point(28, 316)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(231, 20)
         Me.Label44.TabIndex = 47
@@ -183,10 +187,22 @@ Partial Class Form2
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.PictureBox1)
+        Me.Panel1.Controls.Add(Me.Label44)
         Me.Panel1.Location = New System.Drawing.Point(-16, -24)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(365, 435)
         Me.Panel1.TabIndex = 49
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(251, 239)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 97)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 48
+        Me.PictureBox1.TabStop = False
         '
         'Form2
         '
@@ -196,9 +212,7 @@ Partial Class Form2
         Me.ClientSize = New System.Drawing.Size(711, 355)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label6)
@@ -206,6 +220,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.TextBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -213,6 +228,9 @@ Partial Class Form2
         Me.Name = "Form2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "关于"
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -230,4 +248,5 @@ Partial Class Form2
     Friend WithEvents Label44 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

@@ -144,6 +144,9 @@ Public Class Form1
         Dim volResolution As Boolean = volButton.Checked
         Dim plsResolution As Boolean = moreButton.Checked
         Dim mnsResolution As Boolean = mnsButton.Checked
+        Dim qstSelected As Boolean = qstCheck.Checked
+        Dim tmtSelected As Boolean = tmtCheck.Checked
+        Dim invldSelected As Boolean = invldCheck.Checked
         Dim matchingFileCount As Integer = 0 ' 符合筛选条件的计数
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
@@ -194,6 +197,36 @@ Public Class Form1
                 ListView1.Items.Add(newItem)
                 matchingFileCount += 1 ' 符合条件的文件计数自增
 
+                If tmtSelected Then
+                    ' 获取文件名（假设文件名在第二列，即索引 1）
+                    Dim fileName As String = item.SubItems(1).Text
+                    ' 判断文件名是否包含 "超时"
+                    If fileName.Contains("超时") Then
+                        ' 创建新的 ListViewItem 并复制原项的数据
+                        newItem.BackColor = Color.MistyRose
+                    End If
+                End If
+
+                If qstSelected Then
+                    ' 获取文件名（假设文件名在第二列，即索引 1）
+                    Dim fileName As String = item.SubItems(1).Text
+                    ' 判断文件名是否包含 "存疑"
+                    If fileName.Contains("存疑") Then
+                        ' 创建新的 ListViewItem 并复制原项的数据
+                        newItem.BackColor = Color.Cornsilk
+                    End If
+                End If
+
+                If invldSelected Then
+                    ' 获取文件名（假设文件名在第二列，即索引 1）
+                    Dim fileName As String = item.SubItems(1).Text
+                    ' 判断文件名是否包含 "超时"
+                    If fileName.Contains("无效") Then
+                        ' 创建新的 ListViewItem 并复制原项的数据
+                        newItem.BackColor = Color.LightCyan
+                    End If
+                End If
+
                 ' 更新各格式计数
                 Select Case format
                     Case ".JPG", ".JPEG"
@@ -208,6 +241,7 @@ Public Class Form1
                         bmpCount += 1
                 End Select
             End If
+
         Next
 
         '更新label2
@@ -252,7 +286,7 @@ Public Class Form1
             Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
             Dim selectedCount As Integer = ListView1.SelectedItems.Count
             If ListView1.SelectedItems.Count > 1 Then
-                sltLabel0.Text = $" MULTISELECT [{selectedCount}]"
+                sltLabel1.Text = $" MULTISELECT [{selectedCount}]"
 
             Else
                 sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
@@ -1043,7 +1077,7 @@ Public Class Form1
         If Directory.Exists(folderPath) Then
             加载图片(folderPath)
         Else
-            MessageBox.Show("路径无效或不存在。", "路径错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
         If Form5.Visible = True Then
             Form5.TextBox1.Text = Me.toform5path
@@ -1084,6 +1118,9 @@ Public Class Form1
         Dim gifCount As Integer = 0
         Dim bmpCount As Integer = 0
         Dim icoCount As Integer = 0
+        Dim qstCount As Integer = 0
+        Dim tmtCount As Integer = 0
+        Dim invldCount As Integer = 0
 
         ' 遍历 ListView2 统计文件格式数量
         For Each item As ListViewItem In ListView1.Items
@@ -1206,6 +1243,26 @@ Public Class Form1
         Else
             Form3.Label29.Text = "...GIF"
         End If
+
+        For Each item As ListViewItem In ListView0.Items
+            ' 获取文件名（假设文件名在第二列，即索引 1）
+            Dim fileName As String = item.SubItems(1).Text
+            ' 判断文件名是否包含 "超时"
+            If fileName.Contains("超时") Then
+                tmtCount += 1
+            End If
+            If fileName.Contains("存疑") Then
+                qstCount += 1
+            End If
+            If fileName.Contains("无效") Then
+                invldCount += 1
+            End If
+        Next
+        Dim labelstr As New List(Of String)  '更新label6
+        labelstr.Add($"无效 {invldCount}")
+        labelstr.Add($"存疑 {qstCount}")
+        labelstr.Add($"超时 {tmtCount}")
+        Form3.Label45.Text = String.Join("  ", labelstr)
     End Sub
 
     Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
