@@ -65,11 +65,12 @@ Partial Class Form1
         Me.mentionButton = New System.Windows.Forms.CheckBox()
         Me.exButton = New System.Windows.Forms.CheckBox()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.Label44 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.CheckBox_LoadThumbnails = New System.Windows.Forms.CheckBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label44 = New System.Windows.Forms.Label()
+        Me.invldCheck = New System.Windows.Forms.CheckBox()
         Me.tmtCheck = New System.Windows.Forms.CheckBox()
         Me.qstCheck = New System.Windows.Forms.CheckBox()
         Me.setting = New System.Windows.Forms.Button()
@@ -94,7 +95,6 @@ Partial Class Form1
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.invldCheck = New System.Windows.Forms.CheckBox()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -324,7 +324,7 @@ Partial Class Form1
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(-1, -2)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(505, 347)
+        Me.ListView1.Size = New System.Drawing.Size(501, 347)
         Me.ListView1.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListView1, "双击项预览。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListView1.UseCompatibleStateImageBehavior = False
@@ -417,7 +417,7 @@ Partial Class Form1
         Me.sumLabel1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sumLabel1.Location = New System.Drawing.Point(-1, 392)
         Me.sumLabel1.Name = "sumLabel1"
-        Me.sumLabel1.Size = New System.Drawing.Size(505, 45)
+        Me.sumLabel1.Size = New System.Drawing.Size(506, 45)
         Me.sumLabel1.TabIndex = 16
         Me.sumLabel1.Text = " RSLT"
         Me.sumLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -432,7 +432,7 @@ Partial Class Form1
         Me.sltLabel1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sltLabel1.Location = New System.Drawing.Point(-1, 348)
         Me.sltLabel1.Name = "sltLabel1"
-        Me.sltLabel1.Size = New System.Drawing.Size(505, 45)
+        Me.sltLabel1.Size = New System.Drawing.Size(506, 45)
         Me.sltLabel1.TabIndex = 17
         Me.sltLabel1.Text = " Wait"
         Me.sltLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -737,12 +737,25 @@ Partial Class Form1
         Me.SplitContainer1.TabIndex = 31
         Me.ToolTip1.SetToolTip(Me.SplitContainer1, "鼠标中键平均分配。")
         '
+        'Label44
+        '
+        Me.Label44.BackColor = System.Drawing.Color.Transparent
+        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label44.Location = New System.Drawing.Point(195, 227)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(43, 20)
+        Me.Label44.TabIndex = 48
+        Me.Label44.Text = "更多"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label44.Visible = False
+        '
         'Label7
         '
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(44, 259)
+        Me.Label7.Location = New System.Drawing.Point(40, 259)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -774,7 +787,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(308, 243)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(304, 243)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -797,24 +810,35 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.moreButton)
         Me.Panel3.Controls.Add(Me.exButton)
         Me.Panel3.Controls.Add(Me.infoButton)
-        Me.Panel3.Location = New System.Drawing.Point(197, 351)
+        Me.Panel3.Location = New System.Drawing.Point(193, 351)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(202, 79)
         Me.Panel3.TabIndex = 44
         Me.Panel3.Visible = False
         '
-        'Label44
+        'invldCheck
         '
-        Me.Label44.BackColor = System.Drawing.Color.Transparent
-        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(195, 227)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(43, 20)
-        Me.Label44.TabIndex = 48
-        Me.Label44.Text = "更多"
-        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label44.Visible = False
+        Me.invldCheck.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.invldCheck.Appearance = System.Windows.Forms.Appearance.Button
+        Me.invldCheck.BackColor = System.Drawing.Color.White
+        Me.invldCheck.Checked = True
+        Me.invldCheck.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.invldCheck.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.invldCheck.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.invldCheck.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.invldCheck.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.invldCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.invldCheck.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.invldCheck.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.invldCheck.Location = New System.Drawing.Point(135, 42)
+        Me.invldCheck.Name = "invldCheck"
+        Me.invldCheck.Size = New System.Drawing.Size(58, 26)
+        Me.invldCheck.TabIndex = 46
+        Me.invldCheck.Text = "无效"
+        Me.invldCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.invldCheck, "标记""无效""的文件。")
+        Me.invldCheck.UseVisualStyleBackColor = False
         '
         'tmtCheck
         '
@@ -975,7 +999,7 @@ Partial Class Form1
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(101, 389)
+        Me.ComboBox1.Location = New System.Drawing.Point(97, 389)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(73, 24)
         Me.ComboBox1.TabIndex = 33
@@ -1035,9 +1059,9 @@ Partial Class Form1
         Me.lockButton.ImageList = Me.ImageList1
         Me.lockButton.Location = New System.Drawing.Point(12, 492)
         Me.lockButton.Name = "lockButton"
-        Me.lockButton.Size = New System.Drawing.Size(76, 26)
+        Me.lockButton.Size = New System.Drawing.Size(100, 26)
         Me.lockButton.TabIndex = 35
-        Me.lockButton.Text = "锁定"
+        Me.lockButton.Text = "两步锁定"
         Me.lockButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lockButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.lockButton, "锁定数据。若右侧列表中存在数据，则软件将不能直接关闭。")
@@ -1059,7 +1083,7 @@ Partial Class Form1
         Me.searchText.ForeColor = System.Drawing.Color.Black
         Me.searchText.Location = New System.Drawing.Point(4, 4)
         Me.searchText.Name = "searchText"
-        Me.searchText.Size = New System.Drawing.Size(319, 17)
+        Me.searchText.Size = New System.Drawing.Size(295, 17)
         Me.searchText.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.searchText, "输入一个查找目标。")
         '
@@ -1077,7 +1101,7 @@ Partial Class Form1
         Me.searchButton0.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.searchButton0.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.searchButton0.Image = CType(resources.GetObject("searchButton0.Image"), System.Drawing.Image)
-        Me.searchButton0.Location = New System.Drawing.Point(359, -1)
+        Me.searchButton0.Location = New System.Drawing.Point(335, -1)
         Me.searchButton0.Name = "searchButton0"
         Me.searchButton0.Size = New System.Drawing.Size(28, 26)
         Me.searchButton0.TabIndex = 38
@@ -1100,7 +1124,7 @@ Partial Class Form1
         Me.searchButton1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.searchButton1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.searchButton1.Image = CType(resources.GetObject("searchButton1.Image"), System.Drawing.Image)
-        Me.searchButton1.Location = New System.Drawing.Point(393, -1)
+        Me.searchButton1.Location = New System.Drawing.Point(369, -1)
         Me.searchButton1.Name = "searchButton1"
         Me.searchButton1.Size = New System.Drawing.Size(28, 26)
         Me.searchButton1.TabIndex = 39
@@ -1246,34 +1270,10 @@ Partial Class Form1
         Me.Panel4.Controls.Add(Me.searchText)
         Me.Panel4.Controls.Add(Me.searchButton0)
         Me.Panel4.Controls.Add(Me.searchButton1)
-        Me.Panel4.Location = New System.Drawing.Point(94, 492)
+        Me.Panel4.Location = New System.Drawing.Point(118, 492)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(427, 26)
+        Me.Panel4.Size = New System.Drawing.Size(403, 26)
         Me.Panel4.TabIndex = 37
-        '
-        'invldCheck
-        '
-        Me.invldCheck.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.invldCheck.Appearance = System.Windows.Forms.Appearance.Button
-        Me.invldCheck.BackColor = System.Drawing.Color.White
-        Me.invldCheck.Checked = True
-        Me.invldCheck.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.invldCheck.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.invldCheck.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
-        Me.invldCheck.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.invldCheck.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.invldCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.invldCheck.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.invldCheck.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.invldCheck.Location = New System.Drawing.Point(135, 42)
-        Me.invldCheck.Name = "invldCheck"
-        Me.invldCheck.Size = New System.Drawing.Size(58, 26)
-        Me.invldCheck.TabIndex = 46
-        Me.invldCheck.Text = "无效"
-        Me.invldCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.invldCheck, "标记""无效""的文件。")
-        Me.invldCheck.UseVisualStyleBackColor = False
         '
         'Form1
         '

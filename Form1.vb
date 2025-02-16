@@ -15,6 +15,9 @@ Public Class Form1
     Dim bmp0, bmp1 As Double
     Dim ico0, ico1 As Double
     Public toform5path As String
+    Dim invldstr As String
+    Dim tmtstr As String
+    Dim qststr As String
     Public verinfo As String = "PicoFilter 1.6"
 
     ' 加载图片从指定文件夹到listview1
@@ -831,12 +834,11 @@ Public Class Form1
     ' 获取筛选条件字符串列表
     Private Function GetFilterConditions(jpgSelected As Boolean, pngSelected As Boolean, gifSelected As Boolean, bmpSelected As Boolean, icoSelected As Boolean, inreslnSelected As Boolean, volreslnSelected As Boolean, resolutionSelected As Boolean, plsreslnSelected As Boolean, mnsreslnSelected As Boolean) As List(Of String)
         Dim result As New List(Of String)
-        If jpgSelected Then result.Add("[JPG]")
-        If pngSelected Then result.Add("[PNG]")
-        If gifSelected Then result.Add("[GIF]")
-        If bmpSelected Then result.Add("[BMP]")
-        If icoSelected Then result.Add("[ICO]")
-
+        If jpgSelected Then result.Add("[JPG] ")
+        If pngSelected Then result.Add("[PNG] ")
+        If gifSelected Then result.Add("[GIF] ")
+        If bmpSelected Then result.Add("[BMP] ")
+        If icoSelected Then result.Add("[ICO] ")
         Dim resolutionStr = $" {wideButton.Text} × {htButton.Text}"
         If inreslnSelected And resolutionSelected And Not volreslnSelected Then
             result.Add($"[EX-RSLN{resolutionStr}]")
@@ -862,11 +864,13 @@ Public Class Form1
         worksheet.Cells("H3").Value = " " & minstr
         worksheet.Cells("H4").Value = sumlabel1
         worksheet.Cells("H5").Value = " " & filterConditions
-        worksheet.Cells("G1").Value = "已扫描"
+        'worksheet.Cells("H6").Value = " " & labelstr
+        worksheet.Cells("G1").Value = "扫描"
         worksheet.Cells("G2").Value = "大小"
         worksheet.Cells("G3").Value = "耗时"
         worksheet.Cells("G4").Value = "结果"
         worksheet.Cells("G5").Value = "条件"
+        'worksheet.Cells("G6").Value = "标记"
         worksheet.Cells("G1:G5").Style.Font.Bold = True
         worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
         worksheet.Cells("G1:G5").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
@@ -887,11 +891,20 @@ Public Class Form1
         worksheet.Cells("A1:E1").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
     End Sub
 
-    ' 填充 ListView 的数据到 Excel 工作表
+    ' 填充 ListView 的数据到 Excel 工作表，并匹配背景颜色
     Private Sub FillListViewData(worksheet As ExcelWorksheet, listView As ListView)
         For i As Integer = 0 To listView.Items.Count - 1
             For j As Integer = 0 To listView.Items(i).SubItems.Count - 1
-                worksheet.Cells(i + 2, j + 1).Value = listView.Items(i).SubItems(j).Text
+                Dim cell = worksheet.Cells(i + 2, j + 1)
+                cell.Value = listView.Items(i).SubItems(j).Text
+
+                ' 获取 ListView 项目的背景颜色
+                Dim lvItemColor As Color = listView.Items(i).BackColor
+                If lvItemColor = Color.Empty Then lvItemColor = listView.BackColor ' 默认使用 ListView 背景色
+
+                ' 设置 Excel 单元格背景颜色
+                cell.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                cell.Style.Fill.BackgroundColor.SetColor(lvItemColor)
             Next
         Next
     End Sub
@@ -979,6 +992,9 @@ Public Class Form1
                 End If
             End If
             ' 如果没有内容或用户选择了确定，窗口将继续关闭
+            Form5.Close()
+            Form2.Close()
+            Form3.Close()
         End If
 
         'SaveConfig()
@@ -1258,7 +1274,7 @@ Public Class Form1
                 invldCount += 1
             End If
         Next
-        Dim labelstr As New List(Of String)  '更新label6
+        Dim labelstr As New List(Of String)
         labelstr.Add($"无效 {invldCount}")
         labelstr.Add($"存疑 {qstCount}")
         labelstr.Add($"超时 {tmtCount}")

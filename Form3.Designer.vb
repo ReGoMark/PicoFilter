@@ -73,6 +73,7 @@ Partial Class Form3
         Me.topButton = New System.Windows.Forms.CheckBox()
         Me.Label45 = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label44 = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -657,12 +658,26 @@ Partial Class Form3
         Me.Label35.TabIndex = 52
         Me.Label35.Text = "标记"
         '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.BackColor = System.Drawing.Color.Transparent
+        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label44.Location = New System.Drawing.Point(114, 499)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(156, 20)
+        Me.Label44.TabIndex = 55
+        Me.Label44.Text = "单击""开始""刷新数据。"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(353, 535)
+        Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.Label45)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.topButton)
@@ -776,4 +791,5 @@ Partial Class Form3
     Friend WithEvents topButton As CheckBox
     Friend WithEvents Label45 As Label
     Friend WithEvents Label35 As Label
+    Friend WithEvents Label44 As Label
 End Class

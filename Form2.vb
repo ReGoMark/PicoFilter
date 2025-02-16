@@ -1,7 +1,7 @@
 ﻿Public Class Form2
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim currentUser As String = Environment.UserName
-        Label7.Text = "授权给：" & currentUser
+        Label7.Text = "授权用户：" & currentUser
         TextBox1.SelectionStart = 0
         TextBox1.SelectionLength = 0 ' 确保未选中文本
         PlayNotificationSound()
@@ -29,5 +29,9 @@
             My.Computer.Audio.Play(My.Resources.INFO, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
+    End Sub
+
+    Private Sub Label44_Click(sender As Object, e As EventArgs) Handles Label44.Click
+        PictureBox1.Visible = True
     End Sub
 End Class
