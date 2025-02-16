@@ -74,6 +74,23 @@ Public Class Form1
                     ProgressBar1.Value += 1 ' 更新进度条、标题计数器
                     NUM = NUM + 1
                     更新标题()
+                    ' 获取文件名（假设文件名在第二列，即索引 1）
+
+                    ' 判断文件名是否包含 "超时"
+                    If fileName.Contains("超时") Then
+                        ' 创建新的 ListViewItem 并复制原项的数据
+                        item.BackColor = Color.MistyRose
+                    End If
+                    ' 判断文件名是否包含 "存疑"
+                    If fileName.Contains("存疑") Then
+                        ' 创建新的 ListViewItem 并复制原项的数据
+                        item.BackColor = Color.Cornsilk
+                    End If
+                    ' 判断文件名是否包含 "超时"
+                    If fileName.Contains("无效") Then
+                        ' 创建新的 ListViewItem 并复制原项的数据
+                        item.BackColor = Color.LightCyan
+                    End If
                 End Using
 
             Catch ex As Exception
@@ -156,7 +173,6 @@ Public Class Form1
         Dim gifCount As Integer = 0
         Dim bmpCount As Integer = 0
         Dim icoCount As Integer = 0
-
         ' 遍历 ListView1 中的每一项，进行筛选
         For Each item As ListViewItem In ListView0.Items
             Dim resolution As String() = item.SubItems(2).Text.Split("×"c)
@@ -165,11 +181,12 @@ Public Class Form1
             Dim format As String = item.SubItems(3).Text
             Dim sizeInKB As String = item.SubItems(4).Text ' 获取大小列的值
             Dim matchesFormat As Boolean = (jpgSelected And (format = ".JPG" Or format = ".JPEG")) OrElse
-                                       (pngSelected And format = ".PNG") OrElse
-                                       (bmpSelected And format = ".BMP") OrElse
-                                       (icoSelected And format = ".ICO") OrElse
-                                       (gifSelected And format = ".GIF")
+                                   (pngSelected And format = ".PNG") OrElse
+                                   (bmpSelected And format = ".BMP") OrElse
+                                   (icoSelected And format = ".ICO") OrElse
+                                   (gifSelected And format = ".GIF")
             Dim isMatch As Boolean = False
+
             ' 统一处理筛选逻辑
             If resolutionSelected Then
                 If excludeResolution Then
@@ -191,7 +208,31 @@ Public Class Form1
                 isMatch = matchesFormat
             End If
 
-            If isMatch Then
+            ' 检查是否满足 tmtSelected、qstSelected 或 invldSelected 条件
+            Dim isSpecialMatch As Boolean = False
+            If tmtSelected Then
+                Dim fileName As String = item.SubItems(1).Text
+                If fileName.Contains("超时") Then
+                    isSpecialMatch = True
+                End If
+            End If
+
+            If qstSelected Then
+                Dim fileName As String = item.SubItems(1).Text
+                If fileName.Contains("存疑") Then
+                    isSpecialMatch = True
+                End If
+            End If
+
+            If invldSelected Then
+                Dim fileName As String = item.SubItems(1).Text
+                If fileName.Contains("无效") Then
+                    isSpecialMatch = True
+                End If
+            End If
+
+            ' 如果符合特殊条件或常规条件，则添加到 ListView1
+            If isMatch Or isSpecialMatch Then
                 Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
                 newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
                 newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
@@ -200,34 +241,17 @@ Public Class Form1
                 ListView1.Items.Add(newItem)
                 matchingFileCount += 1 ' 符合条件的文件计数自增
 
-                If tmtSelected Then
-                    ' 获取文件名（假设文件名在第二列，即索引 1）
-                    Dim fileName As String = item.SubItems(1).Text
-                    ' 判断文件名是否包含 "超时"
-                    If fileName.Contains("超时") Then
-                        ' 创建新的 ListViewItem 并复制原项的数据
-                        newItem.BackColor = Color.MistyRose
-                    End If
+                ' 根据特殊条件设置背景颜色
+                If tmtSelected AndAlso item.SubItems(1).Text.Contains("超时") Then
+                    newItem.BackColor = Color.MistyRose
                 End If
 
-                If qstSelected Then
-                    ' 获取文件名（假设文件名在第二列，即索引 1）
-                    Dim fileName As String = item.SubItems(1).Text
-                    ' 判断文件名是否包含 "存疑"
-                    If fileName.Contains("存疑") Then
-                        ' 创建新的 ListViewItem 并复制原项的数据
-                        newItem.BackColor = Color.Cornsilk
-                    End If
+                If qstSelected AndAlso item.SubItems(1).Text.Contains("存疑") Then
+                    newItem.BackColor = Color.Cornsilk
                 End If
 
-                If invldSelected Then
-                    ' 获取文件名（假设文件名在第二列，即索引 1）
-                    Dim fileName As String = item.SubItems(1).Text
-                    ' 判断文件名是否包含 "超时"
-                    If fileName.Contains("无效") Then
-                        ' 创建新的 ListViewItem 并复制原项的数据
-                        newItem.BackColor = Color.LightCyan
-                    End If
+                If invldSelected AndAlso item.SubItems(1).Text.Contains("无效") Then
+                    newItem.BackColor = Color.LightCyan
                 End If
 
                 ' 更新各格式计数
@@ -244,7 +268,6 @@ Public Class Form1
                         bmpCount += 1
                 End Select
             End If
-
         Next
 
         '更新label2
@@ -1124,6 +1147,23 @@ Public Class Form1
             My.Computer.Audio.Play(My.Resources.ALERT, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
+    End Sub
+
+    Private Sub plsButton_Click(sender As Object, e As EventArgs) Handles plsButton.Click
+        ' 设置 Panel3 可见
+        Panel3.Visible = True
+
+        ' 启动 Timer，3 秒后触发 Tick 事件
+        pnlTimer.Interval = 5000 ' 设置间隔为 3000 毫秒（3 秒）
+        pnlTimer.Start()
+    End Sub
+
+    Private Sub pnlTimer_Tick(sender As Object, e As EventArgs) Handles pnlTimer.Tick
+        ' 设置 Panel3 不可见
+        Panel3.Visible = False
+
+        ' 停止 Timer
+        pnlTimer.Stop()
     End Sub
 
     Private Sub 更新统计信息()
