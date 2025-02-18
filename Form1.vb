@@ -104,7 +104,7 @@ Public Class Form1
 
         ' **更新 Label6**
         Dim result As New List(Of String)
-        result.Add($"[SUM {files.Count}]")
+        result.Add($" [SUM {files.Count}]")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
