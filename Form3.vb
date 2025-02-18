@@ -31,4 +31,7 @@ Public Class Form3
             TopMost = False
         End If
     End Sub
+    Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+        Me.CenterToScreen()
+    End Sub
 End Class

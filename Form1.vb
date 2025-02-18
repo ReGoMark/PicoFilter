@@ -1,5 +1,8 @@
 ﻿Imports System.IO
 Imports OfficeOpenXml
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.Windows.Forms.VisualStyles
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
@@ -29,98 +32,79 @@ Public Class Form1
         ProgressBar1.Value = 0
         Dim stopwatch As New Stopwatch()
         Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
-        Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower()))
-        Dim index As Integer = 1 ' 计数。下同
-        Dim jpgCount As Integer = 0
-        Dim pngCount As Integer = 0
-        Dim gifCount As Integer = 0
-        Dim bmpCount As Integer = 0
-        Dim icoCount As Integer = 0
+        Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower())).ToList()
+        Dim index As Integer = 1
+        Dim jpgCount As Integer = 0, pngCount As Integer = 0, gifCount As Integer = 0
+        Dim bmpCount As Integer = 0, icoCount As Integer = 0
         ProgressBar1.Maximum = files.Count()
 
+        Dim listViewItems As New List(Of ListViewItem) ' **批量存储 ListViewItem**
         stopwatch.Start()
-        '填充数据到listview1
+
         For Each file In files
             Try
-                Using img As Image = Image.FromFile(file)
-                    Dim fileName As String = Path.GetFileName(file)
-                    Dim resolution As String = $"{img.Width}×{img.Height}"
-                    Dim format As String = Path.GetExtension(file).ToUpper()
-                    Dim fileSize As Double = New FileInfo(file).Length ' 文件大小（字节）
-                    Dim sizeInKB As Double = Int(fileSize / 1024) ' 转换为KB
+                Dim fileName As String = Path.GetFileName(file)
+                Dim fileInfo As New FileInfo(file)
+                Dim fileSize As Double = fileInfo.Length ' **获取文件大小**
+                Dim sizeFormatted As String = 格式化文件大小(fileSize) ' **转换大小单位**
+                Dim format As String = fileInfo.Extension.ToUpper()
 
-                    ' 计数不同格式
-                    Select Case format
-                        Case ".JPG", ".JPEG"
-                            jpgCount += 1
-                        Case ".PNG"
-                            pngCount += 1
-                        Case ".GIF"
-                            gifCount += 1
-                        Case ".ICO"
-                            icoCount += 1
-                        Case ".BMP"
-                            bmpCount += 1
-                    End Select
-                    Dim item As New ListViewItem(index.ToString()) ' 添加序号
-                    item.SubItems.Add(fileName) ' 添加文件名
-                    item.SubItems.Add(resolution) ' 添加分辨率
-                    item.SubItems.Add(format) ' 添加格式
-                    item.SubItems.Add(sizeInKB & " KB") ' 添加文件大小
+                ' **优化：快速获取图片分辨率**
+                Dim resolution As String = 获取图片分辨率(file)
 
-                    sumsize += fileSize
-                    ListView0.Items.Add(item) ' 添加到 listview1
-                    index += 1 ' 序号自增
-                    ProgressBar1.Value += 1 ' 更新进度条、标题计数器
-                    NUM = NUM + 1
-                    更新标题()
-                    ' 获取文件名（假设文件名在第二列，即索引 1）
+                ' **计数不同格式**
+                Select Case format
+                    Case ".JPG", ".JPEG"
+                        jpgCount += 1
+                    Case ".PNG"
+                        pngCount += 1
+                    Case ".GIF"
+                        gifCount += 1
+                    Case ".ICO"
+                        icoCount += 1
+                    Case ".BMP"
+                        bmpCount += 1
+                End Select
 
-                    ' 判断文件名是否包含 "超时"
-                    If fileName.Contains("超时") Then
-                        ' 创建新的 ListViewItem 并复制原项的数据
-                        item.BackColor = Color.MistyRose
-                    End If
-                    ' 判断文件名是否包含 "存疑"
-                    If fileName.Contains("存疑") Then
-                        ' 创建新的 ListViewItem 并复制原项的数据
-                        item.BackColor = Color.Cornsilk
-                    End If
-                    ' 判断文件名是否包含 "超时"
-                    If fileName.Contains("无效") Then
-                        ' 创建新的 ListViewItem 并复制原项的数据
-                        item.BackColor = Color.LightCyan
-                    End If
-                End Using
+                ' **创建 ListViewItem**
+                Dim item As New ListViewItem(index.ToString())
+                item.SubItems.Add(fileName)
+                item.SubItems.Add(resolution)
+                item.SubItems.Add(format)
+                item.SubItems.Add(sizeFormatted) ' **使用自动转换的大小单位**
+
+                ' **根据文件名高亮**
+                If fileName.Contains("超时") Then item.BackColor = Color.MistyRose
+                If fileName.Contains("存疑") Then item.BackColor = Color.Cornsilk
+                If fileName.Contains("无效") Then item.BackColor = Color.LightCyan
+
+                listViewItems.Add(item)
+                sumsize += fileSize
+                index += 1
+                ProgressBar1.Value += 1
+                NUM += 1
+                更新标题()
 
             Catch ex As Exception
-                ' 忽略无法读取的文件(文件本身有问题而不是格式不支持)
                 Dim opt = MessageBox.Show(ex.Message & vbCrLf & "点击是继续，点击否终止。", "失败", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
-                If opt = DialogResult.No Then
-                    Exit For
-                End If
+                If opt = DialogResult.No Then Exit For
             End Try
         Next
+
+        ' **一次性添加到 ListView，减少 UI 刷新次数**
+        ListView0.Items.AddRange(listViewItems.ToArray())
 
         stopwatch.Stop()
         min = stopwatch.ElapsedMilliseconds
 
-        Me.openText.SelectionStart = Me.openText.Text.Length
-        Me.openText.ScrollToCaret()
+        Dim foldername As String = Path.GetFileName(openText.Text)
 
-        Dim fileName1 As String = Path.GetFileName(openText.Text)
-        Dim sumsizestr As String
-        If Int(sumsize / 1024 / 1024) > 1024 Then
-            sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & "GB"
-        Else
-            If Int(sumsize / 1024 / 1024) > 1 Then
-                sumsizestr = Int(sumsize * 100 / 1024 / 1024) / 100 & "MB"
-            Else
-                sumsizestr = Int(sumsize * 100 / 1024) / 100 & "KB"
-            End If
-        End If
-        Dim result As New List(Of String)  '更新label6
-        result.Add($" [SUM {files.Count}]")
+        ' **计算总大小**
+        Dim sumsizestr As String = 格式化文件大小(sumsize)
+
+        ' **更新 Label6**
+        Dim result As New List(Of String)
+        result.Add($"[SUM {files.Count}]")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
@@ -128,7 +112,7 @@ Public Class Form1
         If icoCount > 0 Then result.Add($"ICO {icoCount}")
 
         sumLabel0.Text = String.Join("  |  ", result)
-        Me.Text = verinfo & "  [" & fileName1 & " - " & “” & sumsizestr & "]"
+        Me.Text = verinfo & "  [" & foldername & " - " & sumsizestr & "]"
         更新统计信息()
         PlayNotificationSound()
 
@@ -138,12 +122,31 @@ Public Class Form1
         bmp1 = bmpCount
         gif1 = gifCount
         ico1 = icoCount
-
-        'If Form5.Visible = True Then
-        '    Form5.TextBox1.Text = toform5path
-        '    Form5.LoadTreeView(toform5path)
-        'End If
     End Sub
+
+    Private Function 获取图片分辨率(filePath As String) As String
+        Try
+            Using fs As New FileStream(filePath, FileMode.Open, FileAccess.Read)
+                Using img As Image = Image.FromStream(fs, False, False)
+                    Return $"{img.Width}×{img.Height}"
+                End Using
+            End Using
+        Catch
+            Return "未知"
+        End Try
+    End Function
+
+
+    Private Function 格式化文件大小(sizeInBytes As Double) As String
+        If sizeInBytes >= 1024 * 1024 Then
+            Return Math.Round(sizeInBytes / (1024 * 1024), 2) & " MB"
+        ElseIf sizeInBytes >= 1024 Then
+            Return Math.Round(sizeInBytes / 1024, 2) & " KB"
+        Else
+            Return sizeInBytes & " B"
+        End If
+    End Function
+
     ' 加载图片从指定文件夹，到listview2
     Private Sub 筛选图片()
         ListView1.Items.Clear()
@@ -529,7 +532,7 @@ Public Class Form1
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
         Dim sourceFolder As String = openText.Text ' 源文件夹路径
-        Dim resultFolder As String = Path.Combine(sourceFolder, "筛选结果" & formattedDateTime)
+        Dim resultFolder As String = Path.Combine(sourceFolder, "隔离结果" & formattedDateTime)
 
         ' 创建“筛选结果”文件夹（如果不存在）
         If Not Directory.Exists(resultFolder) Then
@@ -546,9 +549,15 @@ Public Class Form1
                 MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Next
-        MessageBox.Show("隔离成功。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
+        ' 显示成功消息并打开筛选结果文件夹
+        Dim opt = MessageBox.Show("隔离成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+        If opt = DialogResult.Yes Then
+            ' 打开文件
+            Process.Start("explorer.exe", resultFolder) ' 打开“筛选结果”文件夹
+        End If
     End Sub
+
 
     ' Button7 点击事件：将 ListView1 中选中的文件添加到 ListView2 中
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles addButton.Click
@@ -568,7 +577,7 @@ Public Class Form1
                 ListView1.Items.Add(newItem) ' 添加到 ListView2
                 ' 将新项目的字体颜色设置
                 newItem.ForeColor = Color.Black
-                newItem.BackColor = Color.Lavender
+                newItem.BackColor = Color.GhostWhite
             End If
         Next
         ' 更新筛选结果的计数
@@ -645,6 +654,7 @@ Public Class Form1
     ' 创建 ListViewItemComparer 类
     Public Class ListViewItemComparer
         Implements IComparer
+
         Private col As Integer
         Private order As SortOrder
 
@@ -661,26 +671,48 @@ Public Class Form1
                 Dim item2 As ListViewItem = CType(y, ListViewItem)
 
                 Select Case col
-                    Case 0 ' 序号列
+                    Case 0 ' **序号列（按整数排序）**
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
-                    Case 4 ' 文件大小列
-                        Dim size1 As Integer = Integer.Parse(item1.SubItems(col).Text.Replace(" KB", "").Trim())
-                        Dim size2 As Integer = Integer.Parse(item2.SubItems(col).Text.Replace(" KB", "").Trim())
+
+                    Case 4 ' **文件大小列（按数值大小排序）**
+                        Dim size1 As Double = 解析文件大小(item1.SubItems(col).Text)
+                        Dim size2 As Double = 解析文件大小(item2.SubItems(col).Text)
                         returnVal = size1.CompareTo(size2)
-                    Case Else ' 其他列（按字符串比较）
+
+                    Case Else ' **其他列（按字符串排序）**
                         returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
                 End Select
             End If
 
-            ' 根据排序顺序返回相应的结果
+            ' **根据排序顺序调整结果**
             If order = SortOrder.Descending Then
                 returnVal *= -1
             End If
+
             Return returnVal
         End Function
+
+        ' **解析文件大小**
+        Private Function 解析文件大小(sizeText As String) As Double
+            Dim sizeValue As Double = 0
+
+            If sizeText.EndsWith(" KB") Then
+                Double.TryParse(sizeText.Replace(" KB", "").Trim(), sizeValue)
+                sizeValue *= 1024 ' 转换为字节
+            ElseIf sizeText.EndsWith(" MB") Then
+                Double.TryParse(sizeText.Replace(" MB", "").Trim(), sizeValue)
+                sizeValue *= 1024 * 1024 ' 转换为字节
+            ElseIf sizeText.EndsWith(" GB") Then
+                Double.TryParse(sizeText.Replace(" GB", "").Trim(), sizeValue)
+                sizeValue *= 1024 * 1024 * 1024 ' 转换为字节
+            End If
+
+            Return sizeValue
+        End Function
     End Class
+
 
 
     Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles wideButton.KeyPress
@@ -1149,19 +1181,10 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub plsButton_Click(sender As Object, e As EventArgs) Handles plsButton.Click
-        ' 设置 Panel3 可见
-        Panel3.Visible = True
-
-        ' 启动 Timer，3 秒后触发 Tick 事件
-        pnlTimer.Interval = 5000 ' 设置间隔为 3000 毫秒（3 秒）
-        pnlTimer.Start()
-    End Sub
-
     Private Sub pnlTimer_Tick(sender As Object, e As EventArgs) Handles pnlTimer.Tick
         ' 设置 Panel3 不可见
         Panel3.Visible = False
-
+        plsButton.CheckState = CheckState.Unchecked
         ' 停止 Timer
         pnlTimer.Stop()
     End Sub
@@ -1324,6 +1347,9 @@ Public Class Form1
     Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
         If plsButton.Checked = True Then
             Panel3.Visible = True
+            '启动 Timer， 3 秒后触发 Tick 事件
+            pnlTimer.Interval = 4000 ' 设置间隔为 3000 毫秒（3 秒）
+            pnlTimer.Start()
         ElseIf plsButton.Checked = False Then
             Panel3.Visible = False
         End If
@@ -1363,5 +1389,8 @@ Public Class Form1
         '    Form5.toform1path = toform5path
         '    Form5.LoadTreeView(toform5path)
         'End If
+    End Sub
+    Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+        Me.CenterToScreen()
     End Sub
 End Class

@@ -34,4 +34,21 @@
     Private Sub Label44_Click(sender As Object, e As EventArgs) Handles Label44.Click
         PictureBox1.Visible = True
     End Sub
+
+    Private Sub Label11_Click(sender As Object, e As EventArgs) Handles Label11.Click
+        Process1.StartInfo.UseShellExecute = True
+        Process1.StartInfo.FileName = Application.StartupPath & "\tutorial.mp4"
+
+        '' 显示文件路径以便调试
+        'MessageBox.Show("尝试打开文件: " & Process1.StartInfo.FileName)
+
+        Try
+            Process1.Start()
+        Catch ex As Exception
+            MessageBox.Show("无法打开视频教程，请检查文件是否存在。错误信息: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+        Me.CenterToScreen()
+    End Sub
 End Class
