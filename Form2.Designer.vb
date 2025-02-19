@@ -250,7 +250,7 @@ Partial Class Form2
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(134, 20)
         Me.Label4.TabIndex = 49
-        Me.Label4.Text = "with Service Pack 6"
+        Me.Label4.Text = "with Service Pack 8"
         '
         'Process1
         '

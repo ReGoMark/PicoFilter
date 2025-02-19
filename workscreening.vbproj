@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F575B19B-9E99-4302-9948-695B65D76126}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>PicoFilter.My.MyApplication</StartupObject>
-    <RootNamespace>PicoFilter</RootNamespace>
+    <StartupObject>PicoFilter16.My.MyApplication</StartupObject>
+    <RootNamespace>PicoFilter16</RootNamespace>
     <AssemblyName>PicoFilter</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>

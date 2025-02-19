@@ -45,7 +45,7 @@
         Try
             Process1.Start()
         Catch ex As Exception
-            MessageBox.Show("无法打开视频教程，请检查文件是否存在。错误信息: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("无法打开视频教程，请检查文件是否存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick

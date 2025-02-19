@@ -177,4 +177,8 @@ Public Class Form5
             End If
         End If
     End Sub
+
+    Private Sub Form5_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+        Me.CenterToScreen()
+    End Sub
 End Class

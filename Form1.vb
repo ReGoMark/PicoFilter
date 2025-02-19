@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Imports OfficeOpenXml
+Imports System.Drawing.Text
+Imports MS.Internal
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
@@ -151,37 +153,36 @@ Public Class Form1
         End If
     End Function
 
-' 加载图片从指定文件夹，到 ListView1
-Private Sub 筛选图片()
-    ListView1.Items.Clear()
+    ' 加载图片从指定文件夹，到 ListView1
+    Private Sub 筛选图片()
+        ListView1.Items.Clear()
 
-    ' 解析分辨率输入框
-    Dim widthFilter As Integer = 0
-    Dim heightFilter As Integer = 0
-    If Not Integer.TryParse(wideButton.Text, widthFilter) Then widthFilter = 0
-    If Not Integer.TryParse(htButton.Text, heightFilter) Then heightFilter = 0
+        ' 解析分辨率输入框
+        Dim widthFilter As Integer = 0
+        Dim heightFilter As Integer = 0
+        If Not Integer.TryParse(wideButton.Text, widthFilter) Then widthFilter = 0
+        If Not Integer.TryParse(htButton.Text, heightFilter) Then heightFilter = 0
 
-    ' 获取筛选条件
-    Dim jpgSelected As Boolean = jpgButton.Checked
-    Dim pngSelected As Boolean = pngButton.Checked
-    Dim gifSelected As Boolean = gifButton.Checked
-    Dim bmpSelected As Boolean = bmpButton.Checked
-    Dim icoSelected As Boolean = icoButton.Checked
-    Dim resolutionSelected As Boolean = reslnButton.Checked
-    Dim excludeResolution As Boolean = exButton.Checked   ' 分辨率反选筛选
-    Dim volResolution As Boolean = volButton.Checked        ' 宽高互换
-    Dim plsResolution As Boolean = moreButton.Checked       ' 大于
-    Dim mnsResolution As Boolean = mnsButton.Checked        ' 小于
-    Dim qstSelected As Boolean = qstCheck.Checked
-    Dim tmtSelected As Boolean = tmtCheck.Checked
-    Dim invldSelected As Boolean = invldCheck.Checked
+        ' 获取筛选条件
+        Dim jpgSelected As Boolean = jpgButton.Checked
+        Dim pngSelected As Boolean = pngButton.Checked
+        Dim gifSelected As Boolean = gifButton.Checked
+        Dim bmpSelected As Boolean = bmpButton.Checked
+        Dim icoSelected As Boolean = icoButton.Checked
+        Dim resolutionSelected As Boolean = reslnButton.Checked
+        Dim excludeResolution As Boolean = exButton.Checked   ' 分辨率反选筛选
+        Dim volResolution As Boolean = volButton.Checked        ' 宽高互换
+        Dim plsResolution As Boolean = moreButton.Checked       ' 大于
+        Dim mnsResolution As Boolean = mnsButton.Checked        ' 小于
+        Dim qstSelected As Boolean = qstCheck.Checked
+        Dim tmtSelected As Boolean = tmtCheck.Checked
+        Dim invldSelected As Boolean = invldCheck.Checked
+        Dim matchingFileCount As Integer = 0
+        Dim jpgCount As Integer = 0, pngCount As Integer = 0, gifCount As Integer = 0
+        Dim bmpCount As Integer = 0, icoCount As Integer = 0
 
-    Dim matchingFileCount As Integer = 0
-    Dim jpgCount As Integer = 0, pngCount As Integer = 0, gifCount As Integer = 0
-    Dim bmpCount As Integer = 0, icoCount As Integer = 0
-
-    ' 判断是否启用了格式筛选（任意一种格式被选中）
-    Dim formatFilterEnabled As Boolean = jpgSelected Or pngSelected Or gifSelected Or bmpSelected Or icoSelected
+        ' 判断是否启用了格式筛选（任意一种格式被选中）
+        Dim formatFilterEnabled As Boolean = jpgSelected Or pngSelected Or gifSelected Or bmpSelected Or icoSelected
         ' 分辨率筛选直接用 resolutionSelected 即可
 
         ' 遍历 ListView0 进行筛选
@@ -346,7 +347,26 @@ Private Sub 筛选图片()
         NUM = 0
         Me.Text = verinfo
 
+        '' 检查 skip.txt 文件是否存在
+        'Dim appDirectory As String = Application.StartupPath & "\skip.txt"
+        'If File.Exists(appDirectory) Then
+        '    MessageBox.Show(“部分界面可能无法正常显示。请前往 Github 主页安装。” & vbCrLf & “在软件根目录下新建 skip.txt 可跳过字体检查。”, "风险警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        'Else
+        '    Dim fontName As String = "方正黑体_GBK" ' 你要检测的字体名称
+        '    检测字体是否安装(fontName)
+        '    MessageBox.Show($"字体 '{fontName}' 未找到！” & vbCrLf & “部分界面可能无法正常显示。请前往 Github 主页安装。” & vbCrLf & “在软件根目录下新建 skip.txt 可跳过字体检查。”, "风险警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        'End If
     End Sub
+
+    Private Function 检测字体是否安装(fontName As String) As Boolean
+        Dim fonts As New InstalledFontCollection()
+        For Each font As FontFamily In fonts.Families
+            If font.Name.Equals(fontName, StringComparison.OrdinalIgnoreCase) Then
+                Return True ' 找到字体，返回 True
+            End If
+        Next
+        Return False ' 未找到字体，返回 False
+    End Function
 
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles sltLabel0.Click
@@ -1352,7 +1372,7 @@ Private Sub 筛选图片()
             Dim selectedCount As Integer = ListView1.SelectedItems.Count
             If ListView1.SelectedItems.Count > 1 Then
                 sltLabel1.Text = $" MULTISELECT [{selectedCount}]"
-                ListView1.ContextMenuStrip = Nothing
+                ListView1.ContextMenuStrip = ContextMenuStrip5
             Else
                 sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
                 ListView1.ContextMenuStrip = ContextMenuStrip3
@@ -1503,6 +1523,56 @@ Private Sub 筛选图片()
             Clipboard.SetText(filePath)
             MessageBox.Show("路径已复制。" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+    End Sub
+
+    Private Sub ToolStripMenuItem5_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem5.Click
+        ' 确保 ListView2 中有选中的项
+        If ListView1.SelectedItems.Count > 0 Then
+            ' 从 ListView2 中删除选中的项
+            Dim index As Integer = ListView1.SelectedItems(0).Index
+            For Each selectedItem As ListViewItem In ListView1.SelectedItems
+                ListView1.Items.Remove(selectedItem)
+            Next
+            If ListView1.Items.Count > 0 Then
+                If index < ListView1.Items.Count Then
+                    ListView1.Items(index).Selected = True
+                    ListView1.Items(index).Focused = True
+                Else
+                    ListView1.Items(ListView1.Items.Count - 1).Selected = True
+                    ListView1.Items(ListView1.Items.Count - 1).Focused = True
+                End If
+            End If
+        Else
+            MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        ' 更新筛选结果的计数
+        UpdateLabel2()
+        更新统计信息()
+    End Sub
+
+    Private Sub 删除选中项DToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除选中项DToolStripMenuItem.Click
+        ' 确保 ListView2 中有选中的项
+        If ListView1.SelectedItems.Count > 0 Then
+            ' 从 ListView2 中删除选中的项
+            Dim index As Integer = ListView1.SelectedItems(0).Index
+            For Each selectedItem As ListViewItem In ListView1.SelectedItems
+                ListView1.Items.Remove(selectedItem)
+            Next
+            If ListView1.Items.Count > 0 Then
+                If index < ListView1.Items.Count Then
+                    ListView1.Items(index).Selected = True
+                    ListView1.Items(index).Focused = True
+                Else
+                    ListView1.Items(ListView1.Items.Count - 1).Selected = True
+                    ListView1.Items(ListView1.Items.Count - 1).Focused = True
+                End If
+            End If
+        Else
+            MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        ' 更新筛选结果的计数
+        UpdateLabel2()
+        更新统计信息()
     End Sub
 
     Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
