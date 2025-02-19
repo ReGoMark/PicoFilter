@@ -20,6 +20,7 @@ Public Class Form1
     Dim invldstr As String
     Dim tmtstr As String
     Dim qststr As String
+    Dim labelstr As String
     Public verinfo As String = "PicoFilter 1.6"
 
     ' 加载图片从指定文件夹到listview1
@@ -900,16 +901,16 @@ Public Class Form1
         worksheet.Cells("H3").Value = " " & minstr
         worksheet.Cells("H4").Value = sumlabel1
         worksheet.Cells("H5").Value = " " & filterConditions
-        'worksheet.Cells("H6").Value = " " & labelstr
+        worksheet.Cells("H6").Value = labelstr
         worksheet.Cells("G1").Value = "扫描"
         worksheet.Cells("G2").Value = "大小"
         worksheet.Cells("G3").Value = "耗时"
         worksheet.Cells("G4").Value = "结果"
         worksheet.Cells("G5").Value = "条件"
-        'worksheet.Cells("G6").Value = "标记"
-        worksheet.Cells("G1:G5").Style.Font.Bold = True
-        worksheet.Cells("G1:G5").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
-        worksheet.Cells("G1:G5").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+        worksheet.Cells("G6").Value = "标记"
+        worksheet.Cells("G1:G6").Style.Font.Bold = True
+        worksheet.Cells("G1:G6").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+        worksheet.Cells("G1:G6").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
     End Sub
 
     ' 设置 ListView 的表头到 Excel 工作表
@@ -1318,11 +1319,8 @@ Public Class Form1
                 invldCount += 1
             End If
         Next
-        Dim labelstr As New List(Of String)
-        labelstr.Add($"无效 {invldCount}")
-        labelstr.Add($"存疑 {qstCount}")
-        labelstr.Add($"超时 {tmtCount}")
-        Form3.Label45.Text = String.Join("  ", labelstr)
+        Form3.Label45.Text = " 无效 " & invldCount & “ 存疑 ” & qstCount & “ 超时 ” & tmtCount
+        labelstr = " INVL " & invldCount & “  |  IMP ” & qstCount & “  |  TMOT ” & tmtCount
     End Sub
 
     Private Sub 以此为筛选条件ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 以此为筛选条件ToolStripMenuItem.Click
