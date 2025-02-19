@@ -1575,6 +1575,42 @@ Public Class Form1
         更新统计信息()
     End Sub
 
+    Private Sub ToolStripMenuItem6_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem6.Click
+        SplitContainer1.SplitterDistance = SplitContainer1.Width / 3
+    End Sub
+
+    Private Sub ToolStripMenuItem7_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem7.Click
+        SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
+    End Sub
+
+    Private Sub ToolStripMenuItem8_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem8.Click
+        SplitContainer1.SplitterDistance = SplitContainer1.Width / 3 * 2
+    End Sub
+
+    Private Sub ToolStripMenuItem10_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem10.Click
+        ListView0.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
+    End Sub
+
+    Private Sub ToolStripMenuItem9_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem9.Click
+        ListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
+    End Sub
+
+    Private Sub 列宽恢复默认OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列宽恢复默认OToolStripMenuItem.Click
+        ListView0.Columns(0).Width = 50
+        ListView0.Columns(1).Width = 170
+        ListView0.Columns(2).Width = 110
+        ListView0.Columns(3).Width = 60
+        ListView0.Columns(4).Width = 90
+    End Sub
+
+    Private Sub 还原列宽OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 还原列宽OToolStripMenuItem.Click
+        ListView1.Columns(0).Width = 50
+        ListView1.Columns(1).Width = 170
+        ListView1.Columns(2).Width = 110
+        ListView1.Columns(3).Width = 60
+        ListView1.Columns(4).Width = 90
+    End Sub
+
     Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
         If plsButton.Checked = True Then
             Panel3.Visible = True
