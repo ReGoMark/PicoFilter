@@ -30,6 +30,7 @@ Public Class Form1
         sumsize = 0
         ListView0.Items.Clear()
         ProgressBar1.Value = 0
+        ProgressBar1.Visible = True
         Dim stopwatch As New Stopwatch()
         Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
         Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower())).ToList()
@@ -131,6 +132,7 @@ Public Class Form1
         bmp1 = bmpCount
         gif1 = gifCount
         ico1 = icoCount
+        ProgressBar1.Visible = False
     End Sub
 
     Private Function 获取图片分辨率(filePath As String) As String
@@ -144,7 +146,6 @@ Public Class Form1
             Return "未知"
         End Try
     End Function
-
 
     Private Function 格式化文件大小(sizeInBytes As Double) As String
         If sizeInBytes >= 1024 Then
@@ -228,7 +229,7 @@ Public Class Form1
             ElseIf resolutionSelected Then
                 isMatch = resolutionMatch
             Else
-                isMatch = True ' 如果两个筛选条件都未启用，则默认匹配所有
+                isMatch = False ' 如果两个筛选条件都未启用，则默认匹配所有
             End If
 
             ' **特殊标签筛选**
@@ -348,15 +349,6 @@ Public Class Form1
         NUM = 0
         Me.Text = verinfo
 
-        '' 检查 skip.txt 文件是否存在
-        'Dim appDirectory As String = Application.StartupPath & "\skip.txt"
-        'If File.Exists(appDirectory) Then
-        '    MessageBox.Show(“部分界面可能无法正常显示。请前往 Github 主页安装。” & vbCrLf & “在软件根目录下新建 skip.txt 可跳过字体检查。”, "风险警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        'Else
-        '    Dim fontName As String = "方正黑体_GBK" ' 你要检测的字体名称
-        '    检测字体是否安装(fontName)
-        '    MessageBox.Show($"字体 '{fontName}' 未找到！” & vbCrLf & “部分界面可能无法正常显示。请前往 Github 主页安装。” & vbCrLf & “在软件根目录下新建 skip.txt 可跳过字体检查。”, "风险警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        'End If
     End Sub
 
     Private Function 检测字体是否安装(fontName As String) As Boolean
