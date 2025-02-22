@@ -132,7 +132,7 @@ Partial Class Form2
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(152, 40)
         Me.Label8.TabIndex = 10
-        Me.Label8.Text = "版本：1.6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "构建日期：2025/2/18"
+        Me.Label8.Text = "版本：1.6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "构建日期：2025/2/22"
         '
         'Label44
         '

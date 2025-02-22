@@ -21,6 +21,7 @@ Public Class Form1
     Dim tmtstr As String
     Dim qststr As String
     Dim labelstr As String
+    Dim formattedString As String
     Public verinfo As String = "PicoFilter 1.6"
 
     ' 加载图片从指定文件夹到listview1
@@ -37,6 +38,7 @@ Public Class Form1
         Dim index As Integer = 1
         Dim jpgCount As Integer = 0, pngCount As Integer = 0, gifCount As Integer = 0
         Dim bmpCount As Integer = 0, icoCount As Integer = 0
+        Dim tagCount As Integer = 0
 
         ProgressBar1.Maximum = files.Count()
 
@@ -74,10 +76,23 @@ Public Class Form1
                 item.SubItems.Add(sizeFormatted) ' **使用自动转换的大小单位**
 
                 ' **根据文件名高亮**
-                If fileName.Contains("超时") Then item.BackColor = Color.MistyRose
-                If fileName.Contains("存疑") Then item.BackColor = Color.Cornsilk
-                If fileName.Contains("无效") Then item.BackColor = Color.LightCyan
-
+                Dim highlightMark As String = "" ' 额外列，默认留白
+                If fileName.Contains("超时") Then
+                    item.BackColor = Color.MistyRose
+                    tagCount += 1
+                    highlightMark = "*"
+                End If
+                If fileName.Contains("存疑") Then
+                    item.BackColor = Color.Cornsilk
+                    tagCount += 1
+                    highlightMark = "*"
+                End If
+                If fileName.Contains("无效") Then
+                    item.BackColor = Color.LightCyan
+                    tagCount += 1
+                    highlightMark = "*"
+                End If
+                item.SubItems.Add(highlightMark)
                 listViewItems.Add(item)
                 sumsize += fileSize
                 index += 1
@@ -104,7 +119,8 @@ Public Class Form1
 
         ' **更新 Label6**
         Dim result As New List(Of String)
-        result.Add($" [SUM {files.Count}]")
+        result.Add($" 总计 {files.Count} 项")
+        If tagCount > 0 Then result.Add($"标记 {tagCount}")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
@@ -122,7 +138,7 @@ Public Class Form1
                 sumsizestr = Int(sumsize * 100 / 1024) / 100 & " KB"
             End If
         End If
-        Me.Text = verinfo & "  [" & foldername & " - " & sumsizestr & "]"
+        Me.Text = verinfo & "  |  " & foldername & "  |  " & sumsizestr
         更新统计信息()
         PlayNotificationSound()
 
@@ -182,6 +198,7 @@ Public Class Form1
         Dim matchingFileCount As Integer = 0
         Dim jpgCount As Integer = 0, pngCount As Integer = 0, gifCount As Integer = 0
         Dim bmpCount As Integer = 0, icoCount As Integer = 0
+        Dim tagCount As Integer = 0
 
         ' 判断是否启用了格式筛选（任意一种格式被选中）
         Dim formatFilterEnabled As Boolean = jpgSelected Or pngSelected Or gifSelected Or bmpSelected Or icoSelected
@@ -246,13 +263,23 @@ Public Class Form1
                 newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
                 newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
                 newItem.SubItems.Add(sizeInKB) ' 文件大小
+                newItem.SubItems.Add(item.SubItems(5).Text) ' 格式
                 ListView1.Items.Add(newItem)
                 matchingFileCount += 1 ' 符合条件的文件计数自增
 
                 ' 根据特殊条件设置背景颜色
-                If tmtSelected AndAlso fileName.Contains("超时") Then newItem.BackColor = Color.MistyRose
-                If qstSelected AndAlso fileName.Contains("存疑") Then newItem.BackColor = Color.Cornsilk
-                If invldSelected AndAlso fileName.Contains("无效") Then newItem.BackColor = Color.LightCyan
+                If tmtSelected AndAlso fileName.Contains("超时") Then
+                    newItem.BackColor = Color.MistyRose
+                    tagCount += 1
+                End If
+                If qstSelected AndAlso fileName.Contains("存疑") Then
+                    newItem.BackColor = Color.Cornsilk
+                    tagCount += 1
+                End If
+                If invldSelected AndAlso fileName.Contains("无效") Then
+                    newItem.BackColor = Color.LightCyan
+                    tagCount += 1
+                End If
 
                 ' 更新各格式计数
                 Select Case format
@@ -271,7 +298,8 @@ Public Class Form1
         Next
         '更新label2
         Dim result As New List(Of String)
-        result.Add($" [RSLT {matchingFileCount}]")
+        result.Add($" 结果 {matchingFileCount} 项")
+        'If tagCount > 0 Then result.Add($"标记 {tagCount}")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
@@ -348,18 +376,18 @@ Public Class Form1
         ProgressBar1.Maximum = 0
         NUM = 0
         Me.Text = verinfo
-
+        Me.KeyPreview = True ' 确保表单可以捕获键盘事件
     End Sub
 
-    Private Function 检测字体是否安装(fontName As String) As Boolean
-        Dim fonts As New InstalledFontCollection()
-        For Each font As FontFamily In fonts.Families
-            If font.Name.Equals(fontName, StringComparison.OrdinalIgnoreCase) Then
-                Return True ' 找到字体，返回 True
-            End If
-        Next
-        Return False ' 未找到字体，返回 False
-    End Function
+    'Private Function 检测字体是否安装(fontName As String) As Boolean
+    '    Dim fonts As New InstalledFontCollection()
+    '    For Each font As FontFamily In fonts.Families
+    '        If font.Name.Equals(fontName, StringComparison.OrdinalIgnoreCase) Then
+    '            Return True ' 找到字体，返回 True
+    '        End If
+    '    Next
+    '    Return False ' 未找到字体，返回 False
+    'End Function
 
     ' 在 Label5 上单击复制 ListView1 选中的文件路径
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles sltLabel0.Click
@@ -756,7 +784,7 @@ Public Class Form1
             Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
             ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(sltLabel0, fileName & vbCrLf & "单击复制路径。")
+            ToolTip1.SetToolTip(sltLabel0, selectedItem.SubItems(1).Text & vbCrLf & "单击复制路径。")
         Else
             ' 如果没有选中项，显示默认提示
             ToolTip1.SetToolTip(sltLabel0, "单击复制路径。")
@@ -863,26 +891,26 @@ Public Class Form1
     ' 获取筛选条件字符串列表
     Private Function GetFilterConditions(jpgSelected As Boolean, pngSelected As Boolean, gifSelected As Boolean, bmpSelected As Boolean, icoSelected As Boolean, inreslnSelected As Boolean, volreslnSelected As Boolean, resolutionSelected As Boolean, plsreslnSelected As Boolean, mnsreslnSelected As Boolean) As List(Of String)
         Dim result As New List(Of String)
-        If jpgSelected Then result.Add("[JPG] ")
-        If pngSelected Then result.Add("[PNG] ")
-        If gifSelected Then result.Add("[GIF] ")
-        If bmpSelected Then result.Add("[BMP] ")
-        If icoSelected Then result.Add("[ICO] ")
         Dim resolutionStr = $" {wideButton.Text} × {htButton.Text}"
         If inreslnSelected And resolutionSelected And Not volreslnSelected Then
-            result.Add($"[EX-RSLN{resolutionStr}]")
+            result.Add($"排除分辨率 {resolutionStr}")
         ElseIf resolutionSelected And Not inreslnSelected And Not volreslnSelected And Not plsreslnSelected And Not mnsreslnSelected Then
-            result.Add($"[RSLN{resolutionStr}]")
+            result.Add($"分辨率 {resolutionStr}")
         ElseIf volreslnSelected And resolutionSelected And inreslnSelected Then
-            result.Add($"[VO&EX-RSLN{resolutionStr}]")
+            result.Add($"旋转&排除分辨率 {resolutionStr}")
         ElseIf volreslnSelected And resolutionSelected And Not inreslnSelected Then
-            result.Add($"[VO-RSLN{resolutionStr}]")
+            result.Add($"旋转分辨率 {resolutionStr}")
         ElseIf plsreslnSelected And resolutionSelected And Not volreslnSelected And Not inreslnSelected And Not mnsreslnSelected Then
-            result.Add($"[PLS-RSLN{resolutionStr}]")
+            result.Add($"大于分辨率 {resolutionStr}")
         ElseIf mnsreslnSelected And resolutionSelected And Not volreslnSelected And Not inreslnSelected And Not plsreslnSelected Then
-            result.Add($"[MNS-RSLN{resolutionStr}]")
+            result.Add($"小于分辨率 {resolutionStr}")
         End If
-
+        If jpgSelected Then result.Add("JPG")
+        If pngSelected Then result.Add("PNG")
+        If gifSelected Then result.Add("GIF")
+        If bmpSelected Then result.Add("BMP")
+        If icoSelected Then result.Add("ICO")
+        formattedString = String.Join("  |  ", result)
         Return result
     End Function
 
@@ -892,10 +920,10 @@ Public Class Form1
         worksheet.Cells("H2").Value = " " & sumsizestr
         worksheet.Cells("H3").Value = " " & minstr
         worksheet.Cells("H4").Value = sumlabel1
-        worksheet.Cells("H5").Value = " " & filterConditions
+        worksheet.Cells("H5").Value = " " & formattedString
         worksheet.Cells("H6").Value = labelstr
-        worksheet.Cells("G1").Value = "扫描"
-        worksheet.Cells("G2").Value = "大小"
+        worksheet.Cells("G1").Value = "已扫描"
+        worksheet.Cells("G2").Value = "总大小"
         worksheet.Cells("G3").Value = "耗时"
         worksheet.Cells("G4").Value = "结果"
         worksheet.Cells("G5").Value = "条件"
@@ -1052,6 +1080,7 @@ Public Class Form1
                 item.Selected = False
             End If
         Next
+        PlayNotificationSound3()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs)
@@ -1091,6 +1120,7 @@ Public Class Form1
                 item.Selected = False
             End If
         Next
+        PlayNotificationSound3()
     End Sub
 
     Private Sub 更新标题()
@@ -1311,8 +1341,8 @@ Public Class Form1
                 invldCount += 1
             End If
         Next
-        Form3.Label45.Text = " 无效 " & invldCount & “ 存疑 ” & qstCount & “ 超时 ” & tmtCount
-        labelstr = " INVL " & invldCount & “  |  IMP ” & qstCount & “  |  TMOT ” & tmtCount
+        Form3.Label45.Text = " 无效 " & invldCount & “  存疑 ” & qstCount & “  超时 ” & tmtCount
+        labelstr = " 无效 " & invldCount & “  |  存疑 ” & qstCount & “  |  超时 ” & tmtCount
     End Sub
 
     Private Sub 以此为筛选条件ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 以此为筛选条件ToolStripMenuItem.Click
@@ -1343,14 +1373,14 @@ Public Class Form1
             Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
             Dim selectedCount As Integer = ListView0.SelectedItems.Count
             If ListView0.SelectedItems.Count > 1 Then
-                sltLabel0.Text = $" MULTISELECT [{selectedCount}]"
+                sltLabel0.Text = $" 复选 {selectedCount} 项"
                 ListView0.ContextMenuStrip = ContextMenuStrip2
             Else
-                sltLabel0.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
+                sltLabel0.Text = $" [{selectedItem.SubItems(0).Text}]  |  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
                 ListView0.ContextMenuStrip = ContextMenuStrip1
             End If
         Else
-            sltLabel0.Text = " Ready"
+            sltLabel0.Text = " 就绪"
             ListView0.ContextMenuStrip = ContextMenuStrip1
         End If
     End Sub
@@ -1361,14 +1391,14 @@ Public Class Form1
             Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
             Dim selectedCount As Integer = ListView1.SelectedItems.Count
             If ListView1.SelectedItems.Count > 1 Then
-                sltLabel1.Text = $" MULTISELECT [{selectedCount}]"
+                sltLabel1.Text = $" 复选 {selectedCount} 项"
                 ListView1.ContextMenuStrip = ContextMenuStrip5
             Else
-                sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}"
+                sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  |  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
                 ListView1.ContextMenuStrip = ContextMenuStrip3
             End If
         Else
-            sltLabel1.Text = " Wait"
+            sltLabel1.Text = " 等待"
             ListView1.ContextMenuStrip = ContextMenuStrip3
         End If
     End Sub
@@ -1649,5 +1679,32 @@ Public Class Form1
     End Sub
     Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
         Me.CenterToScreen()
+    End Sub
+
+    Private Sub ListView0_DragDrop(sender As Object, e As DragEventArgs) Handles ListView0.DragDrop
+        Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If Directory.Exists(droppedItems(0)) Then
+            Dim folderPath As String = droppedItems(0)
+            openText.Text = folderPath
+            加载图片(folderPath)
+            toform5path = folderPath
+            If Form5.Visible = True Then
+                Form5.TextBox1.Text = Me.toform5path
+                Form5.toform1path = Me.toform5path
+                Form5.LoadTreeView(Form5.toform1path)
+            End If
+        End If
+    End Sub
+
+    Private Sub ListView0_DragEnter(sender As Object, e As DragEventArgs) Handles ListView0.DragEnter
+        ' 判断拖入的是否是文件夹
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If Directory.Exists(droppedItems(0)) Then
+                e.Effect = DragDropEffects.Copy
+            Else
+                e.Effect = DragDropEffects.None
+            End If
+        End If
     End Sub
 End Class

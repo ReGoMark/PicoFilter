@@ -51,4 +51,8 @@
     Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
         Me.CenterToScreen()
     End Sub
+
+    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
+
+    End Sub
 End Class

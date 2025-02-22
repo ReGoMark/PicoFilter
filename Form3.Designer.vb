@@ -83,7 +83,7 @@ Partial Class Form3
         Me.Label1.BackColor = System.Drawing.Color.White
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label1.Location = New System.Drawing.Point(12, 18)
+        Me.Label1.Location = New System.Drawing.Point(16, 20)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(54, 20)
         Me.Label1.TabIndex = 0
@@ -95,11 +95,11 @@ Partial Class Form3
         Me.Label2.BackColor = System.Drawing.Color.White
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label2.Location = New System.Drawing.Point(12, 55)
+        Me.Label2.Location = New System.Drawing.Point(16, 52)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 20)
+        Me.Label2.Size = New System.Drawing.Size(54, 20)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "大小"
+        Me.Label2.Text = "总大小"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label3
@@ -108,7 +108,7 @@ Partial Class Form3
         Me.Label3.BackColor = System.Drawing.Color.White
         Me.Label3.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label3.Location = New System.Drawing.Point(12, 120)
+        Me.Label3.Location = New System.Drawing.Point(16, 116)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(56, 18)
         Me.Label3.TabIndex = 2
@@ -120,7 +120,7 @@ Partial Class Form3
         Me.Label4.BackColor = System.Drawing.Color.White
         Me.Label4.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label4.Location = New System.Drawing.Point(12, 143)
+        Me.Label4.Location = New System.Drawing.Point(16, 140)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(56, 18)
         Me.Label4.TabIndex = 3
@@ -132,7 +132,7 @@ Partial Class Form3
         Me.Label5.BackColor = System.Drawing.Color.White
         Me.Label5.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label5.Location = New System.Drawing.Point(12, 166)
+        Me.Label5.Location = New System.Drawing.Point(16, 164)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(56, 18)
         Me.Label5.TabIndex = 4
@@ -144,7 +144,7 @@ Partial Class Form3
         Me.Label6.BackColor = System.Drawing.Color.White
         Me.Label6.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label6.Location = New System.Drawing.Point(12, 189)
+        Me.Label6.Location = New System.Drawing.Point(16, 188)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(56, 18)
         Me.Label6.TabIndex = 5
@@ -156,7 +156,7 @@ Partial Class Form3
         Me.Label7.BackColor = System.Drawing.Color.White
         Me.Label7.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label7.Location = New System.Drawing.Point(12, 210)
+        Me.Label7.Location = New System.Drawing.Point(16, 212)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(56, 18)
         Me.Label7.TabIndex = 6
@@ -168,19 +168,19 @@ Partial Class Form3
         Me.Label8.BackColor = System.Drawing.Color.White
         Me.Label8.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label8.Location = New System.Drawing.Point(12, 249)
+        Me.Label8.Location = New System.Drawing.Point(16, 244)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(39, 20)
+        Me.Label8.Size = New System.Drawing.Size(69, 20)
         Me.Label8.TabIndex = 7
-        Me.Label8.Text = "差值"
+        Me.Label8.Text = "筛选差值"
         '
         'Label9
         '
         Me.Label9.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(147, 18)
+        Me.Label9.Location = New System.Drawing.Point(120, 20)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(193, 20)
+        Me.Label9.Size = New System.Drawing.Size(213, 20)
         Me.Label9.TabIndex = 8
         Me.Label9.Text = "Label09"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -189,9 +189,9 @@ Partial Class Form3
         '
         Me.Label10.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(147, 55)
+        Me.Label10.Location = New System.Drawing.Point(120, 52)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(193, 20)
+        Me.Label10.Size = New System.Drawing.Size(213, 20)
         Me.Label10.TabIndex = 9
         Me.Label10.Text = "Label10"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -200,9 +200,9 @@ Partial Class Form3
         '
         Me.Label11.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(146, 120)
+        Me.Label11.Location = New System.Drawing.Point(112, 116)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(111, 20)
+        Me.Label11.Size = New System.Drawing.Size(125, 20)
         Me.Label11.TabIndex = 10
         Me.Label11.Text = "Label11"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -211,9 +211,9 @@ Partial Class Form3
         '
         Me.Label12.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(146, 143)
+        Me.Label12.Location = New System.Drawing.Point(112, 140)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(111, 20)
+        Me.Label12.Size = New System.Drawing.Size(125, 20)
         Me.Label12.TabIndex = 11
         Me.Label12.Text = "Label12"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -222,9 +222,9 @@ Partial Class Form3
         '
         Me.Label13.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(146, 166)
+        Me.Label13.Location = New System.Drawing.Point(112, 164)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(111, 20)
+        Me.Label13.Size = New System.Drawing.Size(125, 20)
         Me.Label13.TabIndex = 12
         Me.Label13.Text = "Label13"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -233,9 +233,9 @@ Partial Class Form3
         '
         Me.Label14.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(146, 189)
+        Me.Label14.Location = New System.Drawing.Point(112, 188)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(111, 20)
+        Me.Label14.Size = New System.Drawing.Size(125, 20)
         Me.Label14.TabIndex = 13
         Me.Label14.Text = "Label14"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -244,9 +244,9 @@ Partial Class Form3
         '
         Me.Label15.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(146, 212)
+        Me.Label15.Location = New System.Drawing.Point(112, 212)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(111, 20)
+        Me.Label15.Size = New System.Drawing.Size(125, 20)
         Me.Label15.TabIndex = 14
         Me.Label15.Text = "Label15"
         Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -255,9 +255,9 @@ Partial Class Form3
         '
         Me.Label16.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(95, 249)
+        Me.Label16.Location = New System.Drawing.Point(112, 244)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(162, 20)
+        Me.Label16.Size = New System.Drawing.Size(125, 20)
         Me.Label16.TabIndex = 15
         Me.Label16.Text = "Label16"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -266,9 +266,9 @@ Partial Class Form3
         '
         Me.Label17.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.Black
-        Me.Label17.Location = New System.Drawing.Point(257, 120)
+        Me.Label17.Location = New System.Drawing.Point(120, 116)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(83, 20)
+        Me.Label17.Size = New System.Drawing.Size(213, 20)
         Me.Label17.TabIndex = 16
         Me.Label17.Text = "Label17"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -277,9 +277,9 @@ Partial Class Form3
         '
         Me.Label18.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.Black
-        Me.Label18.Location = New System.Drawing.Point(257, 143)
+        Me.Label18.Location = New System.Drawing.Point(240, 140)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(83, 20)
+        Me.Label18.Size = New System.Drawing.Size(93, 20)
         Me.Label18.TabIndex = 17
         Me.Label18.Text = "Label18"
         Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -288,9 +288,9 @@ Partial Class Form3
         '
         Me.Label19.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.Color.Black
-        Me.Label19.Location = New System.Drawing.Point(257, 166)
+        Me.Label19.Location = New System.Drawing.Point(240, 164)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(83, 20)
+        Me.Label19.Size = New System.Drawing.Size(93, 20)
         Me.Label19.TabIndex = 18
         Me.Label19.Text = "Label19"
         Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -299,9 +299,9 @@ Partial Class Form3
         '
         Me.Label20.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.Black
-        Me.Label20.Location = New System.Drawing.Point(257, 189)
+        Me.Label20.Location = New System.Drawing.Point(240, 188)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(83, 20)
+        Me.Label20.Size = New System.Drawing.Size(93, 20)
         Me.Label20.TabIndex = 19
         Me.Label20.Text = "Label20"
         Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -310,9 +310,9 @@ Partial Class Form3
         '
         Me.Label21.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.ForeColor = System.Drawing.Color.Black
-        Me.Label21.Location = New System.Drawing.Point(257, 212)
+        Me.Label21.Location = New System.Drawing.Point(240, 212)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(83, 20)
+        Me.Label21.Size = New System.Drawing.Size(93, 20)
         Me.Label21.TabIndex = 20
         Me.Label21.Text = "Label21"
         Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -321,9 +321,9 @@ Partial Class Form3
         '
         Me.Label22.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.ForeColor = System.Drawing.Color.Black
-        Me.Label22.Location = New System.Drawing.Point(257, 249)
+        Me.Label22.Location = New System.Drawing.Point(240, 244)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(83, 20)
+        Me.Label22.Size = New System.Drawing.Size(93, 20)
         Me.Label22.TabIndex = 21
         Me.Label22.Text = "Label22"
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -332,9 +332,9 @@ Partial Class Form3
         '
         Me.Label23.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.Black
-        Me.Label23.Location = New System.Drawing.Point(147, 92)
+        Me.Label23.Location = New System.Drawing.Point(120, 84)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(193, 20)
+        Me.Label23.Size = New System.Drawing.Size(213, 20)
         Me.Label23.TabIndex = 22
         Me.Label23.Text = "Label23"
         Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -343,10 +343,10 @@ Partial Class Form3
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.White
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox2.Location = New System.Drawing.Point(-8, -49)
+        Me.PictureBox2.Location = New System.Drawing.Point(-8, -4)
         Me.PictureBox2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(97, 596)
+        Me.PictureBox2.Size = New System.Drawing.Size(112, 544)
         Me.PictureBox2.TabIndex = 23
         Me.PictureBox2.TabStop = False
         '
@@ -354,9 +354,9 @@ Partial Class Form3
         '
         Me.Label24.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.Black
-        Me.Label24.Location = New System.Drawing.Point(146, 369)
+        Me.Label24.Location = New System.Drawing.Point(112, 372)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(111, 20)
+        Me.Label24.Size = New System.Drawing.Size(125, 20)
         Me.Label24.TabIndex = 33
         Me.Label24.Text = "Label24"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -365,9 +365,9 @@ Partial Class Form3
         '
         Me.Label25.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label25.ForeColor = System.Drawing.Color.Black
-        Me.Label25.Location = New System.Drawing.Point(146, 346)
+        Me.Label25.Location = New System.Drawing.Point(112, 348)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(111, 20)
+        Me.Label25.Size = New System.Drawing.Size(125, 20)
         Me.Label25.TabIndex = 32
         Me.Label25.Text = "Label25"
         Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -376,9 +376,9 @@ Partial Class Form3
         '
         Me.Label26.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.Black
-        Me.Label26.Location = New System.Drawing.Point(146, 323)
+        Me.Label26.Location = New System.Drawing.Point(112, 324)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(111, 20)
+        Me.Label26.Size = New System.Drawing.Size(125, 20)
         Me.Label26.TabIndex = 31
         Me.Label26.Text = "Label26"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -387,9 +387,9 @@ Partial Class Form3
         '
         Me.Label27.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.ForeColor = System.Drawing.Color.Black
-        Me.Label27.Location = New System.Drawing.Point(146, 300)
+        Me.Label27.Location = New System.Drawing.Point(112, 300)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(111, 20)
+        Me.Label27.Size = New System.Drawing.Size(125, 20)
         Me.Label27.TabIndex = 30
         Me.Label27.Text = "Label27"
         Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -398,9 +398,9 @@ Partial Class Form3
         '
         Me.Label28.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.ForeColor = System.Drawing.Color.Black
-        Me.Label28.Location = New System.Drawing.Point(146, 277)
+        Me.Label28.Location = New System.Drawing.Point(112, 276)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(111, 20)
+        Me.Label28.Size = New System.Drawing.Size(125, 20)
         Me.Label28.TabIndex = 29
         Me.Label28.Text = "Label28"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -411,7 +411,7 @@ Partial Class Form3
         Me.Label29.BackColor = System.Drawing.Color.White
         Me.Label29.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label29.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label29.Location = New System.Drawing.Point(12, 369)
+        Me.Label29.Location = New System.Drawing.Point(16, 372)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(56, 18)
         Me.Label29.TabIndex = 28
@@ -423,7 +423,7 @@ Partial Class Form3
         Me.Label30.BackColor = System.Drawing.Color.White
         Me.Label30.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label30.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label30.Location = New System.Drawing.Point(12, 346)
+        Me.Label30.Location = New System.Drawing.Point(16, 348)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(56, 18)
         Me.Label30.TabIndex = 27
@@ -435,7 +435,7 @@ Partial Class Form3
         Me.Label31.BackColor = System.Drawing.Color.White
         Me.Label31.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label31.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label31.Location = New System.Drawing.Point(12, 323)
+        Me.Label31.Location = New System.Drawing.Point(16, 324)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(56, 18)
         Me.Label31.TabIndex = 26
@@ -447,7 +447,7 @@ Partial Class Form3
         Me.Label32.BackColor = System.Drawing.Color.White
         Me.Label32.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label32.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label32.Location = New System.Drawing.Point(12, 300)
+        Me.Label32.Location = New System.Drawing.Point(16, 300)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(56, 18)
         Me.Label32.TabIndex = 25
@@ -459,7 +459,7 @@ Partial Class Form3
         Me.Label33.BackColor = System.Drawing.Color.White
         Me.Label33.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label33.Location = New System.Drawing.Point(12, 277)
+        Me.Label33.Location = New System.Drawing.Point(16, 276)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(56, 18)
         Me.Label33.TabIndex = 24
@@ -471,7 +471,7 @@ Partial Class Form3
         Me.Label34.BackColor = System.Drawing.Color.White
         Me.Label34.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label34.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label34.Location = New System.Drawing.Point(12, 92)
+        Me.Label34.Location = New System.Drawing.Point(16, 84)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(39, 20)
         Me.Label34.TabIndex = 34
@@ -482,9 +482,9 @@ Partial Class Form3
         '
         Me.Label36.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label36.ForeColor = System.Drawing.Color.Black
-        Me.Label36.Location = New System.Drawing.Point(257, 369)
+        Me.Label36.Location = New System.Drawing.Point(240, 372)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(83, 20)
+        Me.Label36.Size = New System.Drawing.Size(93, 20)
         Me.Label36.TabIndex = 40
         Me.Label36.Text = "Label36"
         Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -493,9 +493,9 @@ Partial Class Form3
         '
         Me.Label37.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label37.ForeColor = System.Drawing.Color.Black
-        Me.Label37.Location = New System.Drawing.Point(257, 346)
+        Me.Label37.Location = New System.Drawing.Point(240, 348)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(83, 20)
+        Me.Label37.Size = New System.Drawing.Size(93, 20)
         Me.Label37.TabIndex = 39
         Me.Label37.Text = "Label37"
         Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -504,9 +504,9 @@ Partial Class Form3
         '
         Me.Label38.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label38.ForeColor = System.Drawing.Color.Black
-        Me.Label38.Location = New System.Drawing.Point(257, 323)
+        Me.Label38.Location = New System.Drawing.Point(240, 324)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(83, 20)
+        Me.Label38.Size = New System.Drawing.Size(93, 20)
         Me.Label38.TabIndex = 38
         Me.Label38.Text = "Label38"
         Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -515,9 +515,9 @@ Partial Class Form3
         '
         Me.Label39.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label39.ForeColor = System.Drawing.Color.Black
-        Me.Label39.Location = New System.Drawing.Point(257, 300)
+        Me.Label39.Location = New System.Drawing.Point(240, 300)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(83, 20)
+        Me.Label39.Size = New System.Drawing.Size(93, 20)
         Me.Label39.TabIndex = 37
         Me.Label39.Text = "Label39"
         Me.Label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -526,9 +526,9 @@ Partial Class Form3
         '
         Me.Label40.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label40.ForeColor = System.Drawing.Color.Black
-        Me.Label40.Location = New System.Drawing.Point(257, 277)
+        Me.Label40.Location = New System.Drawing.Point(240, 276)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(83, 20)
+        Me.Label40.Size = New System.Drawing.Size(93, 20)
         Me.Label40.TabIndex = 36
         Me.Label40.Text = "Label40"
         Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -539,7 +539,7 @@ Partial Class Form3
         Me.Label41.BackColor = System.Drawing.Color.White
         Me.Label41.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label41.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label41.Location = New System.Drawing.Point(12, 406)
+        Me.Label41.Location = New System.Drawing.Point(16, 404)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(39, 20)
         Me.Label41.TabIndex = 47
@@ -549,9 +549,9 @@ Partial Class Form3
         '
         Me.Label42.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label42.ForeColor = System.Drawing.Color.Black
-        Me.Label42.Location = New System.Drawing.Point(257, 406)
+        Me.Label42.Location = New System.Drawing.Point(240, 404)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(83, 20)
+        Me.Label42.Size = New System.Drawing.Size(93, 20)
         Me.Label42.TabIndex = 48
         Me.Label42.Text = "Label42"
         Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -561,9 +561,9 @@ Partial Class Form3
         Me.Label43.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Label43.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label43.ForeColor = System.Drawing.Color.Black
-        Me.Label43.Location = New System.Drawing.Point(142, 406)
+        Me.Label43.Location = New System.Drawing.Point(128, 404)
         Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(115, 20)
+        Me.Label43.Size = New System.Drawing.Size(103, 20)
         Me.Label43.TabIndex = 49
         Me.Label43.Text = "浮点"
         Me.Label43.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -639,9 +639,9 @@ Partial Class Form3
         Me.Label45.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Label45.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label45.ForeColor = System.Drawing.Color.Black
-        Me.Label45.Location = New System.Drawing.Point(99, 443)
+        Me.Label45.Location = New System.Drawing.Point(136, 436)
         Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(242, 20)
+        Me.Label45.Size = New System.Drawing.Size(197, 20)
         Me.Label45.TabIndex = 54
         Me.Label45.Text = "标记"
         Me.Label45.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -652,7 +652,7 @@ Partial Class Form3
         Me.Label35.BackColor = System.Drawing.Color.White
         Me.Label35.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label35.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label35.Location = New System.Drawing.Point(12, 443)
+        Me.Label35.Location = New System.Drawing.Point(16, 436)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(39, 20)
         Me.Label35.TabIndex = 52
