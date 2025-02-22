@@ -1252,7 +1252,7 @@ Public Class Form1
         Form3.Label13.Text = bmp1
         Form3.Label14.Text = ico1
         Form3.Label15.Text = gif1
-        Form3.Label16.Text = output1 & " → " & output0 & " = " & output1 - output0
+        Form3.Label16.Text = "→ " & output0 & " = " & output1 - output0
 
         Form3.Label28.Text = png0
         Form3.Label27.Text = jpg0
