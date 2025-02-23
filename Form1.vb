@@ -1,7 +1,8 @@
 ﻿Imports System.IO
 Imports OfficeOpenXml
-Imports System.Drawing.Text
-Imports MS.Internal
+'Imports System.Drawing.Text
+'Imports MS.Internal
+'Imports System.Xml
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
@@ -767,7 +768,7 @@ Public Class Form1
         Next
         '更新label2
         Dim result As New List(Of String)
-        result.Add($" [RSLT {totalFiles}]")
+        result.Add($" 结果 {totalFiles} 项")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
@@ -916,21 +917,21 @@ Public Class Form1
 
     ' 添加表头信息到 Excel 工作表
     Private Sub AddHeaderInfo(worksheet As ExcelWorksheet, sumlabel0 As String, sumsizestr As String, minstr As String, sumlabel1 As String, filterConditions As String)
-        worksheet.Cells("H1").Value = sumlabel0
-        worksheet.Cells("H2").Value = " " & sumsizestr
-        worksheet.Cells("H3").Value = " " & minstr
-        worksheet.Cells("H4").Value = sumlabel1
-        worksheet.Cells("H5").Value = " " & formattedString
-        worksheet.Cells("H6").Value = labelstr
-        worksheet.Cells("G1").Value = "已扫描"
-        worksheet.Cells("G2").Value = "总大小"
-        worksheet.Cells("G3").Value = "耗时"
-        worksheet.Cells("G4").Value = "结果"
-        worksheet.Cells("G5").Value = "条件"
-        worksheet.Cells("G6").Value = "标记"
-        worksheet.Cells("G1:G6").Style.Font.Bold = True
-        worksheet.Cells("G1:G6").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
-        worksheet.Cells("G1:G6").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+        worksheet.Cells("I1").Value = sumlabel0
+        worksheet.Cells("I2").Value = " " & sumsizestr
+        worksheet.Cells("I3").Value = " " & minstr
+        worksheet.Cells("I4").Value = sumlabel1
+        worksheet.Cells("I5").Value = " " & formattedString
+        worksheet.Cells("I6").Value = labelstr
+        worksheet.Cells("H1").Value = "已扫描"
+        worksheet.Cells("H2").Value = "总大小"
+        worksheet.Cells("H3").Value = "耗时"
+        worksheet.Cells("H4").Value = "结果"
+        worksheet.Cells("H5").Value = "条件"
+        worksheet.Cells("H6").Value = "标记"
+        worksheet.Cells("H1:H6").Style.Font.Bold = True
+        worksheet.Cells("H1:H6").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+        worksheet.Cells("H1:H6").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
     End Sub
 
     ' 设置 ListView 的表头到 Excel 工作表
@@ -942,10 +943,10 @@ Public Class Form1
             worksheet.Column(i + 3).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right
         Next
         worksheet.Column(2).Width = listView.Columns(2).Width / 2
-        worksheet.Column(8).Width = listView.Columns(2).Width / 2
-        worksheet.Cells("A1:E1").Style.Font.Bold = True
-        worksheet.Cells("A1:E1").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
-        worksheet.Cells("A1:E1").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
+        worksheet.Column(9).Width = listView.Columns(2).Width / 1.7
+        worksheet.Cells("A1:F1").Style.Font.Bold = True
+        worksheet.Cells("A1:F1").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+        worksheet.Cells("A1:F1").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
     End Sub
 
     ' 填充 ListView 的数据到 Excel 工作表，并匹配背景颜色
@@ -1601,6 +1602,11 @@ Public Class Form1
 
     Private Sub ToolStripMenuItem7_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem7.Click
         SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
+        If Me.WindowState = FormWindowState.Normal Then
+            SplitContainer1.SplitterDistance = 509
+        ElseIf Me.WindowState = FormWindowState.Maximized Then
+            SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
+        End If
     End Sub
 
     Private Sub ToolStripMenuItem8_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem8.Click
@@ -1615,12 +1621,13 @@ Public Class Form1
         ListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
     End Sub
 
-    Private Sub 列宽恢复默认OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列宽恢复默认OToolStripMenuItem.Click
+    Private Sub 列宽恢复默认OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列宽默认OToolStripMenuItem.Click
         ListView0.Columns(0).Width = 50
         ListView0.Columns(1).Width = 170
         ListView0.Columns(2).Width = 110
         ListView0.Columns(3).Width = 60
         ListView0.Columns(4).Width = 90
+        ListView0.Columns(5).Width = 30
     End Sub
 
     Private Sub 还原列宽OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 还原列宽OToolStripMenuItem.Click
@@ -1629,6 +1636,7 @@ Public Class Form1
         ListView1.Columns(2).Width = 110
         ListView1.Columns(3).Width = 60
         ListView1.Columns(4).Width = 90
+        ListView1.Columns(5).Width = 30
     End Sub
 
     Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
@@ -1644,6 +1652,30 @@ Public Class Form1
 
     Private Sub TextBox2_MouseHover(sender As Object, e As EventArgs) Handles wideButton.MouseHover
         ToolTip1.SetToolTip(wideButton, "宽度 " & wideButton.Text)
+    End Sub
+
+    Private Sub ToolStripMenuItem12_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem12.Click
+        ListView1.Items.Clear()
+        UpdateLabel2()
+        更新统计信息()
+    End Sub
+
+    Private Sub ToolStripMenuItem11_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem11.Click
+        Dim folderPath As String = openText.Text
+        If Directory.Exists(folderPath) Then
+            加载图片(folderPath)
+        Else
+            MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+        If Form5.Visible = True Then
+            Form5.TextBox1.Text = Me.toform5path
+            Form5.toform1path = Me.toform5path
+            Form5.LoadTreeView(Form5.toform1path)
+        End If
+    End Sub
+
+    Private Sub SplitContainer1_SplitterMoved(sender As Object, e As SplitterEventArgs) Handles SplitContainer1.SplitterMoved
+
     End Sub
 
     Private Sub TextBox3_MouseHover(sender As Object, e As EventArgs) Handles htButton.MouseHover
@@ -1672,10 +1704,6 @@ Public Class Form1
     Private Sub openText_TextChanged(sender As Object, e As EventArgs) Handles openText.TextChanged
         Me.openText.SelectionStart = Me.openText.Text.Length
         Me.openText.ScrollToCaret()
-        'If Form5.Visible = True Then
-        '    Form5.toform1path = toform5path
-        '    Form5.LoadTreeView(toform5path)
-        'End If
     End Sub
     Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
         Me.CenterToScreen()
@@ -1707,4 +1735,5 @@ Public Class Form1
             End If
         End If
     End Sub
+
 End Class
