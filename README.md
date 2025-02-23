@@ -53,7 +53,7 @@
 
 # 截图
 
-![总览图](./Assets/410770485-23cd403a-5f84-451b-bc5c-34a73283ede7.png "总览图")
+![QQ20250223-213313](https://github.com/user-attachments/assets/63103375-e2cc-413e-ad58-33b61976f7f8)
 ![](./Assets/398368099-8520cb3d-5ddc-4179-9ae2-a445a2dcc311.png)
 ![](./Assets/398368110-cbbfe498-ced8-48e8-a21b-b91a3915504d.png)
 ![](./Assets/398368119-d366e397-2426-42f3-9d34-bf639fe7771a.png)
