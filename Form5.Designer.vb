@@ -242,7 +242,7 @@ Partial Class Form5
         Me.sltLabel0.Name = "sltLabel0"
         Me.sltLabel0.Size = New System.Drawing.Size(329, 45)
         Me.sltLabel0.TabIndex = 38
-        Me.sltLabel0.Text = " CRNT"
+        Me.sltLabel0.Text = " 当前"
         Me.sltLabel0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Form5

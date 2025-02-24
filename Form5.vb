@@ -66,7 +66,7 @@ Public Class Form5
         If TreeView1.SelectedNode IsNot Nothing Then
             sltLabel0.Text = " " & TreeView1.SelectedNode.Text ' 显示选中节点名称
         Else
-            sltLabel0.Text = " CRNT" ' 没有选中时显示 "CRNT"
+            sltLabel0.Text = " 当前" ' 没有选中时显示 "CRNT"
         End If
     End Sub
 

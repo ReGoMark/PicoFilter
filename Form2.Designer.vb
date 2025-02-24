@@ -140,7 +140,7 @@ Partial Class Form2
         Me.Label44.BackColor = System.Drawing.Color.Transparent
         Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(395, 317)
+        Me.Label44.Location = New System.Drawing.Point(397, 319)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(231, 20)
         Me.Label44.TabIndex = 47
@@ -159,7 +159,7 @@ Partial Class Form2
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.Location = New System.Drawing.Point(632, 315)
+        Me.Button2.Location = New System.Drawing.Point(634, 317)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(65, 26)
         Me.Button2.TabIndex = 42
@@ -210,7 +210,7 @@ Partial Class Form2
         Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(38, 318)
+        Me.Label11.Location = New System.Drawing.Point(38, 323)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(150, 20)
         Me.Label11.TabIndex = 50
@@ -220,7 +220,7 @@ Partial Class Form2
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(276, 295)
+        Me.PictureBox1.Location = New System.Drawing.Point(276, 279)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(64, 64)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -234,7 +234,7 @@ Partial Class Form2
         Me.Label10.BackColor = System.Drawing.Color.Transparent
         Me.Label10.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(38, 339)
+        Me.Label10.Location = New System.Drawing.Point(38, 343)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(248, 20)
         Me.Label10.TabIndex = 50
@@ -246,11 +246,11 @@ Partial Class Form2
         Me.Label4.BackColor = System.Drawing.Color.White
         Me.Label4.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Gray
-        Me.Label4.Location = New System.Drawing.Point(38, 93)
+        Me.Label4.Location = New System.Drawing.Point(36, 62)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(134, 20)
         Me.Label4.TabIndex = 49
-        Me.Label4.Text = "with Service Pack 8"
+        Me.Label4.Text = "with Service Pack 9"
         '
         'Process1
         '

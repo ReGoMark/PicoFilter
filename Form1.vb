@@ -1,8 +1,8 @@
 ﻿Imports System.IO
 Imports OfficeOpenXml
-'Imports System.Drawing.Text
-'Imports MS.Internal
-'Imports System.Xml
+Imports System.Drawing.Text
+Imports MS.Internal
+Imports System.Xml
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
@@ -24,6 +24,9 @@ Public Class Form1
     Dim labelstr As String
     Dim formattedString As String
     Public verinfo As String = "PicoFilter 1.6"
+    Private WithEvents optTimer As New Timer()
+    Private optext As String = "操作中心"
+    Private optcolor As Color = Color.White
 
     ' 加载图片从指定文件夹到listview1
     Public Sub 加载图片(folderPath As String)
@@ -142,7 +145,9 @@ Public Class Form1
         Me.Text = verinfo & "  |  " & foldername & "  |  " & sumsizestr
         更新统计信息()
         PlayNotificationSound()
-
+        If tagCount > 0 Then
+            optChange("标记：共 " & tagCount & “ 项”, Color.White)
+        End If
         output1 = files.Count
         jpg1 = jpgCount
         png1 = pngCount
@@ -204,7 +209,6 @@ Public Class Form1
         ' 判断是否启用了格式筛选（任意一种格式被选中）
         Dim formatFilterEnabled As Boolean = jpgSelected Or pngSelected Or gifSelected Or bmpSelected Or icoSelected
         ' 分辨率筛选直接用 resolutionSelected 即可
-
         ' 遍历 ListView0 进行筛选
         For Each item As ListViewItem In ListView0.Items
             Dim resolutionParts As String() = item.SubItems(2).Text.Split("×"c)
@@ -297,6 +301,8 @@ Public Class Form1
                 End Select
             End If
         Next
+
+        optChange("提示：筛选完毕。", Color.AliceBlue)
         '更新label2
         Dim result As New List(Of String)
         result.Add($" 结果 {matchingFileCount} 项")
@@ -308,7 +314,12 @@ Public Class Form1
         If icoCount > 0 Then result.Add($"ICO {icoCount}")
 
         sumLabel1.Text = String.Join("  |  ", result)
-        PlayNotificationSound()
+        If ListView1.Items.Count = 0 Then
+            PlayNotificationSound2()
+        Else
+            PlayNotificationSound()
+        End If
+
         output0 = matchingFileCount
         jpg0 = jpgCount
         png0 = pngCount
@@ -378,8 +389,26 @@ Public Class Form1
         NUM = 0
         Me.Text = verinfo
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
+        optButton.Text = optext
+        optButton.BackColor = optcolor
+        optButton.Visible = False
+        optTimer.Interval = 3500 ' 设置定时器间隔为 5 秒
+        optButton.Location = New Point(44, 15)
+        Dim fontName As String = "方正黑体_GBK"
+        If IsFontInstalled(fontName) Then
+        Else
+            optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
+        End If
     End Sub
-
+    Private Function IsFontInstalled(fontName As String) As Boolean
+        Dim installedFonts As New InstalledFontCollection()
+        For Each font As FontFamily In installedFonts.Families
+            If font.Name = fontName Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
     'Private Function 检测字体是否安装(fontName As String) As Boolean
     '    Dim fonts As New InstalledFontCollection()
     '    For Each font As FontFamily In fonts.Families
@@ -468,7 +497,7 @@ Public Class Form1
             Exit Sub
         End If
 
-        Dim result As DialogResult = MessageBox.Show("确定要删除选定文件吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        Dim result As DialogResult = MessageBox.Show("确定要删除筛选的文件吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
         If result = DialogResult.Yes Then
             For Each item As ListViewItem In ListView1.Items
@@ -478,14 +507,15 @@ Public Class Form1
                 Try
                     If File.Exists(sourcePath) Then
                         File.Delete(sourcePath) ' 删除文件
+                        optChange("提示：文件删除已完成。", Color.AliceBlue)
                     End If
                 Catch ex As Exception
                     MessageBox.Show("删除失败。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             Next
 
-            ' 删除成功后，从 ListView1 中移除项
             ListView1.Items.Clear()
+            optChange("警告：需要重新加载数据。", Color.LemonChiffon)
         End If
     End Sub
 
@@ -501,6 +531,7 @@ Public Class Form1
 
                     Try
                         File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
+                        optChange("提示：文件复制已完成。", Color.AliceBlue)
                     Catch ex As Exception
                         MessageBox.Show("复制失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
@@ -521,10 +552,12 @@ Public Class Form1
 
                     Try
                         File.Move(sourcePath, Path.Combine(targetFolder, fileName))
+                        optChange("提示：文件移动已完成。", Color.AliceBlue)
                     Catch ex As Exception
                         MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 Next
+                optChange("警告：需要重新加载数据。", Color.LemonChiffon)
             End If
         End Using
 
@@ -548,6 +581,7 @@ Public Class Form1
 
             Try
                 File.Move(sourcePath, Path.Combine(resultFolder, fileName))
+                optChange("提示：文件隔离已完成。", Color.AliceBlue)
             Catch ex As Exception
                 MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -991,10 +1025,6 @@ Public Class Form1
     Private Sub Label2_MouseHover(sender As Object, e As EventArgs) Handles sumLabel1.MouseHover
         ToolTip1.SetToolTip(sumLabel1, sumLabel1.Text)
     End Sub
-    '双击填充分辨率
-    Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick
-        htButton.Text = Val（wideButton.Text）
-    End Sub
     '中键打开
     Private Sub TextBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles openText.MouseUp
         ' 判断是否为鼠标中键点击
@@ -1032,8 +1062,19 @@ Public Class Form1
             ListView0.Columns(1).Width = ListView0.Width / 1.75
             ListView1.Columns(1).Width = ListView1.Width / 1.75
         ElseIf Me.WindowState = FormWindowState.Normal Then
-            ListView0.Columns(1).Width = 135
-            ListView1.Columns(1).Width = 135
+            ListView0.Columns(0).Width = 50
+            ListView0.Columns(1).Width = 160
+            ListView0.Columns(2).Width = 100
+            ListView0.Columns(3).Width = 60
+            ListView0.Columns(4).Width = 90
+            ListView0.Columns(5).Width = 30
+
+            ListView1.Columns(0).Width = 50
+            ListView1.Columns(1).Width = 160
+            ListView1.Columns(2).Width = 100
+            ListView1.Columns(3).Width = 60
+            ListView1.Columns(4).Width = 90
+            ListView1.Columns(5).Width = 30
         End If
     End Sub
 
@@ -1082,6 +1123,7 @@ Public Class Form1
             End If
         Next
         PlayNotificationSound3()
+        optChange("搜索：共 " & ListView0.SelectedItems.Count & " 项", Color.White)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs)
@@ -1122,6 +1164,7 @@ Public Class Form1
             End If
         Next
         PlayNotificationSound3()
+        optChange("搜索：共 " & ListView1.SelectedItems.Count & " 项", Color.White)
     End Sub
 
     Private Sub 更新标题()
@@ -1160,6 +1203,7 @@ Public Class Form1
             Form5.toform1path = Me.toform5path
             Form5.LoadTreeView(Form5.toform1path)
         End If
+        optButton.Visible = False
     End Sub
 
     Private Sub PlayNotificationSound2()
@@ -1366,6 +1410,7 @@ Public Class Form1
             wideButton.Text = width
             htButton.Text = height
         End If
+        optChange("提示：单击「开始」进行筛选。", Color.AliceBlue)
     End Sub
 
     ' 在 ListView0 的 SelectedIndexChanged 事件中禁用 ContextMenuStrip1
@@ -1377,7 +1422,7 @@ Public Class Form1
                 sltLabel0.Text = $" 复选 {selectedCount} 项"
                 ListView0.ContextMenuStrip = ContextMenuStrip2
             Else
-                sltLabel0.Text = $" [{selectedItem.SubItems(0).Text}]  |  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
+                sltLabel0.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
                 ListView0.ContextMenuStrip = ContextMenuStrip1
             End If
         Else
@@ -1395,7 +1440,7 @@ Public Class Form1
                 sltLabel1.Text = $" 复选 {selectedCount} 项"
                 ListView1.ContextMenuStrip = ContextMenuStrip5
             Else
-                sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  |  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
+                sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
                 ListView1.ContextMenuStrip = ContextMenuStrip3
             End If
         Else
@@ -1509,6 +1554,7 @@ Public Class Form1
             wideButton.Text = width
             htButton.Text = height
         End If
+        optChange("提示：单击「开始」进行筛选。", Color.AliceBlue)
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
@@ -1623,8 +1669,8 @@ Public Class Form1
 
     Private Sub 列宽恢复默认OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列宽默认OToolStripMenuItem.Click
         ListView0.Columns(0).Width = 50
-        ListView0.Columns(1).Width = 170
-        ListView0.Columns(2).Width = 110
+        ListView0.Columns(1).Width = 160
+        ListView0.Columns(2).Width = 100
         ListView0.Columns(3).Width = 60
         ListView0.Columns(4).Width = 90
         ListView0.Columns(5).Width = 30
@@ -1632,8 +1678,8 @@ Public Class Form1
 
     Private Sub 还原列宽OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 还原列宽OToolStripMenuItem.Click
         ListView1.Columns(0).Width = 50
-        ListView1.Columns(1).Width = 170
-        ListView1.Columns(2).Width = 110
+        ListView1.Columns(1).Width = 160
+        ListView1.Columns(2).Width = 100
         ListView1.Columns(3).Width = 60
         ListView1.Columns(4).Width = 90
         ListView1.Columns(5).Width = 30
@@ -1672,6 +1718,7 @@ Public Class Form1
             Form5.toform1path = Me.toform5path
             Form5.LoadTreeView(Form5.toform1path)
         End If
+        optButton.Visible = False
     End Sub
 
     Private Sub SplitContainer1_SplitterMoved(sender As Object, e As SplitterEventArgs) Handles SplitContainer1.SplitterMoved
@@ -1705,6 +1752,7 @@ Public Class Form1
         Me.openText.SelectionStart = Me.openText.Text.Length
         Me.openText.ScrollToCaret()
     End Sub
+
     Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
         Me.CenterToScreen()
     End Sub
@@ -1736,4 +1784,41 @@ Public Class Form1
         End If
     End Sub
 
+    ' 更改按钮文本和背景色的方法
+    Private Sub optChange(newText As String, newColor As Color)
+        optButton.Visible = True
+        optButton.Text = newText
+        optButton.BackColor = newColor
+        optTimer.Stop() ' 防止重复触发
+        optTimer.Start() ' 启动定时器
+    End Sub
+
+    ' Timer 触发后恢复文本和背景色
+    Private Sub optTimer_Tick(sender As Object, e As EventArgs) Handles optTimer.Tick
+        optButton.Text = optext
+        optButton.BackColor = DefaultBackColor
+        optButton.Visible = False
+        optTimer.Stop() ' 停止计时器
+    End Sub
+
+    Private Sub openText_KeyDown(sender As Object, e As KeyEventArgs) Handles openText.KeyDown
+        Dim folderpath As String = openText.Text
+        If e.KeyCode = Keys.Enter Then
+            If Directory.Exists(folderpath) Then
+                加载图片(folderpath)
+            Else
+                MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+            If Form5.Visible = True Then
+                Form5.TextBox1.Text = Me.toform5path
+                Form5.toform1path = Me.toform5path
+                Form5.LoadTreeView(Form5.toform1path)
+            End If
+            optButton.Visible = False
+        End If
+    End Sub
+
+    Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick
+        htButton.Text = Val（wideButton.Text）
+    End Sub
 End Class
