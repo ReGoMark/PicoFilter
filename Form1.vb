@@ -1,61 +1,69 @@
-﻿Imports System.IO
+﻿Imports System.Drawing.Text
+Imports System.IO
 Imports OfficeOpenXml
-Imports System.Drawing.Text
-Imports MS.Internal
-Imports System.Xml
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
 
 Public Class Form1
-    Dim NUM As Integer
-    Dim min As Integer
-    Dim sumsize As Double '计量扫描总大小
-    Dim output0, output1 As Double '右侧总和，左侧总和
-    Dim jpg0, jpg1 As Double '计量右侧jpg数量，左侧jpg数量。下同
-    Dim png0, png1 As Double
-    Dim gif0, gif1 As Double
-    Dim bmp0, bmp1 As Double
-    Dim ico0, ico1 As Double
-    Public toform5path As String
-    Dim invldstr As String
-    Dim tmtstr As String
-    Dim qststr As String
-    Dim labelstr As String
+    Dim loadedCount As Integer '计数已加载文件数量
+    Dim loadedTime As Integer '计量扫描文件耗时
+    Dim sumSize As Double '计量扫描总大小
+    Dim sumRT, sumLT As Double '计量右侧项目总和，左侧项目总和
+    Dim jpgRT, jpgLT As Double '计量右侧和左侧jpg数量，下同
+    Dim pngRT, pngLT As Double
+    Dim gifRT, gifLT As Double
+    Dim bmpRT, bmpLT As Double
+    Dim icoRT, icoLT As Double
+    'Dim invldCount As String
+    'Dim tmoutCount As String
+    'Dim impsdCount As String
+    Dim lbldStr As String '存储标记文件的文本
     Dim formattedString As String
-    Public verinfo As String = "PicoFilter 1.6"
-    Private WithEvents optTimer As New Timer()
-    Private optext As String = "操作中心"
-    Private optcolor As Color = Color.White
+    Public toForm5Path As String '传递路径文本到form5
+    Public verinfo As String = "PicoFilter 1.6" '存储版本信息
+    Private optext As String = "操作中心" '存储操作按钮默认文本
+    Private optcolor As Color = Color.White '存储操作按钮默认颜色
+    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
+    Private currentColumn As Integer = -1 '存储当前排序的列和顺序
+    Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
 
-    ' 加载图片从指定文件夹到listview1
+    ' 加载图片从指定文件夹到左侧
     Public Sub 加载图片(folderPath As String)
-        NUM = 0
-        min = 0
-        sumsize = 0
-        ListView0.Items.Clear()
+        '计数器重置
+        loadedCount = 0
+        loadedTime = 0
+        sumSize = 0
+        ListViewLT.Items.Clear()
         ProgressBar1.Value = 0
         ProgressBar1.Visible = True
-        Dim stopwatch As New Stopwatch()
+
+        Dim loadedTimer As New Stopwatch()
         Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
         Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower())).ToList()
         Dim index As Integer = 1
-        Dim jpgCount As Integer = 0, pngCount As Integer = 0, gifCount As Integer = 0
-        Dim bmpCount As Integer = 0, icoCount As Integer = 0
+        Dim jpgCount As Integer = 0,
+            pngCount As Integer = 0,
+            gifCount As Integer = 0,
+            bmpCount As Integer = 0,
+            icoCount As Integer = 0
         Dim tagCount As Integer = 0
+
+        Dim folderName As String = Path.GetFileName(openText.Text) '截取文件夹名
+        Dim sumSizeStr As String = 格式化文件大小(sumSize)  '计量扫描文件的总大小
 
         ProgressBar1.Maximum = files.Count()
 
         Dim listViewItems As New List(Of ListViewItem) ' **批量存储 ListViewItem**
-        stopwatch.Start()
+        loadedTimer.Start()
 
         For Each file In files
             Try
                 Dim fileName As String = Path.GetFileName(file)
                 Dim fileInfo As New FileInfo(file)
-                Dim fileSize As Double = fileInfo.Length ' **获取文件大小**
-                Dim sizeFormatted As String = 格式化文件大小(fileSize) ' **转换大小单位**
-                Dim format As String = fileInfo.Extension.ToUpper()              ' **优化：快速获取图片分辨率**
+                Dim fileSize As Double = fileInfo.Length ' 获取文件大小
+                Dim sizeFormatted As String = 格式化文件大小(fileSize) ' 转换大小单位
+                Dim format As String = fileInfo.Extension.ToUpper() '快速获取图片分辨率
                 Dim resolution As String = 获取图片分辨率(file)
 
                 ' **计数不同格式**
@@ -72,15 +80,14 @@ Public Class Form1
                         bmpCount += 1
                 End Select
 
-                ' **创建 ListViewItem**
+                '创建ListViewItem
                 Dim item As New ListViewItem(index.ToString())
-                item.SubItems.Add(fileName)
-                item.SubItems.Add(resolution)
-                item.SubItems.Add(format)
-                item.SubItems.Add(sizeFormatted) ' **使用自动转换的大小单位**
-
-                ' **根据文件名高亮**
-                Dim highlightMark As String = "" ' 额外列，默认留白
+                item.SubItems.Add(fileName) '添加文件名
+                item.SubItems.Add(resolution) '添加分辨率
+                item.SubItems.Add(format) '添加格式
+                item.SubItems.Add(sizeFormatted) '添加大小
+                '文件名高亮标记
+                Dim highlightMark As String = "" '未标记项目的处理办法
                 If fileName.Contains("超时") Then
                     item.BackColor = Color.MistyRose
                     tagCount += 1
@@ -96,32 +103,24 @@ Public Class Form1
                     tagCount += 1
                     highlightMark = "*"
                 End If
-                item.SubItems.Add(highlightMark)
+                item.SubItems.Add(highlightMark) '添加标记
                 listViewItems.Add(item)
-                sumsize += fileSize
+
+                sumSize += fileSize
                 index += 1
                 ProgressBar1.Value += 1
-                NUM += 1
+                loadedCount += 1
                 更新标题()
-
             Catch ex As Exception
-                Dim opt = MessageBox.Show(ex.Message & vbCrLf & "点击是继续，点击否终止。", "失败", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
+                Dim opt = MessageBox.Show(ex.Message & vbCrLf & "加载意外中断，可能是内存不足。” & vbCrLf & “点击是继续，点击否终止。", "失败", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
                 If opt = DialogResult.No Then Exit For
             End Try
         Next
+        ListViewLT.Items.AddRange(listViewItems.ToArray())  '一次性添加到 ListView，减少 UI 刷新次数
 
-        ' **一次性添加到 ListView，减少 UI 刷新次数**
-        ListView0.Items.AddRange(listViewItems.ToArray())
+        loadedTimer.Stop()
+        loadedTime = loadedTimer.ElapsedMilliseconds '加载时间计时器结算
 
-        stopwatch.Stop()
-        min = stopwatch.ElapsedMilliseconds
-
-        Dim foldername As String = Path.GetFileName(openText.Text)
-
-        ' **计算总大小**
-        Dim sumsizestr As String = 格式化文件大小(sumsize)
-
-        ' **更新 Label6**
         Dim result As New List(Of String)
         result.Add($" 总计 {files.Count} 项")
         If tagCount > 0 Then result.Add($"标记 {tagCount}")
@@ -130,31 +129,30 @@ Public Class Form1
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
         If bmpCount > 0 Then result.Add($"BMP {bmpCount}")
         If icoCount > 0 Then result.Add($"ICO {icoCount}")
-
-        sumLabel0.Text = String.Join("  |  ", result)
-
-        If Int(sumsize / 1024 / 1024) > 1024 Then
-            sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & " GB"
+        If Int(sumSize / 1024 / 1024) > 1024 Then
+            sumSizeStr = Int(sumSize * 100 / 1024 / 1024 / 1024) / 100 & " GB"
         Else
-            If Int(sumsize / 1024 / 1024) > 1 Then
-                sumsizestr = Int(sumsize * 100 / 1024 / 1024) / 100 & " MB"
+            If Int(sumSize / 1024 / 1024) > 1 Then
+                sumSizeStr = Int(sumSize * 100 / 1024 / 1024) / 100 & " MB"
             Else
-                sumsizestr = Int(sumsize * 100 / 1024) / 100 & " KB"
+                sumSizeStr = Int(sumSize * 100 / 1024) / 100 & " KB"
             End If
         End If
-        Me.Text = verinfo & "  |  " & foldername & "  |  " & sumsizestr
+
+        If tagCount > 0 Then optChange("标记：检测到 " & tagCount & “ 项。”, Color.White)
+        sumLblLT.Text = String.Join("  |  ", result)
+        Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr
+
+        ProgressBar1.Visible = False
         更新统计信息()
         PlayNotificationSound()
-        If tagCount > 0 Then
-            optChange("标记：检测到 " & tagCount & “ 项。”, Color.White)
-        End If
-        output1 = files.Count
-        jpg1 = jpgCount
-        png1 = pngCount
-        bmp1 = bmpCount
-        gif1 = gifCount
-        ico1 = icoCount
-        ProgressBar1.Visible = False
+
+        sumLT = files.Count
+        jpgLT = jpgCount
+        pngLT = pngCount
+        bmpLT = bmpCount
+        gifLT = gifCount
+        icoLT = icoCount
     End Sub
 
     Private Function 获取图片分辨率(filePath As String) As String
@@ -165,7 +163,7 @@ Public Class Form1
                 End Using
             End Using
         Catch
-            Return "未知"
+            Return "??"
         End Try
     End Function
 
@@ -177,9 +175,9 @@ Public Class Form1
         End If
     End Function
 
-    ' 加载图片从指定文件夹，到 ListView1
+    ' 加载图片从指定文件夹，到右侧
     Private Sub 筛选图片()
-        ListView1.Items.Clear()
+        ListViewRT.Items.Clear()
 
         ' 解析分辨率输入框
         Dim widthFilter As Integer = 0
@@ -188,100 +186,98 @@ Public Class Form1
         If Not Integer.TryParse(htText.Text, heightFilter) Then heightFilter = 0
 
         ' 获取筛选条件
-        Dim jpgSelected As Boolean = jpgButton.Checked
-        Dim pngSelected As Boolean = pngButton.Checked
-        Dim gifSelected As Boolean = gifButton.Checked
-        Dim bmpSelected As Boolean = bmpButton.Checked
-        Dim icoSelected As Boolean = icoButton.Checked
-        Dim resolutionSelected As Boolean = reslnButton.Checked
-        Dim excludeResolution As Boolean = exButton.Checked   ' 分辨率反选筛选
-        Dim volResolution As Boolean = volButton.Checked        ' 宽高互换
-        Dim plsResolution As Boolean = moreButton.Checked       ' 大于
-        Dim mnsResolution As Boolean = mnsButton.Checked        ' 小于
-        Dim qstSelected As Boolean = qstCheck.Checked
-        Dim tmtSelected As Boolean = tmtCheck.Checked
-        Dim invldSelected As Boolean = invldCheck.Checked
-        Dim matchingFileCount As Integer = 0
-        Dim jpgCount As Integer = 0, pngCount As Integer = 0, gifCount As Integer = 0
-        Dim bmpCount As Integer = 0, icoCount As Integer = 0
-        Dim tagCount As Integer = 0
+        Dim jpgSelected As Boolean = jpgButton.Checked 'jpg筛选
+        Dim pngSelected As Boolean = pngButton.Checked 'png筛选
+        Dim gifSelected As Boolean = gifButton.Checked 'gif筛选
+        Dim bmpSelected As Boolean = bmpButton.Checked 'bmp筛选
+        Dim icoSelected As Boolean = icoButton.Checked 'ico筛选
+        Dim reslnSelected As Boolean = reslnButton.Checked '分辨率筛选
+        Dim exreslnSelected As Boolean = exButton.Checked '分辨率排除筛选
+        Dim volreslnSelected As Boolean = volButton.Checked '分辨率宽高互换筛选
+        Dim plsreslnSelected As Boolean = moreButton.Checked '分辨率大于筛选
+        Dim mnsreslnSelected As Boolean = mnsButton.Checked '分辨率小于筛选
+        Dim impSelected As Boolean = impCheck.Checked '存疑文件筛选
+        Dim tmtSelected As Boolean = tmtCheck.Checked '超时文件筛选
+        Dim invSelected As Boolean = invCheck.Checked '无效文件筛选
 
-        ' 判断是否启用了格式筛选（任意一种格式被选中）
+        Dim jpgCount As Integer = 0,
+            pngCount As Integer = 0,
+            gifCount As Integer = 0,
+            bmpCount As Integer = 0,
+            icoCount As Integer = 0
+        Dim matchingFileCount As Integer = 0
+        Dim tagCount As Integer = 0
+        '判断是否启用了格式筛选
         Dim formatFilterEnabled As Boolean = jpgSelected Or pngSelected Or gifSelected Or bmpSelected Or icoSelected
-        ' 分辨率筛选直接用 resolutionSelected 即可
-        ' 遍历 ListView0 进行筛选
-        For Each item As ListViewItem In ListView0.Items
+        '遍历左侧数据进行筛选
+        For Each item As ListViewItem In ListViewLT.Items
             Dim resolutionParts As String() = item.SubItems(2).Text.Split("×"c)
             Dim width As Integer = Integer.Parse(resolutionParts(0))
             Dim height As Integer = Integer.Parse(resolutionParts(1))
             Dim format As String = item.SubItems(3).Text
-            Dim sizeInKB As String = item.SubItems(4).Text ' 获取大小列的值
-
-            ' **格式匹配**
+            Dim sizeKB As String = item.SubItems(4).Text
+            '格式匹配
             Dim formatsMatch As Boolean = False
             If jpgSelected AndAlso (format = ".JPG" OrElse format = ".JPEG") Then formatsMatch = True
             If pngSelected AndAlso format = ".PNG" Then formatsMatch = True
             If bmpSelected AndAlso format = ".BMP" Then formatsMatch = True
             If icoSelected AndAlso format = ".ICO" Then formatsMatch = True
             If gifSelected AndAlso format = ".GIF" Then formatsMatch = True
-
-            ' **分辨率匹配**
+            '分辨率匹配
             Dim resolutionMatch As Boolean = False
-            If resolutionSelected Then
-                If excludeResolution Then
+            If reslnSelected Then
+                If exreslnSelected Then
                     resolutionMatch = (width <> widthFilter AndAlso height <> heightFilter)
-                ElseIf volResolution Then
-                    resolutionMatch = (width = heightFilter AndAlso height = widthFilter) OrElse (width = widthFilter AndAlso height = heightFilter)
-                ElseIf plsResolution Then
+                ElseIf volreslnSelected Then
+                    resolutionMatch = (width = heightFilter AndAlso height = widthFilter) OrElse
+                        (width = widthFilter AndAlso height = heightFilter)
+                ElseIf plsreslnSelected Then
                     resolutionMatch = (width > widthFilter AndAlso height > heightFilter)
-                ElseIf mnsResolution Then
+                ElseIf mnsreslnSelected Then
                     resolutionMatch = (width < widthFilter AndAlso height < heightFilter)
                 Else
                     resolutionMatch = (width = widthFilter AndAlso height = heightFilter)
                 End If
             End If
-
-            ' **是否满足筛选**
+            '是否满足筛选
             Dim isMatch As Boolean = False
-            If formatFilterEnabled AndAlso resolutionSelected Then
-                ' 同时启用了格式和分辨率筛选时，必须同时满足两者条件
-                isMatch = formatsMatch AndAlso resolutionMatch
+            If formatFilterEnabled AndAlso reslnSelected Then
+                isMatch = formatsMatch AndAlso resolutionMatch ' 同时启用了格式和分辨率筛选时，必须同时满足两者条件
             ElseIf formatFilterEnabled Then
                 isMatch = formatsMatch
-            ElseIf resolutionSelected Then
+            ElseIf reslnSelected Then
                 isMatch = resolutionMatch
             Else
-                isMatch = False ' 如果两个筛选条件都未启用，则默认匹配所有
+                isMatch = False ' 如果两个筛选条件都未启用时的动作
             End If
-
-            ' **特殊标签筛选**
+            '特殊标签筛选
             Dim isSpecialMatch As Boolean = False
             Dim fileName As String = item.SubItems(1).Text
             If tmtSelected AndAlso fileName.Contains("超时") Then isSpecialMatch = True
-            If qstSelected AndAlso fileName.Contains("存疑") Then isSpecialMatch = True
-            If invldSelected AndAlso fileName.Contains("无效") Then isSpecialMatch = True
+            If impSelected AndAlso fileName.Contains("存疑") Then isSpecialMatch = True
+            If invSelected AndAlso fileName.Contains("无效") Then isSpecialMatch = True
 
-            ' **最终是否添加**
+            '最终是否添加
             If isMatch OrElse isSpecialMatch Then
-                Dim newItem As New ListViewItem(item.SubItems(0).Text) ' 保留原始序号
-                newItem.SubItems.Add(item.SubItems(1).Text) ' 文件名
-                newItem.SubItems.Add(item.SubItems(2).Text) ' 分辨率
-                newItem.SubItems.Add(item.SubItems(3).Text) ' 格式
-                newItem.SubItems.Add(sizeInKB) ' 文件大小
-                newItem.SubItems.Add(item.SubItems(5).Text) ' 格式
-                ListView1.Items.Add(newItem)
-                matchingFileCount += 1 ' 符合条件的文件计数自增
+                Dim newItem As New ListViewItem(item.SubItems(0).Text) '保留序号
+                newItem.SubItems.Add(item.SubItems(1).Text) '保留文件名
+                newItem.SubItems.Add(item.SubItems(2).Text) '保留分辨率
+                newItem.SubItems.Add(item.SubItems(3).Text) '保留格式
+                newItem.SubItems.Add(sizeKB) '保留文件大小
+                newItem.SubItems.Add(item.SubItems(5).Text) '保留标记
+                ListViewRT.Items.Add(newItem)
+                matchingFileCount += 1 ' 符合条件的文件计数
 
-                ' 根据特殊条件设置背景颜色
+                '标记项背景色设置
                 If tmtSelected AndAlso fileName.Contains("超时") Then
                     newItem.BackColor = Color.MistyRose
                     tagCount += 1
                 End If
-                If qstSelected AndAlso fileName.Contains("存疑") Then
+                If impSelected AndAlso fileName.Contains("存疑") Then
                     newItem.BackColor = Color.Cornsilk
                     tagCount += 1
                 End If
-                If invldSelected AndAlso fileName.Contains("无效") Then
+                If invSelected AndAlso fileName.Contains("无效") Then
                     newItem.BackColor = Color.LightCyan
                     tagCount += 1
                 End If
@@ -302,30 +298,24 @@ Public Class Form1
             End If
         Next
 
-        optChange("提示：文件筛选已完成。", Color.AliceBlue)
-        '更新label2
         Dim result As New List(Of String)
         result.Add($" 结果 {matchingFileCount} 项")
-        'If tagCount > 0 Then result.Add($"标记 {tagCount}")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
         If bmpCount > 0 Then result.Add($"BMP {bmpCount}")
         If icoCount > 0 Then result.Add($"ICO {icoCount}")
+        sumLblRT.Text = String.Join("  |  ", result)
+        optChange("提示：文件筛选已完成。", Color.AliceBlue)
+        更新统计信息()
+        PlayNotificationSound()
 
-        sumLabel1.Text = String.Join("  |  ", result)
-        If ListView1.Items.Count = 0 Then
-            PlayNotificationSound2()
-        Else
-            PlayNotificationSound()
-        End If
-
-        output0 = matchingFileCount
-        jpg0 = jpgCount
-        png0 = pngCount
-        bmp0 = bmpCount
-        gif0 = gifCount
-        ico0 = icoCount
+        sumLT = matchingFileCount
+        jpgRT = jpgCount
+        pngRT = pngCount
+        bmpRT = bmpCount
+        gifRT = gifCount
+        icoRT = icoCount
     End Sub
 
     ' Button1 点击事件：选择文件夹并加载图片
@@ -334,12 +324,12 @@ Public Class Form1
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 openText.Text = folderBrowserDialog.SelectedPath
                 加载图片(folderBrowserDialog.SelectedPath)
-                toform5path = folderBrowserDialog.SelectedPath
+                toForm5Path = folderBrowserDialog.SelectedPath
             End If
             If Form5.Visible = True Then
-                Form5.TextBox1.Text = Me.toform5path
-                Form5.toform1path = Me.toform5path
-                Form5.LoadTreeView(Form5.toform1path)
+                Form5.TextBox1.Text = Me.toForm5Path
+                Form5.toForm1Path = Me.toForm5Path
+                Form5.LoadTreeView(Form5.toForm1Path)
             End If
         End Using
     End Sub
@@ -384,15 +374,15 @@ Public Class Form1
     End Sub
 
     ' 筛选按钮点击事件，用于开始筛选
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles fltButton.Click
-        If moreButton.Checked = True And htText.Text = "" Then htText.Text = "0"
-        If moreButton.Checked = True And widText.Text = "" Then widText.Text = "0"
+    Private Sub fltButton_Click(sender As Object, e As EventArgs) Handles fltButton.Click
+        If moreButton.Checked = True And htText.Text = "" Then htText.Text = "0" '自动补齐高度
+        If moreButton.Checked = True And widText.Text = "" Then widText.Text = "0" '自动补齐宽度
         筛选图片()
         更新统计信息()
     End Sub
 
     ' 启用按钮的拖放功能
-    Private Sub Button1_DragEnter(sender As Object, e As DragEventArgs) Handles openButton.DragEnter
+    Private Sub openButton_DragEnter(sender As Object, e As DragEventArgs) Handles openButton.DragEnter
         ' 判断拖入的是否是文件夹
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -403,47 +393,50 @@ Public Class Form1
             End If
         End If
     End Sub
-
-    ' 拖入识别
     Private Sub Button1_DragDrop(sender As Object, e As DragEventArgs) Handles openButton.DragDrop
         Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If Directory.Exists(droppedItems(0)) Then
             Dim folderPath As String = droppedItems(0)
             openText.Text = folderPath
             加载图片(folderPath)
-            toform5path = folderPath
+            toForm5Path = folderPath
             If Form5.Visible = True Then
-                Form5.TextBox1.Text = Me.toform5path
-                Form5.toform1path = Me.toform5path
-                Form5.LoadTreeView(Form5.toform1path)
+                Form5.TextBox1.Text = Me.toForm5Path
+                Form5.toForm1Path = Me.toForm5Path
+                Form5.LoadTreeView(Form5.toForm1Path)
             End If
         End If
     End Sub
 
-    ' 启用按钮的拖放功能
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        openButton.AllowDrop = True ' 启用拖放功能
-        ComboBox1.SelectedIndex = 0
-        ProgressBar1.Maximum = 0
-        NUM = 0
+
         Me.Text = verinfo
+        ProgressBar1.Maximum = 0
+        loadedCount = 0
+        ListViewRT.Width = 505
+        sltLblRT.Width = 508
+        sumLblRT.Width = 508
+
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
-        optButton.Text = optext
+        openButton.AllowDrop = True ' 启用拖放功能
+        optButton.Text = optext        '初始化操作中心
         optButton.BackColor = optcolor
         optButton.Visible = False
-        optTimer.Interval = 3500 ' 设置定时器间隔为 5 秒
         optButton.Location = New Point(44, 15)
+        optTimer.Interval = 3500 '设置定时器间隔为 5 秒
+
+        '检测字体安装
         Dim fontName As String = "方正黑体_GBK"
-        If IsFontInstalled(fontName) Then
+        If 确认字体安装(fontName) Then
             'optChange("欢迎使用，当前版本 " & verinfo, Color.White)
         Else
             optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
         End If
-        ListView1.Width = 505
-        sltLabel1.Width = 508
-        sumLabel1.Width = 508
+
     End Sub
-    Private Function IsFontInstalled(fontName As String) As Boolean
+
+    Private Function 确认字体安装(fontName As String) As Boolean
         Dim installedFonts As New InstalledFontCollection()
         For Each font As FontFamily In installedFonts.Families
             If font.Name = fontName Then
@@ -452,81 +445,55 @@ Public Class Form1
         Next
         Return False
     End Function
-    'Private Function 检测字体是否安装(fontName As String) As Boolean
-    '    Dim fonts As New InstalledFontCollection()
-    '    For Each font As FontFamily In fonts.Families
-    '        If font.Name.Equals(fontName, StringComparison.OrdinalIgnoreCase) Then
-    '            Return True ' 找到字体，返回 True
-    '        End If
-    '    Next
-    '    Return False ' 未找到字体，返回 False
-    'End Function
 
-    ' 在 Label5 上单击复制 ListView1 选中的文件路径
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles sltLabel0.Click
-        If ListView0.SelectedItems.Count > 0 Then
-            ' 获取选中的文件名
-            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
-            Dim fileName As String = selectedItem.SubItems(1).Text
-
-            ' 拼接完整的文件路径
-            Dim folderPath As String = openText.Text ' 文件夹路径
-            Dim filePath As String = Path.Combine(folderPath, fileName)
-
-            ' 复制文件路径到剪贴板
-            Clipboard.SetText(filePath)
+    '左侧标签点击复制文件地址
+    Private Sub sltLblLT_Click(sender As Object, e As EventArgs) Handles sltLblLT.Click
+        If ListViewLT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(1).Text '获取选中的文件名
+            Dim folderPath As String = openText.Text '文件夹路径
+            Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
+            Clipboard.SetText(filePath) '复制文件路径到剪贴板
             MessageBox.Show("路径已复制。" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
-    ' 在 Label8 上单击时复制 ListView2 选中的文件路径
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles sltLabel1.Click
-        If ListView1.SelectedItems.Count > 0 Then
-            ' 获取选中的文件名
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
-            Dim fileName As String = selectedItem.SubItems(1).Text
-
-            ' 拼接完整的文件路径
+    '右侧标签点击复制文件地址
+    Private Sub sltLblRT_Click(sender As Object, e As EventArgs) Handles sltLblRT.Click
+        If ListViewRT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(1).Text    '获取选中的文件名
             Dim folderPath As String = openText.Text ' 文件夹路径
-            Dim filePath As String = Path.Combine(folderPath, fileName)
-
-            ' 复制文件路径到剪贴板
-            Clipboard.SetText(filePath)
+            Dim filePath As String = Path.Combine(folderPath, fileName)   '拼接完整的文件路径
+            Clipboard.SetText(filePath) '复制文件路径到剪贴板
             MessageBox.Show("路径已复制。" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
-    ' 双击 ListView1 中的项以打开文件
-    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView0.DoubleClick
-        If ListView0.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
-            Dim fileName As String = selectedItem.SubItems(1).Text
-
-            ' 拼接完整的文件路径
-            Dim folderPath As String = openText.Text ' 文件夹路径
-            Dim filePath As String = Path.Combine(folderPath, fileName)
-
-            ' 检查文件是否存在
-            If File.Exists(filePath) Then
-                ' 使用默认程序打开文件
-                Process.Start(filePath)
+    '左侧双击预览
+    Private Sub ListViewLT_DoubleClick(sender As Object, e As EventArgs) Handles ListViewLT.DoubleClick
+        If ListViewLT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(1).Text '获取选中的文件名
+            Dim folderPath As String = openText.Text '文件夹路径
+            Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
+            If File.Exists(filePath) Then '检查文件是否存在
+                Process.Start(filePath) '使用默认程序打开文件
             Else
                 MessageBox.Show("文件不存在: " & filePath， “错误”, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
 
-    ' 双击 ListView2 选中项打开文件
-    Private Sub ListView2_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
-        If ListView1.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
-            Dim fileName As String = selectedItem.SubItems(1).Text
-            Dim folderPath As String = openText.Text ' 文件夹路径
-            Dim filePath As String = Path.Combine(folderPath, fileName)
-
-            ' 使用默认程序打开文件
+    '右侧双击预览
+    Private Sub ListView2_DoubleClick(sender As Object, e As EventArgs) Handles ListViewRT.DoubleClick
+        If ListViewRT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(1).Text '获取选中的文件名
+            Dim folderPath As String = openText.Text '文件夹路径
+            Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
             Try
-                Process.Start(filePath)
+                Process.Start(filePath) ' 使用默认程序打开文件
             Catch ex As Exception
                 MessageBox.Show("无法打开。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -535,43 +502,36 @@ Public Class Form1
 
     '点击按钮删除文件
     Private Sub delButton_Click(sender As Object, e As EventArgs) Handles delbutton.Click
-        If ListView1.Items.Count = 0 Then
+        If ListViewRT.Items.Count = 0 Then
             MessageBox.Show("没有可删除的文件。", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End If
-
         Dim result As DialogResult = MessageBox.Show("确定要删除已筛选的文件吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
         If result = DialogResult.Yes Then
-            For Each item As ListViewItem In ListView1.Items
+            For Each item As ListViewItem In ListViewRT.Items
                 Dim fileName As String = item.SubItems(1).Text
                 Dim sourcePath As String = Path.Combine(openText.Text, fileName) ' 获取完整路径
-
                 Try
                     If File.Exists(sourcePath) Then
-                        File.Delete(sourcePath) ' 删除文件
+                        File.Delete(sourcePath) '删除文件
                         optChange("警告：文件已删除，需要重新加载。", Color.LemonChiffon)
+                        ListViewRT.Items.Clear()
                     End If
                 Catch ex As Exception
                     MessageBox.Show("删除失败。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             Next
-
-            ListView1.Items.Clear()
-
         End If
     End Sub
 
-    ' Button3 点击事件：复制筛选结果到指定文件夹
+    '复制筛选结果到指定文件夹
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles copyButton.Click
         Using folderBrowserDialog As New FolderBrowserDialog
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 Dim targetFolder As String = folderBrowserDialog.SelectedPath
-
-                For Each item As ListViewItem In ListView1.Items
+                For Each item As ListViewItem In ListViewRT.Items
                     Dim fileName As String = item.SubItems(1).Text
-                    Dim sourcePath As String = Path.Combine(openText.Text, fileName) ' 源文件路径
-
+                    Dim sourcePath As String = Path.Combine(openText.Text, fileName) '源文件路径
                     Try
                         File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
                         optChange("提示：文件复制已完成。", Color.AliceBlue)
@@ -583,16 +543,14 @@ Public Class Form1
         End Using
     End Sub
 
-    ' Button4 点击事件：移动筛选结果到指定文件夹
+    '移动筛选结果到指定文件夹
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles moveButton.Click
         Using folderBrowserDialog As New FolderBrowserDialog
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 Dim targetFolder As String = folderBrowserDialog.SelectedPath
-
-                For Each item As ListViewItem In ListView1.Items
+                For Each item As ListViewItem In ListViewRT.Items
                     Dim fileName As String = item.SubItems(1).Text
-                    Dim sourcePath As String = Path.Combine(openText.Text, fileName) ' 源文件路径
-
+                    Dim sourcePath As String = Path.Combine(openText.Text, fileName) '源文件路径
                     Try
                         File.Move(sourcePath, Path.Combine(targetFolder, fileName))
                         optChange("警告：文件已移动，需要重新加载。", Color.LemonChiffon)
@@ -600,28 +558,23 @@ Public Class Form1
                         MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 Next
-
             End If
         End Using
-
     End Sub
 
-    ' Button5 点击事件：将筛选结果移动到扫描文件夹下的“筛选结果”文件夹内
+    '筛选结果隔离
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles dvdButton.Click
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
         Dim sourceFolder As String = openText.Text ' 源文件夹路径
         Dim resultFolder As String = Path.Combine(sourceFolder, "隔离结果" & formattedDateTime)
-        If ListView1.Items.Count > 0 Then
-            ' 创建“筛选结果”文件夹（如果不存在）
+        If ListViewRT.Items.Count > 0 Then
             If Not Directory.Exists(resultFolder) Then
-                Directory.CreateDirectory(resultFolder)
+                Directory.CreateDirectory(resultFolder) ' 创建“筛选结果”文件夹（如果不存在）
             End If
-
-            For Each item As ListViewItem In ListView1.Items
+            For Each item As ListViewItem In ListViewRT.Items
                 Dim fileName As String = item.SubItems(1).Text
                 Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
-
                 Try
                     File.Move(sourcePath, Path.Combine(resultFolder, fileName))
                     optChange("警告：文件已隔离，需要重新加载。", Color.LemonChiffon)
@@ -629,11 +582,8 @@ Public Class Form1
                     MessageBox.Show("隔离失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             Next
-
-            ' 显示成功消息并打开筛选结果文件夹
             Dim opt = MessageBox.Show("隔离成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
-            If opt = DialogResult.Yes Then
-                ' 打开文件
+            If opt = DialogResult.Yes Then '判断是否打开文件夹
                 Process.Start("explorer.exe", resultFolder) ' 打开“筛选结果”文件夹
             End If
         Else
@@ -641,60 +591,54 @@ Public Class Form1
         End If
     End Sub
 
-
-    ' Button7 点击事件：将 ListView1 中选中的文件添加到 ListView2 中
+    '从左侧添加项到右侧
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles addButton.Click
-        ' 遍历 ListView1 中的选中项
-        For Each selectedItem As ListViewItem In ListView0.SelectedItems
-            ' 检查 ListView2 中是否已经存在该文件
+        For Each selectedItem As ListViewItem In ListViewLT.SelectedItems ' 遍历左侧选中项
+            ' 检查右侧中是否已经存在该文件
             Dim fileName As String = selectedItem.SubItems(1).Text
-            Dim existsInListView2 As Boolean = ListView1.Items.Cast(Of ListViewItem)().Any(Function(item) item.SubItems(1).Text = fileName)
-
-            ' 如果 ListView2 中不存在该文件，则添加
+            Dim existsInListView2 As Boolean = ListViewRT.Items.Cast(Of ListViewItem)().Any(Function(item) item.SubItems(1).Text = fileName)
+            ' 如果右侧不存在该文件，则添加
             If Not existsInListView2 Then
-                Dim newItem As New ListViewItem(selectedItem.SubItems(0).Text) ' 保留原始序号
-                newItem.SubItems.Add(fileName) ' 文件名
-                newItem.SubItems.Add(selectedItem.SubItems(2).Text) ' 分辨率
-                newItem.SubItems.Add(selectedItem.SubItems(3).Text) ' 格式
-                newItem.SubItems.Add(selectedItem.SubItems(4).Text)
-                ListView1.Items.Add(newItem) ' 添加到 ListView2
-                ' 将新项目的字体颜色设置
-                newItem.ForeColor = Color.Black
-                newItem.BackColor = Color.GhostWhite
+                Dim newItem As New ListViewItem(selectedItem.SubItems(0).Text) '保留序号
+                newItem.SubItems.Add(fileName) '保留文件名
+                newItem.SubItems.Add(selectedItem.SubItems(2).Text) '保留分辨率
+                newItem.SubItems.Add(selectedItem.SubItems(3).Text) '保留格式
+                newItem.SubItems.Add(selectedItem.SubItems(4).Text) '保留大小
+                ListViewRT.Items.Add(newItem) '
+                newItem.BackColor = Color.GhostWhite '新项目背景色设置
             End If
         Next
-        ' 更新筛选结果的计数
-        UpdateLabel2()
+        更新右侧结果标签()
         更新统计信息()
     End Sub
 
-    ' Button8 点击事件：删除 ListView2 中选中的项
+    '从右侧移除项
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
-        ' 确保 ListView2 中有选中的项
-        If ListView1.SelectedItems.Count > 0 Then
-            ' 从 ListView2 中删除选中的项
-            Dim index As Integer = ListView1.SelectedItems(0).Index
-            For Each selectedItem As ListViewItem In ListView1.SelectedItems
-                ListView1.Items.Remove(selectedItem)
+        If ListViewRT.SelectedItems.Count > 0 Then '确保 ListView2 中有选中的项
+            '从 ListView2 中删除选中的项
+            Dim index As Integer = ListViewRT.SelectedItems(0).Index
+            For Each selectedItem As ListViewItem In ListViewRT.SelectedItems
+                ListViewRT.Items.Remove(selectedItem)
+
             Next
-            If ListView1.Items.Count > 0 Then
-                If index < ListView1.Items.Count Then
-                    ListView1.Items(index).Selected = True
-                    ListView1.Items(index).Focused = True
+            optChange("提示：项目已移除。", Color.AliceBlue)
+            If ListViewRT.Items.Count > 0 Then
+                If index < ListViewRT.Items.Count Then
+                    ListViewRT.Items(index).Selected = True
+                    ListViewRT.Items(index).Focused = True
                 Else
-                    ListView1.Items(ListView1.Items.Count - 1).Selected = True
-                    ListView1.Items(ListView1.Items.Count - 1).Focused = True
+                    ListViewRT.Items(ListViewRT.Items.Count - 1).Selected = True
+                    ListViewRT.Items(ListViewRT.Items.Count - 1).Focused = True
                 End If
             End If
         Else
             MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-        ' 更新筛选结果的计数
-        UpdateLabel2()
+        更新右侧结果标签()
         更新统计信息()
-        optChange("提示：项目已移除。", Color.AliceBlue)
     End Sub
-    '总在最前
+
+    '窗口总在最前
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
         If topButton.Checked = True Then
             TopMost = True
@@ -703,22 +647,18 @@ Public Class Form1
         End If
     End Sub
 
-    ' 用于存储当前排序的列和顺序
-    Private currentColumn As Integer = -1
-    Private currentOrder As SortOrder = SortOrder.Ascending
-
-    ' ListView1 的列标题单击事件
-    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView0.ColumnClick
-        SortListView(ListView0, e.Column)
+    '左侧标题单击事件
+    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListViewLT.ColumnClick
+        列表排序法(ListViewLT, e.Column)
     End Sub
 
-    ' ListView2 的列标题单击事件
-    Private Sub ListView2_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView1.ColumnClick
-        SortListView(ListView1, e.Column)
+    '右侧标题单击事件
+    Private Sub ListView2_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListViewRT.ColumnClick
+        列表排序法(ListViewRT, e.Column)
     End Sub
 
     '排序
-    Private Sub SortListView(listView As ListView, column As Integer)
+    Private Sub 列表排序法(listView As ListView, column As Integer)
         If column = currentColumn Then
             If currentOrder = SortOrder.Ascending Then
                 currentOrder = SortOrder.Descending
@@ -729,110 +669,92 @@ Public Class Form1
             currentColumn = column
             currentOrder = SortOrder.Ascending
         End If
-
-        ' 使用自定义比较器进行排序
-        listView.ListViewItemSorter = New ListViewItemComparer(currentColumn, currentOrder)
+        listView.ListViewItemSorter = New 列表比较器(currentColumn, currentOrder) ' 使用自定义比较器进行排序
         listView.Sort()
     End Sub
 
-    ' 创建 ListViewItemComparer 类
-    Public Class ListViewItemComparer
+    '定义列表排序比较器
+    Public Class 列表比较器
         Implements IComparer
-
         Private col As Integer
         Private order As SortOrder
-
         Public Sub New(column As Integer, order As SortOrder)
             Me.col = column
             Me.order = order
         End Sub
-
         Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
             Dim returnVal As Integer = 0
-
             If TypeOf x Is ListViewItem AndAlso TypeOf y Is ListViewItem Then
                 Dim item1 As ListViewItem = CType(x, ListViewItem)
                 Dim item2 As ListViewItem = CType(y, ListViewItem)
-
                 Select Case col
-                    Case 0 ' **序号列（按整数排序）**
+                    Case 0 '序号列（按整数排序）
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
-
-                    Case 4 ' **文件大小列（按数值大小排序）**
+                    Case 4 '文件大小列（按数值大小排序）
                         Dim size1 As Double = 解析文件大小(item1.SubItems(col).Text)
                         Dim size2 As Double = 解析文件大小(item2.SubItems(col).Text)
                         returnVal = size1.CompareTo(size2)
-
-                    Case Else ' **其他列（按字符串排序）**
+                    Case Else '其他列（按字符串排序）
                         returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
                 End Select
             End If
-
-            ' **根据排序顺序调整结果**
-            If order = SortOrder.Descending Then
+            If order = SortOrder.Descending Then '根据排序顺序调整结果
                 returnVal *= -1
             End If
-
             Return returnVal
         End Function
 
-        ' **解析文件大小**
+        '解析文件大小
         Private Function 解析文件大小(sizeText As String) As Double
             Dim sizeValue As Double = 0
-
             If sizeText.EndsWith(" KB") Then
                 Double.TryParse(sizeText.Replace(" KB", "").Trim(), sizeValue)
-                sizeValue *= 1024 ' 转换为字节
+                sizeValue *= 1024 '转换为字节
             ElseIf sizeText.EndsWith(" MB") Then
                 Double.TryParse(sizeText.Replace(" MB", "").Trim(), sizeValue)
-                sizeValue *= 1024 * 1024 ' 转换为字节
+                sizeValue *= 1024 * 1024 '转换为字节
             ElseIf sizeText.EndsWith(" GB") Then
                 Double.TryParse(sizeText.Replace(" GB", "").Trim(), sizeValue)
-                sizeValue *= 1024 * 1024 * 1024 ' 转换为字节
+                sizeValue *= 1024 * 1024 * 1024 '转换为字节
             End If
-
             Return sizeValue
         End Function
     End Class
 
-
-
+    '分辨率宽度限制输入
     Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles widText.KeyPress
-        ' 检查输入的字符是否是数字或控制字符（如退格）
+        '检查输入的字符是否是数字或控制字符（如退格）
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
-            e.Handled = True ' 如果不是，则取消该输入
+            e.Handled = True '如果不是，则取消该输入
         End If
     End Sub
 
+    '分辨率高度限制输入
     Private Sub TextBox3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles htText.KeyPress
-        ' 检查输入的字符是否是数字或控制字符（如退格）
+        '检查输入的字符是否是数字或控制字符（如退格）
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
-            e.Handled = True ' 如果不是，则取消该输入
+            e.Handled = True '如果不是，则取消该输入
         End If
     End Sub
-    '关于
+
+    '关于窗口
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles infoButton.Click
         Form2.Show()
     End Sub
 
-    Private Sub UpdateLabel2()
-        ' 总文件数
-        Dim totalFiles As Integer = ListView1.Items.Count
+    Private Sub 更新右侧结果标签()
+        Dim totalFiles As Integer = ListViewRT.Items.Count '总文件数
         ' 各种格式的文件数量
         Dim index As Integer = 1
         Dim jpgCount As Integer = 0
         Dim pngCount As Integer = 0
         Dim gifCount As Integer = 0
-        '### 1.2 new ###
         Dim bmpCount As Integer = 0
         Dim icoCount As Integer = 0
-
-        ' 遍历 ListView2 统计文件格式数量
-        For Each item As ListViewItem In ListView1.Items
+        For Each item As ListViewItem In ListViewRT.Items
             Dim format As String = item.SubItems(3).Text.ToUpper()
-
             Select Case format
                 Case ".JPG", ".JPEG"
                     jpgCount += 1
@@ -844,10 +766,9 @@ Public Class Form1
                     icoCount += 1
                 Case ".BMP"
                     bmpCount += 1
-
             End Select
         Next
-        '更新label2
+
         Dim result As New List(Of String)
         result.Add($" 结果 {totalFiles} 项")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
@@ -855,40 +776,33 @@ Public Class Form1
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
         If bmpCount > 0 Then result.Add($"BMP {bmpCount}")
         If icoCount > 0 Then result.Add($"ICO {icoCount}")
-        sumLabel1.Text = String.Join("  |  ", result)
+
+        sumLblRT.Text = String.Join("  |  ", result)
     End Sub
 
-    ' Label5 的 MouseHover 事件
-    Private Sub Label5_MouseHover(sender As Object, e As EventArgs) Handles sltLabel0.MouseHover
-        ' 检查 ListView1 是否有选中项
-        If ListView0.SelectedItems.Count > 0 Then
-            ' 获取 ListView1 选中项的文件名
-            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
+    '左侧选中标签工具提示
+    Private Sub Label5_MouseHover(sender As Object, e As EventArgs) Handles sltLblLT.MouseHover
+        If ListViewLT.SelectedItems.Count > 0 Then '检查 ListView1 是否有选中项
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListView1 选中项的文件名
             Dim fileName As String = selectedItem.SubItems(1).Text
-            ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(sltLabel0, selectedItem.SubItems(1).Text & vbCrLf & "单击复制路径。")
+            ToolTip1.SetToolTip(sltLblLT, selectedItem.SubItems(1).Text & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
         Else
-            ' 如果没有选中项，显示默认提示
-            ToolTip1.SetToolTip(sltLabel0, "单击复制路径。")
+            ToolTip1.SetToolTip(sltLblLT, "单击复制路径。") '如果没有选中项，显示默认提示
         End If
     End Sub
 
-    ' Label8 的 MouseHover 事件
-    Private Sub Label8_MouseHover(sender As Object, e As EventArgs) Handles sltLabel1.MouseHover
-        ' 检查 ListView2 是否有选中项
-        If ListView1.SelectedItems.Count > 0 Then
-            ' 获取 ListView2 选中项的文件名
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+    '右侧选中标签工具提示
+    Private Sub Label8_MouseHover(sender As Object, e As EventArgs) Handles sltLblRT.MouseHover
+        If ListViewRT.SelectedItems.Count > 0 Then       ' 检查 ListView2 是否有选中项
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0) ' 获取 ListView2 选中项的文件名
             Dim fileName As String = selectedItem.SubItems(1).Text
-            ' 设置 ToolTip1 的文本
-            ToolTip1.SetToolTip(sltLabel1, fileName & vbCrLf & "单击复制路径。")
+            ToolTip1.SetToolTip(sltLblRT, fileName & vbCrLf & "单击复制路径。") ' 设置 ToolTip1 的文本
         Else
-            ' 如果没有选中项，显示默认提示
-            ToolTip1.SetToolTip(sltLabel1, "单击复制路径。")
+            ToolTip1.SetToolTip(sltLblRT, "单击复制路径。") ' 如果没有选中项，显示默认提示
         End If
     End Sub
 
-    ' xlsxButton 的点击事件，用于将 ListView2 导出为 .xlsx 文件
+    '导出为xlsx文件
     Private Sub xlsxButton_Click(sender As Object, e As EventArgs) Handles xlsxButton.Click
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial
         Dim now As DateTime = DateTime.Now
@@ -896,7 +810,7 @@ Public Class Form1
         Dim jpgSelected As Boolean = jpgButton.Checked
         Dim pngSelected As Boolean = pngButton.Checked
         Dim gifSelected As Boolean = gifButton.Checked
-        Dim resolutionSelected As Boolean = reslnButton.Checked
+        Dim reslnSelected As Boolean = reslnButton.Checked
         Dim bmpSelected As Boolean = bmpButton.Checked
         Dim icoSelected As Boolean = icoButton.Checked
         Dim inreslnSelected As Boolean = exButton.Checked
@@ -904,9 +818,9 @@ Public Class Form1
         Dim plsreslnSelected As Boolean = moreButton.Checked
         Dim mnsreslnSelected As Boolean = mnsButton.Checked
 
-        Dim sumsizestr = FormatSize(sumsize)
-        Dim minstr = FormatTime(min)
-        Dim result = GetFilterConditions(jpgSelected, pngSelected, gifSelected, bmpSelected, icoSelected, inreslnSelected, volreslnSelected, resolutionSelected, plsreslnSelected, mnsreslnSelected)
+        Dim sumsizestr = FormatSize(sumSize)
+        Dim loadedTimeStr = FormatTime(loadedTime)
+        Dim result = GetFilterConditions(jpgSelected, pngSelected, gifSelected, bmpSelected, icoSelected, inreslnSelected, volreslnSelected, reslnSelected, plsreslnSelected, mnsreslnSelected)
 
         ' 选择保存路径
         Using saveFileDialog As New SaveFileDialog
@@ -926,13 +840,13 @@ Public Class Form1
                         Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
 
                         ' 添加 Label6 和 Label2 的内容在顶部
-                        AddHeaderInfo(worksheet, sumLabel0.Text, sumsizestr, minstr, sumLabel1.Text, String.Join(" ", result))
+                        AddHeaderInfo(worksheet, sumLblLT.Text, sumsizestr, loadedTimeStr, sumLblRT.Text, String.Join(" ", result))
 
                         ' 设置表头（对应 ListView2 的列，从第1行开始）
-                        SetListViewHeaders(worksheet, ListView1)
+                        SetListViewHeaders(worksheet, ListViewRT)
 
                         ' 填充 ListView2 的数据（从第2行开始）
-                        FillListViewData(worksheet, ListView1)
+                        FillListViewData(worksheet, ListViewRT)
 
                         ' 保存 Excel 文件
                         package.Save()
@@ -1003,7 +917,7 @@ Public Class Form1
         worksheet.Cells("I3").Value = " " & minstr
         worksheet.Cells("I4").Value = sumlabel1
         worksheet.Cells("I5").Value = " " & formattedString
-        worksheet.Cells("I6").Value = labelstr
+        worksheet.Cells("I6").Value = lbldStr
         worksheet.Cells("H1").Value = "已扫描"
         worksheet.Cells("H2").Value = "总大小"
         worksheet.Cells("H3").Value = "耗时"
@@ -1065,12 +979,12 @@ Public Class Form1
         End If
     End Sub
     '注册tooltip
-    Private Sub Label6_MouseHover(sender As Object, e As EventArgs) Handles sumLabel0.MouseHover
-        ToolTip1.SetToolTip(sumLabel0, sumLabel0.Text)
+    Private Sub Label6_MouseHover(sender As Object, e As EventArgs) Handles sumLblLT.MouseHover
+        ToolTip1.SetToolTip(sumLblLT, sumLblLT.Text)
     End Sub
     '注册tooltip
-    Private Sub Label2_MouseHover(sender As Object, e As EventArgs) Handles sumLabel1.MouseHover
-        ToolTip1.SetToolTip(sumLabel1, sumLabel1.Text)
+    Private Sub Label2_MouseHover(sender As Object, e As EventArgs) Handles sumLblRT.MouseHover
+        ToolTip1.SetToolTip(sumLblRT, sumLblRT.Text)
     End Sub
     '中键打开
     Private Sub TextBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles openText.MouseUp
@@ -1106,22 +1020,22 @@ Public Class Form1
 
     Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         If Me.WindowState = FormWindowState.Maximized Then
-            ListView0.Columns(1).Width = ListView0.Width / 1.75
-            ListView1.Columns(1).Width = ListView1.Width / 1.75
+            ListViewLT.Columns(1).Width = ListViewLT.Width / 1.75
+            ListViewRT.Columns(1).Width = ListViewRT.Width / 1.75
         ElseIf Me.WindowState = FormWindowState.Normal Then
-            ListView0.Columns(0).Width = 50
-            ListView0.Columns(1).Width = 160
-            ListView0.Columns(2).Width = 100
-            ListView0.Columns(3).Width = 60
-            ListView0.Columns(4).Width = 90
-            ListView0.Columns(5).Width = 30
+            ListViewLT.Columns(0).Width = 50
+            ListViewLT.Columns(1).Width = 160
+            ListViewLT.Columns(2).Width = 100
+            ListViewLT.Columns(3).Width = 60
+            ListViewLT.Columns(4).Width = 90
+            ListViewLT.Columns(5).Width = 30
 
-            ListView1.Columns(0).Width = 50
-            ListView1.Columns(1).Width = 160
-            ListView1.Columns(2).Width = 100
-            ListView1.Columns(3).Width = 60
-            ListView1.Columns(4).Width = 90
-            ListView1.Columns(5).Width = 30
+            ListViewRT.Columns(0).Width = 50
+            ListViewRT.Columns(1).Width = 160
+            ListViewRT.Columns(2).Width = 100
+            ListViewRT.Columns(3).Width = 60
+            ListViewRT.Columns(4).Width = 90
+            ListViewRT.Columns(5).Width = 30
         End If
     End Sub
 
@@ -1129,7 +1043,7 @@ Public Class Form1
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If lockButton.Checked = True Then
             ' 检查 ListView1 和 ListView2 是否有内容
-            If ListView1.Items.Count > 0 Then
+            If ListViewRT.Items.Count > 0 Then
                 ' 弹出消息框
                 Dim result As DialogResult = MessageBox.Show("确定要关闭吗？", "关闭", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
                 If result = DialogResult.Cancel Then
@@ -1158,7 +1072,7 @@ Public Class Form1
     '简单搜索
     Private Sub SearchListView(keyword As String)
         ' 遍历ListView中的每一行
-        For Each item As ListViewItem In ListView0.Items
+        For Each item As ListViewItem In ListViewLT.Items
             If item.Text.ToLower().Contains(keyword.ToLower()) OrElse
            item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
            Any(Function(subItem) subItem.Text.ToLower().Contains(keyword.ToLower())) Then
@@ -1170,11 +1084,11 @@ Public Class Form1
             End If
         Next
         PlayNotificationSound3()
-        optChange("搜索：结果共 " & ListView0.SelectedItems.Count & " 项。", Color.White)
+        optChange("搜索：结果共 " & ListViewLT.SelectedItems.Count & " 项。", Color.White)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs)
-        min += 1
+        loadedTime += 1
     End Sub
 
     ' 在按钮单击或文本框文本更改事件中调用
@@ -1199,7 +1113,7 @@ Public Class Form1
     '搜索结果选定
     Private Sub SearchListView2(keyword As String)
         ' 遍历ListView中的每一行
-        For Each item As ListViewItem In ListView1.Items
+        For Each item As ListViewItem In ListViewRT.Items
             If item.Text.ToLower().Contains(keyword.ToLower()) OrElse
            item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
            Any(Function(subItem) subItem.Text.ToLower().Contains(keyword.ToLower())) Then
@@ -1211,11 +1125,11 @@ Public Class Form1
             End If
         Next
         PlayNotificationSound3()
-        optChange("搜索：结果共 " & ListView1.SelectedItems.Count & " 项。", Color.White)
+        optChange("搜索：结果共 " & ListViewRT.SelectedItems.Count & " 项。", Color.White)
     End Sub
 
     Private Sub 更新标题()
-        Me.Text = verinfo & "  已扫描 " & NUM & “ / ” & ProgressBar1.Maximum & “ 项 , ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
+        Me.Text = verinfo & "  已扫描 " & loadedCount & “ / ” & ProgressBar1.Maximum & “ 项 , ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles stsButton.Click
@@ -1247,9 +1161,9 @@ Public Class Form1
             MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
         If Form5.Visible = True Then
-            Form5.TextBox1.Text = Me.toform5path
-            Form5.toform1path = Me.toform5path
-            Form5.LoadTreeView(Form5.toform1path)
+            Form5.TextBox1.Text = Me.toForm5Path
+            Form5.toForm1Path = Me.toForm5Path
+            Form5.LoadTreeView(Form5.toForm1Path)
         End If
         optButton.Visible = False
     End Sub
@@ -1299,7 +1213,7 @@ Public Class Form1
         Dim invldCount As Integer = 0
 
         ' 遍历 ListView2 统计文件格式数量
-        For Each item As ListViewItem In ListView1.Items
+        For Each item As ListViewItem In ListViewRT.Items
             Dim format As String = item.SubItems(3).Text.ToUpper()
             Select Case format
                 Case ".JPG", ".JPEG"
@@ -1314,113 +1228,113 @@ Public Class Form1
                     bmpCount += 1
             End Select
         Next
-        output0 = ListView1.Items.Count
-        jpg0 = jpgCount
-        png0 = pngCount
-        bmp0 = bmpCount
-        gif0 = gifCount
-        ico0 = icoCount
+        sumRT = ListViewRT.Items.Count
+        jpgRT = jpgCount
+        pngRT = pngCount
+        bmpRT = bmpCount
+        gifRT = gifCount
+        icoRT = icoCount
 
         Dim sumsizestr As String
-        If Int(sumsize / 1024 / 1024) > 1024 Then
-            sumsizestr = Int(sumsize * 100 / 1024 / 1024 / 1024) / 100 & " GB"
+        If Int(sumSize / 1024 / 1024) > 1024 Then
+            sumsizestr = Int(sumSize * 100 / 1024 / 1024 / 1024) / 100 & " GB"
         Else
-            If Int(sumsize / 1024 / 1024) > 1 Then
-                sumsizestr = Int(sumsize * 100 / 1024 / 1024) / 100 & " MB"
+            If Int(sumSize / 1024 / 1024) > 1 Then
+                sumsizestr = Int(sumSize * 100 / 1024 / 1024) / 100 & " MB"
             Else
-                sumsizestr = Int(sumsize * 100 / 1024) / 100 & " KB"
+                sumsizestr = Int(sumSize * 100 / 1024) / 100 & " KB"
             End If
         End If
-        Dim minstr As String
-        If min < 1000 Then
-            minstr = min & " ms"
+        Dim loadedTimeStr As String
+        If loadedTime < 1000 Then
+            loadedTimeStr = loadedTime & " ms"
         Else
-            minstr = min / 1000 & " s"
+            loadedTimeStr = loadedTime / 1000 & " s"
         End If
-        Form3.Label9.Text = output1
+        Form3.Label9.Text = sumLT
         Form3.Label10.Text = sumsizestr
-        Form3.Label23.Text = minstr
-        Form3.Label11.Text = png1
-        Form3.Label12.Text = jpg1
-        Form3.Label13.Text = bmp1
-        Form3.Label14.Text = ico1
-        Form3.Label15.Text = gif1
-        Form3.Label16.Text = "→ " & output0 & " = " & output1 - output0
+        Form3.Label23.Text = loadedTimeStr
+        Form3.Label11.Text = pngLT
+        Form3.Label12.Text = jpgLT
+        Form3.Label13.Text = bmpLT
+        Form3.Label14.Text = icoLT
+        Form3.Label15.Text = gifLT
+        Form3.Label16.Text = "→ " & sumRT & " = " & sumLT - sumRT
 
-        Form3.Label28.Text = png0
-        Form3.Label27.Text = jpg0
-        Form3.Label26.Text = bmp0
-        Form3.Label25.Text = ico0
-        Form3.Label24.Text = gif0
+        Form3.Label28.Text = pngRT
+        Form3.Label27.Text = jpgRT
+        Form3.Label26.Text = bmpRT
+        Form3.Label25.Text = icoRT
+        Form3.Label24.Text = gifRT
 
-        Form3.Label17.Text = Int(png1 / output1 * 1000) / 10 & " %"
-        Form3.Label18.Text = Int(jpg1 / output1 * 1000) / 10 & " %"
-        Form3.Label19.Text = Int(bmp1 / output1 * 1000) / 10 & " %"
-        Form3.Label20.Text = Int(ico1 / output1 * 1000) / 10 & " %"
-        Form3.Label21.Text = Int(gif1 / output1 * 1000) / 10 & " %"
-        Form3.Label22.Text = “- ” & (Int(output0 / output1 * 1000) / 10) & " %"
+        Form3.Label17.Text = Int(pngLT / sumLT * 1000) / 10 & " %"
+        Form3.Label18.Text = Int(jpgLT / sumLT * 1000) / 10 & " %"
+        Form3.Label19.Text = Int(bmpLT / sumLT * 1000) / 10 & " %"
+        Form3.Label20.Text = Int(icoLT / sumLT * 1000) / 10 & " %"
+        Form3.Label21.Text = Int(gifLT / sumLT * 1000) / 10 & " %"
+        Form3.Label22.Text = “- ” & (Int(sumRT / sumLT * 1000) / 10) & " %"
 
-        Form3.Label40.Text = Int(png0 / output0 * 1000) / 10 & " %"
-        Form3.Label39.Text = Int(jpg0 / output0 * 1000) / 10 & " %"
-        Form3.Label38.Text = Int(bmp0 / output0 * 1000) / 10 & " %"
-        Form3.Label37.Text = Int(ico0 / output0 * 1000) / 10 & " %"
-        Form3.Label36.Text = Int(gif0 / output0 * 1000) / 10 & " %"
-        Dim result As Double = 100 - (Int(png0 / output0 * 1000) / 10 + Int(jpg0 / output0 * 1000) / 10 + Int(bmp0 / output0 * 1000) / 10 + Int(ico0 / output0 * 1000) / 10 + Int(gif0 / output0 * 1000) / 10)
+        Form3.Label40.Text = Int(pngRT / sumRT * 1000) / 10 & " %"
+        Form3.Label39.Text = Int(jpgRT / sumRT * 1000) / 10 & " %"
+        Form3.Label38.Text = Int(bmpRT / sumRT * 1000) / 10 & " %"
+        Form3.Label37.Text = Int(icoRT / sumRT * 1000) / 10 & " %"
+        Form3.Label36.Text = Int(gifRT / sumRT * 1000) / 10 & " %"
+        Dim result As Double = 100 - (Int(pngRT / sumRT * 1000) / 10 + Int(jpgRT / sumRT * 1000) / 10 + Int(bmpRT / sumRT * 1000) / 10 + Int(icoRT / sumRT * 1000) / 10 + Int(gifRT / sumRT * 1000) / 10)
         Form3.Label42.Text = Math.Round(result, 1) & “ %”
 
-        If png1 > 0 Then
+        If pngLT > 0 Then
             Form3.Label3.Text = "...PNG √"
         Else
             Form3.Label3.Text = "...PNG"
         End If
-        If jpg1 > 0 Then
+        If jpgLT > 0 Then
             Form3.Label4.Text = "...JPG √"
         Else
             Form3.Label4.Text = "...JPG"
         End If
-        If bmp1 > 0 Then
+        If bmpLT > 0 Then
             Form3.Label5.Text = "...BMP √"
         Else
             Form3.Label5.Text = "...BMP"
         End If
-        If ico1 > 0 Then
+        If icoLT > 0 Then
             Form3.Label6.Text = "...ICO √"
         Else
             Form3.Label6.Text = "...ICO"
         End If
-        If gif1 > 0 Then
+        If gifLT > 0 Then
             Form3.Label7.Text = "...GIF √"
         Else
             Form3.Label7.Text = "...GIF"
         End If
 
-        If png1 - png0 <> png1 Then
+        If pngLT - pngRT <> pngLT Then
             Form3.Label33.Text = "...PNG √"
         Else
             Form3.Label33.Text = "...PNG"
         End If
-        If jpg1 - jpg0 <> jpg1 Then
+        If jpgLT - jpgRT <> jpgLT Then
             Form3.Label32.Text = "...JPG √"
         Else
             Form3.Label32.Text = "...JPG"
         End If
-        If bmp1 - bmp0 <> bmp1 Then
+        If bmpLT - bmpRT <> bmpLT Then
             Form3.Label31.Text = "...BMP √"
         Else
             Form3.Label31.Text = "...BMP"
         End If
-        If ico1 - ico0 <> ico1 Then
+        If icoLT - icoRT <> icoLT Then
             Form3.Label30.Text = "...ICO √"
         Else
             Form3.Label30.Text = "...ICO"
         End If
-        If gif1 - gif0 <> gif1 Then
+        If gifLT - gifRT <> gifLT Then
             Form3.Label29.Text = "...GIF √"
         Else
             Form3.Label29.Text = "...GIF"
         End If
 
-        For Each item As ListViewItem In ListView0.Items
+        For Each item As ListViewItem In ListViewLT.Items
             ' 获取文件名（假设文件名在第二列，即索引 1）
             Dim fileName As String = item.SubItems(1).Text
             ' 判断文件名是否包含 "超时"
@@ -1435,12 +1349,12 @@ Public Class Form1
             End If
         Next
         Form3.Label45.Text = " 无效 " & invldCount & “  存疑 ” & qstCount & “  超时 ” & tmtCount
-        labelstr = " 无效 " & invldCount & “  |  存疑 ” & qstCount & “  |  超时 ” & tmtCount
+        lbldStr = " 无效 " & invldCount & “  |  存疑 ” & qstCount & “  |  超时 ” & tmtCount
     End Sub
 
     Private Sub 以此为筛选条件ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 以此为筛选条件ToolStripMenuItem.Click
-        If ListView0.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
+        If ListViewLT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
             Dim format As String = selectedItem.SubItems(3).Text.ToUpper()
             Dim resolution As String() = selectedItem.SubItems(2).Text.Split("×"c)
             Dim width As String = resolution(0)
@@ -1462,44 +1376,44 @@ Public Class Form1
     End Sub
 
     ' 在 ListView0 的 SelectedIndexChanged 事件中禁用 ContextMenuStrip1
-    Private Sub ListView0_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView0.SelectedIndexChanged
-        If ListView0.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
-            Dim selectedCount As Integer = ListView0.SelectedItems.Count
-            If ListView0.SelectedItems.Count > 1 Then
-                sltLabel0.Text = $" 复选 {selectedCount} 项"
-                ListView0.ContextMenuStrip = ContextMenuStrip2
+    Private Sub ListView0_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListViewLT.SelectedIndexChanged
+        If ListViewLT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
+            Dim selectedCount As Integer = ListViewLT.SelectedItems.Count
+            If ListViewLT.SelectedItems.Count > 1 Then
+                sltLblLT.Text = $" 复选 {selectedCount} 项"
+                ListViewLT.ContextMenuStrip = ContextMenuStrip2
             Else
-                sltLabel0.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
-                ListView0.ContextMenuStrip = ContextMenuStrip1
+                sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
+                ListViewLT.ContextMenuStrip = ContextMenuStrip1
             End If
         Else
-            sltLabel0.Text = " 就绪"
-            ListView0.ContextMenuStrip = ContextMenuStrip1
+            sltLblLT.Text = " 就绪"
+            ListViewLT.ContextMenuStrip = ContextMenuStrip1
         End If
     End Sub
 
     ' 当 ListView2 中的项被选中时，在 Label8 显示选中的序号和文件名
-    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-        If ListView1.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
-            Dim selectedCount As Integer = ListView1.SelectedItems.Count
-            If ListView1.SelectedItems.Count > 1 Then
-                sltLabel1.Text = $" 复选 {selectedCount} 项"
-                ListView1.ContextMenuStrip = ContextMenuStrip5
+    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListViewRT.SelectedIndexChanged
+        If ListViewRT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
+            Dim selectedCount As Integer = ListViewRT.SelectedItems.Count
+            If ListViewRT.SelectedItems.Count > 1 Then
+                sltLblRT.Text = $" 复选 {selectedCount} 项"
+                ListViewRT.ContextMenuStrip = ContextMenuStrip5
             Else
-                sltLabel1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
-                ListView1.ContextMenuStrip = ContextMenuStrip3
+                sltLblRT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(1).Text}  |  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(4).Text}"
+                ListViewRT.ContextMenuStrip = ContextMenuStrip3
             End If
         Else
-            sltLabel1.Text = " 等待"
-            ListView1.ContextMenuStrip = ContextMenuStrip3
+            sltLblRT.Text = " 等待"
+            ListViewRT.ContextMenuStrip = ContextMenuStrip3
         End If
     End Sub
 
     Private Sub 打开文件所在位置ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 打开文件所在位置ToolStripMenuItem.Click
-        If ListView0.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
+        If ListViewLT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
 
             ' 拼接完整的文件路径
@@ -1517,9 +1431,9 @@ Public Class Form1
     End Sub
 
     Private Sub 复制地址ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 复制地址ToolStripMenuItem.Click
-        If ListView0.SelectedItems.Count > 0 Then
+        If ListViewLT.SelectedItems.Count > 0 Then
             ' 获取选中的文件名
-            Dim selectedItem As ListViewItem = ListView0.SelectedItems(0)
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
 
             ' 拼接完整的文件路径
@@ -1534,10 +1448,10 @@ Public Class Form1
 
     Private Sub 添加到右侧ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 添加到右侧ToolStripMenuItem.Click
         ' 遍历 ListView1 中的选中项
-        For Each selectedItem As ListViewItem In ListView0.SelectedItems
+        For Each selectedItem As ListViewItem In ListViewLT.SelectedItems
             ' 检查 ListView2 中是否已经存在该文件
             Dim fileName As String = selectedItem.SubItems(1).Text
-            Dim existsInListView2 As Boolean = ListView1.Items.Cast(Of ListViewItem)().Any(Function(item) item.SubItems(1).Text = fileName)
+            Dim existsInListView2 As Boolean = ListViewRT.Items.Cast(Of ListViewItem)().Any(Function(item) item.SubItems(1).Text = fileName)
 
             ' 如果 ListView2 中不存在该文件，则添加
             If Not existsInListView2 Then
@@ -1546,23 +1460,23 @@ Public Class Form1
                 newItem.SubItems.Add(selectedItem.SubItems(2).Text) ' 分辨率
                 newItem.SubItems.Add(selectedItem.SubItems(3).Text) ' 格式
                 newItem.SubItems.Add(selectedItem.SubItems(4).Text)
-                ListView1.Items.Add(newItem) ' 添加到 ListView2
+                ListViewRT.Items.Add(newItem) ' 添加到 ListView2
                 ' 将新项目的字体颜色设置
                 newItem.ForeColor = Color.Black
                 newItem.BackColor = Color.GhostWhite
             End If
         Next
         ' 更新筛选结果的计数
-        UpdateLabel2()
+        更新右侧结果标签()
         更新统计信息()
     End Sub
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
         ' 遍历 ListView1 中的选中项
-        For Each selectedItem As ListViewItem In ListView0.SelectedItems
+        For Each selectedItem As ListViewItem In ListViewLT.SelectedItems
             ' 检查 ListView2 中是否已经存在该文件
             Dim fileName As String = selectedItem.SubItems(1).Text
-            Dim existsInListView2 As Boolean = ListView1.Items.Cast(Of ListViewItem)().Any(Function(item) item.SubItems(1).Text = fileName)
+            Dim existsInListView2 As Boolean = ListViewRT.Items.Cast(Of ListViewItem)().Any(Function(item) item.SubItems(1).Text = fileName)
 
             ' 如果 ListView2 中不存在该文件，则添加
             If Not existsInListView2 Then
@@ -1571,20 +1485,20 @@ Public Class Form1
                 newItem.SubItems.Add(selectedItem.SubItems(2).Text) ' 分辨率
                 newItem.SubItems.Add(selectedItem.SubItems(3).Text) ' 格式
                 newItem.SubItems.Add(selectedItem.SubItems(4).Text)
-                ListView1.Items.Add(newItem) ' 添加到 ListView2
+                ListViewRT.Items.Add(newItem) ' 添加到 ListView2
                 ' 将新项目的字体颜色设置
                 newItem.ForeColor = Color.Black
                 newItem.BackColor = Color.GhostWhite
             End If
         Next
         ' 更新筛选结果的计数
-        UpdateLabel2()
+        更新右侧结果标签()
         更新统计信息()
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        If ListView1.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+        If ListViewRT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
             Dim format As String = selectedItem.SubItems(3).Text.ToUpper()
             Dim resolution As String() = selectedItem.SubItems(2).Text.Split("×"c)
             Dim width As String = resolution(0)
@@ -1606,8 +1520,8 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
-        If ListView1.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+        If ListViewRT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
 
             ' 拼接完整的文件路径
@@ -1625,9 +1539,9 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
-        If ListView1.SelectedItems.Count > 0 Then
+        If ListViewRT.SelectedItems.Count > 0 Then
             ' 获取选中的文件名
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(1).Text
 
             ' 拼接完整的文件路径
@@ -1642,51 +1556,51 @@ Public Class Form1
 
     Private Sub ToolStripMenuItem5_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem5.Click
         ' 确保 ListView2 中有选中的项
-        If ListView1.SelectedItems.Count > 0 Then
+        If ListViewRT.SelectedItems.Count > 0 Then
             ' 从 ListView2 中删除选中的项
-            Dim index As Integer = ListView1.SelectedItems(0).Index
-            For Each selectedItem As ListViewItem In ListView1.SelectedItems
-                ListView1.Items.Remove(selectedItem)
+            Dim index As Integer = ListViewRT.SelectedItems(0).Index
+            For Each selectedItem As ListViewItem In ListViewRT.SelectedItems
+                ListViewRT.Items.Remove(selectedItem)
             Next
-            If ListView1.Items.Count > 0 Then
-                If index < ListView1.Items.Count Then
-                    ListView1.Items(index).Selected = True
-                    ListView1.Items(index).Focused = True
+            If ListViewRT.Items.Count > 0 Then
+                If index < ListViewRT.Items.Count Then
+                    ListViewRT.Items(index).Selected = True
+                    ListViewRT.Items(index).Focused = True
                 Else
-                    ListView1.Items(ListView1.Items.Count - 1).Selected = True
-                    ListView1.Items(ListView1.Items.Count - 1).Focused = True
+                    ListViewRT.Items(ListViewRT.Items.Count - 1).Selected = True
+                    ListViewRT.Items(ListViewRT.Items.Count - 1).Focused = True
                 End If
             End If
         Else
             MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         ' 更新筛选结果的计数
-        UpdateLabel2()
+        更新右侧结果标签()
         更新统计信息()
     End Sub
 
     Private Sub 删除选中项DToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除选中项DToolStripMenuItem.Click
         ' 确保 ListView2 中有选中的项
-        If ListView1.SelectedItems.Count > 0 Then
+        If ListViewRT.SelectedItems.Count > 0 Then
             ' 从 ListView2 中删除选中的项
-            Dim index As Integer = ListView1.SelectedItems(0).Index
-            For Each selectedItem As ListViewItem In ListView1.SelectedItems
-                ListView1.Items.Remove(selectedItem)
+            Dim index As Integer = ListViewRT.SelectedItems(0).Index
+            For Each selectedItem As ListViewItem In ListViewRT.SelectedItems
+                ListViewRT.Items.Remove(selectedItem)
             Next
-            If ListView1.Items.Count > 0 Then
-                If index < ListView1.Items.Count Then
-                    ListView1.Items(index).Selected = True
-                    ListView1.Items(index).Focused = True
+            If ListViewRT.Items.Count > 0 Then
+                If index < ListViewRT.Items.Count Then
+                    ListViewRT.Items(index).Selected = True
+                    ListViewRT.Items(index).Focused = True
                 Else
-                    ListView1.Items(ListView1.Items.Count - 1).Selected = True
-                    ListView1.Items(ListView1.Items.Count - 1).Focused = True
+                    ListViewRT.Items(ListViewRT.Items.Count - 1).Selected = True
+                    ListViewRT.Items(ListViewRT.Items.Count - 1).Focused = True
                 End If
             End If
         Else
             MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         ' 更新筛选结果的计数
-        UpdateLabel2()
+        更新右侧结果标签()
         更新统计信息()
     End Sub
 
@@ -1708,29 +1622,29 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem10_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem10.Click
-        ListView0.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
+        ListViewLT.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
     End Sub
 
     Private Sub ToolStripMenuItem9_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem9.Click
-        ListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
+        ListViewRT.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
     End Sub
 
     Private Sub 列宽恢复默认OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列宽默认OToolStripMenuItem.Click
-        ListView0.Columns(0).Width = 50
-        ListView0.Columns(1).Width = 160
-        ListView0.Columns(2).Width = 100
-        ListView0.Columns(3).Width = 60
-        ListView0.Columns(4).Width = 90
-        ListView0.Columns(5).Width = 30
+        ListViewLT.Columns(0).Width = 50
+        ListViewLT.Columns(1).Width = 160
+        ListViewLT.Columns(2).Width = 100
+        ListViewLT.Columns(3).Width = 60
+        ListViewLT.Columns(4).Width = 90
+        ListViewLT.Columns(5).Width = 30
     End Sub
 
     Private Sub 还原列宽OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 还原列宽OToolStripMenuItem.Click
-        ListView1.Columns(0).Width = 50
-        ListView1.Columns(1).Width = 160
-        ListView1.Columns(2).Width = 100
-        ListView1.Columns(3).Width = 60
-        ListView1.Columns(4).Width = 90
-        ListView1.Columns(5).Width = 30
+        ListViewRT.Columns(0).Width = 50
+        ListViewRT.Columns(1).Width = 160
+        ListViewRT.Columns(2).Width = 100
+        ListViewRT.Columns(3).Width = 60
+        ListViewRT.Columns(4).Width = 90
+        ListViewRT.Columns(5).Width = 30
     End Sub
 
     Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
@@ -1749,8 +1663,8 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem12_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem12.Click
-        ListView1.Items.Clear()
-        UpdateLabel2()
+        ListViewRT.Items.Clear()
+        更新右侧结果标签()
         更新统计信息()
     End Sub
 
@@ -1762,9 +1676,9 @@ Public Class Form1
             MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
         If Form5.Visible = True Then
-            Form5.TextBox1.Text = Me.toform5path
-            Form5.toform1path = Me.toform5path
-            Form5.LoadTreeView(Form5.toform1path)
+            Form5.TextBox1.Text = Me.toForm5Path
+            Form5.toForm1Path = Me.toForm5Path
+            Form5.LoadTreeView(Form5.toForm1Path)
         End If
         optButton.Visible = False
     End Sub
@@ -1805,22 +1719,22 @@ Public Class Form1
         Me.CenterToScreen()
     End Sub
 
-    Private Sub ListView0_DragDrop(sender As Object, e As DragEventArgs) Handles ListView0.DragDrop
+    Private Sub ListView0_DragDrop(sender As Object, e As DragEventArgs) Handles ListViewLT.DragDrop
         Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
         If Directory.Exists(droppedItems(0)) Then
             Dim folderPath As String = droppedItems(0)
             openText.Text = folderPath
             加载图片(folderPath)
-            toform5path = folderPath
+            toForm5Path = folderPath
             If Form5.Visible = True Then
-                Form5.TextBox1.Text = Me.toform5path
-                Form5.toform1path = Me.toform5path
-                Form5.LoadTreeView(Form5.toform1path)
+                Form5.TextBox1.Text = Me.toForm5Path
+                Form5.toForm1Path = Me.toForm5Path
+                Form5.LoadTreeView(Form5.toForm1Path)
             End If
         End If
     End Sub
 
-    Private Sub ListView0_DragEnter(sender As Object, e As DragEventArgs) Handles ListView0.DragEnter
+    Private Sub ListView0_DragEnter(sender As Object, e As DragEventArgs) Handles ListViewLT.DragEnter
         ' 判断拖入的是否是文件夹
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -1849,6 +1763,7 @@ Public Class Form1
         optTimer.Stop() ' 停止计时器
     End Sub
 
+    ' 按下回车键确认地址
     Private Sub openText_KeyDown(sender As Object, e As KeyEventArgs) Handles openText.KeyDown
         Dim folderpath As String = openText.Text
         If e.KeyCode = Keys.Enter Then
@@ -1858,14 +1773,15 @@ Public Class Form1
                 MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
             If Form5.Visible = True Then
-                Form5.TextBox1.Text = Me.toform5path
-                Form5.toform1path = Me.toform5path
-                Form5.LoadTreeView(Form5.toform1path)
+                Form5.TextBox1.Text = Me.toForm5Path
+                Form5.toForm1Path = Me.toForm5Path
+                Form5.LoadTreeView(Form5.toForm1Path)
             End If
             optButton.Visible = False
         End If
     End Sub
 
+    '同步宽高数值
     Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick
         htText.Text = Val（widText.Text）
     End Sub

@@ -1,13 +1,13 @@
 ﻿Imports System.IO
 Public Class Form5
-    Public toform1path As String
+    Public toForm1Path As String
     Public oripath As String
     ' 在 Form5 加载时，显示目录结构
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' 加载当前路径的目录结构
-        toform1path = Form1.toform5path
-        LoadTreeView(Form1.toform5path)
-        TextBox1.Text = Form1.toform5path
+        toForm1Path = Form1.toForm5Path
+        LoadTreeView(Form1.toForm5Path)
+        TextBox1.Text = Form1.toForm5Path
         If absbButton.Checked = True Then
             Me.Location = New Point(Form1.Location.X - Me.Width, Form1.Location.Y)
         Else
@@ -56,10 +56,10 @@ Public Class Form5
     End Sub
 
     Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
-        ' 仅更新 Form1 中的 toform5path 为选中的节点路径
-        toform1path = e.Node.Tag.ToString()
+        ' 仅更新 Form1 中的 toForm5Path 为选中的节点路径
+        toForm1Path = e.Node.Tag.ToString()
         ' 同步更新 TextBox1 中文本框内容
-        TextBox1.Text = toform1path
+        TextBox1.Text = toForm1Path
         ' 设置 SelectionStart 到文本末尾，确保滚动到末尾
         TextBox1.SelectionStart = TextBox1.Text.Length
         TextBox1.ScrollToCaret()
@@ -71,7 +71,7 @@ Public Class Form5
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Form1.openText.Text = toform1path
+        Form1.openText.Text = toForm1Path
         Form1.加载图片(Form1.openText.Text)
     End Sub
 
@@ -95,14 +95,14 @@ Public Class Form5
         End If
     End Sub
     Private Sub btnGoUp_Click(sender As Object, e As EventArgs) Handles btnGoUp.Click
-        ' 检查 toform1path 是否为空
-        If String.IsNullOrEmpty(toform1path) Then
+        ' 检查 toForm1Path 是否为空
+        If String.IsNullOrEmpty(toForm1Path) Then
             MessageBox.Show("当前没有可返回的上一级目录！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
         ' 获取上一级目录
-        Dim parentDirectory As String = IO.Directory.GetParent(toform1path)?.FullName
+        Dim parentDirectory As String = IO.Directory.GetParent(toForm1Path)?.FullName
 
         ' 检查上一级目录是否存在
         If String.IsNullOrEmpty(parentDirectory) Then
@@ -110,12 +110,12 @@ Public Class Form5
             Return
         End If
 
-        ' 更新 toform1path
-        toform1path = parentDirectory
+        ' 更新 toForm1Path
+        toForm1Path = parentDirectory
         ' 更新 TextBox1 显示新的目录
-        TextBox1.Text = toform1path
+        TextBox1.Text = toForm1Path
         ' 重新加载 TreeView
-        LoadTreeView(toform1path)
+        LoadTreeView(toForm1Path)
     End Sub
 
 
