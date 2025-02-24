@@ -439,6 +439,9 @@ Public Class Form1
         Else
             optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
         End If
+        ListView1.Width = 505
+        sltLabel1.Width = 508
+        sumLabel1.Width = 508
     End Sub
     Private Function IsFontInstalled(fontName As String) As Boolean
         Dim installedFonts As New InstalledFontCollection()
