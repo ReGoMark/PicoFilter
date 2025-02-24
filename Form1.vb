@@ -146,7 +146,7 @@ Public Class Form1
         更新统计信息()
         PlayNotificationSound()
         If tagCount > 0 Then
-            optChange("标记：共 " & tagCount & “ 项”, Color.White)
+            optChange("标记：检测到 " & tagCount & “ 项。”, Color.White)
         End If
         output1 = files.Count
         jpg1 = jpgCount
@@ -184,8 +184,8 @@ Public Class Form1
         ' 解析分辨率输入框
         Dim widthFilter As Integer = 0
         Dim heightFilter As Integer = 0
-        If Not Integer.TryParse(wideButton.Text, widthFilter) Then widthFilter = 0
-        If Not Integer.TryParse(htButton.Text, heightFilter) Then heightFilter = 0
+        If Not Integer.TryParse(widText.Text, widthFilter) Then widthFilter = 0
+        If Not Integer.TryParse(htText.Text, heightFilter) Then heightFilter = 0
 
         ' 获取筛选条件
         Dim jpgSelected As Boolean = jpgButton.Checked
@@ -302,7 +302,7 @@ Public Class Form1
             End If
         Next
 
-        optChange("提示：筛选完毕。", Color.AliceBlue)
+        optChange("提示：文件筛选已完成。", Color.AliceBlue)
         '更新label2
         Dim result As New List(Of String)
         result.Add($" 结果 {matchingFileCount} 项")
@@ -344,10 +344,49 @@ Public Class Form1
         End Using
     End Sub
 
+    ' 处理键盘事件，绑定 F2 键到 openButton
+    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.F2 Then
+            openButton.PerformClick()
+        End If
+        If e.KeyCode = Keys.F1 Then
+            Form2.Show()
+        End If
+        If e.KeyCode = Keys.F5 Then
+            rfhButton.PerformClick()
+        End If
+        If e.KeyCode = Keys.F10 Then
+            xlsxButton.PerformClick()
+        End If
+        If e.KeyCode = Keys.F3 Then
+            treeButton.PerformClick()
+        End If
+        If e.KeyCode = Keys.F4 Then
+            fltButton.PerformClick()
+        End If
+        If e.KeyCode = Keys.F11 Then
+            stsButton.PerformClick()
+        End If
+        If e.KeyCode = Keys.F6 Then
+            If plsButton.Checked = True Then
+                plsButton.Checked = False
+            Else
+                plsButton.Checked = True
+            End If
+        End If
+        If e.KeyCode = Keys.F8 Then
+            If lockButton.Checked = True Then
+                lockButton.Checked = False
+            Else
+                lockButton.Checked = True
+            End If
+        End If
+    End Sub
+
     ' 筛选按钮点击事件，用于开始筛选
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles fltButton.Click
-        If moreButton.Checked = True And htButton.Text = "" Then htButton.Text = "0"
-        If moreButton.Checked = True And wideButton.Text = "" Then wideButton.Text = "0"
+        If moreButton.Checked = True And htText.Text = "" Then htText.Text = "0"
+        If moreButton.Checked = True And widText.Text = "" Then widText.Text = "0"
         筛选图片()
         更新统计信息()
     End Sub
@@ -396,6 +435,7 @@ Public Class Form1
         optButton.Location = New Point(44, 15)
         Dim fontName As String = "方正黑体_GBK"
         If IsFontInstalled(fontName) Then
+            'optChange("欢迎使用，当前版本 " & verinfo, Color.White)
         Else
             optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
         End If
@@ -497,7 +537,7 @@ Public Class Form1
             Exit Sub
         End If
 
-        Dim result As DialogResult = MessageBox.Show("确定要删除筛选的文件吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        Dim result As DialogResult = MessageBox.Show("确定要删除已筛选的文件吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
         If result = DialogResult.Yes Then
             For Each item As ListViewItem In ListView1.Items
@@ -507,7 +547,7 @@ Public Class Form1
                 Try
                     If File.Exists(sourcePath) Then
                         File.Delete(sourcePath) ' 删除文件
-                        optChange("提示：文件删除已完成。", Color.AliceBlue)
+                        optChange("警告：文件已删除，需要重新加载。", Color.LemonChiffon)
                     End If
                 Catch ex As Exception
                     MessageBox.Show("删除失败。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -515,7 +555,7 @@ Public Class Form1
             Next
 
             ListView1.Items.Clear()
-            optChange("警告：需要重新加载数据。", Color.LemonChiffon)
+
         End If
     End Sub
 
@@ -552,12 +592,12 @@ Public Class Form1
 
                     Try
                         File.Move(sourcePath, Path.Combine(targetFolder, fileName))
-                        optChange("提示：文件移动已完成。", Color.AliceBlue)
+                        optChange("警告：文件已移动，需要重新加载。", Color.LemonChiffon)
                     Catch ex As Exception
                         MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 Next
-                optChange("警告：需要重新加载数据。", Color.LemonChiffon)
+
             End If
         End Using
 
@@ -569,29 +609,32 @@ Public Class Form1
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
         Dim sourceFolder As String = openText.Text ' 源文件夹路径
         Dim resultFolder As String = Path.Combine(sourceFolder, "隔离结果" & formattedDateTime)
+        If ListView1.Items.Count > 0 Then
+            ' 创建“筛选结果”文件夹（如果不存在）
+            If Not Directory.Exists(resultFolder) Then
+                Directory.CreateDirectory(resultFolder)
+            End If
 
-        ' 创建“筛选结果”文件夹（如果不存在）
-        If Not Directory.Exists(resultFolder) Then
-            Directory.CreateDirectory(resultFolder)
-        End If
+            For Each item As ListViewItem In ListView1.Items
+                Dim fileName As String = item.SubItems(1).Text
+                Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
 
-        For Each item As ListViewItem In ListView1.Items
-            Dim fileName As String = item.SubItems(1).Text
-            Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
+                Try
+                    File.Move(sourcePath, Path.Combine(resultFolder, fileName))
+                    optChange("警告：文件已隔离，需要重新加载。", Color.LemonChiffon)
+                Catch ex As Exception
+                    MessageBox.Show("隔离失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Next
 
-            Try
-                File.Move(sourcePath, Path.Combine(resultFolder, fileName))
-                optChange("提示：文件隔离已完成。", Color.AliceBlue)
-            Catch ex As Exception
-                MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        Next
-
-        ' 显示成功消息并打开筛选结果文件夹
-        Dim opt = MessageBox.Show("隔离成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
-        If opt = DialogResult.Yes Then
-            ' 打开文件
-            Process.Start("explorer.exe", resultFolder) ' 打开“筛选结果”文件夹
+            ' 显示成功消息并打开筛选结果文件夹
+            Dim opt = MessageBox.Show("隔离成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+            If opt = DialogResult.Yes Then
+                ' 打开文件
+                Process.Start("explorer.exe", resultFolder) ' 打开“筛选结果”文件夹
+            End If
+        Else
+            MessageBox.Show("筛选结果不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -646,6 +689,7 @@ Public Class Form1
         ' 更新筛选结果的计数
         UpdateLabel2()
         更新统计信息()
+        optChange("提示：项目已移除。", Color.AliceBlue)
     End Sub
     '总在最前
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
@@ -752,14 +796,14 @@ Public Class Form1
 
 
 
-    Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles wideButton.KeyPress
+    Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles widText.KeyPress
         ' 检查输入的字符是否是数字或控制字符（如退格）
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True ' 如果不是，则取消该输入
         End If
     End Sub
 
-    Private Sub TextBox3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles htButton.KeyPress
+    Private Sub TextBox3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles htText.KeyPress
         ' 检查输入的字符是否是数字或控制字符（如退格）
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True ' 如果不是，则取消该输入
@@ -926,7 +970,7 @@ Public Class Form1
     ' 获取筛选条件字符串列表
     Private Function GetFilterConditions(jpgSelected As Boolean, pngSelected As Boolean, gifSelected As Boolean, bmpSelected As Boolean, icoSelected As Boolean, inreslnSelected As Boolean, volreslnSelected As Boolean, resolutionSelected As Boolean, plsreslnSelected As Boolean, mnsreslnSelected As Boolean) As List(Of String)
         Dim result As New List(Of String)
-        Dim resolutionStr = $" {wideButton.Text} × {htButton.Text}"
+        Dim resolutionStr = $" {widText.Text} × {htText.Text}"
         If inreslnSelected And resolutionSelected And Not volreslnSelected Then
             result.Add($"排除分辨率 {resolutionStr}")
         ElseIf resolutionSelected And Not inreslnSelected And Not volreslnSelected And Not plsreslnSelected And Not mnsreslnSelected Then
@@ -1123,7 +1167,7 @@ Public Class Form1
             End If
         Next
         PlayNotificationSound3()
-        optChange("搜索：共 " & ListView0.SelectedItems.Count & " 项", Color.White)
+        optChange("搜索：结果共 " & ListView0.SelectedItems.Count & " 项。", Color.White)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs)
@@ -1164,7 +1208,7 @@ Public Class Form1
             End If
         Next
         PlayNotificationSound3()
-        optChange("搜索：共 " & ListView1.SelectedItems.Count & " 项", Color.White)
+        optChange("搜索：结果共 " & ListView1.SelectedItems.Count & " 项。", Color.White)
     End Sub
 
     Private Sub 更新标题()
@@ -1195,6 +1239,7 @@ Public Class Form1
         Dim folderPath As String = openText.Text
         If Directory.Exists(folderPath) Then
             加载图片(folderPath)
+
         Else
             MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -1407,8 +1452,8 @@ Public Class Form1
             reslnButton.Checked = True
 
             ' 填充分辨率到对应的文本框
-            wideButton.Text = width
-            htButton.Text = height
+            widText.Text = width
+            htText.Text = height
         End If
         optChange("提示：单击「开始」进行筛选。", Color.AliceBlue)
     End Sub
@@ -1551,8 +1596,8 @@ Public Class Form1
             reslnButton.Checked = True
 
             ' 填充分辨率到对应的文本框
-            wideButton.Text = width
-            htButton.Text = height
+            widText.Text = width
+            htText.Text = height
         End If
         optChange("提示：单击「开始」进行筛选。", Color.AliceBlue)
     End Sub
@@ -1696,8 +1741,8 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub TextBox2_MouseHover(sender As Object, e As EventArgs) Handles wideButton.MouseHover
-        ToolTip1.SetToolTip(wideButton, "宽度 " & wideButton.Text)
+    Private Sub TextBox2_MouseHover(sender As Object, e As EventArgs) Handles widText.MouseHover
+        ToolTip1.SetToolTip(widText, "宽度 " & widText.Text)
     End Sub
 
     Private Sub ToolStripMenuItem12_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem12.Click
@@ -1725,8 +1770,8 @@ Public Class Form1
 
     End Sub
 
-    Private Sub TextBox3_MouseHover(sender As Object, e As EventArgs) Handles htButton.MouseHover
-        ToolTip1.SetToolTip(htButton, "高度 " & htButton.Text)
+    Private Sub TextBox3_MouseHover(sender As Object, e As EventArgs) Handles htText.MouseHover
+        ToolTip1.SetToolTip(htText, "高度 " & htText.Text)
     End Sub
 
     Private Sub Form1_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
@@ -1819,6 +1864,6 @@ Public Class Form1
     End Sub
 
     Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick
-        htButton.Text = Val（wideButton.Text）
+        htText.Text = Val（widText.Text）
     End Sub
 End Class
