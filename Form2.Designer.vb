@@ -57,7 +57,7 @@ Partial Class Form2
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(324, 122)
+        Me.TextBox1.Size = New System.Drawing.Size(324, 98)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         Me.TextBox1.UseSystemPasswordChar = True
@@ -69,7 +69,7 @@ Partial Class Form2
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(38, 113)
+        Me.Label1.Location = New System.Drawing.Point(38, 102)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(274, 20)
         Me.Label1.TabIndex = 1
@@ -104,7 +104,7 @@ Partial Class Form2
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(38, 173)
+        Me.Label6.Location = New System.Drawing.Point(38, 162)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(302, 120)
         Me.Label6.TabIndex = 7
@@ -128,11 +128,11 @@ Partial Class Form2
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(38, 133)
+        Me.Label8.Location = New System.Drawing.Point(38, 122)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(152, 40)
         Me.Label8.TabIndex = 10
-        Me.Label8.Text = "版本：1.6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "构建日期：2025/2/22"
+        Me.Label8.Text = "版本：1.6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "构建日期：2025/2/25"
         '
         'Label44
         '
@@ -140,7 +140,7 @@ Partial Class Form2
         Me.Label44.BackColor = System.Drawing.Color.Transparent
         Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(397, 319)
+        Me.Label44.Location = New System.Drawing.Point(427, 295)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(231, 20)
         Me.Label44.TabIndex = 47
@@ -159,7 +159,7 @@ Partial Class Form2
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.Location = New System.Drawing.Point(634, 317)
+        Me.Button2.Location = New System.Drawing.Point(664, 293)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(65, 26)
         Me.Button2.TabIndex = 42
@@ -183,10 +183,10 @@ Partial Class Form2
         Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(356, 98)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(341, 200)
+        Me.Label5.Size = New System.Drawing.Size(373, 200)
         Me.Label5.TabIndex = 48
-        Me.Label5.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "声明: 本软件受 MIT 许可协议的的保护。此外软件本身可能包含由方正公司、中易公司、美国蒙娜视觉字体设计、美国微软公司等的提供的字体或其他相关资源，这些字体" &
-    "版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应商的使用许可。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "© 2025 ReGoMark，版权所有。"
+        Me.Label5.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "声明:  本软件受 MIT 许可协议的的保护。此外软件本身可能包含由方正公司、中易公司、美国蒙娜视觉字体设计、美国微软公司等的提供的字体或其他相关资源，这些字" &
+    "体版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应商的使用许可。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "© 2025 ReGoMark，版权所有。"
         '
         'Panel1
         '
@@ -201,7 +201,7 @@ Partial Class Form2
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(-24, -24)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(365, 435)
+        Me.Panel1.Size = New System.Drawing.Size(359, 435)
         Me.Panel1.TabIndex = 49
         '
         'Label11
@@ -210,7 +210,7 @@ Partial Class Form2
         Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(38, 323)
+        Me.Label11.Location = New System.Drawing.Point(38, 299)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(150, 20)
         Me.Label11.TabIndex = 50
@@ -220,7 +220,7 @@ Partial Class Form2
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(276, 279)
+        Me.PictureBox1.Location = New System.Drawing.Point(276, 146)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(64, 64)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -234,7 +234,7 @@ Partial Class Form2
         Me.Label10.BackColor = System.Drawing.Color.Transparent
         Me.Label10.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(38, 343)
+        Me.Label10.Location = New System.Drawing.Point(38, 319)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(248, 20)
         Me.Label10.TabIndex = 50
@@ -267,7 +267,7 @@ Partial Class Form2
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(711, 355)
+        Me.ClientSize = New System.Drawing.Size(741, 331)
         Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Button2)

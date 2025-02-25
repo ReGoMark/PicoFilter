@@ -91,17 +91,17 @@ Public Class Form1
                 If fileName.Contains("超时") Then
                     item.BackColor = Color.MistyRose
                     tagCount += 1
-                    highlightMark = "*"
+                    highlightMark = "√"
                 End If
                 If fileName.Contains("存疑") Then
                     item.BackColor = Color.Cornsilk
                     tagCount += 1
-                    highlightMark = "*"
+                    highlightMark = "√"
                 End If
                 If fileName.Contains("无效") Then
                     item.BackColor = Color.LightCyan
                     tagCount += 1
-                    highlightMark = "*"
+                    highlightMark = "√"
                 End If
                 item.SubItems.Add(highlightMark) '添加标记
                 listViewItems.Add(item)
@@ -112,7 +112,7 @@ Public Class Form1
                 loadedCount += 1
                 更新标题()
             Catch ex As Exception
-                Dim opt = MessageBox.Show(ex.Message & vbCrLf & "加载意外中断，可能是内存不足。” & vbCrLf & “点击是继续，点击否终止。", "失败", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
+                Dim opt = MessageBox.Show(ex.Message & vbCrLf & "加载意外中断，可能是由于内存不足。” & vbCrLf & “点击是继续，点击否终止。", "失败", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
                 If opt = DialogResult.No Then Exit For
             End Try
         Next
@@ -139,7 +139,7 @@ Public Class Form1
             End If
         End If
 
-        If tagCount > 0 Then optChange("标记：检测到 " & tagCount & “ 项。”, Color.White)
+        If tagCount > 0 Then optChange("标记：检测到 " & tagCount & “ 项。”, Color.AliceBlue)
         sumLblLT.Text = String.Join("  |  ", result)
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr
 
@@ -335,18 +335,12 @@ Public Class Form1
     End Sub
 
     ' 处理键盘事件，绑定 F2 键到 openButton
-    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
-        If e.KeyCode = Keys.F2 Then
-            openButton.PerformClick()
-        End If
+    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.F1 Then
             Form2.Show()
         End If
-        If e.KeyCode = Keys.F5 Then
-            rfhButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F10 Then
-            xlsxButton.PerformClick()
+        If e.KeyCode = Keys.F2 Then
+            openButton.PerformClick()
         End If
         If e.KeyCode = Keys.F3 Then
             treeButton.PerformClick()
@@ -354,21 +348,34 @@ Public Class Form1
         If e.KeyCode = Keys.F4 Then
             fltButton.PerformClick()
         End If
-        If e.KeyCode = Keys.F11 Then
-            stsButton.PerformClick()
+        If e.KeyCode = Keys.F5 Then
+            rfhButton.PerformClick()
         End If
         If e.KeyCode = Keys.F6 Then
-            If plsButton.Checked = True Then
-                plsButton.Checked = False
-            Else
-                plsButton.Checked = True
-            End If
+            addButton.PerformClick()
+        End If
+        If e.KeyCode = Keys.F7 Then
+            bksbutton.PerformClick()
         End If
         If e.KeyCode = Keys.F8 Then
             If lockButton.Checked = True Then
                 lockButton.Checked = False
             Else
                 lockButton.Checked = True
+            End If
+        End If
+        If e.KeyCode = Keys.F10 Then
+            xlsxButton.PerformClick()
+        End If
+
+        If e.KeyCode = Keys.F11 Then
+            stsButton.PerformClick()
+        End If
+        If e.KeyCode = Keys.F12 Then
+            If plsButton.Checked = True Then
+                plsButton.Checked = False
+            Else
+                plsButton.Checked = True
             End If
         End If
     End Sub
@@ -410,7 +417,6 @@ Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         Me.Text = verinfo
         ProgressBar1.Maximum = 0
         loadedCount = 0
@@ -434,7 +440,59 @@ Public Class Form1
             optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
         End If
 
+        '' 启用双缓冲，减少闪烁
+        'SetDoubleBuffered(ListViewLT)
     End Sub
+
+    '' 自定义列标题样式
+    'Private Sub ListViewLT_DrawColumnHeader(sender As Object, e As DrawListViewColumnHeaderEventArgs) Handles ListViewLT.DrawColumnHeader
+    '    e.Graphics.FillRectangle(Brushes.DarkGray, e.Bounds) ' 背景颜色
+    '    TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds, Color.White, TextFormatFlags.Left)
+    'End Sub
+
+    '' 自定义每一行样式
+    'Private Sub ListViewLT_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles ListViewLT.DrawItem
+    '    ' 判断是否选中行
+    '    If e.Item.Selected Then
+    '        ' 选中行的背景色
+    '        e.Graphics.FillRectangle(Brushes.DodgerBlue, e.Bounds)  ' 背景颜色 (蓝色)
+    '    Else
+    '        ' 默认行背景色
+    '        e.DrawDefault = False
+    '    End If
+    'End Sub
+
+    '' 自定义单元格样式
+    'Private Sub ListViewLT_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles ListViewLT.DrawSubItem
+    '    Dim textColor As Color = Color.White
+    '    Dim backColor As Color
+
+    '    ' 判断是否选中行
+    '    If e.Item.Selected Then
+    '        backColor = Color.DodgerBlue ' 选中行的背景色
+    '    Else
+    '        ' 交替行颜色
+    '        If e.Item.Index Mod 2 = 0 Then
+    '            backColor = Color.FromArgb(40, 40, 40) ' 深灰色
+    '        Else
+    '            backColor = Color.FromArgb(30, 30, 30) ' 更深的灰色
+    '        End If
+    '    End If
+
+    '    Using backBrush As New SolidBrush(backColor)
+    '        e.Graphics.FillRectangle(backBrush, e.Bounds)
+    '    End Using
+
+    '    TextRenderer.DrawText(e.Graphics, e.SubItem.Text, e.Item.Font, e.Bounds, textColor, TextFormatFlags.Left)
+    'End Sub
+
+    '' 启用双缓冲，减少闪烁
+    'Private Sub SetDoubleBuffered(ctrl As Control)
+    '    Dim pi As System.Reflection.PropertyInfo = GetType(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance Or System.Reflection.BindingFlags.NonPublic)
+    '    If pi IsNot Nothing Then
+    '        pi.SetValue(ctrl, True, Nothing)
+    '    End If
+    'End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
         Dim installedFonts As New InstalledFontCollection()
@@ -647,18 +705,19 @@ Public Class Form1
         End If
     End Sub
 
-    '左侧标题单击事件
-    Private Sub ListView1_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListViewLT.ColumnClick
+    ' 左侧标题单击事件
+    Private Sub ListViewLT_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListViewLT.ColumnClick
         列表排序法(ListViewLT, e.Column)
     End Sub
 
-    '右侧标题单击事件
+    ' 右侧标题单击事件
     Private Sub ListView2_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListViewRT.ColumnClick
         列表排序法(ListViewRT, e.Column)
     End Sub
 
-    '排序
+    ' 排序方法
     Private Sub 列表排序法(listView As ListView, column As Integer)
+        ' 检查是否点击同一列
         If column = currentColumn Then
             If currentOrder = SortOrder.Ascending Then
                 currentOrder = SortOrder.Descending
@@ -669,11 +728,37 @@ Public Class Form1
             currentColumn = column
             currentOrder = SortOrder.Ascending
         End If
-        listView.ListViewItemSorter = New 列表比较器(currentColumn, currentOrder) ' 使用自定义比较器进行排序
+
+        ' 更新排序指示箭头
+        更新列标题(listView)
+
+        ' 使用自定义比较器进行排序
+        listView.ListViewItemSorter = New 列表比较器(currentColumn, currentOrder)
         listView.Sort()
     End Sub
 
-    '定义列表排序比较器
+    ' 更新列标题显示排序箭头
+    Private Sub 更新列标题(listView As ListView)
+        For i As Integer = 0 To listView.Columns.Count - 1
+            Dim columnHeader As ColumnHeader = listView.Columns(i)
+
+            ' 清除所有列标题的箭头
+            columnHeader.Text = columnHeader.Text.Replace("▲", "").Replace("▼", "")
+
+            ' 仅为列 1, 2, 3, 5 添加箭头
+            If i = 0 Or i = 2 Or i = 4 Then
+                If i = currentColumn Then
+                    If currentOrder = SortOrder.Ascending Then
+                        columnHeader.Text &= "▲"
+                    Else
+                        columnHeader.Text &= "▼"
+                    End If
+                End If
+            End If
+        Next
+    End Sub
+
+    ' 自定义排序比较器
     Public Class 列表比较器
         Implements IComparer
         Private col As Integer
@@ -682,46 +767,48 @@ Public Class Form1
             Me.col = column
             Me.order = order
         End Sub
+
         Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
             Dim returnVal As Integer = 0
             If TypeOf x Is ListViewItem AndAlso TypeOf y Is ListViewItem Then
                 Dim item1 As ListViewItem = CType(x, ListViewItem)
                 Dim item2 As ListViewItem = CType(y, ListViewItem)
                 Select Case col
-                    Case 0 '序号列（按整数排序）
+                    Case 0 ' 序号列（按整数排序）
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
-                    Case 4 '文件大小列（按数值大小排序）
+                    Case 4 ' 文件大小列（按数值大小排序）
                         Dim size1 As Double = 解析文件大小(item1.SubItems(col).Text)
                         Dim size2 As Double = 解析文件大小(item2.SubItems(col).Text)
                         returnVal = size1.CompareTo(size2)
-                    Case Else '其他列（按字符串排序）
+                    Case Else ' 其他列（按字符串排序）
                         returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
                 End Select
             End If
-            If order = SortOrder.Descending Then '根据排序顺序调整结果
+            If order = SortOrder.Descending Then ' 根据排序顺序调整结果
                 returnVal *= -1
             End If
             Return returnVal
         End Function
 
-        '解析文件大小
+        ' 解析文件大小
         Private Function 解析文件大小(sizeText As String) As Double
             Dim sizeValue As Double = 0
             If sizeText.EndsWith(" KB") Then
                 Double.TryParse(sizeText.Replace(" KB", "").Trim(), sizeValue)
-                sizeValue *= 1024 '转换为字节
+                sizeValue *= 1024 ' 转换为字节
             ElseIf sizeText.EndsWith(" MB") Then
                 Double.TryParse(sizeText.Replace(" MB", "").Trim(), sizeValue)
-                sizeValue *= 1024 * 1024 '转换为字节
+                sizeValue *= 1024 * 1024 ' 转换为字节
             ElseIf sizeText.EndsWith(" GB") Then
                 Double.TryParse(sizeText.Replace(" GB", "").Trim(), sizeValue)
-                sizeValue *= 1024 * 1024 * 1024 '转换为字节
+                sizeValue *= 1024 * 1024 * 1024 ' 转换为字节
             End If
             Return sizeValue
         End Function
     End Class
+
 
     '分辨率宽度限制输入
     Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles widText.KeyPress
@@ -782,8 +869,8 @@ Public Class Form1
 
     '左侧选中标签工具提示
     Private Sub Label5_MouseHover(sender As Object, e As EventArgs) Handles sltLblLT.MouseHover
-        If ListViewLT.SelectedItems.Count > 0 Then '检查 ListView1 是否有选中项
-            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListView1 选中项的文件名
+        If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
             Dim fileName As String = selectedItem.SubItems(1).Text
             ToolTip1.SetToolTip(sltLblLT, selectedItem.SubItems(1).Text & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
         Else
@@ -1018,31 +1105,38 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
         If Me.WindowState = FormWindowState.Maximized Then
-            ListViewLT.Columns(1).Width = ListViewLT.Width / 1.75
-            ListViewRT.Columns(1).Width = ListViewRT.Width / 1.75
+            ListViewLT.Columns(0).Width = ListViewLT.Width / 15
+            ListViewLT.Columns(1).Width = ListViewLT.Width / 2
+            ListViewLT.Columns(2).Width = ListViewLT.Width / 6
+            ListViewLT.Columns(4).Width = ListViewLT.Width / 8
+
+            ListViewRT.Columns(0).Width = ListViewLT.Width / 15
+            ListViewRT.Columns(1).Width = ListViewLT.Width / 2
+            ListViewRT.Columns(2).Width = ListViewLT.Width / 6
+            ListViewRT.Columns(4).Width = ListViewLT.Width / 8
         ElseIf Me.WindowState = FormWindowState.Normal Then
             ListViewLT.Columns(0).Width = 50
-            ListViewLT.Columns(1).Width = 160
+            ListViewLT.Columns(1).Width = 150
             ListViewLT.Columns(2).Width = 100
-            ListViewLT.Columns(3).Width = 60
+            ListViewLT.Columns(3).Width = 63
             ListViewLT.Columns(4).Width = 90
-            ListViewLT.Columns(5).Width = 30
+            ListViewLT.Columns(5).Width = 28
 
             ListViewRT.Columns(0).Width = 50
-            ListViewRT.Columns(1).Width = 160
+            ListViewRT.Columns(1).Width = 150
             ListViewRT.Columns(2).Width = 100
-            ListViewRT.Columns(3).Width = 60
+            ListViewRT.Columns(3).Width = 63
             ListViewRT.Columns(4).Width = 90
-            ListViewRT.Columns(5).Width = 30
+            ListViewRT.Columns(5).Width = 28
         End If
     End Sub
 
     '双重锁定
-    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If lockButton.Checked = True Then
-            ' 检查 ListView1 和 ListView2 是否有内容
+            ' 检查 ListViewLT 和 ListView2 是否有内容
             If ListViewRT.Items.Count > 0 Then
                 ' 弹出消息框
                 Dim result As DialogResult = MessageBox.Show("确定要关闭吗？", "关闭", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
@@ -1447,7 +1541,7 @@ Public Class Form1
     End Sub
 
     Private Sub 添加到右侧ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 添加到右侧ToolStripMenuItem.Click
-        ' 遍历 ListView1 中的选中项
+        ' 遍历 ListViewLT 中的选中项
         For Each selectedItem As ListViewItem In ListViewLT.SelectedItems
             ' 检查 ListView2 中是否已经存在该文件
             Dim fileName As String = selectedItem.SubItems(1).Text
@@ -1472,7 +1566,7 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
-        ' 遍历 ListView1 中的选中项
+        ' 遍历 ListViewLT 中的选中项
         For Each selectedItem As ListViewItem In ListViewLT.SelectedItems
             ' 检查 ListView2 中是否已经存在该文件
             Dim fileName As String = selectedItem.SubItems(1).Text
@@ -1630,21 +1724,39 @@ Public Class Form1
     End Sub
 
     Private Sub 列宽恢复默认OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列宽默认OToolStripMenuItem.Click
-        ListViewLT.Columns(0).Width = 50
-        ListViewLT.Columns(1).Width = 160
-        ListViewLT.Columns(2).Width = 100
-        ListViewLT.Columns(3).Width = 60
-        ListViewLT.Columns(4).Width = 90
-        ListViewLT.Columns(5).Width = 30
+        If Me.WindowState = FormWindowState.Normal Then
+            ListViewLT.Columns(0).Width = 50
+            ListViewLT.Columns(1).Width = 150
+            ListViewLT.Columns(2).Width = 100
+            ListViewLT.Columns(3).Width = 63
+            ListViewLT.Columns(4).Width = 90
+            ListViewLT.Columns(5).Width = 28
+        ElseIf Me.WindowState = FormWindowState.Maximized Then
+            ListViewLT.Columns(0).Width = ListViewLT.Width / 15
+            ListViewLT.Columns(1).Width = ListViewLT.Width / 2
+            ListViewLT.Columns(2).Width = ListViewLT.Width / 6
+            ListViewLT.Columns(3).Width = 90
+            ListViewLT.Columns(4).Width = ListViewLT.Width / 8
+            ListViewLT.Columns(5).Width = 28
+        End If
     End Sub
 
     Private Sub 还原列宽OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 还原列宽OToolStripMenuItem.Click
-        ListViewRT.Columns(0).Width = 50
-        ListViewRT.Columns(1).Width = 160
-        ListViewRT.Columns(2).Width = 100
-        ListViewRT.Columns(3).Width = 60
-        ListViewRT.Columns(4).Width = 90
-        ListViewRT.Columns(5).Width = 30
+        If Me.WindowState = FormWindowState.Normal Then
+            ListViewRT.Columns(0).Width = 50
+            ListViewRT.Columns(1).Width = 150
+            ListViewRT.Columns(2).Width = 100
+            ListViewRT.Columns(3).Width = 63
+            ListViewRT.Columns(4).Width = 90
+            ListViewRT.Columns(5).Width = 28
+        ElseIf Me.WindowState = FormWindowState.Maximized Then
+            ListViewRT.Columns(0).Width = ListViewRT.Width / 15
+            ListViewRT.Columns(1).Width = ListViewRT.Width / 2
+            ListViewRT.Columns(2).Width = ListViewRT.Width / 6
+            ListViewRT.Columns(3).Width = 90
+            ListViewRT.Columns(4).Width = ListViewRT.Width / 8
+            ListViewRT.Columns(5).Width = 28
+        End If
     End Sub
 
     Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
@@ -1691,7 +1803,7 @@ Public Class Form1
         ToolTip1.SetToolTip(htText, "高度 " & htText.Text)
     End Sub
 
-    Private Sub Form1_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
+    Private Sub Form1_LocationChanged(sender As Object, e As EventArgs) Handles MyBase.LocationChanged
         ' 获取 Form3 实例
         Dim subForm As Form3 = TryCast(Application.OpenForms("Form3"), Form3)
         If subForm IsNot Nothing Then
@@ -1715,9 +1827,18 @@ Public Class Form1
         Me.openText.ScrollToCaret()
     End Sub
 
-    Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+    Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles MyBase.DoubleClick
         Me.CenterToScreen()
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+    Public Class MyListItem
+        Public Property ID As String
+        Public Property Name As String
+        Public Property Type As String
+    End Class
 
     Private Sub ListView0_DragDrop(sender As Object, e As DragEventArgs) Handles ListViewLT.DragDrop
         Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())

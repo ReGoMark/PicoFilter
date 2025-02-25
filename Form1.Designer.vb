@@ -189,7 +189,7 @@ Partial Class Form1
         'ColumnHeader6
         '
         Me.ColumnHeader6.Text = "文件名"
-        Me.ColumnHeader6.Width = 165
+        Me.ColumnHeader6.Width = 150
         '
         'ColumnHeader7
         '
@@ -201,6 +201,7 @@ Partial Class Form1
         '
         Me.ColumnHeader8.Text = "格式"
         Me.ColumnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ColumnHeader8.Width = 55
         '
         'ColumnHeader9
         '
@@ -210,8 +211,8 @@ Partial Class Form1
         '
         'ColumnHeader11
         '
-        Me.ColumnHeader11.Text = "*"
-        Me.ColumnHeader11.Width = 30
+        Me.ColumnHeader11.Text = "√"
+        Me.ColumnHeader11.Width = 45
         '
         'ContextMenuStrip1
         '
@@ -220,6 +221,7 @@ Partial Class Form1
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(26, 26)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.以此为筛选条件ToolStripMenuItem, Me.ToolStripSeparator1, Me.添加到右侧ToolStripMenuItem, Me.打开文件所在位置ToolStripMenuItem, Me.复制地址ToolStripMenuItem, Me.ToolStripMenuItem11, Me.ToolStripSeparator2, Me.ToolStripMenuItem10, Me.列宽默认OToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(203, 170)
         '
         '以此为筛选条件ToolStripMenuItem
@@ -447,7 +449,7 @@ Partial Class Form1
         Me.ListViewRT.HideSelection = False
         Me.ListViewRT.Location = New System.Drawing.Point(-1, -2)
         Me.ListViewRT.Name = "ListViewRT"
-        Me.ListViewRT.Size = New System.Drawing.Size(502, 348)
+        Me.ListViewRT.Size = New System.Drawing.Size(506, 348)
         Me.ListViewRT.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListViewRT, "双击项预览；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewRT.UseCompatibleStateImageBehavior = False
@@ -461,7 +463,7 @@ Partial Class Form1
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "文件名"
-        Me.ColumnHeader2.Width = 165
+        Me.ColumnHeader2.Width = 150
         '
         'ColumnHeader3
         '
@@ -473,6 +475,7 @@ Partial Class Form1
         '
         Me.ColumnHeader4.Text = "格式"
         Me.ColumnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ColumnHeader4.Width = 55
         '
         'ColumnHeader10
         '
@@ -482,8 +485,8 @@ Partial Class Form1
         '
         'ColumnHeader12
         '
-        Me.ColumnHeader12.Text = "*"
-        Me.ColumnHeader12.Width = 30
+        Me.ColumnHeader12.Text = "√"
+        Me.ColumnHeader12.Width = 45
         '
         'ContextMenuStrip3
         '
@@ -635,7 +638,7 @@ Partial Class Form1
         Me.sumLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sumLblRT.Location = New System.Drawing.Point(-1, 394)
         Me.sumLblRT.Name = "sumLblRT"
-        Me.sumLblRT.Size = New System.Drawing.Size(502, 45)
+        Me.sumLblRT.Size = New System.Drawing.Size(506, 45)
         Me.sumLblRT.TabIndex = 16
         Me.sumLblRT.Text = " 结果"
         Me.sumLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -650,7 +653,7 @@ Partial Class Form1
         Me.sltLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sltLblRT.Location = New System.Drawing.Point(-1, 349)
         Me.sltLblRT.Name = "sltLblRT"
-        Me.sltLblRT.Size = New System.Drawing.Size(498, 45)
+        Me.sltLblRT.Size = New System.Drawing.Size(506, 45)
         Me.sltLblRT.TabIndex = 17
         Me.sltLblRT.Text = " 等待"
         Me.sltLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -724,7 +727,7 @@ Partial Class Form1
         Me.addButton.Name = "addButton"
         Me.addButton.Size = New System.Drawing.Size(26, 26)
         Me.addButton.TabIndex = 4
-        Me.ToolTip1.SetToolTip(Me.addButton, "添加左侧的选中项到右侧。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.ToolTip1.SetToolTip(Me.addButton, "添加左侧的选中项到右侧。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F6 键")
         Me.addButton.UseVisualStyleBackColor = False
         '
         'bksbutton
@@ -744,7 +747,7 @@ Partial Class Form1
         Me.bksbutton.Name = "bksbutton"
         Me.bksbutton.Size = New System.Drawing.Size(26, 26)
         Me.bksbutton.TabIndex = 5
-        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除右侧的选中项。")
+        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除右侧的选中项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F7 键")
         Me.bksbutton.UseVisualStyleBackColor = False
         '
         'topButton
@@ -1007,7 +1010,7 @@ Partial Class Form1
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(66, 131)
+        Me.ComboBox1.Location = New System.Drawing.Point(44, 131)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(73, 24)
         Me.ComboBox1.TabIndex = 33
@@ -1026,7 +1029,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.infoButton)
         Me.Panel3.Controls.Add(Me.moreButton)
         Me.Panel3.Controls.Add(Me.exButton)
-        Me.Panel3.Location = New System.Drawing.Point(181, 352)
+        Me.Panel3.Location = New System.Drawing.Point(197, 352)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(203, 80)
         Me.Panel3.TabIndex = 44
@@ -1182,7 +1185,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-123, 246)
+        Me.Label7.Location = New System.Drawing.Point(-145, 246)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1238,7 +1241,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(66, 99)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(44, 99)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -1340,7 +1343,7 @@ Partial Class Form1
         Me.searchText.ForeColor = System.Drawing.Color.Black
         Me.searchText.Location = New System.Drawing.Point(4, 4)
         Me.searchText.Name = "searchText"
-        Me.searchText.Size = New System.Drawing.Size(226, 17)
+        Me.searchText.Size = New System.Drawing.Size(311, 17)
         Me.searchText.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.searchText, "输入一个查找目标。")
         '
@@ -1350,6 +1353,7 @@ Partial Class Form1
         Me.searchButton0.BackColor = System.Drawing.Color.White
         Me.searchButton0.CausesValidation = False
         Me.searchButton0.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.searchButton0.FlatAppearance.BorderSize = 0
         Me.searchButton0.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.searchButton0.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.searchButton0.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -1357,9 +1361,10 @@ Partial Class Form1
         Me.searchButton0.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.searchButton0.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.searchButton0.Image = CType(resources.GetObject("searchButton0.Image"), System.Drawing.Image)
-        Me.searchButton0.Location = New System.Drawing.Point(425, 494)
+        Me.searchButton0.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.searchButton0.Location = New System.Drawing.Point(321, 0)
         Me.searchButton0.Name = "searchButton0"
-        Me.searchButton0.Size = New System.Drawing.Size(45, 26)
+        Me.searchButton0.Size = New System.Drawing.Size(40, 26)
         Me.searchButton0.TabIndex = 38
         Me.searchButton0.Text = "L"
         Me.searchButton0.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1373,6 +1378,7 @@ Partial Class Form1
         Me.searchButton1.BackColor = System.Drawing.Color.White
         Me.searchButton1.CausesValidation = False
         Me.searchButton1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.searchButton1.FlatAppearance.BorderSize = 0
         Me.searchButton1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.searchButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.searchButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -1380,9 +1386,10 @@ Partial Class Form1
         Me.searchButton1.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.searchButton1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.searchButton1.Image = CType(resources.GetObject("searchButton1.Image"), System.Drawing.Image)
-        Me.searchButton1.Location = New System.Drawing.Point(476, 494)
+        Me.searchButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.searchButton1.Location = New System.Drawing.Point(360, 0)
         Me.searchButton1.Name = "searchButton1"
-        Me.searchButton1.Size = New System.Drawing.Size(45, 26)
+        Me.searchButton1.Size = New System.Drawing.Size(40, 26)
         Me.searchButton1.TabIndex = 39
         Me.searchButton1.Tag = ""
         Me.searchButton1.Text = "R"
@@ -1411,7 +1418,7 @@ Partial Class Form1
         Me.plsButton.TabIndex = 43
         Me.plsButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.plsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.plsButton, "更多")
+        Me.ToolTip1.SetToolTip(Me.plsButton, "展开更多功能菜单。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F12 键")
         Me.plsButton.UseVisualStyleBackColor = False
         '
         'ImageList2
@@ -1563,9 +1570,11 @@ Partial Class Form1
         Me.Panel4.BackColor = System.Drawing.Color.White
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel4.Controls.Add(Me.searchText)
+        Me.Panel4.Controls.Add(Me.searchButton1)
+        Me.Panel4.Controls.Add(Me.searchButton0)
         Me.Panel4.Location = New System.Drawing.Point(120, 494)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(299, 26)
+        Me.Panel4.Size = New System.Drawing.Size(401, 26)
         Me.Panel4.TabIndex = 37
         '
         'pnlTimer
@@ -1623,8 +1632,6 @@ Partial Class Form1
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CausesValidation = False
         Me.ClientSize = New System.Drawing.Size(1048, 535)
-        Me.Controls.Add(Me.searchButton1)
-        Me.Controls.Add(Me.searchButton0)
         Me.Controls.Add(Me.optButton)
         Me.Controls.Add(Me.lockButton)
         Me.Controls.Add(Me.treeButton)
