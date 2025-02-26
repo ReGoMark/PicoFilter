@@ -139,7 +139,7 @@ Public Class Form1
             End If
         End If
 
-        If tagCount > 0 Then optChange("标记：检测到 " & tagCount & “ 项。”, Color.AliceBlue)
+        If tagCount > 0 Then optChange("提示：存在标记文件 " & tagCount & “ 项。”, Color.AliceBlue)
         sumLblLT.Text = String.Join("  |  ", result)
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr
 
@@ -163,7 +163,8 @@ Public Class Form1
                 End Using
             End Using
         Catch
-            Return "??"
+            Return "0×0"
+
         End Try
     End Function
 
@@ -744,9 +745,10 @@ Public Class Form1
 
             ' 清除所有列标题的箭头
             columnHeader.Text = columnHeader.Text.Replace("▲", "").Replace("▼", "")
+            columnHeader.Text = columnHeader.Text.Replace("●", "").Replace("○", "")
 
             ' 仅为列 1, 2, 3, 5 添加箭头
-            If i = 0 Or i = 2 Or i = 4 Then
+            If i = 0 Or i = 1 Or i = 2 Or i = 4 Then
                 If i = currentColumn Then
                     If currentOrder = SortOrder.Ascending Then
                         columnHeader.Text &= "▲"
@@ -755,14 +757,23 @@ Public Class Form1
                     End If
                 End If
             End If
+            If i = 3 Then
+                If i = currentColumn Then
+                    If currentOrder = SortOrder.Ascending Then
+                        columnHeader.Text &= "●"
+                    Else
+                        columnHeader.Text &= "○"
+                    End If
+                End If
+            End If
         Next
     End Sub
 
-    ' 自定义排序比较器
     Public Class 列表比较器
         Implements IComparer
         Private col As Integer
         Private order As SortOrder
+
         Public Sub New(column As Integer, order As SortOrder)
             Me.col = column
             Me.order = order
@@ -778,6 +789,14 @@ Public Class Form1
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
+                    Case 1 ' 文件名长度（按字符串长度排序）
+                        Dim length1 As Integer = System.Text.Encoding.UTF8.GetByteCount(item1.SubItems(col).Text)
+                        Dim length2 As Integer = System.Text.Encoding.UTF8.GetByteCount(item2.SubItems(col).Text)
+                        returnVal = length1.CompareTo(length2)
+                    Case 2 ' 分辨率（按像素总数排序）
+                        Dim pixels1 As Integer = 解析分辨率(item1.SubItems(col).Text)
+                        Dim pixels2 As Integer = 解析分辨率(item2.SubItems(col).Text)
+                        returnVal = pixels1.CompareTo(pixels2)
                     Case 4 ' 文件大小列（按数值大小排序）
                         Dim size1 As Double = 解析文件大小(item1.SubItems(col).Text)
                         Dim size2 As Double = 解析文件大小(item2.SubItems(col).Text)
@@ -807,7 +826,20 @@ Public Class Form1
             End If
             Return sizeValue
         End Function
+
+        ' 解析分辨率，返回像素总数（宽 × 高）
+        Private Function 解析分辨率(resolutionText As String) As Integer
+            Dim parts() As String = resolutionText.Split("×"c)
+            If parts.Length = 2 Then
+                Dim width, height As Integer
+                If Integer.TryParse(parts(0).Trim(), width) AndAlso Integer.TryParse(parts(1).Trim(), height) Then
+                    Return width * height ' 计算像素总数
+                End If
+            End If
+            Return 0 ' 无法解析时返回 0
+        End Function
     End Class
+
 
 
     '分辨率宽度限制输入
@@ -1735,7 +1767,7 @@ Public Class Form1
             ListViewLT.Columns(0).Width = ListViewLT.Width / 15
             ListViewLT.Columns(1).Width = ListViewLT.Width / 2
             ListViewLT.Columns(2).Width = ListViewLT.Width / 6
-            ListViewLT.Columns(3).Width = 90
+            ListViewLT.Columns(3).Width = 63
             ListViewLT.Columns(4).Width = ListViewLT.Width / 8
             ListViewLT.Columns(5).Width = 28
         End If
@@ -1753,7 +1785,7 @@ Public Class Form1
             ListViewRT.Columns(0).Width = ListViewRT.Width / 15
             ListViewRT.Columns(1).Width = ListViewRT.Width / 2
             ListViewRT.Columns(2).Width = ListViewRT.Width / 6
-            ListViewRT.Columns(3).Width = 90
+            ListViewRT.Columns(3).Width = 63
             ListViewRT.Columns(4).Width = ListViewRT.Width / 8
             ListViewRT.Columns(5).Width = 28
         End If
