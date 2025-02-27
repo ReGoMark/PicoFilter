@@ -82,7 +82,7 @@ Partial Class Form5
         Me.TreeView1.Location = New System.Drawing.Point(0, 48)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 1
-        Me.TreeView1.Size = New System.Drawing.Size(328, 395)
+        Me.TreeView1.Size = New System.Drawing.Size(328, 397)
         Me.TreeView1.TabIndex = 37
         '
         'ImageList1
@@ -228,7 +228,7 @@ Partial Class Form5
         Me.Panel2.Controls.Add(Me.TreeView1)
         Me.Panel2.Location = New System.Drawing.Point(12, 44)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(329, 444)
+        Me.Panel2.Size = New System.Drawing.Size(329, 446)
         Me.Panel2.TabIndex = 58
         '
         'sltLabel0
@@ -247,8 +247,8 @@ Partial Class Form5
         '
         'Form5
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(353, 535)
         Me.Controls.Add(Me.Button5)
@@ -259,7 +259,9 @@ Partial Class Form5
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "Form5"
         Me.Text = "转到"
         Me.Panel1.ResumeLayout(False)

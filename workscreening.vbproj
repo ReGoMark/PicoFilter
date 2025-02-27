@@ -276,8 +276,8 @@
     <None Include="Resources\RESOLVED.wav" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ICON.ico" />
     <Content Include="picofiltermain.ico" />
+    <None Include="Resources\QRcodeBG.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
