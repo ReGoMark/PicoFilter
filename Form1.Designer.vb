@@ -96,7 +96,6 @@ Partial Class Form1
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.qrButton = New System.Windows.Forms.Button()
         Me.invCheck = New System.Windows.Forms.CheckBox()
@@ -105,6 +104,7 @@ Partial Class Form1
         Me.volButton = New System.Windows.Forms.CheckBox()
         Me.mnsButton = New System.Windows.Forms.CheckBox()
         Me.moreButton = New System.Windows.Forms.CheckBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -119,7 +119,6 @@ Partial Class Form1
         Me.searchButton0 = New System.Windows.Forms.Button()
         Me.searchButton1 = New System.Windows.Forms.Button()
         Me.plsButton = New System.Windows.Forms.CheckBox()
-        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.delbutton = New System.Windows.Forms.Button()
         Me.rfhButton = New System.Windows.Forms.Button()
         Me.treeButton = New System.Windows.Forms.Button()
@@ -134,7 +133,6 @@ Partial Class Form1
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip5 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -478,7 +476,7 @@ Partial Class Form1
         Me.ListViewRT.HideSelection = False
         Me.ListViewRT.Location = New System.Drawing.Point(-1, -2)
         Me.ListViewRT.Name = "ListViewRT"
-        Me.ListViewRT.Size = New System.Drawing.Size(508, 348)
+        Me.ListViewRT.Size = New System.Drawing.Size(504, 348)
         Me.ListViewRT.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListViewRT, "双击项预览；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewRT.UseCompatibleStateImageBehavior = False
@@ -994,8 +992,8 @@ Partial Class Form1
         '
         'SplitContainer1.Panel2
         '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.ComboBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel3)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.ComboBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.sumLblRT)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label44)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label7)
@@ -1054,19 +1052,6 @@ Partial Class Form1
         Me.ToolStripMenuItem8.Size = New System.Drawing.Size(145, 22)
         Me.ToolStripMenuItem8.Text = "调整为 2:1"
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(12, 131)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(73, 24)
-        Me.ComboBox1.TabIndex = 33
-        Me.ComboBox1.Visible = False
-        '
         'Panel3
         '
         Me.Panel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1081,7 +1066,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.infoButton)
         Me.Panel3.Controls.Add(Me.moreButton)
         Me.Panel3.Controls.Add(Me.exButton)
-        Me.Panel3.Location = New System.Drawing.Point(205, 351)
+        Me.Panel3.Location = New System.Drawing.Point(189, 349)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(203, 80)
         Me.Panel3.TabIndex = 44
@@ -1242,6 +1227,19 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.moreButton, "大于分辨率筛选。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "筛选出大于设定值的图像。")
         Me.moreButton.UseVisualStyleBackColor = False
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
+        Me.ComboBox1.Location = New System.Drawing.Point(-2, 131)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(73, 24)
+        Me.ComboBox1.TabIndex = 33
+        Me.ComboBox1.Visible = False
+        '
         'Label44
         '
         Me.Label44.BackColor = System.Drawing.Color.Transparent
@@ -1260,7 +1258,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-177, 246)
+        Me.Label7.Location = New System.Drawing.Point(-191, 246)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1316,7 +1314,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(12, 99)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-2, 99)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -1485,23 +1483,15 @@ Partial Class Form1
         Me.plsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.plsButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.plsButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.plsButton.ImageIndex = 1
-        Me.plsButton.ImageList = Me.ImageList2
+        Me.plsButton.Image = CType(resources.GetObject("plsButton.Image"), System.Drawing.Image)
         Me.plsButton.Location = New System.Drawing.Point(892, 494)
         Me.plsButton.Name = "plsButton"
         Me.plsButton.Size = New System.Drawing.Size(26, 26)
         Me.plsButton.TabIndex = 43
         Me.plsButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.plsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.plsButton, "展开更多功能菜单。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F12 键")
+        Me.ToolTip1.SetToolTip(Me.plsButton, "展开更多功能菜单；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如遇到显示问题，请按 F1 键。")
         Me.plsButton.UseVisualStyleBackColor = False
-        '
-        'ImageList2
-        '
-        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList2.Images.SetKeyName(0, "more.ico")
-        Me.ImageList2.Images.SetKeyName(1, "less.ico")
         '
         'delbutton
         '
@@ -1693,12 +1683,6 @@ Partial Class Form1
         Me.ToolStripMenuItem5.Size = New System.Drawing.Size(170, 22)
         Me.ToolStripMenuItem5.Text = "删除选中项(&D)"
         '
-        'ImageList3
-        '
-        Me.ImageList3.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
-        Me.ImageList3.ImageSize = New System.Drawing.Size(16, 16)
-        Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -1735,11 +1719,11 @@ Partial Class Form1
         Me.Controls.Add(Me.openButton)
         Me.Controls.Add(Me.Panel1)
         Me.ForeColor = System.Drawing.Color.SlateBlue
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PicoFilter 1.6"
+        Me.ToolTip1.SetToolTip(Me, "双击 鼠标左键 窗口居中；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按 鼠标中键 还原窗口尺寸。")
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ContextMenuStrip3.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
@@ -1820,7 +1804,6 @@ Partial Class Form1
     Friend WithEvents moreButton As CheckBox
     Friend WithEvents mnsButton As CheckBox
     Friend WithEvents plsButton As CheckBox
-    Friend WithEvents ImageList2 As ImageList
     Friend WithEvents Panel3 As Panel
     Friend WithEvents setting As Button
     Friend WithEvents Label44 As Label
@@ -1863,7 +1846,6 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem12 As ToolStripMenuItem
     Friend WithEvents optButton As Button
     Friend WithEvents Label4 As Label
-    Friend WithEvents ImageList3 As ImageList
     Friend WithEvents qrButton As Button
     Friend WithEvents ColumnHeader13 As ColumnHeader
     Friend WithEvents ColumnHeader14 As ColumnHeader

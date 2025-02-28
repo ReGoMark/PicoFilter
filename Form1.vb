@@ -442,7 +442,6 @@ Public Class Form1
         '检测字体安装
         Dim fontName As String = "方正黑体_GBK"
         If 确认字体安装(fontName) Then
-            'optChange("欢迎使用，当前版本 " & verinfo, Color.White)
         Else
             optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
         End If
@@ -1061,8 +1060,8 @@ Public Class Form1
         worksheet.Cells("I1").Value = "已扫描"
         worksheet.Cells("I2").Value = "总大小"
         worksheet.Cells("I3").Value = "耗时"
-        worksheet.Cells("I5").Value = "结果"
-        worksheet.Cells("I6").Value = "条件"
+        worksheet.Cells("I5").Value = "筛选结果"
+        worksheet.Cells("I6").Value = "筛选条件"
         worksheet.Cells("I4").Value = "标记"
         worksheet.Cells("I1:I6").Style.Font.Bold = True
         worksheet.Cells("I1:I6").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
@@ -1081,7 +1080,7 @@ Public Class Form1
         Next
         worksheet.Column(2).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center
         worksheet.Column(3).Width = listView.Columns(3).Width / 2.5
-        worksheet.Column(10).Width = listView.Columns(4).Width / 1.7
+        worksheet.Column(10).Width = listView.Columns(4).Width
         worksheet.Cells("A1:G1").Style.Font.Bold = True
         worksheet.Cells("A1:G1").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
         worksheet.Cells("A1:G1").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
@@ -1364,7 +1363,7 @@ Public Class Form1
         Dim invldCount As Integer = 0
         ' 遍历 ListViewRT 统计文件格式数量
         For Each item As ListViewItem In ListViewRT.Items
-            Dim format As String = item.SubItems(3).Text.ToUpper()
+            Dim format As String = item.SubItems(4).Text.ToUpper()
             Select Case format
                 Case ".JPG", ".JPEG"
                     jpgCount += 1
@@ -1457,7 +1456,7 @@ Public Class Form1
 
         ' 遍历 ListViewLT 统计特殊文件
         For Each item As ListViewItem In ListViewLT.Items
-            Dim fileName As String = item.SubItems(1).Text
+            Dim fileName As String = item.SubItems(2).Text
             If fileName.Contains("超时") Then tmtCount += 1
             If fileName.Contains("存疑") Then qstCount += 1
             If fileName.Contains("无效") Then invldCount += 1
@@ -1592,8 +1591,8 @@ Public Class Form1
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
         If ListViewRT.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
-            Dim format As String = selectedItem.SubItems(3).Text.ToUpper()
-            Dim resolution As String() = selectedItem.SubItems(2).Text.Split("×"c)
+            Dim format As String = selectedItem.SubItems(4).Text.ToUpper()
+            Dim resolution As String() = selectedItem.SubItems(3).Text.Split("×"c)
             Dim width As String = resolution(0)
             Dim height As String = resolution(1)
 
@@ -1863,8 +1862,8 @@ Public Class Form1
     Private Sub 以此为筛选条件ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 以此为筛选条件ToolStripMenuItem.Click
         If ListViewLT.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
-            Dim format As String = selectedItem.SubItems(3).Text.ToUpper()
-            Dim resolution As String() = selectedItem.SubItems(2).Text.Split("×"c)
+            Dim format As String = selectedItem.SubItems(4).Text.ToUpper()
+            Dim resolution As String() = selectedItem.SubItems(3).Text.Split("×"c)
             Dim width As String = resolution(0)
             Dim height As String = resolution(1)
 
@@ -1967,5 +1966,11 @@ Public Class Form1
     '同步宽高数值
     Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick
         htText.Text = Val（widText.Text）
+    End Sub
+
+    Private Sub Form1_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
+        If e.Button = MouseButtons.Middle Then
+            Me.Size = New Size(1066, 582)
+        End If
     End Sub
 End Class

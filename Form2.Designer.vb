@@ -22,6 +22,7 @@ Partial Class Form2
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -40,6 +41,7 @@ Partial Class Form2
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Process1 = New System.Diagnostics.Process()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -79,11 +81,11 @@ Partial Class Form2
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.White
-        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(38, 42)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(74, 19)
+        Me.Label2.Size = New System.Drawing.Size(70, 20)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "PicoFilter"
         '
@@ -105,11 +107,12 @@ Partial Class Form2
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(38, 162)
+        Me.Label6.Location = New System.Drawing.Point(38, 142)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(257, 120)
+        Me.Label6.Size = New System.Drawing.Size(257, 100)
         Me.Label6.TabIndex = 7
-        Me.Label6.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "鸣谢" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持库：EPPlus" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体；Consola；微软雅黑" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "编辑器：Visual Studio 2022" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "平台：Github"
+        Me.Label6.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "仓库：GitHub" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持库：EPPlus" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "IDE：Visual Studio Community 2022" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "字体：方正黑体；Consola；微软雅黑" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) &
+    ""
         '
         'Label7
         '
@@ -129,11 +132,11 @@ Partial Class Form2
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(38, 122)
+        Me.Label8.Location = New System.Drawing.Point(38, 102)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(122, 40)
         Me.Label8.TabIndex = 10
-        Me.Label8.Text = "版本：1.6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "日期：2025/2/25"
+        Me.Label8.Text = "版本：1.6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "日期：2025/2/28"
         '
         'Label44
         '
@@ -190,7 +193,8 @@ Partial Class Form2
         Me.Label5.Size = New System.Drawing.Size(427, 200)
         Me.Label5.TabIndex = 48
         Me.Label5.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "声明:  本软件受 MIT 许可协议的的保护。此外软件本身可能包含由方正公司、中易公司、美国蒙娜视觉字体设计、美国微软公司等的提供的字体或其他相关资源，这些字" &
-    "体版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应商的使用许可。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "© 2025 ReGoMark，版权所有。"
+    "体版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应商的使用许可。凡涉及该资源可能存在的侵权行为由使用者承担一切责任，一概与软件作者无关" &
+    "。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "© 2025 ReGoMark，版权所有。"
         '
         'Panel1
         '
@@ -214,7 +218,7 @@ Partial Class Form2
         Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(38, 299)
+        Me.Label11.Location = New System.Drawing.Point(38, 279)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(150, 20)
         Me.Label11.TabIndex = 50
@@ -224,7 +228,7 @@ Partial Class Form2
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(245, 146)
+        Me.PictureBox1.Location = New System.Drawing.Point(242, 38)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(64, 64)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -234,15 +238,16 @@ Partial Class Form2
         '
         'Label10
         '
-        Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.Transparent
         Me.Label10.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(38, 319)
+        Me.Label10.Location = New System.Drawing.Point(38, 299)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(248, 20)
+        Me.Label10.Size = New System.Drawing.Size(268, 40)
         Me.Label10.TabIndex = 50
-        Me.Label10.Text = "*尝试修改高DPI设置改善显示效果。"
+        Me.Label10.Text = "*尝试启用""程序DPI""和""高DPI缩放替代""解决显示问题。"
+        Me.ToolTip1.SetToolTip(Me.Label10, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试修改部分选项。" &
+        "")
         '
         'Label4
         '
@@ -312,4 +317,5 @@ Partial Class Form2
     Friend WithEvents Label4 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents Process1 As Process
+    Friend WithEvents ToolTip1 As ToolTip
 End Class
