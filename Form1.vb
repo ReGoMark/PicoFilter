@@ -21,7 +21,7 @@ Public Class Form1
     Dim lbldStr As String '存储标记文件的文本
     Dim formattedString As String
     Public toForm5Path As String '传递路径文本到form5
-    Public verinfo As String = "PicoFilter 1.6" '存储版本信息
+    Public verinfo As String = "PicoFilter 1.7" '存储版本信息
     Private optext As String = "操作中心" '存储操作按钮默认文本
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
     Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
@@ -426,7 +426,7 @@ Public Class Form1
         ProgressBar1.Maximum = 0
         loadedCount = 0
         ListViewRT.Width = 507
-        ListViewLT.Width = 507
+        ListViewLT.Width = 508
         sltLblRT.Width = 508
         sumLblRT.Width = 508
 
@@ -1206,6 +1206,7 @@ Public Class Form1
             Form5.Close()
             Form2.Close()
             Form3.Close()
+            Form6.Close()
         End If
 
         'SaveConfig()
@@ -1344,11 +1345,13 @@ Public Class Form1
     End Sub
 
     Private Sub pnlTimer_Tick(sender As Object, e As EventArgs) Handles pnlTimer.Tick
-        ' 设置 Panel3 不可见
-        Panel3.Visible = False
-        plsButton.CheckState = CheckState.Unchecked
-        ' 停止 Timer
-        pnlTimer.Stop()
+        ' 仅当 CheckBox4 未选中时，才隐藏 Panel3
+        If Not CheckBox4.Checked Then
+            Panel3.Visible = False
+            plsButton.CheckState = CheckState.Unchecked
+            ' 停止 Timer
+            pnlTimer.Stop()
+        End If
     End Sub
 
     Public Sub 更新统计信息()
@@ -1827,6 +1830,14 @@ Public Class Form1
                 subForm1.Location = New Point(Me.Location.X - Form5.Width, Me.Location.Y)
             End If
         End If
+        ' 获取 Form6 实例
+        Dim subForm2 As Form6 = TryCast(Application.OpenForms("Form6"), Form6)
+        If subForm2 IsNot Nothing Then
+            If Form6.absbButton.CheckState = CheckState.Checked Then
+                ' 让 Form6 吸附在 Form1 右侧
+                subForm2.Location = New Point(Me.Location.X + Me.Width, Me.Location.Y)
+            End If
+        End If
     End Sub
 
     Private Sub openText_TextChanged(sender As Object, e As EventArgs) Handles openText.TextChanged
@@ -1916,6 +1927,10 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles nmButton.Click
+        Form6.Show()
+    End Sub
+
     Private Sub ListView0_DragEnter(sender As Object, e As DragEventArgs) Handles ListViewLT.DragEnter
         ' 判断拖入的是否是文件夹
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
@@ -1928,8 +1943,46 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ' 确保有选中的项
+        If ListViewRT.SelectedItems.Count = 0 Then Exit Sub
+
+        ' 禁用重绘，避免闪烁
+        ListViewRT.BeginUpdate()
+
+        ' 存储选中的项
+        Dim selectedItems As New List(Of ListViewItem)
+        For Each item As ListViewItem In ListViewRT.SelectedItems
+            selectedItems.Add(item)
+        Next
+
+        ' 按索引降序排序，避免调整时影响顺序
+        selectedItems.Sort(Function(x, y) y.Index.CompareTo(x.Index))
+
+        ' 移动项
+        For Each item As ListViewItem In selectedItems
+            Dim index As Integer = item.Index
+            If index < ListViewRT.Items.Count - 1 Then
+                ListViewRT.Items.RemoveAt(index)
+                ListViewRT.Items.Insert(index + 1, item)
+            End If
+        Next
+
+        ' 重新选中移动后的项
+        For Each item As ListViewItem In selectedItems
+            item.Selected = True
+        Next
+
+        ' 结束更新
+        ListViewRT.EndUpdate()
+    End Sub
+
     ' 更改按钮文本和背景色的方法
-    Private Sub optChange(newText As String, newColor As Color)
+    Public Sub optChange(newText As String, newColor As Color)
         optButton.Visible = True
         optButton.Text = newText
         optButton.BackColor = newColor
@@ -1973,4 +2026,5 @@ Public Class Form1
             Me.Size = New Size(1066, 582)
         End If
     End Sub
+
 End Class

@@ -2,9 +2,6 @@
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim currentUser As String = Environment.UserName
         Label7.Text = "授权用户：" & currentUser
-        TextBox1.SelectionStart = 0
-        TextBox1.SelectionLength = 0 ' 确保未选中文本
-        PlayNotificationSound()
     End Sub
 
     Private Sub Form2_Click(sender As Object, e As EventArgs) Handles Me.Click

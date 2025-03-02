@@ -26,11 +26,11 @@ Partial Class Form5
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form5))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btnGoUp = New System.Windows.Forms.Button()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.btnGoUp = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.topButton = New System.Windows.Forms.CheckBox()
         Me.absbButton = New System.Windows.Forms.CheckBox()
@@ -45,18 +45,20 @@ Partial Class Form5
         '
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.btnGoUp)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(297, 26)
+        Me.Panel1.Size = New System.Drawing.Size(329, 26)
         Me.Panel1.TabIndex = 36
         '
         'TextBox1
         '
         Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TextBox1.BackColor = System.Drawing.Color.White
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.Black
@@ -64,8 +66,29 @@ Partial Class Form5
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
-        Me.TextBox1.Size = New System.Drawing.Size(291, 17)
+        Me.TextBox1.Size = New System.Drawing.Size(292, 17)
         Me.TextBox1.TabIndex = 50
+        '
+        'btnGoUp
+        '
+        Me.btnGoUp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnGoUp.BackColor = System.Drawing.Color.White
+        Me.btnGoUp.CausesValidation = False
+        Me.btnGoUp.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.btnGoUp.FlatAppearance.BorderSize = 0
+        Me.btnGoUp.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.btnGoUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.btnGoUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.btnGoUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGoUp.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnGoUp.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.btnGoUp.Image = CType(resources.GetObject("btnGoUp.Image"), System.Drawing.Image)
+        Me.btnGoUp.Location = New System.Drawing.Point(301, -1)
+        Me.btnGoUp.Name = "btnGoUp"
+        Me.btnGoUp.Size = New System.Drawing.Size(26, 26)
+        Me.btnGoUp.TabIndex = 52
+        Me.ToolTip1.SetToolTip(Me.btnGoUp, "上一级")
+        Me.btnGoUp.UseVisualStyleBackColor = False
         '
         'TreeView1
         '
@@ -131,27 +154,6 @@ Partial Class Form5
         Me.Button1.Text = "关闭"
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'btnGoUp
-        '
-        Me.btnGoUp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnGoUp.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnGoUp.CausesValidation = False
-        Me.btnGoUp.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnGoUp.FlatAppearance.BorderSize = 0
-        Me.btnGoUp.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.btnGoUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.btnGoUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.btnGoUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGoUp.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.btnGoUp.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnGoUp.Image = CType(resources.GetObject("btnGoUp.Image"), System.Drawing.Image)
-        Me.btnGoUp.Location = New System.Drawing.Point(315, 12)
-        Me.btnGoUp.Name = "btnGoUp"
-        Me.btnGoUp.Size = New System.Drawing.Size(26, 26)
-        Me.btnGoUp.TabIndex = 52
-        Me.ToolTip1.SetToolTip(Me.btnGoUp, "上一级")
-        Me.btnGoUp.UseVisualStyleBackColor = False
-        '
         'Button5
         '
         Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -199,8 +201,6 @@ Partial Class Form5
         Me.absbButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.White
-        Me.absbButton.Checked = True
-        Me.absbButton.CheckState = System.Windows.Forms.CheckState.Checked
         Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
@@ -214,7 +214,7 @@ Partial Class Form5
         Me.absbButton.Size = New System.Drawing.Size(26, 26)
         Me.absbButton.TabIndex = 55
         Me.absbButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.absbButton, "吸附窗体")
+        Me.ToolTip1.SetToolTip(Me.absbButton, "吸附窗体（左）")
         Me.absbButton.UseVisualStyleBackColor = False
         '
         'Panel2
@@ -255,13 +255,11 @@ Partial Class Form5
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
-        Me.Controls.Add(Me.btnGoUp)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
         Me.Name = "Form5"
         Me.Text = "转到"
         Me.Panel1.ResumeLayout(False)
