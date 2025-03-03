@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F575B19B-9E99-4302-9948-695B65D76126}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>PicoFilter16.My.MyApplication</StartupObject>
-    <RootNamespace>PicoFilter16</RootNamespace>
+    <StartupObject>PicoFilter17.My.MyApplication</StartupObject>
+    <RootNamespace>PicoFilter17</RootNamespace>
     <AssemblyName>PicoFilter</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
@@ -40,6 +40,8 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>PicoFilter.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PreferNativeArm64>false</PreferNativeArm64>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +52,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>PicoFilter.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>

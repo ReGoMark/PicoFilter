@@ -43,7 +43,7 @@ Public Class Form6
             Dim newItem As New ListViewItem((i + 1).ToString()) ' 第一栏显示动态序号
             newItem.SubItems.Add(item.SubItems(0).Text) ' 第二栏保留原始序号
             newItem.SubItems.Add(item.SubItems(2).Text) ' 第三栏是文件名
-            newItem.SubItems.Add(item.SubItems(2).Text) ' 第三栏是文件名
+            newItem.SubItems.Add(item.SubItems(2).Text) ' 第三栏是原始文件名
             newItem.Tag = item.Tag ' 确保文件路径信息不会丢失
             ListViewPre.Items.Add(newItem)
         Next
