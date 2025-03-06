@@ -188,9 +188,9 @@ Partial Class Form2
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(271, 60)
         Me.Label10.TabIndex = 50
-        Me.Label10.Text = "安装指定字体获得最佳视觉体验；尝试启用""程序DPI""和""高DPI缩放替代""获得最佳缩放体验。"
+        Me.Label10.Text = "安装指定字体以获得最佳视觉体验；请尝试启用""程序DPI""和""高DPI缩放替代""获得最佳缩放体验。"
         Me.ToolTip1.SetToolTip(Me.Label10, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
-        "单击””支持““寻求联机支持。")
+        "单击""支持""寻求联机支持。")
         '
         'Process1
         '
@@ -208,7 +208,7 @@ Partial Class Form2
         Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.1.2", "PicoNamer 批量重命名 - 0.5.2", "PicoCoder 二维码裁切 - 0.1.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 列表显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 表格导出功能支持库 - 7.3.2"})
+        Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.7.2", "PicoNamer 批量重命名 - 0.5.2", "PicoCoder 二维码裁切 - 0.1.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 列表显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 表格导出功能支持库 - 7.3.2"})
         Me.ListBox1.Location = New System.Drawing.Point(12, 161)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(271, 104)

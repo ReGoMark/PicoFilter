@@ -426,7 +426,6 @@ Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         Me.Text = verinfo
         ProgressBar1.Maximum = 0
         loadedCount = 0
@@ -434,7 +433,6 @@ Public Class Form1
         ListViewLT.Width = 508
         sltLblRT.Width = 508
         sumLblRT.Width = 508
-
 
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
         openButton.AllowDrop = True ' 启用拖放功能
