@@ -1,5 +1,3 @@
->[!CAUTION]
->注意本项目已从原有组织迁移到该公共仓库。
 
 # 介绍
 <div align="center">
