@@ -60,7 +60,7 @@ Public Class Form6
         Dim toolTip As New ToolTip()
         toolTip.ToolTipIcon = ToolTipIcon.Info
         toolTip.ToolTipTitle = "可用格式"
-        toolTip.SetToolTip(ComboBox1, "{name} - 原始文件名" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)")
+        toolTip.SetToolTip(ComboBox1, "{name} - 原始文件名" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)")
     End Sub
 
     Private Sub ApplyButton_Click(sender As Object, e As EventArgs) Handles ApplyButton.Click
@@ -69,6 +69,7 @@ Public Class Form6
         Dim currentMonth As String = DateTime.Now.Month.ToString
         Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
         Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
+        Dim currentYear As String = DateTime.Now.Year.ToString
         Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c) ' 自动补齐0位
         Dim maxIndexLength As Integer = ListViewPre.Items.Count.ToString().Length ' 计算最大序号长度
         For i As Integer = 0 To ListViewPre.Items.Count - 1
@@ -91,6 +92,7 @@ Public Class Form6
                                             .Replace("{index}", indexStr) _
                                             .Replace("{0index}", paddedIndex) _
                                             .Replace("{date}", currentDate) _
+                                             .Replace("{year}", currentYear) _
                                             .Replace("{0date}", paddedDate) _ ' 添加自动补齐0的日期
                                             .Replace("{month}", currentMonth) _
                                             .Replace("{0month}", paddedMonth) ' 添加自动补齐0的日期
