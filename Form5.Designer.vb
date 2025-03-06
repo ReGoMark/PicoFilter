@@ -60,7 +60,8 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.BackColor = System.Drawing.Color.White
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TextBox1.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.TextBox1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.Black
         Me.TextBox1.Location = New System.Drawing.Point(3, 4)
         Me.TextBox1.Name = "TextBox1"
@@ -96,7 +97,7 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TreeView1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TreeView1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.TreeView1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.TreeView1.FullRowSelect = True
         Me.TreeView1.ImageIndex = 1
@@ -125,7 +126,7 @@ Partial Class Form5
         Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button2.Location = New System.Drawing.Point(205, 497)
         Me.Button2.Name = "Button2"
@@ -145,7 +146,7 @@ Partial Class Form5
         Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button1.Location = New System.Drawing.Point(276, 497)
         Me.Button1.Name = "Button1"
@@ -164,7 +165,7 @@ Partial Class Form5
         Me.Button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.Button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button5.Location = New System.Drawing.Point(134, 497)
         Me.Button5.Name = "Button5"
@@ -236,7 +237,7 @@ Partial Class Form5
         Me.sltLabel0.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.sltLabel0.BackColor = System.Drawing.Color.GhostWhite
-        Me.sltLabel0.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.sltLabel0.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.sltLabel0.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sltLabel0.Location = New System.Drawing.Point(-1, 0)
         Me.sltLabel0.Name = "sltLabel0"
@@ -247,8 +248,7 @@ Partial Class Form5
         '
         'Form5
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(353, 535)
         Me.Controls.Add(Me.Button5)

@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing.Text
 Imports System.IO
 Imports OfficeOpenXml
+Imports Microsoft.VisualBasic.FileIO
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
@@ -85,17 +86,17 @@ Public Class Form1
                 '文件名高亮标记
                 Dim highlightMark As String = "" '未标记项目的处理办法
                 If fileName.Contains("超时") Then
-                    item.BackColor = Color.MistyRose
+                    'item.BackColor = Color.MistyRose
                     tagCount += 1
                     highlightMark = "★"
                 End If
                 If fileName.Contains("存疑") Then
-                    item.BackColor = Color.Cornsilk
+                    'item.BackColor = Color.Cornsilk
                     tagCount += 1
                     highlightMark = "★"
                 End If
                 If fileName.Contains("无效") Then
-                    item.BackColor = Color.LightCyan
+                    'item.BackColor = Color.LightCyan
                     tagCount += 1
                     highlightMark = "★"
                 End If
@@ -146,7 +147,7 @@ Public Class Form1
 
         ProgressBar1.Visible = False
         更新统计信息()
-        PlayNotificationSound()
+        PlayNotificationSound3()
 
         sumLT = files.Count
         jpgLT = jpgCount
@@ -368,6 +369,9 @@ Public Class Form1
                 lockButton.Checked = True
             End If
         End If
+        If e.KeyCode = Keys.F9 Then
+            nmButton.PerformClick()
+        End If
         If e.KeyCode = Keys.F10 Then
             xlsxButton.PerformClick()
         End If
@@ -422,6 +426,7 @@ Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         Me.Text = verinfo
         ProgressBar1.Maximum = 0
         loadedCount = 0
@@ -436,7 +441,7 @@ Public Class Form1
         optButton.Text = optext        '初始化操作中心
         optButton.BackColor = optcolor
         optButton.Visible = False
-        optButton.Location = New Point(44, 15)
+        optButton.Location = Panel1.Location
         optTimer.Interval = 3500 '设置定时器间隔为 5 秒
 
         '检测字体安装
@@ -452,57 +457,8 @@ Public Class Form1
         Else
             qrButton.Visible = False
         End If
+
     End Sub
-
-    '' 自定义列标题样式
-    'Private Sub ListViewLT_DrawColumnHeader(sender As Object, e As DrawListViewColumnHeaderEventArgs) Handles ListViewLT.DrawColumnHeader
-    '    e.Graphics.FillRectangle(Brushes.DarkGray, e.Bounds) ' 背景颜色
-    '    TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds, Color.White, TextFormatFlags.Left)
-    'End Sub
-
-    '' 自定义每一行样式
-    'Private Sub ListViewLT_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles ListViewLT.DrawItem
-    '    ' 判断是否选中行
-    '    If e.Item.Selected Then
-    '        ' 选中行的背景色
-    '        e.Graphics.FillRectangle(Brushes.DodgerBlue, e.Bounds)  ' 背景颜色 (蓝色)
-    '    Else
-    '        ' 默认行背景色
-    '        e.DrawDefault = False
-    '    End If
-    'End Sub
-
-    '' 自定义单元格样式
-    'Private Sub ListViewLT_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles ListViewLT.DrawSubItem
-    '    Dim textColor As Color = Color.White
-    '    Dim backColor As Color
-
-    '    ' 判断是否选中行
-    '    If e.Item.Selected Then
-    '        backColor = Color.DodgerBlue ' 选中行的背景色
-    '    Else
-    '        ' 交替行颜色
-    '        If e.Item.Index Mod 2 = 0 Then
-    '            backColor = Color.FromArgb(40, 40, 40) ' 深灰色
-    '        Else
-    '            backColor = Color.FromArgb(30, 30, 30) ' 更深的灰色
-    '        End If
-    '    End If
-
-    '    Using backBrush As New SolidBrush(backColor)
-    '        e.Graphics.FillRectangle(backBrush, e.Bounds)
-    '    End Using
-
-    '    TextRenderer.DrawText(e.Graphics, e.SubItem.Text, e.Item.Font, e.Bounds, textColor, TextFormatFlags.Left)
-    'End Sub
-
-    '' 启用双缓冲，减少闪烁
-    'Private Sub SetDoubleBuffered(ctrl As Control)
-    '    Dim pi As System.Reflection.PropertyInfo = GetType(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance Or System.Reflection.BindingFlags.NonPublic)
-    '    If pi IsNot Nothing Then
-    '        pi.SetValue(ctrl, True, Nothing)
-    '    End If
-    'End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
         Dim installedFonts As New InstalledFontCollection()
@@ -513,7 +469,6 @@ Public Class Form1
         Next
         Return False
     End Function
-
     '左侧标签点击复制文件地址
     Private Sub sltLblLT_Click(sender As Object, e As EventArgs) Handles sltLblLT.Click
         If ListViewLT.SelectedItems.Count > 0 Then
@@ -574,23 +529,41 @@ Public Class Form1
             MessageBox.Show("没有可删除的文件。", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End If
-        Dim result As DialogResult = MessageBox.Show("确定要删除已筛选的文件吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+        Dim result As DialogResult = MessageBox.Show("确定要将筛选结果移动到回收站吗？", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
         If result = DialogResult.Yes Then
-            For Each item As ListViewItem In ListViewRT.Items
-                Dim fileName As String = item.SubItems(1).Text
+            Dim failedFiles As New List(Of String) ' 记录删除失败的文件
+            Dim successCount As Integer = 0
+
+            ' 遍历 ListViewRT 中的文件
+            For i As Integer = ListViewRT.Items.Count - 1 To 0 Step -1
+                Dim item As ListViewItem = ListViewRT.Items(i)
+                Dim fileName As String = item.SubItems(2).Text
                 Dim sourcePath As String = Path.Combine(openText.Text, fileName) ' 获取完整路径
+
                 Try
                     If File.Exists(sourcePath) Then
-                        File.Delete(sourcePath) '删除文件
-                        optChange("警告：文件已删除，需要重新加载。", Color.LemonChiffon)
-                        ListViewRT.Items.Clear()
+                        ' 移动文件到回收站
+                        FileSystem.DeleteFile(sourcePath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin)
+                        ListViewRT.Items.RemoveAt(i) ' 从 ListViewRT 中移除对应项
+                        successCount += 1
                     End If
                 Catch ex As Exception
-                    MessageBox.Show("删除失败。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    failedFiles.Add(fileName) ' 记录失败的文件
                 End Try
             Next
+
+            ' 提示操作结果
+            If successCount > 0 Then
+                optChange($"警告：文件回收已完成，需要重新加载。", Color.LemonChiffon)
+            End If
+
+            If failedFiles.Count > 0 Then
+                MessageBox.Show("部分文件删除失败：" & vbCrLf & String.Join(vbCrLf, failedFiles), "删除失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         End If
     End Sub
+
 
     '复制筛选结果到指定文件夹
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles copyButton.Click
@@ -1339,7 +1312,7 @@ Public Class Form1
     Private Sub PlayNotificationSound3()
         Try
             ' 从资源播放音效
-            My.Computer.Audio.Play(My.Resources.ALERT, AudioPlayMode.Background)
+            My.Computer.Audio.Play(My.Resources.INFO, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
     End Sub
@@ -1416,7 +1389,7 @@ Public Class Form1
         Form3.Label13.Text = bmpLT
         Form3.Label14.Text = icoLT
         Form3.Label15.Text = gifLT
-        Form3.Label16.Text = "→ " & sumRT & " = " & (sumLT - sumRT)
+        Form3.Label16.Text = "↓→ " & sumRT & " = " & (sumLT - sumRT)
 
         Form3.Label28.Text = pngRT
         Form3.Label27.Text = jpgRT

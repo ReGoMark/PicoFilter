@@ -67,7 +67,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>picofiltermain.ico</ApplicationIcon>
+    <ApplicationIcon>picofilter.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E4FC3EC70BD2386052EA4F38A2C9D7C0D710B8E1</ManifestCertificateThumbprint>
@@ -85,7 +85,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus, Version=7.3.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
@@ -250,6 +250,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.manifest" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -288,6 +289,7 @@
     <None Include="Resources\RESOLVED.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="picofilter.ico" />
     <Content Include="picofiltermain.ico" />
     <None Include="Resources\QRcodeBG.png" />
   </ItemGroup>

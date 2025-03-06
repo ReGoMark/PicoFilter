@@ -32,14 +32,12 @@ Partial Class Form4
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
@@ -62,8 +60,6 @@ Partial Class Form4
         Me.Label17 = New System.Windows.Forms.Label()
         Me.NumericUpDown7 = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDown8 = New System.Windows.Forms.NumericUpDown()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label44 = New System.Windows.Forms.Label()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,7 +93,7 @@ Partial Class Form4
         Me.btnSave.BackColor = System.Drawing.Color.White
         Me.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSave.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnSave.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.btnSave.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.btnSave.Location = New System.Drawing.Point(532, 434)
         Me.btnSave.Name = "btnSave"
@@ -111,7 +107,7 @@ Partial Class Form4
         Me.btnCutAndPaste.BackColor = System.Drawing.Color.White
         Me.btnCutAndPaste.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
         Me.btnCutAndPaste.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCutAndPaste.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.btnCutAndPaste.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.btnCutAndPaste.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.btnCutAndPaste.Location = New System.Drawing.Point(461, 434)
         Me.btnCutAndPaste.Name = "btnCutAndPaste"
@@ -146,7 +142,7 @@ Partial Class Form4
         '
         Me.sltLblLT.AutoSize = True
         Me.sltLblLT.BackColor = System.Drawing.Color.Transparent
-        Me.sltLblLT.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.sltLblLT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.sltLblLT.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sltLblLT.Location = New System.Drawing.Point(9, 12)
         Me.sltLblLT.Name = "sltLblLT"
@@ -159,7 +155,7 @@ Partial Class Form4
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label1.Location = New System.Drawing.Point(9, 226)
         Me.Label1.Name = "Label1"
@@ -197,20 +193,6 @@ Partial Class Form4
         Me.Button6.Text = "浏览"
         Me.Button6.UseVisualStyleBackColor = False
         Me.Button6.Visible = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label2.Location = New System.Drawing.Point(384, 12)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(67, 16)
-        Me.Label2.TabIndex = 47
-        Me.Label2.Text = "裁切预览"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Visible = False
         '
         'Label3
         '
@@ -289,21 +271,6 @@ Partial Class Form4
         Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
         Me.TextBox2.Size = New System.Drawing.Size(294, 17)
         Me.TextBox2.TabIndex = 50
-        '
-        'Button7
-        '
-        Me.Button7.BackColor = System.Drawing.Color.White
-        Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button7.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button7.Location = New System.Drawing.Point(507, 445)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(65, 26)
-        Me.Button7.TabIndex = 52
-        Me.Button7.Text = "默认"
-        Me.Button7.UseVisualStyleBackColor = False
-        Me.Button7.Visible = False
         '
         'Label6
         '
@@ -469,7 +436,7 @@ Partial Class Form4
         '
         Me.Label18.AutoSize = True
         Me.Label18.BackColor = System.Drawing.Color.Transparent
-        Me.Label18.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label18.Location = New System.Drawing.Point(198, 12)
         Me.Label18.Name = "Label18"
@@ -570,64 +537,33 @@ Partial Class Form4
         Me.NumericUpDown8.TabIndex = 77
         Me.NumericUpDown8.Visible = False
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button1.Location = New System.Drawing.Point(436, 445)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(65, 26)
-        Me.Button1.TabIndex = 49
-        Me.Button1.Text = "放弃"
-        Me.Button1.UseVisualStyleBackColor = False
-        Me.Button1.Visible = False
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"（空）", "默认（二维码）"})
-        Me.ComboBox1.Location = New System.Drawing.Point(12, 445)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(131, 24)
-        Me.ComboBox1.TabIndex = 50
-        Me.ComboBox1.Visible = False
-        '
         'Label44
         '
         Me.Label44.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label44.AutoSize = True
         Me.Label44.BackColor = System.Drawing.Color.Transparent
-        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(56, 436)
+        Me.Label44.Location = New System.Drawing.Point(187, 436)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(399, 20)
+        Me.Label44.Size = New System.Drawing.Size(264, 20)
         Me.Label44.TabIndex = 85
-        Me.Label44.Text = "目前该程序仍处于内部测试状态，通常情况下您无法使用。"
+        Me.Label44.Text = "用于专栏文案末尾二维码替换的工具。"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Form4
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(609, 472)
         Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.sltLblLT)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.btnCutAndPaste)
-        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label3)
@@ -653,11 +589,9 @@ Partial Class Form4
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.NumericUpDown3)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.NumericUpDown4)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -694,7 +628,6 @@ Partial Class Form4
     Friend WithEvents Label1 As Label
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents TextBox1 As TextBox
@@ -703,7 +636,6 @@ Partial Class Form4
     Friend WithEvents NumericUpDown2 As NumericUpDown
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents Label6 As Label
-    Friend WithEvents Button7 As Button
     Friend WithEvents Panel3 As Panel
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label12 As Label
@@ -723,8 +655,6 @@ Partial Class Form4
     Friend WithEvents Label17 As Label
     Friend WithEvents NumericUpDown7 As NumericUpDown
     Friend WithEvents NumericUpDown8 As NumericUpDown
-    Friend WithEvents Button1 As Button
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label44 As Label
 End Class

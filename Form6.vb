@@ -3,9 +3,13 @@ Imports System.Text.RegularExpressions
 Public Class Form6
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
+    Private originalNames As New Dictionary(Of Integer, String)()
+
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListViewPre.Width = 328
         ComboBox1.SelectedIndex = 0
+        ListViewPre.AllowDrop = True
+
     End Sub
 
     Private Sub bksbutton_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
@@ -47,23 +51,23 @@ Public Class Form6
             newItem.Tag = item.Tag ' 确保文件路径信息不会丢失
             ListViewPre.Items.Add(newItem)
         Next
+        TextBox1.Text = Form1.openText.Text
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
     End Sub
-
-    Private originalNames As New Dictionary(Of Integer, String)()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' 添加工具提示，展示所有可用格式
         Dim toolTip As New ToolTip()
         toolTip.ToolTipIcon = ToolTipIcon.Info
         toolTip.ToolTipTitle = "可用格式"
-        toolTip.SetToolTip(ComboBox1, "{name} - 原始文件名" & vbCrLf & "{index} - 序号" & vbCrLf & "{0index} - 补齐0的序号" & vbCrLf & "{date} - 日期(yyyyMMdd)" & vbCrLf & "{0date} - 补齐0的日期(yyyyMMdd)")
+        toolTip.SetToolTip(ComboBox1, "{name} - 原始文件名" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)")
     End Sub
 
     Private Sub ApplyButton_Click(sender As Object, e As EventArgs) Handles ApplyButton.Click
         Dim formatString As String = ComboBox1.Text
         If String.IsNullOrWhiteSpace(formatString) Then Return
-
+        Dim currentMonth As String = DateTime.Now.Month.ToString
+        Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
         Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
         Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c) ' 自动补齐0位
         Dim maxIndexLength As Integer = ListViewPre.Items.Count.ToString().Length ' 计算最大序号长度
@@ -87,7 +91,10 @@ Public Class Form6
                                             .Replace("{index}", indexStr) _
                                             .Replace("{0index}", paddedIndex) _
                                             .Replace("{date}", currentDate) _
-                                            .Replace("{0date}", paddedDate) ' 添加自动补齐0的日期
+                                            .Replace("{0date}", paddedDate) _ ' 添加自动补齐0的日期
+                                            .Replace("{month}", currentMonth) _
+                                            .Replace("{0month}", paddedMonth) ' 添加自动补齐0的日期
+
 
             newName &= fileExtension ' 保留原始文件扩展名
             ListViewPre.Items(i).SubItems(2).Text = newName
@@ -117,6 +124,8 @@ Public Class Form6
             If result = DialogResult.Yes Then
                 Me.Close()
             End If
+        ElseIf ListViewPre.Items.Count = 0 Then
+            Me.close()
         End If
     End Sub
 
@@ -124,7 +133,7 @@ Public Class Form6
         Using folderDialog As New FolderBrowserDialog()
             If folderDialog.ShowDialog() = DialogResult.OK Then
                 Dim targetPath As String = folderDialog.SelectedPath
-                Dim sourcePath As String = Form1.openText.Text
+                Dim sourcePath As String = TextBox1.Text
 
                 For Each item As ListViewItem In ListViewPre.Items
                     Dim originalFilePath As String = IO.Path.Combine(sourcePath, originalNames(item.Index))
@@ -235,7 +244,7 @@ Public Class Form6
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim sourcePath As String = Form1.openText.Text
+        Dim sourcePath As String = TextBox1.Text
 
         If MessageBox.Show("确定要覆盖原文件名吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
             For Each item As ListViewItem In ListViewPre.Items
@@ -328,19 +337,13 @@ Public Class Form6
         Next
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        If ComboBox1.Text = "(无)" Then
-            ApplyButton.Visible = False
-        Else
-            ApplyButton.Visible = True
-        End If
-    End Sub
-
     Private Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
         If ComboBox1.Text = "(无)" Then
             ApplyButton.Visible = False
+            Button7.Visible = False
         Else
             ApplyButton.Visible = True
+            Button7.Visible = True
         End If
     End Sub
 
@@ -371,4 +374,94 @@ Public Class Form6
             End Try
         End If
     End Sub
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim formatString As String = ComboBox1.Text
+        If String.IsNullOrWhiteSpace(formatString) Then Return
+        If ListViewPre.SelectedItems.Count = 0 Then
+            MessageBox.Show("请选择至少一个项目进行修改。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+
+        Dim currentMonth As String = DateTime.Now.Month.ToString
+        Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
+        Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
+        Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c) ' 自动补齐0位
+        Dim maxIndexLength As Integer = ListViewPre.Items.Count.ToString().Length ' 计算最大序号长度
+
+        For Each item As ListViewItem In ListViewPre.SelectedItems
+            Dim i As Integer = item.Index ' 获取当前项的索引
+            Dim originalName As String = item.SubItems(2).Text
+            If Not originalNames.ContainsKey(i) Then
+                originalNames(i) = originalName ' 仅在第一次重命名时保存原始名称
+            Else
+                originalName = originalNames(i) ' 确保使用最初的文件名
+            End If
+
+            Dim indexStr As String = (i + 1).ToString()
+            Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c) ' 序号补齐0
+            Dim fileNameWithoutExt As String = IO.Path.GetFileNameWithoutExtension(originalName)
+            Dim fileExtension As String = IO.Path.GetExtension(originalName)
+
+            ' 解析表达式
+            Dim newName As String = formatString.Replace("{prefix}", "") _
+                                                .Replace("{name}", originalName) _
+                                                .Replace("{suffix}", "") _
+                                                .Replace("{index}", indexStr) _
+                                                .Replace("{0index}", paddedIndex) _
+                                                .Replace("{date}", currentDate) _
+                                                .Replace("{0date}", paddedDate) _ ' 添加自动补齐0的日期
+                                                .Replace("{month}", currentMonth) _
+                                                .Replace("{0month}", paddedMonth) ' 添加自动补齐0的日期
+
+            newName &= fileExtension ' 保留原始文件扩展名
+            item.SubItems(2).Text = newName ' 仅修改选中项的名称
+        Next
+    End Sub
+
+    ' 当文件拖入窗口时触发，判断是否是文件夹
+    Private Sub ListViewPre_DragEnter(sender As Object, e As DragEventArgs) Handles ListViewPre.DragEnter
+        ' 判断拖入的是否是文件夹
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If Directory.Exists(droppedItems(0)) Then
+                e.Effect = DragDropEffects.Copy
+            Else
+                e.Effect = DragDropEffects.None
+            End If
+        End If
+    End Sub
+
+    ' 当文件夹被拖入并放开鼠标时触发
+    Private Sub ListViewPre_DragDrop(sender As Object, e As DragEventArgs) Handles ListViewPre.DragDrop
+        Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+
+        ' 确保拖入的不是单个文件，而是文件夹
+        If files.Length > 0 AndAlso Directory.Exists(files(0)) Then
+            Dim folderPath As String = files(0) ' 获取文件夹路径
+            拖入重命名(folderPath)
+        End If
+    End Sub
+
+    ' 读取文件夹内的所有文件并填充 ListViewPre
+    Private Sub 拖入重命名(folderPath As String)
+        ListViewPre.Items.Clear() ' 清空旧数据
+
+        Dim filePaths As String() = Directory.GetFiles(folderPath) ' 获取文件夹内所有文件
+
+        For i As Integer = 0 To filePaths.Length - 1
+            Dim filePath As String = filePaths(i)
+            Dim fileName As String = Path.GetFileName(filePath)
+
+            Dim newItem As New ListViewItem((i + 1).ToString()) ' 第一栏显示动态序号
+            newItem.SubItems.Add("") ' 保留原始序号（如果有的话）
+            newItem.SubItems.Add(fileName) ' 第三栏是文件名
+            newItem.SubItems.Add(fileName) ' 第四栏是原始文件名
+            newItem.Tag = filePath ' 保存完整文件路径，方便后续重命名
+            ListViewPre.Items.Add(newItem)
+        Next
+        TextBox1.Text = folderPath
+        Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
+    End Sub
+
+
 End Class
