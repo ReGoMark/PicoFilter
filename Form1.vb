@@ -612,7 +612,7 @@ Public Class Form1
                 Directory.CreateDirectory(resultFolder) ' 创建“筛选结果”文件夹（如果不存在）
             End If
             For Each item As ListViewItem In ListViewRT.Items
-                Dim fileName As String = item.SubItems(1).Text
+                Dim fileName As String = item.SubItems(2).Text
                 Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
                 Try
                     File.Move(sourcePath, Path.Combine(resultFolder, fileName))

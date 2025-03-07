@@ -32,7 +32,6 @@ Partial Class Form2
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Process1 = New System.Diagnostics.Process()
@@ -42,6 +41,7 @@ Partial Class Form2
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -153,20 +153,6 @@ Partial Class Form2
         Me.Label5.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "声明:  本软件受 MIT 许可协议的的保护。此外软件本身包含的字体或其他相关资源，版权归各自公司所有，受相应的许可协议及著作权法保护。用户需遵守相应字体供应" &
     "商的使用许可。本程序开源且免费，请勿擅自非法盈利，由此造成的一切责任作者概不负责。"
         '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.White
-        Me.Label11.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label11.Location = New System.Drawing.Point(474, 277)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(144, 20)
-        Me.Label11.TabIndex = 50
-        Me.Label11.Text = "单击此处查看教程。"
-        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Label11.Visible = False
-        '
         'PictureBox1
         '
         Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
@@ -265,14 +251,26 @@ Partial Class Form2
         Me.Panel1.Size = New System.Drawing.Size(299, 376)
         Me.Panel1.TabIndex = 53
         '
+        'Label8
+        '
+        Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label8.Cursor = System.Windows.Forms.Cursors.Help
+        Me.Label8.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label8.Location = New System.Drawing.Point(308, 135)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(401, 20)
+        Me.Label8.TabIndex = 54
+        Me.Label8.Text = "教程：单击此处获得联机教程。"
+        '
         'Form2
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(715, 353)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Button2)
@@ -305,7 +303,6 @@ Partial Class Form2
     Friend WithEvents Label5 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents Label11 As Label
     Friend WithEvents Process1 As Process
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents ListBox1 As ListBox
@@ -313,4 +310,5 @@ Partial Class Form2
     Friend WithEvents Label4 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label8 As Label
 End Class

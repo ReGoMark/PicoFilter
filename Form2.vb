@@ -32,7 +32,7 @@
         PictureBox1.Visible = True
     End Sub
 
-    Private Sub Label11_Click(sender As Object, e As EventArgs) Handles Label11.Click
+    Private Sub Label11_Click(sender As Object, e As EventArgs)
         Process1.StartInfo.UseShellExecute = True
         Process1.StartInfo.FileName = Application.StartupPath & "\tutorial.mp4"
 
@@ -49,7 +49,12 @@
         Me.CenterToScreen()
     End Sub
 
-    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
-
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+        Dim url As String = "https://www.bilibili.com/video/BV1aR92YcEka/?spm_id_from=333.999.0.0&vd_source=c4099c355c2d06f10ac210fe7bae65a6"
+        Try
+            ' 使用默认浏览器打开网页
+            Process.Start(url)
+        Catch ex As Exception
+        End Try
     End Sub
 End Class

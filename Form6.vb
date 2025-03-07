@@ -15,7 +15,7 @@ Public Class Form6
         Dim toolTip As New ToolTip()
         toolTip.ToolTipIcon = ToolTipIcon.Info
         toolTip.ToolTipTitle = "可用格式"
-        toolTip.SetToolTip(ComboBox1, "{name} - 原始文件名" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{season} - 季(春/夏/秋/冬)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)")
+        toolTip.SetToolTip(ComboBox1, "{name} - 原始文件名(xxxx)" & vbCrLf & "{0name} - 带扩展名的原始文件名(xxxx.xxx)" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{season} - 季(春/夏/秋/冬)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)")
     End Sub
 
     Private Sub bksbutton_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
@@ -91,7 +91,7 @@ Public Class Form6
             Else
                 originalName = originalNames(i) ' 确保使用最初的文件名
             End If
-
+            Dim originalName0 As String = Path.GetFileNameWithoutExtension(originalName)
             Dim indexStr As String = (i + 1).ToString()
             Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c) ' 序号补齐0
             Dim fileNameWithoutExt As String = IO.Path.GetFileNameWithoutExtension(originalName)
@@ -99,7 +99,8 @@ Public Class Form6
 
             ' 解析表达式
             Dim newName As String = formatString.Replace("{prefix}", "") _
-                                            .Replace("{name}", originalName) _
+                                            .Replace("{0name}", originalName) _
+                                             .Replace("{name}", originalName0) _
                                             .Replace("{suffix}", "") _
                                             .Replace("{index}", indexStr) _
                                             .Replace("{0index}", paddedIndex) _
