@@ -71,8 +71,10 @@ Public Class Form5
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Form1.openText.Text = toForm1Path
-        Form1.加载图片(Form1.openText.Text)
+        If Form1.openText.Text <> "" Then
+            Form1.openText.Text = toForm1Path
+            Form1.加载图片(Form1.openText.Text)
+        End If
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged

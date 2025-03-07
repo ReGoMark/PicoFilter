@@ -59,6 +59,7 @@ Public Class Form6
             ListViewPre.Items.Add(newItem)
         Next
         Publicpath = Form1.openText.Text
+        Me.Text = "命名 (加载)"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
     End Sub
 
@@ -485,6 +486,7 @@ Public Class Form6
             End If
         Next
         Publicpath = folderPath
+        Me.Text = "命名 (手动)"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
     End Sub
 

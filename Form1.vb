@@ -1589,15 +1589,11 @@ Public Class Form1
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
         If ListViewRT.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
-            Dim fileName As String = selectedItem.SubItems(1).Text
-
-            ' 拼接完整的文件路径
-            Dim folderPath As String = openText.Text ' 文件夹路径
+            Dim fileName As String = selectedItem.SubItems(2).Text
+            Dim folderPath As String = openText.Text
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
-            ' 检查文件是否存在
             If File.Exists(filePath) Then
-                ' 使用资源管理器打开文件所在文件夹并选中文件
                 Process.Start("explorer.exe", $"/select,""{filePath}""")
             Else
                 MessageBox.Show("文件不存在: " & filePath, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
