@@ -234,11 +234,11 @@ Partial Class Form6
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Button6.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button6.Location = New System.Drawing.Point(273, 414)
+        Me.Button6.Location = New System.Drawing.Point(283, 414)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(50, 26)
+        Me.Button6.Size = New System.Drawing.Size(40, 26)
         Me.Button6.TabIndex = 87
-        Me.Button6.Text = "DATE"
+        Me.Button6.Text = "-/-"
         Me.ToolTip1.SetToolTip(Me.Button6, "序号和日期命名")
         Me.Button6.UseVisualStyleBackColor = False
         '
@@ -255,11 +255,11 @@ Partial Class Form6
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.Location = New System.Drawing.Point(217, 414)
+        Me.Button5.Location = New System.Drawing.Point(237, 414)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(50, 26)
+        Me.Button5.Size = New System.Drawing.Size(40, 26)
         Me.Button5.TabIndex = 86
-        Me.Button5.Text = "NUM"
+        Me.Button5.Text = "#!"
         Me.ToolTip1.SetToolTip(Me.Button5, "序号命名")
         Me.Button5.UseVisualStyleBackColor = False
         '
@@ -273,7 +273,7 @@ Partial Class Form6
         Me.ComboBox1.Items.AddRange(New Object() {"(无)", "{index}_{date}", "{0index}_{0date}", "{index}_{date}_{name}", "{0index}_{0date}_{name}", "{date}_{index}", "{0date}_{0index}", "{date}_{index}_{name}", "{0date}_{0index}_{name}"})
         Me.ComboBox1.Location = New System.Drawing.Point(5, 415)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(206, 24)
+        Me.ComboBox1.Size = New System.Drawing.Size(226, 24)
         Me.ComboBox1.TabIndex = 88
         '
         'xlsxButton

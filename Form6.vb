@@ -41,15 +41,21 @@ Public Class Form6
     End Sub
 
     Public Sub 转到重命名()
-        ListViewPre.Items.Clear()  ' 确保清空旧数据
+        ListViewPre.Items.Clear()
+        Dim allowedExtensions As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
         For i As Integer = 0 To Form1.ListViewRT.Items.Count - 1
             Dim item As ListViewItem = Form1.ListViewRT.Items(i)
-            Dim newItem As New ListViewItem((i + 1).ToString()) ' 第一栏显示动态序号
-            newItem.SubItems.Add(item.SubItems(0).Text) ' 第二栏保留原始序号
-            newItem.SubItems.Add(item.SubItems(2).Text) ' 第三栏是文件名
-            newItem.SubItems.Add(item.SubItems(2).Text) ' 第三栏是原始文件名
-            newItem.Tag = item.Tag ' 确保文件路径信息不会丢失
-            ListViewPre.Items.Add(newItem)
+            Dim filePath As String = item.Tag.ToString() ' 获取完整文件路径
+            Dim fileExt As String = Path.GetExtension(filePath).ToLower() ' 获取文件扩展名
+            ' 只添加符合格式的文件
+            If allowedExtensions.Contains(fileExt) Then
+                Dim newItem As New ListViewItem((ListViewPre.Items.Count + 1).ToString()) ' 第一栏显示动态序号
+                newItem.SubItems.Add(item.SubItems(0).Text) ' 第二栏保留原始序号
+                newItem.SubItems.Add(item.SubItems(2).Text) ' 第三栏是文件名
+                newItem.SubItems.Add(item.SubItems(2).Text) ' 第四栏是原始文件名
+                newItem.Tag = filePath ' 确保文件路径信息不会丢失
+                ListViewPre.Items.Add(newItem)
+            End If
         Next
         TextBox1.Text = Form1.openText.Text
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
@@ -60,7 +66,7 @@ Public Class Form6
         Dim toolTip As New ToolTip()
         toolTip.ToolTipIcon = ToolTipIcon.Info
         toolTip.ToolTipTitle = "可用格式"
-        toolTip.SetToolTip(ComboBox1, "{name} - 原始文件名" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)")
+        toolTip.SetToolTip(ComboBox1, "{name} - 原始文件名" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{season} - 季(春/夏/秋/冬)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)")
     End Sub
 
     Private Sub ApplyButton_Click(sender As Object, e As EventArgs) Handles ApplyButton.Click
@@ -70,8 +76,20 @@ Public Class Form6
         Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
         Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
         Dim currentYear As String = DateTime.Now.Year.ToString
+        Dim currentSeason As String = ""
+        Select Case currentMonth
+            Case 3 To 5
+                currentSeason = "春"
+            Case 6 To 8
+                currentSeason = "夏"
+            Case 9 To 11
+                currentSeason = "秋"
+            Case 12, 1, 2
+                currentSeason = "冬"
+        End Select
         Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c) ' 自动补齐0位
         Dim maxIndexLength As Integer = ListViewPre.Items.Count.ToString().Length ' 计算最大序号长度
+
         For i As Integer = 0 To ListViewPre.Items.Count - 1
             Dim originalName As String = ListViewPre.Items(i).SubItems(2).Text
             If Not originalNames.ContainsKey(i) Then
@@ -91,12 +109,12 @@ Public Class Form6
                                             .Replace("{suffix}", "") _
                                             .Replace("{index}", indexStr) _
                                             .Replace("{0index}", paddedIndex) _
+                                            .Replace("{season}", currentSeason) _
+                                            .Replace("{year}", currentYear) _
                                             .Replace("{date}", currentDate) _
-                                             .Replace("{year}", currentYear) _
                                             .Replace("{0date}", paddedDate) _ ' 添加自动补齐0的日期
                                             .Replace("{month}", currentMonth) _
                                             .Replace("{0month}", paddedMonth) ' 添加自动补齐0的日期
-
 
             newName &= fileExtension ' 保留原始文件扩展名
             ListViewPre.Items(i).SubItems(2).Text = newName
@@ -448,7 +466,12 @@ Public Class Form6
     Private Sub 拖入重命名(folderPath As String)
         ListViewPre.Items.Clear() ' 清空旧数据
 
-        Dim filePaths As String() = Directory.GetFiles(folderPath) ' 获取文件夹内所有文件
+        ' 定义允许的图片格式
+        Dim allowedExtensions As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
+
+        ' 获取文件夹内所有符合格式的图片文件
+        Dim filePaths As String() = Directory.GetFiles(folderPath) _
+        .Where(Function(f) allowedExtensions.Contains(Path.GetExtension(f).ToLower())).ToArray()
 
         For i As Integer = 0 To filePaths.Length - 1
             Dim filePath As String = filePaths(i)
@@ -461,9 +484,9 @@ Public Class Form6
             newItem.Tag = filePath ' 保存完整文件路径，方便后续重命名
             ListViewPre.Items.Add(newItem)
         Next
+
         TextBox1.Text = folderPath
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
+
     End Sub
-
-
 End Class
