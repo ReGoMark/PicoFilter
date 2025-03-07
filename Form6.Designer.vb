@@ -238,7 +238,7 @@ Partial Class Form6
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(40, 26)
         Me.Button6.TabIndex = 87
-        Me.Button6.Text = "-/-"
+        Me.Button6.Text = "DAT"
         Me.ToolTip1.SetToolTip(Me.Button6, "序号和日期命名")
         Me.Button6.UseVisualStyleBackColor = False
         '
@@ -259,7 +259,7 @@ Partial Class Form6
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(40, 26)
         Me.Button5.TabIndex = 86
-        Me.Button5.Text = "#!"
+        Me.Button5.Text = "NUM"
         Me.ToolTip1.SetToolTip(Me.Button5, "序号命名")
         Me.Button5.UseVisualStyleBackColor = False
         '
