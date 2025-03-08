@@ -1419,6 +1419,22 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>62</value>
   </metadata>
+  <data name="PictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAmdJREFUaEPt
+        lr1rVEEUxf3H7E0laCXY2YmVjaWkE2zEIlhbpBDxAyWVQupASIKgiAiiRVBUkFgsWdeXzPOcl5c7Z8d3
+        d97s20R/cGBn5tx77oVN2DOngnNnbx/TiaI6AWBUDTwLDUbVwFMdfnUWTgSjauCRDYYWwagaeGSDoUUw
+        qgYe2WBoEYyqgScqGpL/CwR4ViLqzYqoNytizxhVA8/UJkpEvVkR9WZF7BmjauCJirrgqcnxYlQNPK4A
+        4qnJ8WJUDTyuAOKpyfFiVA08URHPSsSeU+R4MaoGnqiIZyVizylyvBhVA48rgHhqcrwYVQOPK4B4anK8
+        GFUDjyuAeGpyvBhVA09UxLMSsecUOV6MqoEnKuJZidhzihwvRtXA4wognpocL0bVwOMKIJ6aHC9G1cDj
+        CiCz1HTB03dufwMePH3nskC7ti+RuXyF6OtTZK4L9IHt9W8v0JW+eu/v/4p6LfQCn3d/RHW2V7RASXkY
+        jyfV5Qv3olp7HmSByeQ3Pk3n1vLzpu7V9ifcJhYoiQ0NhHP4TiuePd5qah6ubuD2D7bXIAvwfO3K/WiJ
+        t693m/ebNx7h9gi+Efwimp3QI6EaG7r2dKe5ay+xtzdq7i8u3a1Go3F934bvBGPMTuiRUI0NDaglrl9d
+        be4+fvgG53H4TjDG7IQeCdXYUNJe4tL5lebz+os3cMTQQzBGGZARhbZpLxG0cuclXjS2F6LKgIwo1PLk
+        wWbj+du/WNsLUWVARhSqeP/uS/X960+cptP7AqFHQjVdFuhK7wukQMbpWaBPEUSVARlygFwRRJUBGUVB
+        VBmQUZCqOgCV/Vy7w4w22gAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAAAAAAAEAIAAoIAQAlgAAAICAAAABACAAKAgBAL4gBABgYAAAAQAgAKiUAADmKAUAQEAAAAEA
@@ -8295,5 +8311,31 @@
         /wD///8A////AP8AAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAA=
 </value>
+  </data>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>134, 17</value>
+  </metadata>
+  <data name="TextBox1.Text" xml:space="preserve">
+    <value>MIT License
+
+Copyright (c) 2025 ReGoMark
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</value>
   </data>
 </root>
