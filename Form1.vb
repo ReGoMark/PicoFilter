@@ -10,15 +10,16 @@ Public Class Form1
     Dim loadedCount As Integer '计数已加载文件数量
     Dim loadedTime As Integer '计量扫描文件耗时
     Dim sumSize As Double '计量扫描总大小
+    Dim reslnindex As Integer
     Dim sumRT, sumLT As Double '计量右侧项目总和，左侧项目总和
     Dim jpgRT, jpgLT As Double '计量右侧和左侧jpg数量，下同
     Dim pngRT, pngLT As Double
     Dim gifRT, gifLT As Double
     Dim bmpRT, bmpLT As Double
     Dim icoRT, icoLT As Double
-    'Dim invldCount As String
-    'Dim tmoutCount As String
-    'Dim impsdCount As String
+    Dim mark1 As String = "无效"
+    Dim mark2 As String = "存疑"
+    Dim mark3 As String = "超时"
     Dim lbldStr As String '存储标记文件的文本
     Dim formattedString As String
     Public toForm5Path As String '传递路径文本到form5
@@ -85,17 +86,17 @@ Public Class Form1
                 Dim item As New ListViewItem(index.ToString())
                 '文件名高亮标记
                 Dim highlightMark As String = "" '未标记项目的处理办法
-                If fileName.Contains("超时") Then
+                If fileName.Contains(mark3) Then
                     'item.BackColor = Color.MistyRose
                     tagCount += 1
                     highlightMark = "★"
                 End If
-                If fileName.Contains("存疑") Then
+                If fileName.Contains(mark2) Then
                     'item.BackColor = Color.Cornsilk
                     tagCount += 1
                     highlightMark = "★"
                 End If
-                If fileName.Contains("无效") Then
+                If fileName.Contains(mark1) Then
                     'item.BackColor = Color.LightCyan
                     tagCount += 1
                     highlightMark = "★"
@@ -256,9 +257,9 @@ Public Class Form1
             '特殊标签筛选
             Dim isSpecialMatch As Boolean = False
             Dim fileName As String = item.SubItems(1).Text
-            If tmtSelected AndAlso fileName.Contains("超时") Then isSpecialMatch = True
-            If impSelected AndAlso fileName.Contains("存疑") Then isSpecialMatch = True
-            If invSelected AndAlso fileName.Contains("无效") Then isSpecialMatch = True
+            'If tmtSelected AndAlso fileName.Contains("超时") Then isSpecialMatch = True
+            'If impSelected AndAlso fileName.Contains("存疑") Then isSpecialMatch = True
+            'If invSelected AndAlso fileName.Contains("无效") Then isSpecialMatch = True
 
             '最终是否添加
             If isMatch OrElse isSpecialMatch Then
@@ -272,19 +273,19 @@ Public Class Form1
                 ListViewRT.Items.Add(newItem)
                 matchingFileCount += 1 ' 符合条件的文件计数
 
-                '标记项背景色设置
-                If tmtSelected AndAlso fileName.Contains("超时") Then
-                    newItem.BackColor = Color.MistyRose
-                    tagCount += 1
-                End If
-                If impSelected AndAlso fileName.Contains("存疑") Then
-                    newItem.BackColor = Color.Cornsilk
-                    tagCount += 1
-                End If
-                If invSelected AndAlso fileName.Contains("无效") Then
-                    newItem.BackColor = Color.LightCyan
-                    tagCount += 1
-                End If
+                ''标记项背景色设置
+                'If tmtSelected AndAlso fileName.Contains("超时") Then
+                '    newItem.BackColor = Color.MistyRose
+                '    tagCount += 1
+                'End If
+                'If impSelected AndAlso fileName.Contains("存疑") Then
+                '    newItem.BackColor = Color.Cornsilk
+                '    tagCount += 1
+                'End If
+                'If invSelected AndAlso fileName.Contains("无效") Then
+                '    newItem.BackColor = Color.LightCyan
+                '    tagCount += 1
+                'End If
 
                 ' 更新各格式计数
                 Select Case format
@@ -1431,14 +1432,14 @@ Public Class Form1
         ' 遍历 ListViewLT 统计特殊文件
         For Each item As ListViewItem In ListViewLT.Items
             Dim fileName As String = item.SubItems(2).Text
-            If fileName.Contains("超时") Then tmtCount += 1
-            If fileName.Contains("存疑") Then qstCount += 1
-            If fileName.Contains("无效") Then invldCount += 1
+            If fileName.Contains(mark3) Then tmtCount += 1
+            If fileName.Contains(mark2) Then qstCount += 1
+            If fileName.Contains(mark1) Then invldCount += 1
         Next
 
         ' 更新无效、存疑和超时文件数量
-        Form3.Label45.Text = $"无效 {invldCount}  存疑 {qstCount}  超时 {tmtCount}"
-        lbldStr = $" 无效 {invldCount}  |  存疑 {qstCount}  |  超时 {tmtCount}"
+        Form3.Label45.Text = $"↓MA {invldCount}  ↓MB{qstCount}  ↓MC {tmtCount}"
+        lbldStr = $" ↓MA {invldCount}  |  ↓MB {qstCount}  |  ↓MC {tmtCount}"
     End Sub
 
 
@@ -1993,5 +1994,19 @@ Public Class Form1
             Me.Size = New Size(1066, 582)
         End If
     End Sub
-
+    Private Sub indexTimer_Tick(sender As Object, e As EventArgs) Handles indexTimer.Tick
+        reslnindex = 1
+        If reslnButton.Checked = True Then
+            If volButton.Checked = True Then
+                reslnindex += 1
+            End If
+            If mnsButton.Checked = True Or moreButton.Checked = True Then
+                reslnindex += 1
+            End If
+            If exButton.Checked = True Then
+                reslnindex += 1
+            End If
+            plsButton.ImageIndex = reslnindex - 1
+        End If
+    End Sub
 End Class

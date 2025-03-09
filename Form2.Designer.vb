@@ -33,7 +33,6 @@ Partial Class Form2
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.Process1 = New System.Diagnostics.Process()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ListBox1 = New System.Windows.Forms.ListBox()
@@ -45,11 +44,12 @@ Partial Class Form2
         Me.Label12 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -65,7 +65,7 @@ Partial Class Form2
         Me.Label1.BackColor = System.Drawing.Color.White
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(6, 267)
+        Me.Label1.Location = New System.Drawing.Point(6, 265)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(137, 20)
         Me.Label1.TabIndex = 1
@@ -91,7 +91,7 @@ Partial Class Form2
         Me.Label3.BackColor = System.Drawing.Color.White
         Me.Label3.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(6, 287)
+        Me.Label3.Location = New System.Drawing.Point(6, 285)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(174, 20)
         Me.Label3.TabIndex = 3
@@ -164,7 +164,7 @@ Partial Class Form2
         Me.Label5.BackColor = System.Drawing.Color.White
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(6, 173)
+        Me.Label5.Location = New System.Drawing.Point(6, 172)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(309, 94)
         Me.Label5.TabIndex = 48
@@ -182,21 +182,6 @@ Partial Class Form2
         Me.PictureBox1.TabStop = False
         Me.PictureBox1.Visible = False
         '
-        'Label10
-        '
-        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.White
-        Me.Label10.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(6, 3)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(249, 20)
-        Me.Label10.TabIndex = 50
-        Me.Label10.Text = "提示：调整缩放设置获得最佳体验。"
-        Me.ToolTip1.SetToolTip(Me.Label10, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
-        "单击""支持""寻求联机支持。")
-        '
         'Process1
         '
         Me.Process1.StartInfo.Domain = ""
@@ -211,14 +196,14 @@ Partial Class Form2
         '
         Me.ListBox1.BackColor = System.Drawing.Color.GhostWhite
         Me.ListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
         Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.7.2", "PicoNamer 批量重命名 - 0.5.2", "PicoCoder 二维码裁切 - 0.1.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 列表显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 表格导出功能支持库 - 7.3.2"})
         Me.ListBox1.Location = New System.Drawing.Point(6, 26)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.ScrollAlwaysVisible = True
-        Me.ListBox1.Size = New System.Drawing.Size(309, 140)
+        Me.ListBox1.Size = New System.Drawing.Size(307, 140)
         Me.ListBox1.TabIndex = 51
         '
         'Label4
@@ -241,7 +226,7 @@ Partial Class Form2
         Me.Label6.BackColor = System.Drawing.Color.White
         Me.Label6.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(6, 287)
+        Me.Label6.Location = New System.Drawing.Point(6, 285)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(217, 20)
         Me.Label6.TabIndex = 52
@@ -276,6 +261,7 @@ Partial Class Form2
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.White
+        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage1.Controls.Add(Me.Label12)
         Me.TabPage1.Controls.Add(Me.TextBox2)
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
@@ -302,21 +288,24 @@ Partial Class Form2
         '
         Me.TextBox2.BackColor = System.Drawing.Color.GhostWhite
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox2.Location = New System.Drawing.Point(6, 26)
+        Me.TextBox2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(10, 26)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
         Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox2.Size = New System.Drawing.Size(309, 278)
+        Me.TextBox2.Size = New System.Drawing.Size(303, 276)
         Me.TextBox2.TabIndex = 0
         Me.TextBox2.Text = "感谢个人：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "@LittleWhiteDoge；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "@YueHaxgu月；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "@洛初Official；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这些朋友帮助我完成了测试工作。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "感谢平" &
     "台：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Bilibili；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visual Studio 2022；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ChatGPT；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这些平台给我提" &
-    "供了展示和交流的机会。"
+    "供了展示和交流的机会。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，不胜感激。"
         '
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.Color.White
+        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage2.Controls.Add(Me.RichTextBox1)
         Me.TabPage2.Controls.Add(Me.Label13)
-        Me.TabPage2.Controls.Add(Me.TextBox1)
         Me.TabPage2.Controls.Add(Me.Label3)
         Me.TabPage2.Controls.Add(Me.Label7)
         Me.TabPage2.Location = New System.Drawing.Point(4, 29)
@@ -326,21 +315,24 @@ Partial Class Form2
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "许可协议"
         '
-        'TextBox1
+        'Label13
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.GhostWhite
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox1.Location = New System.Drawing.Point(6, 26)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(309, 238)
-        Me.TextBox1.TabIndex = 0
-        Me.TextBox1.Text = resources.GetString("TextBox1.Text")
+        Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label13.AutoSize = True
+        Me.Label13.BackColor = System.Drawing.Color.White
+        Me.Label13.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.Black
+        Me.Label13.Location = New System.Drawing.Point(6, 265)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(131, 20)
+        Me.Label13.TabIndex = 10
+        Me.Label13.Text = "© 2025 ReGoMark"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.White
+        Me.TabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage3.Controls.Add(Me.Label5)
         Me.TabPage3.Controls.Add(Me.Label1)
         Me.TabPage3.Controls.Add(Me.Label6)
@@ -377,19 +369,32 @@ Partial Class Form2
         Me.Label11.TabIndex = 57
         Me.Label11.Text = "PicoFilter"
         '
-        'Label13
+        'RichTextBox1
         '
-        Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.White
-        Me.Label13.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(6, 267)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(131, 20)
-        Me.Label13.TabIndex = 10
-        Me.Label13.Text = "© 2025 ReGoMark"
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.RichTextBox1.BackColor = System.Drawing.Color.GhostWhite
+        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBox1.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RichTextBox1.Location = New System.Drawing.Point(6, 26)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.ReadOnly = True
+        Me.RichTextBox1.Size = New System.Drawing.Size(307, 236)
+        Me.RichTextBox1.TabIndex = 11
+        Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
+        '
+        'Label10
+        '
+        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.White
+        Me.Label10.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.Black
+        Me.Label10.Location = New System.Drawing.Point(6, 3)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(129, 20)
+        Me.Label10.TabIndex = 50
+        Me.Label10.Text = "可能包含的组件："
+        Me.ToolTip1.SetToolTip(Me.Label10, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
+        "单击""支持""寻求联机支持。")
         '
         'Form2
         '
@@ -435,7 +440,6 @@ Partial Class Form2
     Friend WithEvents Label44 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label10 As Label
     Friend WithEvents Process1 As Process
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents ListBox1 As ListBox
@@ -447,9 +451,10 @@ Partial Class Form2
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents TabPage3 As TabPage
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label11 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
+    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents Label10 As Label
 End Class

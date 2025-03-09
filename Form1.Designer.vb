@@ -123,6 +123,7 @@ Partial Class Form1
         Me.searchButton0 = New System.Windows.Forms.Button()
         Me.searchButton1 = New System.Windows.Forms.Button()
         Me.plsButton = New System.Windows.Forms.CheckBox()
+        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.delbutton = New System.Windows.Forms.Button()
         Me.rfhButton = New System.Windows.Forms.Button()
         Me.treeButton = New System.Windows.Forms.Button()
@@ -137,6 +138,7 @@ Partial Class Form1
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip5 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.indexTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -480,7 +482,7 @@ Partial Class Form1
         Me.ListViewRT.HideSelection = False
         Me.ListViewRT.Location = New System.Drawing.Point(-1, -2)
         Me.ListViewRT.Name = "ListViewRT"
-        Me.ListViewRT.Size = New System.Drawing.Size(488, 353)
+        Me.ListViewRT.Size = New System.Drawing.Size(484, 353)
         Me.ListViewRT.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListViewRT, "双击项预览；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewRT.UseCompatibleStateImageBehavior = False
@@ -692,7 +694,7 @@ Partial Class Form1
         Me.sumLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sumLblRT.Location = New System.Drawing.Point(-1, 399)
         Me.sumLblRT.Name = "sumLblRT"
-        Me.sumLblRT.Size = New System.Drawing.Size(488, 45)
+        Me.sumLblRT.Size = New System.Drawing.Size(484, 45)
         Me.sumLblRT.TabIndex = 16
         Me.sumLblRT.Text = " 结果"
         Me.sumLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -707,7 +709,7 @@ Partial Class Form1
         Me.sltLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sltLblRT.Location = New System.Drawing.Point(-1, 354)
         Me.sltLblRT.Name = "sltLblRT"
-        Me.sltLblRT.Size = New System.Drawing.Size(485, 45)
+        Me.sltLblRT.Size = New System.Drawing.Size(481, 45)
         Me.sltLblRT.TabIndex = 17
         Me.sltLblRT.Text = " 等待"
         Me.sltLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1097,7 +1099,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.moreButton)
         Me.Panel3.Controls.Add(Me.exButton)
         Me.Panel3.Controls.Add(Me.Label44)
-        Me.Panel3.Location = New System.Drawing.Point(122, 369)
+        Me.Panel3.Location = New System.Drawing.Point(143, 369)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(265, 66)
         Me.Panel3.TabIndex = 44
@@ -1323,7 +1325,7 @@ Partial Class Form1
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(67, 121)
+        Me.ComboBox1.Location = New System.Drawing.Point(63, 121)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(226, 24)
         Me.ComboBox1.TabIndex = 33
@@ -1356,7 +1358,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-259, 251)
+        Me.Label7.Location = New System.Drawing.Point(-263, 251)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1412,7 +1414,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-70, 99)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-74, 99)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -1581,7 +1583,8 @@ Partial Class Form1
         Me.plsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.plsButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.plsButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.plsButton.Image = CType(resources.GetObject("plsButton.Image"), System.Drawing.Image)
+        Me.plsButton.ImageIndex = 0
+        Me.plsButton.ImageList = Me.ImageList2
         Me.plsButton.Location = New System.Drawing.Point(892, 496)
         Me.plsButton.Name = "plsButton"
         Me.plsButton.Size = New System.Drawing.Size(26, 26)
@@ -1590,6 +1593,15 @@ Partial Class Form1
         Me.plsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.plsButton, "展开更多功能菜单；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如遇到问题，请按 F1 键。")
         Me.plsButton.UseVisualStyleBackColor = False
+        '
+        'ImageList2
+        '
+        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList2.Images.SetKeyName(0, "less.ico")
+        Me.ImageList2.Images.SetKeyName(1, "1.ico")
+        Me.ImageList2.Images.SetKeyName(2, "2.ico")
+        Me.ImageList2.Images.SetKeyName(3, "3.ico")
         '
         'delbutton
         '
@@ -1786,6 +1798,10 @@ Partial Class Form1
         Me.ToolStripMenuItem5.Size = New System.Drawing.Size(170, 22)
         Me.ToolStripMenuItem5.Text = "删除选中项(&D)"
         '
+        'indexTimer
+        '
+        Me.indexTimer.Enabled = True
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1959,4 +1975,6 @@ Partial Class Form1
     Friend WithEvents CheckBox4 As CheckBox
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents ImageList2 As ImageList
+    Friend WithEvents indexTimer As Timer
 End Class

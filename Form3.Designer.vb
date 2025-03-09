@@ -654,13 +654,13 @@ Partial Class Form3
         'Label45
         '
         Me.Label45.BackColor = System.Drawing.Color.White
-        Me.Label45.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label45.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label45.ForeColor = System.Drawing.Color.Black
-        Me.Label45.Location = New System.Drawing.Point(137, 460)
+        Me.Label45.Location = New System.Drawing.Point(137, 461)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(197, 20)
         Me.Label45.TabIndex = 54
-        Me.Label45.Text = "标记"
+        Me.Label45.Text = "MARK"
         Me.Label45.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label35
