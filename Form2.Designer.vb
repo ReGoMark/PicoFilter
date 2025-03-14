@@ -35,21 +35,21 @@ Partial Class Form2
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Process1 = New System.Diagnostics.Process()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -192,6 +192,21 @@ Partial Class Form2
         Me.Process1.StartInfo.UserName = ""
         Me.Process1.SynchronizingObject = Me
         '
+        'Label10
+        '
+        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.White
+        Me.Label10.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.Black
+        Me.Label10.Location = New System.Drawing.Point(6, 3)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(129, 20)
+        Me.Label10.TabIndex = 50
+        Me.Label10.Text = "可能包含的组件："
+        Me.ToolTip1.SetToolTip(Me.Label10, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
+        "单击""支持""寻求联机支持。")
+        '
         'ListBox1
         '
         Me.ListBox1.BackColor = System.Drawing.Color.GhostWhite
@@ -241,9 +256,9 @@ Partial Class Form2
         Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(12, 105)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(219, 20)
+        Me.Label8.Size = New System.Drawing.Size(204, 20)
         Me.Label8.TabIndex = 54
-        Me.Label8.Text = "教程：单击此处获得联机教程。"
+        Me.Label8.Text = "教程：单击此处获得联机教程"
         '
         'TabControl1
         '
@@ -262,14 +277,26 @@ Partial Class Form2
         '
         Me.TabPage1.BackColor = System.Drawing.Color.White
         Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage1.Controls.Add(Me.RichTextBox2)
         Me.TabPage1.Controls.Add(Me.Label12)
-        Me.TabPage1.Controls.Add(Me.TextBox2)
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1.Size = New System.Drawing.Size(321, 310)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "贡献者"
+        '
+        'RichTextBox2
+        '
+        Me.RichTextBox2.BackColor = System.Drawing.Color.GhostWhite
+        Me.RichTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBox2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.RichTextBox2.Location = New System.Drawing.Point(6, 26)
+        Me.RichTextBox2.Name = "RichTextBox2"
+        Me.RichTextBox2.ReadOnly = True
+        Me.RichTextBox2.Size = New System.Drawing.Size(307, 276)
+        Me.RichTextBox2.TabIndex = 12
+        Me.RichTextBox2.Text = resources.GetString("RichTextBox2.Text")
         '
         'Label12
         '
@@ -283,22 +310,6 @@ Partial Class Form2
         Me.Label12.Size = New System.Drawing.Size(284, 20)
         Me.Label12.TabIndex = 10
         Me.Label12.Text = "PicoFilter 的诞生离不开开源社区的支持。"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.BackColor = System.Drawing.Color.GhostWhite
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(10, 26)
-        Me.TextBox2.Multiline = True
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox2.Size = New System.Drawing.Size(303, 276)
-        Me.TextBox2.TabIndex = 0
-        Me.TextBox2.Text = "感谢个人：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "@LittleWhiteDoge；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "@YueHaxgu月；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "@洛初Official；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这些朋友帮助我完成了测试工作。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "感谢平" &
-    "台：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Bilibili；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visual Studio 2022；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ChatGPT；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这些平台给我提" &
-    "供了展示和交流的机会。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，不胜感激。"
         '
         'TabPage2
         '
@@ -314,6 +325,18 @@ Partial Class Form2
         Me.TabPage2.Size = New System.Drawing.Size(321, 310)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "许可协议"
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.BackColor = System.Drawing.Color.GhostWhite
+        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBox1.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RichTextBox1.Location = New System.Drawing.Point(6, 26)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.ReadOnly = True
+        Me.RichTextBox1.Size = New System.Drawing.Size(307, 236)
+        Me.RichTextBox1.TabIndex = 11
+        Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
         '
         'Label13
         '
@@ -368,33 +391,6 @@ Partial Class Form2
         Me.Label11.Size = New System.Drawing.Size(74, 19)
         Me.Label11.TabIndex = 57
         Me.Label11.Text = "PicoFilter"
-        '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.GhostWhite
-        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.RichTextBox1.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(6, 26)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(307, 236)
-        Me.RichTextBox1.TabIndex = 11
-        Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
-        '
-        'Label10
-        '
-        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.White
-        Me.Label10.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(6, 3)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(129, 20)
-        Me.Label10.TabIndex = 50
-        Me.Label10.Text = "可能包含的组件："
-        Me.ToolTip1.SetToolTip(Me.Label10, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
-        "单击""支持""寻求联机支持。")
         '
         'Form2
         '
@@ -452,9 +448,9 @@ Partial Class Form2
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents Label11 As Label
-    Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents Label10 As Label
+    Friend WithEvents RichTextBox2 As RichTextBox
 End Class

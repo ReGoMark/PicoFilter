@@ -428,6 +428,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = verinfo
+        Label44.Text = "A" & mark1 & " B" & mark2 & " C" & mark3
         ProgressBar1.Maximum = 0
         loadedCount = 0
         ListViewRT.Width = 507
@@ -1438,8 +1439,8 @@ Public Class Form1
         Next
 
         ' 更新无效、存疑和超时文件数量
-        Form3.Label45.Text = $"↓MA {invldCount}  ↓MB{qstCount}  ↓MC {tmtCount}"
-        lbldStr = $" ↓MA {invldCount}  |  ↓MB {qstCount}  |  ↓MC {tmtCount}"
+        Form3.Label45.Text = $"☆A {invldCount}  ☆B {qstCount}  ☆C {tmtCount}"
+        lbldStr = $" ☆A {invldCount}  |  ☆B {qstCount}  |  ☆C {tmtCount}"
     End Sub
 
 

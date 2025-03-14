@@ -200,7 +200,7 @@ Public Class Form6
             columnHeader.Text = columnHeader.Text.Replace("▲", "").Replace("▼", "")
 
             ' 仅为列 1, 2, 添加箭头
-            If i = 0 Or i = 1 Then
+            If i = 0 Or i = 1 Or i = 2 Then
                 If i = currentColumn Then
                     If currentOrder = SortOrder.Ascending Then
                         columnHeader.Text &= "▲"
@@ -236,6 +236,8 @@ Public Class Form6
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
+                    Case 2 ' 其他列（按字符串排序）
+                        returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
                 End Select
             End If
             If order = SortOrder.Descending Then ' 根据排序顺序调整结果

@@ -358,7 +358,6 @@ Partial Class Form6
         Me.bksbutton.TabIndex = 72
         Me.ToolTip1.SetToolTip(Me.bksbutton, "移除项")
         Me.bksbutton.UseVisualStyleBackColor = False
-        Me.bksbutton.Visible = False
         '
         'loadButton
         '
@@ -375,8 +374,8 @@ Partial Class Form6
         Me.loadButton.Name = "loadButton"
         Me.loadButton.Size = New System.Drawing.Size(62, 26)
         Me.loadButton.TabIndex = 73
-        Me.loadButton.Text = "载入"
-        Me.ToolTip1.SetToolTip(Me.loadButton, "排序完毕后加载项目到此处。")
+        Me.loadButton.Text = "拉取"
+        Me.ToolTip1.SetToolTip(Me.loadButton, "拉取筛选结果。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "排序完毕后加载筛选结果到此处。")
         Me.loadButton.UseVisualStyleBackColor = False
         '
         'Button4
