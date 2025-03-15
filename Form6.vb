@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
+Imports System.Windows.Forms.VisualStyles
 Public Class Form6
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
@@ -59,18 +60,24 @@ Public Class Form6
             ListViewPre.Items.Add(newItem)
         Next
         Publicpath = Form1.openText.Text
-        Me.Text = "命名 (加载)"
+        Me.Text = "命名 (拉取)"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
+        TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub
 
     Private Sub ApplyButton_Click(sender As Object, e As EventArgs) Handles ApplyButton.Click
         Dim formatString As String = ComboBox1.Text
         If String.IsNullOrWhiteSpace(formatString) Then Return
+
+        ' 允许用户自定义起点（默认从1开始）
+        Dim startIndex As Integer = If(Integer.TryParse(TextBoxStart.Text, Nothing), CInt(TextBoxStart.Text), 1)
+
         Dim currentMonth As String = DateTime.Now.Month.ToString
         Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
         Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
         Dim currentYear As String = DateTime.Now.Year.ToString
         Dim currentSeason As String = ""
+
         Select Case currentMonth
             Case 3 To 5
                 currentSeason = "春"
@@ -81,8 +88,9 @@ Public Class Form6
             Case 12, 1, 2
                 currentSeason = "冬"
         End Select
+
         Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c) ' 自动补齐0位
-        Dim maxIndexLength As Integer = ListViewPre.Items.Count.ToString().Length ' 计算最大序号长度
+        Dim maxIndexLength As Integer = (startIndex + ListViewPre.Items.Count - 1).ToString().Length ' 计算最大序号长度
 
         For i As Integer = 0 To ListViewPre.Items.Count - 1
             Dim originalName As String = ListViewPre.Items(i).SubItems(2).Text
@@ -91,25 +99,26 @@ Public Class Form6
             Else
                 originalName = originalNames(i) ' 确保使用最初的文件名
             End If
+
             Dim originalName0 As String = Path.GetFileNameWithoutExtension(originalName)
-            Dim indexStr As String = (i + 1).ToString()
+            Dim indexValue As Integer = startIndex + i ' 计算序号（仅改变起始值）
+            Dim indexStr As String = indexValue.ToString()
             Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c) ' 序号补齐0
-            Dim fileNameWithoutExt As String = IO.Path.GetFileNameWithoutExtension(originalName)
             Dim fileExtension As String = IO.Path.GetExtension(originalName)
 
             ' 解析表达式
             Dim newName As String = formatString.Replace("{prefix}", "") _
-                                            .Replace("{0name}", originalName) _
-                                             .Replace("{name}", originalName0) _
-                                            .Replace("{suffix}", "") _
-                                            .Replace("{index}", indexStr) _
-                                            .Replace("{0index}", paddedIndex) _
-                                            .Replace("{season}", currentSeason) _
-                                            .Replace("{year}", currentYear) _
-                                            .Replace("{date}", currentDate) _
-                                            .Replace("{0date}", paddedDate) _ ' 添加自动补齐0的日期
-                                            .Replace("{month}", currentMonth) _
-                                            .Replace("{0month}", paddedMonth) ' 添加自动补齐0的日期
+                                      .Replace("{0name}", originalName) _
+                                      .Replace("{name}", originalName0) _
+                                      .Replace("{suffix}", "") _
+                                      .Replace("{index}", indexStr) _
+                                      .Replace("{0index}", paddedIndex) _
+                                      .Replace("{season}", currentSeason) _
+                                      .Replace("{year}", currentYear) _
+                                      .Replace("{date}", currentDate) _
+                                      .Replace("{0date}", paddedDate) _
+                                      .Replace("{month}", currentMonth) _
+                                      .Replace("{0month}", paddedMonth)
 
             newName &= fileExtension ' 保留原始文件扩展名
             ListViewPre.Items(i).SubItems(2).Text = newName
@@ -140,7 +149,7 @@ Public Class Form6
                 Me.Close()
             End If
         ElseIf ListViewPre.Items.Count = 0 Then
-            Me.close()
+            Me.Close()
         End If
     End Sub
 
@@ -491,6 +500,7 @@ Public Class Form6
         Publicpath = folderPath
         Me.Text = "命名 (手动)"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
+        TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub
 
 

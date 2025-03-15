@@ -49,8 +49,10 @@ Partial Class Form6
         Me.mnsButton = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.TextBoxStart = New System.Windows.Forms.NumericUpDown()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.TextBoxStart, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ListViewPre
@@ -182,6 +184,7 @@ Partial Class Form6
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.GhostWhite
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.TextBoxStart)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.Button6)
         Me.Panel1.Controls.Add(Me.Button5)
@@ -234,11 +237,11 @@ Partial Class Form6
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Button6.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button6.Location = New System.Drawing.Point(283, 414)
+        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
+        Me.Button6.Location = New System.Drawing.Point(297, 414)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(40, 26)
+        Me.Button6.Size = New System.Drawing.Size(26, 26)
         Me.Button6.TabIndex = 87
-        Me.Button6.Text = "DAT"
         Me.ToolTip1.SetToolTip(Me.Button6, "序号和日期命名")
         Me.Button6.UseVisualStyleBackColor = False
         '
@@ -255,11 +258,11 @@ Partial Class Form6
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.Location = New System.Drawing.Point(237, 414)
+        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
+        Me.Button5.Location = New System.Drawing.Point(265, 414)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(40, 26)
+        Me.Button5.Size = New System.Drawing.Size(26, 26)
         Me.Button5.TabIndex = 86
-        Me.Button5.Text = "NUM"
         Me.ToolTip1.SetToolTip(Me.Button5, "序号命名")
         Me.Button5.UseVisualStyleBackColor = False
         '
@@ -273,7 +276,7 @@ Partial Class Form6
         Me.ComboBox1.Items.AddRange(New Object() {"(无)", "{index}_{date}", "{0index}_{0date}", "{index}_{date}_{name}", "{0index}_{0date}_{name}", "{date}_{index}", "{0date}_{0index}", "{date}_{index}_{name}", "{0date}_{0index}_{name}"})
         Me.ComboBox1.Location = New System.Drawing.Point(5, 415)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(226, 24)
+        Me.ComboBox1.Size = New System.Drawing.Size(181, 24)
         Me.ComboBox1.TabIndex = 88
         '
         'xlsxButton
@@ -456,6 +459,15 @@ Partial Class Form6
         Me.ToolTip1.SetToolTip(Me.Button7, "选中项的重命名预览。")
         Me.Button7.UseVisualStyleBackColor = False
         '
+        'TextBoxStart
+        '
+        Me.TextBoxStart.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxStart.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.TextBoxStart.Location = New System.Drawing.Point(192, 416)
+        Me.TextBoxStart.Name = "TextBoxStart"
+        Me.TextBoxStart.Size = New System.Drawing.Size(65, 23)
+        Me.TextBoxStart.TabIndex = 89
+        '
         'Form6
         '
         Me.AllowDrop = True
@@ -484,6 +496,7 @@ Partial Class Form6
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.TextBoxStart, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -513,4 +526,5 @@ Partial Class Form6
     Friend WithEvents Button7 As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBoxStart As NumericUpDown
 End Class
