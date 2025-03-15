@@ -290,7 +290,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="picofilter.ico" />
-    <None Include="Resources\QRcodeBG.png" />
+    <None Include="Resources\qr_normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

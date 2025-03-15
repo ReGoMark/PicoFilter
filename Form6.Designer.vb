@@ -34,6 +34,7 @@ Partial Class Form6
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBoxStart = New System.Windows.Forms.NumericUpDown()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button6 = New System.Windows.Forms.Button()
@@ -49,10 +50,9 @@ Partial Class Form6
         Me.mnsButton = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.TextBoxStart = New System.Windows.Forms.NumericUpDown()
         Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         CType(Me.TextBoxStart, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListViewPre
@@ -194,6 +194,20 @@ Partial Class Form6
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(329, 447)
         Me.Panel1.TabIndex = 60
+        '
+        'TextBoxStart
+        '
+        Me.TextBoxStart.BackColor = System.Drawing.Color.GhostWhite
+        Me.TextBoxStart.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxStart.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.TextBoxStart.Location = New System.Drawing.Point(192, 416)
+        Me.TextBoxStart.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.TextBoxStart.Name = "TextBoxStart"
+        Me.TextBoxStart.Size = New System.Drawing.Size(65, 23)
+        Me.TextBoxStart.TabIndex = 89
+        Me.TextBoxStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ToolTip1.SetToolTip(Me.TextBoxStart, "设置序号起点。")
+        Me.TextBoxStart.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Panel2
         '
@@ -459,15 +473,6 @@ Partial Class Form6
         Me.ToolTip1.SetToolTip(Me.Button7, "选中项的重命名预览。")
         Me.Button7.UseVisualStyleBackColor = False
         '
-        'TextBoxStart
-        '
-        Me.TextBoxStart.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBoxStart.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.TextBoxStart.Location = New System.Drawing.Point(192, 416)
-        Me.TextBoxStart.Name = "TextBoxStart"
-        Me.TextBoxStart.Size = New System.Drawing.Size(65, 23)
-        Me.TextBoxStart.TabIndex = 89
-        '
         'Form6
         '
         Me.AllowDrop = True
@@ -494,9 +499,9 @@ Partial Class Form6
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "命名"
         Me.Panel1.ResumeLayout(False)
+        CType(Me.TextBoxStart, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.TextBoxStart, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

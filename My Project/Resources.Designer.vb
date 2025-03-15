@@ -90,9 +90,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property QRcodeBG() As System.Drawing.Bitmap
+        Friend ReadOnly Property qr_normal() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("QRcodeBG", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("qr_normal", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

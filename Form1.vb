@@ -1,7 +1,9 @@
 ﻿Imports System.Drawing.Text
 Imports System.IO
-Imports OfficeOpenXml
+Imports System.Security.Principal
+Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
+Imports OfficeOpenXml
 
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
@@ -86,21 +88,21 @@ Public Class Form1
                 Dim item As New ListViewItem(index.ToString())
                 '文件名高亮标记
                 Dim highlightMark As String = "" '未标记项目的处理办法
-                If fileName.Contains(mark3) Then
-                    'item.BackColor = Color.MistyRose
-                    tagCount += 1
-                    highlightMark = "★"
-                End If
-                If fileName.Contains(mark2) Then
-                    'item.BackColor = Color.Cornsilk
-                    tagCount += 1
-                    highlightMark = "★"
-                End If
-                If fileName.Contains(mark1) Then
-                    'item.BackColor = Color.LightCyan
-                    tagCount += 1
-                    highlightMark = "★"
-                End If
+                    If fileName.Contains(mark3) Then
+                        'item.BackColor = Color.MistyRose
+                        tagCount += 1
+                        highlightMark = "★"
+                    End If
+                    If fileName.Contains(mark2) Then
+                        'item.BackColor = Color.Cornsilk
+                        tagCount += 1
+                        highlightMark = "★"
+                    End If
+                    If fileName.Contains(mark1) Then
+                        'item.BackColor = Color.LightCyan
+                        tagCount += 1
+                        highlightMark = "★"
+                    End If
                 item.SubItems.Add(highlightMark) '添加标记
                 item.SubItems.Add(fileName) '添加文件名
                 item.SubItems.Add(resolution) '添加分辨率
@@ -429,6 +431,7 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = verinfo
         Label44.Text = "A" & mark1 & " B" & mark2 & " C" & mark3
+        ComboBox2.SelectedIndex = 0
         ProgressBar1.Maximum = 0
         loadedCount = 0
         ListViewRT.Width = 507
@@ -457,7 +460,9 @@ Public Class Form1
         Else
             qrButton.Visible = False
         End If
-
+        ToolTip2.ToolTipIcon = ToolTipIcon.Info
+        ToolTip2.ToolTipTitle = "可用格式"
+        ToolTip2.SetToolTip(ComboBox2, "{x}{y}{z} - 标记带有x；y；z的文件。" & vbCrLf & “{}{}{} - 留空默认填写为「未填写」。")
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -730,7 +735,7 @@ Public Class Form1
 
             ' 清除所有列标题的箭头
             columnHeader.Text = columnHeader.Text.Replace("▲", "").Replace("▼", "")
-            columnHeader.Text = columnHeader.Text.Replace("A", "").Replace("Z", "")
+            columnHeader.Text = columnHeader.Text.Replace("◇", "").Replace("◆", "")
 
             ' 仅为列 1, 2, 3, 5 添加箭头
             If i = 0 Or i = 2 Or i = 3 Or i = 5 Or i = 6 Then
@@ -745,12 +750,13 @@ Public Class Form1
             If i = 4 Then
                 If i = currentColumn Then
                     If currentOrder = SortOrder.Ascending Then
-                        columnHeader.Text &= "A"
+                        columnHeader.Text &= "◇"
                     Else
-                        columnHeader.Text &= "Z"
+                        columnHeader.Text &= "◆"
                     End If
                 End If
             End If
+
         Next
     End Sub
 
@@ -1437,10 +1443,9 @@ Public Class Form1
             If fileName.Contains(mark2) Then qstCount += 1
             If fileName.Contains(mark1) Then invldCount += 1
         Next
-
         ' 更新无效、存疑和超时文件数量
-        Form3.Label45.Text = $"☆A {invldCount}  ☆B {qstCount}  ☆C {tmtCount}"
-        lbldStr = $" ☆A {invldCount}  |  ☆B {qstCount}  |  ☆C {tmtCount}"
+        Form3.Label45.Text = $"{mark1} {invldCount}；{mark2} {qstCount}；{mark3} {tmtCount}"
+        lbldStr = $"{mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
     End Sub
 
 
@@ -2009,5 +2014,24 @@ Public Class Form1
             End If
             plsButton.ImageIndex = reslnindex - 1
         End If
+    End Sub
+
+    Private Sub ComboBox2_TextChanged(sender As Object, e As EventArgs) Handles ComboBox2.TextChanged
+        Dim input As String = ComboBox2.Text
+        Dim pattern As String = "^\{([^{}]*)\}\{([^{}]*)\}\{([^{}]*)\}$" ' 允许 {} 内留空
+        Dim match As Match = Regex.Match(input, pattern)
+
+        If match.Success Then
+            ' 提取并允许留空
+            mark1 = If(match.Groups(1).Value.Trim() = "", "未填写", match.Groups(1).Value.Trim())
+            mark2 = If(match.Groups(2).Value.Trim() = "", "未填写", match.Groups(2).Value.Trim())
+            mark3 = If(match.Groups(3).Value.Trim() = "", "未填写", match.Groups(3).Value.Trim())
+        End If
+        If ComboBox2.Text = "" Then
+            mark1 = "无效"
+            mark2 = "存疑"
+            mark3 = "超时"
+        End If
+        Label44.Text = "{" & mark1 & "} {" & mark2 & "} {" & mark3 & "}"
     End Sub
 End Class

@@ -50,6 +50,7 @@ Partial Class Form2
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -214,7 +215,7 @@ Partial Class Form2
         Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.7.2", "PicoNamer 批量重命名 - 0.5.2", "PicoCoder 二维码裁切 - 0.1.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 列表显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 表格导出功能支持库 - 7.3.2"})
+        Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.7.2.2", "PicoNamer 批量重命名 - 0.5.2.1", "PicoCoder 二维码裁切 - 0.1.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 列表显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 表格导出功能支持库 - 7.3.2"})
         Me.ListBox1.Location = New System.Drawing.Point(6, 26)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.ScrollAlwaysVisible = True
@@ -277,6 +278,7 @@ Partial Class Form2
         '
         Me.TabPage1.BackColor = System.Drawing.Color.White
         Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage1.Controls.Add(Me.Label14)
         Me.TabPage1.Controls.Add(Me.RichTextBox2)
         Me.TabPage1.Controls.Add(Me.Label12)
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
@@ -294,7 +296,7 @@ Partial Class Form2
         Me.RichTextBox2.Location = New System.Drawing.Point(6, 26)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(307, 276)
+        Me.RichTextBox2.Size = New System.Drawing.Size(307, 256)
         Me.RichTextBox2.TabIndex = 12
         Me.RichTextBox2.Text = resources.GetString("RichTextBox2.Text")
         '
@@ -392,6 +394,19 @@ Partial Class Form2
         Me.Label11.TabIndex = 57
         Me.Label11.Text = "PicoFilter"
         '
+        'Label14
+        '
+        Me.Label14.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label14.AutoSize = True
+        Me.Label14.BackColor = System.Drawing.Color.White
+        Me.Label14.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.Black
+        Me.Label14.Location = New System.Drawing.Point(6, 285)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(122, 20)
+        Me.Label14.TabIndex = 13
+        Me.Label14.Text = "2025/3/15修订。"
+        '
         'Form2
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -453,4 +468,5 @@ Partial Class Form2
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents RichTextBox2 As RichTextBox
+    Friend WithEvents Label14 As Label
 End Class

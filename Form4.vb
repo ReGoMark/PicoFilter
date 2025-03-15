@@ -11,7 +11,7 @@ Public Class Form4
         PictureBox3.AllowDrop = False ' 预览框禁止拖入
 
         ' 设置PictureBox2的默认图像
-        PictureBox2.Image = My.Resources.QRcodeBG ' 默认图像资源（根据需要调整路径或默认图像）
+        PictureBox2.Image = My.Resources.qr_normal ' 默认图像资源（根据需要调整路径或默认图像）
     End Sub
 
     ' 图片1加载后处理裁剪
