@@ -24,6 +24,7 @@ Partial Class Form3
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -75,6 +76,10 @@ Partial Class Form3
         Me.Label44 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ListViewStats = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -720,11 +725,44 @@ Partial Class Form3
         Me.PictureBox1.TabIndex = 57
         Me.PictureBox1.TabStop = False
         '
+        'ListViewStats
+        '
+        Me.ListViewStats.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.ListViewStats.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListViewStats.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.ListViewStats.HideSelection = False
+        Me.ListViewStats.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
+        Me.ListViewStats.Location = New System.Drawing.Point(141, 12)
+        Me.ListViewStats.Name = "ListViewStats"
+        Me.ListViewStats.Size = New System.Drawing.Size(329, 412)
+        Me.ListViewStats.TabIndex = 58
+        Me.ListViewStats.UseCompatibleStateImageBehavior = False
+        Me.ListViewStats.View = System.Windows.Forms.View.Details
+        Me.ListViewStats.Visible = False
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "项目"
+        Me.ColumnHeader1.Width = 80
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "数值"
+        Me.ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ColumnHeader2.Width = 130
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "折算"
+        Me.ColumnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ColumnHeader3.Width = 80
+        '
         'Form3
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(353, 535)
+        Me.Controls.Add(Me.ListViewStats)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.Label41)
         Me.Controls.Add(Me.Label34)
@@ -842,4 +880,8 @@ Partial Class Form3
     Friend WithEvents Label44 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ListViewStats As ListView
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
 End Class

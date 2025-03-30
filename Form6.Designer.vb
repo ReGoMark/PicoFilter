@@ -197,6 +197,7 @@ Partial Class Form6
         '
         'TextBoxStart
         '
+        Me.TextBoxStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBoxStart.BackColor = System.Drawing.Color.GhostWhite
         Me.TextBoxStart.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxStart.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
@@ -369,7 +370,7 @@ Partial Class Form6
         Me.bksbutton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.bksbutton.ForeColor = System.Drawing.Color.SlateBlue
         Me.bksbutton.Image = CType(resources.GetObject("bksbutton.Image"), System.Drawing.Image)
-        Me.bksbutton.Location = New System.Drawing.Point(179, 12)
+        Me.bksbutton.Location = New System.Drawing.Point(144, 12)
         Me.bksbutton.Name = "bksbutton"
         Me.bksbutton.Size = New System.Drawing.Size(26, 26)
         Me.bksbutton.TabIndex = 72

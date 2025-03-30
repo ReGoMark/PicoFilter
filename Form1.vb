@@ -88,21 +88,21 @@ Public Class Form1
                 Dim item As New ListViewItem(index.ToString())
                 '文件名高亮标记
                 Dim highlightMark As String = "" '未标记项目的处理办法
-                    If fileName.Contains(mark3) Then
-                        'item.BackColor = Color.MistyRose
-                        tagCount += 1
-                        highlightMark = "★"
-                    End If
-                    If fileName.Contains(mark2) Then
-                        'item.BackColor = Color.Cornsilk
-                        tagCount += 1
-                        highlightMark = "★"
-                    End If
-                    If fileName.Contains(mark1) Then
-                        'item.BackColor = Color.LightCyan
-                        tagCount += 1
-                        highlightMark = "★"
-                    End If
+                If fileName.Contains(mark3) Then
+                    'item.BackColor = Color.MistyRose
+                    tagCount += 1
+                    highlightMark = "★"
+                End If
+                If fileName.Contains(mark2) Then
+                    'item.BackColor = Color.Cornsilk
+                    tagCount += 1
+                    highlightMark = "★"
+                End If
+                If fileName.Contains(mark1) Then
+                    'item.BackColor = Color.LightCyan
+                    tagCount += 1
+                    highlightMark = "★"
+                End If
                 item.SubItems.Add(highlightMark) '添加标记
                 item.SubItems.Add(fileName) '添加文件名
                 item.SubItems.Add(resolution) '添加分辨率
@@ -430,7 +430,6 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = verinfo
-        Label44.Text = "A" & mark1 & " B" & mark2 & " C" & mark3
         ComboBox2.SelectedIndex = 0
         ProgressBar1.Maximum = 0
         loadedCount = 0
@@ -462,7 +461,7 @@ Public Class Form1
         End If
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "可用格式"
-        ToolTip2.SetToolTip(ComboBox2, "{x}{y}{z} - 标记带有x；y；z的文件。" & vbCrLf & “{}{}{} - 留空默认填写为「未填写」。")
+        ToolTip2.SetToolTip(ComboBox2, "{x}{y}{z} - 标记带有x；y；z的文件" & vbCrLf & “{}{}{} - 留空默认填写为「未填写」")
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -660,32 +659,37 @@ Public Class Form1
         更新右侧结果标签()
         更新统计信息()
     End Sub
-
-    '从右侧移除项
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
         If ListViewRT.SelectedItems.Count > 0 Then '确保 ListView2 中有选中的项
-            '从 ListView2 中删除选中的项
-            Dim index As Integer = ListViewRT.SelectedItems(0).Index
-            For Each selectedItem As ListViewItem In ListViewRT.SelectedItems
-                ListViewRT.Items.Remove(selectedItem)
+            Dim result As DialogResult = MessageBox.Show("确定要移除选定项吗？", "确认移除", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-            Next
-            optChange("提示：项目已移除。", Color.AliceBlue)
-            If ListViewRT.Items.Count > 0 Then
-                If index < ListViewRT.Items.Count Then
-                    ListViewRT.Items(index).Selected = True
-                    ListViewRT.Items(index).Focused = True
-                Else
-                    ListViewRT.Items(ListViewRT.Items.Count - 1).Selected = True
-                    ListViewRT.Items(ListViewRT.Items.Count - 1).Focused = True
+            If result = DialogResult.Yes Then
+                '从 ListView2 中删除选中的项
+                Dim index As Integer = ListViewRT.SelectedItems(0).Index
+                For Each selectedItem As ListViewItem In ListViewRT.SelectedItems
+                    ListViewRT.Items.Remove(selectedItem)
+                Next
+
+                optChange("提示：项目已移除。", Color.AliceBlue)
+
+                If ListViewRT.Items.Count > 0 Then
+                    If index < ListViewRT.Items.Count Then
+                        ListViewRT.Items(index).Selected = True
+                        ListViewRT.Items(index).Focused = True
+                    Else
+                        ListViewRT.Items(ListViewRT.Items.Count - 1).Selected = True
+                        ListViewRT.Items(ListViewRT.Items.Count - 1).Focused = True
+                    End If
                 End If
+
+                更新右侧结果标签()
+                更新统计信息()
             End If
         Else
             MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-        更新右侧结果标签()
-        更新统计信息()
     End Sub
+
 
     '窗口总在最前
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
@@ -2032,6 +2036,5 @@ Public Class Form1
             mark2 = "存疑"
             mark3 = "超时"
         End If
-        Label44.Text = "{" & mark1 & "} {" & mark2 & "} {" & mark3 & "}"
     End Sub
 End Class

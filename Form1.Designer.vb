@@ -96,7 +96,6 @@ Partial Class Form1
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Label44 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
@@ -110,14 +109,11 @@ Partial Class Form1
         Me.invCheck = New System.Windows.Forms.CheckBox()
         Me.tmtCheck = New System.Windows.Forms.CheckBox()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.impCheck = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.setting = New System.Windows.Forms.Button()
         Me.CheckBox_LoadThumbnails = New System.Windows.Forms.CheckBox()
         Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
         Me.lockButton = New System.Windows.Forms.CheckBox()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.stsButton = New System.Windows.Forms.Button()
@@ -485,7 +481,7 @@ Partial Class Form1
         Me.ListViewRT.HideSelection = False
         Me.ListViewRT.Location = New System.Drawing.Point(-1, -2)
         Me.ListViewRT.Name = "ListViewRT"
-        Me.ListViewRT.Size = New System.Drawing.Size(492, 353)
+        Me.ListViewRT.Size = New System.Drawing.Size(486, 353)
         Me.ListViewRT.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListViewRT, "双击项预览；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewRT.UseCompatibleStateImageBehavior = False
@@ -697,7 +693,7 @@ Partial Class Form1
         Me.sumLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sumLblRT.Location = New System.Drawing.Point(-1, 399)
         Me.sumLblRT.Name = "sumLblRT"
-        Me.sumLblRT.Size = New System.Drawing.Size(500, 45)
+        Me.sumLblRT.Size = New System.Drawing.Size(494, 45)
         Me.sumLblRT.TabIndex = 16
         Me.sumLblRT.Text = " 结果"
         Me.sumLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -712,7 +708,7 @@ Partial Class Form1
         Me.sltLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sltLblRT.Location = New System.Drawing.Point(-1, 354)
         Me.sltLblRT.Name = "sltLblRT"
-        Me.sltLblRT.Size = New System.Drawing.Size(500, 45)
+        Me.sltLblRT.Size = New System.Drawing.Size(494, 45)
         Me.sltLblRT.TabIndex = 17
         Me.sltLblRT.Text = " 等待"
         Me.sltLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1002,21 +998,17 @@ Partial Class Form1
         '
         'SplitContainer1.Panel2
         '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.Label44)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Button3)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel3)
         Me.SplitContainer1.Panel2.Controls.Add(Me.invCheck)
         Me.SplitContainer1.Panel2.Controls.Add(Me.tmtCheck)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Button2)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.ComboBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.impCheck)
         Me.SplitContainer1.Panel2.Controls.Add(Me.sumLblRT)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label7)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.Label3)
         Me.SplitContainer1.Panel2.Controls.Add(Me.setting)
         Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox_LoadThumbnails)
         Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox8)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox9)
         Me.SplitContainer1.Panel2.Controls.Add(Me.sltLblRT)
         Me.SplitContainer1.Panel2.Controls.Add(Me.ListViewRT)
         Me.SplitContainer1.Size = New System.Drawing.Size(1023, 445)
@@ -1067,19 +1059,6 @@ Partial Class Form1
         Me.ToolStripMenuItem8.Size = New System.Drawing.Size(145, 22)
         Me.ToolStripMenuItem8.Text = "调整为 2:1"
         '
-        'Label44
-        '
-        Me.Label44.BackColor = System.Drawing.Color.Transparent
-        Me.Label44.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(207, 235)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(203, 20)
-        Me.Label44.TabIndex = 48
-        Me.Label44.Text = "标记"
-        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Label44.Visible = False
-        '
         'Button3
         '
         Me.Button3.Anchor = System.Windows.Forms.AnchorStyles.Left
@@ -1117,7 +1096,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.infoButton)
         Me.Panel3.Controls.Add(Me.moreButton)
         Me.Panel3.Controls.Add(Me.exButton)
-        Me.Panel3.Location = New System.Drawing.Point(135, 361)
+        Me.Panel3.Location = New System.Drawing.Point(129, 361)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(265, 74)
         Me.Panel3.TabIndex = 44
@@ -1128,6 +1107,7 @@ Partial Class Form1
         Me.ComboBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ComboBox2.BackColor = System.Drawing.Color.White
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
         Me.ComboBox2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Items.AddRange(New Object() {"{无效}{存疑}{超时}"})
@@ -1139,13 +1119,13 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(3, 43)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 20)
+        Me.Label2.Size = New System.Drawing.Size(85, 20)
         Me.Label2.TabIndex = 73
-        Me.Label2.Text = "标记："
+        Me.Label2.Text = "标记设置"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'CheckBox4
@@ -1349,19 +1329,6 @@ Partial Class Form1
         Me.Button2.UseVisualStyleBackColor = False
         Me.Button2.Visible = False
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"默认", "活力", "典雅"})
-        Me.ComboBox1.Location = New System.Drawing.Point(43, 121)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(226, 24)
-        Me.ComboBox1.TabIndex = 33
-        Me.ComboBox1.Visible = False
-        '
         'impCheck
         '
         Me.impCheck.Anchor = System.Windows.Forms.AnchorStyles.Left
@@ -1389,24 +1356,12 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-283, 251)
+        Me.Label7.Location = New System.Drawing.Point(-289, 251)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
         Me.Label7.Text = "配色："
         Me.Label7.Visible = False
-        '
-        'Label3
-        '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label3.Location = New System.Drawing.Point(219, 166)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(180, 16)
-        Me.Label3.TabIndex = 32
-        Me.Label3.Text = "双击 鼠标左键 窗口居中；"
-        Me.Label3.Visible = False
         '
         'setting
         '
@@ -1445,7 +1400,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-94, 99)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-100, 99)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -1468,21 +1423,6 @@ Partial Class Form1
         Me.CheckBox8.Text = "CUR"
         Me.CheckBox8.UseVisualStyleBackColor = True
         Me.CheckBox8.Visible = False
-        '
-        'CheckBox9
-        '
-        Me.CheckBox9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.Enabled = False
-        Me.CheckBox9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox9.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox9.Location = New System.Drawing.Point(114, 166)
-        Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(50, 19)
-        Me.CheckBox9.TabIndex = 22
-        Me.CheckBox9.Text = "ANI"
-        Me.CheckBox9.UseVisualStyleBackColor = True
-        Me.CheckBox9.Visible = False
         '
         'lockButton
         '
@@ -1930,13 +1870,10 @@ Partial Class Form1
     Friend WithEvents bmpButton As CheckBox
     Friend WithEvents icoButton As CheckBox
     Friend WithEvents CheckBox8 As CheckBox
-    Friend WithEvents CheckBox9 As CheckBox
     Friend WithEvents mentionButton As CheckBox
     Friend WithEvents exButton As CheckBox
     Friend WithEvents SplitContainer1 As SplitContainer
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lockButton As CheckBox
@@ -1955,7 +1892,6 @@ Partial Class Form1
     Friend WithEvents plsButton As CheckBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents setting As Button
-    Friend WithEvents Label44 As Label
     Friend WithEvents delbutton As Button
     Friend WithEvents rfhButton As Button
     Friend WithEvents treeButton As Button

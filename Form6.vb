@@ -22,27 +22,33 @@ Public Class Form6
 
     Private Sub bksbutton_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
         If ListViewPre.SelectedItems.Count > 0 Then '确保 ListView2 中有选中的项
-            '从 ListView2 中删除选中的项
-            Dim index As Integer = ListViewPre.SelectedItems(0).Index
-            For Each selectedItem As ListViewItem In ListViewPre.SelectedItems
-                ListViewPre.Items.Remove(selectedItem)
+            Dim result As DialogResult = MessageBox.Show("确定要移除选定项吗？", "确认移除", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-            Next
-            If ListViewPre.Items.Count > 0 Then
-                If index < ListViewPre.Items.Count Then
-                    ListViewPre.Items(index).Selected = True
-                    ListViewPre.Items(index).Focused = True
-                Else
-                    ListViewPre.Items(ListViewPre.Items.Count - 1).Selected = True
-                    ListViewPre.Items(ListViewPre.Items.Count - 1).Focused = True
+            If result = DialogResult.Yes Then
+                '从 ListView2 中删除选中的项
+                Dim index As Integer = ListViewPre.SelectedItems(0).Index
+                For Each selectedItem As ListViewItem In ListViewPre.SelectedItems
+                    ListViewPre.Items.Remove(selectedItem)
+                Next
+
+                If ListViewPre.Items.Count > 0 Then
+                    If index < ListViewPre.Items.Count Then
+                        ListViewPre.Items(index).Selected = True
+                        ListViewPre.Items(index).Focused = True
+                    Else
+                        ListViewPre.Items(ListViewPre.Items.Count - 1).Selected = True
+                        ListViewPre.Items(ListViewPre.Items.Count - 1).Focused = True
+                    End If
                 End If
+
+                ' 重新排序动态序号
+                UpdateDynamicIndex()
             End If
         Else
             MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
-        ' 重新排序动态序号
-        UpdateDynamicIndex()
     End Sub
+
 
     Private Sub addButton_Click(sender As Object, e As EventArgs) Handles loadButton.Click
         Publicpath = ""
