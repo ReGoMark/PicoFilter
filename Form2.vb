@@ -2,6 +2,10 @@
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim currentUser As String = Environment.UserName
         Label7.Text = "授权给 " & currentUser & “ 使用。”
+        If DateTime.Now.Month = 4 AndAlso DateTime.Now.Day = 1 Then
+        Else
+            TabControl1.TabPages.Remove(TabPage4)
+        End If
     End Sub
 
     Private Sub Form2_Click(sender As Object, e As EventArgs) Handles Me.Click
@@ -51,6 +55,15 @@
 
     Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
         Dim url As String = "https://www.bilibili.com/video/BV1aR92YcEka/?spm_id_from=333.999.0.0&vd_source=c4099c355c2d06f10ac210fe7bae65a6"
+        Try
+            ' 使用默认浏览器打开网页
+            Process.Start(url)
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub Label19_Click(sender As Object, e As EventArgs) Handles Label19.Click
+        Dim url As String = "https://baike.baidu.com/item/%E6%84%BF%E4%BD%A0%E5%86%B3%E5%AE%9A/7483097"
         Try
             ' 使用默认浏览器打开网页
             Process.Start(url)

@@ -447,10 +447,17 @@ Public Class Form1
         optTimer.Interval = 3500 '设置定时器间隔为 5 秒
 
         '检测字体安装
-        Dim fontName As String = "方正黑体_GBK"
-        If 确认字体安装(fontName) Then
+
+
+        ' 检测当前日期是否为4月1日
+        If DateTime.Now.Month = 4 AndAlso DateTime.Now.Day = 1 Then
+            optChange("即使我来时没有爱 / 离别盛载满是情。", Color.MistyRose)
         Else
-            optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
+            Dim fontName As String = "方正黑体_GBK"
+            If 确认字体安装(fontName) Then
+            Else
+                optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
+            End If
         End If
 
         Dim currentUserName As String = Environment.UserName
