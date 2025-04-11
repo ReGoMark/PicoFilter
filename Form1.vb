@@ -1459,8 +1459,6 @@ Public Class Form1
         lbldStr = $"{mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
     End Sub
 
-
-
     ' 在 ListView0
     Private Sub ListView0_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListViewLT.SelectedIndexChanged
         If ListViewLT.SelectedItems.Count > 0 Then

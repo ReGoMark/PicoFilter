@@ -202,12 +202,13 @@ Partial Class Form6
         Me.TextBoxStart.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxStart.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.TextBoxStart.Location = New System.Drawing.Point(192, 416)
+        Me.TextBoxStart.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.TextBoxStart.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.TextBoxStart.Name = "TextBoxStart"
         Me.TextBoxStart.Size = New System.Drawing.Size(65, 23)
         Me.TextBoxStart.TabIndex = 89
         Me.TextBoxStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ToolTip1.SetToolTip(Me.TextBoxStart, "设置序号起点。")
+        Me.ToolTip1.SetToolTip(Me.TextBoxStart, "设置序号起点，最大支持5位整数。")
         Me.TextBoxStart.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Panel2
@@ -217,9 +218,9 @@ Partial Class Form6
         Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.TextBox1)
-        Me.Panel2.Location = New System.Drawing.Point(3, 35)
+        Me.Panel2.Location = New System.Drawing.Point(89, 104)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(320, 26)
+        Me.Panel2.Size = New System.Drawing.Size(122, 26)
         Me.Panel2.TabIndex = 78
         Me.Panel2.Visible = False
         '
@@ -236,7 +237,7 @@ Partial Class Form6
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
-        Me.TextBox1.Size = New System.Drawing.Size(312, 17)
+        Me.TextBox1.Size = New System.Drawing.Size(114, 17)
         Me.TextBox1.TabIndex = 50
         '
         'Button6
@@ -370,7 +371,7 @@ Partial Class Form6
         Me.bksbutton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.bksbutton.ForeColor = System.Drawing.Color.SlateBlue
         Me.bksbutton.Image = CType(resources.GetObject("bksbutton.Image"), System.Drawing.Image)
-        Me.bksbutton.Location = New System.Drawing.Point(144, 12)
+        Me.bksbutton.Location = New System.Drawing.Point(80, 12)
         Me.bksbutton.Name = "bksbutton"
         Me.bksbutton.Size = New System.Drawing.Size(26, 26)
         Me.bksbutton.TabIndex = 72
@@ -388,7 +389,7 @@ Partial Class Form6
         Me.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.loadButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.loadButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.loadButton.Location = New System.Drawing.Point(12, 11)
+        Me.loadButton.Location = New System.Drawing.Point(12, 12)
         Me.loadButton.Name = "loadButton"
         Me.loadButton.Size = New System.Drawing.Size(62, 26)
         Me.loadButton.TabIndex = 73
@@ -418,9 +419,10 @@ Partial Class Form6
         '
         'moreButton
         '
-        Me.moreButton.BackColor = System.Drawing.Color.White
+        Me.moreButton.BackColor = System.Drawing.Color.WhiteSmoke
         Me.moreButton.CausesValidation = False
         Me.moreButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.moreButton.FlatAppearance.BorderSize = 0
         Me.moreButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.moreButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.moreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -428,7 +430,7 @@ Partial Class Form6
         Me.moreButton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.moreButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.moreButton.Image = CType(resources.GetObject("moreButton.Image"), System.Drawing.Image)
-        Me.moreButton.Location = New System.Drawing.Point(80, 11)
+        Me.moreButton.Location = New System.Drawing.Point(112, 12)
         Me.moreButton.Name = "moreButton"
         Me.moreButton.Size = New System.Drawing.Size(26, 26)
         Me.moreButton.TabIndex = 75
@@ -437,9 +439,10 @@ Partial Class Form6
         '
         'mnsButton
         '
-        Me.mnsButton.BackColor = System.Drawing.Color.White
+        Me.mnsButton.BackColor = System.Drawing.Color.WhiteSmoke
         Me.mnsButton.CausesValidation = False
         Me.mnsButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.mnsButton.FlatAppearance.BorderSize = 0
         Me.mnsButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.mnsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.mnsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -447,7 +450,7 @@ Partial Class Form6
         Me.mnsButton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.mnsButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.mnsButton.Image = CType(resources.GetObject("mnsButton.Image"), System.Drawing.Image)
-        Me.mnsButton.Location = New System.Drawing.Point(112, 11)
+        Me.mnsButton.Location = New System.Drawing.Point(144, 12)
         Me.mnsButton.Name = "mnsButton"
         Me.mnsButton.Size = New System.Drawing.Size(26, 26)
         Me.mnsButton.TabIndex = 76

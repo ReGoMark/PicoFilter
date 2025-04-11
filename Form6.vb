@@ -69,7 +69,7 @@ Public Class Form6
         Publicpath = Form1.openText.Text
         Me.Text = "命名 (拉取)"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
-        TextBoxStart.Maximum = ListViewPre.Items.Count
+        'TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub
 
     Private Sub ApplyButton_Click(sender As Object, e As EventArgs) Handles ApplyButton.Click
@@ -507,7 +507,7 @@ Public Class Form6
         Publicpath = folderPath
         Me.Text = "命名 (手动)"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
-        TextBoxStart.Maximum = ListViewPre.Items.Count
+        'TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub
 
 

@@ -732,9 +732,9 @@ Partial Class Form3
         Me.ListViewStats.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.ListViewStats.HideSelection = False
         Me.ListViewStats.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
-        Me.ListViewStats.Location = New System.Drawing.Point(141, 12)
+        Me.ListViewStats.Location = New System.Drawing.Point(340, 22)
         Me.ListViewStats.Name = "ListViewStats"
-        Me.ListViewStats.Size = New System.Drawing.Size(329, 412)
+        Me.ListViewStats.Size = New System.Drawing.Size(329, 477)
         Me.ListViewStats.TabIndex = 58
         Me.ListViewStats.UseCompatibleStateImageBehavior = False
         Me.ListViewStats.View = System.Windows.Forms.View.Details

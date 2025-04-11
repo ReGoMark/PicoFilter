@@ -63,9 +63,9 @@ Partial Class Form4
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.btnSave.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnSave.Location = New System.Drawing.Point(276, 12)
+        Me.btnSave.Location = New System.Drawing.Point(279, 12)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(65, 26)
+        Me.btnSave.Size = New System.Drawing.Size(62, 26)
         Me.btnSave.TabIndex = 8
         Me.btnSave.Text = "保存"
         Me.btnSave.UseVisualStyleBackColor = False
