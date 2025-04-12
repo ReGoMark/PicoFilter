@@ -468,7 +468,7 @@ Public Class Form1
         End If
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "可用格式"
-        ToolTip2.SetToolTip(ComboBox2, "{x}{y}{z} - 标记带有x；y；z的文件" & vbCrLf & “{}{}{} - 留空默认填写为「未填写」")
+        ToolTip2.SetToolTip(ComboBox2, "允许自定义最多三个标记；” & vbCrLf & “{x}{y}{z} - 标记带有x；y；z的文件；" & vbCrLf & “{}{}{} - 留空，默认填写为「未填写」。")
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -981,13 +981,13 @@ Public Class Form1
                         package.Save()
                     End Using
 
-                    Dim opt = MessageBox.Show("文件已导出成功！点击按钮立即打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                    Dim opt = MessageBox.Show("表单已导出成功！点击按钮立即打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                     If opt = DialogResult.Yes Then
                         ' 打开文件
                         Process.Start("explorer.exe", filePath)
                     End If
                 Catch ex As Exception
-                    MessageBox.Show("导出文件时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("表单导出时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End If
         End Using
@@ -1455,7 +1455,7 @@ Public Class Form1
             If fileName.Contains(mark1) Then invldCount += 1
         Next
         ' 更新无效、存疑和超时文件数量
-        Form3.Label45.Text = $"{mark1} {invldCount}；{mark2} {qstCount}；{mark3} {tmtCount}"
+        Form3.Label45.Text = $"M1* {invldCount}; M2* {qstCount}; M3* {tmtCount}"
         lbldStr = $"{mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
     End Sub
 
@@ -1924,10 +1924,6 @@ Public Class Form1
                 e.Effect = DragDropEffects.None
             End If
         End If
-    End Sub
-
-    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
-
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

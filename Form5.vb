@@ -14,6 +14,7 @@ Public Class Form5
         Else
             Me.CenterToScreen()
         End If
+        TreeView1.AllowDrop = True
     End Sub
 
     ' 加载 TreeView1，显示文件夹和图像文件
@@ -81,37 +82,53 @@ Public Class Form5
         If selectedPath Is Nothing Then
             TextBox1.Text = ""
             Button2.Enabled = False
+            sltLabel0.Text = " 当前"
+            Label1.ImageIndex = -1 ' 清除图标
             Exit Sub
         End If
 
         If IO.File.Exists(selectedPath) Then
-            ' 如果是图像文件：显示父文件夹路径，按钮启用
+            ' 是文件
             Dim parentPath As String = IO.Path.GetDirectoryName(selectedPath)
             TextBox1.Text = parentPath
             Button2.Enabled = True
-            Button2.Tag = parentPath ' 存储文件夹路径到 Button2
+            Button2.Tag = parentPath
+
+            ' 判断是否是图片
+            Dim ext As String = IO.Path.GetExtension(selectedPath).ToLower()
+            Dim imageExtensions As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico", ".tiff", ".webp"}
+            If imageExtensions.Contains(ext) Then
+                Label1.ImageIndex = 2 ' 图片
+            Else
+                Label1.ImageIndex = -1 ' 非图片文件
+            End If
+
         ElseIf IO.Directory.Exists(selectedPath) Then
-            ' 如果是文件夹：正常显示，按钮启用
+            ' 是文件夹
             TextBox1.Text = selectedPath
             Button2.Enabled = True
-            Button2.Tag = selectedPath ' 存储文件夹路径到 Button2
+            Button2.Tag = selectedPath
+            Label1.ImageIndex = 1 ' 文件夹
+
         Else
             ' 路径无效
             TextBox1.Text = ""
             Button2.Enabled = False
+            Label1.ImageIndex = -1
         End If
 
-        ' 保留原有功能：设置光标位置和滚动
+        ' 设置光标位置和滚动
         TextBox1.SelectionStart = TextBox1.Text.Length
         TextBox1.ScrollToCaret()
 
-        ' 保留原有功能：更新标签 sltLabel0
+        ' 设置标签文本
         If TreeView1.SelectedNode IsNot Nothing Then
             sltLabel0.Text = " " & TreeView1.SelectedNode.Text
         Else
             sltLabel0.Text = " 当前"
         End If
     End Sub
+
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim folderPath As String = TryCast(Button2.Tag, String)
@@ -232,5 +249,83 @@ Public Class Form5
         ' 状态变化立即刷新当前目录树
         LoadTreeView(toForm1Path)
     End Sub
+
+    Private Sub TreeView1_DragEnter(sender As Object, e As DragEventArgs) Handles TreeView1.DragEnter
+        ' 判断拖入的是否是文件夹
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            If Directory.Exists(droppedItems(0)) Then
+                e.Effect = DragDropEffects.Copy
+            Else
+                e.Effect = DragDropEffects.None
+            End If
+        End If
+    End Sub
+
+    Private Sub TreeView1_DragDrop(sender As Object, e As DragEventArgs) Handles TreeView1.DragDrop
+        Dim droppedItems() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If Directory.Exists(droppedItems(0)) Then
+            Dim folderPath As String = droppedItems(0)
+            Form1.openText.Text = folderPath
+            Form1.加载图片(folderPath)
+            Form1.toForm5Path = folderPath
+            If Me.Visible = True Then
+                Me.TextBox1.Text = Form1.toForm5Path
+                Me.toForm1Path = Form1.toForm5Path
+                Me.LoadTreeView(Me.toForm1Path)
+            End If
+        End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim sourceFolder As String = TextBox1.Text.Trim()
+
+        ' 验证源文件夹是否存在
+        If Not IO.Directory.Exists(sourceFolder) Then
+            MessageBox.Show("源文件夹不存在！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        ' 选择目标文件夹
+        Using fbd As New FolderBrowserDialog
+            fbd.Description = "请选择目标文件夹"
+            If fbd.ShowDialog() = DialogResult.OK Then
+                Dim destinationFolder As String = fbd.SelectedPath
+
+                ' 获取所有图像文件（包括子文件夹）
+                Dim imageExtensions As String() = {".jpg", ".jpeg", ".png", ".bmp", ".gif", ".ico", ".tiff", ".webp", ".cur", ".ani"}
+                Dim filesToCopy = IO.Directory.GetFiles(sourceFolder, "*.*", IO.SearchOption.AllDirectories).
+                                  Where(Function(f) imageExtensions.Contains(IO.Path.GetExtension(f).ToLower()))
+
+                Dim copiedCount As Integer = 0
+
+                ' 复制文件
+                For Each filePath In filesToCopy
+                    Try
+                        Dim fileName As String = IO.Path.GetFileName(filePath)
+                        Dim destPath As String = IO.Path.Combine(destinationFolder, fileName)
+
+                        ' 如果目标文件已存在，添加编号避免覆盖
+                        Dim counter As Integer = 1
+                        While IO.File.Exists(destPath)
+                            Dim fileNameWithoutExt = IO.Path.GetFileNameWithoutExtension(filePath)
+                            Dim ext = IO.Path.GetExtension(filePath)
+                            destPath = IO.Path.Combine(destinationFolder, $"{fileNameWithoutExt}_{counter}{ext}")
+                            counter += 1
+                        End While
+
+                        IO.File.Copy(filePath, destPath)
+                        copiedCount += 1
+
+                    Catch ex As Exception
+                        MessageBox.Show($"萃取文件失败：{filePath}" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                Next
+
+                MessageBox.Show($"文件萃取完成，共 {copiedCount} 项。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        End Using
+    End Sub
+
 
 End Class

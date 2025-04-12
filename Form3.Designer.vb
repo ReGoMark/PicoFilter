@@ -24,7 +24,7 @@ Partial Class Form3
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
-        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Dim ListViewItem3 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -80,13 +80,16 @@ Partial Class Form3
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label46 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.White
+        Me.Label1.BackColor = System.Drawing.Color.Lavender
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label1.Location = New System.Drawing.Point(20, 22)
@@ -98,20 +101,20 @@ Partial Class Form3
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.White
+        Me.Label2.BackColor = System.Drawing.Color.Lavender
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(20, 55)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(54, 20)
+        Me.Label2.Size = New System.Drawing.Size(39, 20)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "总大小"
+        Me.Label2.Text = "大小"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.White
+        Me.Label3.BackColor = System.Drawing.Color.Lavender
         Me.Label3.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label3.Location = New System.Drawing.Point(20, 121)
@@ -123,7 +126,7 @@ Partial Class Form3
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.White
+        Me.Label4.BackColor = System.Drawing.Color.Lavender
         Me.Label4.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label4.Location = New System.Drawing.Point(20, 145)
@@ -135,7 +138,7 @@ Partial Class Form3
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.Color.White
+        Me.Label5.BackColor = System.Drawing.Color.Lavender
         Me.Label5.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label5.Location = New System.Drawing.Point(20, 169)
@@ -147,7 +150,7 @@ Partial Class Form3
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.White
+        Me.Label6.BackColor = System.Drawing.Color.Lavender
         Me.Label6.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label6.Location = New System.Drawing.Point(20, 193)
@@ -159,7 +162,7 @@ Partial Class Form3
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.BackColor = System.Drawing.Color.White
+        Me.Label7.BackColor = System.Drawing.Color.Lavender
         Me.Label7.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label7.Location = New System.Drawing.Point(20, 217)
@@ -171,7 +174,7 @@ Partial Class Form3
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.White
+        Me.Label8.BackColor = System.Drawing.Color.Lavender
         Me.Label8.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label8.Location = New System.Drawing.Point(20, 268)
@@ -209,9 +212,9 @@ Partial Class Form3
         Me.Label11.BackColor = System.Drawing.Color.White
         Me.Label11.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(97, 121)
+        Me.Label11.Location = New System.Drawing.Point(104, 121)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(148, 20)
+        Me.Label11.Size = New System.Drawing.Size(141, 20)
         Me.Label11.TabIndex = 10
         Me.Label11.Text = "Label11"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -221,9 +224,9 @@ Partial Class Form3
         Me.Label12.BackColor = System.Drawing.Color.White
         Me.Label12.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(94, 145)
+        Me.Label12.Location = New System.Drawing.Point(101, 145)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(151, 20)
+        Me.Label12.Size = New System.Drawing.Size(144, 20)
         Me.Label12.TabIndex = 11
         Me.Label12.Text = "Label12"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -233,9 +236,9 @@ Partial Class Form3
         Me.Label13.BackColor = System.Drawing.Color.White
         Me.Label13.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(94, 169)
+        Me.Label13.Location = New System.Drawing.Point(101, 169)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(151, 20)
+        Me.Label13.Size = New System.Drawing.Size(144, 20)
         Me.Label13.TabIndex = 12
         Me.Label13.Text = "Label13"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -245,9 +248,9 @@ Partial Class Form3
         Me.Label14.BackColor = System.Drawing.Color.White
         Me.Label14.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(94, 193)
+        Me.Label14.Location = New System.Drawing.Point(101, 193)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(151, 20)
+        Me.Label14.Size = New System.Drawing.Size(144, 20)
         Me.Label14.TabIndex = 13
         Me.Label14.Text = "Label14"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -257,9 +260,9 @@ Partial Class Form3
         Me.Label15.BackColor = System.Drawing.Color.White
         Me.Label15.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(94, 217)
+        Me.Label15.Location = New System.Drawing.Point(101, 217)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(151, 20)
+        Me.Label15.Size = New System.Drawing.Size(144, 20)
         Me.Label15.TabIndex = 14
         Me.Label15.Text = "Label15"
         Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -269,9 +272,9 @@ Partial Class Form3
         Me.Label16.BackColor = System.Drawing.Color.White
         Me.Label16.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(94, 268)
+        Me.Label16.Location = New System.Drawing.Point(101, 268)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(151, 20)
+        Me.Label16.Size = New System.Drawing.Size(144, 20)
         Me.Label16.TabIndex = 15
         Me.Label16.Text = "Label16"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -365,9 +368,9 @@ Partial Class Form3
         Me.Label24.BackColor = System.Drawing.Color.White
         Me.Label24.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.Black
-        Me.Label24.Location = New System.Drawing.Point(94, 396)
+        Me.Label24.Location = New System.Drawing.Point(101, 396)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(151, 20)
+        Me.Label24.Size = New System.Drawing.Size(144, 20)
         Me.Label24.TabIndex = 33
         Me.Label24.Text = "Label24"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -377,9 +380,9 @@ Partial Class Form3
         Me.Label25.BackColor = System.Drawing.Color.White
         Me.Label25.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label25.ForeColor = System.Drawing.Color.Black
-        Me.Label25.Location = New System.Drawing.Point(94, 372)
+        Me.Label25.Location = New System.Drawing.Point(101, 372)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(151, 20)
+        Me.Label25.Size = New System.Drawing.Size(144, 20)
         Me.Label25.TabIndex = 32
         Me.Label25.Text = "Label25"
         Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -389,9 +392,9 @@ Partial Class Form3
         Me.Label26.BackColor = System.Drawing.Color.White
         Me.Label26.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.Black
-        Me.Label26.Location = New System.Drawing.Point(94, 348)
+        Me.Label26.Location = New System.Drawing.Point(101, 348)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(151, 20)
+        Me.Label26.Size = New System.Drawing.Size(144, 20)
         Me.Label26.TabIndex = 31
         Me.Label26.Text = "Label26"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -401,9 +404,9 @@ Partial Class Form3
         Me.Label27.BackColor = System.Drawing.Color.White
         Me.Label27.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label27.ForeColor = System.Drawing.Color.Black
-        Me.Label27.Location = New System.Drawing.Point(94, 324)
+        Me.Label27.Location = New System.Drawing.Point(101, 324)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(151, 20)
+        Me.Label27.Size = New System.Drawing.Size(144, 20)
         Me.Label27.TabIndex = 30
         Me.Label27.Text = "Label27"
         Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -413,9 +416,9 @@ Partial Class Form3
         Me.Label28.BackColor = System.Drawing.Color.White
         Me.Label28.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label28.ForeColor = System.Drawing.Color.Black
-        Me.Label28.Location = New System.Drawing.Point(94, 300)
+        Me.Label28.Location = New System.Drawing.Point(101, 300)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(151, 20)
+        Me.Label28.Size = New System.Drawing.Size(144, 20)
         Me.Label28.TabIndex = 29
         Me.Label28.Text = "Label28"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -423,7 +426,7 @@ Partial Class Form3
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.BackColor = System.Drawing.Color.White
+        Me.Label29.BackColor = System.Drawing.Color.Lavender
         Me.Label29.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label29.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label29.Location = New System.Drawing.Point(20, 396)
@@ -435,7 +438,7 @@ Partial Class Form3
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.BackColor = System.Drawing.Color.White
+        Me.Label30.BackColor = System.Drawing.Color.Lavender
         Me.Label30.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label30.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label30.Location = New System.Drawing.Point(20, 372)
@@ -447,7 +450,7 @@ Partial Class Form3
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.BackColor = System.Drawing.Color.White
+        Me.Label31.BackColor = System.Drawing.Color.Lavender
         Me.Label31.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label31.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label31.Location = New System.Drawing.Point(20, 348)
@@ -459,7 +462,7 @@ Partial Class Form3
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.BackColor = System.Drawing.Color.White
+        Me.Label32.BackColor = System.Drawing.Color.Lavender
         Me.Label32.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label32.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label32.Location = New System.Drawing.Point(20, 324)
@@ -471,7 +474,7 @@ Partial Class Form3
         'Label33
         '
         Me.Label33.AutoSize = True
-        Me.Label33.BackColor = System.Drawing.Color.White
+        Me.Label33.BackColor = System.Drawing.Color.Lavender
         Me.Label33.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label33.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label33.Location = New System.Drawing.Point(20, 300)
@@ -483,7 +486,7 @@ Partial Class Form3
         'Label34
         '
         Me.Label34.AutoSize = True
-        Me.Label34.BackColor = System.Drawing.Color.White
+        Me.Label34.BackColor = System.Drawing.Color.Lavender
         Me.Label34.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label34.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label34.Location = New System.Drawing.Point(20, 89)
@@ -556,7 +559,7 @@ Partial Class Form3
         'Label41
         '
         Me.Label41.AutoSize = True
-        Me.Label41.BackColor = System.Drawing.Color.White
+        Me.Label41.BackColor = System.Drawing.Color.Lavender
         Me.Label41.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label41.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label41.Location = New System.Drawing.Point(20, 428)
@@ -580,13 +583,13 @@ Partial Class Form3
         'Label43
         '
         Me.Label43.BackColor = System.Drawing.Color.White
-        Me.Label43.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label43.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label43.ForeColor = System.Drawing.Color.Black
-        Me.Label43.Location = New System.Drawing.Point(116, 428)
+        Me.Label43.Location = New System.Drawing.Point(110, 415)
         Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(129, 20)
+        Me.Label43.Size = New System.Drawing.Size(122, 20)
         Me.Label43.TabIndex = 49
-        Me.Label43.Text = "浮点"
+        Me.Label43.Text = "Var.Float"
         Me.Label43.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
@@ -659,11 +662,11 @@ Partial Class Form3
         'Label45
         '
         Me.Label45.BackColor = System.Drawing.Color.White
-        Me.Label45.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label45.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label45.ForeColor = System.Drawing.Color.Black
-        Me.Label45.Location = New System.Drawing.Point(137, 460)
+        Me.Label45.Location = New System.Drawing.Point(101, 460)
         Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(197, 20)
+        Me.Label45.Size = New System.Drawing.Size(233, 20)
         Me.Label45.TabIndex = 54
         Me.Label45.Text = "MARK"
         Me.Label45.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -671,7 +674,7 @@ Partial Class Form3
         'Label35
         '
         Me.Label35.AutoSize = True
-        Me.Label35.BackColor = System.Drawing.Color.White
+        Me.Label35.BackColor = System.Drawing.Color.Lavender
         Me.Label35.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label35.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label35.Location = New System.Drawing.Point(20, 460)
@@ -715,15 +718,16 @@ Partial Class Form3
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.White
+        Me.PictureBox1.BackColor = System.Drawing.Color.Lavender
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 13)
+        Me.PictureBox1.Location = New System.Drawing.Point(292, -213)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(329, 477)
+        Me.PictureBox1.Size = New System.Drawing.Size(329, 255)
         Me.PictureBox1.TabIndex = 57
         Me.PictureBox1.TabStop = False
+        Me.PictureBox1.Visible = False
         '
         'ListViewStats
         '
@@ -731,7 +735,7 @@ Partial Class Form3
         Me.ListViewStats.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListViewStats.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.ListViewStats.HideSelection = False
-        Me.ListViewStats.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
+        Me.ListViewStats.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem3})
         Me.ListViewStats.Location = New System.Drawing.Point(340, 22)
         Me.ListViewStats.Name = "ListViewStats"
         Me.ListViewStats.Size = New System.Drawing.Size(329, 477)
@@ -756,6 +760,25 @@ Partial Class Form3
         Me.ColumnHeader3.Text = "折算"
         Me.ColumnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.ColumnHeader3.Width = 80
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Label46)
+        Me.Panel1.Controls.Add(Me.Label43)
+        Me.Panel1.Location = New System.Drawing.Point(12, 12)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(329, 479)
+        Me.Panel1.TabIndex = 59
+        '
+        'Label46
+        '
+        Me.Label46.BackColor = System.Drawing.Color.Lavender
+        Me.Label46.Location = New System.Drawing.Point(0, -1)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(82, 478)
+        Me.Label46.TabIndex = 0
         '
         'Form3
         '
@@ -784,7 +807,6 @@ Partial Class Form3
         Me.Controls.Add(Me.Label45)
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
-        Me.Controls.Add(Me.Label43)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label15)
@@ -812,6 +834,7 @@ Partial Class Form3
         Me.Controls.Add(Me.Label39)
         Me.Controls.Add(Me.Label40)
         Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.Black
@@ -824,6 +847,7 @@ Partial Class Form3
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "统计"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -884,4 +908,6 @@ Partial Class Form3
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label46 As Label
 End Class
