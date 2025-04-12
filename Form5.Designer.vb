@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form5
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,12 @@ Partial Class Form5
     '注意: 以下过程是 Windows 窗体设计器所必需的
     '可以使用 Windows 窗体设计器修改它。  
     '不要使用代码编辑器修改它。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form5))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.btnGoUp = New System.Windows.Forms.Button()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
@@ -35,6 +36,7 @@ Partial Class Form5
         Me.topButton = New System.Windows.Forms.CheckBox()
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.sumLblLT = New System.Windows.Forms.Label()
         Me.sltLabel0 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel1.SuspendLayout()
@@ -47,11 +49,37 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.CheckBox1)
         Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.btnGoUp)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(261, 26)
+        Me.Panel1.Size = New System.Drawing.Size(329, 26)
         Me.Panel1.TabIndex = 36
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox1.Appearance = System.Windows.Forms.Appearance.Button
+        Me.CheckBox1.BackColor = System.Drawing.Color.White
+        Me.CheckBox1.CausesValidation = False
+        Me.CheckBox1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox1.FlatAppearance.BorderSize = 0
+        Me.CheckBox1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.CheckBox1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CheckBox1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CheckBox1.ForeColor = System.Drawing.Color.SlateBlue
+        Me.CheckBox1.Image = CType(resources.GetObject("CheckBox1.Image"), System.Drawing.Image)
+        Me.CheckBox1.Location = New System.Drawing.Point(270, -1)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(26, 26)
+        Me.CheckBox1.TabIndex = 59
+        Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.CheckBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.CheckBox1, "也显示图像文件。")
+        Me.CheckBox1.UseVisualStyleBackColor = False
         '
         'TextBox1
         '
@@ -66,7 +94,7 @@ Partial Class Form5
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
-        Me.TextBox1.Size = New System.Drawing.Size(253, 17)
+        Me.TextBox1.Size = New System.Drawing.Size(261, 17)
         Me.TextBox1.TabIndex = 50
         '
         'btnGoUp
@@ -75,18 +103,19 @@ Partial Class Form5
         Me.btnGoUp.BackColor = System.Drawing.Color.White
         Me.btnGoUp.CausesValidation = False
         Me.btnGoUp.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.btnGoUp.FlatAppearance.BorderSize = 0
         Me.btnGoUp.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
         Me.btnGoUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.btnGoUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.btnGoUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnGoUp.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.btnGoUp.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnGoUp.Location = New System.Drawing.Point(279, 12)
+        Me.btnGoUp.Image = CType(resources.GetObject("btnGoUp.Image"), System.Drawing.Image)
+        Me.btnGoUp.Location = New System.Drawing.Point(301, -3)
         Me.btnGoUp.Name = "btnGoUp"
-        Me.btnGoUp.Size = New System.Drawing.Size(62, 26)
+        Me.btnGoUp.Size = New System.Drawing.Size(28, 28)
         Me.btnGoUp.TabIndex = 52
-        Me.btnGoUp.Text = "向上"
-        Me.ToolTip1.SetToolTip(Me.btnGoUp, "上一级")
+        Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级")
         Me.btnGoUp.UseVisualStyleBackColor = False
         '
         'TreeView1
@@ -104,7 +133,7 @@ Partial Class Form5
         Me.TreeView1.Location = New System.Drawing.Point(0, 48)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 1
-        Me.TreeView1.Size = New System.Drawing.Size(328, 397)
+        Me.TreeView1.Size = New System.Drawing.Size(328, 398)
         Me.TreeView1.TabIndex = 37
         '
         'ImageList1
@@ -113,6 +142,7 @@ Partial Class Form5
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "unfolder.ico")
         Me.ImageList1.Images.SetKeyName(1, "folder.ico")
+        Me.ImageList1.Images.SetKeyName(2, "imge.ico")
         '
         'Button2
         '
@@ -223,12 +253,29 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.sumLblLT)
         Me.Panel2.Controls.Add(Me.sltLabel0)
         Me.Panel2.Controls.Add(Me.TreeView1)
         Me.Panel2.Location = New System.Drawing.Point(12, 44)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(329, 446)
         Me.Panel2.TabIndex = 58
+        '
+        'sumLblLT
+        '
+        Me.sumLblLT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.sumLblLT.BackColor = System.Drawing.Color.Lavender
+        Me.sumLblLT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.sumLblLT.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.sumLblLT.Location = New System.Drawing.Point(109, 132)
+        Me.sumLblLT.Name = "sumLblLT"
+        Me.sumLblLT.Size = New System.Drawing.Size(328, 45)
+        Me.sumLblLT.TabIndex = 39
+        Me.sumLblLT.Text = " 总计"
+        Me.sumLblLT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ToolTip1.SetToolTip(Me.sumLblLT, "全部数据总览。")
+        Me.sumLblLT.Visible = False
         '
         'sltLabel0
         '
@@ -237,6 +284,8 @@ Partial Class Form5
         Me.sltLabel0.BackColor = System.Drawing.Color.GhostWhite
         Me.sltLabel0.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.sltLabel0.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.sltLabel0.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.sltLabel0.ImageList = Me.ImageList1
         Me.sltLabel0.Location = New System.Drawing.Point(-1, 0)
         Me.sltLabel0.Name = "sltLabel0"
         Me.sltLabel0.Size = New System.Drawing.Size(329, 45)
@@ -250,7 +299,6 @@ Partial Class Form5
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(353, 535)
         Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.btnGoUp)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
@@ -281,4 +329,6 @@ Partial Class Form5
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents sltLabel0 As Label
+    Friend WithEvents sumLblLT As Label
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

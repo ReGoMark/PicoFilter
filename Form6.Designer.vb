@@ -109,12 +109,12 @@ Partial Class Form6
         Me.ApplyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ApplyButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ApplyButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.ApplyButton.Location = New System.Drawing.Point(134, 497)
+        Me.ApplyButton.Image = CType(resources.GetObject("ApplyButton.Image"), System.Drawing.Image)
+        Me.ApplyButton.Location = New System.Drawing.Point(173, 497)
         Me.ApplyButton.Name = "ApplyButton"
-        Me.ApplyButton.Size = New System.Drawing.Size(65, 26)
+        Me.ApplyButton.Size = New System.Drawing.Size(26, 26)
         Me.ApplyButton.TabIndex = 57
-        Me.ApplyButton.Text = "应用"
-        Me.ToolTip1.SetToolTip(Me.ApplyButton, "所有项目的重命名预览。")
+        Me.ToolTip1.SetToolTip(Me.ApplyButton, "全部重命名预览。")
         Me.ApplyButton.UseVisualStyleBackColor = False
         '
         'Button1
@@ -470,11 +470,11 @@ Partial Class Form6
         Me.Button7.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button7.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.Location = New System.Drawing.Point(102, 497)
+        Me.Button7.Location = New System.Drawing.Point(141, 497)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(26, 26)
         Me.Button7.TabIndex = 77
-        Me.ToolTip1.SetToolTip(Me.Button7, "选中项的重命名预览。")
+        Me.ToolTip1.SetToolTip(Me.Button7, "仅选中项的重命名预览。")
         Me.Button7.UseVisualStyleBackColor = False
         '
         'Form6

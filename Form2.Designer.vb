@@ -49,24 +49,24 @@ Partial Class Form2
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label19 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -76,7 +76,7 @@ Partial Class Form2
         Me.Label1.BackColor = System.Drawing.Color.White
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(6, 265)
+        Me.Label1.Location = New System.Drawing.Point(8, 266)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(137, 20)
         Me.Label1.TabIndex = 1
@@ -102,7 +102,7 @@ Partial Class Form2
         Me.Label3.BackColor = System.Drawing.Color.White
         Me.Label3.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(6, 285)
+        Me.Label3.Location = New System.Drawing.Point(6, 286)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(174, 20)
         Me.Label3.TabIndex = 3
@@ -116,7 +116,7 @@ Partial Class Form2
         Me.Label7.BackColor = System.Drawing.Color.White
         Me.Label7.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(6, 3)
+        Me.Label7.Location = New System.Drawing.Point(8, 4)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(54, 20)
         Me.Label7.TabIndex = 9
@@ -175,7 +175,7 @@ Partial Class Form2
         Me.Label5.BackColor = System.Drawing.Color.White
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(6, 172)
+        Me.Label5.Location = New System.Drawing.Point(8, 173)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(309, 94)
         Me.Label5.TabIndex = 48
@@ -210,7 +210,7 @@ Partial Class Form2
         Me.Label10.BackColor = System.Drawing.Color.White
         Me.Label10.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(6, 3)
+        Me.Label10.Location = New System.Drawing.Point(6, 4)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(129, 20)
         Me.Label10.TabIndex = 50
@@ -222,7 +222,7 @@ Partial Class Form2
         '
         Me.ListBox1.BackColor = System.Drawing.Color.GhostWhite
         Me.ListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
         Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.7.2.2", "PicoNamer 批量重命名 - 0.5.2.1", "PicoCoder 二维码裁切 - 0.1.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 列表显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 表格导出功能支持库 - 7.3.2"})
@@ -252,7 +252,7 @@ Partial Class Form2
         Me.Label6.BackColor = System.Drawing.Color.White
         Me.Label6.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(6, 285)
+        Me.Label6.Location = New System.Drawing.Point(8, 286)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(217, 20)
         Me.Label6.TabIndex = 52
@@ -288,7 +288,6 @@ Partial Class Form2
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.White
-        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage1.Controls.Add(Me.Label14)
         Me.TabPage1.Controls.Add(Me.RichTextBox2)
         Me.TabPage1.Controls.Add(Me.Label12)
@@ -306,7 +305,7 @@ Partial Class Form2
         Me.Label14.BackColor = System.Drawing.Color.White
         Me.Label14.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(6, 285)
+        Me.Label14.Location = New System.Drawing.Point(8, 286)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(122, 20)
         Me.Label14.TabIndex = 13
@@ -331,7 +330,7 @@ Partial Class Form2
         Me.Label12.BackColor = System.Drawing.Color.White
         Me.Label12.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(6, 3)
+        Me.Label12.Location = New System.Drawing.Point(8, 4)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(284, 20)
         Me.Label12.TabIndex = 10
@@ -340,7 +339,6 @@ Partial Class Form2
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.Color.White
-        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage2.Controls.Add(Me.RichTextBox1)
         Me.TabPage2.Controls.Add(Me.Label13)
         Me.TabPage2.Controls.Add(Me.Label3)
@@ -371,7 +369,7 @@ Partial Class Form2
         Me.Label13.BackColor = System.Drawing.Color.White
         Me.Label13.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(6, 265)
+        Me.Label13.Location = New System.Drawing.Point(6, 266)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(131, 20)
         Me.Label13.TabIndex = 10
@@ -381,7 +379,6 @@ Partial Class Form2
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.White
-        Me.TabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage3.Controls.Add(Me.Label5)
         Me.TabPage3.Controls.Add(Me.Label1)
         Me.TabPage3.Controls.Add(Me.Label6)
@@ -393,6 +390,112 @@ Partial Class Form2
         Me.TabPage3.Size = New System.Drawing.Size(321, 310)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "组件库"
+        '
+        'TabPage4
+        '
+        Me.TabPage4.BackColor = System.Drawing.Color.MistyRose
+        Me.TabPage4.Controls.Add(Me.Label19)
+        Me.TabPage4.Controls.Add(Me.TextBox1)
+        Me.TabPage4.Controls.Add(Me.Label18)
+        Me.TabPage4.Controls.Add(Me.Label17)
+        Me.TabPage4.Controls.Add(Me.Label16)
+        Me.TabPage4.Controls.Add(Me.PictureBox3)
+        Me.TabPage4.Controls.Add(Me.Label15)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage4.Size = New System.Drawing.Size(321, 310)
+        Me.TabPage4.TabIndex = 3
+        Me.TabPage4.Text = "《愿你决定》"
+        '
+        'Label19
+        '
+        Me.Label19.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label19.AutoSize = True
+        Me.Label19.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Label19.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.Black
+        Me.Label19.Location = New System.Drawing.Point(280, 286)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(39, 20)
+        Me.Label19.TabIndex = 58
+        Me.Label19.Text = ">>>"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.BackColor = System.Drawing.Color.Snow
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox1.ForeColor = System.Drawing.Color.IndianRed
+        Me.TextBox1.Location = New System.Drawing.Point(-1, 26)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(321, 199)
+        Me.TextBox1.TabIndex = 61
+        Me.TextBox1.Text = resources.GetString("TextBox1.Text")
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label18
+        '
+        Me.Label18.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label18.AutoSize = True
+        Me.Label18.BackColor = System.Drawing.Color.MistyRose
+        Me.Label18.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label18.Location = New System.Drawing.Point(87, 286)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(39, 20)
+        Me.Label18.TabIndex = 60
+        Me.Label18.Text = "大热"
+        '
+        'Label17
+        '
+        Me.Label17.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label17.AutoSize = True
+        Me.Label17.BackColor = System.Drawing.Color.MistyRose
+        Me.Label17.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label17.Location = New System.Drawing.Point(87, 249)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(54, 20)
+        Me.Label17.TabIndex = 59
+        Me.Label17.Text = "张国荣"
+        '
+        'Label16
+        '
+        Me.Label16.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label16.AutoSize = True
+        Me.Label16.BackColor = System.Drawing.Color.MistyRose
+        Me.Label16.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label16.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label16.Location = New System.Drawing.Point(87, 229)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(69, 20)
+        Me.Label16.TabIndex = 58
+        Me.Label16.Text = "愿你决定"
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(6, 231)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(75, 75)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox3.TabIndex = 56
+        Me.PictureBox3.TabStop = False
+        '
+        'Label15
+        '
+        Me.Label15.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label15.AutoSize = True
+        Me.Label15.Cursor = System.Windows.Forms.Cursors.Help
+        Me.Label15.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.Black
+        Me.Label15.Location = New System.Drawing.Point(8, 4)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(159, 20)
+        Me.Label15.TabIndex = 55
+        Me.Label15.Text = "永远怀念张国荣先生。"
         '
         'PictureBox2
         '
@@ -417,113 +520,6 @@ Partial Class Form2
         Me.Label11.Size = New System.Drawing.Size(74, 19)
         Me.Label11.TabIndex = 57
         Me.Label11.Text = "PicoFilter"
-        '
-        'TabPage4
-        '
-        Me.TabPage4.BackColor = System.Drawing.Color.MistyRose
-        Me.TabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage4.Controls.Add(Me.Label19)
-        Me.TabPage4.Controls.Add(Me.TextBox1)
-        Me.TabPage4.Controls.Add(Me.Label18)
-        Me.TabPage4.Controls.Add(Me.Label17)
-        Me.TabPage4.Controls.Add(Me.Label16)
-        Me.TabPage4.Controls.Add(Me.PictureBox3)
-        Me.TabPage4.Controls.Add(Me.Label15)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(321, 310)
-        Me.TabPage4.TabIndex = 3
-        Me.TabPage4.Text = "《愿你决定》"
-        '
-        'Label15
-        '
-        Me.Label15.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Label15.AutoSize = True
-        Me.Label15.Cursor = System.Windows.Forms.Cursors.Help
-        Me.Label15.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(6, 3)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(159, 20)
-        Me.Label15.TabIndex = 55
-        Me.Label15.Text = "永远怀念张国荣先生。"
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(6, 231)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(75, 75)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox3.TabIndex = 56
-        Me.PictureBox3.TabStop = False
-        '
-        'Label16
-        '
-        Me.Label16.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label16.AutoSize = True
-        Me.Label16.BackColor = System.Drawing.Color.MistyRose
-        Me.Label16.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label16.Location = New System.Drawing.Point(87, 228)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(69, 20)
-        Me.Label16.TabIndex = 58
-        Me.Label16.Text = "愿你决定"
-        '
-        'Label17
-        '
-        Me.Label17.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label17.AutoSize = True
-        Me.Label17.BackColor = System.Drawing.Color.MistyRose
-        Me.Label17.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label17.Location = New System.Drawing.Point(87, 248)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(54, 20)
-        Me.Label17.TabIndex = 59
-        Me.Label17.Text = "张国荣"
-        '
-        'Label18
-        '
-        Me.Label18.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label18.AutoSize = True
-        Me.Label18.BackColor = System.Drawing.Color.MistyRose
-        Me.Label18.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label18.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label18.Location = New System.Drawing.Point(87, 285)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(39, 20)
-        Me.Label18.TabIndex = 60
-        Me.Label18.Text = "大热"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.BackColor = System.Drawing.Color.Snow
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox1.ForeColor = System.Drawing.Color.IndianRed
-        Me.TextBox1.Location = New System.Drawing.Point(-1, 26)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(321, 199)
-        Me.TextBox1.TabIndex = 61
-        Me.TextBox1.Text = resources.GetString("TextBox1.Text")
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label19
-        '
-        Me.Label19.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Label19.AutoSize = True
-        Me.Label19.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label19.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label19.ForeColor = System.Drawing.Color.Black
-        Me.Label19.Location = New System.Drawing.Point(278, 285)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(39, 20)
-        Me.Label19.TabIndex = 58
-        Me.Label19.Text = ">>>"
         '
         'Form2
         '
@@ -555,10 +551,10 @@ Partial Class Form2
         Me.TabPage2.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

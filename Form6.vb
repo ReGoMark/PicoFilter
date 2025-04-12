@@ -417,46 +417,70 @@ Public Class Form6
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim formatString As String = ComboBox1.Text
         If String.IsNullOrWhiteSpace(formatString) Then Return
+
         If ListViewPre.SelectedItems.Count = 0 Then
             MessageBox.Show("请选择至少一个项目进行修改。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
 
+        ' 允许用户自定义起点（默认从1开始）
+        Dim startIndex As Integer = If(Integer.TryParse(TextBoxStart.Text, Nothing), CInt(TextBoxStart.Text), 1)
+
         Dim currentMonth As String = DateTime.Now.Month.ToString
         Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
         Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
-        Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c) ' 自动补齐0位
-        Dim maxIndexLength As Integer = ListViewPre.Items.Count.ToString().Length ' 计算最大序号长度
+        Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c)
+        Dim currentYear As String = DateTime.Now.Year.ToString
+        Dim currentSeason As String = ""
+
+        Select Case currentMonth
+            Case "3", "4", "5"
+                currentSeason = "春"
+            Case "6", "7", "8"
+                currentSeason = "夏"
+            Case "9", "10", "11"
+                currentSeason = "秋"
+            Case "12", "1", "2"
+                currentSeason = "冬"
+        End Select
+
+        Dim maxIndexLength As Integer = (startIndex + ListViewPre.Items.Count - 1).ToString().Length
 
         For Each item As ListViewItem In ListViewPre.SelectedItems
-            Dim i As Integer = item.Index ' 获取当前项的索引
+            Dim i As Integer = item.Index
             Dim originalName As String = item.SubItems(2).Text
+
             If Not originalNames.ContainsKey(i) Then
-                originalNames(i) = originalName ' 仅在第一次重命名时保存原始名称
+                originalNames(i) = originalName
             Else
-                originalName = originalNames(i) ' 确保使用最初的文件名
+                originalName = originalNames(i)
             End If
 
-            Dim indexStr As String = (i + 1).ToString()
-            Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c) ' 序号补齐0
-            Dim fileNameWithoutExt As String = IO.Path.GetFileNameWithoutExtension(originalName)
+            Dim originalName0 As String = IO.Path.GetFileNameWithoutExtension(originalName)
             Dim fileExtension As String = IO.Path.GetExtension(originalName)
 
-            ' 解析表达式
-            Dim newName As String = formatString.Replace("{prefix}", "") _
-                                                .Replace("{name}", originalName) _
-                                                .Replace("{suffix}", "") _
-                                                .Replace("{index}", indexStr) _
-                                                .Replace("{0index}", paddedIndex) _
-                                                .Replace("{date}", currentDate) _
-                                                .Replace("{0date}", paddedDate) _ ' 添加自动补齐0的日期
-                                                .Replace("{month}", currentMonth) _
-                                                .Replace("{0month}", paddedMonth) ' 添加自动补齐0的日期
+            Dim indexValue As Integer = startIndex + i
+            Dim indexStr As String = indexValue.ToString()
+            Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c)
 
-            newName &= fileExtension ' 保留原始文件扩展名
-            item.SubItems(2).Text = newName ' 仅修改选中项的名称
+            Dim newName As String = formatString.Replace("{prefix}", "") _
+                                   .Replace("{0name}", originalName) _
+                                   .Replace("{name}", originalName0) _
+                                   .Replace("{suffix}", "") _
+                                   .Replace("{index}", indexStr) _
+                                   .Replace("{0index}", paddedIndex) _
+                                   .Replace("{season}", currentSeason) _
+                                   .Replace("{year}", currentYear) _
+                                   .Replace("{date}", currentDate) _
+                                   .Replace("{0date}", paddedDate) _
+                                   .Replace("{month}", currentMonth) _
+                                   .Replace("{0month}", paddedMonth)
+
+            newName &= fileExtension
+            item.SubItems(2).Text = newName
         Next
     End Sub
+
 
     ' 当文件拖入窗口时触发，判断是否是文件夹
     Private Sub ListViewPre_DragEnter(sender As Object, e As DragEventArgs) Handles ListViewPre.DragEnter

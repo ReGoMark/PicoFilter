@@ -121,6 +121,15 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ApplyButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        cwAAEnMBjCK5BwAAAJhJREFUOE+tkkESgyAQBHlVbt5zzI98gC/Ma9RGJhlABUu7agp2mZ3aA6HFPH7S
+        rQFGlyj772GakXvC95UbYTXFE/ytCmAYZBDdAaANgMd0xtqH0WEA6BFtnZrD955h2PX4cLlyKfdVwxf1
+        UICvhXzdln5QeEhq96N/cCsEFJLKfM0z9JH8R8IaFmvv4ZEyyhCGBbUP/O8hLHf4AG5JjjonAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <data name="Button6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
@@ -172,7 +181,7 @@
   <data name="moreButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAKCAYAAACuaZ5oAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAAAGtJREFUOE+NkEEKgEAMA/dj3v2bj65UNlDjtBiYg9NsDq6I+IVCtwmUTuY8rkie
+        cQAAEnEB89x6jgAAAGtJREFUOE+NkEEKgEAMA/dj3v2bj65UNlDjtBiYg9NsDq6I+IVCtwmUTuY8rkie
         jx3qOigdjQu/T6Cs+LjwXgdKUQf3X3k57xMoEx9S6DaBkgaUqUN8RPdQqa7rVlDSA8X9NJ6gJBS69cS6
         AdwidDF9ZiPbAAAAAElFTkSuQmCC
 </value>
@@ -180,7 +189,7 @@
   <data name="mnsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAKCAYAAACuaZ5oAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cgAAEnIBXmVb4wAAAG1JREFUOE+dkEEOgCAMBPmYd//mo6slbLLWgaibTAjTsgdaRLxCodkKlPt2XMfd
+        cQAAEnEB89x6jgAAAG1JREFUOE+dkEEOgCAMBPmYd//mo6slbLLWgaibTAjTsgdaRLxCodkKlPt2XMfd
         KdXTrvMQ+UC4V9zNdh2U9FBZ7RAok1qg0GwFSuFFo/9TeYLS8UKn7s1AWflbnqCs+Nf0ywjtVlASCs3m
         RDsBElF0MThvlGkAAAAASUVORK5CYII=
 </value>
