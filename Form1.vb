@@ -1307,7 +1307,7 @@ Public Class Form1
             Form5.toForm1Path = Me.toForm5Path
             Form5.LoadTreeView(Form5.toForm1Path)
         End If
-        optButton.Visible = False
+        optButton.Visible = True
     End Sub
 
     Private Sub PlayNotificationSound2()

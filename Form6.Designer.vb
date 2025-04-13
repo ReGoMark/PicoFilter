@@ -73,7 +73,7 @@ Partial Class Form6
         Me.ListViewPre.Name = "ListViewPre"
         Me.ListViewPre.Size = New System.Drawing.Size(329, 409)
         Me.ListViewPre.TabIndex = 14
-        Me.ToolTip1.SetToolTip(Me.ListViewPre, "拖入文件夹或单击""加载""拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "双击项预览。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.ToolTip1.SetToolTip(Me.ListViewPre, "拖入文件夹或拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "双击项预览。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewPre.UseCompatibleStateImageBehavior = False
         Me.ListViewPre.View = System.Windows.Forms.View.Details
         '
@@ -394,7 +394,7 @@ Partial Class Form6
         Me.loadButton.Size = New System.Drawing.Size(62, 26)
         Me.loadButton.TabIndex = 73
         Me.loadButton.Text = "拉取"
-        Me.ToolTip1.SetToolTip(Me.loadButton, "拉取筛选结果。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "排序完毕后加载筛选结果到此处。")
+        Me.ToolTip1.SetToolTip(Me.loadButton, "从PicoFilter拉取数据。")
         Me.loadButton.UseVisualStyleBackColor = False
         '
         'Button4

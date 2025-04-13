@@ -73,6 +73,7 @@ Partial Class Form5
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
         Me.TextBox1.Size = New System.Drawing.Size(220, 17)
         Me.TextBox1.TabIndex = 50
+        Me.ToolTip1.SetToolTip(Me.TextBox1, "此处显示当前路径；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "要浏览或选择一个位置，请转到PicoFilter。")
         '
         'btnGoUp
         '
@@ -135,6 +136,7 @@ Partial Class Form5
         Me.TreeView1.SelectedImageIndex = 1
         Me.TreeView1.Size = New System.Drawing.Size(328, 399)
         Me.TreeView1.TabIndex = 37
+        Me.ToolTip1.SetToolTip(Me.TreeView1, "拖入文件夹。")
         '
         'ImageList1
         '
@@ -161,7 +163,7 @@ Partial Class Form5
         Me.Button2.Size = New System.Drawing.Size(65, 26)
         Me.Button2.TabIndex = 43
         Me.Button2.Text = "转到"
-        Me.ToolTip1.SetToolTip(Me.Button2, "立即加载当前目录到左侧。")
+        Me.ToolTip1.SetToolTip(Me.Button2, "立即加载当前数据到PicoFilter。")
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Button1

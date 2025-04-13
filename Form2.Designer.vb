@@ -243,7 +243,7 @@ Partial Class Form2
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(84, 20)
         Me.Label4.TabIndex = 49
-        Me.Label4.Text = "版本：1.7.2"
+        Me.Label4.Text = "版本：1.7.3"
         '
         'Label6
         '

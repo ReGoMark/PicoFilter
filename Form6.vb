@@ -292,9 +292,11 @@ Public Class Form6
                     End If
                 Next
                 MessageBox.Show("覆盖文件名已完成。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Form1.optChange("警告：文件名已修改，需要重新加载。", Color.LemonChiffon)
+                If Me.Text = "命名(拉取)" Then
+                    Form1.optChange("警告：文件名已修改，需要重新加载。", Color.LemonChiffon)
+                End If
             End If
-        End If
+            End If
     End Sub
 
     Private Sub moreButton_Click(sender As Object, e As EventArgs) Handles moreButton.Click
