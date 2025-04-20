@@ -25,6 +25,7 @@ Partial Class Form5
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form5))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.btnGoUp = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
@@ -51,12 +52,24 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.ProgressBar1)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.btnGoUp)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(258, 26)
         Me.Panel1.TabIndex = 36
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ProgressBar1.Location = New System.Drawing.Point(-4, 15)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(266, 10)
+        Me.ProgressBar1.TabIndex = 61
+        Me.ToolTip1.SetToolTip(Me.ProgressBar1, "指示读取进度。")
+        Me.ProgressBar1.Visible = False
         '
         'TextBox1
         '
@@ -110,7 +123,7 @@ Partial Class Form5
         Me.CheckBox1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox1.ForeColor = System.Drawing.Color.SlateBlue
         Me.CheckBox1.Image = CType(resources.GetObject("CheckBox1.Image"), System.Drawing.Image)
-        Me.CheckBox1.Location = New System.Drawing.Point(102, 497)
+        Me.CheckBox1.Location = New System.Drawing.Point(173, 497)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox1.TabIndex = 59
@@ -158,7 +171,7 @@ Partial Class Form5
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.Location = New System.Drawing.Point(205, 497)
+        Me.Button2.Location = New System.Drawing.Point(276, 497)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(65, 26)
         Me.Button2.TabIndex = 43
@@ -178,12 +191,14 @@ Partial Class Form5
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button1.Location = New System.Drawing.Point(276, 497)
+        Me.Button1.Location = New System.Drawing.Point(197, 384)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(65, 26)
         Me.Button1.TabIndex = 51
-        Me.Button1.Text = "关闭"
+        Me.Button1.Text = "切换"
+        Me.ToolTip1.SetToolTip(Me.Button1, "点击此处切换文件夹结构。")
         Me.Button1.UseVisualStyleBackColor = False
+        Me.Button1.Visible = False
         '
         'Button5
         '
@@ -197,7 +212,7 @@ Partial Class Form5
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.Location = New System.Drawing.Point(134, 497)
+        Me.Button5.Location = New System.Drawing.Point(205, 497)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(65, 26)
         Me.Button5.TabIndex = 54
@@ -232,8 +247,6 @@ Partial Class Form5
         Me.absbButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.White
-        Me.absbButton.Checked = True
-        Me.absbButton.CheckState = System.Windows.Forms.CheckState.Checked
         Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
@@ -257,6 +270,7 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.GhostWhite
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Controls.Add(Me.sltLabel0)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.sumLblLT)
@@ -301,7 +315,7 @@ Partial Class Form5
         Me.sumLblLT.BackColor = System.Drawing.Color.Lavender
         Me.sumLblLT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.sumLblLT.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.sumLblLT.Location = New System.Drawing.Point(109, 132)
+        Me.sumLblLT.Location = New System.Drawing.Point(-3, 121)
         Me.sumLblLT.Name = "sumLblLT"
         Me.sumLblLT.Size = New System.Drawing.Size(328, 45)
         Me.sumLblLT.TabIndex = 39
@@ -312,7 +326,7 @@ Partial Class Form5
         '
         'Button3
         '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.BackColor = System.Drawing.Color.White
         Me.Button3.CausesValidation = False
         Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -326,7 +340,7 @@ Partial Class Form5
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(65, 26)
         Me.Button3.TabIndex = 60
-        Me.Button3.Text = "萃取"
+        Me.Button3.Text = "提取"
         Me.ToolTip1.SetToolTip(Me.Button3, "遍历当前目录下所有图像文件并复制到指定位置。")
         Me.Button3.UseVisualStyleBackColor = False
         '
@@ -342,7 +356,6 @@ Partial Class Form5
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -372,4 +385,5 @@ Partial Class Form5
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Button3 As Button
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class

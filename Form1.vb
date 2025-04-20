@@ -1298,16 +1298,16 @@ Public Class Form1
         Dim folderPath As String = openText.Text
         If Directory.Exists(folderPath) Then
             加载图片(folderPath)
-
         Else
             MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            optButton.Visible = False
         End If
         If Form5.Visible = True Then
             Form5.TextBox1.Text = Me.toForm5Path
             Form5.toForm1Path = Me.toForm5Path
             Form5.LoadTreeView(Form5.toForm1Path)
         End If
-        optButton.Visible = True
+
     End Sub
 
     Private Sub PlayNotificationSound2()
@@ -1507,7 +1507,7 @@ Public Class Form1
             ' 检查文件是否存在
             If File.Exists(filePath) Then
                 ' 使用资源管理器打开文件所在文件夹并选中文件
-                Process.Start("explorer.exe", $"/select,""{filePath}""")
+                Process.Start("explorer.exe", $"/Select,""{filePath}""")
             Else
                 MessageBox.Show("文件不存在: " & filePath, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If

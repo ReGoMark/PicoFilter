@@ -67,7 +67,7 @@ Public Class Form6
             ListViewPre.Items.Add(newItem)
         Next
         Publicpath = Form1.openText.Text
-        Me.Text = "命名 (拉取)"
+        Me.Text = "命名 | 拉取"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
         'TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub
@@ -292,9 +292,7 @@ Public Class Form6
                     End If
                 Next
                 MessageBox.Show("覆盖文件名已完成。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                If Me.Text = "命名(拉取)" Then
-                    Form1.optChange("警告：文件名已修改，需要重新加载。", Color.LemonChiffon)
-                End If
+                Form1.optChange("警告：文件名已修改，需要重新加载。", Color.LemonChiffon)
             End If
             End If
     End Sub
@@ -531,7 +529,7 @@ Public Class Form6
             End If
         Next
         Publicpath = folderPath
-        Me.Text = "命名 (手动)"
+        Me.Text = "命名 | 手动"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
         'TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub

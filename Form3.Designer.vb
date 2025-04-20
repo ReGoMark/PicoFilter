@@ -24,7 +24,7 @@ Partial Class Form3
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
-        Dim ListViewItem3 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -735,7 +735,7 @@ Partial Class Form3
         Me.ListViewStats.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListViewStats.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.ListViewStats.HideSelection = False
-        Me.ListViewStats.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem3})
+        Me.ListViewStats.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
         Me.ListViewStats.Location = New System.Drawing.Point(340, 22)
         Me.ListViewStats.Name = "ListViewStats"
         Me.ListViewStats.Size = New System.Drawing.Size(329, 477)

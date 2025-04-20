@@ -215,10 +215,6 @@ Public Class Form5
         e.Node.SelectedImageIndex = 1
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
-    End Sub
-
     Private Sub sltLabel0_MouseHover(sender As Object, e As EventArgs) Handles sltLabel0.MouseHover
         If TreeView1.SelectedNode IsNot Nothing Then
             ToolTip1.SetToolTip(sltLabel0, TreeView1.SelectedNode.Text)
@@ -295,9 +291,16 @@ Public Class Form5
                 ' 获取所有图像文件（包括子文件夹）
                 Dim imageExtensions As String() = {".jpg", ".jpeg", ".png", ".bmp", ".gif", ".ico", ".tiff", ".webp", ".cur", ".ani"}
                 Dim filesToCopy = IO.Directory.GetFiles(sourceFolder, "*.*", IO.SearchOption.AllDirectories).
-                                  Where(Function(f) imageExtensions.Contains(IO.Path.GetExtension(f).ToLower()))
+                                  Where(Function(f) imageExtensions.Contains(IO.Path.GetExtension(f).ToLower())).ToList()
 
+                Dim totalFiles As Integer = filesToCopy.Count
                 Dim copiedCount As Integer = 0
+
+                ' 设置 ProgressBar1
+                ProgressBar1.Minimum = 0
+                ProgressBar1.Visible = True
+                ProgressBar1.Maximum = totalFiles
+                ProgressBar1.Value = 0
 
                 ' 复制文件
                 For Each filePath In filesToCopy
@@ -318,14 +321,24 @@ Public Class Form5
                         copiedCount += 1
 
                     Catch ex As Exception
-                        MessageBox.Show($"萃取文件失败：{filePath}" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show($"文件提取失败：{filePath}" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
+                    ' 更新窗口标题
+                    Dim percent As Double = (copiedCount / totalFiles) * 100
+                    Me.Text = $"导视  已完成 {percent.ToString("0.0")}%"
+                    Application.DoEvents() ' 刷新UI
+                    ' 更新进度条
+                    ProgressBar1.Value = copiedCount
+                    Application.DoEvents() ' 让UI及时刷新
                 Next
 
-                MessageBox.Show($"文件萃取完成，共 {copiedCount} 项。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show($"文件提取完成，共 {copiedCount} 项。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ProgressBar1.Visible = False
+                Me.Text = "导视"
             End If
         End Using
     End Sub
+
 
 
 End Class
