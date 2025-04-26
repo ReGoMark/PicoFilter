@@ -1271,7 +1271,7 @@ Public Class Form1
     End Sub
 
     Private Sub 更新标题()
-        Me.Text = verinfo & "  已扫描 " & loadedCount & “ / ” & ProgressBar1.Maximum & “ 项 , ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
+        Me.Text = verinfo & " | 已扫描 " & loadedCount & “ / ” & ProgressBar1.Maximum & “ 项 | ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles stsButton.Click

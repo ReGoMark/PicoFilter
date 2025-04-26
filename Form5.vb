@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports System.Threading
+Imports System.Threading.Tasks
 Public Class Form5
     Public toForm1Path As String
     Public oripath As String
@@ -325,7 +327,7 @@ Public Class Form5
                     End Try
                     ' 更新窗口标题
                     Dim percent As Double = (copiedCount / totalFiles) * 100
-                    Me.Text = $"导视  已完成 {percent.ToString("0.0")}%"
+                    Me.Text = $"导视 | 已完成 {percent.ToString("0.0")}%"
                     Application.DoEvents() ' 刷新UI
                     ' 更新进度条
                     ProgressBar1.Value = copiedCount
@@ -338,7 +340,5 @@ Public Class Form5
             End If
         End Using
     End Sub
-
-
 
 End Class
