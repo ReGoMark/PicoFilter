@@ -31,6 +31,7 @@ Public Class Form1
     Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
+    Private currentItem As ListViewItem = Nothing
 
     ' 加载图片从指定文件夹到左侧
     Public Sub 加载图片(folderPath As String)
@@ -468,7 +469,7 @@ Public Class Form1
         End If
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "可用格式"
-        ToolTip2.SetToolTip(ComboBox2, "允许自定义最多三个标记；” & vbCrLf & “{x}{y}{z} - 标记带有x；y；z的文件；" & vbCrLf & “{}{}{} - 留空，默认填写为「未填写」。")
+        ToolTip2.SetToolTip(ComboBox2, "允许自定义最多三个标记；” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的文件；" & vbCrLf & “{x}{y}{} - 标记带有x, y的文件，不填写请留空。")
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -914,7 +915,7 @@ Public Class Form1
         If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
             Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
             Dim fileName As String = selectedItem.SubItems(2).Text
-            ToolTip1.SetToolTip(sltLblLT, fileName & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
+            ToolTip1.SetToolTip(sltLblLT, $“文件名：{selectedItem.SubItems(2).Text}｛vbCrLf｝分辨率：{selectedItem.SubItems(3).Text} PX｛vbCrLf｝大小：{selectedItem.SubItems(5).Text}｛vbCrLf｝修改日期：{selectedItem.SubItems(6).Text}” & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
         Else
             ToolTip1.SetToolTip(sltLblLT, "单击复制路径。") '如果没有选中项，显示默认提示
         End If
@@ -925,7 +926,7 @@ Public Class Form1
         If ListViewRT.SelectedItems.Count > 0 Then       ' 检查 ListView2 是否有选中项
             Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0) ' 获取 ListView2 选中项的文件名
             Dim fileName As String = selectedItem.SubItems(2).Text
-            ToolTip1.SetToolTip(sltLblRT, fileName & vbCrLf & "单击复制路径。") ' 设置 ToolTip1 的文本
+            ToolTip1.SetToolTip(sltLblRT, $“文件名：{selectedItem.SubItems(2).Text}｛vbCrLf｝分辨率：{selectedItem.SubItems(3).Text} PX｛vbCrLf｝大小：{selectedItem.SubItems(5).Text}｛vbCrLf｝修改日期：{selectedItem.SubItems(6).Text}” & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
         Else
             ToolTip1.SetToolTip(sltLblRT, "单击复制路径。") ' 如果没有选中项，显示默认提示
         End If
@@ -1455,8 +1456,9 @@ Public Class Form1
             If fileName.Contains(mark1) Then invldCount += 1
         Next
         ' 更新无效、存疑和超时文件数量
-        Form3.Label45.Text = $"M1* {invldCount}; M2* {qstCount}; M3* {tmtCount}"
-        lbldStr = $"{mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
+
+        lbldStr = $" {mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
+        Form3.Label45.Text = $"M1↓ {invldCount}, M2↓ {qstCount}, M3↓ {tmtCount}"
     End Sub
 
     ' 在 ListView0
@@ -1468,7 +1470,12 @@ Public Class Form1
                 sltLblLT.Text = $" 复选 {selectedCount} 项"
                 ListViewLT.ContextMenuStrip = ContextMenuStrip2
             Else
-                sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} px  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝ {selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                Label3.Text = $"[{selectedItem.SubItems(0).Text}] " & selectedItem.SubItems(2).Text
+                Label9.Text = "分辨率：" & selectedItem.SubItems(3).Text
+                Label5.Text = "格式：" & selectedItem.SubItems(4).Text
+                Label6.Text = "大小：" & selectedItem.SubItems(5).Text
+                Label8.Text = "修改日期：" & selectedItem.SubItems(6).Text
                 ListViewLT.ContextMenuStrip = ContextMenuStrip1
             End If
         Else
@@ -1486,7 +1493,12 @@ Public Class Form1
                 sltLblRT.Text = $" 复选 {selectedCount} 项"
                 ListViewRT.ContextMenuStrip = ContextMenuStrip5
             Else
-                sltLblRT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} px  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                sltLblRT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝{selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                Label11.Text = $"[{selectedItem.SubItems(0).Text}] " & selectedItem.SubItems(2).Text
+                Label13.Text = "分辨率：" & selectedItem.SubItems(3).Text
+                Label10.Text = "格式：" & selectedItem.SubItems(4).Text
+                Label12.Text = "大小：" & selectedItem.SubItems(5).Text
+                Label14.Text = "修改日期：" & selectedItem.SubItems(6).Text
                 ListViewRT.ContextMenuStrip = ContextMenuStrip3
             End If
         Else
@@ -1969,6 +1981,10 @@ Public Class Form1
         optTimer.Start() ' 启动定时器
     End Sub
 
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+        Form8.Show()
+    End Sub
+
     ' Timer 触发后恢复文本和背景色
     Private Sub optTimer_Tick(sender As Object, e As EventArgs) Handles optTimer.Tick
         optButton.Text = optext
@@ -2038,4 +2054,20 @@ Public Class Form1
             mark3 = "超时"
         End If
     End Sub
+
+    'Private Sub Label3_MouseHover(sender As Object, e As EventArgs) Handles Label3.MouseHover
+    '    If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
+    '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
+    '        Dim fileName As String = selectedItem.SubItems(2).Text
+    '        ToolTip1.SetToolTip(TableLayoutPanel1, $“{selectedItem.SubItems(2).Text}")
+    '    End If
+    'End Sub
+
+    'Private Sub Label11_MouseHover(sender As Object, e As EventArgs) Handles Label11.MouseHover
+    '    If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
+    '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
+    '        Dim fileName As String = selectedItem.SubItems(2).Text
+    '        ToolTip1.SetToolTip(TableLayoutPanel1, $“{selectedItem.SubItems(2).Text}")
+    '    End If
+    'End Sub
 End Class

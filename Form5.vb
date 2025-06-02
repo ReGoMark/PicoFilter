@@ -217,11 +217,11 @@ Public Class Form5
         e.Node.SelectedImageIndex = 1
     End Sub
 
-    Private Sub sltLabel0_MouseHover(sender As Object, e As EventArgs) Handles sltLabel0.MouseHover
-        If TreeView1.SelectedNode IsNot Nothing Then
-            ToolTip1.SetToolTip(sltLabel0, TreeView1.SelectedNode.Text)
-        End If
-    End Sub
+    'Private Sub sltLabel0_MouseHover(sender As Object, e As EventArgs) Handles sltLabel0.MouseHover
+    '    If TreeView1.SelectedNode IsNot Nothing Then
+    '        ToolTip1.SetToolTip(sltLabel0, TreeView1.SelectedNode.Text)
+    '    End If
+    'End Sub
 
     Private Sub TextBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseUp
         ' 判断是否为鼠标中键点击
