@@ -1,0 +1,9 @@
+本项目中所包含的部分音效文件来源于 Microsoft Windows 操作系统，版权归 Microsoft Corporation 所有。
+这些音效文件仅用于学习、研究和非商业用途。其使用不表示本项目与 Microsoft 有任何形式的关联或获得其授权。
+如果您计划将本项目用于商业用途，或将音效用于其他目的，请您务必联系 Microsoft 获得正式许可。
+禁止以任何形式单独分发、销售或再打包这些音效文件。
+
+Some of the sound effects included in this project are originally from the Microsoft Windows operating system and are copyrighted by Microsoft Corporation.
+These files are used solely for educational, research, and non-commercial purposes. Their inclusion does not imply any affiliation with or endorsement by Microsoft.
+If you intend to use this project or the included sounds for commercial purposes or other uses, you must obtain appropriate permission from Microsoft.
+Redistribution, resale, or repackaging of these sound files in any form is strictly prohibited.
