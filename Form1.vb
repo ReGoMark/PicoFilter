@@ -5,10 +5,12 @@ Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
 Imports OfficeOpenXml
 
+
 '考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2,2024/9/26
 
 Public Class Form1
+    Implements IMessageFilter
     Dim loadedCount As Integer '计数已加载文件数量
     Dim loadedTime As Integer '计量扫描文件耗时
     Dim sumSize As Double '计量扫描总大小
@@ -25,13 +27,14 @@ Public Class Form1
     Dim lbldStr As String '存储标记文件的文本
     Dim formattedString As String
     Public toForm5Path As String '传递路径文本到form5
-    Public verinfo As String = "PicoFilter 1.7" '存储版本信息
+    Public verinfo As String = "PicoFilter 2.0" '存储版本信息
     Private optext As String = "操作中心" '存储操作按钮默认文本
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
     Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
     Private currentItem As ListViewItem = Nothing
+    Private Const WM_MOUSEWHEEL As Integer = &H20A    ' WM_MOUSEWHEEL 是鼠标滚轮消息的常量
 
     ' 加载图片从指定文件夹到左侧
     Public Sub 加载图片(folderPath As String)
@@ -434,22 +437,20 @@ Public Class Form1
         ComboBox2.SelectedIndex = 0
         ProgressBar1.Maximum = 0
         loadedCount = 0
-        ListViewRT.Width = 507
-        ListViewLT.Width = 508
-        sltLblRT.Width = 508
-        sumLblRT.Width = 508
+        ListViewRT.Width = 505
+        ListViewLT.Width = 505
+        sltLblRT.Width = 505
+        sumLblRT.Width = 505
 
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
         openButton.AllowDrop = True ' 启用拖放功能
         optButton.Text = optext        '初始化操作中心
         optButton.BackColor = optcolor
         optButton.Visible = False
-        optButton.Location = Panel1.Location
+        'optButton.Location = Panel1.Location
         optTimer.Interval = 3500 '设置定时器间隔为 5 秒
 
         '检测字体安装
-
-
         ' 检测当前日期是否为4月1日
         If DateTime.Now.Month = 4 AndAlso DateTime.Now.Day = 1 Then
             optChange("即使我来时没有爱 / 离别盛载满是情。", Color.MistyRose)
@@ -470,6 +471,8 @@ Public Class Form1
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "可用格式"
         ToolTip2.SetToolTip(ComboBox2, "允许自定义最多三个标记；” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的文件；" & vbCrLf & “{x}{y}{} - 标记带有x, y的文件，不填写请留空。")
+        ' 将当前窗体实例添加为应用程序的消息过滤器
+        Application.AddMessageFilter(Me)
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -1470,7 +1473,7 @@ Public Class Form1
                 sltLblLT.Text = $" 复选 {selectedCount} 项"
                 ListViewLT.ContextMenuStrip = ContextMenuStrip2
             Else
-                sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝ {selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
                 Label3.Text = $"[{selectedItem.SubItems(0).Text}] " & selectedItem.SubItems(2).Text
                 Label9.Text = "分辨率：" & selectedItem.SubItems(3).Text
                 Label5.Text = "格式：" & selectedItem.SubItems(4).Text
@@ -1985,6 +1988,10 @@ Public Class Form1
         Form8.Show()
     End Sub
 
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
     ' Timer 触发后恢复文本和背景色
     Private Sub optTimer_Tick(sender As Object, e As EventArgs) Handles optTimer.Tick
         optButton.Text = optext
@@ -2055,19 +2062,96 @@ Public Class Form1
         End If
     End Sub
 
-    'Private Sub Label3_MouseHover(sender As Object, e As EventArgs) Handles Label3.MouseHover
-    '    If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
-    '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
-    '        Dim fileName As String = selectedItem.SubItems(2).Text
-    '        ToolTip1.SetToolTip(TableLayoutPanel1, $“{selectedItem.SubItems(2).Text}")
-    '    End If
-    'End Sub
+    Private Sub MetroTabControl1_MouseWheel(sender As Object, e As MouseEventArgs) Handles MetroTabControl1.MouseWheel
+        ' 确保控件上有多个标签页
+        If MetroTabControl1.TabCount = 0 Then
+            Return
+        End If
+        ' e.Delta > 0 表示向上滚动 (切换到上一个标签页)
+        ' e.Delta < 0 表示向下滚动 (切换到下一个标签页)
+        If e.Delta > 0 Then
+            ' 计算上一个标签页的索引
+            Dim prevTabIndex As Integer = MetroTabControl1.SelectedIndex - 1
 
-    'Private Sub Label11_MouseHover(sender As Object, e As EventArgs) Handles Label11.MouseHover
-    '    If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
-    '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
-    '        Dim fileName As String = selectedItem.SubItems(2).Text
-    '        ToolTip1.SetToolTip(TableLayoutPanel1, $“{selectedItem.SubItems(2).Text}")
-    '    End If
-    'End Sub
+            ' 如果当前是第一个标签页，则循环到最后一个
+            If prevTabIndex < 0 Then
+                prevTabIndex = MetroTabControl1.TabCount - 1
+            End If
+
+            MetroTabControl1.SelectedIndex = prevTabIndex
+        ElseIf e.Delta < 0 Then
+            ' 计算下一个标签页的索引
+            Dim nextTabIndex As Integer = MetroTabControl1.SelectedIndex + 1
+
+            ' 如果当前是最后一个标签页，则循环到第一个
+            If nextTabIndex >= MetroTabControl1.TabCount Then
+                nextTabIndex = 0
+            End If
+
+            MetroTabControl1.SelectedIndex = nextTabIndex
+        End If
+    End Sub
+
+    Private Sub Form1_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
+        ' 从应用程序中移除消息过滤器
+        Application.RemoveMessageFilter(Me)
+    End Sub
+
+    Public Function PreFilterMessage(ByRef m As Message) As Boolean Implements IMessageFilter.PreFilterMessage
+        If m.Msg = WM_MOUSEWHEEL Then
+            Dim ctl As Control = Control.FromHandle(m.HWnd)
+            If ctl Is Nothing Then
+                Return False
+            End If
+
+            Do While ctl IsNot Nothing
+                If ctl Is MetroTabControl1 Then
+                    ' 安全地获取滚轮滚动值 (delta)
+                    Dim delta As Integer = CType(m.WParam.ToInt64() >> 16, Integer)
+
+                    ' 调用包含双向判断逻辑的切换方法
+                    SwitchTabByDirection(delta)
+
+                    ' 返回 True，表示我们已经处理了此消息，阻止其继续传递
+                    Return True
+                End If
+                ctl = ctl.Parent
+            Loop
+        End If
+
+        ' 对于所有其他消息，返回 False，让它们正常处理
+        Return False
+    End Function
+
+    ''' <summary>
+    ''' 根据滚轮滚动方向 (delta) 来切换标签页。
+    ''' 这个函数包含了完整的双向判断逻辑。
+    ''' </summary>
+    ''' <param name="delta">滚轮滚动值。正数表示向上，负数表示向下。</param>
+    Private Sub SwitchTabByDirection(delta As Integer)
+        If MetroTabControl1.TabCount = 0 Then
+            Return
+        End If
+
+        ' --- 核心方向判断逻辑 ---
+
+        If delta > 0 Then ' 滚轮向上滚动 (e.g., delta 值为 +120)
+            ' 切换到上一个标签页
+            Dim prevTabIndex As Integer = MetroTabControl1.SelectedIndex - 1
+            If prevTabIndex < 0 Then
+                ' 如果已是第一个，则循环到最后一个
+                prevTabIndex = MetroTabControl1.TabCount - 1
+            End If
+            MetroTabControl1.SelectedIndex = prevTabIndex
+
+        ElseIf delta < 0 Then ' 滚轮向下滚动 (e.g., delta 值为 -120)
+            ' 切换到下一个标签页
+            Dim nextTabIndex As Integer = MetroTabControl1.SelectedIndex + 1
+            If nextTabIndex >= MetroTabControl1.TabCount Then
+                ' 如果已是最后一个，则循环到第一个
+                nextTabIndex = 0
+            End If
+            MetroTabControl1.SelectedIndex = nextTabIndex
+        End If
+    End Sub
 End Class

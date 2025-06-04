@@ -1,6 +1,4 @@
 ﻿Imports System.IO
-Imports System.Text.RegularExpressions
-Imports System.Windows.Forms.VisualStyles
 Public Class Form6
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
@@ -294,7 +292,7 @@ Public Class Form6
                 MessageBox.Show("覆盖文件名已完成。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Form1.optChange("警告：文件名已修改，需要重新加载。", Color.LemonChiffon)
             End If
-            End If
+        End If
     End Sub
 
     Private Sub moreButton_Click(sender As Object, e As EventArgs) Handles moreButton.Click
