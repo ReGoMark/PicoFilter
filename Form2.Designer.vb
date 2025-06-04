@@ -210,7 +210,7 @@ Partial Class Form2
         Me.Label10.BackColor = System.Drawing.Color.White
         Me.Label10.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(6, 4)
+        Me.Label10.Location = New System.Drawing.Point(6, 3)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(129, 20)
         Me.Label10.TabIndex = 50

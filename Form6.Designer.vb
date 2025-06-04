@@ -218,7 +218,7 @@ Partial Class Form6
         Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.TextBox1)
-        Me.Panel2.Location = New System.Drawing.Point(89, 104)
+        Me.Panel2.Location = New System.Drawing.Point(99, 193)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(122, 26)
         Me.Panel2.TabIndex = 78
