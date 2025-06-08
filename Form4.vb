@@ -1,6 +1,4 @@
-﻿Imports System.Drawing
-
-Public Class Form4
+﻿Public Class Form4
     ' 存储裁剪后的二维码图像
     Private qrCode As Bitmap = Nothing
 

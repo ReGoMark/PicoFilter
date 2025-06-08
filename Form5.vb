@@ -1,6 +1,4 @@
 ﻿Imports System.IO
-Imports System.Threading
-Imports System.Threading.Tasks
 Public Class Form5
     Public toForm1Path As String
     Public oripath As String
