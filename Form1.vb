@@ -5,16 +5,13 @@ Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
 Imports OfficeOpenXml
 
-
-'考虑到.net支持的图片格式比较常规，像比较冷门的格式完全不支持，如webp等，后续需要添加第三方库才有可能解决。
-'ver 1.2,2024/9/26
+'考虑到.net支持的图片格式只有这五种，像其他图像格式如webp等，后续需要添加第三方库才有可能解决。
+'ver 1.2, 2024/9/26, ver 2.0, 2025/6/10
 
 Public Class Form1
-    Implements IMessageFilter
     Dim loadedCount As Integer '计数已加载文件数量
     Dim loadedTime As Integer '计量扫描文件耗时
     Dim sumSize As Double '计量扫描总大小
-    Dim reslnindex As Integer
     Dim sumRT, sumLT As Double '计量右侧项目总和，左侧项目总和
     Dim jpgRT, jpgLT As Double '计量右侧和左侧jpg数量，下同
     Dim pngRT, pngLT As Double
@@ -25,16 +22,15 @@ Public Class Form1
     Dim mark2 As String = "存疑"
     Dim mark3 As String = "超时"
     Dim lbldStr As String '存储标记文件的文本
-    Dim formattedString As String
+    Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
     Public verinfo As String = "PicoFilter 2.0" '存储版本信息
-    Private optext As String = "操作中心" '存储操作按钮默认文本
+    Private optext As String = "使用提示" '存储操作按钮默认文本
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
-    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
     Private currentItem As ListViewItem = Nothing
-    Private Const WM_MOUSEWHEEL As Integer = &H20A    ' WM_MOUSEWHEEL 是鼠标滚轮消息的常量
+    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
 
     ' 加载图片从指定文件夹到左侧
     Public Sub 加载图片(folderPath As String)
@@ -131,7 +127,7 @@ Public Class Form1
         loadedTime = loadedTimer.ElapsedMilliseconds '加载时间计时器结算
 
         Dim result As New List(Of String)
-        result.Add($" 总计 {files.Count} 项")
+        result.Add($"总计 {files.Count} 项")
         If tagCount > 0 Then result.Add($"标记 {tagCount}")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
@@ -148,8 +144,12 @@ Public Class Form1
             End If
         End If
 
-        If tagCount > 0 Then optChange("提示：存在标记文件 " & tagCount & “ 项。”, Color.AliceBlue)
+        If tagCount > 0 Then
+            optChange("提示：存在标记文件 " & tagCount & “ 项。”, Color.AliceBlue)
+        End If
         sumLblLT.Text = String.Join("  |  ", result)
+
+
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr
 
         ProgressBar1.Visible = False
@@ -306,12 +306,12 @@ Public Class Form1
                     Case ".BMP"
                         bmpCount += 1
                 End Select
-                optChange("提示：文件筛选已完成。", Color.AliceBlue)
+                optChange("提示：文件筛选已完成。", Color.Lavender)
             End If
         Next
 
         Dim result As New List(Of String)
-        result.Add($" 结果 {matchingFileCount} 项")
+        result.Add($"结果 {matchingFileCount} 项")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
@@ -348,50 +348,61 @@ Public Class Form1
 
     ' 处理键盘事件，绑定 F2 键到 openButton
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        If e.KeyCode = Keys.F1 Then
-            Form2.Show()
-        End If
-        If e.KeyCode = Keys.F2 Then
-            openButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F3 Then
-            treeButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F4 Then
-            fltButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F5 Then
-            rfhButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F6 Then
-            addButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F7 Then
-            bksbutton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F8 Then
-            If lockButton.Checked = True Then
-                lockButton.Checked = False
-            Else
-                lockButton.Checked = True
-            End If
-        End If
-        If e.KeyCode = Keys.F9 Then
-            nmButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F10 Then
-            xlsxButton.PerformClick()
-        End If
+        'If e.KeyCode = Keys.F1 Then
+        '    Form2.Show()
+        'End If
+        'If e.KeyCode = Keys.F2 Then
+        '    openButton.PerformClick()
+        'End If
+        'If e.KeyCode = Keys.F3 Then
+        '    treeButton.PerformClick()
+        'End If
+        'If e.KeyCode = Keys.F4 Then
+        '    fltButton.PerformClick()
+        'End If
+        'If e.KeyCode = Keys.F5 Then
+        '    rfhButton.PerformClick()
+        'End If
+        'If e.KeyCode = Keys.F6 Then
+        '    addButton.PerformClick()
+        'End If
+        'If e.KeyCode = Keys.F7 Then
+        '    bksbutton.PerformClick()
+        'End If
+        'If e.KeyCode = Keys.F8 Then
+        '    If lockButton.Checked = True Then
+        '        lockButton.Checked = False
+        '    Else
+        '        lockButton.Checked = True
+        '    End If
+        'End If
+        'If e.KeyCode = Keys.F9 Then
+        '    nmButton.PerformClick()
+        'End If
+        'If e.KeyCode = Keys.F10 Then
+        '    xlsxButton.PerformClick()
+        'End If
 
-        If e.KeyCode = Keys.F11 Then
-            stsButton.PerformClick()
-        End If
-        If e.KeyCode = Keys.F12 Then
-            If plsButton.Checked = True Then
-                plsButton.Checked = False
-            Else
-                plsButton.Checked = True
-            End If
+        'If e.KeyCode = Keys.F11 Then
+        '    stsButton.PerformClick()
+        'End If
+        Select Case e.KeyCode
+            Case Keys.F1
+                SelectTabPage(0)
+            Case Keys.F2
+                SelectTabPage(1)
+            Case Keys.F3
+                SelectTabPage(2)
+            Case Keys.F4
+                SelectTabPage(3)
+            Case Keys.F5
+                SelectTabPage(4)
+        End Select
+    End Sub
+
+    Private Sub SelectTabPage(index As Integer)
+        If index >= 0 AndAlso index < MetroTabControl1.TabPages.Count Then
+            MetroTabControl1.SelectedIndex = index
         End If
     End Sub
 
@@ -433,36 +444,43 @@ Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim screenWidth As Integer = Screen.PrimaryScreen.WorkingArea.Width
+        Dim screenHeight As Integer = Screen.PrimaryScreen.WorkingArea.Height
+        Dim currentUserName As String = Environment.UserName
+        Dim fontName As String = "方正黑体_GBK"
         Me.Text = verinfo
         ComboBox2.SelectedIndex = 0
         ProgressBar1.Maximum = 0
         loadedCount = 0
-        ListViewRT.Width = 505
-        ListViewLT.Width = 505
-        sltLblRT.Width = 505
-        sumLblRT.Width = 505
+        'ListViewRT.Width = 504
+        'ListViewLT.Width = 504
+        'sltLblRT.Width = 505
+        'sumLblRT.Width = 505
 
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
+        Me.MinimumSize = New Size(1066, 630) ' 设置最小窗口大小
         openButton.AllowDrop = True ' 启用拖放功能
         optButton.Text = optext        '初始化操作中心
         optButton.BackColor = optcolor
-        optButton.Visible = False
-        'optButton.Location = Panel1.Location
-        optTimer.Interval = 3500 '设置定时器间隔为 5 秒
+        optTimer.Interval = 5000 '设置定时器间隔为 5 秒
 
         '检测字体安装
         ' 检测当前日期是否为4月1日
         If DateTime.Now.Month = 4 AndAlso DateTime.Now.Day = 1 Then
             optChange("即使我来时没有爱 / 离别盛载满是情。", Color.MistyRose)
         Else
-            Dim fontName As String = "方正黑体_GBK"
             If 确认字体安装(fontName) Then
             Else
                 optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon)
             End If
         End If
 
-        Dim currentUserName As String = Environment.UserName
+        ' 检查分辨率是否小于指定值
+        If screenWidth < 1066 OrElse screenHeight < 630 Then
+            MessageBox.Show("检测到当前监视器分辨率低于 1066x630，程序可能无法正常显示。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            optChange("警告：监视器分辨率过低，程序布局可能出现异常。", Color.MistyRose)
+        End If
+
         If currentUserName = "ReGoMark" Then
             qrButton.Visible = True
         Else
@@ -471,8 +489,6 @@ Public Class Form1
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "可用格式"
         ToolTip2.SetToolTip(ComboBox2, "允许自定义最多三个标记；” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的文件；" & vbCrLf & “{x}{y}{} - 标记带有x, y的文件，不填写请留空。")
-        ' 将当前窗体实例添加为应用程序的消息过滤器
-        Application.AddMessageFilter(Me)
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -664,7 +680,7 @@ Public Class Form1
                 newItem.SubItems.Add(selectedItem.SubItems(5).Text) '标记
                 newItem.SubItems.Add(selectedItem.SubItems(6).Text) '标记
                 ListViewRT.Items.Add(newItem) '
-                newItem.BackColor = Color.GhostWhite '新项目背景色设置
+                newItem.BackColor = Color.Lavender '新项目背景色设置
             End If
         Next
         更新右侧结果标签()
@@ -706,8 +722,11 @@ Public Class Form1
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
         If topButton.Checked = True Then
             TopMost = True
+            topButton.ImageIndex = 1
+
         Else
             TopMost = False
+            topButton.ImageIndex = 0
         End If
     End Sub
 
@@ -1106,12 +1125,14 @@ Public Class Form1
             gifButton.Checked = True
             bmpButton.Checked = True
             icoButton.Checked = True
+            mentionButton.Text = "反选"
         Else
             jpgButton.Checked = False
             pngButton.Checked = False
             gifButton.Checked = False
             bmpButton.Checked = False
             icoButton.Checked = False
+            mentionButton.Text = "全选"
         End If
     End Sub
     '注册tooltip
@@ -1304,7 +1325,7 @@ Public Class Form1
             加载图片(folderPath)
         Else
             MessageBox.Show("路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            optButton.Visible = False
+            'optButton.Visible = False
         End If
         If Form5.Visible = True Then
             Form5.TextBox1.Text = Me.toForm5Path
@@ -1336,16 +1357,6 @@ Public Class Form1
             My.Computer.Audio.Play(My.Resources.INFO, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
-    End Sub
-
-    Private Sub pnlTimer_Tick(sender As Object, e As EventArgs) Handles pnlTimer.Tick
-        ' 仅当 CheckBox4 未选中时，才隐藏 Panel3
-        If Not CheckBox4.Checked Then
-            Panel3.Visible = False
-            plsButton.CheckState = CheckState.Unchecked
-            ' 停止 Timer
-            pnlTimer.Stop()
-        End If
     End Sub
 
     Public Sub 更新统计信息()
@@ -1471,18 +1482,15 @@ Public Class Form1
             Dim selectedCount As Integer = ListViewLT.SelectedItems.Count
             If ListViewLT.SelectedItems.Count > 1 Then
                 sltLblLT.Text = $" 复选 {selectedCount} 项"
+                Label1.Text = $" 复选 {selectedCount} 项"
                 ListViewLT.ContextMenuStrip = ContextMenuStrip2
             Else
-                sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
-                Label3.Text = $"[{selectedItem.SubItems(0).Text}] " & selectedItem.SubItems(2).Text
-                Label9.Text = "分辨率：" & selectedItem.SubItems(3).Text
-                Label5.Text = "格式：" & selectedItem.SubItems(4).Text
-                Label6.Text = "大小：" & selectedItem.SubItems(5).Text
-                Label8.Text = "修改日期：" & selectedItem.SubItems(6).Text
+                sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝{selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                Label1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} 像素  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
                 ListViewLT.ContextMenuStrip = ContextMenuStrip1
             End If
         Else
-            sltLblLT.Text = " 就绪"
+            Label1.Text = "就绪"
             ListViewLT.ContextMenuStrip = ContextMenuStrip1
         End If
     End Sub
@@ -1494,18 +1502,15 @@ Public Class Form1
             Dim selectedCount As Integer = ListViewRT.SelectedItems.Count
             If ListViewRT.SelectedItems.Count > 1 Then
                 sltLblRT.Text = $" 复选 {selectedCount} 项"
+                Label1.Text = $" 复选 {selectedCount} 项"
                 ListViewRT.ContextMenuStrip = ContextMenuStrip5
             Else
                 sltLblRT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝{selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
-                Label11.Text = $"[{selectedItem.SubItems(0).Text}] " & selectedItem.SubItems(2).Text
-                Label13.Text = "分辨率：" & selectedItem.SubItems(3).Text
-                Label10.Text = "格式：" & selectedItem.SubItems(4).Text
-                Label12.Text = "大小：" & selectedItem.SubItems(5).Text
-                Label14.Text = "修改日期：" & selectedItem.SubItems(6).Text
+                Label1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} 像素  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
                 ListViewRT.ContextMenuStrip = ContextMenuStrip3
             End If
         Else
-            sltLblRT.Text = " 等待"
+            Label1.Text = "就绪"
             ListViewRT.ContextMenuStrip = ContextMenuStrip3
         End If
     End Sub
@@ -1767,17 +1772,6 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub CheckBox14_CheckStateChanged(sender As Object, e As EventArgs) Handles plsButton.CheckStateChanged
-        If plsButton.Checked = True Then
-            Panel3.Visible = True
-            '启动 Timer， 3 秒后触发 Tick 事件
-            pnlTimer.Interval = 4000 ' 设置间隔为 3000 毫秒（3 秒）
-            pnlTimer.Start()
-        ElseIf plsButton.Checked = False Then
-            Panel3.Visible = False
-        End If
-    End Sub
-
     Private Sub TextBox2_MouseHover(sender As Object, e As EventArgs) Handles widText.MouseHover
         ToolTip1.SetToolTip(widText, "宽度 " & widText.Text)
     End Sub
@@ -1800,7 +1794,7 @@ Public Class Form1
             Form5.toForm1Path = Me.toForm5Path
             Form5.LoadTreeView(Form5.toForm1Path)
         End If
-        optButton.Visible = False
+        'optButton.Visible = False
     End Sub
 
     Private Sub SplitContainer1_SplitterMoved(sender As Object, e As SplitterEventArgs) Handles SplitContainer1.SplitterMoved
@@ -1987,16 +1981,47 @@ Public Class Form1
     Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
         Form8.Show()
     End Sub
+    Private Sub indexTimer_Tick(sender As Object, e As EventArgs) Handles indexTimer.Tick
+        Dim checkedCount As Integer = 0 ' 统计选中状态的 CheckBox 数量
+        Dim formatCheckedCount As Integer = 0 ' 统计格式 CheckBox 的选中数量
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs)
+        ' 检查每个 CheckBox 的状态
+        If jpgButton.Checked = True Then
+            checkedCount += 1
+        End If
+        If pngButton.Checked = True Then
+            checkedCount += 1
+        End If
+        If bmpButton.Checked = True Then
+            checkedCount += 1
+        End If
+        If icoButton.Checked = True Then
+            checkedCount += 1
+        End If
+        If gifButton.Checked = True Then
+            checkedCount += 1
+        End If
 
+        ' 分辨率相关 CheckBox 的状态
+        If reslnButton.Checked = True Then
+            If volButton.Checked = True Then checkedCount += 1
+            If exButton.Checked = True Then checkedCount += 1
+            If moreButton.Checked = True Then checkedCount += 1
+            If mnsButton.Checked = True Then checkedCount += 1
+        End If
+
+        ' 更新 MetroTabPage2 的标题
+        If checkedCount > 0 Then
+            MetroTabPage2.Text = "筛选 " & checkedCount
+        Else
+            MetroTabPage2.Text = "筛选"
+        End If
     End Sub
 
     ' Timer 触发后恢复文本和背景色
     Private Sub optTimer_Tick(sender As Object, e As EventArgs) Handles optTimer.Tick
         optButton.Text = optext
-        optButton.BackColor = DefaultBackColor
-        optButton.Visible = False
+        optButton.BackColor = optcolor
         optTimer.Stop() ' 停止计时器
     End Sub
 
@@ -2028,21 +2053,6 @@ Public Class Form1
             Me.Size = New Size(1066, 582)
         End If
     End Sub
-    Private Sub indexTimer_Tick(sender As Object, e As EventArgs) Handles indexTimer.Tick
-        reslnindex = 1
-        If reslnButton.Checked = True Then
-            If volButton.Checked = True Then
-                reslnindex += 1
-            End If
-            If mnsButton.Checked = True Or moreButton.Checked = True Then
-                reslnindex += 1
-            End If
-            If exButton.Checked = True Then
-                reslnindex += 1
-            End If
-            plsButton.ImageIndex = reslnindex - 1
-        End If
-    End Sub
 
     Private Sub ComboBox2_TextChanged(sender As Object, e As EventArgs) Handles ComboBox2.TextChanged
         Dim input As String = ComboBox2.Text
@@ -2059,99 +2069,6 @@ Public Class Form1
             mark1 = "无效"
             mark2 = "存疑"
             mark3 = "超时"
-        End If
-    End Sub
-
-    Private Sub MetroTabControl1_MouseWheel(sender As Object, e As MouseEventArgs) Handles MetroTabControl1.MouseWheel
-        ' 确保控件上有多个标签页
-        If MetroTabControl1.TabCount = 0 Then
-            Return
-        End If
-        ' e.Delta > 0 表示向上滚动 (切换到上一个标签页)
-        ' e.Delta < 0 表示向下滚动 (切换到下一个标签页)
-        If e.Delta > 0 Then
-            ' 计算上一个标签页的索引
-            Dim prevTabIndex As Integer = MetroTabControl1.SelectedIndex - 1
-
-            ' 如果当前是第一个标签页，则循环到最后一个
-            If prevTabIndex < 0 Then
-                prevTabIndex = MetroTabControl1.TabCount - 1
-            End If
-
-            MetroTabControl1.SelectedIndex = prevTabIndex
-        ElseIf e.Delta < 0 Then
-            ' 计算下一个标签页的索引
-            Dim nextTabIndex As Integer = MetroTabControl1.SelectedIndex + 1
-
-            ' 如果当前是最后一个标签页，则循环到第一个
-            If nextTabIndex >= MetroTabControl1.TabCount Then
-                nextTabIndex = 0
-            End If
-
-            MetroTabControl1.SelectedIndex = nextTabIndex
-        End If
-    End Sub
-
-    Private Sub Form1_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
-        ' 从应用程序中移除消息过滤器
-        Application.RemoveMessageFilter(Me)
-    End Sub
-
-    Public Function PreFilterMessage(ByRef m As Message) As Boolean Implements IMessageFilter.PreFilterMessage
-        If m.Msg = WM_MOUSEWHEEL Then
-            Dim ctl As Control = Control.FromHandle(m.HWnd)
-            If ctl Is Nothing Then
-                Return False
-            End If
-
-            Do While ctl IsNot Nothing
-                If ctl Is MetroTabControl1 Then
-                    ' 安全地获取滚轮滚动值 (delta)
-                    Dim delta As Integer = CType(m.WParam.ToInt64() >> 16, Integer)
-
-                    ' 调用包含双向判断逻辑的切换方法
-                    SwitchTabByDirection(delta)
-
-                    ' 返回 True，表示我们已经处理了此消息，阻止其继续传递
-                    Return True
-                End If
-                ctl = ctl.Parent
-            Loop
-        End If
-
-        ' 对于所有其他消息，返回 False，让它们正常处理
-        Return False
-    End Function
-
-    ''' <summary>
-    ''' 根据滚轮滚动方向 (delta) 来切换标签页。
-    ''' 这个函数包含了完整的双向判断逻辑。
-    ''' </summary>
-    ''' <param name="delta">滚轮滚动值。正数表示向上，负数表示向下。</param>
-    Private Sub SwitchTabByDirection(delta As Integer)
-        If MetroTabControl1.TabCount = 0 Then
-            Return
-        End If
-
-        ' --- 核心方向判断逻辑 ---
-
-        If delta > 0 Then ' 滚轮向上滚动 (e.g., delta 值为 +120)
-            ' 切换到上一个标签页
-            Dim prevTabIndex As Integer = MetroTabControl1.SelectedIndex - 1
-            If prevTabIndex < 0 Then
-                ' 如果已是第一个，则循环到最后一个
-                prevTabIndex = MetroTabControl1.TabCount - 1
-            End If
-            MetroTabControl1.SelectedIndex = prevTabIndex
-
-        ElseIf delta < 0 Then ' 滚轮向下滚动 (e.g., delta 值为 -120)
-            ' 切换到下一个标签页
-            Dim nextTabIndex As Integer = MetroTabControl1.SelectedIndex + 1
-            If nextTabIndex >= MetroTabControl1.TabCount Then
-                ' 如果已是最后一个，则循环到第一个
-                nextTabIndex = 0
-            End If
-            MetroTabControl1.SelectedIndex = nextTabIndex
         End If
     End Sub
 End Class

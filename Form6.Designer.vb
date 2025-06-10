@@ -71,7 +71,7 @@ Partial Class Form6
         Me.ListViewPre.HideSelection = False
         Me.ListViewPre.Location = New System.Drawing.Point(-1, -1)
         Me.ListViewPre.Name = "ListViewPre"
-        Me.ListViewPre.Size = New System.Drawing.Size(329, 409)
+        Me.ListViewPre.Size = New System.Drawing.Size(329, 427)
         Me.ListViewPre.TabIndex = 14
         Me.ToolTip1.SetToolTip(Me.ListViewPre, "拖入文件夹或拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "双击项预览。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewPre.UseCompatibleStateImageBehavior = False
@@ -110,7 +110,7 @@ Partial Class Form6
         Me.ApplyButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ApplyButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.ApplyButton.Image = CType(resources.GetObject("ApplyButton.Image"), System.Drawing.Image)
-        Me.ApplyButton.Location = New System.Drawing.Point(173, 497)
+        Me.ApplyButton.Location = New System.Drawing.Point(173, 515)
         Me.ApplyButton.Name = "ApplyButton"
         Me.ApplyButton.Size = New System.Drawing.Size(26, 26)
         Me.ApplyButton.TabIndex = 57
@@ -169,7 +169,7 @@ Partial Class Form6
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.Location = New System.Drawing.Point(276, 497)
+        Me.Button3.Location = New System.Drawing.Point(276, 515)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(65, 26)
         Me.Button3.TabIndex = 58
@@ -192,7 +192,7 @@ Partial Class Form6
         Me.Panel1.Controls.Add(Me.ListViewPre)
         Me.Panel1.Location = New System.Drawing.Point(12, 44)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(329, 447)
+        Me.Panel1.Size = New System.Drawing.Size(329, 465)
         Me.Panel1.TabIndex = 60
         '
         'TextBoxStart
@@ -201,7 +201,7 @@ Partial Class Form6
         Me.TextBoxStart.BackColor = System.Drawing.Color.GhostWhite
         Me.TextBoxStart.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxStart.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.TextBoxStart.Location = New System.Drawing.Point(192, 416)
+        Me.TextBoxStart.Location = New System.Drawing.Point(192, 434)
         Me.TextBoxStart.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.TextBoxStart.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.TextBoxStart.Name = "TextBoxStart"
@@ -254,7 +254,7 @@ Partial Class Form6
         Me.Button6.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Button6.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
-        Me.Button6.Location = New System.Drawing.Point(297, 414)
+        Me.Button6.Location = New System.Drawing.Point(297, 432)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(26, 26)
         Me.Button6.TabIndex = 87
@@ -275,7 +275,7 @@ Partial Class Form6
         Me.Button5.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
-        Me.Button5.Location = New System.Drawing.Point(265, 414)
+        Me.Button5.Location = New System.Drawing.Point(265, 432)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(26, 26)
         Me.Button5.TabIndex = 86
@@ -290,7 +290,7 @@ Partial Class Form6
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"(无)", "{index}_{date}", "{0index}_{0date}", "{index}_{date}_{name}", "{0index}_{0date}_{name}", "{date}_{index}", "{0date}_{0index}", "{date}_{index}_{name}", "{0date}_{0index}_{name}"})
-        Me.ComboBox1.Location = New System.Drawing.Point(5, 415)
+        Me.ComboBox1.Location = New System.Drawing.Point(5, 433)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(181, 24)
         Me.ComboBox1.TabIndex = 88
@@ -329,7 +329,7 @@ Partial Class Form6
         Me.topButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.topButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.topButton.Image = CType(resources.GetObject("topButton.Image"), System.Drawing.Image)
-        Me.topButton.Location = New System.Drawing.Point(44, 497)
+        Me.topButton.Location = New System.Drawing.Point(44, 515)
         Me.topButton.Name = "topButton"
         Me.topButton.Size = New System.Drawing.Size(26, 26)
         Me.topButton.TabIndex = 69
@@ -351,7 +351,7 @@ Partial Class Form6
         Me.absbButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.absbButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.absbButton.Image = CType(resources.GetObject("absbButton.Image"), System.Drawing.Image)
-        Me.absbButton.Location = New System.Drawing.Point(12, 497)
+        Me.absbButton.Location = New System.Drawing.Point(12, 515)
         Me.absbButton.Name = "absbButton"
         Me.absbButton.Size = New System.Drawing.Size(26, 26)
         Me.absbButton.TabIndex = 68
@@ -409,7 +409,7 @@ Partial Class Form6
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button4.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button4.Location = New System.Drawing.Point(205, 497)
+        Me.Button4.Location = New System.Drawing.Point(205, 515)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(65, 26)
         Me.Button4.TabIndex = 74
@@ -470,7 +470,7 @@ Partial Class Form6
         Me.Button7.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button7.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.Location = New System.Drawing.Point(141, 497)
+        Me.Button7.Location = New System.Drawing.Point(141, 515)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(26, 26)
         Me.Button7.TabIndex = 77
@@ -482,7 +482,7 @@ Partial Class Form6
         Me.AllowDrop = True
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(353, 535)
+        Me.ClientSize = New System.Drawing.Size(353, 553)
         Me.Controls.Add(Me.bksbutton)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.mnsButton)

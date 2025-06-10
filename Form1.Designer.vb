@@ -74,8 +74,6 @@ Partial Class Form1
         Me.还原列宽OToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.copyButton = New System.Windows.Forms.Button()
         Me.sltLblLT = New System.Windows.Forms.Label()
-        Me.sumLblLT = New System.Windows.Forms.Label()
-        Me.sumLblRT = New System.Windows.Forms.Label()
         Me.sltLblRT = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.dvdButton = New System.Windows.Forms.Button()
@@ -83,6 +81,7 @@ Partial Class Form1
         Me.addButton = New System.Windows.Forms.Button()
         Me.bksbutton = New System.Windows.Forms.Button()
         Me.topButton = New System.Windows.Forms.CheckBox()
+        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.xlsxButton = New System.Windows.Forms.Button()
         Me.infoButton = New System.Windows.Forms.Button()
         Me.icoButton = New System.Windows.Forms.CheckBox()
@@ -96,35 +95,18 @@ Partial Class Form1
         Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.plsButton = New System.Windows.Forms.CheckBox()
-        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.invCheck = New System.Windows.Forms.CheckBox()
+        Me.setting = New System.Windows.Forms.Button()
         Me.impCheck = New System.Windows.Forms.CheckBox()
         Me.tmtCheck = New System.Windows.Forms.CheckBox()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.setting = New System.Windows.Forms.Button()
-        Me.CheckBox_LoadThumbnails = New System.Windows.Forms.CheckBox()
-        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.qrButton = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.CheckBox_LoadThumbnails = New System.Windows.Forms.CheckBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.nmButton = New System.Windows.Forms.Button()
         Me.volButton = New System.Windows.Forms.CheckBox()
         Me.mnsButton = New System.Windows.Forms.CheckBox()
@@ -142,12 +124,16 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.sumLblLT = New System.Windows.Forms.Label()
+        Me.sumLblRT = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.pnlTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip5 = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -164,12 +150,21 @@ Partial Class Form1
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
+        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.MetroTabPage5 = New MetroFramework.Controls.MetroTabPage()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox10 = New System.Windows.Forms.PictureBox()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,10 +173,6 @@ Partial Class Form1
         Me.SplitContainer1.SuspendLayout()
         Me.ContextMenuStrip4.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
-        Me.Panel5.SuspendLayout()
-        Me.TableLayoutPanel2.SuspendLayout()
-        Me.Panel6.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -202,6 +193,11 @@ Partial Class Form1
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
+        Me.Panel9.SuspendLayout()
+        Me.TableLayoutPanel3.SuspendLayout()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'openText
@@ -221,22 +217,20 @@ Partial Class Form1
         '
         Me.ListViewLT.AllowColumnReorder = True
         Me.ListViewLT.AllowDrop = True
-        Me.ListViewLT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListViewLT.BackColor = System.Drawing.Color.White
         Me.ListViewLT.BackgroundImageTiled = True
         Me.ListViewLT.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ListViewLT.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader5, Me.ColumnHeader11, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader13})
         Me.ListViewLT.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.ListViewLT.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListViewLT.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(238, Byte))
         Me.ListViewLT.ForeColor = System.Drawing.Color.Black
         Me.ListViewLT.FullRowSelect = True
         Me.ListViewLT.HideSelection = False
-        Me.ListViewLT.Location = New System.Drawing.Point(-1, -1)
+        Me.ListViewLT.Location = New System.Drawing.Point(0, 0)
         Me.ListViewLT.Name = "ListViewLT"
         Me.ListViewLT.ShowGroups = False
-        Me.ListViewLT.Size = New System.Drawing.Size(504, 392)
+        Me.ListViewLT.Size = New System.Drawing.Size(502, 408)
         Me.ListViewLT.TabIndex = 12
         Me.ToolTip1.SetToolTip(Me.ListViewLT, "双击项预览；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewLT.UseCompatibleStateImageBehavior = False
@@ -274,7 +268,7 @@ Partial Class Form1
         '
         Me.ColumnHeader9.Text = "大小"
         Me.ColumnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.ColumnHeader9.Width = 90
+        Me.ColumnHeader9.Width = 87
         '
         'ColumnHeader13
         '
@@ -420,7 +414,7 @@ Partial Class Form1
         Me.gifButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.gifButton.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.gifButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.gifButton.Location = New System.Drawing.Point(416, 9)
+        Me.gifButton.Location = New System.Drawing.Point(415, 9)
         Me.gifButton.Name = "gifButton"
         Me.gifButton.Size = New System.Drawing.Size(45, 26)
         Me.gifButton.TabIndex = 20
@@ -465,7 +459,7 @@ Partial Class Form1
         Me.pngButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.pngButton.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.pngButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.pngButton.Location = New System.Drawing.Point(212, 9)
+        Me.pngButton.Location = New System.Drawing.Point(211, 9)
         Me.pngButton.Name = "pngButton"
         Me.pngButton.Size = New System.Drawing.Size(45, 26)
         Me.pngButton.TabIndex = 19
@@ -486,7 +480,7 @@ Partial Class Form1
         Me.jpgButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.jpgButton.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.jpgButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.jpgButton.Location = New System.Drawing.Point(263, 9)
+        Me.jpgButton.Location = New System.Drawing.Point(262, 9)
         Me.jpgButton.Name = "jpgButton"
         Me.jpgButton.Size = New System.Drawing.Size(45, 26)
         Me.jpgButton.TabIndex = 18
@@ -517,20 +511,19 @@ Partial Class Form1
         'ListViewRT
         '
         Me.ListViewRT.AllowColumnReorder = True
-        Me.ListViewRT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListViewRT.BackColor = System.Drawing.Color.White
         Me.ListViewRT.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ListViewRT.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader12, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader10, Me.ColumnHeader14})
         Me.ListViewRT.ContextMenuStrip = Me.ContextMenuStrip3
+        Me.ListViewRT.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListViewRT.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(238, Byte))
         Me.ListViewRT.ForeColor = System.Drawing.Color.Black
         Me.ListViewRT.FullRowSelect = True
         Me.ListViewRT.HideSelection = False
-        Me.ListViewRT.Location = New System.Drawing.Point(-1, -1)
+        Me.ListViewRT.Location = New System.Drawing.Point(0, 0)
         Me.ListViewRT.Name = "ListViewRT"
-        Me.ListViewRT.Size = New System.Drawing.Size(501, 392)
+        Me.ListViewRT.ShowGroups = False
+        Me.ListViewRT.Size = New System.Drawing.Size(504, 408)
         Me.ListViewRT.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListViewRT, "双击项预览；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewRT.UseCompatibleStateImageBehavior = False
@@ -709,55 +702,25 @@ Partial Class Form1
         Me.sltLblLT.BackColor = System.Drawing.Color.White
         Me.sltLblLT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.sltLblLT.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.sltLblLT.Location = New System.Drawing.Point(-4, 37)
+        Me.sltLblLT.Location = New System.Drawing.Point(77, 4)
         Me.sltLblLT.Name = "sltLblLT"
-        Me.sltLblLT.Size = New System.Drawing.Size(507, 45)
+        Me.sltLblLT.Size = New System.Drawing.Size(155, 45)
         Me.sltLblLT.TabIndex = 15
         Me.sltLblLT.Text = " 就绪"
         Me.sltLblLT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.ToolTip1.SetToolTip(Me.sltLblLT, "单击复制路径。")
         Me.sltLblLT.Visible = False
         '
-        'sumLblLT
-        '
-        Me.sumLblLT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.sumLblLT.BackColor = System.Drawing.Color.White
-        Me.sumLblLT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.sumLblLT.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.sumLblLT.Location = New System.Drawing.Point(-1, 439)
-        Me.sumLblLT.Name = "sumLblLT"
-        Me.sumLblLT.Size = New System.Drawing.Size(507, 45)
-        Me.sumLblLT.TabIndex = 14
-        Me.sumLblLT.Text = " 总计"
-        Me.sumLblLT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ToolTip1.SetToolTip(Me.sumLblLT, "全部数据总览。")
-        '
-        'sumLblRT
-        '
-        Me.sumLblRT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.sumLblRT.BackColor = System.Drawing.Color.White
-        Me.sumLblRT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.sumLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.sumLblRT.Location = New System.Drawing.Point(-2, 438)
-        Me.sumLblRT.Name = "sumLblRT"
-        Me.sumLblRT.Size = New System.Drawing.Size(502, 45)
-        Me.sumLblRT.TabIndex = 16
-        Me.sumLblRT.Text = " 结果"
-        Me.sumLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ToolTip1.SetToolTip(Me.sumLblRT, "筛选结果总览。")
-        '
         'sltLblRT
         '
         Me.sltLblRT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.sltLblRT.BackColor = System.Drawing.Color.Silver
+        Me.sltLblRT.BackColor = System.Drawing.Color.White
         Me.sltLblRT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.sltLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.sltLblRT.Location = New System.Drawing.Point(6, 64)
+        Me.sltLblRT.Location = New System.Drawing.Point(10, 134)
         Me.sltLblRT.Name = "sltLblRT"
-        Me.sltLblRT.Size = New System.Drawing.Size(499, 45)
+        Me.sltLblRT.Size = New System.Drawing.Size(72, 19)
         Me.sltLblRT.TabIndex = 17
         Me.sltLblRT.Text = " 等待"
         Me.sltLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -804,6 +767,7 @@ Partial Class Form1
         '
         'addButton
         '
+        Me.addButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.addButton.BackColor = System.Drawing.Color.White
         Me.addButton.CausesValidation = False
         Me.addButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -826,6 +790,7 @@ Partial Class Form1
         '
         'bksbutton
         '
+        Me.bksbutton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.bksbutton.BackColor = System.Drawing.Color.White
         Me.bksbutton.CausesValidation = False
         Me.bksbutton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -848,6 +813,7 @@ Partial Class Form1
         '
         'topButton
         '
+        Me.topButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.topButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.topButton.BackColor = System.Drawing.Color.White
         Me.topButton.CausesValidation = False
@@ -858,8 +824,9 @@ Partial Class Form1
         Me.topButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.topButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.topButton.ForeColor = System.Drawing.Color.SlateBlue
-        Me.topButton.Image = CType(resources.GetObject("topButton.Image"), System.Drawing.Image)
-        Me.topButton.Location = New System.Drawing.Point(690, 2)
+        Me.topButton.ImageIndex = 0
+        Me.topButton.ImageList = Me.ImageList2
+        Me.topButton.Location = New System.Drawing.Point(691, 2)
         Me.topButton.Name = "topButton"
         Me.topButton.Size = New System.Drawing.Size(26, 26)
         Me.topButton.TabIndex = 11
@@ -867,6 +834,13 @@ Partial Class Form1
         Me.topButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.topButton, "置顶窗体")
         Me.topButton.UseVisualStyleBackColor = False
+        '
+        'ImageList2
+        '
+        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList2.Images.SetKeyName(0, "top.ico")
+        Me.ImageList2.Images.SetKeyName(1, "topped.ico")
         '
         'xlsxButton
         '
@@ -892,8 +866,6 @@ Partial Class Form1
         '
         'infoButton
         '
-        Me.infoButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.infoButton.BackColor = System.Drawing.Color.White
         Me.infoButton.CausesValidation = False
         Me.infoButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -904,7 +876,7 @@ Partial Class Form1
         Me.infoButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.infoButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.infoButton.Image = CType(resources.GetObject("infoButton.Image"), System.Drawing.Image)
-        Me.infoButton.Location = New System.Drawing.Point(605, 9)
+        Me.infoButton.Location = New System.Drawing.Point(944, 9)
         Me.infoButton.Name = "infoButton"
         Me.infoButton.Size = New System.Drawing.Size(72, 26)
         Me.infoButton.TabIndex = 10
@@ -926,7 +898,7 @@ Partial Class Form1
         Me.icoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.icoButton.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.icoButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.icoButton.Location = New System.Drawing.Point(365, 9)
+        Me.icoButton.Location = New System.Drawing.Point(364, 9)
         Me.icoButton.Name = "icoButton"
         Me.icoButton.Size = New System.Drawing.Size(45, 26)
         Me.icoButton.TabIndex = 23
@@ -947,7 +919,7 @@ Partial Class Form1
         Me.reslnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.reslnButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.reslnButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.reslnButton.Location = New System.Drawing.Point(491, 9)
+        Me.reslnButton.Location = New System.Drawing.Point(490, 9)
         Me.reslnButton.Name = "reslnButton"
         Me.reslnButton.Size = New System.Drawing.Size(70, 26)
         Me.reslnButton.TabIndex = 25
@@ -968,7 +940,7 @@ Partial Class Form1
         Me.bmpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.bmpButton.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.bmpButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.bmpButton.Location = New System.Drawing.Point(314, 9)
+        Me.bmpButton.Location = New System.Drawing.Point(313, 9)
         Me.bmpButton.Name = "bmpButton"
         Me.bmpButton.Size = New System.Drawing.Size(45, 26)
         Me.bmpButton.TabIndex = 24
@@ -992,7 +964,7 @@ Partial Class Form1
         Me.mentionButton.Image = CType(resources.GetObject("mentionButton.Image"), System.Drawing.Image)
         Me.mentionButton.Location = New System.Drawing.Point(133, 9)
         Me.mentionButton.Name = "mentionButton"
-        Me.mentionButton.Size = New System.Drawing.Size(73, 26)
+        Me.mentionButton.Size = New System.Drawing.Size(72, 26)
         Me.mentionButton.TabIndex = 28
         Me.mentionButton.Text = "全选"
         Me.mentionButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1002,8 +974,6 @@ Partial Class Form1
         '
         'exButton
         '
-        Me.exButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.exButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.exButton.BackColor = System.Drawing.Color.White
         Me.exButton.CausesValidation = False
@@ -1015,7 +985,7 @@ Partial Class Form1
         Me.exButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.exButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.exButton.Image = CType(resources.GetObject("exButton.Image"), System.Drawing.Image)
-        Me.exButton.Location = New System.Drawing.Point(763, 9)
+        Me.exButton.Location = New System.Drawing.Point(762, 9)
         Me.exButton.Name = "exButton"
         Me.exButton.Size = New System.Drawing.Size(73, 26)
         Me.exButton.TabIndex = 29
@@ -1034,32 +1004,23 @@ Partial Class Form1
         Me.SplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SplitContainer1.ContextMenuStrip = Me.ContextMenuStrip4
         Me.SplitContainer1.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.SplitContainer1.Location = New System.Drawing.Point(16, 112)
+        Me.SplitContainer1.Location = New System.Drawing.Point(16, 102)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.Color.White
-        Me.SplitContainer1.Panel1.Controls.Add(Me.sltLblLT)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Panel3)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.TableLayoutPanel1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ListViewLT)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.sumLblLT)
         '
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.Color.White
-        Me.SplitContainer1.Panel2.Controls.Add(Me.Label1)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.sltLblRT)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.TableLayoutPanel2)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.sumLblRT)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Panel3)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label7)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.setting)
         Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox_LoadThumbnails)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox8)
         Me.SplitContainer1.Panel2.Controls.Add(Me.ListViewRT)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1016, 485)
-        Me.SplitContainer1.SplitterDistance = 505
+        Me.SplitContainer1.Size = New System.Drawing.Size(1016, 410)
+        Me.SplitContainer1.SplitterDistance = 504
         Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 31
         Me.ToolTip1.SetToolTip(Me.SplitContainer1, "鼠标中键平均分配。")
@@ -1111,49 +1072,22 @@ Partial Class Form1
         Me.Panel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel3.Controls.Add(Me.plsButton)
         Me.Panel3.Controls.Add(Me.Button2)
+        Me.Panel3.Controls.Add(Me.sltLblRT)
+        Me.Panel3.Controls.Add(Me.sltLblLT)
         Me.Panel3.Controls.Add(Me.Button3)
         Me.Panel3.Controls.Add(Me.CheckBox4)
         Me.Panel3.Controls.Add(Me.invCheck)
+        Me.Panel3.Controls.Add(Me.setting)
         Me.Panel3.Controls.Add(Me.impCheck)
         Me.Panel3.Controls.Add(Me.tmtCheck)
-        Me.Panel3.Location = New System.Drawing.Point(201, 99)
+        Me.Panel3.Controls.Add(Me.ComboBox2)
+        Me.Panel3.Controls.Add(Me.qrButton)
+        Me.Panel3.Location = New System.Drawing.Point(115, 118)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(265, 72)
+        Me.Panel3.Size = New System.Drawing.Size(265, 155)
         Me.Panel3.TabIndex = 44
         Me.Panel3.Visible = False
-        '
-        'plsButton
-        '
-        Me.plsButton.Appearance = System.Windows.Forms.Appearance.Button
-        Me.plsButton.BackColor = System.Drawing.Color.White
-        Me.plsButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.plsButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
-        Me.plsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.plsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.plsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.plsButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.plsButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.plsButton.ImageIndex = 0
-        Me.plsButton.ImageList = Me.ImageList2
-        Me.plsButton.Location = New System.Drawing.Point(146, 1)
-        Me.plsButton.Name = "plsButton"
-        Me.plsButton.Size = New System.Drawing.Size(26, 26)
-        Me.plsButton.TabIndex = 43
-        Me.plsButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.plsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.plsButton, "展开更多功能菜单；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如遇到问题，请按 F1 键。")
-        Me.plsButton.UseVisualStyleBackColor = False
-        '
-        'ImageList2
-        '
-        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList2.Images.SetKeyName(0, "less.ico")
-        Me.ImageList2.Images.SetKeyName(1, "1.ico")
-        Me.ImageList2.Images.SetKeyName(2, "2.ico")
-        Me.ImageList2.Images.SetKeyName(3, "3.ico")
         '
         'Button2
         '
@@ -1168,7 +1102,7 @@ Partial Class Form1
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.SlateBlue
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(109, 35)
+        Me.Button2.Location = New System.Drawing.Point(109, 76)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(26, 26)
         Me.Button2.TabIndex = 74
@@ -1190,7 +1124,7 @@ Partial Class Form1
         Me.Button3.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.SlateBlue
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.Location = New System.Drawing.Point(77, 35)
+        Me.Button3.Location = New System.Drawing.Point(77, 76)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(26, 26)
         Me.Button3.TabIndex = 75
@@ -1214,9 +1148,9 @@ Partial Class Form1
         Me.CheckBox4.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox4.ForeColor = System.Drawing.Color.SlateBlue
         Me.CheckBox4.Image = CType(resources.GetObject("CheckBox4.Image"), System.Drawing.Image)
-        Me.CheckBox4.Location = New System.Drawing.Point(178, 3)
+        Me.CheckBox4.Location = New System.Drawing.Point(141, 54)
         Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(38, 26)
+        Me.CheckBox4.Size = New System.Drawing.Size(91, 26)
         Me.CheckBox4.TabIndex = 72
         Me.CheckBox4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.CheckBox4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -1235,7 +1169,7 @@ Partial Class Form1
         Me.invCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.invCheck.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.invCheck.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.invCheck.Location = New System.Drawing.Point(13, 35)
+        Me.invCheck.Location = New System.Drawing.Point(13, 76)
         Me.invCheck.Name = "invCheck"
         Me.invCheck.Size = New System.Drawing.Size(58, 26)
         Me.invCheck.TabIndex = 46
@@ -1244,6 +1178,30 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.invCheck, "也添加标记为""无效""的文件。")
         Me.invCheck.UseVisualStyleBackColor = False
         Me.invCheck.Visible = False
+        '
+        'setting
+        '
+        Me.setting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.setting.BackColor = System.Drawing.Color.White
+        Me.setting.CausesValidation = False
+        Me.setting.Enabled = False
+        Me.setting.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.setting.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.setting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.setting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.setting.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.setting.ForeColor = System.Drawing.Color.SlateBlue
+        Me.setting.Image = CType(resources.GetObject("setting.Image"), System.Drawing.Image)
+        Me.setting.Location = New System.Drawing.Point(13, 12)
+        Me.setting.Name = "setting"
+        Me.setting.Size = New System.Drawing.Size(58, 26)
+        Me.setting.TabIndex = 43
+        Me.setting.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip1.SetToolTip(Me.setting, "设定")
+        Me.setting.UseVisualStyleBackColor = False
+        Me.setting.Visible = False
         '
         'impCheck
         '
@@ -1257,7 +1215,7 @@ Partial Class Form1
         Me.impCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.impCheck.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.impCheck.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.impCheck.Location = New System.Drawing.Point(13, 3)
+        Me.impCheck.Location = New System.Drawing.Point(13, 44)
         Me.impCheck.Name = "impCheck"
         Me.impCheck.Size = New System.Drawing.Size(58, 26)
         Me.impCheck.TabIndex = 44
@@ -1279,7 +1237,7 @@ Partial Class Form1
         Me.tmtCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.tmtCheck.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.tmtCheck.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.tmtCheck.Location = New System.Drawing.Point(77, 3)
+        Me.tmtCheck.Location = New System.Drawing.Point(77, 44)
         Me.tmtCheck.Name = "tmtCheck"
         Me.tmtCheck.Size = New System.Drawing.Size(58, 26)
         Me.tmtCheck.TabIndex = 45
@@ -1289,224 +1247,55 @@ Partial Class Form1
         Me.tmtCheck.UseVisualStyleBackColor = False
         Me.tmtCheck.Visible = False
         '
-        'TableLayoutPanel1
+        'ComboBox2
         '
-        Me.TableLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.ComboBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.Controls.Add(Me.Label5, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Panel5, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label6, 2, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label9, 1, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label8, 0, 1)
-        Me.TableLayoutPanel1.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TableLayoutPanel1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(-1, 397)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(505, 42)
-        Me.TableLayoutPanel1.TabIndex = 16
+        Me.ComboBox2.BackColor = System.Drawing.Color.White
+        Me.ComboBox2.CausesValidation = False
+        Me.ComboBox2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Items.AddRange(New Object() {"{无效}{存疑}{超时}"})
+        Me.ComboBox2.Location = New System.Drawing.Point(13, 98)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(219, 24)
+        Me.ComboBox2.TabIndex = 89
+        Me.ComboBox2.Visible = False
         '
-        'Label5
+        'qrButton
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label5.Location = New System.Drawing.Point(341, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(161, 21)
-        Me.Label5.TabIndex = 1
-        Me.Label5.Text = "格式："
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Panel5
-        '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.Panel5, 2)
-        Me.Panel5.Controls.Add(Me.Label3)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(3, 3)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(332, 15)
-        Me.Panel5.TabIndex = 0
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label3.Location = New System.Drawing.Point(0, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(52, 16)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "名称："
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label6.Location = New System.Drawing.Point(341, 21)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(161, 21)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "大小："
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label9.Location = New System.Drawing.Point(91, 21)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(244, 21)
-        Me.Label9.TabIndex = 4
-        Me.Label9.Text = "分辨率："
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label8.Location = New System.Drawing.Point(3, 21)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(82, 21)
-        Me.Label8.TabIndex = 3
-        Me.Label8.Text = "修改日期："
-        '
-        'Label1
-        '
-        Me.Label1.BackColor = System.Drawing.SystemColors.Highlight
-        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label1.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(173, 295)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(199, 51)
-        Me.Label1.TabIndex = 23
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Visible = False
-        '
-        'TableLayoutPanel2
-        '
-        Me.TableLayoutPanel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.ColumnCount = 3
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.Controls.Add(Me.Label10, 2, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Panel6, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label12, 2, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label13, 1, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label14, 0, 1)
-        Me.TableLayoutPanel2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TableLayoutPanel2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(-1, 397)
-        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 2
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(501, 42)
-        Me.TableLayoutPanel2.TabIndex = 76
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label10.Location = New System.Drawing.Point(341, 0)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(157, 21)
-        Me.Label10.TabIndex = 1
-        Me.Label10.Text = "格式："
-        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Panel6
-        '
-        Me.TableLayoutPanel2.SetColumnSpan(Me.Panel6, 2)
-        Me.Panel6.Controls.Add(Me.Label11)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(3, 3)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(332, 15)
-        Me.Panel6.TabIndex = 0
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label11.Location = New System.Drawing.Point(0, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(52, 16)
-        Me.Label11.TabIndex = 0
-        Me.Label11.Text = "名称："
-        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label12.Location = New System.Drawing.Point(341, 21)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(157, 21)
-        Me.Label12.TabIndex = 2
-        Me.Label12.Text = "大小："
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label13.Location = New System.Drawing.Point(91, 21)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(244, 21)
-        Me.Label13.TabIndex = 4
-        Me.Label13.Text = "分辨率："
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label14.Location = New System.Drawing.Point(3, 21)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(82, 21)
-        Me.Label14.TabIndex = 3
-        Me.Label14.Text = "修改日期："
+        Me.qrButton.BackColor = System.Drawing.Color.White
+        Me.qrButton.CausesValidation = False
+        Me.qrButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.qrButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.qrButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.qrButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.qrButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.qrButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.qrButton.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.qrButton.Image = CType(resources.GetObject("qrButton.Image"), System.Drawing.Image)
+        Me.qrButton.Location = New System.Drawing.Point(141, 86)
+        Me.qrButton.Name = "qrButton"
+        Me.qrButton.Size = New System.Drawing.Size(91, 26)
+        Me.qrButton.TabIndex = 47
+        Me.qrButton.Text = "二维码"
+        Me.qrButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.qrButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.qrButton, "QRCode裁切工具。")
+        Me.qrButton.UseVisualStyleBackColor = False
+        Me.qrButton.Visible = False
         '
         'Label7
         '
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-388, 293)
+        Me.Label7.Location = New System.Drawing.Point(-451, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
         Me.Label7.Text = "配色："
         Me.Label7.Visible = False
-        '
-        'setting
-        '
-        Me.setting.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.setting.BackColor = System.Drawing.Color.White
-        Me.setting.CausesValidation = False
-        Me.setting.Enabled = False
-        Me.setting.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.setting.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
-        Me.setting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.setting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.setting.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.setting.ForeColor = System.Drawing.Color.SlateBlue
-        Me.setting.Image = CType(resources.GetObject("setting.Image"), System.Drawing.Image)
-        Me.setting.Location = New System.Drawing.Point(3, 191)
-        Me.setting.Name = "setting"
-        Me.setting.Size = New System.Drawing.Size(0, 26)
-        Me.setting.TabIndex = 43
-        Me.setting.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip1.SetToolTip(Me.setting, "设定")
-        Me.setting.UseVisualStyleBackColor = False
-        Me.setting.Visible = False
         '
         'CheckBox_LoadThumbnails
         '
@@ -1521,7 +1310,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-199, 99)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-262, 99)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -1530,25 +1319,8 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.UseVisualStyleBackColor = False
         Me.CheckBox_LoadThumbnails.Visible = False
         '
-        'CheckBox8
-        '
-        Me.CheckBox8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.Enabled = False
-        Me.CheckBox8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox8.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.CheckBox8.Location = New System.Drawing.Point(319, 435)
-        Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(53, 19)
-        Me.CheckBox8.TabIndex = 21
-        Me.CheckBox8.Text = "CUR"
-        Me.CheckBox8.UseVisualStyleBackColor = True
-        Me.CheckBox8.Visible = False
-        '
         'Button1
         '
-        Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.BackColor = System.Drawing.Color.White
         Me.Button1.CausesValidation = False
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -1559,7 +1331,7 @@ Partial Class Form1
         Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(527, 9)
+        Me.Button1.Location = New System.Drawing.Point(866, 9)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(72, 26)
         Me.Button1.TabIndex = 73
@@ -1569,34 +1341,8 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.Button1, "关于")
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'qrButton
-        '
-        Me.qrButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.qrButton.BackColor = System.Drawing.Color.White
-        Me.qrButton.CausesValidation = False
-        Me.qrButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.qrButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
-        Me.qrButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.qrButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.qrButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.qrButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.qrButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.qrButton.Image = CType(resources.GetObject("qrButton.Image"), System.Drawing.Image)
-        Me.qrButton.Location = New System.Drawing.Point(328, 9)
-        Me.qrButton.Name = "qrButton"
-        Me.qrButton.Size = New System.Drawing.Size(91, 26)
-        Me.qrButton.TabIndex = 47
-        Me.qrButton.Text = "二维码"
-        Me.qrButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.qrButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.qrButton, "QRCode裁切工具。")
-        Me.qrButton.UseVisualStyleBackColor = False
-        '
         'nmButton
         '
-        Me.nmButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.nmButton.BackColor = System.Drawing.Color.White
         Me.nmButton.CausesValidation = False
         Me.nmButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -1607,7 +1353,7 @@ Partial Class Form1
         Me.nmButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.nmButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.nmButton.Image = CType(resources.GetObject("nmButton.Image"), System.Drawing.Image)
-        Me.nmButton.Location = New System.Drawing.Point(425, 9)
+        Me.nmButton.Location = New System.Drawing.Point(396, 9)
         Me.nmButton.Name = "nmButton"
         Me.nmButton.Size = New System.Drawing.Size(72, 26)
         Me.nmButton.TabIndex = 48
@@ -1619,8 +1365,6 @@ Partial Class Form1
         '
         'volButton
         '
-        Me.volButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.volButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.volButton.BackColor = System.Drawing.Color.White
         Me.volButton.CausesValidation = False
@@ -1632,7 +1376,7 @@ Partial Class Form1
         Me.volButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.volButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.volButton.Image = CType(resources.GetObject("volButton.Image"), System.Drawing.Image)
-        Me.volButton.Location = New System.Drawing.Point(684, 9)
+        Me.volButton.Location = New System.Drawing.Point(683, 9)
         Me.volButton.Name = "volButton"
         Me.volButton.Size = New System.Drawing.Size(73, 26)
         Me.volButton.TabIndex = 40
@@ -1644,8 +1388,6 @@ Partial Class Form1
         '
         'mnsButton
         '
-        Me.mnsButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.mnsButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.mnsButton.BackColor = System.Drawing.Color.White
         Me.mnsButton.CausesValidation = False
@@ -1657,7 +1399,7 @@ Partial Class Form1
         Me.mnsButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.mnsButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.mnsButton.Image = CType(resources.GetObject("mnsButton.Image"), System.Drawing.Image)
-        Me.mnsButton.Location = New System.Drawing.Point(921, 9)
+        Me.mnsButton.Location = New System.Drawing.Point(920, 9)
         Me.mnsButton.Name = "mnsButton"
         Me.mnsButton.Size = New System.Drawing.Size(73, 26)
         Me.mnsButton.TabIndex = 42
@@ -1669,8 +1411,6 @@ Partial Class Form1
         '
         'moreButton
         '
-        Me.moreButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.moreButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.moreButton.BackColor = System.Drawing.Color.White
         Me.moreButton.CausesValidation = False
@@ -1682,7 +1422,7 @@ Partial Class Form1
         Me.moreButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.moreButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.moreButton.Image = CType(resources.GetObject("moreButton.Image"), System.Drawing.Image)
-        Me.moreButton.Location = New System.Drawing.Point(842, 9)
+        Me.moreButton.Location = New System.Drawing.Point(841, 9)
         Me.moreButton.Name = "moreButton"
         Me.moreButton.Size = New System.Drawing.Size(73, 26)
         Me.moreButton.TabIndex = 41
@@ -1694,6 +1434,7 @@ Partial Class Form1
         '
         'lockButton
         '
+        Me.lockButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lockButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.lockButton.BackColor = System.Drawing.Color.White
         Me.lockButton.Checked = True
@@ -1707,7 +1448,7 @@ Partial Class Form1
         Me.lockButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.lockButton.ImageIndex = 0
         Me.lockButton.ImageList = Me.ImageList1
-        Me.lockButton.Location = New System.Drawing.Point(658, 2)
+        Me.lockButton.Location = New System.Drawing.Point(659, 2)
         Me.lockButton.Name = "lockButton"
         Me.lockButton.Size = New System.Drawing.Size(26, 26)
         Me.lockButton.TabIndex = 35
@@ -1725,6 +1466,7 @@ Partial Class Form1
         '
         'stsButton
         '
+        Me.stsButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.stsButton.BackColor = System.Drawing.Color.White
         Me.stsButton.CausesValidation = False
         Me.stsButton.FlatAppearance.BorderColor = System.Drawing.Color.White
@@ -1735,7 +1477,7 @@ Partial Class Form1
         Me.stsButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.stsButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.stsButton.Image = CType(resources.GetObject("stsButton.Image"), System.Drawing.Image)
-        Me.stsButton.Location = New System.Drawing.Point(580, 2)
+        Me.stsButton.Location = New System.Drawing.Point(581, 2)
         Me.stsButton.Name = "stsButton"
         Me.stsButton.Size = New System.Drawing.Size(72, 26)
         Me.stsButton.TabIndex = 40
@@ -1755,13 +1497,12 @@ Partial Class Form1
         Me.searchText.ForeColor = System.Drawing.Color.Black
         Me.searchText.Location = New System.Drawing.Point(4, 4)
         Me.searchText.Name = "searchText"
-        Me.searchText.Size = New System.Drawing.Size(827, 17)
+        Me.searchText.Size = New System.Drawing.Size(398, 17)
         Me.searchText.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.searchText, "输入一个查找目标。")
         '
         'searchButton0
         '
-        Me.searchButton0.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.searchButton0.BackColor = System.Drawing.Color.White
         Me.searchButton0.CausesValidation = False
         Me.searchButton0.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -1784,7 +1525,6 @@ Partial Class Form1
         '
         'searchButton1
         '
-        Me.searchButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.searchButton1.BackColor = System.Drawing.Color.White
         Me.searchButton1.CausesValidation = False
         Me.searchButton1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -1839,7 +1579,7 @@ Partial Class Form1
         Me.rfhButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rfhButton.Image = CType(resources.GetObject("rfhButton.Image"), System.Drawing.Image)
         Me.rfhButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rfhButton.Location = New System.Drawing.Point(755, 9)
+        Me.rfhButton.Location = New System.Drawing.Point(731, 9)
         Me.rfhButton.Name = "rfhButton"
         Me.rfhButton.Size = New System.Drawing.Size(103, 26)
         Me.rfhButton.TabIndex = 45
@@ -1850,6 +1590,7 @@ Partial Class Form1
         '
         'treeButton
         '
+        Me.treeButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.treeButton.BackColor = System.Drawing.Color.White
         Me.treeButton.CausesValidation = False
         Me.treeButton.FlatAppearance.BorderColor = System.Drawing.Color.White
@@ -1860,7 +1601,7 @@ Partial Class Form1
         Me.treeButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.treeButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.treeButton.Image = CType(resources.GetObject("treeButton.Image"), System.Drawing.Image)
-        Me.treeButton.Location = New System.Drawing.Point(502, 2)
+        Me.treeButton.Location = New System.Drawing.Point(503, 2)
         Me.treeButton.Name = "treeButton"
         Me.treeButton.Size = New System.Drawing.Size(72, 26)
         Me.treeButton.TabIndex = 46
@@ -1872,8 +1613,9 @@ Partial Class Form1
         '
         'optButton
         '
-        Me.optButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.optButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.optButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.optButton.BackColor = System.Drawing.Color.White
         Me.optButton.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.optButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
@@ -1882,12 +1624,14 @@ Partial Class Form1
         Me.optButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.optButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.optButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.optButton.Location = New System.Drawing.Point(4, 2)
+        Me.optButton.Image = CType(resources.GetObject("optButton.Image"), System.Drawing.Image)
+        Me.optButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.optButton.Location = New System.Drawing.Point(404, 2)
         Me.optButton.Name = "optButton"
-        Me.optButton.Size = New System.Drawing.Size(492, 26)
+        Me.optButton.Size = New System.Drawing.Size(93, 26)
         Me.optButton.TabIndex = 47
-        Me.optButton.Text = "操作中心"
+        Me.optButton.Text = "使用提示"
+        Me.optButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.optButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.optButton, "指示潜在的操作和上一步操作结果。")
         Me.optButton.UseVisualStyleBackColor = False
@@ -1908,7 +1652,6 @@ Partial Class Form1
         '
         'CheckBox1
         '
-        Me.CheckBox1.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.CheckBox1.Appearance = System.Windows.Forms.Appearance.Button
         Me.CheckBox1.BackColor = System.Drawing.Color.White
         Me.CheckBox1.CausesValidation = False
@@ -1925,7 +1668,7 @@ Partial Class Form1
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(103, 26)
         Me.CheckBox1.TabIndex = 77
-        Me.CheckBox1.Text = "标记模式"
+        Me.CheckBox1.Text = "标签模式"
         Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.CheckBox1, "也添加标记为""存疑""的文件。")
         Me.CheckBox1.UseVisualStyleBackColor = False
@@ -1943,23 +1686,115 @@ Partial Class Form1
         Me.TextBox1.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.TextBox1, "输入一个查找目标。")
         '
-        'ComboBox2
+        'Button6
         '
-        Me.ComboBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ComboBox2.BackColor = System.Drawing.Color.White
-        Me.ComboBox2.CausesValidation = False
-        Me.ComboBox2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Items.AddRange(New Object() {"{无效}{存疑}{超时}"})
-        Me.ComboBox2.Location = New System.Drawing.Point(748, 11)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(189, 24)
-        Me.ComboBox2.TabIndex = 89
-        Me.ComboBox2.Visible = False
+        Me.Button6.BackColor = System.Drawing.Color.White
+        Me.Button6.CausesValidation = False
+        Me.Button6.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button6.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.Button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.Button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button6.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button6.Location = New System.Drawing.Point(304, 9)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(62, 26)
+        Me.Button6.TabIndex = 93
+        Me.Button6.Text = "还原"
+        Me.ToolTip1.SetToolTip(Me.Button6, "拖放或浏览以加载。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F2 键")
+        Me.Button6.UseVisualStyleBackColor = False
+        '
+        'sumLblLT
+        '
+        Me.sumLblLT.BackColor = System.Drawing.Color.Lavender
+        Me.sumLblLT.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.sumLblLT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.sumLblLT.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.sumLblLT.Location = New System.Drawing.Point(26, 25)
+        Me.sumLblLT.Name = "sumLblLT"
+        Me.sumLblLT.Size = New System.Drawing.Size(479, 25)
+        Me.sumLblLT.TabIndex = 14
+        Me.sumLblLT.Text = " 总计"
+        Me.sumLblLT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ToolTip1.SetToolTip(Me.sumLblLT, "全部数据总览。")
+        '
+        'sumLblRT
+        '
+        Me.sumLblRT.AutoSize = True
+        Me.sumLblRT.BackColor = System.Drawing.Color.Lavender
+        Me.sumLblRT.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.sumLblRT.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.sumLblRT.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.sumLblRT.Location = New System.Drawing.Point(534, 25)
+        Me.sumLblRT.Name = "sumLblRT"
+        Me.sumLblRT.Size = New System.Drawing.Size(479, 25)
+        Me.sumLblRT.TabIndex = 16
+        Me.sumLblRT.Text = " 结果"
+        Me.sumLblRT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ToolTip1.SetToolTip(Me.sumLblRT, "筛选结果总览。")
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.TableLayoutPanel3.SetColumnSpan(Me.Label1, 3)
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label1.Location = New System.Drawing.Point(26, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(987, 25)
+        Me.Label1.TabIndex = 44
+        Me.Label1.Text = " 就绪"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.ToolTip1.SetToolTip(Me.Label1, "单击复制路径。")
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.White
+        Me.Button4.CausesValidation = False
+        Me.Button4.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Button4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.Button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button4.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button4.Location = New System.Drawing.Point(474, 9)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(362, 26)
+        Me.Button4.TabIndex = 94
+        Me.Button4.Text = "其他功能陆续开发中，感谢支持！"
+        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button4, "批量重命名。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "支持筛选结果或拖入数据。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "F9 键")
+        Me.Button4.UseVisualStyleBackColor = False
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.Appearance = System.Windows.Forms.Appearance.Button
+        Me.CheckBox2.BackColor = System.Drawing.Color.White
+        Me.CheckBox2.CausesValidation = False
+        Me.CheckBox2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.CheckBox2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.CheckBox2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CheckBox2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox2.Location = New System.Drawing.Point(593, 9)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(103, 26)
+        Me.CheckBox2.TabIndex = 78
+        Me.CheckBox2.Text = "全局模式"
+        Me.CheckBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.CheckBox2, "也添加标记为""存疑""的文件。")
+        Me.CheckBox2.UseVisualStyleBackColor = False
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.CausesValidation = False
@@ -1973,11 +1808,14 @@ Partial Class Form1
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(-4, 18)
+        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ProgressBar1.Location = New System.Drawing.Point(-4, 20)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(630, 10)
-        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
+        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
         Me.ProgressBar1.TabIndex = 17
+        Me.ProgressBar1.Visible = False
         '
         'Panel2
         '
@@ -1987,24 +1825,23 @@ Partial Class Form1
         Me.Panel2.Controls.Add(Me.htText)
         Me.Panel2.Controls.Add(Me.widText)
         Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Location = New System.Drawing.Point(567, 9)
+        Me.Panel2.Location = New System.Drawing.Point(566, 9)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(111, 26)
         Me.Panel2.TabIndex = 36
         '
         'Panel4
         '
+        Me.Panel4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel4.BackColor = System.Drawing.Color.White
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel4.CausesValidation = False
         Me.Panel4.Controls.Add(Me.searchText)
         Me.Panel4.Location = New System.Drawing.Point(180, 9)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(836, 26)
+        Me.Panel4.Size = New System.Drawing.Size(407, 26)
         Me.Panel4.TabIndex = 37
-        '
-        'pnlTimer
-        '
         '
         'ContextMenuStrip2
         '
@@ -2051,6 +1888,7 @@ Partial Class Form1
         'indexTimer
         '
         Me.indexTimer.Enabled = True
+        Me.indexTimer.Interval = 1000
         '
         'MetroTabControl1
         '
@@ -2063,17 +1901,17 @@ Partial Class Form1
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage5)
         Me.MetroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(75, 34)
-        Me.MetroTabControl1.Location = New System.Drawing.Point(12, 8)
-        Me.MetroTabControl1.Multiline = True
+        Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 4
-        Me.MetroTabControl1.Size = New System.Drawing.Size(1036, 80)
-        Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
+        Me.MetroTabControl1.SelectedIndex = 0
+        Me.MetroTabControl1.Size = New System.Drawing.Size(1032, 80)
+        Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Purple
         Me.MetroTabControl1.TabIndex = 48
         Me.MetroTabControl1.UseSelectable = True
         '
         'MetroTabPage1
         '
+        Me.MetroTabPage1.BackColor = System.Drawing.Color.White
         Me.MetroTabPage1.Controls.Add(Me.PictureBox1)
         Me.MetroTabPage1.Controls.Add(Me.addButton)
         Me.MetroTabPage1.Controls.Add(Me.bksbutton)
@@ -2085,7 +1923,7 @@ Partial Class Form1
         Me.MetroTabPage1.HorizontalScrollbarSize = 10
         Me.MetroTabPage1.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage1.Name = "MetroTabPage1"
-        Me.MetroTabPage1.Size = New System.Drawing.Size(1028, 38)
+        Me.MetroTabPage1.Size = New System.Drawing.Size(1024, 38)
         Me.MetroTabPage1.TabIndex = 0
         Me.MetroTabPage1.Text = "开始"
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
@@ -2094,9 +1932,10 @@ Partial Class Form1
         '
         'PictureBox1
         '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(731, 13)
+        Me.PictureBox1.Location = New System.Drawing.Point(840, 13)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(18, 18)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -2125,7 +1964,7 @@ Partial Class Form1
         Me.MetroTabPage2.HorizontalScrollbarSize = 10
         Me.MetroTabPage2.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage2.Name = "MetroTabPage2"
-        Me.MetroTabPage2.Size = New System.Drawing.Size(1028, 38)
+        Me.MetroTabPage2.Size = New System.Drawing.Size(1024, 38)
         Me.MetroTabPage2.TabIndex = 2
         Me.MetroTabPage2.Text = "筛选"
         Me.MetroTabPage2.VerticalScrollbarBarColor = True
@@ -2136,7 +1975,7 @@ Partial Class Form1
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.White
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(467, 13)
+        Me.PictureBox3.Location = New System.Drawing.Point(466, 13)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(18, 18)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -2168,7 +2007,7 @@ Partial Class Form1
         Me.MetroTabPage3.HorizontalScrollbarSize = 10
         Me.MetroTabPage3.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage3.Name = "MetroTabPage3"
-        Me.MetroTabPage3.Size = New System.Drawing.Size(1028, 38)
+        Me.MetroTabPage3.Size = New System.Drawing.Size(1024, 38)
         Me.MetroTabPage3.TabIndex = 3
         Me.MetroTabPage3.Text = "导出"
         Me.MetroTabPage3.VerticalScrollbarBarColor = True
@@ -2199,6 +2038,11 @@ Partial Class Form1
         '
         'MetroTabPage4
         '
+        Me.MetroTabPage4.Controls.Add(Me.RadioButton3)
+        Me.MetroTabPage4.Controls.Add(Me.RadioButton4)
+        Me.MetroTabPage4.Controls.Add(Me.CheckBox2)
+        Me.MetroTabPage4.Controls.Add(Me.RadioButton2)
+        Me.MetroTabPage4.Controls.Add(Me.RadioButton1)
         Me.MetroTabPage4.Controls.Add(Me.searchButton1)
         Me.MetroTabPage4.Controls.Add(Me.searchButton0)
         Me.MetroTabPage4.Controls.Add(Me.Panel4)
@@ -2207,22 +2051,106 @@ Partial Class Form1
         Me.MetroTabPage4.HorizontalScrollbarSize = 10
         Me.MetroTabPage4.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage4.Name = "MetroTabPage4"
-        Me.MetroTabPage4.Size = New System.Drawing.Size(1028, 38)
+        Me.MetroTabPage4.Size = New System.Drawing.Size(1024, 38)
         Me.MetroTabPage4.TabIndex = 4
         Me.MetroTabPage4.Text = "查找"
         Me.MetroTabPage4.VerticalScrollbarBarColor = True
         Me.MetroTabPage4.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage4.VerticalScrollbarSize = 10
         '
+        'RadioButton3
+        '
+        Me.RadioButton3.Appearance = System.Windows.Forms.Appearance.Button
+        Me.RadioButton3.BackColor = System.Drawing.Color.White
+        Me.RadioButton3.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.RadioButton3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.RadioButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.RadioButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.RadioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RadioButton3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.RadioButton3.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.RadioButton3.Location = New System.Drawing.Point(936, 8)
+        Me.RadioButton3.Name = "RadioButton3"
+        Me.RadioButton3.Size = New System.Drawing.Size(72, 27)
+        Me.RadioButton3.TabIndex = 79
+        Me.RadioButton3.TabStop = True
+        Me.RadioButton3.Text = "时间"
+        Me.RadioButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RadioButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.RadioButton3.UseVisualStyleBackColor = False
+        '
+        'RadioButton4
+        '
+        Me.RadioButton4.Appearance = System.Windows.Forms.Appearance.Button
+        Me.RadioButton4.BackColor = System.Drawing.Color.White
+        Me.RadioButton4.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.RadioButton4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.RadioButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.RadioButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.RadioButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RadioButton4.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.RadioButton4.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.RadioButton4.Location = New System.Drawing.Point(858, 8)
+        Me.RadioButton4.Name = "RadioButton4"
+        Me.RadioButton4.Size = New System.Drawing.Size(72, 27)
+        Me.RadioButton4.TabIndex = 16
+        Me.RadioButton4.TabStop = True
+        Me.RadioButton4.Text = "格式"
+        Me.RadioButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RadioButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.RadioButton4.UseVisualStyleBackColor = False
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.Appearance = System.Windows.Forms.Appearance.Button
+        Me.RadioButton2.BackColor = System.Drawing.Color.White
+        Me.RadioButton2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.RadioButton2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.RadioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.RadioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.RadioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RadioButton2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.RadioButton2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.RadioButton2.Location = New System.Drawing.Point(780, 8)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(72, 27)
+        Me.RadioButton2.TabIndex = 14
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "文件名"
+        Me.RadioButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RadioButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.RadioButton2.UseVisualStyleBackColor = False
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.Appearance = System.Windows.Forms.Appearance.Button
+        Me.RadioButton1.BackColor = System.Drawing.Color.White
+        Me.RadioButton1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.RadioButton1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.RadioButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.RadioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.RadioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RadioButton1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.RadioButton1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.RadioButton1.Location = New System.Drawing.Point(702, 8)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(72, 27)
+        Me.RadioButton1.TabIndex = 13
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "序号"
+        Me.RadioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RadioButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.RadioButton1.UseVisualStyleBackColor = False
+        '
         'MetroTabPage5
         '
+        Me.MetroTabPage5.Controls.Add(Me.Button4)
+        Me.MetroTabPage5.Controls.Add(Me.Button6)
         Me.MetroTabPage5.Controls.Add(Me.Panel10)
         Me.MetroTabPage5.Controls.Add(Me.PictureBox7)
         Me.MetroTabPage5.Controls.Add(Me.PictureBox6)
         Me.MetroTabPage5.Controls.Add(Me.CheckBox1)
-        Me.MetroTabPage5.Controls.Add(Me.ComboBox2)
         Me.MetroTabPage5.Controls.Add(Me.Button1)
-        Me.MetroTabPage5.Controls.Add(Me.qrButton)
         Me.MetroTabPage5.Controls.Add(Me.infoButton)
         Me.MetroTabPage5.Controls.Add(Me.nmButton)
         Me.MetroTabPage5.HorizontalScrollbarBarColor = True
@@ -2230,7 +2158,7 @@ Partial Class Form1
         Me.MetroTabPage5.HorizontalScrollbarSize = 10
         Me.MetroTabPage5.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage5.Name = "MetroTabPage5"
-        Me.MetroTabPage5.Size = New System.Drawing.Size(1028, 38)
+        Me.MetroTabPage5.Size = New System.Drawing.Size(1024, 38)
         Me.MetroTabPage5.TabIndex = 5
         Me.MetroTabPage5.Text = "进阶"
         Me.MetroTabPage5.VerticalScrollbarBarColor = True
@@ -2252,7 +2180,7 @@ Partial Class Form1
         '
         Me.PictureBox7.BackColor = System.Drawing.Color.White
         Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
-        Me.PictureBox7.Location = New System.Drawing.Point(503, 13)
+        Me.PictureBox7.Location = New System.Drawing.Point(842, 13)
         Me.PictureBox7.Name = "PictureBox7"
         Me.PictureBox7.Size = New System.Drawing.Size(18, 18)
         Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -2263,7 +2191,7 @@ Partial Class Form1
         '
         Me.PictureBox6.BackColor = System.Drawing.Color.White
         Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
-        Me.PictureBox6.Location = New System.Drawing.Point(304, 13)
+        Me.PictureBox6.Location = New System.Drawing.Point(372, 13)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(18, 18)
         Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -2280,7 +2208,7 @@ Partial Class Form1
         Me.Panel7.Controls.Add(Me.stsButton)
         Me.Panel7.Controls.Add(Me.lockButton)
         Me.Panel7.Controls.Add(Me.treeButton)
-        Me.Panel7.Location = New System.Drawing.Point(316, 13)
+        Me.Panel7.Location = New System.Drawing.Point(316, 10)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(728, 36)
         Me.Panel7.TabIndex = 49
@@ -2290,11 +2218,79 @@ Partial Class Form1
         Me.Panel8.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel8.BackColor = System.Drawing.Color.White
-        Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel8.Location = New System.Drawing.Point(-24, -48)
+        Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel8.CausesValidation = False
+        Me.Panel8.Location = New System.Drawing.Point(-24, -50)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(1107, 145)
         Me.Panel8.TabIndex = 50
+        '
+        'Panel9
+        '
+        Me.Panel9.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel9.BackColor = System.Drawing.Color.Lavender
+        Me.Panel9.Controls.Add(Me.TableLayoutPanel3)
+        Me.Panel9.Location = New System.Drawing.Point(-24, 520)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(1091, 79)
+        Me.Panel9.TabIndex = 51
+        '
+        'TableLayoutPanel3
+        '
+        Me.TableLayoutPanel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel3.ColumnCount = 4
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.Controls.Add(Me.sumLblLT, 1, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.Label1, 1, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.PictureBox8, 0, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.sumLblRT, 3, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.PictureBox9, 0, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.PictureBox10, 2, 1)
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(40, 7)
+        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
+        Me.TableLayoutPanel3.RowCount = 2
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1016, 50)
+        Me.TableLayoutPanel3.TabIndex = 0
+        '
+        'PictureBox8
+        '
+        Me.PictureBox8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), System.Drawing.Image)
+        Me.PictureBox8.Location = New System.Drawing.Point(3, 3)
+        Me.PictureBox8.Name = "PictureBox8"
+        Me.PictureBox8.Size = New System.Drawing.Size(17, 19)
+        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox8.TabIndex = 52
+        Me.PictureBox8.TabStop = False
+        '
+        'PictureBox9
+        '
+        Me.PictureBox9.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), System.Drawing.Image)
+        Me.PictureBox9.Location = New System.Drawing.Point(3, 28)
+        Me.PictureBox9.Name = "PictureBox9"
+        Me.PictureBox9.Size = New System.Drawing.Size(17, 19)
+        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox9.TabIndex = 53
+        Me.PictureBox9.TabStop = False
+        '
+        'PictureBox10
+        '
+        Me.PictureBox10.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox10.Image = CType(resources.GetObject("PictureBox10.Image"), System.Drawing.Image)
+        Me.PictureBox10.Location = New System.Drawing.Point(511, 28)
+        Me.PictureBox10.Name = "PictureBox10"
+        Me.PictureBox10.Size = New System.Drawing.Size(17, 19)
+        Me.PictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox10.TabIndex = 54
+        Me.PictureBox10.TabStop = False
         '
         'Form1
         '
@@ -2302,13 +2298,13 @@ Partial Class Form1
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CausesValidation = False
-        Me.ClientSize = New System.Drawing.Size(1048, 612)
+        Me.ClientSize = New System.Drawing.Size(1048, 583)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.MetroTabControl1)
         Me.Controls.Add(Me.Panel8)
         Me.Controls.Add(Me.SplitContainer1)
+        Me.Controls.Add(Me.Panel9)
         Me.ForeColor = System.Drawing.Color.SlateBlue
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -2322,14 +2318,6 @@ Partial Class Form1
         Me.SplitContainer1.ResumeLayout(False)
         Me.ContextMenuStrip4.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
-        Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.TableLayoutPanel1.PerformLayout()
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel5.PerformLayout()
-        Me.TableLayoutPanel2.ResumeLayout(False)
-        Me.TableLayoutPanel2.PerformLayout()
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel6.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
@@ -2358,6 +2346,12 @@ Partial Class Form1
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
+        Me.Panel9.ResumeLayout(False)
+        Me.TableLayoutPanel3.ResumeLayout(False)
+        Me.TableLayoutPanel3.PerformLayout()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2376,9 +2370,7 @@ Partial Class Form1
     Friend WithEvents ColumnHeader3 As ColumnHeader
     Friend WithEvents ColumnHeader4 As ColumnHeader
     Friend WithEvents sltLblLT As Label
-    Friend WithEvents sumLblLT As Label
     Friend WithEvents gifButton As CheckBox
-    Friend WithEvents sumLblRT As Label
     Friend WithEvents sltLblRT As Label
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents reslnButton As CheckBox
@@ -2392,11 +2384,9 @@ Partial Class Form1
     Friend WithEvents ColumnHeader6 As ColumnHeader
     Friend WithEvents ColumnHeader7 As ColumnHeader
     Friend WithEvents ColumnHeader8 As ColumnHeader
-    Friend WithEvents Label1 As Label
     Friend WithEvents xlsxButton As Button
     Friend WithEvents bmpButton As CheckBox
     Friend WithEvents icoButton As CheckBox
-    Friend WithEvents CheckBox8 As CheckBox
     Friend WithEvents mentionButton As CheckBox
     Friend WithEvents exButton As CheckBox
     Friend WithEvents SplitContainer1 As SplitContainer
@@ -2416,7 +2406,6 @@ Partial Class Form1
     Friend WithEvents CheckBox_LoadThumbnails As CheckBox
     Friend WithEvents moreButton As CheckBox
     Friend WithEvents mnsButton As CheckBox
-    Friend WithEvents plsButton As CheckBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents setting As Button
     Friend WithEvents delbutton As Button
@@ -2425,7 +2414,6 @@ Partial Class Form1
     Friend WithEvents tmtCheck As CheckBox
     Friend WithEvents impCheck As CheckBox
     Friend WithEvents invCheck As CheckBox
-    Friend WithEvents pnlTimer As Timer
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents 以此为筛选条件ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 打开文件所在位置ToolStripMenuItem As ToolStripMenuItem
@@ -2469,24 +2457,9 @@ Partial Class Form1
     Friend WithEvents CheckBox4 As CheckBox
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents ImageList2 As ImageList
     Friend WithEvents indexTimer As Timer
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents ToolTip2 As ToolTip
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label9 As Label
-    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
-    Friend WithEvents Label10 As Label
-    Friend WithEvents Panel6 As Panel
-    Friend WithEvents Label11 As Label
-    Friend WithEvents Label12 As Label
-    Friend WithEvents Label13 As Label
-    Friend WithEvents Label14 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents MetroTabControl1 As MetroFramework.Controls.MetroTabControl
     Friend WithEvents MetroTabPage1 As MetroFramework.Controls.MetroTabPage
@@ -2507,4 +2480,20 @@ Partial Class Form1
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents Panel10 As Panel
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
+    Friend WithEvents ImageList2 As ImageList
+    Friend WithEvents Button6 As Button
+    Friend WithEvents sumLblLT As Label
+    Friend WithEvents sumLblRT As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents PictureBox8 As PictureBox
+    Friend WithEvents PictureBox9 As PictureBox
+    Friend WithEvents PictureBox10 As PictureBox
+    Friend WithEvents Button4 As Button
+    Friend WithEvents RadioButton4 As RadioButton
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents RadioButton3 As RadioButton
 End Class

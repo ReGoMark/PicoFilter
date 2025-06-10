@@ -49,17 +49,17 @@ Partial Class Form8
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -355,57 +355,6 @@ Partial Class Form8
         Me.TabPage5.Text = "标记"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'Button5
-        '
-        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button5.BackColor = System.Drawing.Color.White
-        Me.Button5.CausesValidation = False
-        Me.Button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.Button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.Button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.Location = New System.Drawing.Point(205, 497)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(65, 26)
-        Me.Button5.TabIndex = 56
-        Me.Button5.Text = "展开"
-        Me.Button5.UseVisualStyleBackColor = False
-        '
-        'Button2
-        '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.BackColor = System.Drawing.Color.White
-        Me.Button2.CausesValidation = False
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.Location = New System.Drawing.Point(276, 497)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(65, 26)
-        Me.Button2.TabIndex = 55
-        Me.Button2.Text = "转到"
-        Me.Button2.UseVisualStyleBackColor = False
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(9, 107)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(294, 24)
-        Me.TextBox1.TabIndex = 0
-        '
-        'Label4
-        '
-        Me.Label4.Location = New System.Drawing.Point(6, 20)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(297, 68)
-        Me.Label4.TabIndex = 1
-        Me.Label4.Text = "在下方的文本框内输入要标记的内容，最多允许三个标记。无论填写顺序如何，都会以同样的方式标记。文本框支持输入正规则表达式。"
-        '
         'GroupBox10
         '
         Me.GroupBox10.Controls.Add(Me.Label8)
@@ -423,23 +372,28 @@ Partial Class Form8
         Me.GroupBox10.TabStop = False
         Me.GroupBox10.Text = "设置标记内容"
         '
-        'Label5
+        'Label8
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 88)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(52, 16)
-        Me.Label5.TabIndex = 2
-        Me.Label5.Text = "第一个"
+        Me.Label8.Location = New System.Drawing.Point(8, 226)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(295, 105)
+        Me.Label8.TabIndex = 7
+        Me.Label8.Text = "正规则表达式格式如下：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "        ToolTip2.SetToolTip(ComboBox2, ""允许自定义最多三个标记；"" & vbCrLf & ""{x" &
+    "}{y}{z} - 标记带有x, y, z的文件；"" & vbCrLf & ""{x}{y}{} - 标记带有x, y的文件，不填写请留空。"")" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
-        'Label6
+        'TextBox3
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 134)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(52, 16)
-        Me.Label6.TabIndex = 3
-        Me.Label6.Text = "第二个"
+        Me.TextBox3.Location = New System.Drawing.Point(9, 199)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(294, 24)
+        Me.TextBox3.TabIndex = 6
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(9, 153)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(294, 24)
+        Me.TextBox2.TabIndex = 5
         '
         'Label7
         '
@@ -450,34 +404,80 @@ Partial Class Form8
         Me.Label7.TabIndex = 4
         Me.Label7.Text = "第三个"
         '
-        'TextBox2
+        'Label6
         '
-        Me.TextBox2.Location = New System.Drawing.Point(9, 153)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(294, 24)
-        Me.TextBox2.TabIndex = 5
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 134)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(52, 16)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "第二个"
         '
-        'TextBox3
+        'Label5
         '
-        Me.TextBox3.Location = New System.Drawing.Point(9, 199)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(294, 24)
-        Me.TextBox3.TabIndex = 6
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 88)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(52, 16)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "第一个"
         '
-        'Label8
+        'TextBox1
         '
-        Me.Label8.Location = New System.Drawing.Point(8, 226)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(295, 105)
-        Me.Label8.TabIndex = 7
-        Me.Label8.Text = "正规则表达式格式如下：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "        ToolTip2.SetToolTip(ComboBox2, ""允许自定义最多三个标记；”” & vbCrLf & ““{x" &
-    "}{y}{z} - 标记带有x, y, z的文件；"" & vbCrLf & ““{x}{y}{} - 标记带有x, y的文件，不填写请留空。"")" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.TextBox1.Location = New System.Drawing.Point(9, 107)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(294, 24)
+        Me.TextBox1.TabIndex = 0
+        '
+        'Label4
+        '
+        Me.Label4.Location = New System.Drawing.Point(6, 20)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(297, 68)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "在下方的文本框内输入要标记的内容，最多允许三个标记。无论填写顺序如何，都会以同样的方式标记。文本框支持输入正规则表达式。"
+        '
+        'Button5
+        '
+        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button5.BackColor = System.Drawing.Color.White
+        Me.Button5.CausesValidation = False
+        Me.Button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.Button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button5.Location = New System.Drawing.Point(205, 515)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(65, 26)
+        Me.Button5.TabIndex = 56
+        Me.Button5.Text = "展开"
+        Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.White
+        Me.Button2.CausesValidation = False
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button2.Location = New System.Drawing.Point(276, 515)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(65, 26)
+        Me.Button2.TabIndex = 55
+        Me.Button2.Text = "转到"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'Form8
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(353, 535)
+        Me.ClientSize = New System.Drawing.Size(353, 553)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TabControl1)
