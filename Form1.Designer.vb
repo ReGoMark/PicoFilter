@@ -1083,7 +1083,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.tmtCheck)
         Me.Panel3.Controls.Add(Me.ComboBox2)
         Me.Panel3.Controls.Add(Me.qrButton)
-        Me.Panel3.Location = New System.Drawing.Point(115, 118)
+        Me.Panel3.Location = New System.Drawing.Point(105, 118)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(265, 155)
         Me.Panel3.TabIndex = 44
@@ -1290,7 +1290,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-451, 177)
+        Me.Label7.Location = New System.Drawing.Point(-461, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1310,7 +1310,7 @@ Partial Class Form1
         Me.CheckBox_LoadThumbnails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox_LoadThumbnails.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox_LoadThumbnails.Image = CType(resources.GetObject("CheckBox_LoadThumbnails.Image"), System.Drawing.Image)
-        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-262, 99)
+        Me.CheckBox_LoadThumbnails.Location = New System.Drawing.Point(-272, 99)
         Me.CheckBox_LoadThumbnails.Name = "CheckBox_LoadThumbnails"
         Me.CheckBox_LoadThumbnails.Size = New System.Drawing.Size(26, 26)
         Me.CheckBox_LoadThumbnails.TabIndex = 40
@@ -1497,7 +1497,7 @@ Partial Class Form1
         Me.searchText.ForeColor = System.Drawing.Color.Black
         Me.searchText.Location = New System.Drawing.Point(4, 4)
         Me.searchText.Name = "searchText"
-        Me.searchText.Size = New System.Drawing.Size(398, 17)
+        Me.searchText.Size = New System.Drawing.Size(394, 17)
         Me.searchText.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.searchText, "输入一个查找目标。")
         '
@@ -1626,9 +1626,9 @@ Partial Class Form1
         Me.optButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.optButton.Image = CType(resources.GetObject("optButton.Image"), System.Drawing.Image)
         Me.optButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.optButton.Location = New System.Drawing.Point(404, 2)
+        Me.optButton.Location = New System.Drawing.Point(3, 2)
         Me.optButton.Name = "optButton"
-        Me.optButton.Size = New System.Drawing.Size(93, 26)
+        Me.optButton.Size = New System.Drawing.Size(494, 26)
         Me.optButton.TabIndex = 47
         Me.optButton.Text = "使用提示"
         Me.optButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1782,7 +1782,7 @@ Partial Class Form1
         Me.CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox2.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CheckBox2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox2.Location = New System.Drawing.Point(593, 9)
+        Me.CheckBox2.Location = New System.Drawing.Point(589, 9)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(103, 26)
         Me.CheckBox2.TabIndex = 78
@@ -1840,7 +1840,7 @@ Partial Class Form1
         Me.Panel4.Controls.Add(Me.searchText)
         Me.Panel4.Location = New System.Drawing.Point(180, 9)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(407, 26)
+        Me.Panel4.Size = New System.Drawing.Size(403, 26)
         Me.Panel4.TabIndex = 37
         '
         'ContextMenuStrip2
@@ -1903,7 +1903,7 @@ Partial Class Form1
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(75, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
+        Me.MetroTabControl1.SelectedIndex = 3
         Me.MetroTabControl1.Size = New System.Drawing.Size(1032, 80)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Purple
         Me.MetroTabControl1.TabIndex = 48
@@ -2069,7 +2069,8 @@ Partial Class Form1
         Me.RadioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.RadioButton3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.RadioButton3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.RadioButton3.Location = New System.Drawing.Point(936, 8)
+        Me.RadioButton3.Image = CType(resources.GetObject("RadioButton3.Image"), System.Drawing.Image)
+        Me.RadioButton3.Location = New System.Drawing.Point(944, 8)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(72, 27)
         Me.RadioButton3.TabIndex = 79
@@ -2090,7 +2091,8 @@ Partial Class Form1
         Me.RadioButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.RadioButton4.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.RadioButton4.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.RadioButton4.Location = New System.Drawing.Point(858, 8)
+        Me.RadioButton4.Image = CType(resources.GetObject("RadioButton4.Image"), System.Drawing.Image)
+        Me.RadioButton4.Location = New System.Drawing.Point(866, 8)
         Me.RadioButton4.Name = "RadioButton4"
         Me.RadioButton4.Size = New System.Drawing.Size(72, 27)
         Me.RadioButton4.TabIndex = 16
@@ -2111,9 +2113,10 @@ Partial Class Form1
         Me.RadioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.RadioButton2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.RadioButton2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.RadioButton2.Location = New System.Drawing.Point(780, 8)
+        Me.RadioButton2.Image = CType(resources.GetObject("RadioButton2.Image"), System.Drawing.Image)
+        Me.RadioButton2.Location = New System.Drawing.Point(776, 8)
         Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(72, 27)
+        Me.RadioButton2.Size = New System.Drawing.Size(84, 27)
         Me.RadioButton2.TabIndex = 14
         Me.RadioButton2.TabStop = True
         Me.RadioButton2.Text = "文件名"
@@ -2132,7 +2135,8 @@ Partial Class Form1
         Me.RadioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.RadioButton1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.RadioButton1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.RadioButton1.Location = New System.Drawing.Point(702, 8)
+        Me.RadioButton1.Image = CType(resources.GetObject("RadioButton1.Image"), System.Drawing.Image)
+        Me.RadioButton1.Location = New System.Drawing.Point(698, 8)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(72, 27)
         Me.RadioButton1.TabIndex = 13

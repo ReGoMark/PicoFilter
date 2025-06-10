@@ -56,6 +56,7 @@ Partial Class Form2
         Me.MetroTabPage1.SuspendLayout()
         Me.MetroTabPage2.SuspendLayout()
         Me.MetroTabPage3.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -123,13 +124,12 @@ Partial Class Form2
         '
         Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label9.AutoEllipsis = True
-        Me.Label9.AutoSize = True
         Me.Label9.Cursor = System.Windows.Forms.Cursors.Help
         Me.Label9.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.DimGray
-        Me.Label9.Location = New System.Drawing.Point(12, 125)
+        Me.Label9.Location = New System.Drawing.Point(42, 141)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(301, 20)
+        Me.Label9.Size = New System.Drawing.Size(315, 20)
         Me.Label9.TabIndex = 17
         Me.Label9.Text = "项目地址：github.com/ReGoMark/PicoFilter"
         '
@@ -222,7 +222,7 @@ Partial Class Form2
         Me.Label8.Cursor = System.Windows.Forms.Cursors.Help
         Me.Label8.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.DimGray
-        Me.Label8.Location = New System.Drawing.Point(12, 105)
+        Me.Label8.Location = New System.Drawing.Point(42, 121)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(234, 20)
         Me.Label8.TabIndex = 54
@@ -274,7 +274,7 @@ Partial Class Form2
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage3)
         Me.MetroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
-        Me.MetroTabControl1.Location = New System.Drawing.Point(12, 154)
+        Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
         Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
@@ -410,9 +410,11 @@ Partial Class Form2
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Location = New System.Drawing.Point(-25, -12)
+        Me.Panel1.Controls.Add(Me.Label8)
+        Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Location = New System.Drawing.Point(-25, -22)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(416, 167)
+        Me.Panel1.Size = New System.Drawing.Size(416, 508)
         Me.Panel1.TabIndex = 59
         '
         'Form2
@@ -424,8 +426,6 @@ Partial Class Form2
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.Button2)
@@ -447,6 +447,8 @@ Partial Class Form2
         Me.MetroTabPage2.PerformLayout()
         Me.MetroTabPage3.ResumeLayout(False)
         Me.MetroTabPage3.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

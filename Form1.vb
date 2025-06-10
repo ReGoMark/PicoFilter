@@ -25,7 +25,7 @@ Public Class Form1
     Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
     Public verinfo As String = "PicoFilter 2.0" '存储版本信息
-    Private optext As String = "使用提示" '存储操作按钮默认文本
+    Private opttext As String = "使用提示" '存储操作按钮默认文本
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
@@ -348,44 +348,7 @@ Public Class Form1
 
     ' 处理键盘事件，绑定 F2 键到 openButton
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        'If e.KeyCode = Keys.F1 Then
-        '    Form2.Show()
-        'End If
-        'If e.KeyCode = Keys.F2 Then
-        '    openButton.PerformClick()
-        'End If
-        'If e.KeyCode = Keys.F3 Then
-        '    treeButton.PerformClick()
-        'End If
-        'If e.KeyCode = Keys.F4 Then
-        '    fltButton.PerformClick()
-        'End If
-        'If e.KeyCode = Keys.F5 Then
-        '    rfhButton.PerformClick()
-        'End If
-        'If e.KeyCode = Keys.F6 Then
-        '    addButton.PerformClick()
-        'End If
-        'If e.KeyCode = Keys.F7 Then
-        '    bksbutton.PerformClick()
-        'End If
-        'If e.KeyCode = Keys.F8 Then
-        '    If lockButton.Checked = True Then
-        '        lockButton.Checked = False
-        '    Else
-        '        lockButton.Checked = True
-        '    End If
-        'End If
-        'If e.KeyCode = Keys.F9 Then
-        '    nmButton.PerformClick()
-        'End If
-        'If e.KeyCode = Keys.F10 Then
-        '    xlsxButton.PerformClick()
-        'End If
-
-        'If e.KeyCode = Keys.F11 Then
-        '    stsButton.PerformClick()
-        'End If
+        'F1-F5切换选项卡
         Select Case e.KeyCode
             Case Keys.F1
                 SelectTabPage(0)
@@ -460,7 +423,7 @@ Public Class Form1
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
         Me.MinimumSize = New Size(1066, 630) ' 设置最小窗口大小
         openButton.AllowDrop = True ' 启用拖放功能
-        optButton.Text = optext        '初始化操作中心
+        optButton.Text = opttext        '初始化操作中心
         optButton.BackColor = optcolor
         optTimer.Interval = 5000 '设置定时器间隔为 5 秒
 
@@ -1974,6 +1937,7 @@ Public Class Form1
         optButton.Visible = True
         optButton.Text = newText
         optButton.BackColor = newColor
+        optButton.TextAlign = ContentAlignment.MiddleCenter
         optTimer.Stop() ' 防止重复触发
         optTimer.Start() ' 启动定时器
     End Sub
@@ -2020,8 +1984,9 @@ Public Class Form1
 
     ' Timer 触发后恢复文本和背景色
     Private Sub optTimer_Tick(sender As Object, e As EventArgs) Handles optTimer.Tick
-        optButton.Text = optext
+        optButton.Text = opttext
         optButton.BackColor = optcolor
+        optButton.TextAlign = ContentAlignment.MiddleRight
         optTimer.Stop() ' 停止计时器
     End Sub
 
