@@ -5,7 +5,14 @@
 
 ## 图片筛选、排序和重命名工具
 
-
+<a href="./LICENSE">
+    <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
+<a href="https://github.com/ReGoMark/PicoFilter/commits/main">
+    <img src="https://img.shields.io/github/last-commit/ReGoMark/PicoFilter?style=for-the-badge"></a>
+<a href="https://github.com/ReGoMark/PicoFilter/stargazers">
+    <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
+<a href="https://github.com/ReGoMark/PicoFilter/issues">
+    <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues"></a>
 
 支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，大约可以筛选4000张图像文件，加载时间取决于目录结构复杂程度和单文件的体积。
 无论是界面设计还是运行平台均遵循标准的 Win32 设计规范，完全基于 `.net Framework` 的原生开发。除此之外，几乎肉眼可见的所有控件，都添加了工具提示，方便用户查看、使用。
@@ -48,9 +55,16 @@
 
 # 截图
 
-![](./Screenshots/mainscreenshot.png)
+<img src="./Screenshots/mainscreenshot.png" alt="主界面截图" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/main.png" alt="主界面" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/filt.png" alt="过滤示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/search.png" alt="搜索示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/tag.png" alt="标签示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/rename.png" alt="重命名示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/guide.png" alt="指引示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/analysis.png" alt="分析示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/about.png" alt="关于页面" style="max-width: 80%; height: auto;" />
 
- 
 # 初衷
 开发初衷是针对 PAA 像素艺术大赛中的尺寸不合规、格式不合规文件进行筛选，便于后续工作的开展。因为当前社区网站还未完全建立起来，选手的投稿作品都是通过第三方网站上传，我们的收集工作也是手工从网站内下载的。对于分辨率不合规的作品，在放大的时候可能会比较模糊；同样的，PNG和JPG格式的不同，也影响了放大或展示质量。经过几个月的修修补补，现在将这款工具开放到公共视野内，欢迎大家下载交流学习使用，有任何相关的问题都可以咨询我。
 
