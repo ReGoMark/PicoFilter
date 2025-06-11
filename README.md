@@ -5,7 +5,7 @@
 
 ## 图片筛选、排序和重命名工具
 
-Screenshots/mainscreenshot.png
+
 
 支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，大约可以筛选4000张图像文件，加载时间取决于目录结构复杂程度和单文件的体积。
 无论是界面设计还是运行平台均遵循标准的 Win32 设计规范，完全基于 `.net Framework` 的原生开发。除此之外，几乎肉眼可见的所有控件，都添加了工具提示，方便用户查看、使用。
@@ -47,7 +47,7 @@ Screenshots/mainscreenshot.png
 # 截图
 
 ![QQ20250223-213313](https://github.com/user-attachments/assets/63103375-e2cc-413e-ad58-33b61976f7f8)
-![](./Assets/398368099-8520cb3d-5ddc-4179-9ae2-a445a2dcc311.png)
+![](./Screenshots/mainscreenshot.png)
 ![](./Assets/398368110-cbbfe498-ced8-48e8-a21b-b91a3915504d.png)
 ![](./Assets/398368119-d366e397-2426-42f3-9d34-bf639fe7771a.png)
 ![](./Assets/398368128-1a386175-ea09-49ae-8ae6-1ad620ec35ca.png)
