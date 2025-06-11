@@ -11,8 +11,6 @@
     <img src="https://img.shields.io/github/last-commit/ReGoMark/PicoFilter?style=for-the-badge"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/stargazers">
     <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
-<a href="https://github.com/ReGoMark/PicoFilter/issues">
-    <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/release">
     <img src="https://img.shields.io/github/release/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="release"></a>
 
