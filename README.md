@@ -5,7 +5,10 @@
 
 ## 图片筛选、排序和重命名工具
 
-
+![license](https://img.shields.io/badge/license-MIT-brightgreen)
+![GitHub stars](https://img.shields.io/github/stars/owner/repo?color=blue)
+![issues](https://img.shields.io/github/issues/owner/repo?color=brightgreen)
+![Last Commit](https://img.shields.io/github/last-commit/owner/repo)
 
 支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，大约可以筛选4000张图像文件，加载时间取决于目录结构复杂程度和单文件的体积。
 无论是界面设计还是运行平台均遵循标准的 Win32 设计规范，完全基于 `.net Framework` 的原生开发。除此之外，几乎肉眼可见的所有控件，都添加了工具提示，方便用户查看、使用。
