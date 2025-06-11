@@ -127,7 +127,7 @@ Partial Class Form2
         Me.Label9.Cursor = System.Windows.Forms.Cursors.Help
         Me.Label9.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.DimGray
-        Me.Label9.Location = New System.Drawing.Point(42, 141)
+        Me.Label9.Location = New System.Drawing.Point(42, 127)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(315, 20)
         Me.Label9.TabIndex = 17
@@ -222,7 +222,7 @@ Partial Class Form2
         Me.Label8.Cursor = System.Windows.Forms.Cursors.Help
         Me.Label8.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.DimGray
-        Me.Label8.Location = New System.Drawing.Point(42, 121)
+        Me.Label8.Location = New System.Drawing.Point(42, 107)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(234, 20)
         Me.Label8.TabIndex = 54
@@ -246,6 +246,7 @@ Partial Class Form2
         'PictureBox2
         '
         Me.PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.PictureBox2.BackColor = System.Drawing.Color.White
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(12, 17)
         Me.PictureBox2.Name = "PictureBox2"
@@ -409,18 +410,19 @@ Partial Class Form2
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Location = New System.Drawing.Point(-25, -22)
+        Me.Panel1.Controls.Add(Me.Label8)
+        Me.Panel1.Location = New System.Drawing.Point(-25, -11)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(416, 508)
+        Me.Panel1.Size = New System.Drawing.Size(416, 497)
         Me.Panel1.TabIndex = 59
         '
         'Form2
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.BackColor = System.Drawing.Color.White
+        Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
         Me.Controls.Add(Me.MetroTabControl1)
         Me.Controls.Add(Me.PictureBox1)

@@ -24,10 +24,14 @@
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
         If topButton.Checked = True Then
             TopMost = True
+            topButton.ImageIndex = 1
+
         Else
             TopMost = False
+            topButton.ImageIndex = 0
         End If
     End Sub
+
     Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
         Me.CenterToScreen()
     End Sub

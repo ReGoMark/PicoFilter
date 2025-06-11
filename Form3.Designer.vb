@@ -70,6 +70,7 @@ Partial Class Form3
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.topButton = New System.Windows.Forms.CheckBox()
+        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Label45 = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label44 = New System.Windows.Forms.Label()
@@ -79,6 +80,7 @@ Partial Class Form3
         Me.Label48 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -680,8 +682,8 @@ Partial Class Form3
         '
         Me.absbButton.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
-        Me.absbButton.BackColor = System.Drawing.Color.White
-        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.absbButton.BackColor = System.Drawing.Color.Transparent
+        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -705,14 +707,15 @@ Partial Class Form3
         Me.topButton.CausesValidation = False
         Me.topButton.Checked = True
         Me.topButton.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.topButton.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.topButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
         Me.topButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.topButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.topButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.topButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.topButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.topButton.ForeColor = System.Drawing.Color.SlateBlue
-        Me.topButton.Image = CType(resources.GetObject("topButton.Image"), System.Drawing.Image)
+        Me.topButton.ImageIndex = 1
+        Me.topButton.ImageList = Me.ImageList1
         Me.topButton.Location = New System.Drawing.Point(12, 497)
         Me.topButton.Name = "topButton"
         Me.topButton.Size = New System.Drawing.Size(26, 26)
@@ -721,6 +724,13 @@ Partial Class Form3
         Me.topButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.topButton, "置顶窗体")
         Me.topButton.UseVisualStyleBackColor = False
+        '
+        'ImageList1
+        '
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList1.Images.SetKeyName(0, "top.ico")
+        Me.ImageList1.Images.SetKeyName(1, "topped.ico")
         '
         'Label45
         '
@@ -732,7 +742,7 @@ Partial Class Form3
         Me.Label45.Location = New System.Drawing.Point(78, 396)
         Me.Label45.Name = "Label45"
         Me.TableLayoutPanel1.SetRowSpan(Me.Label45, 2)
-        Me.Label45.Size = New System.Drawing.Size(248, 60)
+        Me.Label45.Size = New System.Drawing.Size(248, 62)
         Me.Label45.TabIndex = 54
         Me.Label45.Text = "MARK"
         Me.Label45.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -749,7 +759,7 @@ Partial Class Form3
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(69, 22)
         Me.Label35.TabIndex = 52
-        Me.Label35.Text = "标记"
+        Me.Label35.Text = "标签"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label44
@@ -818,7 +828,7 @@ Partial Class Form3
         Me.TableLayoutPanel1.Controls.Add(Me.Label23, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Label48, 2, 18)
         Me.TableLayoutPanel1.Controls.Add(Me.Label45, 1, 18)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 14)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(31, 36)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 20
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
@@ -841,7 +851,7 @@ Partial Class Form3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 456)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 458)
         Me.TableLayoutPanel1.TabIndex = 57
         '
         'Label46
@@ -884,14 +894,16 @@ Partial Class Form3
         Me.Label48.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label48.Location = New System.Drawing.Point(3, 418)
         Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(69, 38)
+        Me.Label48.Size = New System.Drawing.Size(69, 40)
         Me.Label48.TabIndex = 58
         Me.Label48.Text = "     "
         Me.Label48.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel1.Location = New System.Drawing.Point(-21, -22)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(380, 508)
@@ -900,9 +912,8 @@ Partial Class Form3
         'Form3
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.BackColor = System.Drawing.Color.White
+        Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
-        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
@@ -920,6 +931,7 @@ Partial Class Form3
         Me.Text = "统计"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -979,4 +991,5 @@ Partial Class Form3
     Friend WithEvents Label47 As Label
     Friend WithEvents Label48 As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents ImageList1 As ImageList
 End Class

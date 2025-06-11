@@ -30,10 +30,6 @@ Public Class Form5
             LoadDirectories(rootPath, rootNode)
             ' 只展开当前根节点
             rootNode.Expand()
-
-            ' 更新文件夹数量显示
-            Dim folderCount As Integer = Directory.GetDirectories(rootPath).Length
-            sumLblLT.Text = "存在文件夹 " & folderCount.ToString() & " 个"
         End If
         TextBox1.SelectionStart = Form1.openText.Text.Length
         TextBox1.ScrollToCaret()
@@ -156,8 +152,11 @@ Public Class Form5
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
         If topButton.Checked = True Then
             TopMost = True
+            topButton.ImageIndex = 1
+
         Else
             TopMost = False
+            topButton.ImageIndex = 0
         End If
     End Sub
 

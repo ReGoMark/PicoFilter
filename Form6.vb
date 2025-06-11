@@ -271,8 +271,11 @@ Public Class Form6
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
         If topButton.Checked = True Then
             TopMost = True
+            topButton.ImageIndex = 1
+
         Else
             TopMost = False
+            topButton.ImageIndex = 0
         End If
     End Sub
 

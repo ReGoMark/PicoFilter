@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing.Text
 Imports System.IO
+Imports System.Reflection
 Imports System.Security.Principal
 Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
@@ -87,23 +88,34 @@ Public Class Form1
                 '创建ListViewItem
                 Dim item As New ListViewItem(index.ToString())
                 '文件名高亮标记
-                Dim highlightMark As String = "" '未标记项目的处理办法
-                If fileName.Contains(mark3) Then
-                    'item.BackColor = Color.MistyRose
-                    tagCount += 1
-                    highlightMark = "★"
+                If tagButton.Checked = True Then
+                    Dim highlightMark As String = "" '未标记项目的处理办法
+                    If fileName.Contains(mark3) Then
+                        'item.BackColor = Color.MistyRose
+                        tagCount += 1
+                        highlightMark = "★"
+                    End If
+                    If fileName.Contains(mark2) Then
+                        'item.BackColor = Color.Cornsilk
+                        tagCount += 1
+                        highlightMark = "★"
+                    End If
+                    If fileName.Contains(mark1) Then
+                        'item.BackColor = Color.LightCyan
+                        tagCount += 1
+                        highlightMark = "★"
+                    End If
+                    item.SubItems.Add(highlightMark) '添加标记
+                    If tagCount > 0 Then
+                        MetroTabPage5.Text = "标签 " & tagCount
+                    Else
+                        MetroTabPage5.Text = "标签"
+                    End If
+
+                Else
+                    MetroTabPage5.Text = "标签"
+                    item.SubItems.Add(“”) '添加标记
                 End If
-                If fileName.Contains(mark2) Then
-                    'item.BackColor = Color.Cornsilk
-                    tagCount += 1
-                    highlightMark = "★"
-                End If
-                If fileName.Contains(mark1) Then
-                    'item.BackColor = Color.LightCyan
-                    tagCount += 1
-                    highlightMark = "★"
-                End If
-                item.SubItems.Add(highlightMark) '添加标记
                 item.SubItems.Add(fileName) '添加文件名
                 item.SubItems.Add(resolution) '添加分辨率
                 item.SubItems.Add(format) '添加格式
@@ -145,7 +157,7 @@ Public Class Form1
         End If
 
         If tagCount > 0 Then
-            optChange("提示：存在标记文件 " & tagCount & “ 项。”, Color.AliceBlue)
+            optChange("提示：存在标记文件 " & tagCount & “ 项。”, Color.White)
         End If
         sumLblLT.Text = String.Join("  |  ", result)
 
@@ -279,20 +291,6 @@ Public Class Form1
                 ListViewRT.Items.Add(newItem)
                 matchingFileCount += 1 ' 符合条件的文件计数
 
-                ''标记项背景色设置
-                'If tmtSelected AndAlso fileName.Contains("超时") Then
-                '    newItem.BackColor = Color.MistyRose
-                '    tagCount += 1
-                'End If
-                'If impSelected AndAlso fileName.Contains("存疑") Then
-                '    newItem.BackColor = Color.Cornsilk
-                '    tagCount += 1
-                'End If
-                'If invSelected AndAlso fileName.Contains("无效") Then
-                '    newItem.BackColor = Color.LightCyan
-                '    tagCount += 1
-                'End If
-
                 ' 更新各格式计数
                 Select Case format
                     Case ".JPG", ".JPEG"
@@ -412,7 +410,7 @@ Public Class Form1
         Dim currentUserName As String = Environment.UserName
         Dim fontName As String = "方正黑体_GBK"
         Me.Text = verinfo
-        ComboBox2.SelectedIndex = 0
+        'ComboBox2.SelectedIndex = 0
         ProgressBar1.Maximum = 0
         loadedCount = 0
         'ListViewRT.Width = 504
@@ -426,8 +424,7 @@ Public Class Form1
         optButton.Text = opttext        '初始化操作中心
         optButton.BackColor = optcolor
         optTimer.Interval = 5000 '设置定时器间隔为 5 秒
-
-        '检测字体安装
+        MetroTabControl1.SelectedTab = MetroTabPage1 '默认选中第一个选项卡
         ' 检测当前日期是否为4月1日
         If DateTime.Now.Month = 4 AndAlso DateTime.Now.Day = 1 Then
             optChange("即使我来时没有爱 / 离别盛载满是情。", Color.MistyRose)
@@ -440,7 +437,7 @@ Public Class Form1
 
         ' 检查分辨率是否小于指定值
         If screenWidth < 1066 OrElse screenHeight < 630 Then
-            MessageBox.Show("检测到当前监视器分辨率低于 1066x630，程序可能无法正常显示。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("检测到当前监视器分辨率低于 1066x630，程序布局可能无法正常显示。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             optChange("警告：监视器分辨率过低，程序布局可能出现异常。", Color.MistyRose)
         End If
 
@@ -450,8 +447,8 @@ Public Class Form1
             qrButton.Visible = False
         End If
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
-        ToolTip2.ToolTipTitle = "可用格式"
-        ToolTip2.SetToolTip(ComboBox2, "允许自定义最多三个标记；” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的文件；" & vbCrLf & “{x}{y}{} - 标记带有x, y的文件，不填写请留空。")
+        ToolTip2.ToolTipTitle = "格式说明"
+        ToolTip2.SetToolTip(TextBox1, "允许自定义最多三个标记：” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的项；" & vbCrLf & “{x}{y}{} - 标记带有x, y的文件，不填写请{}留空。")
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -569,7 +566,7 @@ Public Class Form1
                     Dim sourcePath As String = Path.Combine(openText.Text, fileName) '源文件路径
                     Try
                         File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
-                        optChange("提示：文件复制已完成。", Color.AliceBlue)
+                        optChange("提示：文件复制已完成。", Color.White)
                     Catch ex As Exception
                         MessageBox.Show("复制失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
@@ -660,7 +657,7 @@ Public Class Form1
                     ListViewRT.Items.Remove(selectedItem)
                 Next
 
-                optChange("提示：项目已移除。", Color.AliceBlue)
+                optChange("提示：项目已移除。", Color.White)
 
                 If ListViewRT.Items.Count > 0 Then
                     If index < ListViewRT.Items.Count Then
@@ -860,6 +857,7 @@ Public Class Form1
     End Sub
 
     Private Sub 更新右侧结果标签()
+
         Dim totalFiles As Integer = ListViewRT.Items.Count '总文件数
         ' 各种格式的文件数量
         Dim index As Integer = 1
@@ -868,8 +866,9 @@ Public Class Form1
         Dim gifCount As Integer = 0
         Dim bmpCount As Integer = 0
         Dim icoCount As Integer = 0
+        ' 遍历 ListViewRT 统计文件格式数量
         For Each item As ListViewItem In ListViewRT.Items
-            Dim format As String = item.SubItems(3).Text.ToUpper()
+            Dim format As String = item.SubItems(4).Text.ToUpper()
             Select Case format
                 Case ".JPG", ".JPEG"
                     jpgCount += 1
@@ -885,37 +884,37 @@ Public Class Form1
         Next
 
         Dim result As New List(Of String)
-        result.Add($" 结果 {totalFiles} 项")
+        result.Add($"结果 {totalFiles} 项")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
         If bmpCount > 0 Then result.Add($"BMP {bmpCount}")
         If icoCount > 0 Then result.Add($"ICO {icoCount}")
-
         sumLblRT.Text = String.Join("  |  ", result)
+
+        更新统计信息()
+        PlayNotificationSound()
     End Sub
 
-    '左侧选中标签工具提示
-    Private Sub Label5_MouseHover(sender As Object, e As EventArgs) Handles sltLblLT.MouseHover
-        If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
-            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
-            Dim fileName As String = selectedItem.SubItems(2).Text
-            ToolTip1.SetToolTip(sltLblLT, $“文件名：{selectedItem.SubItems(2).Text}｛vbCrLf｝分辨率：{selectedItem.SubItems(3).Text} PX｛vbCrLf｝大小：{selectedItem.SubItems(5).Text}｛vbCrLf｝修改日期：{selectedItem.SubItems(6).Text}” & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
-        Else
-            ToolTip1.SetToolTip(sltLblLT, "单击复制路径。") '如果没有选中项，显示默认提示
-        End If
-    End Sub
+    ''左侧选中标签工具提示
+    'Private Sub Label5_MouseHover(sender As Object, e As EventArgs) Handles Label1.MouseHover
+    '    If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
+    '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
+    '        Dim fileName As String = selectedItem.SubItems(2).Text
+    '        ToolTip1.SetToolTip(Label1, $“文件名：{selectedItem.SubItems(2).Text}｛vbCrLf｝分辨率：{selectedItem.SubItems(3).Text} PX｛vbCrLf｝大小：{selectedItem.SubItems(5).Text}｛vbCrLf｝修改日期：{selectedItem.SubItems(6).Text}” & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
+    '    End If
+    'End Sub
 
-    '右侧选中标签工具提示
-    Private Sub Label8_MouseHover(sender As Object, e As EventArgs) Handles sltLblRT.MouseHover
-        If ListViewRT.SelectedItems.Count > 0 Then       ' 检查 ListView2 是否有选中项
-            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0) ' 获取 ListView2 选中项的文件名
-            Dim fileName As String = selectedItem.SubItems(2).Text
-            ToolTip1.SetToolTip(sltLblRT, $“文件名：{selectedItem.SubItems(2).Text}｛vbCrLf｝分辨率：{selectedItem.SubItems(3).Text} PX｛vbCrLf｝大小：{selectedItem.SubItems(5).Text}｛vbCrLf｝修改日期：{selectedItem.SubItems(6).Text}” & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
-        Else
-            ToolTip1.SetToolTip(sltLblRT, "单击复制路径。") ' 如果没有选中项，显示默认提示
-        End If
-    End Sub
+    ''右侧选中标签工具提示
+    'Private Sub Label8_MouseHover(sender As Object, e As EventArgs) Handles Label1.MouseHover
+    '    If ListViewRT.SelectedItems.Count > 0 Then       ' 检查 ListView2 是否有选中项
+    '        Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0) ' 获取 ListView2 选中项的文件名
+    '        Dim fileName As String = selectedItem.SubItems(2).Text
+    '        ToolTip1.SetToolTip(sltLblRT, $“文件名：{selectedItem.SubItems(2).Text}｛vbCrLf｝分辨率：{selectedItem.SubItems(3).Text} PX｛vbCrLf｝大小：{selectedItem.SubItems(5).Text}｛vbCrLf｝修改日期：{selectedItem.SubItems(6).Text}” & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
+    '    Else
+    '        ToolTip1.SetToolTip(sltLblRT, "单击复制路径。") ' 如果没有选中项，显示默认提示
+    '    End If
+    'End Sub
 
     '导出为xlsx文件
     Private Sub xlsxButton_Click(sender As Object, e As EventArgs) Handles xlsxButton.Click
@@ -967,13 +966,13 @@ Public Class Form1
                         package.Save()
                     End Using
 
-                    Dim opt = MessageBox.Show("表单已导出成功！点击按钮立即打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                    Dim opt = MessageBox.Show("表格已导出成功！点击按钮立即打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                     If opt = DialogResult.Yes Then
                         ' 打开文件
                         Process.Start("explorer.exe", filePath)
                     End If
                 Catch ex As Exception
-                    MessageBox.Show("表单导出时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("表格导出时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             End If
         End Using
@@ -1038,7 +1037,7 @@ Public Class Form1
         worksheet.Cells("I3").Value = "耗时"
         worksheet.Cells("I5").Value = "筛选结果"
         worksheet.Cells("I6").Value = "筛选条件"
-        worksheet.Cells("I4").Value = "标记"
+        worksheet.Cells("I4").Value = "标签"
         worksheet.Cells("I1:I6").Style.Font.Bold = True
         worksheet.Cells("I1:I6").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
         worksheet.Cells("I1:I6").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
@@ -1088,14 +1087,12 @@ Public Class Form1
             gifButton.Checked = True
             bmpButton.Checked = True
             icoButton.Checked = True
-            mentionButton.Text = "反选"
         Else
             jpgButton.Checked = False
             pngButton.Checked = False
             gifButton.Checked = False
             bmpButton.Checked = False
             icoButton.Checked = False
-            mentionButton.Text = "全选"
         End If
     End Sub
     '注册tooltip
@@ -1129,12 +1126,7 @@ Public Class Form1
     '平分窗口
     Private Sub SplitContainer1_MouseUp(sender As Object, e As MouseEventArgs) Handles SplitContainer1.MouseUp
         If e.Button = MouseButtons.Middle Then
-            If Me.WindowState = FormWindowState.Normal Then
-                SplitContainer1.SplitterDistance = 509
-            ElseIf Me.WindowState = FormWindowState.Maximized Then
-                SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
-            End If
-
+            SplitContainer1.SplitterDistance = SplitContainer1.Width / 2 - 4
         End If
     End Sub
 
@@ -1199,63 +1191,148 @@ Public Class Form1
         End If
     End Sub
 
-    '简单搜索
-    Private Sub SearchListView(keyword As String)
-        ' 遍历ListView中的每一行
+    ' 搜索类型枚举
+    Enum SearchType
+        All
+        Index
+        FileName
+        Format
+        eDate
+    End Enum
+
+    Private Sub SearchListView(keyword As String, searchType As SearchType)
+        Dim lowerKeyword As String = keyword.ToLower()
+
         For Each item As ListViewItem In ListViewLT.Items
-            If item.Text.ToLower().Contains(keyword.ToLower()) OrElse
-           item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
-           Any(Function(subItem) subItem.Text.ToLower().Contains(keyword.ToLower())) Then
-                ' 如果匹配到，设置该行为选中状态
-                item.Selected = True
-                item.EnsureVisible() ' 确保该行可见
-            Else
-                item.Selected = False
-            End If
+            Dim match As Boolean = False
+
+            Select Case searchType
+                Case SearchType.All
+                    match = item.Text.ToLower().Contains(lowerKeyword) OrElse
+                    item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
+                    Any(Function(subItem) subItem.Text.ToLower().Contains(lowerKeyword))
+
+                Case SearchType.Index
+                    ' 假设序号是第0列
+                    match = item.Text.ToLower().Contains(lowerKeyword)
+
+                Case SearchType.FileName
+                    ' 假设文件名是第2列（索引从0开始）
+                    If item.SubItems.Count > 2 Then
+                        match = item.SubItems(2).Text.ToLower().Contains(lowerKeyword)
+                    End If
+
+                Case SearchType.Format
+                    ' 假设格式是第4列，判断是否是合法格式关键字
+                    If item.SubItems.Count > 4 Then
+                        Dim formatText As String = item.SubItems(4).Text.ToLower()
+                        If {".png", ".jpg", ".jpeg", ".ico", ".bmp", ".gif"}.Any(Function(ext) formatText.Contains(ext)) Then
+                            match = formatText.Contains(lowerKeyword)
+                        End If
+                    End If
+
+                Case SearchType.eDate
+                    ' 假设日期是第6列（yy/MM/dd, HH:mm:ss 格式）
+                    If item.SubItems.Count > 6 Then
+                        Dim dateText As String = item.SubItems(6).Text.ToLower()
+                        match = dateText.Contains(lowerKeyword)
+                    End If
+            End Select
+
+            item.Selected = match
+            If match Then item.EnsureVisible()
         Next
+
         PlayNotificationSound3()
-        optChange("搜索：结果共 " & ListViewLT.SelectedItems.Count & " 项。", Color.White)
+        optChange("加载搜索：结果共 " & ListViewLT.SelectedItems.Count & " 项。", Color.White)
+    End Sub
+
+    Private Sub SearchListView1(keyword As String, searchType As SearchType)
+        Dim lowerKeyword As String = keyword.ToLower()
+
+        For Each item As ListViewItem In ListViewRT.Items
+            Dim match As Boolean = False
+
+            Select Case searchType
+                Case SearchType.All
+                    match = item.Text.ToLower().Contains(lowerKeyword) OrElse
+                    item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
+                    Any(Function(subItem) subItem.Text.ToLower().Contains(lowerKeyword))
+
+                Case SearchType.Index
+                    ' 假设序号是第0列
+                    match = item.Text.ToLower().Contains(lowerKeyword)
+
+                Case SearchType.FileName
+                    ' 假设文件名是第2列（索引从0开始）
+                    If item.SubItems.Count > 2 Then
+                        match = item.SubItems(2).Text.ToLower().Contains(lowerKeyword)
+                    End If
+
+                Case SearchType.Format
+                    ' 假设格式是第4列，判断是否是合法格式关键字
+                    If item.SubItems.Count > 4 Then
+                        Dim formatText As String = item.SubItems(4).Text.ToLower()
+                        If {".png", ".jpg", ".jpeg", ".ico", ".bmp", ".gif"}.Any(Function(ext) formatText.Contains(ext)) Then
+                            match = formatText.Contains(lowerKeyword)
+                        End If
+                    End If
+
+                Case SearchType.eDate
+                    ' 假设日期是第6列（yy/MM/dd, HH:mm:ss 格式）
+                    If item.SubItems.Count > 6 Then
+                        Dim dateText As String = item.SubItems(6).Text.ToLower()
+                        match = dateText.Contains(lowerKeyword)
+                    End If
+            End Select
+
+            item.Selected = match
+            If match Then item.EnsureVisible()
+        Next
+
+        PlayNotificationSound3()
+        optChange("筛选搜索：结果共 " & ListViewRT.SelectedItems.Count & " 项。", Color.White)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs)
         loadedTime += 1
     End Sub
 
-    ' 在按钮单击或文本框文本更改事件中调用
-    Private Sub ButtonSearch_Click(sender As Object, e As EventArgs) Handles searchButton0.Click
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles searchButton0.Click
         Dim keyword As String = searchText.Text.Trim()
-        If Not String.IsNullOrEmpty(keyword) Then
-            SearchListView(keyword)
-        End If
-    End Sub
+        Dim type As SearchType
 
-    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles searchButton1.Click
+        If rbID.Checked Then
+            type = SearchType.Index
+        ElseIf rbName.Checked Then
+            type = SearchType.FileName
+        ElseIf rbFormat.Checked Then
+            type = SearchType.Format
+        ElseIf rbDate.Checked Then
+            type = SearchType.eDate
+        Else
+            type = SearchType.All
+        End If
+
+        SearchListView(keyword, type)
+    End Sub
+    Private Sub btnSearch1_Click(sender As Object, e As EventArgs) Handles searchButton1.Click
         Dim keyword As String = searchText.Text.Trim()
-        If Not String.IsNullOrEmpty(keyword) Then
-            SearchListView2(keyword)
+        Dim type As SearchType
+
+        If rbID.Checked Then
+            type = SearchType.Index
+        ElseIf rbName.Checked Then
+            type = SearchType.FileName
+        ElseIf rbFormat.Checked Then
+            type = SearchType.Format
+        ElseIf rbDate.Checked Then
+            type = SearchType.eDate
+        Else
+            type = SearchType.All
         End If
-    End Sub
 
-    'Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
-    '    If CheckBox6.Checked = True Then PlayNotificationSound2()
-    'End Sub
-
-    '搜索结果选定
-    Private Sub SearchListView2(keyword As String)
-        ' 遍历ListView中的每一行
-        For Each item As ListViewItem In ListViewRT.Items
-            If item.Text.ToLower().Contains(keyword.ToLower()) OrElse
-           item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
-           Any(Function(subItem) subItem.Text.ToLower().Contains(keyword.ToLower())) Then
-                ' 如果匹配到，设置该行为选中状态
-                item.Selected = True
-                item.EnsureVisible() ' 确保该行可见
-            Else
-                item.Selected = False
-            End If
-        Next
-        PlayNotificationSound3()
-        optChange("搜索：结果共 " & ListViewRT.SelectedItems.Count & " 项。", Color.White)
+        SearchListView1(keyword, type)
     End Sub
 
     Private Sub 更新标题()
@@ -1434,8 +1511,16 @@ Public Class Form1
         Next
         ' 更新无效、存疑和超时文件数量
 
-        lbldStr = $" {mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
-        Form3.Label45.Text = $"M1↓ {invldCount}, M2↓ {qstCount}, M3↓ {tmtCount}"
+        If tagButton.Checked = True Then
+            Form3.Label5.Visible = True
+            Form3.Label45.Text = $"{mark1} {invldCount}, {mark2}{qstCount}, {mark3} {tmtCount}"
+            lbldStr = $" {mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
+        Else
+            Form3.Label5.Visible = False
+            Form3.Label45.Text = “未启用标签功能，请转到「标签」选项卡启用该功能”
+            lbldStr = "未启用标签功能"
+        End If
+
     End Sub
 
     ' 在 ListView0
@@ -1580,7 +1665,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("提示：单击「开始」进行筛选。", Color.AliceBlue)
+            optChange("提示：单击「开始」进行筛选。", Color.White)
 
         End If
     End Sub
@@ -1667,20 +1752,20 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem6_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem6.Click
-        SplitContainer1.SplitterDistance = SplitContainer1.Width / 3
+        SplitContainer1.SplitterDistance = SplitContainer1.Width / 3 - 4
     End Sub
 
     Private Sub ToolStripMenuItem7_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem7.Click
-        SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
-        If Me.WindowState = FormWindowState.Normal Then
-            SplitContainer1.SplitterDistance = 509
-        ElseIf Me.WindowState = FormWindowState.Maximized Then
-            SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
-        End If
+        SplitContainer1.SplitterDistance = SplitContainer1.Width / 2 - 4
+        'If Me.WindowState = FormWindowState.Normal Then
+        '    SplitContainer1.SplitterDistance = 504
+        'ElseIf Me.WindowState = FormWindowState.Maximized Then
+        '    SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
+        'End If
     End Sub
 
     Private Sub ToolStripMenuItem8_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem8.Click
-        SplitContainer1.SplitterDistance = SplitContainer1.Width / 3 * 2
+        SplitContainer1.SplitterDistance = SplitContainer1.Width / 3 * 2 - 4
     End Sub
 
     Private Sub ToolStripMenuItem10_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem10.Click
@@ -1758,10 +1843,6 @@ Public Class Form1
             Form5.LoadTreeView(Form5.toForm1Path)
         End If
         'optButton.Visible = False
-    End Sub
-
-    Private Sub SplitContainer1_SplitterMoved(sender As Object, e As SplitterEventArgs) Handles SplitContainer1.SplitterMoved
-
     End Sub
 
     Private Sub TextBox3_MouseHover(sender As Object, e As EventArgs) Handles htText.MouseHover
@@ -1844,7 +1925,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("提示：单击「开始」进行筛选。", Color.AliceBlue)
+            optChange("提示：单击「开始」进行筛选。", Color.White)
         End If
 
     End Sub
@@ -1982,6 +2063,30 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Button5_Click_1(sender As Object, e As EventArgs) Handles Button5.Click
+        MessageBox.Show("功能还在开发中，敬请期待！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
+        TextBox1.Text = "{屏幕截图}{}{}"
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        TextBox1.Text = "{screenshot}{}{}"
+    End Sub
+
+    Private Sub Button8_Click_1(sender As Object, e As EventArgs) Handles Button8.Click
+        TextBox1.Text = "{微信图片}{}{}"
+    End Sub
+
+    Private Sub Button10_Click_1(sender As Object, e As EventArgs) Handles Button10.Click
+        TextBox1.Text = "{副本}{}{}"
+    End Sub
+
+    Private Sub Button6_Click_1(sender As Object, e As EventArgs) Handles Button6.Click
+        TextBox1.Text = "{" & mark1 & "}" & "{" & mark2 & "}" & "{" & mark3 & "}"
+    End Sub
+
     ' Timer 触发后恢复文本和背景色
     Private Sub optTimer_Tick(sender As Object, e As EventArgs) Handles optTimer.Tick
         optButton.Text = opttext
@@ -2019,8 +2124,26 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub ComboBox2_TextChanged(sender As Object, e As EventArgs) Handles ComboBox2.TextChanged
-        Dim input As String = ComboBox2.Text
+    'Private Sub ComboBox2_TextChanged(sender As Object, e As EventArgs) Handles ComboBox2.TextChanged
+    '    Dim input As String = ComboBox2.Text
+    '    Dim pattern As String = "^\{([^{}]*)\}\{([^{}]*)\}\{([^{}]*)\}$" ' 允许 {} 内留空
+    '    Dim match As Match = Regex.Match(input, pattern)
+
+    '    If match.Success Then
+    '        ' 提取并允许留空
+    '        mark1 = If(match.Groups(1).Value.Trim() = "", "未填写", match.Groups(1).Value.Trim())
+    '        mark2 = If(match.Groups(2).Value.Trim() = "", "未填写", match.Groups(2).Value.Trim())
+    '        mark3 = If(match.Groups(3).Value.Trim() = "", "未填写", match.Groups(3).Value.Trim())
+    '    End If
+    '    If ComboBox2.Text = "" Then
+    '        mark1 = "无效"
+    '        mark2 = "存疑"
+    '        mark3 = "超时"
+    '    End If
+    'End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        Dim input As String = TextBox1.Text
         Dim pattern As String = "^\{([^{}]*)\}\{([^{}]*)\}\{([^{}]*)\}$" ' 允许 {} 内留空
         Dim match As Match = Regex.Match(input, pattern)
 
@@ -2030,10 +2153,10 @@ Public Class Form1
             mark2 = If(match.Groups(2).Value.Trim() = "", "未填写", match.Groups(2).Value.Trim())
             mark3 = If(match.Groups(3).Value.Trim() = "", "未填写", match.Groups(3).Value.Trim())
         End If
-        If ComboBox2.Text = "" Then
-            mark1 = "无效"
-            mark2 = "存疑"
-            mark3 = "超时"
+        If TextBox1.Text = "" Then
+            tagButton.Checked = False
+        Else
+            tagButton.Checked = True
         End If
     End Sub
 End Class
