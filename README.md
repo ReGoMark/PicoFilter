@@ -47,7 +47,7 @@
 更多细节欢迎下载体验！
 
 # 截图
-
+<img src="./Screenshots/mainscreenshot.png" style="max-width: none; height: auto;">
 ![](./Screenshots/mainscreenshot.png)
 ![](./Screenshots/main.png)
 ![](./Screenshots/filt.png)
