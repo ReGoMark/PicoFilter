@@ -49,6 +49,14 @@
 # 截图
 
 ![](./Screenshots/mainscreenshot.png)
+![](./Screenshots/main.png)
+![](./Screenshots/filt.png)
+![](./Screenshots/search.png)
+![](./Screenshots/tag.png)
+![](./Screenshots/rename.png)
+![](./Screenshots/guide.png)
+![](./Screenshots/analysis.png)
+![](./Screenshots/about.png)
 
  
 # 初衷
