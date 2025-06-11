@@ -1416,20 +1416,6 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>62</value>
   </metadata>
-  <data name="RichTextBox2.Text" xml:space="preserve">
-    <value>@LittleWhiteDoge；
-@YueHaxgu月；
-@洛初Official；
-这些朋友帮助我完成了测试工作，帮助我完善程序。
-——————
-GitHub；
-哔哩哔哩；
-Microsoft Visual Studio 2022；
-ChatGPT；
-这些平台给我提供了学习交流和展示的机会，给了我很大的帮助，帮我一步一步完善并修复了诸多问题。
-——————
-还有许许多多帮助过的朋友，因为文字所限，不能一一列举。在此，我不胜感激。</value>
-  </data>
   <data name="RichTextBox3.Text" xml:space="preserve">
     <value>MIT License
 
@@ -1460,6 +1446,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         VBmQUZCqOgCV/Vy7w4w22gAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="Panel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAAAAAAAEAIAAoIAQAlgAAAICAAAABACAAKAgBAL4gBABgYAAAAQAgAKiUAADmKAUAQEAAAAEA

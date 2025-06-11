@@ -64,4 +64,8 @@
         Catch ex As Exception
         End Try
     End Sub
+
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MetroTabControl1.SelectedTab = MetroTabControl1.TabPages(0)
+    End Sub
 End Class

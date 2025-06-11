@@ -145,10 +145,10 @@ Partial Class Form5
         Me.TreeView1.ImageIndex = 1
         Me.TreeView1.ImageList = Me.ImageList1
         Me.TreeView1.LineColor = System.Drawing.Color.DarkSlateBlue
-        Me.TreeView1.Location = New System.Drawing.Point(0, 46)
+        Me.TreeView1.Location = New System.Drawing.Point(0, 48)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 1
-        Me.TreeView1.Size = New System.Drawing.Size(330, 378)
+        Me.TreeView1.Size = New System.Drawing.Size(330, 376)
         Me.TreeView1.TabIndex = 37
         Me.ToolTip1.SetToolTip(Me.TreeView1, "拖入文件夹。")
         '
@@ -256,7 +256,7 @@ Partial Class Form5
         Me.Panel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.Controls.Add(Me.sltLabel0)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.TreeView1)

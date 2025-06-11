@@ -1,7 +1,5 @@
 ﻿Imports System.Drawing.Text
 Imports System.IO
-Imports System.Reflection
-Imports System.Security.Principal
 Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
 Imports OfficeOpenXml
@@ -31,9 +29,9 @@ Public Class Form1
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
     Private currentItem As ListViewItem = Nothing
-    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
+    Private isMouseOverTab As Boolean = False
+    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间    ' 加载图片从指定文件夹到左侧
 
-    ' 加载图片从指定文件夹到左侧
     Public Sub 加载图片(folderPath As String)
         '计数器重置
         loadedCount = 0
@@ -160,8 +158,6 @@ Public Class Form1
             optChange("提示：存在标记文件 " & tagCount & “ 项。”, Color.White)
         End If
         sumLblLT.Text = String.Join("  |  ", result)
-
-
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr
 
         ProgressBar1.Visible = False
@@ -218,9 +214,6 @@ Public Class Form1
         Dim volreslnSelected As Boolean = volButton.Checked '分辨率宽高互换筛选
         Dim plsreslnSelected As Boolean = moreButton.Checked '分辨率大于筛选
         Dim mnsreslnSelected As Boolean = mnsButton.Checked '分辨率小于筛选
-        Dim impSelected As Boolean = impCheck.Checked '存疑文件筛选
-        Dim tmtSelected As Boolean = tmtCheck.Checked '超时文件筛选
-        Dim invSelected As Boolean = invCheck.Checked '无效文件筛选
 
         Dim jpgCount As Integer = 0,
             pngCount As Integer = 0,
@@ -275,9 +268,6 @@ Public Class Form1
             '特殊标签筛选
             Dim isSpecialMatch As Boolean = False
             Dim fileName As String = item.SubItems(1).Text
-            'If tmtSelected AndAlso fileName.Contains("超时") Then isSpecialMatch = True
-            'If impSelected AndAlso fileName.Contains("存疑") Then isSpecialMatch = True
-            'If invSelected AndAlso fileName.Contains("无效") Then isSpecialMatch = True
 
             '最终是否添加
             If isMatch OrElse isSpecialMatch Then
@@ -349,14 +339,16 @@ Public Class Form1
         'F1-F5切换选项卡
         Select Case e.KeyCode
             Case Keys.F1
-                SelectTabPage(0)
+                SelectTabPage(5)
             Case Keys.F2
-                SelectTabPage(1)
+                SelectTabPage(0)
             Case Keys.F3
-                SelectTabPage(2)
+                SelectTabPage(1)
             Case Keys.F4
-                SelectTabPage(3)
+                SelectTabPage(2)
             Case Keys.F5
+                SelectTabPage(3)
+            Case Keys.F6
                 SelectTabPage(4)
         End Select
     End Sub
@@ -373,7 +365,6 @@ Public Class Form1
         If moreButton.Checked = True And widText.Text = "" Then widText.Text = "0" '自动补齐宽度
         筛选图片()
         更新统计信息()
-
     End Sub
 
     ' 启用按钮的拖放功能
@@ -403,20 +394,14 @@ Public Class Form1
         End If
     End Sub
 
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim screenWidth As Integer = Screen.PrimaryScreen.WorkingArea.Width
         Dim screenHeight As Integer = Screen.PrimaryScreen.WorkingArea.Height
         Dim currentUserName As String = Environment.UserName
         Dim fontName As String = "方正黑体_GBK"
         Me.Text = verinfo
-        'ComboBox2.SelectedIndex = 0
         ProgressBar1.Maximum = 0
         loadedCount = 0
-        'ListViewRT.Width = 504
-        'ListViewLT.Width = 504
-        'sltLblRT.Width = 505
-        'sumLblRT.Width = 505
 
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
         Me.MinimumSize = New Size(1066, 630) ' 设置最小窗口大小
@@ -460,6 +445,7 @@ Public Class Form1
         Next
         Return False
     End Function
+
     '左侧标签点击复制文件地址
     Private Sub sltLblLT_Click(sender As Object, e As EventArgs) Handles sltLblLT.Click
         If ListViewLT.SelectedItems.Count > 0 Then
@@ -555,7 +541,6 @@ Public Class Form1
         End If
     End Sub
 
-
     '复制筛选结果到指定文件夹
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles copyButton.Click
         Using folderBrowserDialog As New FolderBrowserDialog
@@ -622,6 +607,37 @@ Public Class Form1
             MessageBox.Show("筛选结果不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
+    '快速保存到桌面
+    Private Sub Buttonsave_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        Dim now As DateTime = DateTime.Now
+        Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
+        Dim sourceFolder As String = openText.Text ' 源文件夹路径
+        Dim desktopPath As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+        Dim resultFolder As String = Path.Combine(desktopPath, "快存副本" & formattedDateTime)
+
+        If ListViewRT.Items.Count > 0 Then
+            If Not Directory.Exists(resultFolder) Then
+                Directory.CreateDirectory(resultFolder) ' 创建"快存副本"文件夹
+            End If
+
+            For Each item As ListViewItem In ListViewRT.Items
+                Dim fileName As String = item.SubItems(2).Text
+                Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
+                Try
+                    File.Copy(sourcePath, Path.Combine(resultFolder, fileName)) ' 使用Copy而不是Move
+                    optChange("提示：文件副本已保存到桌面。", Color.LemonChiffon)
+                Catch ex As Exception
+                    MessageBox.Show("保存失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Next
+            Dim opt = MessageBox.Show("保存成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+            If opt = DialogResult.Yes Then '判断是否打开文件夹
+                Process.Start("explorer.exe", resultFolder) ' 打开备份文件夹
+            End If
+        Else
+            MessageBox.Show("筛选结果不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
 
     '从左侧添加项到右侧
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles addButton.Click
@@ -646,6 +662,7 @@ Public Class Form1
         更新右侧结果标签()
         更新统计信息()
     End Sub
+
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
         If ListViewRT.SelectedItems.Count > 0 Then '确保 ListView2 中有选中的项
             Dim result As DialogResult = MessageBox.Show("确定要移除选定项吗？", "确认移除", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -676,7 +693,6 @@ Public Class Form1
             MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
-
 
     '窗口总在最前
     Private Sub CheckBox6_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
@@ -713,10 +729,8 @@ Public Class Form1
             currentColumn = column
             currentOrder = SortOrder.Ascending
         End If
-
         ' 更新排序指示箭头
         更新列标题(listView)
-
         ' 使用自定义比较器进行排序
         listView.ListViewItemSorter = New 列表比较器(currentColumn, currentOrder)
         listView.Sort()
@@ -833,8 +847,6 @@ Public Class Form1
         End Function
     End Class
 
-
-
     '分辨率宽度限制输入
     Private Sub TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles widText.KeyPress
         '检查输入的字符是否是数字或控制字符（如退格）
@@ -857,7 +869,6 @@ Public Class Form1
     End Sub
 
     Private Sub 更新右侧结果标签()
-
         Dim totalFiles As Integer = ListViewRT.Items.Count '总文件数
         ' 各种格式的文件数量
         Dim index As Integer = 1
@@ -895,26 +906,6 @@ Public Class Form1
         更新统计信息()
         PlayNotificationSound()
     End Sub
-
-    ''左侧选中标签工具提示
-    'Private Sub Label5_MouseHover(sender As Object, e As EventArgs) Handles Label1.MouseHover
-    '    If ListViewLT.SelectedItems.Count > 0 Then '检查 ListViewLT 是否有选中项
-    '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0) '获取 ListViewLT 选中项的文件名
-    '        Dim fileName As String = selectedItem.SubItems(2).Text
-    '        ToolTip1.SetToolTip(Label1, $“文件名：{selectedItem.SubItems(2).Text}｛vbCrLf｝分辨率：{selectedItem.SubItems(3).Text} PX｛vbCrLf｝大小：{selectedItem.SubItems(5).Text}｛vbCrLf｝修改日期：{selectedItem.SubItems(6).Text}” & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
-    '    End If
-    'End Sub
-
-    ''右侧选中标签工具提示
-    'Private Sub Label8_MouseHover(sender As Object, e As EventArgs) Handles Label1.MouseHover
-    '    If ListViewRT.SelectedItems.Count > 0 Then       ' 检查 ListView2 是否有选中项
-    '        Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0) ' 获取 ListView2 选中项的文件名
-    '        Dim fileName As String = selectedItem.SubItems(2).Text
-    '        ToolTip1.SetToolTip(sltLblRT, $“文件名：{selectedItem.SubItems(2).Text}｛vbCrLf｝分辨率：{selectedItem.SubItems(3).Text} PX｛vbCrLf｝大小：{selectedItem.SubItems(5).Text}｛vbCrLf｝修改日期：{selectedItem.SubItems(6).Text}” & vbCrLf & "单击复制路径。") '设置 ToolTip1 的文本
-    '    Else
-    '        ToolTip1.SetToolTip(sltLblRT, "单击复制路径。") ' 如果没有选中项，显示默认提示
-    '    End If
-    'End Sub
 
     '导出为xlsx文件
     Private Sub xlsxButton_Click(sender As Object, e As EventArgs) Handles xlsxButton.Click
@@ -1757,11 +1748,6 @@ Public Class Form1
 
     Private Sub ToolStripMenuItem7_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem7.Click
         SplitContainer1.SplitterDistance = SplitContainer1.Width / 2 - 4
-        'If Me.WindowState = FormWindowState.Normal Then
-        '    SplitContainer1.SplitterDistance = 504
-        'ElseIf Me.WindowState = FormWindowState.Maximized Then
-        '    SplitContainer1.SplitterDistance = SplitContainer1.Width / 2
-        'End If
     End Sub
 
     Private Sub ToolStripMenuItem8_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem8.Click
@@ -1888,23 +1874,6 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs)
 
     End Sub
-    Public Class MyListItem
-        Public Property ID As String
-        Public Property Name As String
-        Public Property Type As String
-    End Class
-
-    Private Sub qrButton_Click(sender As Object, e As EventArgs) Handles qrButton.Click
-        Dim currentUserName As String = Environment.UserName
-        If currentUserName = "ReGoMark" Then
-            ' 显示 Form4
-            Form4.Show()
-        Else
-            ' 显示错误消息
-            MessageBox.Show("您没有权限使用该功能！", "权限错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
-
-    End Sub
 
     Private Sub 以此为筛选条件ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 以此为筛选条件ToolStripMenuItem.Click
         If ListViewLT.SelectedItems.Count > 0 Then
@@ -1927,7 +1896,6 @@ Public Class Form1
             htText.Text = height
             optChange("提示：单击「开始」进行筛选。", Color.White)
         End If
-
     End Sub
 
     Private Sub ToolStripMenuItem13_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem13.Click
@@ -1979,39 +1947,37 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        ' 确保有选中的项
-        If ListViewRT.SelectedItems.Count = 0 Then Exit Sub
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    '    ' 确保有选中的项
+    '    If ListViewRT.SelectedItems.Count = 0 Then Exit Sub
 
-        ' 禁用重绘，避免闪烁
-        ListViewRT.BeginUpdate()
+    '    ' 禁用重绘，避免闪烁
+    '    ListViewRT.BeginUpdate()
 
-        ' 存储选中的项
-        Dim selectedItems As New List(Of ListViewItem)
-        For Each item As ListViewItem In ListViewRT.SelectedItems
-            selectedItems.Add(item)
-        Next
+    '    ' 存储选中的项
+    '    Dim selectedItems As New List(Of ListViewItem)
+    '    For Each item As ListViewItem In ListViewRT.SelectedItems
+    '        selectedItems.Add(item)
+    '    Next
 
-        ' 按索引降序排序，避免调整时影响顺序
-        selectedItems.Sort(Function(x, y) y.Index.CompareTo(x.Index))
+    '    ' 按索引降序排序，避免调整时影响顺序
+    '    selectedItems.Sort(Function(x, y) y.Index.CompareTo(x.Index))
 
-        ' 移动项
-        For Each item As ListViewItem In selectedItems
-            Dim index As Integer = item.Index
-            If index < ListViewRT.Items.Count - 1 Then
-                ListViewRT.Items.RemoveAt(index)
-                ListViewRT.Items.Insert(index + 1, item)
-            End If
-        Next
+    '    ' 移动项
+    '    For Each item As ListViewItem In selectedItems
+    '        Dim index As Integer = item.Index
+    '        If index < ListViewRT.Items.Count - 1 Then
+    '            ListViewRT.Items.RemoveAt(index)
+    '            ListViewRT.Items.Insert(index + 1, item)
+    '        End If
+    '    Next
 
-        ' 重新选中移动后的项
-        For Each item As ListViewItem In selectedItems
-            item.Selected = True
-        Next
-
-        ' 结束更新
-        ListViewRT.EndUpdate()
-    End Sub
+    '    ' 重新选中移动后的项
+    '    For Each item As ListViewItem In selectedItems
+    '        item.Selected = True
+    '    Next
+    '    ListViewRT.EndUpdate()
+    'End Sub
 
     ' 更改按钮文本和背景色的方法
     Public Sub optChange(newText As String, newColor As Color)
@@ -2124,24 +2090,6 @@ Public Class Form1
         End If
     End Sub
 
-    'Private Sub ComboBox2_TextChanged(sender As Object, e As EventArgs) Handles ComboBox2.TextChanged
-    '    Dim input As String = ComboBox2.Text
-    '    Dim pattern As String = "^\{([^{}]*)\}\{([^{}]*)\}\{([^{}]*)\}$" ' 允许 {} 内留空
-    '    Dim match As Match = Regex.Match(input, pattern)
-
-    '    If match.Success Then
-    '        ' 提取并允许留空
-    '        mark1 = If(match.Groups(1).Value.Trim() = "", "未填写", match.Groups(1).Value.Trim())
-    '        mark2 = If(match.Groups(2).Value.Trim() = "", "未填写", match.Groups(2).Value.Trim())
-    '        mark3 = If(match.Groups(3).Value.Trim() = "", "未填写", match.Groups(3).Value.Trim())
-    '    End If
-    '    If ComboBox2.Text = "" Then
-    '        mark1 = "无效"
-    '        mark2 = "存疑"
-    '        mark3 = "超时"
-    '    End If
-    'End Sub
-
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         Dim input As String = TextBox1.Text
         Dim pattern As String = "^\{([^{}]*)\}\{([^{}]*)\}\{([^{}]*)\}$" ' 允许 {} 内留空
@@ -2157,6 +2105,37 @@ Public Class Form1
             tagButton.Checked = False
         Else
             tagButton.Checked = True
+        End If
+    End Sub
+
+    ' 添加 MouseEnter 事件处理
+    Private Sub MetroTabControl1_MouseEnter(sender As Object, e As EventArgs) Handles MetroTabControl1.MouseEnter
+        isMouseOverTab = True
+    End Sub
+
+    ' 添加 MouseLeave 事件处理
+    Private Sub MetroTabControl1_MouseLeave(sender As Object, e As EventArgs) Handles MetroTabControl1.MouseLeave
+        isMouseOverTab = False
+    End Sub
+
+    ' 在窗体级别处理鼠标滚轮事件
+    Protected Overrides Sub OnMouseWheel(e As MouseEventArgs)
+        MyBase.OnMouseWheel(e)
+
+        ' 只有当鼠标在 TabControl 区域内时才处理滚轮事件
+        If isMouseOverTab Then
+            Dim currentIndex As Integer = MetroTabControl1.SelectedIndex
+
+            ' 根据滚轮方向切换标签页
+            If e.Delta < 0 Then ' 滚轮向下，往右切换
+                If currentIndex < MetroTabControl1.TabCount - 1 Then
+                    MetroTabControl1.SelectedIndex = currentIndex + 1
+                End If
+            Else ' 滚轮向上，往左切换
+                If currentIndex > 0 Then
+                    MetroTabControl1.SelectedIndex = currentIndex - 1
+                End If
+            End If
         End If
     End Sub
 End Class

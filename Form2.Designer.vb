@@ -277,7 +277,7 @@ Partial Class Form2
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 1
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Purple
         Me.MetroTabControl1.TabIndex = 58
@@ -313,7 +313,9 @@ Partial Class Form2
         Me.RichTextBox2.ReadOnly = True
         Me.RichTextBox2.Size = New System.Drawing.Size(315, 202)
         Me.RichTextBox2.TabIndex = 14
-        Me.RichTextBox2.Text = resources.GetString("RichTextBox2.Text")
+        Me.RichTextBox2.Text = "@洛初Official；" & Global.Microsoft.VisualBasic.ChrW(10) & "这位朋友帮助我完成了测试工作，帮助我完善程序。" & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；" & Global.Microsoft.VisualBasic.ChrW(10) & "哔哩哔哩；" & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visual Studio" &
+    " 2022；" & Global.Microsoft.VisualBasic.ChrW(10) & "ChatGPT；" & Global.Microsoft.VisualBasic.ChrW(10) & "这些平台给我提供了学习交流和展示的机会，给了我很大的帮助，帮我一步一步完善并修复了诸多问题。" & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的" &
+    "朋友，因为文字所限，不能一一列举。在此，我不胜感激。"
         '
         'Label15
         '
