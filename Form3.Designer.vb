@@ -89,7 +89,7 @@ Partial Class Form3
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label1.Location = New System.Drawing.Point(3, 0)
         Me.Label1.Name = "Label1"
@@ -104,7 +104,7 @@ Partial Class Form3
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(3, 22)
         Me.Label2.Name = "Label2"
@@ -194,7 +194,7 @@ Partial Class Form3
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label8.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label8.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label8.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label8.Location = New System.Drawing.Point(3, 198)
         Me.Label8.Name = "Label8"
@@ -544,7 +544,7 @@ Partial Class Form3
         Me.Label34.BackColor = System.Drawing.Color.Transparent
         Me.Label34.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label34.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label34.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label34.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label34.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label34.Location = New System.Drawing.Point(3, 44)
         Me.Label34.Name = "Label34"
@@ -624,7 +624,7 @@ Partial Class Form3
         Me.Label41.BackColor = System.Drawing.Color.Transparent
         Me.Label41.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label41.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label41.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label41.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label41.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label41.Location = New System.Drawing.Point(3, 352)
         Me.Label41.Name = "Label41"
@@ -737,7 +737,7 @@ Partial Class Form3
         Me.Label45.BackColor = System.Drawing.Color.White
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label45, 2)
         Me.Label45.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label45.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label45.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Label45.ForeColor = System.Drawing.Color.Black
         Me.Label45.Location = New System.Drawing.Point(78, 396)
         Me.Label45.Name = "Label45"
@@ -753,7 +753,7 @@ Partial Class Form3
         Me.Label35.BackColor = System.Drawing.Color.Transparent
         Me.Label35.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label35.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label35.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Label35.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label35.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label35.Location = New System.Drawing.Point(3, 396)
         Me.Label35.Name = "Label35"
