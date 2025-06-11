@@ -5,14 +5,7 @@
 
 ## 图片筛选、排序和重命名工具
 
-<a href="./LICENSE">
-    <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
-<a href="https://github.com/ReGoMark/PicoFilter/commits/main">
-    <img src="https://img.shields.io/github/last-commit/ReGoMark/PicoFilter?style=for-the-badge"></a>
-<a href="https://github.com/ReGoMark/PicoFilter/stargazers">
-    <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
-<a href="https://github.com/ReGoMark/PicoFilter/issues">
-    <img src="https://img.shields.io/github/issues/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="issues"></a>
+
 
 支持常用图片格式如 `JPEG & JPG`，`PNG`，`GIF`，`ICO`，`BMP`，大约可以筛选4000张图像文件，加载时间取决于目录结构复杂程度和单文件的体积。
 无论是界面设计还是运行平台均遵循标准的 Win32 设计规范，完全基于 `.net Framework` 的原生开发。除此之外，几乎肉眼可见的所有控件，都添加了工具提示，方便用户查看、使用。
@@ -21,9 +14,9 @@
 >[!CAUTION]
 >安装 [方正黑体_GBK](./Fonts/方正黑体GBK.ttf)字体提升视觉效果体验。字体文件已经附在 [Fonts 文件夹](./Fonts) 中。
 >
->缩放问题，右键单击“属性”，切换至“兼容性”选项卡，选择“更改高DPI设置”，启用“程序DPI”和“高DPI缩放替代”两个复选框。如果还是遇到了显示问题，请尝试修改部分设置。
+>推荐在分辨率大于 720P 的显示器上使用，否则应用程序的布局可能出现问题。
 
-  感谢开源社区的支持，没有开源社区就没有 PicoFilter 的诞生。
+感谢开源社区的支持，没有开源社区就没有 PicoFilter 的诞生。
 
 </div>
 
@@ -41,35 +34,46 @@
 
 6. 一键整理（对筛选结果实现一键隔离、移动和复制、删除）
 
-7. 集成鼠标功能（如鼠标中键打开当前扫描文件夹，鼠标拖拽文件夹自动扫描、鼠标中键分配列表宽度、鼠标中键填充分辨率等）
+7. 快速搜索（支持分区搜索、全域搜索）
 
-8. 标记识别（识别到包含“超时”“存疑”“无效”的文件名时自动标记）
+8. 集成鼠标功能（如鼠标中键打开当前扫描文件夹，鼠标拖拽文件夹自动扫描、鼠标中键分配列表宽度、鼠标中键填充分辨率等）
 
-9. 右键菜单（支持快速筛选、快速调整工作列等功能）
+9. 标记识别（自定义标记，在加载文件时自动标记）
 
-10. 排序和命名（支持字符串长度、序号、分辨率总和、大小、修改日期排序，排序完成后可以批量命名，支持序号、日期、月份命名规则）
+10. 右键菜单（支持快速筛选、快速调整工作列等功能）
+
+11. 排序和命名（支持字符串长度、序号、分辨率总和、大小、修改日期排序，排序完成后可以批量命名，支持序号、日期、月份命名规则）
 
 更多细节欢迎下载体验！
 
 # 截图
 
-![QQ20250223-213313](https://github.com/user-attachments/assets/63103375-e2cc-413e-ad58-33b61976f7f8)
-![](./Assets/398368099-8520cb3d-5ddc-4179-9ae2-a445a2dcc311.png)
-![](./Assets/398368110-cbbfe498-ced8-48e8-a21b-b91a3915504d.png)
-![](./Assets/398368119-d366e397-2426-42f3-9d34-bf639fe7771a.png)
-![](./Assets/398368128-1a386175-ea09-49ae-8ae6-1ad620ec35ca.png)
-![](./Assets/398368137-4a76b72a-e837-4c84-bc36-6739c3200c48.png)
-![](./Assets/398368160-7b607b31-a668-4996-aad0-64ca21bc0898.png)
+![](./Screenshots/mainscreenshot.png)
+
  
 # 初衷
 开发初衷是针对 PAA 像素艺术大赛中的尺寸不合规、格式不合规文件进行筛选，便于后续工作的开展。因为当前社区网站还未完全建立起来，选手的投稿作品都是通过第三方网站上传，我们的收集工作也是手工从网站内下载的。对于分辨率不合规的作品，在放大的时候可能会比较模糊；同样的，PNG和JPG格式的不同，也影响了放大或展示质量。经过几个月的修修补补，现在将这款工具开放到公共视野内，欢迎大家下载交流学习使用，有任何相关的问题都可以咨询我。
 
 # 日志
->[!WARNING]
->由于转移仓库，Git Commit 记录已经丢失，更新日志仅供参考
-
 >[!NOTE]
 >+“新增”；-“删去”；~“优化”；=“修正”
+
+## 2.0 正式版
+### 2025/6/11
+累计包括1.7-1.7.3的更新内容如下：
+
+1. 修改设计风格，整体采用类RibbonUI样式，面板分三段式设计，配色更加简约现代；
+
+2. 补充了大量图标，提供了更多的图标指示，部分按钮采用动态图标设计；
+
+3. 新增标签功能，可以自定义是否开启，同时增加了几个快速标签模板；
+
+4. 为搜索页添加了限定范围搜索功能（测试）；
+
+5. 修复大量非法操作错误，紧急修复了显示错位问题和字体缩放问题。
+
+* 更多功能修订请下载体验。
+
 ## 1.7
 ### 2025/3/6
 +批量重命名功能；
