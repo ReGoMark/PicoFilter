@@ -47,23 +47,16 @@
 更多细节欢迎下载体验！
 
 # 截图
-<img src="./Screenshots/mainscreenshot.png" style="max-width: none; height: auto;">
 
-<img src="./Screenshots/main.png" style="max-width: none; height: auto;">
-
-<img src="./Screenshots/filt.png" style="max-width: none; height: auto;">
-
-<img src="./Screenshots/search.png" style="max-width: none; height: auto;">
-
-<img src="./Screenshots/tag.png" style="max-width: none; height: auto;">
-
-<img src="./Screenshots/rename.png" style="max-width: none; height: auto;">
-
-<img src="./Screenshots/guide.png" style="max-width: none; height: auto;">
-
-<img src="./Screenshots/analysis.png" style="max-width: none; height: auto;">
-
-<img src="./Screenshots/about.png" style="max-width: none; height: auto;">
+<img src="./Screenshots/mainscreenshot.png" alt="主界面截图" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/main.png" alt="主界面" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/filt.png" alt="过滤示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/search.png" alt="搜索示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/tag.png" alt="标签示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/rename.png" alt="重命名示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/guide.png" alt="指引示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/analysis.png" alt="分析示例" style="max-width: 80%; height: auto;" />
+<img src="./Screenshots/about.png" alt="关于页面" style="max-width: 80%; height: auto;" />
 
 # 初衷
 开发初衷是针对 PAA 像素艺术大赛中的尺寸不合规、格式不合规文件进行筛选，便于后续工作的开展。因为当前社区网站还未完全建立起来，选手的投稿作品都是通过第三方网站上传，我们的收集工作也是手工从网站内下载的。对于分辨率不合规的作品，在放大的时候可能会比较模糊；同样的，PNG和JPG格式的不同，也影响了放大或展示质量。经过几个月的修修补补，现在将这款工具开放到公共视野内，欢迎大家下载交流学习使用，有任何相关的问题都可以咨询我。
