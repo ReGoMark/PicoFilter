@@ -6,7 +6,7 @@ Public Class Form6
     Dim Publicpath As String
 
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ListViewPre.Width = 328
+        'ListViewPre.Width = 328
         ComboBox1.SelectedIndex = 0
         ListViewPre.AllowDrop = True
         Publicpath = ""
@@ -58,14 +58,14 @@ Public Class Form6
         For i As Integer = 0 To Form1.ListViewRT.Items.Count - 1
             Dim item As ListViewItem = Form1.ListViewRT.Items(i)
             Dim newItem As New ListViewItem((i + 1).ToString()) ' 第一栏显示动态序号
-            newItem.SubItems.Add(item.SubItems(0).Text) ' 第二栏保留原始序号
+            'newItem.SubItems.Add(item.SubItems(0).Text) ' 第二栏保留原始序号
             newItem.SubItems.Add(item.SubItems(2).Text) ' 第三栏是文件名
             newItem.SubItems.Add(item.SubItems(2).Text) ' 第三栏是原始文件名
             newItem.Tag = item.Tag ' 确保文件路径信息不会丢失
             ListViewPre.Items.Add(newItem)
         Next
         Publicpath = Form1.openText.Text
-        Me.Text = "命名 | 拉取"
+        'Me.Text = "命名  |  拉取"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
         'TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub
@@ -165,16 +165,41 @@ Public Class Form6
                     Dim targetPath As String = folderDialog.SelectedPath
                     Dim sourcePath As String = Publicpath
 
+                    ' 设置进度条
+                    With MetroProgressBar1
+                        .Minimum = 0
+                        .Maximum = ListViewPre.Items.Count
+                        .Value = 0
+                        .Visible = True
+                    End With
+
+                    Dim failedCount As Integer = 0
+                    Dim processedCount As Integer = 0
+
                     For Each item As ListViewItem In ListViewPre.Items
-                        Dim originalFilePath As String = IO.Path.Combine(sourcePath, originalNames(item.Index))
-                        Dim newFilePath As String = IO.Path.Combine(targetPath, item.SubItems(2).Text)
+                        Try
+                            Dim originalFilePath As String = IO.Path.Combine(sourcePath, originalNames(item.Index))
+                            Dim newFilePath As String = IO.Path.Combine(targetPath, item.SubItems(2).Text)
 
-                        If IO.File.Exists(originalFilePath) Then
-                            IO.File.Copy(originalFilePath, newFilePath, True) ' 复制文件
-                        End If
-
+                            If IO.File.Exists(originalFilePath) Then
+                                IO.File.Copy(originalFilePath, newFilePath, True) ' 复制文件
+                            End If
+                        Catch ex As Exception
+                            failedCount += 1
+                        Finally
+                            processedCount += 1
+                            MetroProgressBar1.Value = processedCount
+                            Application.DoEvents() ' 允许UI更新
+                        End Try
                     Next
-                    MessageBox.Show("重命名副本已保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    MetroProgressBar1.Visible = False
+
+                    If failedCount > 0 Then
+                        MessageBox.Show($"复制完成，但有 {failedCount} 个文件失败。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Else
+                        MessageBox.Show("重命名副本已保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End If
             End Using
         End If
@@ -279,24 +304,51 @@ Public Class Form6
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If ListViewPre.Items.Count > 0 Then
-            Dim sourcePath As String = Publicpath
+    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    '    If ListViewPre.Items.Count > 0 Then
+    '        Dim sourcePath As String = Publicpath
 
-            If MessageBox.Show("确定要覆盖原文件名吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
-                For Each item As ListViewItem In ListViewPre.Items
-                    Dim originalFilePath As String = IO.Path.Combine(sourcePath, originalNames(item.Index))
-                    Dim newFilePath As String = IO.Path.Combine(sourcePath, item.SubItems(2).Text)
+    '        If MessageBox.Show("确定要覆盖原文件名吗？操作不可逆！", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+    '            ' 设置进度条
+    '            With MetroProgressBar1
+    '                .Minimum = 0
+    '                .Maximum = ListViewPre.Items.Count
+    '                .Value = 0
+    '                .Visible = True
+    '            End With
 
-                    If IO.File.Exists(originalFilePath) AndAlso originalFilePath <> newFilePath Then
-                        IO.File.Move(originalFilePath, newFilePath) ' 直接重命名文件
-                    End If
-                Next
-                MessageBox.Show("覆盖文件名已完成。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Form1.optChange("警告：文件名已修改，需要重新加载。", Color.LemonChiffon)
-            End If
-        End If
-    End Sub
+    '            Dim failedCount As Integer = 0
+    '            Dim processedCount As Integer = 0
+
+    '            For Each item As ListViewItem In ListViewPre.Items
+    '                Try
+    '                    Dim originalFilePath As String = IO.Path.Combine(sourcePath, originalNames(item.Index))
+    '                    Dim newFilePath As String = IO.Path.Combine(sourcePath, item.SubItems(2).Text)
+
+    '                    If IO.File.Exists(originalFilePath) AndAlso originalFilePath <> newFilePath Then
+    '                        IO.File.Move(originalFilePath, newFilePath) ' 直接重命名文件
+    '                    End If
+    '                Catch ex As Exception
+    '                    failedCount += 1
+    '                Finally
+    '                    processedCount += 1
+    '                    MetroProgressBar1.Value = processedCount
+    '                    Application.DoEvents() ' 允许UI更新
+    '                End Try
+    '            Next
+
+    '            MetroProgressBar1.Visible = False
+
+    '            If failedCount > 0 Then
+    '                MessageBox.Show($"重命名完成，但有 {failedCount} 个文件失败。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+    '            Else
+    '                MessageBox.Show("覆盖文件名已完成，请刷新数据。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '            End If
+
+    '            Form1.optChange("警告：文件名已修改，需要重新加载。", Color.LemonChiffon)
+    '        End If
+    '    End If
+    'End Sub
 
     Private Sub moreButton_Click(sender As Object, e As EventArgs) Handles moreButton.Click
         ' 确保有选中的项
@@ -388,14 +440,14 @@ Public Class Form6
     Private Sub Form6_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         If Me.WindowState = FormWindowState.Maximized Then
             ListViewPre.Columns(0).Width = ListViewPre.Width / 15
-            ListViewPre.Columns(1).Width = ListViewPre.Width / 15
+            'ListViewPre.Columns(1).Width = ListViewPre.Width / 15
+            ListViewPre.Columns(1).Width = ListViewPre.Width / 3
             ListViewPre.Columns(2).Width = ListViewPre.Width / 3
-            ListViewPre.Columns(3).Width = ListViewPre.Width / 3
         ElseIf Me.WindowState = FormWindowState.Normal Then
             ListViewPre.Columns(0).Width = 50
-            ListViewPre.Columns(1).Width = 50
+            'ListViewPre.Columns(1).Width = 50
+            ListViewPre.Columns(1).Width = 200
             ListViewPre.Columns(2).Width = 200
-            ListViewPre.Columns(3).Width = 200
         End If
     End Sub
 
@@ -530,7 +582,7 @@ Public Class Form6
             End If
         Next
         Publicpath = folderPath
-        Me.Text = "命名 | 手动"
+        'Me.Text = "命名  |  拖拽"
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
         'TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub

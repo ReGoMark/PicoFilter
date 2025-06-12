@@ -20,6 +20,7 @@ Public Class Form1
     Dim mark1 As String = "无效"
     Dim mark2 As String = "存疑"
     Dim mark3 As String = "超时"
+    Public consoletime As String
     Dim lbldStr As String '存储标记文件的文本
     Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
@@ -30,7 +31,7 @@ Public Class Form1
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
     Private currentItem As ListViewItem = Nothing
     Private isMouseOverTab As Boolean = False
-    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间    ' 加载图片从指定文件夹到左侧
+    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
 
     Public Sub 加载图片(folderPath As String)
         '计数器重置
@@ -38,6 +39,7 @@ Public Class Form1
         loadedTime = 0
         sumSize = 0
         ListViewLT.Items.Clear()
+        ListViewRT.Items.Clear()
         ProgressBar1.Value = 0
         ProgressBar1.Visible = True
 
@@ -105,13 +107,13 @@ Public Class Form1
                     End If
                     item.SubItems.Add(highlightMark) '添加标记
                     If tagCount > 0 Then
-                        MetroTabPage5.Text = "标签 " & tagCount
+                        MetroTabPage5.Text = "星标 " & tagCount
                     Else
-                        MetroTabPage5.Text = "标签"
+                        MetroTabPage5.Text = "星标"
                     End If
 
                 Else
-                    MetroTabPage5.Text = "标签"
+                    MetroTabPage5.Text = "星标"
                     item.SubItems.Add(“”) '添加标记
                 End If
                 item.SubItems.Add(fileName) '添加文件名
@@ -138,7 +140,7 @@ Public Class Form1
 
         Dim result As New List(Of String)
         result.Add($"总计 {files.Count} 项")
-        If tagCount > 0 Then result.Add($"标记 {tagCount}")
+        If tagCount > 0 Then result.Add($"星标 {tagCount}")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
         If pngCount > 0 Then result.Add($"PNG {pngCount}")
         If gifCount > 0 Then result.Add($"GIF {gifCount}")
@@ -155,7 +157,7 @@ Public Class Form1
         End If
 
         If tagCount > 0 Then
-            optChange("提示：存在标记文件 " & tagCount & “ 项。”, Color.White)
+            optChange("提示：存在星标文件 " & tagCount & “ 项。”, Color.White)
         End If
         sumLblLT.Text = String.Join("  |  ", result)
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr
@@ -163,6 +165,7 @@ Public Class Form1
         ProgressBar1.Visible = False
         更新统计信息()
         PlayNotificationSound3()
+        'Form9.RichTextBox1.Text += consoletime & "Read Folder From: " & openText.Text & vbCrLf
 
         sumLT = files.Count
         jpgLT = jpgCount
@@ -222,6 +225,7 @@ Public Class Form1
             icoCount As Integer = 0
         Dim matchingFileCount As Integer = 0
         Dim tagCount As Integer = 0
+
         '判断是否启用了格式筛选
         Dim formatFilterEnabled As Boolean = jpgSelected Or pngSelected Or gifSelected Or bmpSelected Or icoSelected
         '遍历左侧数据进行筛选
@@ -446,29 +450,29 @@ Public Class Form1
         Return False
     End Function
 
-    '左侧标签点击复制文件地址
-    Private Sub sltLblLT_Click(sender As Object, e As EventArgs) Handles sltLblLT.Click
-        If ListViewLT.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
-            Dim fileName As String = selectedItem.SubItems(2).Text '获取选中的文件名
-            Dim folderPath As String = openText.Text '文件夹路径
-            Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
-            Clipboard.SetText(filePath) '复制文件路径到剪贴板
-            MessageBox.Show("路径已复制：" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-    End Sub
+    ''左侧标签点击复制文件地址
+    'Private Sub sltLblLT_Click(sender As Object, e As EventArgs) Handles sltLblLT.Click
+    '    If ListViewLT.SelectedItems.Count > 0 Then
+    '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
+    '        Dim fileName As String = selectedItem.SubItems(2).Text '获取选中的文件名
+    '        Dim folderPath As String = openText.Text '文件夹路径
+    '        Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
+    '        Clipboard.SetText(filePath) '复制文件路径到剪贴板
+    '        MessageBox.Show("路径已复制：" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '    End If
+    'End Sub
 
-    '右侧标签点击复制文件地址
-    Private Sub sltLblRT_Click(sender As Object, e As EventArgs) Handles sltLblRT.Click
-        If ListViewRT.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
-            Dim fileName As String = selectedItem.SubItems(2).Text    '获取选中的文件名
-            Dim folderPath As String = openText.Text ' 文件夹路径
-            Dim filePath As String = Path.Combine(folderPath, fileName)   '拼接完整的文件路径
-            Clipboard.SetText(filePath) '复制文件路径到剪贴板
-            MessageBox.Show("路径已复制：" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-    End Sub
+    ''右侧标签点击复制文件地址
+    'Private Sub sltLblRT_Click(sender As Object, e As EventArgs) Handles sltLblRT.Click
+    '    If ListViewRT.SelectedItems.Count > 0 Then
+    '        Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
+    '        Dim fileName As String = selectedItem.SubItems(2).Text    '获取选中的文件名
+    '        Dim folderPath As String = openText.Text ' 文件夹路径
+    '        Dim filePath As String = Path.Combine(folderPath, fileName)   '拼接完整的文件路径
+    '        Clipboard.SetText(filePath) '复制文件路径到剪贴板
+    '        MessageBox.Show("路径已复制：" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '    End If
+    'End Sub
 
     '左侧双击预览
     Private Sub ListViewLT_DoubleClick(sender As Object, e As EventArgs) Handles ListViewLT.DoubleClick
@@ -547,11 +551,12 @@ Public Class Form1
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 Dim targetFolder As String = folderBrowserDialog.SelectedPath
                 For Each item As ListViewItem In ListViewRT.Items
-                    Dim fileName As String = item.SubItems(1).Text
+                    Dim fileName As String = item.SubItems(2).Text
                     Dim sourcePath As String = Path.Combine(openText.Text, fileName) '源文件路径
                     Try
                         File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
                         optChange("提示：文件复制已完成。", Color.White)
+                        'Form9.RichTextBox1.Text += consoletime & "Save Copy Result at: " & targetFolder & "\" & fileName & vbCrLf
                     Catch ex As Exception
                         MessageBox.Show("复制失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
@@ -566,11 +571,12 @@ Public Class Form1
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 Dim targetFolder As String = folderBrowserDialog.SelectedPath
                 For Each item As ListViewItem In ListViewRT.Items
-                    Dim fileName As String = item.SubItems(1).Text
+                    Dim fileName As String = item.SubItems(2).Text
                     Dim sourcePath As String = Path.Combine(openText.Text, fileName) '源文件路径
                     Try
                         File.Move(sourcePath, Path.Combine(targetFolder, fileName))
                         optChange("警告：文件已移动，需要重新加载。", Color.LemonChiffon)
+                        'Form9.RichTextBox1.Text += consoletime & "Move Result at: " & targetFolder & "\" & fileName & vbCrLf
                     Catch ex As Exception
                         MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
@@ -603,6 +609,7 @@ Public Class Form1
             If opt = DialogResult.Yes Then '判断是否打开文件夹
                 Process.Start("explorer.exe", resultFolder) ' 打开“筛选结果”文件夹
             End If
+            'Form9.RichTextBox1.Text += consoletime & "Save Isolation Result at: " & resultFolder & vbCrLf
         Else
             MessageBox.Show("筛选结果不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -634,6 +641,7 @@ Public Class Form1
             If opt = DialogResult.Yes Then '判断是否打开文件夹
                 Process.Start("explorer.exe", resultFolder) ' 打开备份文件夹
             End If
+            'Form9.RichTextBox1.Text += consoletime & "Save to Desktop Copy Result at: " & resultFolder & vbCrLf
         Else
             MessageBox.Show("筛选结果不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -1028,7 +1036,7 @@ Public Class Form1
         worksheet.Cells("I3").Value = "耗时"
         worksheet.Cells("I5").Value = "筛选结果"
         worksheet.Cells("I6").Value = "筛选条件"
-        worksheet.Cells("I4").Value = "标签"
+        worksheet.Cells("I4").Value = "星标"
         worksheet.Cells("I1:I6").Style.Font.Bold = True
         worksheet.Cells("I1:I6").Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
         worksheet.Cells("I1:I6").Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Lavender)
@@ -1167,6 +1175,9 @@ Public Class Form1
             Form5.Close()
             Form2.Close()
             Form3.Close()
+            Form4.Close()
+            Form8.Close()
+            Form9.Close()
             Form6.Close()
         End If
 
@@ -1327,7 +1338,7 @@ Public Class Form1
     End Sub
 
     Private Sub 更新标题()
-        Me.Text = verinfo & " | 已扫描 " & loadedCount & “ / ” & ProgressBar1.Maximum & “ 项 | ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
+        Me.Text = verinfo & "  |  已扫描 " & loadedCount & “ / ” & ProgressBar1.Maximum & “ 项  |  ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles stsButton.Click
@@ -1504,12 +1515,12 @@ Public Class Form1
 
         If tagButton.Checked = True Then
             Form3.Label5.Visible = True
-            Form3.Label45.Text = $"{mark1} {invldCount}, {mark2}{qstCount}, {mark3} {tmtCount}"
+            Form3.Label45.Text = $"{mark1} {invldCount}, {mark2} {qstCount}, {mark3} {tmtCount}"
             lbldStr = $" {mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
         Else
             Form3.Label5.Visible = False
-            Form3.Label45.Text = “未启用标签功能，请转到「标签」选项卡启用该功能”
-            lbldStr = "未启用标签功能"
+            Form3.Label45.Text = “请转到「星标」选项卡启用”
+            lbldStr = "功能未启用"
         End If
 
     End Sub
@@ -1990,9 +2001,10 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
-        Form8.Show()
+
     End Sub
     Private Sub indexTimer_Tick(sender As Object, e As EventArgs) Handles indexTimer.Tick
+        'consoletime = $"[{Now.Year}.{Now.Month}.{Now.Day}-{Now.Hour}:{Now.Minute}:{Now.Second}] "
         Dim checkedCount As Integer = 0 ' 统计选中状态的 CheckBox 数量
         Dim formatCheckedCount As Integer = 0 ' 统计格式 CheckBox 的选中数量
 
@@ -2076,6 +2088,23 @@ Public Class Form1
                 Form5.LoadTreeView(Form5.toForm1Path)
             End If
             optButton.Visible = False
+        End If
+    End Sub
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        Form8.Show()
+    End Sub
+
+    Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
+        Form9.Show()
+    End Sub
+
+    Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
+        If ListViewRT.Items.Count > 0 Then
+            Dim tagValue = ListViewRT.Items(0).Tag
+            MessageBox.Show("Tag 内容：" & If(tagValue IsNot Nothing, tagValue.ToString(), "Tag 是 Nothing"))
+        Else
+            MessageBox.Show("ListViewRT 是空的")
         End If
     End Sub
 

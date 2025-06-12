@@ -141,11 +141,11 @@ Partial Class Form2
         Me.Label5.BackColor = System.Drawing.Color.White
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(3, 193)
+        Me.Label5.Location = New System.Drawing.Point(3, 215)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(315, 82)
+        Me.Label5.Size = New System.Drawing.Size(315, 60)
         Me.Label5.TabIndex = 48
-        Me.Label5.Text = "敬告：软件本身包含的其他资源的版权归各自公司所有。本程序完全开源且免费，请勿擅自非法盈利，由此造成的一切责任作者概不负责。"
+        Me.Label5.Text = "敬告：软件包含的其他资源的版权归各自公司所有。本程序完全开源且免费，请勿擅自非法盈利，由此造成的一切责任作者概不负责。"
         '
         'PictureBox1
         '
@@ -196,10 +196,10 @@ Partial Class Form2
         Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.8.2", "PicoNamer 批量重命名 - 0.6.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 默认显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 用于表格导出 - 7.3.2", "MetroModernUI 标签页控件 - 1.4.0", ".NET Framework 运行库 - 4.7.2"})
+        Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.8.2", "PicoNamer 批量重命名 - 0.6.0", "PicoConverter 格式转换 - 0.1.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 默认显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 用于表格导出 - 7.3.2", "MetroModernUI 标签页控件 - 1.4.0", ".NET Framework 运行库 - 4.7.2"})
         Me.ListBox1.Location = New System.Drawing.Point(3, 32)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(315, 160)
+        Me.ListBox1.Size = New System.Drawing.Size(315, 180)
         Me.ListBox1.TabIndex = 51
         '
         'Label4
@@ -277,7 +277,7 @@ Partial Class Form2
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
+        Me.MetroTabControl1.SelectedIndex = 2
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Purple
         Me.MetroTabControl1.TabIndex = 58
@@ -390,13 +390,13 @@ Partial Class Form2
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(315, 43)
         Me.Label12.TabIndex = 14
-        Me.Label12.Text = "本程序遵循 MIT 许可协议，请用户遵守许可协议："
+        Me.Label12.Text = "本程序遵循 MIT 许可协议，用户需阅读并遵守以下内容："
         '
         'MetroTabPage3
         '
+        Me.MetroTabPage3.Controls.Add(Me.ListBox1)
         Me.MetroTabPage3.Controls.Add(Me.Label1)
         Me.MetroTabPage3.Controls.Add(Me.Label5)
-        Me.MetroTabPage3.Controls.Add(Me.ListBox1)
         Me.MetroTabPage3.Controls.Add(Me.Label10)
         Me.MetroTabPage3.HorizontalScrollbarBarColor = True
         Me.MetroTabPage3.HorizontalScrollbarHighlightOnWheel = False

@@ -44,6 +44,7 @@ Partial Class Form5
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -51,10 +52,9 @@ Partial Class Form5
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.ProgressBar1)
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.btnGoUp)
-        Me.Panel1.Location = New System.Drawing.Point(12, 16)
+        Me.Panel1.Location = New System.Drawing.Point(24, 39)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(258, 26)
         Me.Panel1.TabIndex = 36
@@ -63,9 +63,9 @@ Partial Class Form5
         '
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(-14, 19)
+        Me.ProgressBar1.Location = New System.Drawing.Point(3, 22)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(278, 10)
+        Me.ProgressBar1.Size = New System.Drawing.Size(366, 10)
         Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
         Me.ProgressBar1.TabIndex = 53
         Me.ProgressBar1.Visible = False
@@ -140,15 +140,14 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TreeView1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.TreeView1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.TreeView1.ForeColor = System.Drawing.Color.Black
         Me.TreeView1.FullRowSelect = True
         Me.TreeView1.ImageIndex = 1
         Me.TreeView1.ImageList = Me.ImageList1
-        Me.TreeView1.LineColor = System.Drawing.Color.DarkSlateBlue
         Me.TreeView1.Location = New System.Drawing.Point(0, 48)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 1
-        Me.TreeView1.Size = New System.Drawing.Size(330, 376)
+        Me.TreeView1.Size = New System.Drawing.Size(330, 380)
         Me.TreeView1.TabIndex = 37
         Me.ToolTip1.SetToolTip(Me.TreeView1, "拖入文件夹。")
         '
@@ -260,9 +259,9 @@ Partial Class Form5
         Me.Panel2.Controls.Add(Me.sltLabel0)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.TreeView1)
-        Me.Panel2.Location = New System.Drawing.Point(12, 48)
+        Me.Panel2.Location = New System.Drawing.Point(12, 44)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(329, 424)
+        Me.Panel2.Size = New System.Drawing.Size(329, 428)
         Me.Panel2.TabIndex = 58
         '
         'sltLabel0
@@ -305,7 +304,7 @@ Partial Class Form5
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.Location = New System.Drawing.Point(276, 16)
+        Me.Button3.Location = New System.Drawing.Point(288, 38)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(65, 26)
         Me.Button3.TabIndex = 60
@@ -317,6 +316,9 @@ Partial Class Form5
         '
         Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3.Controls.Add(Me.Button3)
+        Me.Panel3.Controls.Add(Me.ProgressBar1)
+        Me.Panel3.Controls.Add(Me.Panel1)
         Me.Panel3.Location = New System.Drawing.Point(-14, -28)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(428, 514)
@@ -327,13 +329,11 @@ Partial Class Form5
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Panel3)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -342,6 +342,7 @@ Partial Class Form5
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

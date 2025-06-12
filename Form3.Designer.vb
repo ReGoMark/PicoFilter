@@ -759,7 +759,7 @@ Partial Class Form3
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(69, 22)
         Me.Label35.TabIndex = 52
-        Me.Label35.Text = "标签"
+        Me.Label35.Text = "星标"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label44

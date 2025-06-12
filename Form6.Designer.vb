@@ -26,7 +26,6 @@ Partial Class Form6
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form6))
         Me.ListViewPre = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ApplyButton = New System.Windows.Forms.Button()
@@ -52,6 +51,7 @@ Partial Class Form6
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.MetroProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.Panel1.SuspendLayout()
         CType(Me.TextBoxStart, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -67,7 +67,7 @@ Partial Class Form6
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListViewPre.BackColor = System.Drawing.Color.White
         Me.ListViewPre.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.ListViewPre.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader5, Me.ColumnHeader2, Me.ColumnHeader6})
+        Me.ListViewPre.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader6})
         Me.ListViewPre.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(238, Byte))
         Me.ListViewPre.ForeColor = System.Drawing.Color.Black
         Me.ListViewPre.FullRowSelect = True
@@ -82,13 +82,8 @@ Partial Class Form6
         '
         'ColumnHeader1
         '
-        Me.ColumnHeader1.Text = "#!"
+        Me.ColumnHeader1.Text = "#"
         Me.ColumnHeader1.Width = 50
-        '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "#"
-        Me.ColumnHeader5.Width = 50
         '
         'ColumnHeader2
         '
@@ -135,13 +130,14 @@ Partial Class Form6
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button1.Location = New System.Drawing.Point(279, 12)
+        Me.Button1.Location = New System.Drawing.Point(216, 166)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(62, 26)
         Me.Button1.TabIndex = 56
         Me.Button1.Text = "覆盖"
         Me.ToolTip1.SetToolTip(Me.Button1, "覆盖原始文件名。")
         Me.Button1.UseVisualStyleBackColor = False
+        Me.Button1.Visible = False
         '
         'Button2
         '
@@ -155,11 +151,11 @@ Partial Class Form6
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.Location = New System.Drawing.Point(211, 12)
+        Me.Button2.Location = New System.Drawing.Point(293, 38)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(62, 26)
+        Me.Button2.Size = New System.Drawing.Size(72, 26)
         Me.Button2.TabIndex = 55
-        Me.Button2.Text = "副本"
+        Me.Button2.Text = "另存为"
         Me.ToolTip1.SetToolTip(Me.Button2, "保存重命名文件为副本。")
         Me.Button2.UseVisualStyleBackColor = False
         '
@@ -189,6 +185,7 @@ Partial Class Form6
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.TextBoxStart)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.Button6)
@@ -223,9 +220,9 @@ Partial Class Form6
         Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.TextBox1)
-        Me.Panel2.Location = New System.Drawing.Point(83, 210)
+        Me.Panel2.Location = New System.Drawing.Point(59, 198)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(124, 26)
+        Me.Panel2.Size = New System.Drawing.Size(219, 26)
         Me.Panel2.TabIndex = 78
         Me.Panel2.Visible = False
         '
@@ -242,7 +239,7 @@ Partial Class Form6
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
-        Me.TextBox1.Size = New System.Drawing.Size(116, 17)
+        Me.TextBox1.Size = New System.Drawing.Size(211, 17)
         Me.TextBox1.TabIndex = 50
         '
         'Button6
@@ -492,15 +489,31 @@ Partial Class Form6
         '
         'Panel3
         '
+        Me.Panel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3.Controls.Add(Me.MetroProgressBar1)
         Me.Panel3.Controls.Add(Me.bksbutton)
         Me.Panel3.Controls.Add(Me.mnsButton)
         Me.Panel3.Controls.Add(Me.moreButton)
+        Me.Panel3.Controls.Add(Me.Button2)
         Me.Panel3.Location = New System.Drawing.Point(-26, -28)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(416, 514)
+        Me.Panel3.Size = New System.Drawing.Size(440, 514)
         Me.Panel3.TabIndex = 78
+        '
+        'MetroProgressBar1
+        '
+        Me.MetroProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MetroProgressBar1.Location = New System.Drawing.Point(22, 21)
+        Me.MetroProgressBar1.Name = "MetroProgressBar1"
+        Me.MetroProgressBar1.Size = New System.Drawing.Size(358, 11)
+        Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
+        Me.MetroProgressBar1.TabIndex = 90
+        Me.MetroProgressBar1.Visible = False
         '
         'Form6
         '
@@ -517,8 +530,6 @@ Partial Class Form6
         Me.Controls.Add(Me.absbButton)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Panel3)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form6"
@@ -550,7 +561,6 @@ Partial Class Form6
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents ColumnHeader5 As ColumnHeader
     Friend WithEvents moreButton As Button
     Friend WithEvents mnsButton As Button
     Friend WithEvents ToolTip1 As ToolTip
@@ -561,4 +571,5 @@ Partial Class Form6
     Friend WithEvents TextBoxStart As NumericUpDown
     Friend WithEvents Panel3 As Panel
     Friend WithEvents ImageList2 As ImageList
+    Friend WithEvents MetroProgressBar1 As MetroFramework.Controls.MetroProgressBar
 End Class
