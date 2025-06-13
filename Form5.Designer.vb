@@ -152,7 +152,6 @@ Partial Class Form5
         Me.TreeView1.SelectedImageIndex = 1
         Me.TreeView1.Size = New System.Drawing.Size(330, 355)
         Me.TreeView1.TabIndex = 37
-        Me.ToolTip1.SetToolTip(Me.TreeView1, "拖入文件夹。")
         '
         'ImageList1
         '

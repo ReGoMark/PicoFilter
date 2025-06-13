@@ -1668,7 +1668,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("提示：单击「开始」进行筛选。", Color.White)
+            optChange("提示：转到「筛选」选项卡继续。", Color.White)
 
         End If
     End Sub
@@ -1902,7 +1902,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("提示：单击「开始」进行筛选。", Color.White)
+            optChange("提示：转到「筛选」选项卡继续。", Color.White)
         End If
     End Sub
 
