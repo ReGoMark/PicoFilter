@@ -41,6 +41,7 @@ Partial Class Form8
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.colorButton = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cobQuality = New System.Windows.Forms.NumericUpDown()
@@ -51,10 +52,13 @@ Partial Class Form8
         Me.Button3 = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel5.SuspendLayout()
         CType(Me.cobQuality, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnLoad
@@ -73,8 +77,9 @@ Partial Class Form8
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.Size = New System.Drawing.Size(109, 26)
         Me.btnLoad.TabIndex = 86
-        Me.btnLoad.Text = "拉取/拖入"
+        Me.btnLoad.Text = "拉取/浏览"
         Me.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btnLoad, "按住Shift后点击按钮浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "点击按钮拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖动文件夹到列表加载数据；")
         Me.btnLoad.UseVisualStyleBackColor = False
         '
         'bksbutton
@@ -108,7 +113,7 @@ Partial Class Form8
         Me.btnConvert.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConvert.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.btnConvert.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnConvert.Location = New System.Drawing.Point(218, 193)
+        Me.btnConvert.Location = New System.Drawing.Point(267, 328)
         Me.btnConvert.Name = "btnConvert"
         Me.btnConvert.Size = New System.Drawing.Size(62, 26)
         Me.btnConvert.TabIndex = 79
@@ -152,7 +157,7 @@ Partial Class Form8
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(0, 0)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(329, 393)
+        Me.ListView1.Size = New System.Drawing.Size(329, 354)
         Me.ListView1.TabIndex = 14
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Details
@@ -294,9 +299,9 @@ Partial Class Form8
         Me.Panel1.Controls.Add(Me.btnConvert)
         Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Controls.Add(Me.ListView1)
-        Me.Panel1.Location = New System.Drawing.Point(12, 44)
+        Me.Panel1.Location = New System.Drawing.Point(12, 76)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(329, 428)
+        Me.Panel1.Size = New System.Drawing.Size(329, 396)
         Me.Panel1.TabIndex = 82
         '
         'Panel5
@@ -304,16 +309,38 @@ Partial Class Form8
         Me.Panel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel5.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel5.Controls.Add(Me.colorButton)
         Me.Panel5.Controls.Add(Me.Label1)
         Me.Panel5.Controls.Add(Me.Label2)
         Me.Panel5.Controls.Add(Me.cobQuality)
         Me.Panel5.Controls.Add(Me.rbPNG)
         Me.Panel5.Controls.Add(Me.rbJPG)
         Me.Panel5.Controls.Add(Me.rbBMP)
-        Me.Panel5.Location = New System.Drawing.Point(0, 392)
+        Me.Panel5.Location = New System.Drawing.Point(0, 360)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(329, 36)
         Me.Panel5.TabIndex = 89
+        '
+        'colorButton
+        '
+        Me.colorButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.colorButton.BackColor = System.Drawing.Color.White
+        Me.colorButton.CausesValidation = False
+        Me.colorButton.Enabled = False
+        Me.colorButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.colorButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.colorButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.colorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.colorButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.colorButton.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.colorButton.Location = New System.Drawing.Point(152, 8)
+        Me.colorButton.Name = "colorButton"
+        Me.colorButton.Size = New System.Drawing.Size(44, 20)
+        Me.colorButton.TabIndex = 90
+        Me.ToolTip1.SetToolTip(Me.colorButton, "设置透明通道的目标背景色。")
+        Me.colorButton.UseVisualStyleBackColor = False
+        Me.colorButton.Visible = False
         '
         'Label1
         '
@@ -322,7 +349,7 @@ Partial Class Form8
         Me.Label1.Enabled = False
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label1.Location = New System.Drawing.Point(304, 7)
+        Me.Label1.Location = New System.Drawing.Point(302, 8)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(21, 20)
         Me.Label1.TabIndex = 93
@@ -335,11 +362,11 @@ Partial Class Form8
         Me.Label2.Enabled = False
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label2.Location = New System.Drawing.Point(162, 7)
+        Me.Label2.Location = New System.Drawing.Point(202, 7)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(69, 20)
+        Me.Label2.Size = New System.Drawing.Size(39, 20)
         Me.Label2.TabIndex = 92
-        Me.Label2.Text = "转换质量"
+        Me.Label2.Text = "质量"
         '
         'cobQuality
         '
@@ -409,7 +436,7 @@ Partial Class Form8
         Me.rbJPG.Text = "JPG"
         Me.rbJPG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.rbJPG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.rbJPG, "转换为JPG格式，透明通道默认转换为白底。")
+        Me.ToolTip1.SetToolTip(Me.rbJPG, "转换为JPG格式。")
         Me.rbJPG.UseVisualStyleBackColor = False
         '
         'rbBMP
@@ -474,6 +501,7 @@ Partial Class Form8
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3.Controls.Add(Me.Panel2)
         Me.Panel3.Controls.Add(Me.MetroProgressBar1)
         Me.Panel3.Controls.Add(Me.bksbutton)
         Me.Panel3.Controls.Add(Me.btnCopy)
@@ -481,6 +509,33 @@ Partial Class Form8
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(437, 523)
         Me.Panel3.TabIndex = 91
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel2.Controls.Add(Me.TextBox1)
+        Me.Panel2.Location = New System.Drawing.Point(40, 79)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(329, 26)
+        Me.Panel2.TabIndex = 91
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBox1.BackColor = System.Drawing.Color.GhostWhite
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox1.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.TextBox1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.TextBox1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.TextBox1.Location = New System.Drawing.Point(3, 4)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
+        Me.TextBox1.Size = New System.Drawing.Size(323, 17)
+        Me.TextBox1.TabIndex = 50
         '
         'Form8
         '
@@ -508,6 +563,8 @@ Partial Class Form8
         Me.Panel5.PerformLayout()
         CType(Me.cobQuality, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -537,6 +594,9 @@ Partial Class Form8
     Friend WithEvents ColumnHeader4 As ColumnHeader
     Friend WithEvents MetroProgressBar1 As MetroFramework.Controls.MetroProgressBar
     Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents colorButton As Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents TextBox1 As TextBox
 End Class

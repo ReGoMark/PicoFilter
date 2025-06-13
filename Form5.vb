@@ -301,6 +301,9 @@ Public Class Form5
                 ProgressBar1.Maximum = totalFiles
                 ProgressBar1.Value = 0
 
+                Dim sw As New Stopwatch()
+                sw.Start()
+
                 ' 复制文件
                 For Each filePath In filesToCopy
                     Try
@@ -324,18 +327,28 @@ Public Class Form5
                     End Try
                     ' 更新窗口标题
                     Dim percent As Double = (copiedCount / totalFiles) * 100
-                    Me.Text = $"导视 | 已完成 {percent.ToString("0.0")}%"
+                    'Me.Text = $"导视 | 已完成 {percent.ToString("0.0")}%"
                     Application.DoEvents() ' 刷新UI
                     ' 更新进度条
                     ProgressBar1.Value = copiedCount
                     Application.DoEvents() ' 让UI及时刷新
                 Next
 
-                MessageBox.Show($"文件提取完成，共 {copiedCount} 项。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 ProgressBar1.Visible = False
-                Me.Text = "导视"
+                'Me.Text = "导视"
+                Dim result = MessageBox.Show($"文件提取完成，共计 {copiedCount} 项。点击按钮打开", "成功", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                If result = DialogResult.Yes Then
+                    Try
+                        Process.Start("explorer.exe", destinationFolder)
+                    Catch ex As Exception
+                        MessageBox.Show("无法打开文件夹：" & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
             End If
         End Using
     End Sub
 
+    Private Sub Form5_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        Me.MinimumSize = New Size(371, 582) ' 设置最小尺寸
+    End Sub
 End Class

@@ -9,6 +9,8 @@ Public Class Form8
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
     Private LastSavePath As String = String.Empty '存储最后保存的路径
+    Private backgroundColor As Color = Color.White ' 默认背景色
+    Private colorDialog As New ColorDialog()
 
     ' 初始化窗体
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -34,6 +36,31 @@ Public Class Form8
             .Minimum = 0
             .Value = 0
         End With
+
+        ' 初始化背景色控件
+        With colorButton
+            .BackColor = backgroundColor
+            .FlatStyle = FlatStyle.Flat
+            .Visible = False  ' 默认隐藏
+        End With
+
+        ' 颜色对话框设置
+        colorDialog.FullOpen = True
+        colorDialog.Color = backgroundColor
+    End Sub
+
+    ' 添加背景色按钮点击事件
+    Private Sub colorButton_Click(sender As Object, e As EventArgs) Handles colorButton.Click
+        If colorDialog.ShowDialog() = DialogResult.OK Then
+            backgroundColor = colorDialog.Color
+            colorButton.BackColor = backgroundColor
+        End If
+    End Sub
+
+    ' 根据格式选择显示/隐藏背景色控件
+    Private Sub UpdateBackgroundColorControl()
+        Dim hasTransparency As Boolean = rbPNG.Checked
+        colorButton.Visible = Not hasTransparency
     End Sub
 
     ' 拖放文件处理
@@ -41,7 +68,6 @@ Public Class Form8
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.Copy
         End If
-
     End Sub
 
     Private Sub ListView1_DragDrop(sender As Object, e As DragEventArgs) Handles ListView1.DragDrop
@@ -51,6 +77,10 @@ Public Class Form8
             For Each path In paths
                 If Directory.Exists(path) Then
                     LoadImagesFromDirectory(path)
+                    ' 显示文件夹路径
+                    TextBox1.Text = path
+                    TextBox1.SelectionStart = TextBox1.Text.Length
+                    TextBox1.ScrollToCaret()
                 End If
             Next
             'UpdateFormTitle("拖拽")
@@ -94,39 +124,56 @@ Public Class Form8
 
     ' 从Form1加载数据
     Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
-        Try
-            basePath = Form1.openText.Text.Trim()
+        If (ModifierKeys And Keys.Shift) = Keys.Shift Then
+            ' 按住Shift，弹出文件夹选择对话框
+            Using fbd As New FolderBrowserDialog()
+                If fbd.ShowDialog() = DialogResult.OK Then
+                    ListView1.Items.Clear()
+                    LoadImagesFromDirectory(fbd.SelectedPath)
+                    ' 显示文件夹路径
+                    TextBox1.Text = fbd.SelectedPath
+                    TextBox1.SelectionStart = TextBox1.Text.Length
+                    TextBox1.ScrollToCaret()
+                End If
+            End Using
+            Exit Sub
+        End If
 
-            If Not ValidateForm1Data() Then Exit Sub
-
-            ListView1.Items.Clear()
-            Dim index = 1
-
-            For Each item As ListViewItem In Form1.ListViewRT.Items
+        ' 原有从Form1加载数据逻辑
+        'Try
+        basePath = Form1.openText.Text.Trim()
+        'If Not ValidateForm1Data() Then Exit Sub
+        ListView1.Items.Clear()
+        Dim index = 1
+        For Each item As ListViewItem In Form1.ListViewRT.Items
                 ProcessForm1Item(item, index)
                 index += 1
             Next
 
-            'UpdateFormTitle("拉取")
-        Catch ex As Exception
-            ShowError("拉取数据出现错误。", ex)
-        End Try
+            ' 显示“PicoFilter”
+            TextBox1.Text = "来自 PicoFilter 筛选页"
+            TextBox1.SelectionStart = TextBox1.Text.Length
+            TextBox1.ScrollToCaret()
+        'UpdateFormTitle("拉取")
+        'Catch ex As Exception
+        '    ShowError("拉取数据为空。", ex)
+        'End Try
     End Sub
 
-    ' 验证Form1数据
-    Private Function ValidateForm1Data() As Boolean
-        If String.IsNullOrEmpty(basePath) OrElse Not Directory.Exists(basePath) Then
-            MessageBox.Show("拉取的路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return False
-        End If
+    '' 验证Form1数据
+    'Private Function ValidateForm1Data() As Boolean
+    '    If String.IsNullOrEmpty(basePath) OrElse Not Directory.Exists(basePath) Then
+    '        MessageBox.Show("拉取的路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        Return False
+    '    End If
 
-        If Form1.ListViewRT.Items.Count = 0 Then
-            MessageBox.Show("没有可以拉取的数据。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Return False
-        End If
+    '    If Form1.ListViewRT.Items.Count = 0 Then
+    '        MessageBox.Show("没有可以拉取的数据。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '        Return False
+    '    End If
 
-        Return True
-    End Function
+    '    Return True
+    'End Function
 
     ' 处理Form1的单个项目
     Private Sub ProcessForm1Item(srcItem As ListViewItem, index As Integer)
@@ -230,14 +277,30 @@ Public Class Form8
     End Function
 
     Private Sub ConvertImage(sourcePath As String, targetPath As String, format As String, quality As Integer)
-        Using img As Image = Image.FromFile(sourcePath)
-            Dim codec = GetCodec(format)
-            Dim parameters = GetEncoderParameters(format, quality)
+        Using sourceImg As Image = Image.FromFile(sourcePath)
+            ' 如果目标格式不支持透明度，则创建新图像并填充背景色
+            If format.ToUpper() <> "PNG" Then
+                Using newBitmap As New Bitmap(sourceImg.Width, sourceImg.Height)
+                    Using g As Graphics = Graphics.FromImage(newBitmap)
+                        ' 填充背景色
+                        g.Clear(backgroundColor)
+                        ' 绘制原始图像
+                        g.DrawImage(sourceImg, 0, 0, sourceImg.Width, sourceImg.Height)
+                    End Using
 
-            If codec IsNot Nothing Then
-                img.Save(targetPath, codec, parameters)
+                    ' 保存转换后的图像
+                    Dim codec = GetCodec(format)
+                    Dim parameters = GetEncoderParameters(format, quality)
+
+                    If codec IsNot Nothing Then
+                        newBitmap.Save(targetPath, codec, parameters)
+                    Else
+                        newBitmap.Save(targetPath)
+                    End If
+                End Using
             Else
-                img.Save(targetPath)
+                ' PNG格式直接保存
+                sourceImg.Save(targetPath, ImageFormat.Png)
             End If
         End Using
     End Sub
@@ -371,7 +434,12 @@ Public Class Form8
         Next
     End Sub
 
+    Private Sub rbPNG_CheckedChanged(sender As Object, e As EventArgs) Handles rbPNG.CheckedChanged
+        UpdateBackgroundColorControl()
+    End Sub
+
     Private Sub rbJPG_CheckedChanged(sender As Object, e As EventArgs) Handles rbJPG.CheckedChanged
+        UpdateBackgroundColorControl()
         If rbJPG.Checked Then
             Label1.Enabled = True
             cobQuality.Enabled = True
@@ -381,6 +449,10 @@ Public Class Form8
             cobQuality.Enabled = False
             Label2.Enabled = False
         End If
+    End Sub
+
+    Private Sub rbBMP_CheckedChanged(sender As Object, e As EventArgs) Handles rbBMP.CheckedChanged
+        UpdateBackgroundColorControl()
     End Sub
 
     Private Sub Form8_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
@@ -422,5 +494,22 @@ Public Class Form8
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Me.Close()
+    End Sub
+
+    ' 双击预览功能
+    Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
+        If ListView1.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+            Dim filePath As String = selectedItem.Tag.ToString()
+            If File.Exists(filePath) Then
+                Try
+                    Process.Start(filePath)
+                Catch ex As Exception
+                    MessageBox.Show("无法打开文件。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Else
+                MessageBox.Show("文件不存在: " & filePath, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
     End Sub
 End Class
