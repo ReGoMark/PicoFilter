@@ -81,9 +81,9 @@ Partial Class Form2
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label2.Location = New System.Drawing.Point(83, 63)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(189, 20)
+        Me.Label2.Size = New System.Drawing.Size(219, 20)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "图片筛选、排序和命名工具"
+        Me.Label2.Text = "图片筛选、命名和格式转换工具"
         '
         'Label44
         '

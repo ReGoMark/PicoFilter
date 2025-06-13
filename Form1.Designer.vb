@@ -98,7 +98,6 @@ Partial Class Form1
         Me.Button16 = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.PictureBox12 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.Button15 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
@@ -138,6 +137,7 @@ Partial Class Form1
         Me.rbName = New System.Windows.Forms.RadioButton()
         Me.rbID = New System.Windows.Forms.RadioButton()
         Me.Button11 = New System.Windows.Forms.Button()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button14 = New System.Windows.Forms.Button()
         Me.PictureBox11 = New System.Windows.Forms.PictureBox()
@@ -186,9 +186,9 @@ Partial Class Form1
         Me.ContextMenuStrip4.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -1108,7 +1108,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.PictureBox7)
         Me.Panel3.Controls.Add(Me.setting)
         Me.Panel3.Controls.Add(Me.qrButton)
-        Me.Panel3.Location = New System.Drawing.Point(39, 118)
+        Me.Panel3.Location = New System.Drawing.Point(37, 118)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(389, 220)
         Me.Panel3.TabIndex = 44
@@ -1160,17 +1160,6 @@ Partial Class Form1
         Me.PictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox12.TabIndex = 98
         Me.PictureBox12.TabStop = False
-        '
-        'PictureBox6
-        '
-        Me.PictureBox6.BackColor = System.Drawing.Color.White
-        Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
-        Me.PictureBox6.Location = New System.Drawing.Point(78, 13)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(18, 18)
-        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox6.TabIndex = 90
-        Me.PictureBox6.TabStop = False
         '
         'Button15
         '
@@ -1402,7 +1391,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-527, 177)
+        Me.Label7.Location = New System.Drawing.Point(-529, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1411,6 +1400,7 @@ Partial Class Form1
         '
         'Button13
         '
+        Me.Button13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button13.BackColor = System.Drawing.Color.White
         Me.Button13.CausesValidation = False
         Me.Button13.FlatAppearance.BorderColor = System.Drawing.Color.White
@@ -1975,6 +1965,17 @@ Partial Class Form1
         Me.Button11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button11, "一键保存筛选结果副本到桌面。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.Button11.UseVisualStyleBackColor = False
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.BackColor = System.Drawing.Color.White
+        Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
+        Me.PictureBox6.Location = New System.Drawing.Point(78, 13)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(18, 18)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox6.TabIndex = 90
+        Me.PictureBox6.TabStop = False
         '
         'Button1
         '
@@ -2576,9 +2577,9 @@ Partial Class Form1
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
