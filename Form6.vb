@@ -196,9 +196,16 @@ Public Class Form6
                     MetroProgressBar1.Visible = False
 
                     If failedCount > 0 Then
-                        MessageBox.Show($"复制完成，但有 {failedCount} 个文件失败。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        MessageBox.Show($"部分重命名完成，其中{failedCount}个文件重命名失败。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Else
-                        MessageBox.Show("重命名副本已保存。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        ' 修改这里：添加询问是否打开目标文件夹
+                        If MessageBox.Show("重命名副本已保存。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                            Try
+                                Process.Start("explorer.exe", targetPath)
+                            Catch ex As Exception
+                                MessageBox.Show("无法打开目标文件夹。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End Try
+                        End If
                     End If
                 End If
             End Using
@@ -437,19 +444,19 @@ Public Class Form6
         End If
     End Sub
 
-    Private Sub Form6_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
-        If Me.WindowState = FormWindowState.Maximized Then
-            ListViewPre.Columns(0).Width = ListViewPre.Width / 15
-            'ListViewPre.Columns(1).Width = ListViewPre.Width / 15
-            ListViewPre.Columns(1).Width = ListViewPre.Width / 3
-            ListViewPre.Columns(2).Width = ListViewPre.Width / 3
-        ElseIf Me.WindowState = FormWindowState.Normal Then
-            ListViewPre.Columns(0).Width = 50
-            'ListViewPre.Columns(1).Width = 50
-            ListViewPre.Columns(1).Width = 200
-            ListViewPre.Columns(2).Width = 200
-        End If
-    End Sub
+    'Private Sub Form6_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+    '    If Me.WindowState = FormWindowState.Maximized Then
+    '        ListViewPre.Columns(0).Width = ListViewPre.Width / 15
+    '        'ListViewPre.Columns(1).Width = ListViewPre.Width / 15
+    '        ListViewPre.Columns(1).Width = ListViewPre.Width / 3
+    '        ListViewPre.Columns(2).Width = ListViewPre.Width / 3
+    '    ElseIf Me.WindowState = FormWindowState.Normal Then
+    '        ListViewPre.Columns(0).Width = 50
+    '        'ListViewPre.Columns(1).Width = 50
+    '        ListViewPre.Columns(1).Width = 200
+    '        ListViewPre.Columns(2).Width = 200
+    '    End If
+    'End Sub
 
     Private Sub ListViewPre_DoubleClick(sender As Object, e As EventArgs) Handles ListViewPre.DoubleClick
         If ListViewPre.SelectedItems.Count > 0 Then
@@ -587,5 +594,8 @@ Public Class Form6
         'TextBoxStart.Maximum = ListViewPre.Items.Count
     End Sub
 
+    Private Sub Form6_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        Me.MinimumSize = New Size(371, 582)
 
+    End Sub
 End Class

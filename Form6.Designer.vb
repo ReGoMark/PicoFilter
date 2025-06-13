@@ -156,7 +156,7 @@ Partial Class Form6
         Me.Button2.Size = New System.Drawing.Size(72, 26)
         Me.Button2.TabIndex = 55
         Me.Button2.Text = "另存为"
-        Me.ToolTip1.SetToolTip(Me.Button2, "保存重命名文件为副本。")
+        Me.ToolTip1.SetToolTip(Me.Button2, "保存重命名文件的副本。")
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Button3
@@ -381,11 +381,11 @@ Partial Class Form6
         Me.bksbutton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.bksbutton.ForeColor = System.Drawing.Color.SlateBlue
         Me.bksbutton.Image = CType(resources.GetObject("bksbutton.Image"), System.Drawing.Image)
-        Me.bksbutton.Location = New System.Drawing.Point(114, 38)
+        Me.bksbutton.Location = New System.Drawing.Point(151, 38)
         Me.bksbutton.Name = "bksbutton"
         Me.bksbutton.Size = New System.Drawing.Size(26, 26)
         Me.bksbutton.TabIndex = 72
-        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除项")
+        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项。")
         Me.bksbutton.UseVisualStyleBackColor = False
         '
         'loadButton
@@ -402,11 +402,10 @@ Partial Class Form6
         Me.loadButton.Image = CType(resources.GetObject("loadButton.Image"), System.Drawing.Image)
         Me.loadButton.Location = New System.Drawing.Point(12, 12)
         Me.loadButton.Name = "loadButton"
-        Me.loadButton.Size = New System.Drawing.Size(72, 26)
+        Me.loadButton.Size = New System.Drawing.Size(109, 26)
         Me.loadButton.TabIndex = 73
-        Me.loadButton.Text = "拉取"
+        Me.loadButton.Text = "拉取/拖入"
         Me.loadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.loadButton, "从PicoFilter拉取数据。")
         Me.loadButton.UseVisualStyleBackColor = False
         '
         'Button4
@@ -441,7 +440,7 @@ Partial Class Form6
         Me.moreButton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.moreButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.moreButton.Image = CType(resources.GetObject("moreButton.Image"), System.Drawing.Image)
-        Me.moreButton.Location = New System.Drawing.Point(146, 38)
+        Me.moreButton.Location = New System.Drawing.Point(183, 38)
         Me.moreButton.Name = "moreButton"
         Me.moreButton.Size = New System.Drawing.Size(26, 26)
         Me.moreButton.TabIndex = 75
@@ -460,7 +459,7 @@ Partial Class Form6
         Me.mnsButton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.mnsButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.mnsButton.Image = CType(resources.GetObject("mnsButton.Image"), System.Drawing.Image)
-        Me.mnsButton.Location = New System.Drawing.Point(178, 38)
+        Me.mnsButton.Location = New System.Drawing.Point(215, 38)
         Me.mnsButton.Name = "mnsButton"
         Me.mnsButton.Size = New System.Drawing.Size(26, 26)
         Me.mnsButton.TabIndex = 76

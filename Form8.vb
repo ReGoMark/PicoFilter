@@ -8,6 +8,7 @@ Public Class Form8
     Private basePath As String = String.Empty
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
+    Private LastSavePath As String = String.Empty '存储最后保存的路径
 
     ' 初始化窗体
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -54,7 +55,7 @@ Public Class Form8
             Next
             'UpdateFormTitle("拖拽")
         Catch ex As Exception
-            ShowError("拖放处理出错", ex)
+            ShowError("拖放处理出现错误。", ex)
         End Try
     End Sub
 
@@ -71,7 +72,7 @@ Public Class Form8
                 startIndex += 1
             Next
         Catch ex As Exception
-            ShowError("加载目录出错", ex)
+            ShowError("加载目录出现错误。", ex)
         End Try
     End Sub
 
@@ -108,19 +109,19 @@ Public Class Form8
 
             'UpdateFormTitle("拉取")
         Catch ex As Exception
-            ShowError("拉取数据出错", ex)
+            ShowError("拉取数据出现错误。", ex)
         End Try
     End Sub
 
     ' 验证Form1数据
     Private Function ValidateForm1Data() As Boolean
         If String.IsNullOrEmpty(basePath) OrElse Not Directory.Exists(basePath) Then
-            MessageBox.Show("Form1的路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("拉取的路径无效或不存在。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
 
         If Form1.ListViewRT.Items.Count = 0 Then
-            MessageBox.Show("Form1没有可用数据。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("没有可以拉取的数据。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return False
         End If
 
@@ -138,7 +139,7 @@ Public Class Form8
                 AddFileToListView(fullPath, index)
             End If
         Catch ex As Exception
-            Debug.WriteLine($"处理项目出错: {ex.Message}")
+            Debug.WriteLine($"处理项目出现错误: {ex.Message}")
         End Try
     End Sub
 
@@ -177,6 +178,7 @@ Public Class Form8
 
         Using fbd As New FolderBrowserDialog()
             If fbd.ShowDialog() = DialogResult.OK Then
+                LastSavePath = fbd.SelectedPath
                 ProcessImages(fbd.SelectedPath, True)
             End If
         End Using
@@ -190,7 +192,7 @@ Public Class Form8
         If ListView1.Items.Count = 0 Then Exit Sub
 
         Dim quality = CInt(cobQuality.Value)
-        Dim logPath = Path.Combine(Application.StartupPath, "convert_errors.log")
+        'Dim logPath = Path.Combine(Application.StartupPath, "convert_errors.log")
         Dim failedCount = 0
 
         With MetroProgressBar1
@@ -211,11 +213,11 @@ Public Class Form8
                 Application.DoEvents()
             Catch ex As Exception
                 failedCount += 1
-                LogError(logPath, ListView1.Items(i).Tag.ToString(), ex)
+                'LogError(logPath, ListView1.Items(i).Tag.ToString(), ex)
             End Try
         Next
         MetroProgressBar1.Visible = False
-        ShowProcessResult(failedCount, logPath)
+        ShowProcessResult(failedCount)
     End Sub
 
     Private Function GetTargetPath(sourcePath As String, format As String, savePath As String, isCopy As Boolean) As String
@@ -259,17 +261,20 @@ Public Class Form8
         MessageBox.Show($"{message}: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
-    Private Sub LogError(logPath As String, filePath As String, ex As Exception)
-        File.AppendAllText(logPath,
-            $"[{DateTime.Now}] 文件: {filePath}{Environment.NewLine}错误: {ex.Message}{Environment.NewLine}{Environment.NewLine}")
-    End Sub
+    'Private Sub LogError(logPath As String, filePath As String, ex As Exception)
+    '    File.AppendAllText(logPath,
+    '        $"[{DateTime.Now}] 文件: {filePath}{Environment.NewLine}错误: {ex.Message}{Environment.NewLine}{Environment.NewLine}")
+    'End Sub
 
-    Private Sub ShowProcessResult(failedCount As Integer, logPath As String)
+    Private Sub ShowProcessResult(failedCount As Integer)
         If failedCount > 0 Then
-            MessageBox.Show($"转换完成，但有 {failedCount} 个文件失败，详情见日志：{logPath}",
+            MessageBox.Show($"部分转换完成，其中{failedCount}个文件转换失败。",
                           "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Else
-            MessageBox.Show("文件转换完成", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If MessageBox.Show("文件转换完成。点击按钮打开", "提示",
+                             MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                Process.Start("explorer.exe", LastSavePath)
+            End If
         End If
     End Sub
 
@@ -366,6 +371,22 @@ Public Class Form8
         Next
     End Sub
 
+    Private Sub rbJPG_CheckedChanged(sender As Object, e As EventArgs) Handles rbJPG.CheckedChanged
+        If rbJPG.Checked Then
+            Label1.Enabled = True
+            cobQuality.Enabled = True
+            Label2.Enabled = True
+        Else
+            Label1.Enabled = False
+            cobQuality.Enabled = False
+            Label2.Enabled = False
+        End If
+    End Sub
+
+    Private Sub Form8_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        Me.MinimumSize = New Size(371, 582)
+    End Sub
+
     Public Class 列表比较器
         Implements IComparer
         Private col As Integer
@@ -398,4 +419,8 @@ Public Class Form8
             Return returnVal
         End Function
     End Class
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Me.Close()
+    End Sub
 End Class

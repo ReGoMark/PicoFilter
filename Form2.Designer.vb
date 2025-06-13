@@ -30,7 +30,6 @@ Partial Class Form2
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Process1 = New System.Diagnostics.Process()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Label10 = New System.Windows.Forms.Label()
@@ -50,7 +49,6 @@ Partial Class Form2
         Me.Label12 = New System.Windows.Forms.Label()
         Me.MetroTabPage3 = New MetroFramework.Controls.MetroTabPage()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
@@ -147,18 +145,6 @@ Partial Class Form2
         Me.Label5.TabIndex = 48
         Me.Label5.Text = "敬告：软件包含的其他资源的版权归各自公司所有。本程序完全开源且免费，请勿擅自非法盈利，由此造成的一切责任作者概不负责。"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(278, 13)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(64, 64)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 48
-        Me.PictureBox1.TabStop = False
-        Me.PictureBox1.Visible = False
-        '
         'Process1
         '
         Me.Process1.StartInfo.Domain = ""
@@ -196,7 +182,7 @@ Partial Class Form2
         Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Items.AddRange(New Object() {"PicoFilter 图像筛选 - 1.8.2", "PicoNamer 批量重命名 - 0.6.0", "PicoConverter 格式转换 - 0.1.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 默认显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 用于表格导出 - 7.3.2", "MetroModernUI 标签页控件 - 1.4.0", ".NET Framework 运行库 - 4.7.2"})
+        Me.ListBox1.Items.AddRange(New Object() {"PicoFilt 图像筛选 - 1.8.2", "PicoName 批量重命名 - 1.0.2", "PicoConvert 格式转换 - 0.8.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 默认显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 用于表格导出 - 7.3.2", "MetroModernUI 标签页控件 - 1.4.0", ".NET Framework 运行库 - 4.7.2"})
         Me.ListBox1.Location = New System.Drawing.Point(3, 32)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(315, 180)
@@ -211,9 +197,9 @@ Partial Class Form2
         Me.Label4.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label4.Location = New System.Drawing.Point(83, 43)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(73, 20)
+        Me.Label4.Size = New System.Drawing.Size(84, 20)
         Me.Label4.TabIndex = 49
-        Me.Label4.Text = "版本：2.0"
+        Me.Label4.Text = "版本：2.0.2"
         '
         'Label8
         '
@@ -277,7 +263,7 @@ Partial Class Form2
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Purple
         Me.MetroTabControl1.TabIndex = 58
@@ -328,7 +314,7 @@ Partial Class Form2
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(315, 71)
         Me.Label15.TabIndex = 13
-        Me.Label15.Text = "PicoFilter 的诞生离不开开源社区的支持。同样的也感谢以下朋友对我的帮助，在此我由衷的表示感谢："
+        Me.Label15.Text = "PicoFilter 的诞生离不开开源社区的支持。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "同样的也感谢以下朋友对我的帮助，在此我由衷的表示感谢："
         '
         'MetroTabPage2
         '
@@ -405,7 +391,7 @@ Partial Class Form2
         Me.MetroTabPage3.Name = "MetroTabPage3"
         Me.MetroTabPage3.Size = New System.Drawing.Size(321, 295)
         Me.MetroTabPage3.TabIndex = 2
-        Me.MetroTabPage3.Text = "已安装的组件   "
+        Me.MetroTabPage3.Text = "已安装  "
         Me.MetroTabPage3.VerticalScrollbarBarColor = True
         Me.MetroTabPage3.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage3.VerticalScrollbarSize = 10
@@ -427,7 +413,6 @@ Partial Class Form2
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
         Me.Controls.Add(Me.MetroTabControl1)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Label4)
@@ -442,7 +427,6 @@ Partial Class Form2
         Me.Name = "Form2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "关于"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MetroTabControl1.ResumeLayout(False)
         Me.MetroTabPage1.ResumeLayout(False)
@@ -463,7 +447,6 @@ Partial Class Form2
     Friend WithEvents Button2 As Button
     Friend WithEvents Label44 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Process1 As Process
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents ListBox1 As ListBox

@@ -54,7 +54,7 @@ Public Class Form1
             icoCount As Integer = 0
         Dim tagCount As Integer = 0
 
-        Dim folderName As String = Path.GetFileName(openText.Text) '截取文件夹名
+        Dim folderName As String = Path.GetFileName(openText.Text.Trim()) '截取文件夹名
         Dim sumSizeStr As String = 格式化文件大小(sumSize)  '计量扫描文件的总大小
 
         ProgressBar1.Maximum = files.Count()
@@ -165,7 +165,7 @@ Public Class Form1
         ProgressBar1.Visible = False
         更新统计信息()
         PlayNotificationSound3()
-        'Form9.RichTextBox1.Text += consoletime & "Read Folder From: " & openText.Text & vbCrLf
+        'Form9.RichTextBox1.Text += consoletime & "Read Folder From: " & openText.Text.trim() & vbCrLf
 
         sumLT = files.Count
         jpgLT = jpgCount
@@ -455,7 +455,7 @@ Public Class Form1
     '    If ListViewLT.SelectedItems.Count > 0 Then
     '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
     '        Dim fileName As String = selectedItem.SubItems(2).Text '获取选中的文件名
-    '        Dim folderPath As String = openText.Text '文件夹路径
+    '        Dim folderPath As String = openText.Text.trim() '文件夹路径
     '        Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
     '        Clipboard.SetText(filePath) '复制文件路径到剪贴板
     '        MessageBox.Show("路径已复制：" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -479,7 +479,7 @@ Public Class Form1
         If ListViewLT.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(2).Text '获取选中的文件名
-            Dim folderPath As String = openText.Text '文件夹路径
+            Dim folderPath As String = openText.Text.Trim() '文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
             If File.Exists(filePath) Then '检查文件是否存在
                 Process.Start(filePath) '使用默认程序打开文件
@@ -494,7 +494,7 @@ Public Class Form1
         If ListViewRT.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(2).Text '获取选中的文件名
-            Dim folderPath As String = openText.Text '文件夹路径
+            Dim folderPath As String = openText.Text.Trim() '文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
             Try
                 Process.Start(filePath) ' 使用默认程序打开文件
@@ -520,7 +520,7 @@ Public Class Form1
             For i As Integer = ListViewRT.Items.Count - 1 To 0 Step -1
                 Dim item As ListViewItem = ListViewRT.Items(i)
                 Dim fileName As String = item.SubItems(2).Text
-                Dim sourcePath As String = Path.Combine(openText.Text, fileName) ' 获取完整路径
+                Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) ' 获取完整路径
 
                 Try
                     If File.Exists(sourcePath) Then
@@ -552,7 +552,7 @@ Public Class Form1
                 Dim targetFolder As String = folderBrowserDialog.SelectedPath
                 For Each item As ListViewItem In ListViewRT.Items
                     Dim fileName As String = item.SubItems(2).Text
-                    Dim sourcePath As String = Path.Combine(openText.Text, fileName) '源文件路径
+                    Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
                     Try
                         File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
                         optChange("提示：文件复制已完成。", Color.White)
@@ -572,7 +572,7 @@ Public Class Form1
                 Dim targetFolder As String = folderBrowserDialog.SelectedPath
                 For Each item As ListViewItem In ListViewRT.Items
                     Dim fileName As String = item.SubItems(2).Text
-                    Dim sourcePath As String = Path.Combine(openText.Text, fileName) '源文件路径
+                    Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
                     Try
                         File.Move(sourcePath, Path.Combine(targetFolder, fileName))
                         optChange("警告：文件已移动，需要重新加载。", Color.LemonChiffon)
@@ -589,7 +589,7 @@ Public Class Form1
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles dvdButton.Click
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
-        Dim sourceFolder As String = openText.Text ' 源文件夹路径
+        Dim sourceFolder As String = openText.Text.Trim() ' 源文件夹路径
         Dim resultFolder As String = Path.Combine(sourceFolder, "隔离结果" & formattedDateTime)
         If ListViewRT.Items.Count > 0 Then
             If Not Directory.Exists(resultFolder) Then
@@ -618,7 +618,7 @@ Public Class Form1
     Private Sub Buttonsave_Click(sender As Object, e As EventArgs) Handles Button11.Click
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
-        Dim sourceFolder As String = openText.Text ' 源文件夹路径
+        Dim sourceFolder As String = openText.Text.Trim() ' 源文件夹路径
         Dim desktopPath As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         Dim resultFolder As String = Path.Combine(desktopPath, "快存副本" & formattedDateTime)
 
@@ -970,6 +970,7 @@ Public Class Form1
                         ' 打开文件
                         Process.Start("explorer.exe", filePath)
                     End If
+                    'Form9.RichTextBox1.Text += consoletime & "Save Xlsx at: " & openText.Text.trim() & vbCrLf
                 Catch ex As Exception
                     MessageBox.Show("表格导出时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -1110,7 +1111,7 @@ Public Class Form1
             'MsgBox("鼠标中键点击触发")
 
             ' 获取文件夹路径
-            Dim folderPath As String = openText.Text
+            Dim folderPath As String = openText.Text.Trim()
 
             ' 检查路径是否为空并且文件夹是否存在
             If Not String.IsNullOrEmpty(folderPath) AndAlso Directory.Exists(folderPath) Then
@@ -1362,7 +1363,7 @@ Public Class Form1
     End Sub
 
     Private Sub rfhbutton_Click(sender As Object, e As EventArgs) Handles rfhButton.Click
-        Dim folderPath As String = openText.Text
+        Dim folderPath As String = openText.Text.Trim()
         If Directory.Exists(folderPath) Then
             加载图片(folderPath)
         Else
@@ -1514,11 +1515,11 @@ Public Class Form1
         ' 更新无效、存疑和超时文件数量
 
         If tagButton.Checked = True Then
-            Form3.Label5.Visible = True
+
             Form3.Label45.Text = $"{mark1} {invldCount}, {mark2} {qstCount}, {mark3} {tmtCount}"
             lbldStr = $" {mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
         Else
-            Form3.Label5.Visible = False
+
             Form3.Label45.Text = “请转到「星标」选项卡启用”
             lbldStr = "功能未启用"
         End If
@@ -1571,7 +1572,7 @@ Public Class Form1
             Dim fileName As String = selectedItem.SubItems(2).Text
 
             ' 拼接完整的文件路径
-            Dim folderPath As String = openText.Text ' 文件夹路径
+            Dim folderPath As String = openText.Text.Trim() ' 文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
             ' 检查文件是否存在
@@ -1591,7 +1592,7 @@ Public Class Form1
             Dim fileName As String = selectedItem.SubItems(2).Text
 
             ' 拼接完整的文件路径
-            Dim folderPath As String = openText.Text ' 文件夹路径
+            Dim folderPath As String = openText.Text.Trim() ' 文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
             ' 复制文件路径到剪贴板
@@ -1676,7 +1677,7 @@ Public Class Form1
         If ListViewRT.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(2).Text
-            Dim folderPath As String = openText.Text
+            Dim folderPath As String = openText.Text.Trim()
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
             If File.Exists(filePath) Then
@@ -1694,7 +1695,7 @@ Public Class Form1
             Dim fileName As String = selectedItem.SubItems(1).Text
 
             ' 拼接完整的文件路径
-            Dim folderPath As String = openText.Text ' 文件夹路径
+            Dim folderPath As String = openText.Text.Trim() ' 文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName)
 
             ' 复制文件路径到剪贴板
@@ -1828,7 +1829,7 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem11_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem11.Click
-        Dim folderPath As String = openText.Text
+        Dim folderPath As String = openText.Text.Trim()
         If Directory.Exists(folderPath) Then
             加载图片(folderPath)
         Else
@@ -1874,16 +1875,12 @@ Public Class Form1
     End Sub
 
     Private Sub openText_TextChanged(sender As Object, e As EventArgs) Handles openText.TextChanged
-        Me.openText.SelectionStart = Me.openText.Text.Length
+        Me.openText.SelectionStart = Me.openText.Text.Trim().Length
         Me.openText.ScrollToCaret()
     End Sub
 
     Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles MyBase.DoubleClick
         Me.CenterToScreen()
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub 以此为筛选条件ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 以此为筛选条件ToolStripMenuItem.Click
@@ -1943,7 +1940,11 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles nmButton.Click
-        Form6.Show()
+        If Form6.Visible = True Then
+            Form6.Close()
+        Else
+            Form6.Show()
+        End If
     End Sub
 
     Private Sub ListView0_DragEnter(sender As Object, e As DragEventArgs) Handles ListViewLT.DragEnter
@@ -2001,7 +2002,12 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
-
+        ' 使用Process.Start打开默认浏览器访问GitHub Releases页面
+        Try
+            Process.Start("https://www.bilibili.com/video/BV1aR92YcEka/?spm_id_from=333.999.0.0&vd_source=c4099c355c2d06f10ac210fe7bae65a6")
+        Catch ex As Exception
+            MessageBox.Show("无法打开链接。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub indexTimer_Tick(sender As Object, e As EventArgs) Handles indexTimer.Tick
         'consoletime = $"[{Now.Year}.{Now.Month}.{Now.Day}-{Now.Hour}:{Now.Minute}:{Now.Second}] "
@@ -2075,7 +2081,7 @@ Public Class Form1
 
     ' 按下回车键确认地址
     Private Sub openText_KeyDown(sender As Object, e As KeyEventArgs) Handles openText.KeyDown
-        Dim folderpath As String = openText.Text
+        Dim folderpath As String = openText.Text.Trim()
         If e.KeyCode = Keys.Enter Then
             If Directory.Exists(folderpath) Then
                 加载图片(folderpath)
@@ -2092,7 +2098,11 @@ Public Class Form1
     End Sub
 
     Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
-        Form8.Show()
+        If Form8.Visible = True Then
+            Form8.Close()
+        Else
+            Form8.Show()
+        End If
     End Sub
 
     Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
@@ -2106,6 +2116,15 @@ Public Class Form1
         Else
             MessageBox.Show("ListViewRT 是空的")
         End If
+    End Sub
+
+    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
+        ' 使用Process.Start打开默认浏览器访问GitHub Releases页面
+        Try
+            Process.Start("https://github.com/ReGoMark/PicoFilter/releases")
+        Catch ex As Exception
+            MessageBox.Show("无法打开链接。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     '同步宽高数值

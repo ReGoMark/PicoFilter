@@ -20,10 +20,6 @@
         End Try
     End Sub
 
-    Private Sub Label44_Click(sender As Object, e As EventArgs) Handles Label44.Click
-        PictureBox1.Visible = True
-    End Sub
-
     Private Sub Label11_Click(sender As Object, e As EventArgs)
         Process1.StartInfo.UseShellExecute = True
         Process1.StartInfo.FileName = Application.StartupPath & "\tutorial.mp4"

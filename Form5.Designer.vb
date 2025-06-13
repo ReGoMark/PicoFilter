@@ -25,9 +25,9 @@ Partial Class Form5
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form5))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.ProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.btnGoUp = New System.Windows.Forms.Button()
+        Me.ProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
@@ -58,17 +58,6 @@ Partial Class Form5
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(258, 26)
         Me.Panel1.TabIndex = 36
-        '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(3, 22)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(366, 10)
-        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
-        Me.ProgressBar1.TabIndex = 53
-        Me.ProgressBar1.Visible = False
         '
         'TextBox1
         '
@@ -108,6 +97,17 @@ Partial Class Form5
         Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级")
         Me.btnGoUp.UseVisualStyleBackColor = False
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ProgressBar1.Location = New System.Drawing.Point(3, 22)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(366, 10)
+        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
+        Me.ProgressBar1.TabIndex = 53
+        Me.ProgressBar1.Visible = False
+        '
         'CheckBox1
         '
         Me.CheckBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -144,6 +144,7 @@ Partial Class Form5
         Me.TreeView1.FullRowSelect = True
         Me.TreeView1.ImageIndex = 1
         Me.TreeView1.ImageList = Me.ImageList1
+        Me.TreeView1.LineColor = System.Drawing.Color.DarkSlateBlue
         Me.TreeView1.Location = New System.Drawing.Point(0, 48)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 1

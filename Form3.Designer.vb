@@ -28,7 +28,6 @@ Partial Class Form3
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -79,6 +78,7 @@ Partial Class Form3
         Me.Label47 = New System.Windows.Forms.Label()
         Me.Label48 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -142,21 +142,6 @@ Partial Class Form3
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "...JPG"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label5.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label5.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label5.Location = New System.Drawing.Point(3, 110)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(69, 22)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "...BMP"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label6
         '
@@ -742,7 +727,7 @@ Partial Class Form3
         Me.Label45.Location = New System.Drawing.Point(78, 396)
         Me.Label45.Name = "Label45"
         Me.TableLayoutPanel1.SetRowSpan(Me.Label45, 2)
-        Me.Label45.Size = New System.Drawing.Size(248, 62)
+        Me.Label45.Size = New System.Drawing.Size(248, 60)
         Me.Label45.TabIndex = 54
         Me.Label45.Text = "MARK"
         Me.Label45.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -788,7 +773,6 @@ Partial Class Form3
         Me.TableLayoutPanel1.Controls.Add(Me.Label20, 2, 6)
         Me.TableLayoutPanel1.Controls.Add(Me.Label7, 0, 7)
         Me.TableLayoutPanel1.Controls.Add(Me.Label6, 0, 6)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label5, 0, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.Label36, 2, 14)
         Me.TableLayoutPanel1.Controls.Add(Me.Label4, 0, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.Label37, 2, 13)
@@ -828,7 +812,8 @@ Partial Class Form3
         Me.TableLayoutPanel1.Controls.Add(Me.Label23, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Label48, 2, 18)
         Me.TableLayoutPanel1.Controls.Add(Me.Label45, 1, 18)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(31, 36)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label5, 0, 5)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(31, 35)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 20
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
@@ -851,7 +836,7 @@ Partial Class Form3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 458)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 456)
         Me.TableLayoutPanel1.TabIndex = 57
         '
         'Label46
@@ -894,7 +879,7 @@ Partial Class Form3
         Me.Label48.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label48.Location = New System.Drawing.Point(3, 418)
         Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(69, 40)
+        Me.Label48.Size = New System.Drawing.Size(69, 38)
         Me.Label48.TabIndex = 58
         Me.Label48.Text = "     "
         Me.Label48.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -908,6 +893,21 @@ Partial Class Form3
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(380, 508)
         Me.Panel1.TabIndex = 58
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label5.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label5.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label5.Location = New System.Drawing.Point(3, 110)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(69, 22)
+        Me.Label5.TabIndex = 59
+        Me.Label5.Text = "...BMP"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Form3
         '
@@ -941,7 +941,6 @@ Partial Class Form3
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
@@ -992,4 +991,5 @@ Partial Class Form3
     Friend WithEvents Label48 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents Label5 As Label
 End Class

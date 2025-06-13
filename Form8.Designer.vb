@@ -41,6 +41,8 @@ Partial Class Form8
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.cobQuality = New System.Windows.Forms.NumericUpDown()
         Me.rbPNG = New System.Windows.Forms.RadioButton()
         Me.rbJPG = New System.Windows.Forms.RadioButton()
@@ -49,7 +51,6 @@ Partial Class Form8
         Me.Button3 = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel5.SuspendLayout()
         CType(Me.cobQuality, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,9 +71,9 @@ Partial Class Form8
         Me.btnLoad.Image = CType(resources.GetObject("btnLoad.Image"), System.Drawing.Image)
         Me.btnLoad.Location = New System.Drawing.Point(12, 12)
         Me.btnLoad.Name = "btnLoad"
-        Me.btnLoad.Size = New System.Drawing.Size(72, 26)
+        Me.btnLoad.Size = New System.Drawing.Size(109, 26)
         Me.btnLoad.TabIndex = 86
-        Me.btnLoad.Text = "拉取"
+        Me.btnLoad.Text = "拉取/拖入"
         Me.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnLoad.UseVisualStyleBackColor = False
         '
@@ -88,10 +89,11 @@ Partial Class Form8
         Me.bksbutton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.bksbutton.ForeColor = System.Drawing.Color.SlateBlue
         Me.bksbutton.Image = CType(resources.GetObject("bksbutton.Image"), System.Drawing.Image)
-        Me.bksbutton.Location = New System.Drawing.Point(90, 12)
+        Me.bksbutton.Location = New System.Drawing.Point(155, 47)
         Me.bksbutton.Name = "bksbutton"
         Me.bksbutton.Size = New System.Drawing.Size(26, 26)
         Me.bksbutton.TabIndex = 85
+        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项。")
         Me.bksbutton.UseVisualStyleBackColor = False
         '
         'btnConvert
@@ -131,6 +133,7 @@ Partial Class Form8
         Me.btnCopy.Size = New System.Drawing.Size(72, 26)
         Me.btnCopy.TabIndex = 78
         Me.btnCopy.Text = "另存为"
+        Me.ToolTip1.SetToolTip(Me.btnCopy, "保存转换后文件的副本。")
         Me.btnCopy.UseVisualStyleBackColor = False
         '
         'ListView1
@@ -149,7 +152,7 @@ Partial Class Form8
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(0, 0)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(329, 396)
+        Me.ListView1.Size = New System.Drawing.Size(329, 393)
         Me.ListView1.TabIndex = 14
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Details
@@ -298,18 +301,45 @@ Partial Class Form8
         '
         'Panel5
         '
-        Me.Panel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.Panel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel5.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel5.Controls.Add(Me.Label1)
         Me.Panel5.Controls.Add(Me.Label2)
         Me.Panel5.Controls.Add(Me.cobQuality)
         Me.Panel5.Controls.Add(Me.rbPNG)
         Me.Panel5.Controls.Add(Me.rbJPG)
         Me.Panel5.Controls.Add(Me.rbBMP)
-        Me.Panel5.Location = New System.Drawing.Point(0, 402)
+        Me.Panel5.Location = New System.Drawing.Point(0, 392)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(329, 26)
+        Me.Panel5.Size = New System.Drawing.Size(329, 36)
         Me.Panel5.TabIndex = 89
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
+        Me.Label1.Enabled = False
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label1.Location = New System.Drawing.Point(304, 7)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(21, 20)
+        Me.Label1.TabIndex = 93
+        Me.Label1.Text = "%"
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.Enabled = False
+        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label2.Location = New System.Drawing.Point(162, 7)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(69, 20)
+        Me.Label2.TabIndex = 92
+        Me.Label2.Text = "转换质量"
         '
         'cobQuality
         '
@@ -317,16 +347,17 @@ Partial Class Form8
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cobQuality.BackColor = System.Drawing.Color.GhostWhite
         Me.cobQuality.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.cobQuality.Enabled = False
         Me.cobQuality.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.cobQuality.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.cobQuality.Location = New System.Drawing.Point(264, 2)
+        Me.cobQuality.Location = New System.Drawing.Point(237, 7)
         Me.cobQuality.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.cobQuality.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.cobQuality.Name = "cobQuality"
         Me.cobQuality.Size = New System.Drawing.Size(61, 23)
         Me.cobQuality.TabIndex = 90
         Me.cobQuality.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ToolTip1.SetToolTip(Me.cobQuality, "设置序号起点，最大支持5位整数。")
+        Me.ToolTip1.SetToolTip(Me.cobQuality, "设置转换质量，仅限目标为JPEG格式。")
         Me.cobQuality.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'rbPNG
@@ -345,15 +376,15 @@ Partial Class Form8
         Me.rbPNG.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.rbPNG.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbPNG.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbPNG.Location = New System.Drawing.Point(-1, -1)
+        Me.rbPNG.Location = New System.Drawing.Point(-1, 0)
         Me.rbPNG.Name = "rbPNG"
-        Me.rbPNG.Size = New System.Drawing.Size(45, 26)
+        Me.rbPNG.Size = New System.Drawing.Size(45, 36)
         Me.rbPNG.TabIndex = 45
         Me.rbPNG.TabStop = True
         Me.rbPNG.Text = "PNG"
         Me.rbPNG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.rbPNG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.rbPNG, "在整个列表范围内搜索。")
+        Me.ToolTip1.SetToolTip(Me.rbPNG, "转换为PNG格式。")
         Me.rbPNG.UseVisualStyleBackColor = False
         '
         'rbJPG
@@ -371,14 +402,14 @@ Partial Class Form8
         Me.rbJPG.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.rbJPG.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbJPG.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbJPG.Location = New System.Drawing.Point(50, -1)
+        Me.rbJPG.Location = New System.Drawing.Point(50, 0)
         Me.rbJPG.Name = "rbJPG"
-        Me.rbJPG.Size = New System.Drawing.Size(45, 26)
+        Me.rbJPG.Size = New System.Drawing.Size(45, 36)
         Me.rbJPG.TabIndex = 40
         Me.rbJPG.Text = "JPG"
         Me.rbJPG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.rbJPG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.rbJPG, "在序号范围内搜索。")
+        Me.ToolTip1.SetToolTip(Me.rbJPG, "转换为JPG格式，透明通道默认转换为白底。")
         Me.rbJPG.UseVisualStyleBackColor = False
         '
         'rbBMP
@@ -396,14 +427,14 @@ Partial Class Form8
         Me.rbBMP.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.rbBMP.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbBMP.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbBMP.Location = New System.Drawing.Point(101, -1)
+        Me.rbBMP.Location = New System.Drawing.Point(101, 0)
         Me.rbBMP.Name = "rbBMP"
-        Me.rbBMP.Size = New System.Drawing.Size(45, 26)
+        Me.rbBMP.Size = New System.Drawing.Size(45, 36)
         Me.rbBMP.TabIndex = 41
         Me.rbBMP.Text = "BMP"
         Me.rbBMP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.rbBMP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.rbBMP, "在文件名范围内搜索。")
+        Me.ToolTip1.SetToolTip(Me.rbBMP, "转换为BMP格式。")
         Me.rbBMP.UseVisualStyleBackColor = False
         '
         'MetroProgressBar1
@@ -438,26 +469,18 @@ Partial Class Form8
         '
         'Panel3
         '
+        Me.Panel3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel3.Controls.Add(Me.MetroProgressBar1)
+        Me.Panel3.Controls.Add(Me.bksbutton)
         Me.Panel3.Controls.Add(Me.btnCopy)
         Me.Panel3.Location = New System.Drawing.Point(-30, -37)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(437, 523)
         Me.Panel3.TabIndex = 91
-        '
-        'Label2
-        '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label2.Location = New System.Drawing.Point(194, 1)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(64, 20)
-        Me.Label2.TabIndex = 92
-        Me.Label2.Text = "质量(%):"
         '
         'Form8
         '
@@ -466,7 +489,6 @@ Partial Class Form8
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
         Me.Controls.Add(Me.btnLoad)
-        Me.Controls.Add(Me.bksbutton)
         Me.Controls.Add(Me.btnApplySelected)
         Me.Controls.Add(Me.btnReset)
         Me.Controls.Add(Me.btnApplyAll)
@@ -479,6 +501,7 @@ Partial Class Form8
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "Form8"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "转换"
         Me.Panel1.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
@@ -515,4 +538,5 @@ Partial Class Form8
     Friend WithEvents MetroProgressBar1 As MetroFramework.Controls.MetroProgressBar
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
 End Class
