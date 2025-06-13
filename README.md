@@ -3,7 +3,7 @@
 
 ![ICON](./Resources/Icons/picofilter.ico)
 
-## 图片筛选、排序和重命名工具
+## 图片筛选、重命名和格式转换工具
 
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
@@ -50,6 +50,8 @@
 10. 右键菜单（支持快速筛选、快速调整工作列等功能）
 
 11. 排序和命名（支持字符串长度、序号、分辨率总和、大小、修改日期排序，排序完成后可以批量命名，支持序号、日期、月份命名规则）
+
+12. 格式转换（支持JPG、PNG、BMP、ICO格式转换为BMP、JPG、PNG格式，可选底色，可设置转换质量）
 
 更多细节欢迎下载体验！
 
