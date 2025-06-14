@@ -368,7 +368,7 @@ Partial Class Form6
         '
         Me.bksbutton.BackColor = System.Drawing.Color.White
         Me.bksbutton.CausesValidation = False
-        Me.bksbutton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.bksbutton.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.bksbutton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.bksbutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.bksbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -387,7 +387,7 @@ Partial Class Form6
         '
         Me.loadButton.BackColor = System.Drawing.Color.White
         Me.loadButton.CausesValidation = False
-        Me.loadButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.loadButton.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.loadButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.loadButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.loadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -428,7 +428,7 @@ Partial Class Form6
         '
         Me.moreButton.BackColor = System.Drawing.Color.White
         Me.moreButton.CausesValidation = False
-        Me.moreButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.moreButton.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.moreButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.moreButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.moreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -447,7 +447,7 @@ Partial Class Form6
         '
         Me.mnsButton.BackColor = System.Drawing.Color.White
         Me.mnsButton.CausesValidation = False
-        Me.mnsButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.mnsButton.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.mnsButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.mnsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.mnsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro

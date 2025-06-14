@@ -65,7 +65,7 @@ Partial Class Form8
         '
         Me.btnLoad.BackColor = System.Drawing.Color.White
         Me.btnLoad.CausesValidation = False
-        Me.btnLoad.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.btnLoad.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.btnLoad.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.btnLoad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.btnLoad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -86,18 +86,21 @@ Partial Class Form8
         '
         Me.bksbutton.BackColor = System.Drawing.Color.White
         Me.bksbutton.CausesValidation = False
-        Me.bksbutton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.bksbutton.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.bksbutton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.bksbutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.bksbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.bksbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.bksbutton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.bksbutton.ForeColor = System.Drawing.Color.SlateBlue
+        Me.bksbutton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.bksbutton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.bksbutton.Image = CType(resources.GetObject("bksbutton.Image"), System.Drawing.Image)
+        Me.bksbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.bksbutton.Location = New System.Drawing.Point(155, 47)
         Me.bksbutton.Name = "bksbutton"
-        Me.bksbutton.Size = New System.Drawing.Size(26, 26)
+        Me.bksbutton.Size = New System.Drawing.Size(72, 26)
         Me.bksbutton.TabIndex = 85
+        Me.bksbutton.Text = "移除"
+        Me.bksbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项。")
         Me.bksbutton.UseVisualStyleBackColor = False
         '
