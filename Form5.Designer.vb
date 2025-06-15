@@ -106,7 +106,7 @@ Partial Class Form5
         Me.ProgressBar1.Location = New System.Drawing.Point(3, 22)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(366, 10)
-        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
+        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
         Me.ProgressBar1.TabIndex = 53
         Me.ProgressBar1.Visible = False
         '
@@ -157,8 +157,8 @@ Partial Class Form5
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "folder_1.ico")
-        Me.ImageList1.Images.SetKeyName(1, "unfolder_b.ico")
+        Me.ImageList1.Images.SetKeyName(0, "unfolder_b.ico")
+        Me.ImageList1.Images.SetKeyName(1, "folder_1.ico")
         Me.ImageList1.Images.SetKeyName(2, "images_2.ico")
         '
         'Button2
@@ -301,8 +301,8 @@ Partial Class Form5
         '
         Me.ImageList3.ImageStream = CType(resources.GetObject("ImageList3.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList3.Images.SetKeyName(0, "folder.ico")
-        Me.ImageList3.Images.SetKeyName(1, "unfolder.ico")
+        Me.ImageList3.Images.SetKeyName(0, "unfolder.ico")
+        Me.ImageList3.Images.SetKeyName(1, "folder.ico")
         Me.ImageList3.Images.SetKeyName(2, "images_0.ico")
         '
         'Button3
@@ -319,11 +319,11 @@ Partial Class Form5
         Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.Location = New System.Drawing.Point(253, 38)
+        Me.Button3.Location = New System.Drawing.Point(281, 38)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(100, 26)
+        Me.Button3.Size = New System.Drawing.Size(72, 26)
         Me.Button3.TabIndex = 60
-        Me.Button3.Text = "逐层提取"
+        Me.Button3.Text = "提取"
         Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button3, "遍历当前目录下所有图像文件并复制到指定位置。")
         Me.Button3.UseVisualStyleBackColor = False

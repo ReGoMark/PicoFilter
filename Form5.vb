@@ -125,16 +125,17 @@ Public Class Form5
         End If
     End Sub
 
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim folderPath As String = TryCast(Button2.Tag, String)
 
         If Not String.IsNullOrEmpty(folderPath) AndAlso IO.Directory.Exists(folderPath) Then
             Form1.openText.Text = folderPath
             Form1.加载图片(folderPath)
+            ' 重新绘制TreeView，只显示当前目录
+            toForm1Path = folderPath
+            LoadTreeView(folderPath)
         End If
     End Sub
-
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         TextBox1.SelectionStart = Form1.openText.Text.Length

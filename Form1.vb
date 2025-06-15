@@ -1130,35 +1130,35 @@ Public Class Form1
         End If
     End Sub
 
-    'Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-    '    If Me.WindowState = FormWindowState.Maximized Then
-    '        ListViewLT.Columns(0).Width = ListViewLT.Width / 15
-    '        ListViewLT.Columns(2).Width = ListViewLT.Width / 3
-    '        ListViewLT.Columns(3).Width = ListViewLT.Width / 6
-    '        ListViewLT.Columns(5).Width = ListViewLT.Width / 8
+    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
+        If Me.WindowState = FormWindowState.Maximized Then
+            ListViewLT.Columns(0).Width = ListViewLT.Width / 15
+            ListViewLT.Columns(2).Width = ListViewLT.Width / 3
+            ListViewLT.Columns(3).Width = ListViewLT.Width / 7
+            ListViewLT.Columns(5).Width = ListViewLT.Width / 9
 
-    '        ListViewRT.Columns(0).Width = ListViewLT.Width / 15
-    '        ListViewRT.Columns(2).Width = ListViewLT.Width / 3
-    '        ListViewRT.Columns(3).Width = ListViewLT.Width / 6
-    '        ListViewRT.Columns(5).Width = ListViewLT.Width / 8
-    '    ElseIf Me.WindowState = FormWindowState.Normal Then
-    '        ListViewLT.Columns(0).Width = 50
-    '        ListViewLT.Columns(2).Width = 150
-    '        ListViewLT.Columns(3).Width = 100
-    '        ListViewLT.Columns(4).Width = 63
-    '        ListViewLT.Columns(5).Width = 90
-    '        ListViewLT.Columns(1).Width = 30
-    '        ListViewLT.Columns(6).Width = 150
+            ListViewRT.Columns(0).Width = ListViewLT.Width / 15
+            ListViewRT.Columns(2).Width = ListViewLT.Width / 3
+            ListViewRT.Columns(3).Width = ListViewLT.Width / 7
+            ListViewRT.Columns(5).Width = ListViewLT.Width / 9
+        ElseIf Me.WindowState = FormWindowState.Normal Then
+            ListViewLT.Columns(0).Width = 50
+            ListViewLT.Columns(2).Width = 150
+            ListViewLT.Columns(3).Width = 100
+            ListViewLT.Columns(4).Width = 63
+            ListViewLT.Columns(5).Width = 90
+            ListViewLT.Columns(1).Width = 30
+            ListViewLT.Columns(6).Width = 150
 
-    '        ListViewRT.Columns(0).Width = 50
-    '        ListViewRT.Columns(2).Width = 150
-    '        ListViewRT.Columns(3).Width = 100
-    '        ListViewRT.Columns(4).Width = 63
-    '        ListViewRT.Columns(5).Width = 90
-    '        ListViewRT.Columns(1).Width = 30
-    '        ListViewRT.Columns(6).Width = 150
-    '    End If
-    'End Sub
+            ListViewRT.Columns(0).Width = 50
+            ListViewRT.Columns(2).Width = 150
+            ListViewRT.Columns(3).Width = 100
+            ListViewRT.Columns(4).Width = 63
+            ListViewRT.Columns(5).Width = 90
+            ListViewRT.Columns(1).Width = 30
+            ListViewRT.Columns(6).Width = 150
+        End If
+    End Sub
 
     '双重锁定
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

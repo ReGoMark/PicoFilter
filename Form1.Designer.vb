@@ -522,11 +522,13 @@ Partial Class Form1
         'ListViewRT
         '
         Me.ListViewRT.AllowColumnReorder = True
+        Me.ListViewRT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListViewRT.BackColor = System.Drawing.Color.White
         Me.ListViewRT.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ListViewRT.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader12, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader10, Me.ColumnHeader14})
         Me.ListViewRT.ContextMenuStrip = Me.ContextMenuStrip3
-        Me.ListViewRT.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListViewRT.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(238, Byte))
         Me.ListViewRT.ForeColor = System.Drawing.Color.Black
         Me.ListViewRT.FullRowSelect = True
@@ -534,7 +536,7 @@ Partial Class Form1
         Me.ListViewRT.Location = New System.Drawing.Point(0, 0)
         Me.ListViewRT.Name = "ListViewRT"
         Me.ListViewRT.ShowGroups = False
-        Me.ListViewRT.Size = New System.Drawing.Size(504, 408)
+        Me.ListViewRT.Size = New System.Drawing.Size(500, 408)
         Me.ListViewRT.TabIndex = 13
         Me.ToolTip1.SetToolTip(Me.ListViewRT, "双击项预览；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl点选，按住Shift区选；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "键入数字跳转项。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewRT.UseCompatibleStateImageBehavior = False
@@ -988,6 +990,7 @@ Partial Class Form1
         Me.SplitContainer1.BackColor = System.Drawing.Color.GhostWhite
         Me.SplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SplitContainer1.ContextMenuStrip = Me.ContextMenuStrip4
+        Me.SplitContainer1.Cursor = System.Windows.Forms.Cursors.Default
         Me.SplitContainer1.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.SplitContainer1.Location = New System.Drawing.Point(16, 102)
         Me.SplitContainer1.Name = "SplitContainer1"
@@ -1066,7 +1069,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.PictureBox7)
         Me.Panel3.Controls.Add(Me.setting)
         Me.Panel3.Controls.Add(Me.qrButton)
-        Me.Panel3.Location = New System.Drawing.Point(25, 118)
+        Me.Panel3.Location = New System.Drawing.Point(15, 118)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(389, 220)
         Me.Panel3.TabIndex = 44
@@ -1272,7 +1275,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-541, 177)
+        Me.Label7.Location = New System.Drawing.Point(-551, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -2023,7 +2026,7 @@ Partial Class Form1
         Me.ProgressBar1.Location = New System.Drawing.Point(-4, 20)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(431, 10)
-        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
+        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
         Me.ProgressBar1.TabIndex = 17
         Me.ProgressBar1.Visible = False
         '
@@ -2116,7 +2119,7 @@ Partial Class Form1
         Me.MetroTabControl1.Name = "MetroTabControl1"
         Me.MetroTabControl1.SelectedIndex = 2
         Me.MetroTabControl1.Size = New System.Drawing.Size(1032, 80)
-        Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Purple
+        Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 48
         Me.MetroTabControl1.UseSelectable = True
         '

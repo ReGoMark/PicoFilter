@@ -79,7 +79,7 @@ Partial Class Form8
         Me.btnLoad.TabIndex = 86
         Me.btnLoad.Text = "拉取/浏览"
         Me.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnLoad, "按住Shift后点击按钮浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "点击按钮拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖动文件夹到列表加载数据；")
+        Me.ToolTip1.SetToolTip(Me.btnLoad, "点击按钮拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift后点击浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖动文件夹到列表加载数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.btnLoad.UseVisualStyleBackColor = False
         '
         'bksbutton
@@ -474,7 +474,7 @@ Partial Class Form8
         Me.MetroProgressBar1.Location = New System.Drawing.Point(18, 31)
         Me.MetroProgressBar1.Name = "MetroProgressBar1"
         Me.MetroProgressBar1.Size = New System.Drawing.Size(379, 10)
-        Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
+        Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroProgressBar1.TabIndex = 90
         Me.MetroProgressBar1.Visible = False
         '

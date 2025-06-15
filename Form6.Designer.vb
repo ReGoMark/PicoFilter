@@ -78,7 +78,6 @@ Partial Class Form6
         Me.ListViewPre.Name = "ListViewPre"
         Me.ListViewPre.Size = New System.Drawing.Size(329, 354)
         Me.ListViewPre.TabIndex = 14
-        Me.ToolTip1.SetToolTip(Me.ListViewPre, "拖入文件夹或拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "双击项预览。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ListViewPre.UseCompatibleStateImageBehavior = False
         Me.ListViewPre.View = System.Windows.Forms.View.Details
         '
@@ -401,7 +400,7 @@ Partial Class Form6
         Me.loadButton.TabIndex = 73
         Me.loadButton.Text = "拉取/浏览"
         Me.loadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.loadButton, "按住Shift后点击按钮浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "点击按钮拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖动文件夹到列表加载数据；")
+        Me.ToolTip1.SetToolTip(Me.loadButton, "点击按钮拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift后点击浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖动文件夹到列表加载数据；")
         Me.loadButton.UseVisualStyleBackColor = False
         '
         'Button4
@@ -537,7 +536,7 @@ Partial Class Form6
         Me.MetroProgressBar1.Location = New System.Drawing.Point(22, 21)
         Me.MetroProgressBar1.Name = "MetroProgressBar1"
         Me.MetroProgressBar1.Size = New System.Drawing.Size(358, 11)
-        Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Purple
+        Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroProgressBar1.TabIndex = 90
         Me.MetroProgressBar1.Visible = False
         '
