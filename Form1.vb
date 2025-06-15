@@ -1532,11 +1532,11 @@ Public Class Form1
             Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
             Dim selectedCount As Integer = ListViewLT.SelectedItems.Count
             If ListViewLT.SelectedItems.Count > 1 Then
-                sltLblLT.Text = $" 复选 {selectedCount} 项"
+                'sltLblLT.Text = $" 复选 {selectedCount} 项"
                 Label1.Text = $" 复选 {selectedCount} 项"
                 ListViewLT.ContextMenuStrip = ContextMenuStrip2
             Else
-                sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝{selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                'sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝{selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
                 Label1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} 像素  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
                 ListViewLT.ContextMenuStrip = ContextMenuStrip1
             End If
@@ -1552,11 +1552,11 @@ Public Class Form1
             Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
             Dim selectedCount As Integer = ListViewRT.SelectedItems.Count
             If ListViewRT.SelectedItems.Count > 1 Then
-                sltLblRT.Text = $" 复选 {selectedCount} 项"
+                'sltLblRT.Text = $" 复选 {selectedCount} 项"
                 Label1.Text = $" 复选 {selectedCount} 项"
                 ListViewRT.ContextMenuStrip = ContextMenuStrip5
             Else
-                sltLblRT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝{selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                'sltLblRT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝{selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
                 Label1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} 像素  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
                 ListViewRT.ContextMenuStrip = ContextMenuStrip3
             End If
@@ -1692,12 +1692,10 @@ Public Class Form1
         If ListViewRT.SelectedItems.Count > 0 Then
             ' 获取选中的文件名
             Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
-            Dim fileName As String = selectedItem.SubItems(1).Text
-
+            Dim fileName As String = selectedItem.SubItems(2).Text
             ' 拼接完整的文件路径
             Dim folderPath As String = openText.Text.Trim() ' 文件夹路径
             Dim filePath As String = Path.Combine(folderPath, fileName)
-
             ' 复制文件路径到剪贴板
             Clipboard.SetText(filePath)
             MessageBox.Show("路径已复制：" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -2109,7 +2107,7 @@ Public Class Form1
         Form9.Show()
     End Sub
 
-    Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
+    Private Sub Button16_Click(sender As Object, e As EventArgs)
         If ListViewRT.Items.Count > 0 Then
             Dim tagValue = ListViewRT.Items(0).Tag
             MessageBox.Show("Tag 内容：" & If(tagValue IsNot Nothing, tagValue.ToString(), "Tag 是 Nothing"))
@@ -2149,11 +2147,11 @@ Public Class Form1
             mark2 = If(match.Groups(2).Value.Trim() = "", "未填写", match.Groups(2).Value.Trim())
             mark3 = If(match.Groups(3).Value.Trim() = "", "未填写", match.Groups(3).Value.Trim())
         End If
-        If TextBox1.Text = "" Then
-            tagButton.Checked = False
-        Else
-            tagButton.Checked = True
-        End If
+        'If TextBox1.Text = "" Then
+        '    tagButton.Checked = False
+        'Else
+        '    tagButton.Checked = True
+        'End If
     End Sub
 
     ' 添加 MouseEnter 事件处理
