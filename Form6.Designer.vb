@@ -224,7 +224,7 @@ Partial Class Form6
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(26, 26)
         Me.Button6.TabIndex = 87
-        Me.ToolTip1.SetToolTip(Me.Button6, "序号和日期命名")
+        Me.ToolTip1.SetToolTip(Me.Button6, "文件名和日期命名")
         Me.Button6.UseVisualStyleBackColor = False
         '
         'Button5

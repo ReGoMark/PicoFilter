@@ -312,7 +312,7 @@ Public Class Form1
         sumLblRT.Text = String.Join("  |  ", result)
 
         更新统计信息()
-        PlayNotificationSound()
+        'PlayNotificationSound()
 
         sumRT = matchingFileCount
         jpgRT = jpgCount
@@ -406,6 +406,7 @@ Public Class Form1
         Me.Text = verinfo
         ProgressBar1.Maximum = 0
         loadedCount = 0
+        'ListViewRT.Width = 505
 
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
         Me.MinimumSize = New Size(1066, 630) ' 设置最小窗口大小
@@ -485,6 +486,7 @@ Public Class Form1
                 Process.Start(filePath) '使用默认程序打开文件
             Else
                 MessageBox.Show("文件不存在: " & filePath， “错误”, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End If
         End If
     End Sub
@@ -500,6 +502,7 @@ Public Class Form1
                 Process.Start(filePath) ' 使用默认程序打开文件
             Catch ex As Exception
                 MessageBox.Show("无法打开。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End Try
         End If
     End Sub
@@ -544,45 +547,104 @@ Public Class Form1
             End If
         End If
     End Sub
-
     '复制筛选结果到指定文件夹
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles copyButton.Click
-        Using folderBrowserDialog As New FolderBrowserDialog
-            If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
-                Dim targetFolder As String = folderBrowserDialog.SelectedPath
-                For Each item As ListViewItem In ListViewRT.Items
-                    Dim fileName As String = item.SubItems(2).Text
-                    Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
-                    Try
-                        File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
-                        optChange("提示：文件复制已完成。", Color.White)
-                        'Form9.RichTextBox1.Text += consoletime & "Save Copy Result at: " & targetFolder & "\" & fileName & vbCrLf
-                    Catch ex As Exception
-                        MessageBox.Show("复制失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End Try
-                Next
-            End If
-        End Using
+        If ListViewRT.Items.Count > 0 Then
+            Using folderBrowserDialog As New FolderBrowserDialog
+                ' 设置初始目录为当前打开的文件夹路径
+                Dim currentFolder As String = openText.Text.Trim()
+                If Directory.Exists(currentFolder) Then
+                    folderBrowserDialog.SelectedPath = currentFolder
+                End If
+                If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
+                    Dim targetFolder As String = folderBrowserDialog.SelectedPath
+                    For Each item As ListViewItem In ListViewRT.Items
+                        Dim fileName As String = item.SubItems(2).Text
+                        Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
+                        Try
+                            File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
+                            'optChange("提示：文件复制已完成。", Color.White)                     
+                            'Form9.RichTextBox1.Text += consoletime & "Save Copy Result at: " & targetFolder & "\" & fileName & vbCrLf
+                        Catch ex As Exception
+                            MessageBox.Show("复制失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+                    Next
+                    Dim opt = MessageBox.Show("文件复制成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                    If opt = DialogResult.Yes Then '判断是否打开文件夹
+                        Process.Start("explorer.exe", targetFolder) ' 打开“筛选结果”文件夹
+                    End If
+                End If
+            End Using
+        Else
+            MessageBox.Show("没有可复制的文件。", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End If
+
     End Sub
 
+    ' 保存副本到源文件夹下，文件夹名为“副本结果+时间”
+    Private Sub Button3_Click_1_(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim now As DateTime = DateTime.Now
+        Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
+        Dim sourceFolder As String = openText.Text.Trim() ' 源文件夹路径
+        Dim resultFolder As String = Path.Combine(sourceFolder, "副本结果" & formattedDateTime)
+
+        If ListViewRT.Items.Count > 0 Then
+            If Not Directory.Exists(resultFolder) Then
+                Directory.CreateDirectory(resultFolder) ' 创建“副本结果”文件夹（如果不存在）
+            End If
+            For Each item As ListViewItem In ListViewRT.Items
+                Dim fileName As String = item.SubItems(2).Text
+                Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
+                Try
+                    File.Copy(sourcePath, Path.Combine(resultFolder, fileName), True) ' 复制文件
+                    'optChange("提示：文件副本已保存到源文件夹。", Color.White)
+                Catch ex As Exception
+                    MessageBox.Show("副本保存失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Next
+            Dim opt = MessageBox.Show("副本保存成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+            If opt = DialogResult.Yes Then
+                Process.Start("explorer.exe", resultFolder) ' 打开“副本结果”文件夹
+            End If
+        Else
+            MessageBox.Show("筛选结果不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+    End Sub
     '移动筛选结果到指定文件夹
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles moveButton.Click
-        Using folderBrowserDialog As New FolderBrowserDialog
-            If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
-                Dim targetFolder As String = folderBrowserDialog.SelectedPath
-                For Each item As ListViewItem In ListViewRT.Items
-                    Dim fileName As String = item.SubItems(2).Text
-                    Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
-                    Try
-                        File.Move(sourcePath, Path.Combine(targetFolder, fileName))
-                        optChange("警告：文件已移动，需要重新加载。", Color.LemonChiffon)
-                        'Form9.RichTextBox1.Text += consoletime & "Move Result at: " & targetFolder & "\" & fileName & vbCrLf
-                    Catch ex As Exception
-                        MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End Try
-                Next
-            End If
-        End Using
+        If ListViewRT.Items.Count = 0 Then
+            Using folderBrowserDialog As New FolderBrowserDialog
+                ' 设置初始目录为当前打开的文件夹路径
+                Dim currentFolder As String = openText.Text.Trim()
+                If Directory.Exists(currentFolder) Then
+                    folderBrowserDialog.SelectedPath = currentFolder
+                End If
+                If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
+                    Dim targetFolder As String = folderBrowserDialog.SelectedPath
+                    For Each item As ListViewItem In ListViewRT.Items
+                        Dim fileName As String = item.SubItems(2).Text
+                        Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
+                        Try
+                            File.Move(sourcePath, Path.Combine(targetFolder, fileName))
+                            optChange("警告：文件已移动，需要重新加载。", Color.LemonChiffon)
+                            'Form9.RichTextBox1.Text += consoletime & "Move Result at: " & targetFolder & "\" & fileName & vbCrLf
+                        Catch ex As Exception
+                            MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+                    Next
+                    Dim opt = MessageBox.Show("文件移动成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                    If opt = DialogResult.Yes Then '判断是否打开文件夹
+                        Process.Start("explorer.exe", targetFolder) ' 打开“筛选结果”文件夹
+                    End If
+                End If
+            End Using
+        Else
+            MessageBox.Show("没有可移动的文件。", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End If
+
     End Sub
 
     '筛选结果隔离
@@ -605,13 +667,14 @@ Public Class Form1
                     MessageBox.Show("隔离失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             Next
-            Dim opt = MessageBox.Show("隔离成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+            Dim opt = MessageBox.Show("文件隔离成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
             If opt = DialogResult.Yes Then '判断是否打开文件夹
                 Process.Start("explorer.exe", resultFolder) ' 打开“筛选结果”文件夹
             End If
             'Form9.RichTextBox1.Text += consoletime & "Save Isolation Result at: " & resultFolder & vbCrLf
         Else
             MessageBox.Show("筛选结果不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
         End If
     End Sub
     '快速保存到桌面
@@ -620,7 +683,7 @@ Public Class Form1
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
         Dim sourceFolder As String = openText.Text.Trim() ' 源文件夹路径
         Dim desktopPath As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
-        Dim resultFolder As String = Path.Combine(desktopPath, "快存副本" & formattedDateTime)
+        Dim resultFolder As String = Path.Combine(desktopPath, "快存结果" & formattedDateTime)
 
         If ListViewRT.Items.Count > 0 Then
             If Not Directory.Exists(resultFolder) Then
@@ -632,18 +695,19 @@ Public Class Form1
                 Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
                 Try
                     File.Copy(sourcePath, Path.Combine(resultFolder, fileName)) ' 使用Copy而不是Move
-                    optChange("提示：文件副本已保存到桌面。", Color.LemonChiffon)
+                    'optChange("提示：文件副本已保存到桌面。", Color.LemonChiffon)
                 Catch ex As Exception
                     MessageBox.Show("保存失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
             Next
-            Dim opt = MessageBox.Show("保存成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+            Dim opt = MessageBox.Show("桌面快存成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
             If opt = DialogResult.Yes Then '判断是否打开文件夹
                 Process.Start("explorer.exe", resultFolder) ' 打开备份文件夹
             End If
             'Form9.RichTextBox1.Text += consoletime & "Save to Desktop Copy Result at: " & resultFolder & vbCrLf
         Else
             MessageBox.Show("筛选结果不能为空！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
         End If
     End Sub
 
@@ -699,6 +763,7 @@ Public Class Form1
             End If
         Else
             MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
         End If
     End Sub
 
@@ -914,68 +979,77 @@ Public Class Form1
         更新统计信息()
         PlayNotificationSound()
     End Sub
-
     '导出为xlsx文件
     Private Sub xlsxButton_Click(sender As Object, e As EventArgs) Handles xlsxButton.Click
-        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
-        Dim now As DateTime = DateTime.Now
-        Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
-        Dim jpgSelected As Boolean = jpgButton.Checked
-        Dim pngSelected As Boolean = pngButton.Checked
-        Dim gifSelected As Boolean = gifButton.Checked
-        Dim reslnSelected As Boolean = reslnButton.Checked
-        Dim bmpSelected As Boolean = bmpButton.Checked
-        Dim icoSelected As Boolean = icoButton.Checked
-        Dim inreslnSelected As Boolean = exButton.Checked
-        Dim volreslnSelected As Boolean = volButton.Checked
-        Dim plsreslnSelected As Boolean = moreButton.Checked
-        Dim mnsreslnSelected As Boolean = mnsButton.Checked
+        If ListViewRT.Items.Count > 0 Then
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+            Dim now As DateTime = DateTime.Now
+            Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
+            Dim jpgSelected As Boolean = jpgButton.Checked
+            Dim pngSelected As Boolean = pngButton.Checked
+            Dim gifSelected As Boolean = gifButton.Checked
+            Dim reslnSelected As Boolean = reslnButton.Checked
+            Dim bmpSelected As Boolean = bmpButton.Checked
+            Dim icoSelected As Boolean = icoButton.Checked
+            Dim inreslnSelected As Boolean = exButton.Checked
+            Dim volreslnSelected As Boolean = volButton.Checked
+            Dim plsreslnSelected As Boolean = moreButton.Checked
+            Dim mnsreslnSelected As Boolean = mnsButton.Checked
 
-        Dim sumsizestr = FormatSize(sumSize)
-        Dim loadedTimeStr = FormatTime(loadedTime)
-        Dim result = GetFilterConditions(jpgSelected, pngSelected, gifSelected, bmpSelected, icoSelected, inreslnSelected, volreslnSelected, reslnSelected, plsreslnSelected, mnsreslnSelected)
+            Dim sumsizestr = FormatSize(sumSize)
+            Dim loadedTimeStr = FormatTime(loadedTime)
+            Dim result = GetFilterConditions(jpgSelected, pngSelected, gifSelected, bmpSelected, icoSelected, inreslnSelected, volreslnSelected, reslnSelected, plsreslnSelected, mnsreslnSelected)
 
-        ' 选择保存路径
-        Using saveFileDialog As New SaveFileDialog
-            saveFileDialog.FileName = "筛选结果" & formattedDateTime & ".xlsx"
-            saveFileDialog.Filter = "Excel 文件 (*.xlsx)|*.xlsx"
-            saveFileDialog.Title = "导出为 Excel 文件"
+            ' 选择保存路径
+            Using saveFileDialog As New SaveFileDialog
+                saveFileDialog.FileName = "筛选结果" & formattedDateTime & ".xlsx"
+                saveFileDialog.Filter = "Excel 文件 (*.xlsx)|*.xlsx"
+                saveFileDialog.Title = "导出为 Excel 文件"
+                ' 设置初始目录为当前打开的文件夹路径
+                Dim currentFolder As String = openText.Text.Trim()
+                If Directory.Exists(currentFolder) Then
+                    saveFileDialog.InitialDirectory = currentFolder
+                End If
 
-            ' 确认用户选择了保存路径
-            If saveFileDialog.ShowDialog() = DialogResult.OK Then
-                Try
-                    Dim filePath As String = saveFileDialog.FileName
-                    Dim fileInfo As New FileInfo(filePath)
+                ' 确认用户选择了保存路径
+                If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                    Try
+                        Dim filePath As String = saveFileDialog.FileName
+                        Dim fileInfo As New FileInfo(filePath)
 
-                    ' 使用 EPPlus 创建 Excel 文件
-                    Using package As New ExcelPackage(fileInfo)
-                        ' 创建一个新的工作表
-                        Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
+                        ' 使用 EPPlus 创建 Excel 文件
+                        Using package As New ExcelPackage(fileInfo)
+                            ' 创建一个新的工作表
+                            Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
 
-                        ' 添加 Label6 和 Label2 的内容在顶部
-                        AddHeaderInfo(worksheet, sumLblLT.Text, sumsizestr, loadedTimeStr, sumLblRT.Text, String.Join(" ", result))
+                            ' 添加 Label6 和 Label2 的内容在顶部
+                            AddHeaderInfo(worksheet, sumLblLT.Text, sumsizestr, loadedTimeStr, sumLblRT.Text, String.Join(" ", result))
 
-                        ' 设置表头（对应 ListView2 的列，从第1行开始）
-                        SetListViewHeaders(worksheet, ListViewRT)
+                            ' 设置表头（对应 ListView2 的列，从第1行开始）
+                            SetListViewHeaders(worksheet, ListViewRT)
 
-                        ' 填充 ListView2 的数据（从第2行开始）
-                        FillListViewData(worksheet, ListViewRT)
+                            ' 填充 ListView2 的数据（从第2行开始）
+                            FillListViewData(worksheet, ListViewRT)
 
-                        ' 保存 Excel 文件
-                        package.Save()
-                    End Using
+                            ' 保存 Excel 文件
+                            package.Save()
+                        End Using
 
-                    Dim opt = MessageBox.Show("表格已导出成功！点击按钮立即打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
-                    If opt = DialogResult.Yes Then
-                        ' 打开文件
-                        Process.Start("explorer.exe", filePath)
-                    End If
-                    'Form9.RichTextBox1.Text += consoletime & "Save Xlsx at: " & openText.Text.trim() & vbCrLf
-                Catch ex As Exception
-                    MessageBox.Show("表格导出时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
-            End If
-        End Using
+                        Dim opt = MessageBox.Show("表格已导出成功！点击按钮立即打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                        If opt = DialogResult.Yes Then
+                            ' 打开文件
+                            Process.Start("explorer.exe", filePath)
+                        End If
+                        'Form9.RichTextBox1.Text += consoletime & "Save Xlsx at: " & openText.Text.trim() & vbCrLf
+                    Catch ex As Exception
+                        MessageBox.Show("表格导出时发生错误: " & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
+            End Using
+        Else
+            MessageBox.Show("没有可导出的数据。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
     End Sub
 
     ' 格式化文件大小
@@ -1181,8 +1255,6 @@ Public Class Form1
             Form9.Close()
             Form6.Close()
         End If
-
-        'SaveConfig()
     End Sub
 
     '双重锁定判定
@@ -2123,6 +2195,14 @@ Public Class Form1
         Catch ex As Exception
             MessageBox.Show("无法打开链接。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        TextBox1.Text = "{(1)}{}{}"
+    End Sub
+
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+
     End Sub
 
     '同步宽高数值

@@ -125,7 +125,7 @@ Partial Class Form5
         Me.CheckBox1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.CheckBox1.Image = CType(resources.GetObject("CheckBox1.Image"), System.Drawing.Image)
         Me.CheckBox1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox1.Location = New System.Drawing.Point(140, 497)
+        Me.CheckBox1.Location = New System.Drawing.Point(125, 497)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(100, 26)
         Me.CheckBox1.TabIndex = 59
@@ -194,11 +194,11 @@ Partial Class Form5
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.Location = New System.Drawing.Point(246, 497)
+        Me.Button5.Location = New System.Drawing.Point(231, 497)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(95, 26)
+        Me.Button5.Size = New System.Drawing.Size(110, 26)
         Me.Button5.TabIndex = 54
-        Me.Button5.Text = "全部展开"
+        Me.Button5.Text = "展开全部节点"
         Me.Button5.UseVisualStyleBackColor = False
         '
         'topButton

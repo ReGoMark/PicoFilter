@@ -192,11 +192,11 @@ Public Class Form5
         If isExpanded Then
             ' 如果已经展开，则折叠所有节点
             TreeView1.CollapseAll()
-            Button5.Text = "展开"
+            Button5.Text = "展开全部节点"
         Else
             ' 如果是折叠状态，则展开所有节点
             TreeView1.ExpandAll()
-            Button5.Text = "折叠"
+            Button5.Text = "折叠全部节点"
         End If
 
         ' 切换展开状态

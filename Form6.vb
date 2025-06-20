@@ -149,7 +149,7 @@ Public Class Form6
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        ComboBox1.Text = "{0index}_{0date}"
+        ComboBox1.Text = "{name}_{0date}"
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
