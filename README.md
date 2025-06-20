@@ -69,7 +69,8 @@
 # 捐赠
 如果您觉得我的项目还不错，能有一点用处，欢迎您来支持一下我。
 
-<img src=".Resources/Assets/qrcode.jpg" alt="赞助" style="max-width: 80%; height: auto;" />
+![mm_facetoface_collect_qrcode_1750396409215](https://github.com/user-attachments/assets/bfa8bfd9-ead7-48b8-bde6-39eded4f090d)
+
 
 # 日志
 >[!NOTE]
