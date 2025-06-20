@@ -69,7 +69,7 @@
 # 捐赠
 如果您觉得我的项目还不错，能有一点用处，欢迎您来支持一下我。
 
-![mm_facetoface_collect_qrcode_1750396409215](https://github.com/user-attachments/assets/a8fab89e-e19a-4acd-8874-334edc0f1416)
+![mm_facetoface_collect_qrcode_1750396409215](https://github.com/user-attachments/assets/8341a00b-f7aa-4217-bf0c-f844189d3017)
 
 
 # 日志
