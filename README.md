@@ -69,7 +69,7 @@
 # 捐赠
 如果您觉得我的项目还不错，能有一点用处，欢迎您来支持一下我。
 
-<img src="./Assets/qrcode.png" alt="赞助" style="max-width: 80%; height: auto;" />
+<img src=".Resources/Assets/qrcode.jpg" alt="赞助" style="max-width: 80%; height: auto;" />
 
 # 日志
 >[!NOTE]
