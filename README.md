@@ -1,4 +1,4 @@
-<img src="./Resources/Assets/head.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Assets/head.png" />
 
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
@@ -57,28 +57,28 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 
 ## 📷程序界面展示
 * 主界面
-<img src="./Screenshots/main0.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/main0.png" />
 
 * 筛选
-<img src="./Screenshots/filt.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/filt.png" />
 
 * 搜索
-<img src="./Screenshots/search.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/search.png" />
 
 * 星标
-<img src="./Screenshots/tag.png"  />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/tag.png"  />
 
 * 导视
-<img src="./Screenshots/guide.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/guide.png" />
 
 * 重命名
-<img src="./Screenshots/rename.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/rename.png" />
 
 * 格式转换
-<img src="./Screenshots/convert.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/convert.png" />
 
 * 分析
-<img src="./Screenshots/analysis.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/analysis.png" />
 
 ## ⏬下载
 * 发布页（优先更新）：https://github.com/ReGoMark/PicoFilter/releases
@@ -88,7 +88,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 如果你喜欢这个程序，觉得它对你有帮助，欢迎通过赞助支持作者的持续开发与维护！每一份支持，都是我继续优化和更新的动力。
 无论是一次性打赏，还是持续支持，都将被深深感激！
 
-<img src="./Resources/Assets/wechat_sponsor.jpg" alt="二维码截图" style="max-width: 80%; height: auto;" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Assets/wechat_sponsor.jpg" alt="二维码截图" style="max-width: 80%; height: auto;" />
 
 ## 🙏鸣谢
 
