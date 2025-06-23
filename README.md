@@ -1,5 +1,6 @@
-<img src="https://github.com/ReGoMark/PicoFilter/blob/112f85ed7a04f924a5586be1181a3d8c6804738e/Resources/Assets/%E6%9C%AA%E6%A0%87%E9%A2%98-1.png" />
+<div align="center">
 
+<img src="https://i0.wp.com/raw.githubusercontent.com/ReGoMark/PicoFilter/112f85ed7a04f924a5586be1181a3d8c6804738e/Resources/Assets/未标题-1.png" />
 
 
 <a href="./LICENSE">
@@ -10,7 +11,9 @@
     <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/release">
     <img src="https://img.shields.io/github/release/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="release"></a>
-    
+
+</div>
+
 ## ✒️PicoFilter - 图片筛选、重命名和格式转换工具
 
 PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`，`PNG`，`BMP`，`ICO`和`GIF`格式的图像文件，轻松实现`筛选分类`、`批量重命名`、`分析`和`批量格式转换`等的功能。程序基于`.NET Framework`框架开发，使用的语言为`VB.NET`，完全遵循`Windows`设计规范。
