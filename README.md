@@ -1,7 +1,4 @@
-
-
-<img src="https://github.com/ReGoMark/PicoFilter/blob/85483dc334f0fa8eef52e0eb2d9533da9b11e9a3/Resources/Assets/head.png" />
-
+<img src="./Resources/Assets/head.png" />
 
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
@@ -11,8 +8,6 @@
     <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/release">
     <img src="https://img.shields.io/github/release/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="release"></a>
-
-
 
 ## ✒️PicoFilter - 图片筛选、重命名和格式转换工具
 
@@ -62,7 +57,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 
 ## 📷程序界面展示
 * 主界面
-<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/main0.png" />
+<img src="./Screenshots/main0.png" />
 
 * 筛选
 <img src="./Screenshots/filt.png" alt="过滤示例" style="max-width: 80%; height: auto;" />
@@ -74,16 +69,16 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 <img src="./Screenshots/tag.png" alt="标签示例" style="max-width: 80%; height: auto;" />
 
 * 导视
-<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/guide.png" />
+<img src="./Screenshots/guide.png" />
 
 * 重命名
-<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/rename.png" />
+<img src="./Screenshots/rename.png" />
 
 * 格式转换
-<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/convert.png" />
+<img src="./Screenshots/convert.png" />
 
 * 分析
-<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/analysis.png" />
+<img src="./Screenshots/analysis.png" />
 
 ## ⏬下载
 * 发布页（优先更新）：https://github.com/ReGoMark/PicoFilter/releases
