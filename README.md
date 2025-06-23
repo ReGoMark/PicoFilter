@@ -61,12 +61,29 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 |批量格式转换|对筛选结果批量格式转换，仅支持读取静态图像格式，转换为`JPG`、`PNG`和`BMP`格式，其中`JPG`格式可以设置转换质量，`JPG`和`BMP`可以设置背景色|可独立使用；**`2.0`新增**|
 
 ## 📷程序界面展示
+* 主界面
+<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/main0.png" />
 
-<img src="./Screenshots/mainscreenshot.png" alt="主界面截图" style="max-width: 80%; height: auto;" />
-<img src="./Screenshots/main.png" alt="主界面" style="max-width: 80%; height: auto;" />
+* 筛选
 <img src="./Screenshots/filt.png" alt="过滤示例" style="max-width: 80%; height: auto;" />
+
+* 搜索
 <img src="./Screenshots/search.png" alt="搜索示例" style="max-width: 80%; height: auto;" />
+
+* 星标
 <img src="./Screenshots/tag.png" alt="标签示例" style="max-width: 80%; height: auto;" />
+
+* 导视
+<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/guide.png" />
+
+* 重命名
+<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/rename.png" />
+
+* 格式转换
+<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/convert.png" />
+
+* 分析
+<img src="https://github.com/ReGoMark/PicoFilter/blob/eb73cd5a4499ee2639a8d00ee76dc3cb6b194393/Screenshots/analysis.png" />
 
 ## ⏬下载
 * 发布页（优先更新）：https://github.com/ReGoMark/PicoFilter/releases
