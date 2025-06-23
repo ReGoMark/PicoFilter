@@ -61,9 +61,10 @@
 <img src="./Screenshots/tag.png" alt="标签示例" style="max-width: 80%; height: auto;" />
 
 # 捐赠
-如果您觉得我的项目还不错，能有一点用处，欢迎您来支持一下我。
+如果你喜欢这个程序，觉得它对你有帮助，欢迎通过赞助支持作者的持续开发与维护！每一份支持，都是我继续优化和更新的动力。
+无论是一次性打赏，还是持续支持，都将被深深感激！💖
 
-<img src=".Resources/Assets/wechat_sponsor.jpg" />
+<img src="./Resources/Assets/wechat_sponsor.jpg" alt="二维码截图" style="max-width: 80%; height: auto;" />
 
 
 # 初衷
