@@ -1,7 +1,4 @@
-
-
 <img src="./Resources/Assets/head.png" />
-
 
 <a href="./LICENSE">
     <img src="https://img.shields.io/github/license/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="license"></a>
@@ -11,8 +8,6 @@
     <img src="https://img.shields.io/github/stars/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="stars"></a>
 <a href="https://github.com/ReGoMark/PicoFilter/release">
     <img src="https://img.shields.io/github/release/ReGoMark/PicoFilter.svg?style=for-the-badge" alt="release"></a>
-
-
 
 ## ✒️PicoFilter - 图片筛选、重命名和格式转换工具
 
