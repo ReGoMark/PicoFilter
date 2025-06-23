@@ -63,6 +63,7 @@
 # 捐赠
 如果您觉得我的项目还不错，能有一点用处，欢迎您来支持一下我。
 
+<img src=".Resources/Assets/wechat_sponsor.jpg" />
 
 
 # 初衷
