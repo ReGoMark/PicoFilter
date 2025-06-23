@@ -26,7 +26,6 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 <details close>
 <summary> 📖目录 </summary>
 
-- [PICOFILTER](#PicoFilter-图片筛选、重命名和格式转换工具)  
 - [使用说明](#使用说明)  
 - [特色功能](#特色功能一览)
 - [界面展示](#程序界面展示)
@@ -71,7 +70,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 
 ## ⏬下载
 * 发布页（优先更新）：https://github.com/ReGoMark/PicoFilter/releases
-* 蓝奏云（随后更新）：
+* 蓝奏云（随后更新）：https://wwza.lanzouo.com/itvJq2yqd3xc
 
 ## 💗打赏
 如果你喜欢这个程序，觉得它对你有帮助，欢迎通过赞助支持作者的持续开发与维护！每一份支持，都是我继续优化和更新的动力。
