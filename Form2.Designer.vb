@@ -50,9 +50,9 @@ Partial Class Form2
         Me.Label12 = New System.Windows.Forms.Label()
         Me.MetroTabPage3 = New MetroFramework.Controls.MetroTabPage()
         Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
@@ -322,8 +322,8 @@ Partial Class Form2
         Me.RichTextBox2.ReadOnly = True
         Me.RichTextBox2.Size = New System.Drawing.Size(315, 202)
         Me.RichTextBox2.TabIndex = 14
-        Me.RichTextBox2.Text = "@洛初Official；" & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；" & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visual Studio 2022；" & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，因为文" &
-    "字所限，不能一一列举。在此，我不胜感激。"
+        Me.RichTextBox2.Text = "@LittleWhiteDoge；@洛初；" & Global.Microsoft.VisualBasic.ChrW(10) & "这些朋友帮助我完成了测试工作，帮助我完善程序。" & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；Bilibili；" & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visual S" &
+    "tudio 2022；" & Global.Microsoft.VisualBasic.ChrW(10) & "这些平台给我提供了学习交流和展示的机会，给了我很大的帮助。" & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，因为文字所限，不能一一列举。在此，我不胜感激。"
         '
         'Label15
         '
@@ -430,32 +430,10 @@ Partial Class Form2
         Me.MetroTabPage4.Name = "MetroTabPage4"
         Me.MetroTabPage4.Size = New System.Drawing.Size(321, 295)
         Me.MetroTabPage4.TabIndex = 3
-        Me.MetroTabPage4.Text = "打赏一下  "
+        Me.MetroTabPage4.Text = "打赏  "
         Me.MetroTabPage4.VerticalScrollbarBarColor = True
         Me.MetroTabPage4.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage4.VerticalScrollbarSize = 10
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(3, 103)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(173, 169)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 52
-        Me.PictureBox1.TabStop = False
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Controls.Add(Me.Label8)
-        Me.Panel1.Location = New System.Drawing.Point(-25, -11)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(416, 497)
-        Me.Panel1.TabIndex = 59
         '
         'Label7
         '
@@ -470,6 +448,28 @@ Partial Class Form2
         Me.Label7.Size = New System.Drawing.Size(236, 20)
         Me.Label7.TabIndex = 56
         Me.Label7.Text = "问题反馈：regmvks@outlook.com"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 92)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(185, 180)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 52
+        Me.PictureBox1.TabStop = False
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Controls.Add(Me.Label8)
+        Me.Panel1.Location = New System.Drawing.Point(-25, -11)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(416, 497)
+        Me.Panel1.TabIndex = 59
         '
         'Form2
         '
