@@ -1,6 +1,6 @@
 
 
-<img src="https://i0.wp.com/raw.githubusercontent.com/ReGoMark/PicoFilter/112f85ed7a04f924a5586be1181a3d8c6804738e/Resources/Assets/未标题-1.png" />
+<img src="https://github.com/ReGoMark/PicoFilter/blob/85483dc334f0fa8eef52e0eb2d9533da9b11e9a3/Resources/Assets/head.png" />
 
 
 <a href="./LICENSE">
@@ -24,7 +24,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 >3. 本程序完全免费开源，仅供交流和学习使用，任何人不得以任何形式用于商业用途或未经授权的分发。
 
 <details close>
-<summary> 📖目录 </summary>
+<summary> 📖概览 </summary>
 
 - [使用说明](#使用说明)  
 - [特色功能](#特色功能一览)
