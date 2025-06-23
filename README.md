@@ -31,7 +31,8 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 - [下载](#下载)
 - [打赏](#打赏)
 - [鸣谢](#鸣谢)
-- [许可协议](https://github.com/ReGoMark/PicoFilter/blob/0676005b5875f35327bca930f663c78daa085f33/LICENSE)  
+- [软件许可协议](https://github.com/ReGoMark/PicoFilter/blob/0676005b5875f35327bca930f663c78daa085f33/LICENSE)
+- [字体使用许可协议](https://github.com/ReGoMark/PicoFilter/blob/b5f17258e014ead0f17e5795f446b78cd2ae6bc7/Fonts/%E5%A3%B0%E6%98%8E%20-%20Statement.txt)
 
 </details>
 
@@ -105,7 +106,7 @@ Picofilter 的诞生离不开开源社区的支持。此外，感谢 [@洛初](h
 
 
 
-## 聊点别的
+## 🤔聊点别的
 ### 程序从何而来？
 2024年九月份的时候，我接手了`PAA像素艺术大赛`的作品收集工作和运营工作。在此期间，选手们提交的作品很多不符合要求，使用Windows资源管理器没法快速的筛选出不符合/符合要求的文件。为此在开源社区的帮助下，我制作了这一款软件，供大赛内部使用。后来我把他继续完善，放到了Github仓库上分享给大家，一起学习和交流。在一年多的累计更新中，PicoFilter 的版本号从1.2迭代到2.0.2，新增了许许多多的功能。
 
