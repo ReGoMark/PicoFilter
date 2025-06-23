@@ -1,6 +1,6 @@
 
 
-<img src="https://i0.wp.com/raw.githubusercontent.com/ReGoMark/PicoFilter/112f85ed7a04f924a5586be1181a3d8c6804738e/Resources/Assets/未标题-1.png" />
+<img src="https://github.com/ReGoMark/PicoFilter/blob/85483dc334f0fa8eef52e0eb2d9533da9b11e9a3/Resources/Assets/head.png" />
 
 
 <a href="./LICENSE">
