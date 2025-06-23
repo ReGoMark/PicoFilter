@@ -96,7 +96,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 <img src="./Resources/Assets/wechat_sponsor.jpg" alt="二维码截图" style="max-width: 80%; height: auto;" />
 
 ## 🙏鸣谢
-Picofilter 的诞生离不开开源社区的支持。此外，感谢 [@龙共小希](https://github.com/gongfuture) 对我的指导，帮助我完善了说明文档和一些`Git`相关事宜。除此之外，本程序还使用了以下组件和IDE，感谢这些开发者的辛勤付出，不胜感激。
+Picofilter 的诞生离不开开源社区的支持。此外，感谢 [@洛初](https://github.com/gongfuture) 对我的指导，帮助我完善了说明文档和一些`Git`相关事宜。除此之外，本程序还使用了以下组件和IDE，感谢这些开发者的辛勤付出，不胜感激。
 
 * [MertoModernUI](https://github.com/dennismagno/metroframework-modern-ui)
 * [EPPlus](https://github.com/EPPlusSoftware/EPPlus)
