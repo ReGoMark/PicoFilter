@@ -15,6 +15,12 @@
 
 ## ✒️PicoFilter - 图片筛选、重命名和格式转换工具
 
+<div align="right">
+    
+☎️联系&反馈：regmvks@outlook.com
+
+</div>
+
 PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`，`PNG`，`BMP`，`ICO`和`GIF`格式的图像文件，轻松实现`筛选分类`、`批量重命名`、`分析`和`批量格式转换`等的功能。程序基于`.NET Framework`框架开发，使用的语言为`VB.NET`，完全遵循`Windows`设计规范。
 
 >[!TIP]
