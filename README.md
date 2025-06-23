@@ -40,8 +40,8 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 
 考虑到程序本身设计比较紧凑，且我对很多功能的描述不是很准确，导致很多人一上手就感到头晕。目前正在撰写`PicoFilter 2.0.2`版本的说明文档，你可以点击下方的链接来访问；此外我还在`哔哩哔哩`上传了教程视频（不过是`1.7.x`版本的，当然也可以作为参考）。如果有任何疑问欢迎联系我，我会尽我所能的帮助你。
 
-* 说明文档 *[正在更新]*：[PicoFilter 2.0.2 版本使用说明](https://flowus.cn/regmvks/e717713c-be23-4124-b364-878960e75a4e)
-* 视频教程：[PicoFilter 1.7.x 使用教程](https://www.bilibili.com/video/BV1aR92YcEka/?spm_id_from=333.1387.homepage.video_card.click&vd_source=c4099c355c2d06f10ac210fe7bae65a6)
+* 说明文档 *[更新中]*：[PicoFilter 2.0.2 版本使用说明](https://flowus.cn/regmvks/e717713c-be23-4124-b364-878960e75a4e)
+* 视频教程 *[1.7.x]*：[PicoFilter 1.7.x 使用教程](https://www.bilibili.com/video/BV1aR92YcEka/?spm_id_from=333.1387.homepage.video_card.click&vd_source=c4099c355c2d06f10ac210fe7bae65a6)
 
 ## 🍰特色功能一览
 
@@ -79,5 +79,5 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 * 蓝奏云（随后更新）：
 
 ## 💻程序从何而来
-
+2024年九月份的时候，我接手了`PAA像素艺术大赛`的作品收集工作和运营工作。在此期间，选手们提交的作品很多不符合要求，使用Windows资源管理器没法快速的筛选出不符合/符合要求的文件。为此在开源社区的帮助下，我制作了这一款软件，供大赛内部使用。后来我把他继续完善，放到了Github仓库上分享给大家，一起学习和交流。在一年多的累计更新中，PicoFilter 的版本号从1.2迭代到2.0.2，新增了许许多多的功能。
 
