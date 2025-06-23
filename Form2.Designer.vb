@@ -41,8 +41,6 @@ Partial Class Form2
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
-        Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
         Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -51,14 +49,17 @@ Partial Class Form2
         Me.RichTextBox3 = New System.Windows.Forms.RichTextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.MetroTabPage3 = New MetroFramework.Controls.MetroTabPage()
+        Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabControl1.SuspendLayout()
-        Me.MetroTabPage4.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabPage1.SuspendLayout()
         Me.MetroTabPage2.SuspendLayout()
         Me.MetroTabPage3.SuspendLayout()
+        Me.MetroTabPage4.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -134,7 +135,7 @@ Partial Class Form2
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(315, 20)
         Me.Label9.TabIndex = 17
-        Me.Label9.Text = "项目地址：github.com/ReGoMark/PicoFilter"
+        Me.Label9.Text = "获取更新：github.com/ReGoMark/PicoFilter"
         '
         'Label5
         '
@@ -187,10 +188,9 @@ Partial Class Form2
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(3, 9)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(315, 104)
+        Me.Label3.Size = New System.Drawing.Size(315, 91)
         Me.Label3.TabIndex = 51
-        Me.Label3.Text = "如果您觉得本项目还不错，可以扫描下方的二维码，赞助一下作者。注意，付费不会解锁任何额外功能，本程序全部功能均可免费使用，如果您通过付费渠道下载了本程序，请要求卖家" &
-    "退款。"
+        Me.Label3.Text = "如果您觉得本项目还不错，可以扫描下方的二维码，赞助一下作者。付费不会解锁任何额外功能，本程序全部功能均可免费使用，开源免费项目严禁用做商业用途！"
         Me.ToolTip1.SetToolTip(Me.Label3, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
         "单击""支持""寻求联机支持。")
         '
@@ -232,9 +232,9 @@ Partial Class Form2
         Me.Label8.ForeColor = System.Drawing.Color.DimGray
         Me.Label8.Location = New System.Drawing.Point(42, 107)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(234, 20)
+        Me.Label8.Size = New System.Drawing.Size(236, 20)
         Me.Label8.TabIndex = 54
-        Me.Label8.Text = "官方教程：单击此处获得联机教程"
+        Me.Label8.Text = "问题反馈：regmvks@outlook.com"
         '
         'Label14
         '
@@ -247,9 +247,9 @@ Partial Class Form2
         Me.Label14.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label14.Location = New System.Drawing.Point(3, 275)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(122, 20)
+        Me.Label14.Size = New System.Drawing.Size(160, 20)
         Me.Label14.TabIndex = 13
-        Me.Label14.Text = "2025/6/10修订。"
+        Me.Label14.Text = "当前更新：2025/06/23"
         '
         'PictureBox2
         '
@@ -286,38 +286,11 @@ Partial Class Form2
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 58
         Me.MetroTabControl1.UseSelectable = True
-        '
-        'MetroTabPage4
-        '
-        Me.MetroTabPage4.Controls.Add(Me.PictureBox1)
-        Me.MetroTabPage4.Controls.Add(Me.Label3)
-        Me.MetroTabPage4.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage4.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage4.HorizontalScrollbarSize = 10
-        Me.MetroTabPage4.Location = New System.Drawing.Point(4, 38)
-        Me.MetroTabPage4.Name = "MetroTabPage4"
-        Me.MetroTabPage4.Size = New System.Drawing.Size(321, 295)
-        Me.MetroTabPage4.TabIndex = 3
-        Me.MetroTabPage4.Text = "赞助  "
-        Me.MetroTabPage4.VerticalScrollbarBarColor = True
-        Me.MetroTabPage4.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage4.VerticalScrollbarSize = 10
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 116)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(173, 169)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 52
-        Me.PictureBox1.TabStop = False
         '
         'MetroTabPage1
         '
@@ -349,7 +322,8 @@ Partial Class Form2
         Me.RichTextBox2.ReadOnly = True
         Me.RichTextBox2.Size = New System.Drawing.Size(315, 202)
         Me.RichTextBox2.TabIndex = 14
-        Me.RichTextBox2.Text = resources.GetString("RichTextBox2.Text")
+        Me.RichTextBox2.Text = "@洛初Official；" & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；" & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visual Studio 2022；" & Global.Microsoft.VisualBasic.ChrW(10) & "——————" & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，因为文" &
+    "字所限，不能一一列举。在此，我不胜感激。"
         '
         'Label15
         '
@@ -392,9 +366,9 @@ Partial Class Form2
         Me.Label16.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label16.Location = New System.Drawing.Point(3, 275)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(204, 20)
+        Me.Label16.Size = New System.Drawing.Size(189, 20)
         Me.Label16.TabIndex = 59
-        Me.Label16.Text = "单击此处查看字体许可协议。"
+        Me.Label16.Text = "单击此处查看字体许可协议"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'RichTextBox3
@@ -444,6 +418,34 @@ Partial Class Form2
         Me.MetroTabPage3.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage3.VerticalScrollbarSize = 10
         '
+        'MetroTabPage4
+        '
+        Me.MetroTabPage4.Controls.Add(Me.Label7)
+        Me.MetroTabPage4.Controls.Add(Me.PictureBox1)
+        Me.MetroTabPage4.Controls.Add(Me.Label3)
+        Me.MetroTabPage4.HorizontalScrollbarBarColor = True
+        Me.MetroTabPage4.HorizontalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage4.HorizontalScrollbarSize = 10
+        Me.MetroTabPage4.Location = New System.Drawing.Point(4, 38)
+        Me.MetroTabPage4.Name = "MetroTabPage4"
+        Me.MetroTabPage4.Size = New System.Drawing.Size(321, 295)
+        Me.MetroTabPage4.TabIndex = 3
+        Me.MetroTabPage4.Text = "打赏一下  "
+        Me.MetroTabPage4.VerticalScrollbarBarColor = True
+        Me.MetroTabPage4.VerticalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage4.VerticalScrollbarSize = 10
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 103)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(173, 169)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 52
+        Me.PictureBox1.TabStop = False
+        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
@@ -454,6 +456,20 @@ Partial Class Form2
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(416, 497)
         Me.Panel1.TabIndex = 59
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Cursor = System.Windows.Forms.Cursors.Help
+        Me.Label7.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label7.Location = New System.Drawing.Point(3, 275)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(236, 20)
+        Me.Label7.TabIndex = 56
+        Me.Label7.Text = "问题反馈：regmvks@outlook.com"
         '
         'Form2
         '
@@ -477,14 +493,15 @@ Partial Class Form2
         Me.Text = "关于"
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MetroTabControl1.ResumeLayout(False)
-        Me.MetroTabPage4.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MetroTabPage1.ResumeLayout(False)
         Me.MetroTabPage1.PerformLayout()
         Me.MetroTabPage2.ResumeLayout(False)
         Me.MetroTabPage2.PerformLayout()
         Me.MetroTabPage3.ResumeLayout(False)
         Me.MetroTabPage3.PerformLayout()
+        Me.MetroTabPage4.ResumeLayout(False)
+        Me.MetroTabPage4.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -519,4 +536,5 @@ Partial Class Form2
     Friend WithEvents MetroTabPage4 As MetroFramework.Controls.MetroTabPage
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label7 As Label
 End Class

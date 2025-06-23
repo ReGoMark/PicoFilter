@@ -35,11 +35,11 @@
     End Sub
 
     Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-        Dim url As String = "https://www.bilibili.com/video/BV1aR92YcEka/?spm_id_from=333.999.0.0&vd_source=c4099c355c2d06f10ac210fe7bae65a6"
         Try
-            ' 使用默认浏览器打开网页
-            Process.Start(url)
+            Clipboard.SetText("regmvks@outlook.com")
+            MessageBox.Show("邮箱regmvks@outlook.com已复制到剪切板！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
+            MessageBox.Show("复制邮箱失败，请重试。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
