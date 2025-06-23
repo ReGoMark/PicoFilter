@@ -1,4 +1,4 @@
-
+<img src="https://github.com/ReGoMark/PicoFilter/blob/097dbce5eaa7f0b20e2f7974b5c1ee4b9a37e4c6/Resources/Assets/headlline_picture.png" />
 # 介绍
 
 ![ICON](./Resources/Icons/picofilter.ico)
