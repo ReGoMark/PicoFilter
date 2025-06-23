@@ -62,7 +62,7 @@
 
 # 捐赠
 如果您觉得我的项目还不错，能有一点用处，欢迎您来支持一下我。
-<img src="./Resources/Assets/wechat_sponsor.jpg" alt="标签示例" style="max-width: 80%; height: auto;" />
+
 
 
 # 初衷
