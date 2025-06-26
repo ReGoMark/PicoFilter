@@ -13,7 +13,7 @@
     
 </div>
 
-## ✒️PicoFilter - 图片筛选、命名、排序和格式转换工具
+## ✅PicoFilter - 图片筛选、命名、排序和格式转换工具
 
 <div align="right">
     
@@ -25,8 +25,9 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 
 >[!TIP]
 >1. 运行程序前请安装 [方正黑体_GBK](./Fonts/方正黑体GBK.ttf)字体获得最佳视觉体验。
->2. 程序必须运行在分辨率不低于`720P`的显示器上，低于该分辨率运行时会出现布局错误。
->3. 项目完全免费开源，仅供交流和学习使用，任何人不得以任何形式用于商业用途或未经授权的分发。
+>2. 运行前请确保当前计算机已经安装[.NET Framework 4.7.2 Runtime](https://dotnet.microsoft.com/zh-cn/download/dotnet-framework/thank-you/net472-web-installer)，否则程序将无法运行。
+>3. 程序必须运行在分辨率大于`720P`的显示器上，低于该分辨率运行时布局会出现错误。
+>4. 项目完全免费开源，仅供交流和学习使用，任何人不得以任何形式用于商业用途或未经授权的分发。
 
 <details open>
 <summary> 📖内容概览 </summary>
