@@ -533,13 +533,11 @@ Partial Class Form1
         'ListViewRT
         '
         Me.ListViewRT.AllowColumnReorder = True
-        Me.ListViewRT.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListViewRT.BackColor = System.Drawing.Color.White
         Me.ListViewRT.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ListViewRT.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader12, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader10, Me.ColumnHeader14})
         Me.ListViewRT.ContextMenuStrip = Me.ContextMenuStrip3
+        Me.ListViewRT.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListViewRT.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(238, Byte))
         Me.ListViewRT.ForeColor = System.Drawing.Color.Black
         Me.ListViewRT.FullRowSelect = True
@@ -547,7 +545,7 @@ Partial Class Form1
         Me.ListViewRT.Location = New System.Drawing.Point(0, 0)
         Me.ListViewRT.Name = "ListViewRT"
         Me.ListViewRT.ShowGroups = False
-        Me.ListViewRT.Size = New System.Drawing.Size(493, 408)
+        Me.ListViewRT.Size = New System.Drawing.Size(504, 408)
         Me.ListViewRT.TabIndex = 13
         Me.ListViewRT.UseCompatibleStateImageBehavior = False
         Me.ListViewRT.View = System.Windows.Forms.View.Details
@@ -1093,7 +1091,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.PictureBox7)
         Me.Panel3.Controls.Add(Me.setting)
         Me.Panel3.Controls.Add(Me.qrButton)
-        Me.Panel3.Location = New System.Drawing.Point(-7, 118)
+        Me.Panel3.Location = New System.Drawing.Point(-17, 118)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(389, 220)
         Me.Panel3.TabIndex = 44
@@ -1350,7 +1348,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-573, 177)
+        Me.Label7.Location = New System.Drawing.Point(-583, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1576,7 +1574,7 @@ Partial Class Form1
         Me.searchButton0.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.searchButton0.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.searchButton0.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.searchButton0.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.searchButton0.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.searchButton0.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.searchButton0.Image = CType(resources.GetObject("searchButton0.Image"), System.Drawing.Image)
         Me.searchButton0.Location = New System.Drawing.Point(0, 9)
@@ -1598,7 +1596,7 @@ Partial Class Form1
         Me.searchButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.searchButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.searchButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.searchButton1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.searchButton1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.searchButton1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.searchButton1.Image = CType(resources.GetObject("searchButton1.Image"), System.Drawing.Image)
         Me.searchButton1.Location = New System.Drawing.Point(91, 9)
@@ -1979,7 +1977,6 @@ Partial Class Form1
         '
         'PictureBox11
         '
-        Me.PictureBox11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox11.BackColor = System.Drawing.Color.White
         Me.PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), System.Drawing.Image)
         Me.PictureBox11.Location = New System.Drawing.Point(109, 13)
@@ -2194,7 +2191,7 @@ Partial Class Form1
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(75, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 5
+        Me.MetroTabControl1.SelectedIndex = 4
         Me.MetroTabControl1.Size = New System.Drawing.Size(1032, 80)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 48
@@ -2408,7 +2405,7 @@ Partial Class Form1
         Me.MetroTabPage6.Name = "MetroTabPage6"
         Me.MetroTabPage6.Size = New System.Drawing.Size(1024, 38)
         Me.MetroTabPage6.TabIndex = 6
-        Me.MetroTabPage6.Text = "帮助"
+        Me.MetroTabPage6.Text = "关于"
         Me.MetroTabPage6.VerticalScrollbarBarColor = True
         Me.MetroTabPage6.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage6.VerticalScrollbarSize = 10

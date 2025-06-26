@@ -33,6 +33,14 @@ Public Class Form1
     Private isMouseOverTab As Boolean = False
     Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
 
+    ' 在窗体或控件初始化后调用
+    Private Sub SetDoubleBuffered(ctrl As Control)
+        Dim t As Type = ctrl.GetType()
+        Dim pi = t.GetProperty("DoubleBuffered", Reflection.BindingFlags.Instance Or Reflection.BindingFlags.NonPublic)
+        If pi IsNot Nothing Then
+            pi.SetValue(ctrl, True, Nothing)
+        End If
+    End Sub
     Public Sub 加载图片(folderPath As String)
         '计数器重置
         loadedCount = 0
@@ -403,11 +411,12 @@ Public Class Form1
         Dim screenHeight As Integer = Screen.PrimaryScreen.WorkingArea.Height
         Dim currentUserName As String = Environment.UserName
         Dim fontName As String = "方正黑体_GBK"
-        Me.Text = verinfo
         ProgressBar1.Maximum = 0
         loadedCount = 0
         'ListViewRT.Width = 505
-
+        SetDoubleBuffered(ListViewLT)
+        SetDoubleBuffered(ListViewRT)
+        Me.Text = verinfo
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
         Me.MinimumSize = New Size(1066, 630) ' 设置最小窗口大小
         openButton.AllowDrop = True ' 启用拖放功能
@@ -439,6 +448,9 @@ Public Class Form1
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "格式说明"
         ToolTip2.SetToolTip(TextBox1, "允许自定义最多三个标记：” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的项；" & vbCrLf & “{x}{y}{} - 标记带有x, y的文件，不填写请{}留空。")
+
+        '' 为窗体启用双缓冲
+        'Me.DoubleBuffered = True
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
