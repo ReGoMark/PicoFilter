@@ -79,7 +79,7 @@ Partial Class Form8
         Me.btnLoad.TabIndex = 86
         Me.btnLoad.Text = "拉取/浏览"
         Me.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnLoad, "点击按钮拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift后点击浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖动文件夹到列表加载数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.ToolTip1.SetToolTip(Me.btnLoad, "点击按钮从筛选页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl从加载页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift以浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹到加载数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.btnLoad.UseVisualStyleBackColor = False
         '
         'bksbutton
@@ -329,7 +329,6 @@ Partial Class Form8
         Me.colorButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.colorButton.BackColor = System.Drawing.Color.White
         Me.colorButton.CausesValidation = False
-        Me.colorButton.Enabled = False
         Me.colorButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
         Me.colorButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
         Me.colorButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
@@ -406,9 +405,9 @@ Partial Class Form8
         Me.rbPNG.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.rbPNG.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbPNG.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbPNG.Location = New System.Drawing.Point(-1, 0)
+        Me.rbPNG.Location = New System.Drawing.Point(6, 5)
         Me.rbPNG.Name = "rbPNG"
-        Me.rbPNG.Size = New System.Drawing.Size(45, 36)
+        Me.rbPNG.Size = New System.Drawing.Size(45, 26)
         Me.rbPNG.TabIndex = 45
         Me.rbPNG.TabStop = True
         Me.rbPNG.Text = "PNG"
@@ -432,9 +431,9 @@ Partial Class Form8
         Me.rbJPG.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.rbJPG.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbJPG.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbJPG.Location = New System.Drawing.Point(50, 0)
+        Me.rbJPG.Location = New System.Drawing.Point(54, 5)
         Me.rbJPG.Name = "rbJPG"
-        Me.rbJPG.Size = New System.Drawing.Size(45, 36)
+        Me.rbJPG.Size = New System.Drawing.Size(45, 26)
         Me.rbJPG.TabIndex = 40
         Me.rbJPG.Text = "JPG"
         Me.rbJPG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -457,9 +456,9 @@ Partial Class Form8
         Me.rbBMP.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.rbBMP.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbBMP.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbBMP.Location = New System.Drawing.Point(101, 0)
+        Me.rbBMP.Location = New System.Drawing.Point(102, 5)
         Me.rbBMP.Name = "rbBMP"
-        Me.rbBMP.Size = New System.Drawing.Size(45, 36)
+        Me.rbBMP.Size = New System.Drawing.Size(45, 26)
         Me.rbBMP.TabIndex = 41
         Me.rbBMP.Text = "BMP"
         Me.rbBMP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter

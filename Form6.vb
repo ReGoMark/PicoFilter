@@ -5,17 +5,28 @@ Public Class Form6
     Private originalNames As New Dictionary(Of Integer, String)()
     Dim Publicpath As String
 
+    ' 在Form6类中添加以下方法和调用，实现ListViewPre的双缓冲
+    ' 1. 添加扩展ListView的双缓冲支持
+    Private Sub EnableDoubleBuffering(listView As ListView)
+        Dim prop As Reflection.PropertyInfo = GetType(Control).GetProperty("DoubleBuffered", Reflection.BindingFlags.Instance Or Reflection.BindingFlags.NonPublic)
+        If prop IsNot Nothing Then
+            prop.SetValue(listView, True, Nothing)
+        End If
+    End Sub
+
+    ' 2. 在Form6_Load中调用
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComboBox1.SelectedIndex = 0
         ListViewPre.AllowDrop = True
         Publicpath = ""
+        ' 开启ListViewPre双缓冲
+        EnableDoubleBuffering(ListViewPre)
         ' 添加工具提示，展示所有可用格式
         Dim toolTip As New ToolTip()
         toolTip.ToolTipIcon = ToolTipIcon.Info
         toolTip.ToolTipTitle = "可用格式"
         toolTip.SetToolTip(ComboBox1, "{name} - 原文件名(xxxx)" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)" & vbCrLf & "{season} - 季(春/夏/秋/冬)")
     End Sub
-
     Private Sub bksbutton_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
         If ListViewPre.SelectedItems.Count > 0 Then '确保 ListView2 中有选中的项
             Dim result As DialogResult = MessageBox.Show("确定要移除选定项吗？", "确认移除", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -60,6 +71,27 @@ Public Class Form6
             End Using
             Exit Sub
         End If
+
+        If (ModifierKeys And Keys.Control) = Keys.Control Then
+            ' Ctrl+点击，从ListViewLT拉取数据
+            ListViewPre.Items.Clear()
+            originalNames.Clear()
+            For i As Integer = 0 To Form1.ListViewLT.Items.Count - 1
+                Dim item As ListViewItem = Form1.ListViewLT.Items(i)
+                Dim newItem As New ListViewItem((i + 1).ToString())
+                newItem.SubItems.Add(item.SubItems(2).Text) ' 只添加文件名
+                newItem.Tag = item.Tag
+                ListViewPre.Items.Add(newItem)
+                originalNames(i) = item.SubItems(2).Text
+            Next
+            Publicpath = Form1.openText.Text
+            TextBox2.Text = "来自 PicoFilter 加载页"
+            TextBox2.SelectionStart = TextBox2.Text.Length
+            TextBox2.ScrollToCaret()
+            Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
+            Exit Sub
+        End If
+
         Publicpath = ""
         转到重命名()
         ' 拉取时显示PicoFilter
@@ -251,7 +283,7 @@ Public Class Form6
             columnHeader.Text = columnHeader.Text.Replace("▲", "").Replace("▼", "")
 
             ' 仅为列 1, 2, 添加箭头
-            If i = 0 Or i = 1 Or i = 2 Then
+            If i = 0 Or i = 1 Then
                 If i = currentColumn Then
                     If currentOrder = SortOrder.Ascending Then
                         columnHeader.Text &= "▲"
@@ -283,11 +315,7 @@ Public Class Form6
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
-                    Case 1 ' 序号列（按整数排序）
-                        Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
-                        Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
-                        returnVal = num1.CompareTo(num2)
-                    Case 2 ' 其他列（按字符串排序）
+                    Case 1 ' 其他列（按字符串排序）
                         returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
                 End Select
             End If
@@ -394,7 +422,7 @@ Public Class Form6
     End Sub
 
     Private Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
-        If ComboBox1.Text = "(无)" Then
+        If ComboBox1.Text = "(无)" Or ComboBox1.Text = "" Then
             ApplyButton.Visible = False
             Button7.Visible = False
         Else

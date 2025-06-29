@@ -63,5 +63,6 @@
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MetroTabControl1.SelectedTab = MetroTabControl1.TabPages(0)
+        Me.ActiveControl = Nothing ' 取消默认控件焦点
     End Sub
 End Class

@@ -13,9 +13,20 @@ Public Class Form8
     Private colorDialog As New ColorDialog()
 
     ' 初始化窗体
+    ' 在Form8类中添加以下方法和在Form8_Load中调用
+    ' 启用ListView1的双缓冲以减少闪烁
+    Private Sub EnableListViewDoubleBuffering()
+        Dim prop = GetType(Control).GetProperty("DoubleBuffered", Reflection.BindingFlags.Instance Or Reflection.BindingFlags.NonPublic)
+        If prop IsNot Nothing Then
+            prop.SetValue(ListView1, True, Nothing)
+        End If
+    End Sub
+
+    ' 在Form8_Load方法中调用
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitializeControls()
         MetroProgressBar1.Value = False
+        EnableListViewDoubleBuffering()
     End Sub
 
     ' 控件初始化
@@ -139,21 +150,34 @@ Public Class Form8
             Exit Sub
         End If
 
-        ' 原有从Form1加载数据逻辑
-        'Try
-        basePath = Form1.openText.Text.Trim()
-        'If Not ValidateForm1Data() Then Exit Sub
-        ListView1.Items.Clear()
-        Dim index = 1
-        For Each item As ListViewItem In Form1.ListViewRT.Items
+        If (ModifierKeys And Keys.Control) = Keys.Control Then
+            ' 按住Control，从Form1.ListViewLT拉取数据
+            basePath = Form1.openText.Text.Trim()
+            ListView1.Items.Clear()
+            Dim index = 1
+            For Each item As ListViewItem In Form1.ListViewLT.Items
                 ProcessForm1Item(item, index)
                 index += 1
             Next
-
-            ' 显示“PicoFilter”
-            TextBox1.Text = "来自 PicoFilter 筛选页"
+            TextBox1.Text = "来自 PicoFilter 加载页"
             TextBox1.SelectionStart = TextBox1.Text.Length
             TextBox1.ScrollToCaret()
+            Exit Sub
+        End If
+
+        ' 原有从Form1加载数据逻辑(从ListViewRT获取)
+        basePath = Form1.openText.Text.Trim()
+        ListView1.Items.Clear()
+        Dim idx = 1
+        For Each item As ListViewItem In Form1.ListViewRT.Items
+            ProcessForm1Item(item, idx)
+            idx += 1
+        Next
+        ' 显示“PicoFilter”
+        TextBox1.Text = "来自 PicoFilter 筛选页"
+        TextBox1.SelectionStart = TextBox1.Text.Length
+        TextBox1.ScrollToCaret()
+
         'UpdateFormTitle("拉取")
         'Catch ex As Exception
         '    ShowError("拉取数据为空。", ex)

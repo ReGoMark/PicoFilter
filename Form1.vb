@@ -168,7 +168,7 @@ Public Class Form1
         End If
 
         If tagCount > 0 Then
-            optChange("提示：存在星标文件 " & tagCount & “ 项。”, Color.White)
+            optChange("星标：找到 " & tagCount & “ 项。”, Color.Lavender)
         End If
         sumLblLT.Text = String.Join("  |  ", result)
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr
@@ -177,7 +177,7 @@ Public Class Form1
         更新统计信息()
         PlayNotificationSound3()
         'Form9.RichTextBox1.Text += consoletime & "Read Folder From: " & openText.Text.trim() & vbCrLf
-
+        'optChange("加载已完成。点击「分析」查看详细信息。", Color.Lavender)
         sumLT = files.Count
         jpgLT = jpgCount
         pngLT = pngCount
@@ -309,7 +309,7 @@ Public Class Form1
                     Case ".BMP"
                         bmpCount += 1
                 End Select
-                optChange("提示：文件筛选已完成。", Color.Lavender)
+                optChange("筛选已完成。", Color.Lavender)
             End If
         Next
 
@@ -419,6 +419,7 @@ Public Class Form1
         'ListViewRT.Width = 505
         SetDoubleBuffered(ListViewLT)
         SetDoubleBuffered(ListViewRT)
+        SetDoubleBuffered(Me)
         Me.Text = verinfo
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
         Me.MinimumSize = New Size(1066, 630) ' 设置最小窗口大小
@@ -554,7 +555,7 @@ Public Class Form1
 
             ' 提示操作结果
             If successCount > 0 Then
-                optChange($"警告：文件回收已完成，需要重新加载。", Color.LemonChiffon)
+                optChange($"警告：回收完成，请点击「重新整理」刷新数据。", Color.LemonChiffon)
             End If
 
             If failedFiles.Count > 0 Then
@@ -629,7 +630,7 @@ Public Class Form1
     End Sub
     '移动筛选结果到指定文件夹
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles moveButton.Click
-        If ListViewRT.Items.Count = 0 Then
+        If ListViewRT.Items.Count > 0 Then
             Using folderBrowserDialog As New FolderBrowserDialog
                 ' 设置初始目录为当前打开的文件夹路径
                 Dim currentFolder As String = openText.Text.Trim()
@@ -643,7 +644,7 @@ Public Class Form1
                         Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
                         Try
                             File.Move(sourcePath, Path.Combine(targetFolder, fileName))
-                            optChange("警告：文件已移动，需要重新加载。", Color.LemonChiffon)
+                            optChange("警告：移动完成，请点击「重新整理」刷新数据。", Color.LemonChiffon)
                             'Form9.RichTextBox1.Text += consoletime & "Move Result at: " & targetFolder & "\" & fileName & vbCrLf
                         Catch ex As Exception
                             MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -677,7 +678,7 @@ Public Class Form1
                 Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
                 Try
                     File.Move(sourcePath, Path.Combine(resultFolder, fileName))
-                    optChange("警告：文件已隔离，需要重新加载。", Color.LemonChiffon)
+                    optChange("警告：隔离完成，请点击「重新整理」刷新数据。", Color.LemonChiffon)
                 Catch ex As Exception
                     MessageBox.Show("隔离失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -761,7 +762,7 @@ Public Class Form1
                     ListViewRT.Items.Remove(selectedItem)
                 Next
 
-                optChange("提示：项目已移除。", Color.White)
+                optChange("选定项已移除。", Color.LemonChiffon)
 
                 If ListViewRT.Items.Count > 0 Then
                     If index < ListViewRT.Items.Count Then
@@ -1334,7 +1335,7 @@ Public Class Form1
         Next
 
         PlayNotificationSound3()
-        optChange("加载搜索：结果共 " & ListViewLT.SelectedItems.Count & " 项。", Color.White)
+        optChange("加载页：结果 " & ListViewLT.SelectedItems.Count & " 项。", Color.Lavender)
     End Sub
 
     Private Sub SearchListView1(keyword As String, searchType As SearchType)
@@ -1381,7 +1382,7 @@ Public Class Form1
         Next
 
         PlayNotificationSound3()
-        optChange("筛选搜索：结果共 " & ListViewRT.SelectedItems.Count & " 项。", Color.White)
+        optChange("筛选页：结果 " & ListViewRT.SelectedItems.Count & " 项。", Color.Lavender)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs)
@@ -1757,7 +1758,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("提示：转到「筛选」选项卡继续。", Color.White)
+            optChange("转到「筛选」选项卡以继续。", Color.Lavender)
 
         End If
     End Sub
@@ -1989,7 +1990,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("提示：转到「筛选」选项卡继续。", Color.White)
+            optChange("转到「筛选」选项卡以继续。", Color.Lavender)
         End If
     End Sub
 

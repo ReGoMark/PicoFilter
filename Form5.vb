@@ -337,7 +337,7 @@ Public Class Form5
 
                 ProgressBar1.Visible = False
                 'Me.Text = "导视"
-                Dim result = MessageBox.Show($"文件提取完成，共计 {copiedCount} 项。点击按钮打开", "成功", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                Dim result = MessageBox.Show($"提取到 {copiedCount} 项。点击按钮打开", "成功", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                 If result = DialogResult.Yes Then
                     Try
                         Process.Start("explorer.exe", destinationFolder)

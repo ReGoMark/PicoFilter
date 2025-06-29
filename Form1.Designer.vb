@@ -306,7 +306,7 @@ Partial Class Form1
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem15, Me.以此为筛选条件ToolStripMenuItem, Me.ToolStripSeparator7, Me.添加到右侧ToolStripMenuItem, Me.打开文件所在位置ToolStripMenuItem, Me.ToolStripSeparator1, Me.复制地址ToolStripMenuItem, Me.ToolStripSeparator4, Me.ToolStripMenuItem11, Me.ToolStripMenuItem13, Me.ToolStripSeparator2, Me.ToolStripMenuItem10, Me.列宽默认OToolStripMenuItem, Me.ToolStripSeparator9, Me.ToolStripMenuItem16})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(211, 282)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(203, 254)
         '
         'ToolStripMenuItem15
         '
@@ -326,7 +326,7 @@ Partial Class Form1
         Me.以此为筛选条件ToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.以此为筛选条件ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.以此为筛选条件ToolStripMenuItem.Name = "以此为筛选条件ToolStripMenuItem"
-        Me.以此为筛选条件ToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.以此为筛选条件ToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.以此为筛选条件ToolStripMenuItem.Text = "以此为条件筛选(&S)"
         '
         'ToolStripSeparator7
@@ -440,7 +440,7 @@ Partial Class Form1
         Me.ToolStripMenuItem16.Image = CType(resources.GetObject("ToolStripMenuItem16.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem16.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem16.Name = "ToolStripMenuItem16"
-        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(210, 22)
+        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(202, 22)
         Me.ToolStripMenuItem16.Text = "属性(&R)"
         '
         'openButton
@@ -761,7 +761,7 @@ Partial Class Form1
         'ToolStripSeparator10
         '
         Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
-        Me.ToolStripSeparator10.Size = New System.Drawing.Size(207, 6)
+        Me.ToolStripSeparator10.Size = New System.Drawing.Size(199, 6)
         '
         'ToolStripMenuItem18
         '
@@ -770,7 +770,7 @@ Partial Class Form1
         Me.ToolStripMenuItem18.Image = CType(resources.GetObject("ToolStripMenuItem18.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem18.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem18.Name = "ToolStripMenuItem18"
-        Me.ToolStripMenuItem18.Size = New System.Drawing.Size(210, 22)
+        Me.ToolStripMenuItem18.Size = New System.Drawing.Size(202, 22)
         Me.ToolStripMenuItem18.Text = "属性(&R)"
         '
         'copyButton
@@ -1147,7 +1147,6 @@ Partial Class Form1
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.CheckBox1)
-        Me.Panel3.Controls.Add(Me.PictureBox12)
         Me.Panel3.Controls.Add(Me.Button2)
         Me.Panel3.Controls.Add(Me.Button3)
         Me.Panel3.Controls.Add(Me.Button15)
@@ -1159,7 +1158,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.PictureBox7)
         Me.Panel3.Controls.Add(Me.setting)
         Me.Panel3.Controls.Add(Me.qrButton)
-        Me.Panel3.Location = New System.Drawing.Point(-33, 118)
+        Me.Panel3.Location = New System.Drawing.Point(-39, 118)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(389, 220)
         Me.Panel3.TabIndex = 44
@@ -1206,7 +1205,7 @@ Partial Class Form1
         '
         Me.PictureBox12.BackColor = System.Drawing.Color.White
         Me.PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), System.Drawing.Image)
-        Me.PictureBox12.Location = New System.Drawing.Point(176, 3)
+        Me.PictureBox12.Location = New System.Drawing.Point(182, 13)
         Me.PictureBox12.Name = "PictureBox12"
         Me.PictureBox12.Size = New System.Drawing.Size(18, 18)
         Me.PictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1435,7 +1434,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-599, 177)
+        Me.Label7.Location = New System.Drawing.Point(-605, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1455,9 +1454,9 @@ Partial Class Form1
         Me.Button13.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button13.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button13.Image = CType(resources.GetObject("Button13.Image"), System.Drawing.Image)
-        Me.Button13.Location = New System.Drawing.Point(384, 11)
+        Me.Button13.Location = New System.Drawing.Point(398, 11)
         Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(66, 26)
+        Me.Button13.Size = New System.Drawing.Size(64, 26)
         Me.Button13.TabIndex = 53
         Me.Button13.Text = "转换"
         Me.Button13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1504,9 +1503,9 @@ Partial Class Form1
         Me.nmButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.nmButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.nmButton.Image = CType(resources.GetObject("nmButton.Image"), System.Drawing.Image)
-        Me.nmButton.Location = New System.Drawing.Point(456, 11)
+        Me.nmButton.Location = New System.Drawing.Point(464, 11)
         Me.nmButton.Name = "nmButton"
-        Me.nmButton.Size = New System.Drawing.Size(66, 26)
+        Me.nmButton.Size = New System.Drawing.Size(64, 26)
         Me.nmButton.TabIndex = 48
         Me.nmButton.Text = "命名"
         Me.nmButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1628,9 +1627,9 @@ Partial Class Form1
         Me.stsButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.stsButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.stsButton.Image = CType(resources.GetObject("stsButton.Image"), System.Drawing.Image)
-        Me.stsButton.Location = New System.Drawing.Point(528, 11)
+        Me.stsButton.Location = New System.Drawing.Point(530, 11)
         Me.stsButton.Name = "stsButton"
-        Me.stsButton.Size = New System.Drawing.Size(66, 26)
+        Me.stsButton.Size = New System.Drawing.Size(64, 26)
         Me.stsButton.TabIndex = 40
         Me.stsButton.Tag = ""
         Me.stsButton.Text = "分析"
@@ -1755,9 +1754,9 @@ Partial Class Form1
         Me.treeButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.treeButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.treeButton.Image = CType(resources.GetObject("treeButton.Image"), System.Drawing.Image)
-        Me.treeButton.Location = New System.Drawing.Point(312, 11)
+        Me.treeButton.Location = New System.Drawing.Point(332, 11)
         Me.treeButton.Name = "treeButton"
-        Me.treeButton.Size = New System.Drawing.Size(66, 26)
+        Me.treeButton.Size = New System.Drawing.Size(64, 26)
         Me.treeButton.TabIndex = 46
         Me.treeButton.Text = "导视"
         Me.treeButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1782,7 +1781,7 @@ Partial Class Form1
         Me.optButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.optButton.Location = New System.Drawing.Point(3, 11)
         Me.optButton.Name = "optButton"
-        Me.optButton.Size = New System.Drawing.Size(303, 26)
+        Me.optButton.Size = New System.Drawing.Size(327, 26)
         Me.optButton.TabIndex = 47
         Me.optButton.Text = "使用提示"
         Me.optButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1895,7 +1894,7 @@ Partial Class Form1
         Me.rbDate.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbDate.Image = CType(resources.GetObject("rbDate.Image"), System.Drawing.Image)
         Me.rbDate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbDate.Location = New System.Drawing.Point(301, -1)
+        Me.rbDate.Location = New System.Drawing.Point(296, -1)
         Me.rbDate.Name = "rbDate"
         Me.rbDate.Size = New System.Drawing.Size(72, 26)
         Me.rbDate.TabIndex = 43
@@ -1919,7 +1918,7 @@ Partial Class Form1
         Me.rbFormat.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbFormat.Image = CType(resources.GetObject("rbFormat.Image"), System.Drawing.Image)
         Me.rbFormat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbFormat.Location = New System.Drawing.Point(229, -1)
+        Me.rbFormat.Location = New System.Drawing.Point(224, -1)
         Me.rbFormat.Name = "rbFormat"
         Me.rbFormat.Size = New System.Drawing.Size(72, 26)
         Me.rbFormat.TabIndex = 42
@@ -1943,7 +1942,7 @@ Partial Class Form1
         Me.rbName.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbName.Image = CType(resources.GetObject("rbName.Image"), System.Drawing.Image)
         Me.rbName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbName.Location = New System.Drawing.Point(143, -1)
+        Me.rbName.Location = New System.Drawing.Point(138, -1)
         Me.rbName.Name = "rbName"
         Me.rbName.Size = New System.Drawing.Size(86, 26)
         Me.rbName.TabIndex = 41
@@ -2193,7 +2192,7 @@ Partial Class Form1
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel4.CausesValidation = False
         Me.Panel4.Controls.Add(Me.searchText)
-        Me.Panel4.Location = New System.Drawing.Point(182, 9)
+        Me.Panel4.Location = New System.Drawing.Point(206, 9)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(417, 26)
         Me.Panel4.TabIndex = 37
@@ -2259,7 +2258,7 @@ Partial Class Form1
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(75, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.SelectedIndex = 3
         Me.MetroTabControl1.Size = New System.Drawing.Size(1032, 80)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 48
@@ -2395,6 +2394,7 @@ Partial Class Form1
         '
         'MetroTabPage4
         '
+        Me.MetroTabPage4.Controls.Add(Me.PictureBox12)
         Me.MetroTabPage4.Controls.Add(Me.Panel5)
         Me.MetroTabPage4.Controls.Add(Me.searchButton1)
         Me.MetroTabPage4.Controls.Add(Me.searchButton0)
@@ -2420,9 +2420,9 @@ Partial Class Form1
         Me.Panel5.Controls.Add(Me.rbDate)
         Me.Panel5.Controls.Add(Me.rbName)
         Me.Panel5.Controls.Add(Me.rbFormat)
-        Me.Panel5.Location = New System.Drawing.Point(605, 9)
+        Me.Panel5.Location = New System.Drawing.Point(629, 9)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(375, 26)
+        Me.Panel5.Size = New System.Drawing.Size(370, 26)
         Me.Panel5.TabIndex = 13
         '
         'MetroTabPage5
@@ -2502,8 +2502,8 @@ Partial Class Form1
         Me.Panel7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel7.BackColor = System.Drawing.Color.White
-        Me.Panel7.Controls.Add(Me.Button13)
         Me.Panel7.Controls.Add(Me.optButton)
+        Me.Panel7.Controls.Add(Me.Button13)
         Me.Panel7.Controls.Add(Me.treeButton)
         Me.Panel7.Controls.Add(Me.topButton)
         Me.Panel7.Controls.Add(Me.stsButton)
@@ -2647,6 +2647,7 @@ Partial Class Form1
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MetroTabPage4.ResumeLayout(False)
+        Me.MetroTabPage4.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.MetroTabPage5.ResumeLayout(False)
         Me.MetroTabPage5.PerformLayout()
