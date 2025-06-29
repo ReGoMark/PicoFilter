@@ -42,17 +42,17 @@ Partial Class Form2
         Me.Label11 = New System.Windows.Forms.Label()
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
         Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
-        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.RichTextBox3 = New System.Windows.Forms.RichTextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.MetroTabPage3 = New MetroFramework.Controls.MetroTabPage()
         Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
@@ -286,7 +286,7 @@ Partial Class Form2
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.SelectedIndex = 3
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 58
@@ -294,7 +294,7 @@ Partial Class Form2
         '
         'MetroTabPage1
         '
-        Me.MetroTabPage1.Controls.Add(Me.RichTextBox2)
+        Me.MetroTabPage1.Controls.Add(Me.TextBox1)
         Me.MetroTabPage1.Controls.Add(Me.Label14)
         Me.MetroTabPage1.Controls.Add(Me.Label15)
         Me.MetroTabPage1.HorizontalScrollbarBarColor = True
@@ -308,22 +308,6 @@ Partial Class Form2
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
         Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage1.VerticalScrollbarSize = 10
-        '
-        'RichTextBox2
-        '
-        Me.RichTextBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RichTextBox2.BackColor = System.Drawing.Color.GhostWhite
-        Me.RichTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.RichTextBox2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.RichTextBox2.Location = New System.Drawing.Point(3, 70)
-        Me.RichTextBox2.Name = "RichTextBox2"
-        Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(315, 202)
-        Me.RichTextBox2.TabIndex = 14
-        Me.RichTextBox2.Text = "@LittleWhiteDoge；@洛初；" & Global.Microsoft.VisualBasic.ChrW(10) & "这些朋友帮助我完成了测试工作，帮助我完善程序。" & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；Bilibili；" & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visual S" &
-    "tudio 2022；" & Global.Microsoft.VisualBasic.ChrW(10) & "这些平台给我提供了学习交流和展示的机会，给了我很大的帮助。" & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，因为文字所限，不能一一列举。在此，我不胜感激。"
         '
         'Label15
         '
@@ -340,8 +324,8 @@ Partial Class Form2
         '
         'MetroTabPage2
         '
+        Me.MetroTabPage2.Controls.Add(Me.TextBox2)
         Me.MetroTabPage2.Controls.Add(Me.Label16)
-        Me.MetroTabPage2.Controls.Add(Me.RichTextBox3)
         Me.MetroTabPage2.Controls.Add(Me.Label12)
         Me.MetroTabPage2.HorizontalScrollbarBarColor = True
         Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
@@ -370,21 +354,6 @@ Partial Class Form2
         Me.Label16.TabIndex = 59
         Me.Label16.Text = "单击此处查看字体许可协议"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'RichTextBox3
-        '
-        Me.RichTextBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RichTextBox3.BackColor = System.Drawing.Color.GhostWhite
-        Me.RichTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.RichTextBox3.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox3.Location = New System.Drawing.Point(3, 55)
-        Me.RichTextBox3.Name = "RichTextBox3"
-        Me.RichTextBox3.ReadOnly = True
-        Me.RichTextBox3.Size = New System.Drawing.Size(315, 212)
-        Me.RichTextBox3.TabIndex = 12
-        Me.RichTextBox3.Text = resources.GetString("RichTextBox3.Text")
         '
         'Label12
         '
@@ -471,6 +440,34 @@ Partial Class Form2
         Me.Panel1.Size = New System.Drawing.Size(416, 497)
         Me.Panel1.TabIndex = 59
         '
+        'TextBox1
+        '
+        Me.TextBox1.BackColor = System.Drawing.Color.GhostWhite
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(3, 73)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox1.Size = New System.Drawing.Size(315, 199)
+        Me.TextBox1.TabIndex = 15
+        Me.TextBox1.Text = "@LittleWhiteDoge；@洛初；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这些朋友帮助我完成了测试工作，帮助我完善程序。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；Bilibili；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visua" &
+    "l Studio 2022；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这些平台给我提供了学习交流和展示的机会，给了我很大的帮助。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，因为文字所限，不能一一列举。在此，我不胜" &
+    "感激。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'TextBox2
+        '
+        Me.TextBox2.BackColor = System.Drawing.Color.GhostWhite
+        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox2.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(3, 55)
+        Me.TextBox2.Multiline = True
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox2.Size = New System.Drawing.Size(315, 217)
+        Me.TextBox2.TabIndex = 60
+        Me.TextBox2.Text = resources.GetString("TextBox2.Text")
+        '
         'Form2
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -528,13 +525,13 @@ Partial Class Form2
     Friend WithEvents MetroTabPage2 As MetroFramework.Controls.MetroTabPage
     Friend WithEvents MetroTabPage3 As MetroFramework.Controls.MetroTabPage
     Friend WithEvents Label15 As Label
-    Friend WithEvents RichTextBox2 As RichTextBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents RichTextBox3 As RichTextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents MetroTabPage4 As MetroFramework.Controls.MetroTabPage
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
 End Class

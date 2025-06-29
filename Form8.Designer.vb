@@ -352,7 +352,7 @@ Partial Class Form8
         Me.Label1.Enabled = False
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label1.Location = New System.Drawing.Point(302, 8)
+        Me.Label1.Location = New System.Drawing.Point(302, 7)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(21, 20)
         Me.Label1.TabIndex = 93

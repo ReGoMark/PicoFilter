@@ -17,9 +17,12 @@ Public Class Form1
     Dim gifRT, gifLT As Double
     Dim bmpRT, bmpLT As Double
     Dim icoRT, icoLT As Double
-    Dim mark1 As String = "无效"
-    Dim mark2 As String = "存疑"
-    Dim mark3 As String = "超时"
+    Dim mark1 As String = ""
+    Dim mark2 As String = ""
+    Dim mark3 As String = ""
+    'Dim tag1 As String = "无效"
+    'Dim tag2 As String = "存疑"
+    'Dim tag3 As String = "超时"
     Public consoletime As String
     Dim lbldStr As String '存储标记文件的文本
     Dim formattedString As String '存储格式化后的字符串
@@ -1229,19 +1232,19 @@ Public Class Form1
             ListViewRT.Columns(5).Width = ListViewLT.Width / 9
         ElseIf Me.WindowState = FormWindowState.Normal Then
             ListViewLT.Columns(0).Width = 50
+            ListViewLT.Columns(1).Width = 30
             ListViewLT.Columns(2).Width = 150
             ListViewLT.Columns(3).Width = 100
             ListViewLT.Columns(4).Width = 63
-            ListViewLT.Columns(5).Width = 90
-            ListViewLT.Columns(1).Width = 30
+            ListViewLT.Columns(5).Width = 87
             ListViewLT.Columns(6).Width = 150
 
             ListViewRT.Columns(0).Width = 50
+            ListViewRT.Columns(1).Width = 30
             ListViewRT.Columns(2).Width = 150
             ListViewRT.Columns(3).Width = 100
             ListViewRT.Columns(4).Width = 63
-            ListViewRT.Columns(5).Width = 90
-            ListViewRT.Columns(1).Width = 30
+            ListViewRT.Columns(5).Width = 87
             ListViewRT.Columns(6).Width = 150
         End If
     End Sub
@@ -1599,12 +1602,14 @@ Public Class Form1
         ' 更新无效、存疑和超时文件数量
 
         If tagButton.Checked = True Then
-
-            Form3.Label45.Text = $"{mark1} {invldCount}, {mark2} {qstCount}, {mark3} {tmtCount}"
-            lbldStr = $" {mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
+            If TextBox1.Text = "" Then
+                Form3.Label45.Text = “未指定「星标」内容”
+            Else
+                Form3.Label45.Text = $"{mark1} {invldCount}, {mark2} {qstCount}, {mark3} {tmtCount}"
+                lbldStr = $" {mark1} {invldCount} | {mark2} {qstCount} | {mark3} {tmtCount}"
+            End If
         Else
-
-            Form3.Label45.Text = “请转到「星标」选项卡启用”
+            Form3.Label45.Text = “转到「星标」选项卡启用”
             lbldStr = "功能未启用"
         End If
 
@@ -1862,11 +1867,11 @@ Public Class Form1
         ListViewLT.Columns(6).TextAlign = HorizontalAlignment.Right
         If Me.WindowState = FormWindowState.Normal Then
             ListViewLT.Columns(0).Width = 50
+            ListViewLT.Columns(1).Width = 30
             ListViewLT.Columns(2).Width = 150
             ListViewLT.Columns(3).Width = 100
             ListViewLT.Columns(4).Width = 63
-            ListViewLT.Columns(5).Width = 90
-            ListViewLT.Columns(1).Width = 30
+            ListViewLT.Columns(5).Width = 87
             ListViewLT.Columns(6).Width = 150
         ElseIf Me.WindowState = FormWindowState.Maximized Then
             ListViewLT.Columns(0).Width = ListViewLT.Width / 15
@@ -1883,11 +1888,11 @@ Public Class Form1
         ListViewRT.Columns(6).TextAlign = HorizontalAlignment.Right
         If Me.WindowState = FormWindowState.Normal Then
             ListViewRT.Columns(0).Width = 50
+            ListViewRT.Columns(1).Width = 30
             ListViewRT.Columns(2).Width = 150
             ListViewRT.Columns(3).Width = 100
             ListViewRT.Columns(4).Width = 63
-            ListViewRT.Columns(5).Width = 90
-            ListViewRT.Columns(1).Width = 30
+            ListViewRT.Columns(5).Width = 87
             ListViewRT.Columns(6).Width = 150
         ElseIf Me.WindowState = FormWindowState.Maximized Then
             ListViewRT.Columns(0).Width = ListViewRT.Width / 15
@@ -2150,7 +2155,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button6_Click_1(sender As Object, e As EventArgs) Handles Button6.Click
-        TextBox1.Text = "{" & mark1 & "}" & "{" & mark2 & "}" & "{" & mark3 & "}"
+        TextBox1.Text = "{" & "无效" & "}" & "{" & "存疑" & "}" & "{" & "超时" & "}"
     End Sub
 
     ' Timer 触发后恢复文本和背景色
@@ -2215,6 +2220,78 @@ Public Class Form1
 
     Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
 
+    End Sub
+
+    Private Sub Button16_Click_1(sender As Object, e As EventArgs) Handles Button16.Click
+        TextBox1.Text = "{小红书}{}{}"
+    End Sub
+
+    Private Sub ToolStripMenuItem15_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem15.Click
+        If ListViewLT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(2).Text '获取选中的文件名
+            Dim folderPath As String = openText.Text.Trim() '文件夹路径
+            Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
+            If File.Exists(filePath) Then '检查文件是否存在
+                Process.Start(filePath) '使用默认程序打开文件
+            Else
+                MessageBox.Show("文件不存在: " & filePath， “错误”, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem18_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem18.Click
+        If ListViewRT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(2).Text '获取文件名 
+            Dim folderPath As String = openText.Text.Trim() '获取文件夹路径
+            Dim filePath As String = Path.Combine(folderPath, fileName) '完整文件路径
+
+            Try
+                ' 使用 Shell32 显示属性对话框
+                Dim shellApp As Object = CreateObject("Shell.Application")
+                Dim folder As Object = shellApp.NameSpace(Path.GetDirectoryName(filePath))
+                Dim folderItem As Object = folder.Items().Item(Path.GetFileName(filePath))
+                folderItem.InvokeVerb("Properties")
+            Catch ex As Exception
+                MessageBox.Show("无法打开文件属性。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem17_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem17.Click
+        If ListViewRT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(2).Text '获取选中的文件名
+            Dim folderPath As String = openText.Text.Trim() '文件夹路径
+            Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
+            Try
+                Process.Start(filePath) ' 使用默认程序打开文件
+            Catch ex As Exception
+                MessageBox.Show("无法打开。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End Try
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem16_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem16.Click
+        If ListViewLT.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(2).Text '获取文件名 
+            Dim folderPath As String = openText.Text.Trim() '获取文件夹路径
+            Dim filePath As String = Path.Combine(folderPath, fileName) '完整文件路径
+
+            Try
+                ' 使用 Shell32 显示属性对话框
+                Dim shellApp As Object = CreateObject("Shell.Application")
+                Dim folder As Object = shellApp.NameSpace(Path.GetDirectoryName(filePath))
+                Dim folderItem As Object = folder.Items().Item(Path.GetFileName(filePath))
+                folderItem.InvokeVerb("Properties")
+            Catch ex As Exception
+                MessageBox.Show("无法打开文件属性。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
     End Sub
 
     '同步宽高数值
