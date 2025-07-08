@@ -336,6 +336,7 @@ Public Class Form1
     ' Button1 点击事件：选择文件夹并加载图片
     Private Sub openButton_Click(sender As Object, e As EventArgs) Handles openButton.Click
         Using folderBrowserDialog As New FolderBrowserDialog
+            folderBrowserDialog.Description = "选择一个文件夹以加载数据。" ' 设置对话框标题
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 openText.Text = folderBrowserDialog.SelectedPath
                 加载图片(folderBrowserDialog.SelectedPath)
@@ -441,7 +442,7 @@ Public Class Form1
         ' 检查分辨率是否小于指定值
         If screenWidth < 1066 OrElse screenHeight < 630 Then
             MessageBox.Show("检测到当前监视器分辨率低于 1066x630，程序布局可能无法正常显示。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            optChange("警告：监视器分辨率过低，程序布局可能出现异常。", Color.MistyRose)
+            optChange("警告：当前监视器分辨率过低。", Color.MistyRose)
         End If
 
         If currentUserName = "ReGoMark" Then
@@ -555,7 +556,7 @@ Public Class Form1
 
             ' 提示操作结果
             If successCount > 0 Then
-                optChange($"警告：回收完成，请点击「重新整理」刷新数据。", Color.LemonChiffon)
+                optChange($"警告：回收完成，点击「重新整理」刷新。", Color.LemonChiffon)
             End If
 
             If failedFiles.Count > 0 Then
@@ -564,9 +565,12 @@ Public Class Form1
         End If
     End Sub
     '复制筛选结果到指定文件夹
+
+    ' 在 Button3_Click 事件中，将 FolderBrowserDialog 的标题修改为“新建文件夹以保存”
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles copyButton.Click
         If ListViewRT.Items.Count > 0 Then
             Using folderBrowserDialog As New FolderBrowserDialog
+                folderBrowserDialog.Description = "选择一个位置，新建文件夹以保存筛选副本。" ' 设置对话框标题
                 ' 设置初始目录为当前打开的文件夹路径
                 Dim currentFolder As String = openText.Text.Trim()
                 If Directory.Exists(currentFolder) Then
@@ -579,15 +583,13 @@ Public Class Form1
                         Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
                         Try
                             File.Copy(sourcePath, Path.Combine(targetFolder, fileName), True)
-                            'optChange("提示：文件复制已完成。", Color.White)                     
-                            'Form9.RichTextBox1.Text += consoletime & "Save Copy Result at: " & targetFolder & "\" & fileName & vbCrLf
                         Catch ex As Exception
                             MessageBox.Show("复制失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         End Try
                     Next
                     Dim opt = MessageBox.Show("文件复制成功。点击按钮打开文件夹", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
-                    If opt = DialogResult.Yes Then '判断是否打开文件夹
-                        Process.Start("explorer.exe", targetFolder) ' 打开“筛选结果”文件夹
+                    If opt = DialogResult.Yes Then
+                        Process.Start("explorer.exe", targetFolder)
                     End If
                 End If
             End Using
@@ -595,7 +597,6 @@ Public Class Form1
             MessageBox.Show("没有可复制的文件。", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End If
-
     End Sub
 
     ' 保存副本到源文件夹下，文件夹名为“副本结果+时间”
@@ -632,6 +633,7 @@ Public Class Form1
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles moveButton.Click
         If ListViewRT.Items.Count > 0 Then
             Using folderBrowserDialog As New FolderBrowserDialog
+                folderBrowserDialog.Description = "选择一个位置，新建文件夹以存放移动结果。" ' 设置对话框标题
                 ' 设置初始目录为当前打开的文件夹路径
                 Dim currentFolder As String = openText.Text.Trim()
                 If Directory.Exists(currentFolder) Then
@@ -644,7 +646,7 @@ Public Class Form1
                         Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
                         Try
                             File.Move(sourcePath, Path.Combine(targetFolder, fileName))
-                            optChange("警告：移动完成，请点击「重新整理」刷新数据。", Color.LemonChiffon)
+                            optChange("警告：移动完成，点击「重新整理」刷新。", Color.LemonChiffon)
                             'Form9.RichTextBox1.Text += consoletime & "Move Result at: " & targetFolder & "\" & fileName & vbCrLf
                         Catch ex As Exception
                             MessageBox.Show("移动失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -678,7 +680,7 @@ Public Class Form1
                 Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
                 Try
                     File.Move(sourcePath, Path.Combine(resultFolder, fileName))
-                    optChange("警告：隔离完成，请点击「重新整理」刷新数据。", Color.LemonChiffon)
+                    optChange("警告：隔离完成，点击「重新整理」刷新。", Color.LemonChiffon)
                 Catch ex As Exception
                     MessageBox.Show("隔离失败。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -993,7 +995,7 @@ Public Class Form1
         sumLblRT.Text = String.Join("  |  ", result)
 
         更新统计信息()
-        PlayNotificationSound()
+        'PlayNotificationSound()
     End Sub
     '导出为xlsx文件
     Private Sub xlsxButton_Click(sender As Object, e As EventArgs) Handles xlsxButton.Click
@@ -2354,4 +2356,5 @@ Public Class Form1
             End If
         End If
     End Sub
+
 End Class

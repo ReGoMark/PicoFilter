@@ -248,6 +248,7 @@ Public Class Form8
         If ListView1.Items.Count = 0 Then Exit Sub
 
         Using fbd As New FolderBrowserDialog()
+            fbd.Description = "选择一个位置，新建文件夹以保存转换副本。" ' 设置对话框标题
             If fbd.ShowDialog() = DialogResult.OK Then
                 LastSavePath = fbd.SelectedPath
                 ProcessImages(fbd.SelectedPath, True)
@@ -535,5 +536,9 @@ Public Class Form8
                 MessageBox.Show("文件不存在: " & filePath, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
+    End Sub
+
+    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
+
     End Sub
 End Class

@@ -284,7 +284,7 @@ Public Class Form5
 
         ' 选择目标文件夹
         Using fbd As New FolderBrowserDialog
-            fbd.Description = "请选择目标文件夹"
+            fbd.Description = "选择一个位置，新建文件夹以保存提取结果。" ' 设置对话框标题
             If fbd.ShowDialog() = DialogResult.OK Then
                 Dim destinationFolder As String = fbd.SelectedPath
 

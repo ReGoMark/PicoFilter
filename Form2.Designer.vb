@@ -247,9 +247,9 @@ Partial Class Form2
         Me.Label14.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label14.Location = New System.Drawing.Point(3, 275)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(160, 20)
+        Me.Label14.Size = New System.Drawing.Size(220, 20)
         Me.Label14.TabIndex = 13
-        Me.Label14.Text = "当前更新：2025/06/23"
+        Me.Label14.Text = "当前版本更新日期：2025/07/08"
         '
         'PictureBox2
         '
@@ -286,7 +286,7 @@ Partial Class Form2
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 1
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 58
@@ -323,7 +323,7 @@ Partial Class Form2
         Me.TextBox1.TabIndex = 15
         Me.TextBox1.Text = "@LittleWhiteDoge；@洛初；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这些朋友帮助我完成了测试工作，帮助我完善程序。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "GitHub；Bilibili；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Microsoft Visua" &
     "l Studio 2022；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "这些平台给我提供了学习交流和展示的机会，给了我很大的帮助。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，因为文字所限，不能一一列举。在此，我不胜" &
-    "感激。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+    "感激。"
         '
         'Label15
         '
@@ -444,9 +444,9 @@ Partial Class Form2
         Me.Label7.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label7.Location = New System.Drawing.Point(3, 275)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(236, 20)
+        Me.Label7.Size = New System.Drawing.Size(221, 20)
         Me.Label7.TabIndex = 56
-        Me.Label7.Text = "问题反馈：regmvks@outlook.com"
+        Me.Label7.Text = "联系我：regmvks@outlook.com"
         '
         'PictureBox1
         '

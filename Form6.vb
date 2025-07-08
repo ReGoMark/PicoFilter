@@ -198,6 +198,7 @@ Public Class Form6
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If ListViewPre.Items.Count > 0 Then
             Using folderDialog As New FolderBrowserDialog()
+                folderDialog.Description = "选择一个位置，新建文件夹以保存重命名副本。" ' 设置对话框标题
                 If folderDialog.ShowDialog() = DialogResult.OK Then
                     Dim targetPath As String = folderDialog.SelectedPath
                     Dim sourcePath As String = Publicpath
