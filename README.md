@@ -66,6 +66,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 |排序|可以对列表内项目排序，排序依据为字符串、序号、分辨率、大小、修改日期|
 |批量重命名|对筛选结果批量重命名，可以自定义重命名格式（`正规则表达式`）|可独立使用|
 |批量格式转换|对筛选结果批量格式转换，仅支持读取静态图像格式，转换为`JPG`、`PNG`和`BMP`格式，其中`JPG`格式可以设置转换质量，`JPG`和`BMP`可以设置背景色|可独立使用；**`2.0`新增**|
+|文件名拆分|对选中项目文件名拆分为文本块，可以自由选择复制，直接粘贴到查找和星标中|**`2.0.3`新增**
 
 ## 📷程序界面展示
 * 主界面
@@ -88,6 +89,9 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 
 * 格式转换
 <img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/convert.png" />
+
+* 文件名拆分
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/split.png" />
 
 * 分析
 <img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/analysis.png" />
