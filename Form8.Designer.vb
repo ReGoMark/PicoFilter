@@ -79,7 +79,7 @@ Partial Class Form8
         Me.btnLoad.TabIndex = 86
         Me.btnLoad.Text = "拉取/浏览"
         Me.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnLoad, "点击按钮从筛选页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl从加载页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift以浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹到加载数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.ToolTip1.SetToolTip(Me.btnLoad, "点击按钮从筛选页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl从加载页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift以浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹到列表加载数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.btnLoad.UseVisualStyleBackColor = False
         '
         'bksbutton
@@ -101,7 +101,7 @@ Partial Class Form8
         Me.bksbutton.TabIndex = 85
         Me.bksbutton.Text = "移除"
         Me.bksbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项。")
+        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项")
         Me.bksbutton.UseVisualStyleBackColor = False
         '
         'btnConvert
@@ -155,7 +155,7 @@ Partial Class Form8
         Me.ListView1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.ListView1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(238, Byte))
-        Me.ListView1.ForeColor = System.Drawing.Color.Black
+        Me.ListView1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.ListView1.FullRowSelect = True
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(0, 0)
@@ -269,8 +269,8 @@ Partial Class Form8
         '
         Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList2.Images.SetKeyName(0, "top.ico")
-        Me.ImageList2.Images.SetKeyName(1, "topped.ico")
+        Me.ImageList2.Images.SetKeyName(0, "pin.ico")
+        Me.ImageList2.Images.SetKeyName(1, "pinned.ico")
         '
         'absbButton
         '
@@ -278,6 +278,7 @@ Partial Class Form8
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.GhostWhite
         Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.absbButton.FlatAppearance.BorderSize = 0
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -386,7 +387,7 @@ Partial Class Form8
         Me.cobQuality.Size = New System.Drawing.Size(61, 23)
         Me.cobQuality.TabIndex = 90
         Me.cobQuality.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ToolTip1.SetToolTip(Me.cobQuality, "设置转换质量，仅限目标为JPEG格式。")
+        Me.ToolTip1.SetToolTip(Me.cobQuality, "设置转换质量，仅限目标为JPEG格式的图像。")
         Me.cobQuality.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'rbPNG

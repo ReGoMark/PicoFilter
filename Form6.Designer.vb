@@ -71,7 +71,7 @@ Partial Class Form6
         Me.ListViewPre.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ListViewPre.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
         Me.ListViewPre.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(238, Byte))
-        Me.ListViewPre.ForeColor = System.Drawing.Color.Black
+        Me.ListViewPre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.ListViewPre.FullRowSelect = True
         Me.ListViewPre.HideSelection = False
         Me.ListViewPre.Location = New System.Drawing.Point(36, 102)
@@ -203,7 +203,7 @@ Partial Class Form6
         Me.TextBoxStart.Size = New System.Drawing.Size(65, 23)
         Me.TextBoxStart.TabIndex = 89
         Me.TextBoxStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ToolTip1.SetToolTip(Me.TextBoxStart, "设置序号起点，最大支持5位整数。")
+        Me.ToolTip1.SetToolTip(Me.TextBoxStart, "设置序号起点")
         Me.TextBoxStart.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Button6
@@ -224,7 +224,7 @@ Partial Class Form6
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(26, 26)
         Me.Button6.TabIndex = 87
-        Me.ToolTip1.SetToolTip(Me.Button6, "文件名和日期命名")
+        Me.ToolTip1.SetToolTip(Me.Button6, "快速文件名和日期命名")
         Me.Button6.UseVisualStyleBackColor = False
         '
         'Button5
@@ -245,7 +245,7 @@ Partial Class Form6
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(26, 26)
         Me.Button5.TabIndex = 86
-        Me.ToolTip1.SetToolTip(Me.Button5, "序号命名")
+        Me.ToolTip1.SetToolTip(Me.Button5, "快速序号命名")
         Me.Button5.UseVisualStyleBackColor = False
         '
         'ComboBox1
@@ -341,8 +341,8 @@ Partial Class Form6
         '
         Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList2.Images.SetKeyName(0, "top.ico")
-        Me.ImageList2.Images.SetKeyName(1, "topped.ico")
+        Me.ImageList2.Images.SetKeyName(0, "pin.ico")
+        Me.ImageList2.Images.SetKeyName(1, "pinned.ico")
         '
         'absbButton
         '
@@ -350,6 +350,7 @@ Partial Class Form6
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.GhostWhite
         Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.absbButton.FlatAppearance.BorderSize = 0
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -381,7 +382,7 @@ Partial Class Form6
         Me.bksbutton.Name = "bksbutton"
         Me.bksbutton.Size = New System.Drawing.Size(26, 26)
         Me.bksbutton.TabIndex = 72
-        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项。")
+        Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项")
         Me.bksbutton.UseVisualStyleBackColor = False
         '
         'loadButton
@@ -402,7 +403,7 @@ Partial Class Form6
         Me.loadButton.TabIndex = 73
         Me.loadButton.Text = "拉取/浏览"
         Me.loadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.loadButton, "点击按钮从筛选页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl从加载页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift以浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹到加载数据；")
+        Me.ToolTip1.SetToolTip(Me.loadButton, "点击按钮从筛选页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl从加载页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift以浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹到列表加载数据；")
         Me.loadButton.UseVisualStyleBackColor = False
         '
         'Button4

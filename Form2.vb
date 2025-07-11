@@ -12,6 +12,7 @@
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.Close()
     End Sub
+
     Private Sub PlayNotificationSound()
         Try
             ' 从资源播放音效
@@ -65,4 +66,5 @@
         MetroTabControl1.SelectedTab = MetroTabControl1.TabPages(0)
         Me.ActiveControl = Nothing ' 取消默认控件焦点
     End Sub
+
 End Class

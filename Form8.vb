@@ -518,7 +518,14 @@ Public Class Form8
     End Class
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Me.Close()
+        If ListView1.Items.Count > 0 Then
+            Dim result As DialogResult = MessageBox.Show("确认要关闭吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                Me.Close()
+            End If
+        ElseIf ListView1.Items.Count = 0 Then
+            Me.Close()
+        End If
     End Sub
 
     ' 双击预览功能

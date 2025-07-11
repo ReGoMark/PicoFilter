@@ -96,7 +96,7 @@ Partial Class Form5
         Me.btnGoUp.TabIndex = 52
         Me.btnGoUp.Text = "上一级"
         Me.btnGoUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级")
+        Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级目录。")
         Me.btnGoUp.UseVisualStyleBackColor = False
         '
         'ProgressBar1
@@ -125,14 +125,14 @@ Partial Class Form5
         Me.CheckBox1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.CheckBox1.Image = CType(resources.GetObject("CheckBox1.Image"), System.Drawing.Image)
         Me.CheckBox1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox1.Location = New System.Drawing.Point(125, 497)
+        Me.CheckBox1.Location = New System.Drawing.Point(117, 497)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(100, 26)
         Me.CheckBox1.TabIndex = 59
         Me.CheckBox1.Text = "加载图像"
         Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.CheckBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.CheckBox1, "也显示图像文件。")
+        Me.ToolTip1.SetToolTip(Me.CheckBox1, "在目录结构中也显示图像文件。")
         Me.CheckBox1.UseVisualStyleBackColor = False
         '
         'TreeView1
@@ -143,10 +143,11 @@ Partial Class Form5
         Me.TreeView1.BackColor = System.Drawing.Color.White
         Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TreeView1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.TreeView1.ForeColor = System.Drawing.Color.Black
+        Me.TreeView1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.TreeView1.FullRowSelect = True
         Me.TreeView1.ImageIndex = 1
         Me.TreeView1.ImageList = Me.ImageList1
+        Me.TreeView1.LineColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.TreeView1.Location = New System.Drawing.Point(0, 32)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 1
@@ -157,9 +158,9 @@ Partial Class Form5
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "unfolder_b.ico")
-        Me.ImageList1.Images.SetKeyName(1, "folder_1.ico")
-        Me.ImageList1.Images.SetKeyName(2, "images_2.ico")
+        Me.ImageList1.Images.SetKeyName(0, "unfolder_black.ico")
+        Me.ImageList1.Images.SetKeyName(1, "folder_black.ico")
+        Me.ImageList1.Images.SetKeyName(2, "images_black.ico")
         '
         'Button2
         '
@@ -194,11 +195,12 @@ Partial Class Form5
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.Location = New System.Drawing.Point(231, 497)
+        Me.Button5.Location = New System.Drawing.Point(223, 497)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(110, 26)
+        Me.Button5.Size = New System.Drawing.Size(118, 26)
         Me.Button5.TabIndex = 54
         Me.Button5.Text = "展开全部节点"
+        Me.ToolTip1.SetToolTip(Me.Button5, "展开当前位置所有节点。")
         Me.Button5.UseVisualStyleBackColor = False
         '
         'topButton
@@ -229,15 +231,18 @@ Partial Class Form5
         '
         Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList2.Images.SetKeyName(0, "top.ico")
-        Me.ImageList2.Images.SetKeyName(1, "topped.ico")
+        Me.ImageList2.Images.SetKeyName(0, "pin.ico")
+        Me.ImageList2.Images.SetKeyName(1, "pinned.ico")
         '
         'absbButton
         '
         Me.absbButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.GhostWhite
-        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.absbButton.Checked = True
+        Me.absbButton.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.Gold
+        Me.absbButton.FlatAppearance.BorderSize = 0
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -303,7 +308,7 @@ Partial Class Form5
         Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList3.Images.SetKeyName(0, "unfolder.ico")
         Me.ImageList3.Images.SetKeyName(1, "folder.ico")
-        Me.ImageList3.Images.SetKeyName(2, "images_0.ico")
+        Me.ImageList3.Images.SetKeyName(2, "images.ico")
         '
         'Button3
         '
@@ -357,7 +362,7 @@ Partial Class Form5
         Me.Controls.Add(Me.Panel3)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form5"
-        Me.Text = "导视"
+        Me.Text = "概览"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)

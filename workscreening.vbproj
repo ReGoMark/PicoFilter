@@ -106,6 +106,9 @@
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="MetroFrameworkCustomed">
+      <HintPath>.\MetroFrameworkCustomed.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -214,6 +217,12 @@
     <Compile Include="Form6.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form7.Designer.vb">
+      <DependentUpon>Form7.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form7.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form8.Designer.vb">
       <DependentUpon>Form8.vb</DependentUpon>
     </Compile>
@@ -260,6 +269,9 @@
     <EmbeddedResource Include="Form6.resx">
       <DependentUpon>Form6.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form7.resx">
+      <DependentUpon>Form7.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form8.resx">
       <DependentUpon>Form8.vb</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +298,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="My Project\WenQuanYi Micro Hei Mono Regular.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -302,23 +315,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ALERT.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\INFO.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\RESOLVED.wav" />
+    <Folder Include="Resources\Assets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="picofilter.ico" />
-    <None Include="Resources\Assets\qr_normal.png" />
     <None Include="Resources\Sounds\RESOLVED.wav" />
     <None Include="Resources\Sounds\INFO.wav" />
     <None Include="Resources\Sounds\ALERT.wav" />
-    <None Include="Resources\qr_normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
