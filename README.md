@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Assets/head.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Assets/head_color.png" />
 
 <div align="center">
     
