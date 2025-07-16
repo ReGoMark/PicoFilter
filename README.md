@@ -13,7 +13,7 @@
     
 </div>
 
-## ✅PicoFilter - 图片筛选、命名、排序和格式转换工具
+## ✅PicoFilter - 图片筛选、命名、排序和格式转换程序
 
 <div align="right">
     
