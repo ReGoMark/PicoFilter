@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F575B19B-9E99-4302-9948-695B65D76126}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>PicoFilter20.My.MyApplication</StartupObject>
-    <RootNamespace>PicoFilter20</RootNamespace>
-    <AssemblyName>PicoFilter 2.0</AssemblyName>
+    <StartupObject>PicoFilter203.My.MyApplication</StartupObject>
+    <RootNamespace>PicoFilter203</RootNamespace>
+    <AssemblyName>PicoFilter 2.0.3</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -38,7 +38,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>PicoFilter 2.0.xml</DocumentationFile>
+    <DocumentationFile>PicoFilter 2.0.3.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
     <PreferNativeArm64>false</PreferNativeArm64>
@@ -50,7 +50,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>PicoFilter 2.0.xml</DocumentationFile>
+    <DocumentationFile>PicoFilter 2.0.3.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -67,7 +67,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>picofilter.ico</ApplicationIcon>
+    <ApplicationIcon>picofilter_solid.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E4FC3EC70BD2386052EA4F38A2C9D7C0D710B8E1</ManifestCertificateThumbprint>
@@ -201,10 +201,6 @@
     <Compile Include="Form3.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form4.Designer.vb">
-      <DependentUpon>Form4.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form4.vb" />
     <Compile Include="Form5.Designer.vb">
       <DependentUpon>Form5.vb</DependentUpon>
     </Compile>
@@ -229,10 +225,6 @@
     <Compile Include="Form8.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form9.Designer.vb">
-      <DependentUpon>Form9.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form9.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -260,9 +252,6 @@
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form4.resx">
-      <DependentUpon>Form4.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form5.resx">
       <DependentUpon>Form5.vb</DependentUpon>
     </EmbeddedResource>
@@ -274,9 +263,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form8.resx">
       <DependentUpon>Form8.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form9.resx">
-      <DependentUpon>Form9.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -318,7 +304,9 @@
     <Folder Include="Resources\Assets\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="picofilter.ico" />
+    <Content Include="picofilter_color.ico" />
+    <Content Include="picofilter_colorful.ico" />
+    <Content Include="picofilter_solid.ico" />
     <None Include="Resources\Sounds\RESOLVED.wav" />
     <None Include="Resources\Sounds\INFO.wav" />
     <None Include="Resources\Sounds\ALERT.wav" />

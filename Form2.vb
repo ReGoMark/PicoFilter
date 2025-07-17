@@ -36,12 +36,13 @@
     End Sub
 
     Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-        Try
-            Clipboard.SetText("regmvks@outlook.com")
-            MessageBox.Show("邮箱regmvks@outlook.com已复制到剪切板！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Catch ex As Exception
-            MessageBox.Show("复制邮箱失败，请重试。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        'Try
+        '    Clipboard.SetText("regmvks@outlook.com")
+        '    MessageBox.Show("邮箱regmvks@outlook.com已复制到剪切板！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'Catch ex As Exception
+        '    MessageBox.Show("复制邮箱失败，请重试。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
+        Process.Start("mailto:regmvks@outlook.com")
     End Sub
 
     Private Sub Label19_Click(sender As Object, e As EventArgs)
@@ -65,6 +66,7 @@
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MetroTabControl1.SelectedTab = MetroTabControl1.TabPages(0)
         Me.ActiveControl = Nothing ' 取消默认控件焦点
+        MetroTabControl1.TabPages.Remove(MetroTabPage1)
     End Sub
 
 End Class

@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
 Imports OfficeOpenXml
+
 '考虑到.net支持的图片格式只有这五种，像其他图像格式如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2, 2024/9/26, ver 2.0, 2025/6/10
 
@@ -75,6 +76,8 @@ Public Class Form1
 
         Dim listViewItems As New List(Of ListViewItem) ' **批量存储 ListViewItem**
         loadedTimer.Start()
+        Dim dirInfo As New DirectoryInfo(folderPath)
+        Dim createTime As DateTime = dirInfo.CreationTime
 
         For Each file In files
             Try
@@ -171,10 +174,10 @@ Public Class Form1
         End If
 
         If tagCount > 0 Then
-            optChange("星标：找到 " & tagCount & “ 项。”, Color.Gainsboro, 2)
+            optChange("星标：找到 " & tagCount & “ 项”, Color.White, 2)
         End If
         sumLblLT.Text = String.Join("  |  ", result)
-        Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr
+        Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr & "  |  " & createTime.ToString("yy/MM/dd, HH:mm:ss")
 
         ProgressBar1.Visible = False
         更新统计信息()
@@ -198,7 +201,6 @@ Public Class Form1
             End Using
         Catch
             Return "0×0"
-
         End Try
     End Function
 
@@ -312,7 +314,7 @@ Public Class Form1
                     Case ".BMP"
                         bmpCount += 1
                 End Select
-                optChange("筛选已完成。", Color.Gainsboro, 0)
+                optChange("筛选已完成", Color.White, 0)
             End If
         Next
 
@@ -451,13 +453,13 @@ Public Class Form1
 
         ' 检测当前日期是否为4月1日
         If DateTime.Now.Month = 4 AndAlso DateTime.Now.Day = 1 Then
-            optChange("即使我来时没有爱 / 离别盛载满是情。", Color.MistyRose, 1)
+            optChange("即使我来时没有爱 / 离别盛载满是情", Color.MistyRose, 1)
         Else
             If 确认字体安装(fontName1) Then
             Else
                 If 确认字体安装(fontName2) Then
                 Else
-                    optChange("安装「方正黑体GBK」获得最佳视觉体验。", Color.LemonChiffon, 4)
+                    optChange("安装「方正黑体GBK」获得最佳视觉体验", Color.LemonChiffon, 4)
                 End If
             End If
         End If
@@ -474,7 +476,7 @@ Public Class Form1
         'End If
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "格式说明"
-        ToolTip2.SetToolTip(TextBox1, "自定义三个关键词，用{}分隔；” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的项；" & vbCrLf & “{x}{y}{} - 标记带有x, y的项；" & vbCrLf & "不填写的以{}格式留空。")
+        ToolTip2.SetToolTip(starText, "自定义三个标记词，用{}分隔；” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的项；" & vbCrLf & “{x}{y}{} - 标记带有x, y的项；" & vbCrLf & "不填写的以{}格式留空。")
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -575,7 +577,7 @@ Public Class Form1
 
             ' 提示操作结果
             If successCount > 0 Then
-                optChange($"警告：回收完成，点击「重新整理」刷新。", Color.LemonChiffon, 4)
+                optChange($"警告：回收完成，点击「重新整理」刷新", Color.LemonChiffon, 4)
             End If
 
             If failedFiles.Count > 0 Then
@@ -667,7 +669,7 @@ Public Class Form1
                         Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
                         Try
                             File.Move(sourcePath, Path.Combine(targetFolder, fileName))
-                            optChange("警告：移动完成，点击「重新整理」刷新。", Color.LemonChiffon, 4)
+                            optChange("警告：移动完成，点击「重新整理」刷新", Color.LemonChiffon, 4)
                             'Form9.RichTextBox1.Text += consoletime & "Move Result at: " & targetFolder & "\" & fileName & vbCrLf
                         Catch ex As Exception
                             MessageBox.Show("移动失败，请重新整理后再试。" & vbCrLf & ex.Message, "未完成", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -701,7 +703,7 @@ Public Class Form1
                 Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
                 Try
                     File.Move(sourcePath, Path.Combine(resultFolder, fileName))
-                    optChange("警告：隔离完成，点击「重新整理」刷新。", Color.LemonChiffon, 4)
+                    optChange("警告：隔离完成，点击「重新整理」刷新", Color.LemonChiffon, 4)
                 Catch ex As Exception
                     MessageBox.Show("隔离失败，请重新整理后再试。" & vbCrLf & ex.Message, "未完成", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -718,7 +720,7 @@ Public Class Form1
     End Sub
 
     '快速保存到桌面
-    Private Sub Buttonsave_Click(sender As Object, e As EventArgs) Handles Button11.Click
+    Private Sub Buttonsave_Click(sender As Object, e As EventArgs) Handles deskButton.Click
         Dim now As DateTime = DateTime.Now
         Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
         Dim sourceFolder As String = openText.Text.Trim() ' 源文件夹路径
@@ -786,7 +788,7 @@ Public Class Form1
                     ListViewRT.Items.Remove(selectedItem)
                 Next
 
-                optChange("选定项已移除。", Color.LemonChiffon, 0)
+                optChange("选定项已移除", Color.LemonChiffon, 0)
 
                 If ListViewRT.Items.Count > 0 Then
                     If index < ListViewRT.Items.Count Then
@@ -812,7 +814,7 @@ Public Class Form1
         If topButton.Checked = True Then
             TopMost = True
             topButton.ImageIndex = 1
-            optChange("置顶：窗口已置顶。", Color.LemonChiffon, 0)
+            optChange("窗口已置顶", Color.LemonChiffon, 0)
         Else
             TopMost = False
             topButton.ImageIndex = 0
@@ -1296,12 +1298,10 @@ Public Class Form1
 
             Form2.Close()
             Form3.Close()
-            Form4.Close()
             Form5.Close()
             Form6.Close()
             Form7.Close()
             Form8.Close()
-            Form9.Close()
         End If
     End Sub
 
@@ -1367,7 +1367,7 @@ Public Class Form1
         Next
 
         PlayNotificationSound3()
-        optChange("加载页：结果 " & ListViewLT.SelectedItems.Count & " 项。", Color.Gainsboro, 2)
+        optChange("加载页：结果 " & ListViewLT.SelectedItems.Count & " 项", Color.White, 2)
     End Sub
 
     Private Sub SearchListView1(keyword As String, searchType As SearchType)
@@ -1414,7 +1414,7 @@ Public Class Form1
         Next
 
         PlayNotificationSound3()
-        optChange("筛选页：结果 " & ListViewRT.SelectedItems.Count & " 项。", Color.Gainsboro, 2)
+        optChange("筛选页：结果 " & ListViewRT.SelectedItems.Count & " 项", Color.White, 2)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs)
@@ -1484,10 +1484,6 @@ Public Class Form1
             My.Computer.Audio.Play(My.Resources.RESOLVED, AudioPlayMode.Background)
         Catch ex As Exception
         End Try
-    End Sub
-
-    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles setting.Click
-        Form4.Show()
     End Sub
 
     Private Sub rfhbutton_Click(sender As Object, e As EventArgs) Handles rfhButton.Click
@@ -1646,8 +1642,10 @@ Public Class Form1
             'If TextBox1.Text = "" Then
             '    Form3.Label45.Text = “未指定「星标」内容”
             'Else
-            Form3.Label45.Text = $"「{mark1}」{invldCount},「{mark2}」{qstCount},「{mark3}」{tmtCount}” ',「手动」{manualStarCount}"
-            lbldStr = $"「{mark1}」{invldCount} |「{mark2}」{qstCount} |「{mark3}」{tmtCount}” ' |「手动」{manualStarCount}"
+            'Form3.Label45.Text = $"{mark1} {invldCount},{mark2} {qstCount},{mark3} {tmtCount}” ',「手动」{manualStarCount}"
+            Form3.Label45.Text = “{” & mark1 & “}” & invldCount & “, ” & “{” & mark2 & “}” & qstCount & “, ” & “{” & mark3 & “}” & tmtCount
+
+            lbldStr = “{” & mark1 & “}” & invldCount & “ | ” & “{” & mark2 & “}” & qstCount & “ | ” & “{” & mark3 & “}” & tmtCount
             'End If
         Else
             Form3.Label45.Text = “转到「星标」选项卡启用”
@@ -1815,7 +1813,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("转到「筛选」选项卡以继续。", Color.Gainsboro, 0)
+            optChange("转到「筛选」选项卡以继续", Color.White, 0)
 
         End If
     End Sub
@@ -2047,7 +2045,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("转到「筛选」选项卡以继续。", Color.Gainsboro, 0)
+            optChange("转到「筛选」选项卡以继续", Color.White, 0)
         End If
     End Sub
 
@@ -2084,7 +2082,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles nmButton.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles renameButton.Click
         If Form6.Visible = True Then
             Form6.Close()
         Else
@@ -2142,11 +2140,10 @@ Public Class Form1
         optTimer.Start() ' 启动定时器
     End Sub
 
-
-    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles videoButton.Click
         ' 使用Process.Start打开默认浏览器访问GitHub Releases页面
         Try
-            Process.Start("https://www.bilibili.com/video/BV1aR92YcEka/?spm_id_from=333.999.0.0&vd_source=c4099c355c2d06f10ac210fe7bae65a6")
+            Process.Start("https://flowus.cn/regmvks/share/e717713c-be23-4124-b364-878960e75a4e?code=98NZC1")
         Catch ex As Exception
             MessageBox.Show("无法打开链接。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -2196,40 +2193,38 @@ Public Class Form1
 
     Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
         tagButton.Checked = True
-        TextBox1.Text = "{屏幕截图}{}{}"
+        starText.Text = "{屏幕截图}{}{}"
     End Sub
 
-    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+    Private Sub Button9_Click(sender As Object, e As EventArgs)
         tagButton.Checked = True
-        TextBox1.Text = "{screenshot}{}{}"
+        starText.Text = "{screenshot}{}{}"
     End Sub
 
     Private Sub Button8_Click_1(sender As Object, e As EventArgs) Handles Button8.Click
         tagButton.Checked = True
-        TextBox1.Text = "{微信图片}{}{}"
+        starText.Text = "{微信图片}{}{}"
     End Sub
 
     Private Sub Button10_Click_1(sender As Object, e As EventArgs) Handles Button10.Click
         tagButton.Checked = True
-        TextBox1.Text = "{副本}{}{}"
+        starText.Text = "{副本}{}{}"
     End Sub
 
-    Private Sub Button6_Click_1(sender As Object, e As EventArgs) Handles Button6.Click
-        'tagButton.Checked = False
-        'TextBox1.Text = "{" & "未填写" & "}" & "{" & "未填写" & "}" & "{" & "未填写" & "}"
-        Dim input As String = TextBox1.Text
-        Dim text As String = TextBox1.Text
+    Private Sub Button6_Click_1(sender As Object, e As EventArgs) Handles tabButton.Click
+        Dim input As String = starText.Text
+        Dim text As String = starText.Text
         ' 使用正则查找 {xxx} 的结构
         Dim matches = System.Text.RegularExpressions.Regex.Matches(text, "\{.*?\}")
         Dim count = matches.Count
         If count = 1 Then
             ' 补全两个
             text &= "{未填写}{未填写}"
-            TextBox1.Text = text
+            starText.Text = text
         ElseIf count = 2 Then
             ' 补全一个
             text &= "{未填写}"
-            TextBox1.Text = text
+            starText.Text = text
         End If
         ' 如果是0或3，不做任何处理
     End Sub
@@ -2262,16 +2257,12 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles convertButton.Click
         If Form8.Visible = True Then
             Form8.Close()
         Else
             Form8.Show()
         End If
-    End Sub
-
-    Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
-        Form9.Show()
     End Sub
 
     Private Sub Button16_Click(sender As Object, e As EventArgs)
@@ -2283,7 +2274,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
+    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles updateButton.Click
         ' 使用Process.Start打开默认浏览器访问GitHub Releases页面
         Try
             Process.Start("https://github.com/ReGoMark/PicoFilter/releases")
@@ -2292,8 +2283,8 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        TextBox1.Text = "{(1)}{}{}"
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+        starText.Text = "{(1)}{}{}"
     End Sub
 
     Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
@@ -2301,7 +2292,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button16_Click_1(sender As Object, e As EventArgs) Handles Button16.Click
-        TextBox1.Text = "{小红书}{}{}"
+        starText.Text = "{小红书}{}{}"
     End Sub
 
     Private Sub ToolStripMenuItem15_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem15.Click
@@ -2498,8 +2489,8 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        Dim input As String = TextBox1.Text
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles starText.TextChanged
+        Dim input As String = starText.Text
         Dim pattern As String = "^\{([^{}]*)\}\{([^{}]*)\}\{([^{}]*)\}$" ' 允许 {} 内留空
         Dim match As Match = Regex.Match(input, pattern)
 
@@ -2514,7 +2505,6 @@ Public Class Form1
         'Else
         '    tagButton.Checked = True
         'End If
-
     End Sub
 
     ' 添加 MouseEnter 事件处理
@@ -2603,4 +2593,5 @@ Public Class ModernColorTable
             Return Color.FromArgb(180, 180, 220)
         End Get
     End Property
+
 End Class

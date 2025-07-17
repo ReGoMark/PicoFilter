@@ -26,7 +26,6 @@ Partial Class Form8
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form8))
         Me.btnLoad = New System.Windows.Forms.Button()
         Me.bksbutton = New System.Windows.Forms.Button()
-        Me.btnConvert = New System.Windows.Forms.Button()
         Me.btnCopy = New System.Windows.Forms.Button()
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -103,26 +102,6 @@ Partial Class Form8
         Me.bksbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项")
         Me.bksbutton.UseVisualStyleBackColor = False
-        '
-        'btnConvert
-        '
-        Me.btnConvert.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnConvert.BackColor = System.Drawing.Color.White
-        Me.btnConvert.CausesValidation = False
-        Me.btnConvert.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnConvert.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.btnConvert.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.btnConvert.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.btnConvert.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnConvert.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.btnConvert.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnConvert.Location = New System.Drawing.Point(267, 328)
-        Me.btnConvert.Name = "btnConvert"
-        Me.btnConvert.Size = New System.Drawing.Size(62, 26)
-        Me.btnConvert.TabIndex = 79
-        Me.btnConvert.Text = "覆盖"
-        Me.btnConvert.UseVisualStyleBackColor = False
-        Me.btnConvert.Visible = False
         '
         'btnCopy
         '
@@ -300,7 +279,6 @@ Partial Class Form8
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.btnConvert)
         Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Controls.Add(Me.ListView1)
         Me.Panel1.Location = New System.Drawing.Point(12, 76)
@@ -574,7 +552,6 @@ Partial Class Form8
 
     Friend WithEvents btnLoad As Button
     Friend WithEvents bksbutton As Button
-    Friend WithEvents btnConvert As Button
     Friend WithEvents btnCopy As Button
     Friend WithEvents ListView1 As ListView
     Friend WithEvents btnApplySelected As Button

@@ -94,15 +94,15 @@ Public Class Form7
                 .Margin = New Padding(4),
                 .BackColor = Color.White,
                 .FlatStyle = FlatStyle.Flat,
-                .Cursor = Cursors.Hand,
-                .Font = New Font("微软雅黑", 15, GraphicsUnit.Pixel),
-                .ForeColor = Color.DarkSlateBlue
+                .Cursor = Cursors.Default,
+                .Font = New Font("Microsoft YaHei", 15, GraphicsUnit.Pixel),
+                .ForeColor = Color.FromArgb(43, 43, 43)
             }
             cb.FlatAppearance.BorderSize = 1
-            cb.FlatAppearance.BorderColor = Color.DarkSlateBlue
+            cb.FlatAppearance.BorderColor = Color.White 'FromArgb(43, 43, 43)
             cb.FlatAppearance.MouseDownBackColor = Color.LemonChiffon
-            cb.FlatAppearance.MouseOverBackColor = Color.Gainsboro
-            cb.FlatAppearance.CheckedBackColor = Color.Lavender
+            cb.FlatAppearance.MouseOverBackColor = Color.Silver
+            cb.FlatAppearance.CheckedBackColor = Color.Gainsboro
 
             FlowLayoutPanel1.Controls.Add(cb)
         Next
@@ -186,24 +186,27 @@ Public Class Form7
     ''' </summary>
 
     Private Sub ButtonCopySelected_Click(sender As Object, e As EventArgs) Handles ButtonCopySelected.Click
-        Dim selectedWords As New List(Of String)
-
-        For Each ctrl As Control In FlowLayoutPanel1.Controls
-            If TypeOf ctrl Is CheckBox Then
-                Dim cb As CheckBox = DirectCast(ctrl, CheckBox)
-                If cb.Checked Then
-                    selectedWords.Add(cb.Text)
+        If MetroTabControl1.SelectedIndex = 0 Then
+            Dim selectedWords As New List(Of String)
+            For Each ctrl As Control In FlowLayoutPanel1.Controls
+                If TypeOf ctrl Is CheckBox Then
+                    Dim cb As CheckBox = DirectCast(ctrl, CheckBox)
+                    If cb.Checked Then
+                        selectedWords.Add(cb.Text)
+                    End If
                 End If
+            Next
+            If selectedWords.Count = 0 Then
+                MessageBox.Show("请先选择要复制的词", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
             End If
-        Next
-        If selectedWords.Count = 0 Then
-            MessageBox.Show("请先选择要复制的词", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
 
-        Dim combinedText = String.Join("", selectedWords)
-        Clipboard.SetText(combinedText)
-        MessageBox.Show("取词已复制:" & vbCrLf & combinedText, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim combinedText = String.Join("", selectedWords)
+            Clipboard.SetText(combinedText)
+            MessageBox.Show("取词已复制:" & vbCrLf & combinedText, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("该功能仅支持「自动」选项卡，请右键复制所选文本。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -262,11 +265,42 @@ Public Class Form7
             Return
         End If
         Dim combinedText = String.Join("", selectedWords)
-        Form1.TextBox1.Text = "{" & combinedText & "}{}{}"
+        Form1.starText.Text = "{" & combinedText & "}{}{}"
         Form1.optChange("转到「星标」选项卡以继续。", Color.Lavender, 0)
     End Sub
 
     Private Sub FlowLayoutPanel1_Click(sender As Object, e As EventArgs) Handles FlowLayoutPanel1.Click
 
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        If MetroTabControl1.SelectedIndex = 0 Then
+            Dim totalCount As Integer = 0
+            Dim checkedCount As Integer = 0
+
+            ' 统计当前选中数量
+            For Each ctrl As Control In FlowLayoutPanel1.Controls
+                If TypeOf ctrl Is CheckBox Then
+                    Dim cb = DirectCast(ctrl, CheckBox)
+                    totalCount += 1
+                    If cb.Checked Then checkedCount += 1
+                End If
+            Next
+
+            ' 决定是“全选”还是“取消全选”
+            Dim selectAll As Boolean = checkedCount < totalCount
+
+            For Each ctrl As Control In FlowLayoutPanel1.Controls
+                If TypeOf ctrl Is CheckBox Then
+                    Dim cb = DirectCast(ctrl, CheckBox)
+                    cb.Checked = selectAll
+                End If
+            Next
+
+            ' 可选：更新按钮文字
+            Button4.Text = If(selectAll, "取消选中", "全选选中")
+        Else
+            MessageBox.Show("该功能仅支持「自动」选项卡。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
 End Class
