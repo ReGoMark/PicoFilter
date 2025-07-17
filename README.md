@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Assets/head.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Assets/head_color.png" />
 
 <div align="center">
     
@@ -13,7 +13,7 @@
     
 </div>
 
-## ✅PicoFilter - 图片筛选、命名、排序和格式转换工具
+## ✅PicoFilter - 图片筛选、命名、排序和格式转换程序
 
 <div align="right">
     
@@ -47,8 +47,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 
 考虑到程序布局设计比较紧凑，且我对很多功能的描述不是很准确，所以打算撰写一份说明文档用于教学。目前正在撰写`PicoFilter 2.0`版本的说明文档，你可以点击下方的链接来访问；此外我还在`哔哩哔哩`上传了教程视频（不过是`1.7.x`版本的，当然也可以作为参考）。如果有任何疑问欢迎联系我，我会尽我所能的帮助你。
 
-* 说明文档 *[编写中]*：[PicoFilter 2.0 使用说明](https://flowus.cn/regmvks/e717713c-be23-4124-b364-878960e75a4e)
-* 视频教程 *[1.7.x]*：[PicoFilter 1.7.x 使用教程](https://www.bilibili.com/video/BV1aR92YcEka/?spm_id_from=333.1387.homepage.video_card.click&vd_source=c4099c355c2d06f10ac210fe7bae65a6)
+* 说明文档 *[第一稿完成]*：[PicoFilter 2.0.x 使用说明](https://flowus.cn/regmvks/share/e717713c-be23-4124-b364-878960e75a4e?code=98NZC1)
 
 ## 🍰特色功能一览
 
@@ -66,6 +65,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 |排序|可以对列表内项目排序，排序依据为字符串、序号、分辨率、大小、修改日期|
 |批量重命名|对筛选结果批量重命名，可以自定义重命名格式（`正规则表达式`）|可独立使用|
 |批量格式转换|对筛选结果批量格式转换，仅支持读取静态图像格式，转换为`JPG`、`PNG`和`BMP`格式，其中`JPG`格式可以设置转换质量，`JPG`和`BMP`可以设置背景色|可独立使用；**`2.0`新增**|
+|文件名拆分|对选中项目文件名拆分为文本块，可以自由选择复制，直接粘贴到查找和星标中|**`2.0.3`新增**
 
 ## 📷程序界面展示
 * 主界面
@@ -89,12 +89,15 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取`JPEG & JPG`
 * 格式转换
 <img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/convert.png" />
 
+* 文件名拆分
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/split.png" />
+
 * 分析
 <img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/analysis.png" />
 
 ## ⏬下载
 * 发布页（优先更新）：https://github.com/ReGoMark/PicoFilter/releases
-* 蓝奏云（随后更新）：https://wwza.lanzouo.com/itvJq2yqd3xc
+* 蓝奏云（随后更新）：https://wwza.lanzouo.com/iFsCJ314e5wf
 
 ## 💗打赏
 如果你喜欢这个程序，觉得它对你有帮助，欢迎通过赞助支持作者的持续开发与维护！每一份支持，都是我继续优化和更新的动力。无论是一次性打赏，还是持续支持，都将被深深感激！
