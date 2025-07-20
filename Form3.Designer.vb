@@ -642,7 +642,8 @@ Partial Class Form3
         '
         'Button2
         '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.BackColor = System.Drawing.Color.White
         Me.Button2.CausesValidation = False
         Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -661,7 +662,8 @@ Partial Class Form3
         '
         'absbButton
         '
-        Me.absbButton.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.absbButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.Transparent
         Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
@@ -683,7 +685,8 @@ Partial Class Form3
         '
         'topButton
         '
-        Me.topButton.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.topButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.topButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.topButton.BackColor = System.Drawing.Color.White
         Me.topButton.CausesValidation = False
@@ -745,6 +748,8 @@ Partial Class Form3
         '
         'Label44
         '
+        Me.Label44.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label44.AutoSize = True
         Me.Label44.BackColor = System.Drawing.Color.Transparent
         Me.Label44.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
@@ -961,6 +966,9 @@ Partial Class Form3
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel1.Controls.Add(Me.TableLayoutPanel1)

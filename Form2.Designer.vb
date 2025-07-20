@@ -53,7 +53,6 @@ Partial Class Form2
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage3.SuspendLayout()
@@ -204,11 +203,11 @@ Partial Class Form2
         Me.Label8.Cursor = System.Windows.Forms.Cursors.Help
         Me.Label8.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label8.Location = New System.Drawing.Point(35, 95)
+        Me.Label8.Location = New System.Drawing.Point(39, 95)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(325, 25)
+        Me.Label8.Size = New System.Drawing.Size(318, 52)
         Me.Label8.TabIndex = 54
-        Me.Label8.Text = "问题反馈请联系 regmvks@outlook.com"
+        Me.Label8.Text = "作者 ReGoMark" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "问题反馈请联系 regmvks@outlook.com"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.Label8, "单击此处发送电子邮件。")
         '
@@ -235,7 +234,7 @@ Partial Class Form2
         Me.Label4.BackColor = System.Drawing.Color.White
         Me.Label4.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label4.Location = New System.Drawing.Point(241, 52)
+        Me.Label4.Location = New System.Drawing.Point(106, 53)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(84, 20)
         Me.Label4.TabIndex = 49
@@ -327,7 +326,7 @@ Partial Class Form2
         Me.MetroTabPage2.Name = "MetroTabPage2"
         Me.MetroTabPage2.Size = New System.Drawing.Size(321, 295)
         Me.MetroTabPage2.TabIndex = 1
-        Me.MetroTabPage2.Text = "许可协议   "
+        Me.MetroTabPage2.Text = "许可协议  "
         Me.MetroTabPage2.VerticalScrollbarBarColor = True
         Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.VerticalScrollbarSize = 10
@@ -389,7 +388,7 @@ Partial Class Form2
         Me.MetroTabPage4.Name = "MetroTabPage4"
         Me.MetroTabPage4.Size = New System.Drawing.Size(321, 295)
         Me.MetroTabPage4.TabIndex = 3
-        Me.MetroTabPage4.Text = "支持一下 "
+        Me.MetroTabPage4.Text = "支持一下  "
         Me.MetroTabPage4.VerticalScrollbarBarColor = True
         Me.MetroTabPage4.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage4.VerticalScrollbarSize = 10
@@ -432,7 +431,7 @@ Partial Class Form2
         Me.MetroTabPage1.Name = "MetroTabPage1"
         Me.MetroTabPage1.Size = New System.Drawing.Size(321, 295)
         Me.MetroTabPage1.TabIndex = 0
-        Me.MetroTabPage1.Text = "贡献者   "
+        Me.MetroTabPage1.Text = "贡献者  "
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
         Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage1.VerticalScrollbarSize = 10
@@ -468,7 +467,6 @@ Partial Class Form2
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label4)
@@ -476,19 +474,6 @@ Partial Class Form2
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(416, 497)
         Me.Panel1.TabIndex = 59
-        '
-        'Label6
-        '
-        Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.White
-        Me.Label6.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label6.Location = New System.Drawing.Point(106, 52)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(123, 20)
-        Me.Label6.TabIndex = 60
-        Me.Label6.Text = "作者：ReGoMark"
         '
         'Form2
         '
@@ -554,5 +539,4 @@ Partial Class Form2
     Friend WithEvents Label7 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label6 As Label
 End Class

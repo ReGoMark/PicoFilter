@@ -64,6 +64,9 @@ Partial Class Form7
         '
         'MetroTabControl1
         '
+        Me.MetroTabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage1)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage2)
         Me.MetroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular
@@ -85,7 +88,7 @@ Partial Class Form7
         Me.MetroTabPage1.Name = "MetroTabPage1"
         Me.MetroTabPage1.Size = New System.Drawing.Size(321, 389)
         Me.MetroTabPage1.TabIndex = 0
-        Me.MetroTabPage1.Text = "自动 "
+        Me.MetroTabPage1.Text = "自动  "
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
         Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage1.VerticalScrollbarSize = 10
@@ -122,11 +125,11 @@ Partial Class Form7
         Me.MetroTabPage2.HorizontalScrollbarBarColor = True
         Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.HorizontalScrollbarSize = 10
-        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 40)
+        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage2.Name = "MetroTabPage2"
-        Me.MetroTabPage2.Size = New System.Drawing.Size(321, 387)
+        Me.MetroTabPage2.Size = New System.Drawing.Size(321, 389)
         Me.MetroTabPage2.TabIndex = 1
-        Me.MetroTabPage2.Text = "自由选取"
+        Me.MetroTabPage2.Text = "自由选取  "
         Me.MetroTabPage2.VerticalScrollbarBarColor = True
         Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.VerticalScrollbarSize = 10
@@ -136,16 +139,17 @@ Partial Class Form7
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(3, 10)
+        Me.TextBox1.Location = New System.Drawing.Point(0, 5)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(315, 379)
+        Me.TextBox1.Size = New System.Drawing.Size(321, 384)
         Me.TextBox1.TabIndex = 2
         '
         'Button1
         '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.BackColor = System.Drawing.Color.White
         Me.Button1.CausesValidation = False
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -168,7 +172,8 @@ Partial Class Form7
         '
         'ButtonCopySelected
         '
-        Me.ButtonCopySelected.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonCopySelected.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonCopySelected.BackColor = System.Drawing.Color.White
         Me.ButtonCopySelected.CausesValidation = False
         Me.ButtonCopySelected.FlatAppearance.BorderColor = System.Drawing.Color.White
@@ -190,7 +195,8 @@ Partial Class Form7
         '
         'Button2
         '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.BackColor = System.Drawing.Color.White
         Me.Button2.CausesValidation = False
         Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -213,7 +219,8 @@ Partial Class Form7
         '
         'Button3
         '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.BackColor = System.Drawing.Color.White
         Me.Button3.CausesValidation = False
         Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -232,7 +239,8 @@ Partial Class Form7
         '
         'topButton
         '
-        Me.topButton.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.topButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.topButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.topButton.BackColor = System.Drawing.Color.White
         Me.topButton.CausesValidation = False
@@ -265,7 +273,8 @@ Partial Class Form7
         '
         'Button4
         '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button4.BackColor = System.Drawing.Color.White
         Me.Button4.CausesValidation = False
         Me.Button4.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue

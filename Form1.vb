@@ -27,7 +27,7 @@ Public Class Form1
 
     Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
-    Public verinfo As String = "PicoFilter 2.0" '存储版本信息
+    Public verinfo As String = "PicoFilter 2.0.3" '存储版本信息
     Private opttext As String = "使用提示" '存储操作按钮默认文本
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
@@ -2476,6 +2476,11 @@ Public Class Form1
             Form7.LoadFromFileName(fileName)
             Form7.TextBox1.Text = fileName
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'Form4.Show()
+        MessageBox.Show("功能还在开发中，敬请期待！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     '同步宽高数值
