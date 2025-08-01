@@ -129,7 +129,7 @@ Partial Class Form5
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(100, 26)
         Me.CheckBox1.TabIndex = 59
-        Me.CheckBox1.Text = "加载图像"
+        Me.CheckBox1.Text = "详细模式"
         Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.CheckBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.CheckBox1, "在目录结构中也显示图像文件。")

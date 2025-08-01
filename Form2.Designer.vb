@@ -104,6 +104,7 @@ Partial Class Form2
         Me.Label44.TabIndex = 47
         Me.Label44.Text = "单击邮箱进行反馈。"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label44.Visible = False
         '
         'Button2
         '
@@ -207,7 +208,7 @@ Partial Class Form2
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(318, 52)
         Me.Label8.TabIndex = 54
-        Me.Label8.Text = "作者 ReGoMark" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "问题反馈请联系 regmvks@outlook.com"
+        Me.Label8.Text = "作者 @ReGoMark" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "问题反馈请联系 regmvks@outlook.com"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.Label8, "单击此处发送电子邮件。")
         '
@@ -282,15 +283,15 @@ Partial Class Form2
         '
         'MetroTabControl1
         '
+        Me.MetroTabControl1.Controls.Add(Me.MetroTabPage4)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage3)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage2)
-        Me.MetroTabControl1.Controls.Add(Me.MetroTabPage4)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage1)
         Me.MetroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
+        Me.MetroTabControl1.SelectedIndex = 2
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 58
@@ -411,9 +412,9 @@ Partial Class Form2
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(3, 92)
+        Me.PictureBox1.Location = New System.Drawing.Point(7, 103)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(185, 180)
+        Me.PictureBox1.Size = New System.Drawing.Size(152, 149)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 52
         Me.PictureBox1.TabStop = False

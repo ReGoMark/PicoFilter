@@ -88,7 +88,7 @@ Partial Class Form7
         Me.MetroTabPage1.Name = "MetroTabPage1"
         Me.MetroTabPage1.Size = New System.Drawing.Size(321, 389)
         Me.MetroTabPage1.TabIndex = 0
-        Me.MetroTabPage1.Text = "自动  "
+        Me.MetroTabPage1.Text = "依据词典   "
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
         Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage1.VerticalScrollbarSize = 10
@@ -129,7 +129,7 @@ Partial Class Form7
         Me.MetroTabPage2.Name = "MetroTabPage2"
         Me.MetroTabPage2.Size = New System.Drawing.Size(321, 389)
         Me.MetroTabPage2.TabIndex = 1
-        Me.MetroTabPage2.Text = "自由选取  "
+        Me.MetroTabPage2.Text = "手动选取   "
         Me.MetroTabPage2.VerticalScrollbarBarColor = True
         Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.VerticalScrollbarSize = 10
@@ -161,7 +161,7 @@ Partial Class Form7
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(177, 20)
+        Me.Button1.Location = New System.Drawing.Point(265, 20)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(88, 26)
         Me.Button1.TabIndex = 90
@@ -208,7 +208,7 @@ Partial Class Form7
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.Location = New System.Drawing.Point(271, 20)
+        Me.Button2.Location = New System.Drawing.Point(177, 20)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(82, 26)
         Me.Button2.TabIndex = 91
@@ -234,7 +234,7 @@ Partial Class Form7
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(65, 26)
         Me.Button3.TabIndex = 88
-        Me.Button3.Text = "取消"
+        Me.Button3.Text = "完成"
         Me.Button3.UseVisualStyleBackColor = False
         '
         'topButton

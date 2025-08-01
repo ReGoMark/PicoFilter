@@ -171,13 +171,13 @@ Partial Class Form8
         Me.btnApplySelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.btnApplySelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.btnApplySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnApplySelected.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnApplySelected.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.btnApplySelected.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnApplySelected.Image = CType(resources.GetObject("btnApplySelected.Image"), System.Drawing.Image)
-        Me.btnApplySelected.Location = New System.Drawing.Point(95, 497)
+        Me.btnApplySelected.Location = New System.Drawing.Point(205, 497)
         Me.btnApplySelected.Name = "btnApplySelected"
-        Me.btnApplySelected.Size = New System.Drawing.Size(26, 26)
+        Me.btnApplySelected.Size = New System.Drawing.Size(65, 26)
         Me.btnApplySelected.TabIndex = 90
+        Me.btnApplySelected.Text = "应用"
         Me.btnApplySelected.UseVisualStyleBackColor = False
         '
         'btnReset
@@ -192,7 +192,7 @@ Partial Class Form8
         Me.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnReset.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.btnReset.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnReset.Location = New System.Drawing.Point(205, 497)
+        Me.btnReset.Location = New System.Drawing.Point(276, 497)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(65, 26)
         Me.btnReset.TabIndex = 87
@@ -212,11 +212,10 @@ Partial Class Form8
         Me.btnApplyAll.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.btnApplyAll.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.btnApplyAll.Image = CType(resources.GetObject("btnApplyAll.Image"), System.Drawing.Image)
-        Me.btnApplyAll.Location = New System.Drawing.Point(127, 497)
+        Me.btnApplyAll.Location = New System.Drawing.Point(173, 497)
         Me.btnApplyAll.Name = "btnApplyAll"
-        Me.btnApplyAll.Size = New System.Drawing.Size(72, 26)
+        Me.btnApplyAll.Size = New System.Drawing.Size(26, 26)
         Me.btnApplyAll.TabIndex = 80
-        Me.btnApplyAll.Text = "全部"
         Me.btnApplyAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnApplyAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnApplyAll.UseVisualStyleBackColor = False
@@ -279,6 +278,7 @@ Partial Class Form8
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Controls.Add(Me.ListView1)
         Me.Panel1.Location = New System.Drawing.Point(12, 76)
@@ -468,12 +468,13 @@ Partial Class Form8
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.Location = New System.Drawing.Point(276, 497)
+        Me.Button3.Location = New System.Drawing.Point(264, 328)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(65, 26)
         Me.Button3.TabIndex = 81
         Me.Button3.Text = "取消"
         Me.Button3.UseVisualStyleBackColor = False
+        Me.Button3.Visible = False
         '
         'Panel3
         '
@@ -524,14 +525,13 @@ Partial Class Form8
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
+        Me.Controls.Add(Me.btnApplyAll)
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btnApplySelected)
         Me.Controls.Add(Me.btnReset)
-        Me.Controls.Add(Me.btnApplyAll)
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Panel3)
         Me.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

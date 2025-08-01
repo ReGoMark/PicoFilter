@@ -477,6 +477,8 @@ Public Class Form1
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "格式说明"
         ToolTip2.SetToolTip(starText, "自定义三个标记词，用{}分隔；” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的项；" & vbCrLf & “{x}{y}{} - 标记带有x, y的项；" & vbCrLf & "不填写的以{}格式留空。")
+        MetroTabControl1.ImageList = ImageList1
+        MetroTabControl1.TabPages(0).ImageIndex = 0
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -2015,6 +2017,14 @@ Public Class Form1
                 subForm2.Location = New Point(Me.Location.X + Me.Width, Me.Location.Y)
             End If
         End If
+        ' 获取 Form8 实例
+        Dim subForm3 As Form8 = TryCast(Application.OpenForms("Form8"), Form8)
+        If subForm3 IsNot Nothing Then
+            If Form8.absbButton.CheckState = CheckState.Checked Then
+                ' 让 Form6 吸附在 Form1 右侧
+                subForm3.Location = New Point(Me.Location.X + Me.Width, Me.Location.Y)
+            End If
+        End If
     End Sub
 
     Private Sub openText_TextChanged(sender As Object, e As EventArgs) Handles openText.TextChanged
@@ -2481,6 +2491,14 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'Form4.Show()
         MessageBox.Show("功能还在开发中，敬请期待！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        If Form9.Visible = True Then
+            Form9.Close()
+        Else
+            Form9.Show()
+        End If
     End Sub
 
     '同步宽高数值

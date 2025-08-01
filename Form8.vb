@@ -222,24 +222,46 @@ Public Class Form8
         Return DEFAULT_FORMAT
     End Function
 
+    ' btnApplySelected：应用选中项格式并标记序号
     Private Sub btnApplySelected_Click(sender As Object, e As EventArgs) Handles btnApplySelected.Click
-        ApplyFormat(ListView1.SelectedItems)
-    End Sub
-
-    Private Sub btnApplyAll_Click(sender As Object, e As EventArgs) Handles btnApplyAll.Click
-        ApplyFormat(ListView1.Items)
-    End Sub
-
-    Private Sub ApplyFormat(items As IEnumerable)
         Dim format = GetSelectedFormat()
-        For Each item As ListViewItem In items
-            item.SubItems(3).Text = format
+        For Each item As ListViewItem In ListView1.SelectedItems
+            If item.SubItems(3).Text <> format Then
+                item.SubItems(3).Text = format
+                'If Not item.SubItems(0).Text.EndsWith("*") Then
+                '    item.SubItems(0).Text &= "*"
+                'End If
+                item.BackColor = Color.Lavender
+            End If
         Next
     End Sub
 
+    ' btnApplyAll：应用全部项格式并标记序号
+    Private Sub btnApplyAll_Click(sender As Object, e As EventArgs) Handles btnApplyAll.Click
+        If ListView1.Items.Count > 0 Then
+            For Each item As ListViewItem In ListView1.Items
+                item.Selected = True
+            Next
+        End If
+        'Dim format = GetSelectedFormat()
+        'For Each item As ListViewItem In ListView1.Items
+        '    If item.SubItems(3).Text <> format Then
+        '        item.SubItems(3).Text = format
+        '        If Not item.SubItems(0).Text.EndsWith("*") Then
+        '            item.SubItems(0).Text &= "*"
+        '        End If
+        '    End If
+        'Next
+    End Sub
+
+    ' btnReset：还原格式并去掉序号的*
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
-        For Each item As ListViewItem In ListView1.Items
+        For Each item As ListViewItem In ListView1.SelectedItems
             item.SubItems(3).Text = item.SubItems(2).Text
+            'If item.SubItems(0).Text.EndsWith("*") Then
+            '    item.SubItems(0).Text = item.SubItems(0).Text.TrimEnd("*"c)
+            'End If
+            item.BackColor = Color.White
         Next
     End Sub
 
@@ -543,5 +565,16 @@ Public Class Form8
                 MessageBox.Show("文件不存在: " & filePath, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
+    End Sub
+    Private Sub absbButton_CheckStateChanged(sender As Object, e As EventArgs) Handles absbButton.CheckStateChanged
+        If absbButton.Checked = True Then
+            Me.Location = New Point(Form1.Location.X + Form1.Width, Form1.Location.Y)
+        Else
+            'Me.CenterToScreen()
+        End If
+    End Sub
+
+    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
+
     End Sub
 End Class

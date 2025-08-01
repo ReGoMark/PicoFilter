@@ -118,60 +118,140 @@ Public Class Form6
         Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
     End Sub
 
+    ' ApplyButton_Click：批量应用格式
     Private Sub ApplyButton_Click(sender As Object, e As EventArgs) Handles ApplyButton.Click
+        ' 如果列表内存在项目，点击后全部选中
+        If ListViewPre.Items.Count > 0 Then
+            For Each item As ListViewItem In ListViewPre.Items
+                item.Selected = True
+            Next
+        End If
+
+        ' 以下为原有批量应用格式的代码（如需恢复可取消注释）
+        'Dim formatString As String = ComboBox1.Text
+        'If String.IsNullOrWhiteSpace(formatString) Then Return
+
+        'Dim startIndex As Integer = If(Integer.TryParse(TextBoxStart.Text, Nothing), CInt(TextBoxStart.Text), 1)
+        'Dim currentMonth As String = DateTime.Now.Month.ToString
+        'Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
+        'Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
+        'Dim currentYear As String = DateTime.Now.Year.ToString
+        'Dim currentSeason As String = ""
+        'Select Case currentMonth
+        '    Case 3 To 5 : currentSeason = "春"
+        '    Case 6 To 8 : currentSeason = "夏"
+        '    Case 9 To 11 : currentSeason = "秋"
+        '    Case 12, 1, 2 : currentSeason = "冬"
+        'End Select
+        'Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c)
+        'Dim maxIndexLength As Integer = (startIndex + ListViewPre.Items.Count - 1).ToString().Length
+
+        'For i As Integer = 0 To ListViewPre.Items.Count - 1
+        '    Dim originalName As String
+        '    If originalNames.ContainsKey(i) Then
+        '        originalName = originalNames(i)
+        '    Else
+        '        originalName = ListViewPre.Items(i).SubItems(1).Text
+        '        originalNames(i) = originalName
+        '    End If
+        '    Dim originalName0 As String = Path.GetFileNameWithoutExtension(originalName)
+        '    Dim indexValue As Integer = startIndex + i
+        '    Dim indexStr As String = indexValue.ToString()
+        '    Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c)
+        '    Dim fileExtension As String = IO.Path.GetExtension(originalName)
+        '    Dim newName As String = formatString.Replace("{prefix}", "") _
+        '                              .Replace("{0name}", originalName) _
+        '                              .Replace("{name}", originalName0) _
+        '                              .Replace("{suffix}", "") _
+        '                              .Replace("{index}", indexStr) _
+        '                              .Replace("{0index}", paddedIndex) _
+        '                              .Replace("{season}", currentSeason) _
+        '                              .Replace("{year}", currentYear) _
+        '                              .Replace("{date}", currentDate) _
+        '                              .Replace("{0date}", paddedDate) _
+        '                              .Replace("{month}", currentMonth) _
+        '                              .Replace("{0month}", paddedMonth)
+        '    newName &= fileExtension
+        '    ListViewPre.Items(i).SubItems(1).Text = newName
+
+        '    ' 检查是否有改动，添加*到序号
+        '    If newName <> originalName Then
+        '        If Not ListViewPre.Items(i).SubItems(0).Text.EndsWith("*") Then
+        '            ListViewPre.Items(i).SubItems(0).Text &= "*"
+        '        End If
+        '    End If
+        'Next
+    End Sub
+
+    ' Button7_Click：对选中项应用格式
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim formatString As String = ComboBox1.Text
         If String.IsNullOrWhiteSpace(formatString) Then Return
-
+        If ListViewPre.SelectedItems.Count = 0 Then
+            MessageBox.Show("请选择至少一个项目进行修改。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
         Dim startIndex As Integer = If(Integer.TryParse(TextBoxStart.Text, Nothing), CInt(TextBoxStart.Text), 1)
         Dim currentMonth As String = DateTime.Now.Month.ToString
         Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
         Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
+        Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c)
         Dim currentYear As String = DateTime.Now.Year.ToString
         Dim currentSeason As String = ""
         Select Case currentMonth
-            Case 3 To 5 : currentSeason = "春"
-            Case 6 To 8 : currentSeason = "夏"
-            Case 9 To 11 : currentSeason = "秋"
-            Case 12, 1, 2 : currentSeason = "冬"
+            Case "3", "4", "5" : currentSeason = "春"
+            Case "6", "7", "8" : currentSeason = "夏"
+            Case "9", "10", "11" : currentSeason = "秋"
+            Case "12", "1", "2" : currentSeason = "冬"
         End Select
-        Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c)
         Dim maxIndexLength As Integer = (startIndex + ListViewPre.Items.Count - 1).ToString().Length
 
-        For i As Integer = 0 To ListViewPre.Items.Count - 1
+        For Each item As ListViewItem In ListViewPre.SelectedItems
+            Dim i As Integer = item.Index
             Dim originalName As String
             If originalNames.ContainsKey(i) Then
                 originalName = originalNames(i)
             Else
-                originalName = ListViewPre.Items(i).SubItems(1).Text
+                originalName = item.SubItems(1).Text
                 originalNames(i) = originalName
             End If
-            Dim originalName0 As String = Path.GetFileNameWithoutExtension(originalName)
+            Dim originalName0 As String = IO.Path.GetFileNameWithoutExtension(originalName)
+            Dim fileExtension As String = IO.Path.GetExtension(originalName)
             Dim indexValue As Integer = startIndex + i
             Dim indexStr As String = indexValue.ToString()
             Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c)
-            Dim fileExtension As String = IO.Path.GetExtension(originalName)
             Dim newName As String = formatString.Replace("{prefix}", "") _
-                                      .Replace("{0name}", originalName) _
-                                      .Replace("{name}", originalName0) _
-                                      .Replace("{suffix}", "") _
-                                      .Replace("{index}", indexStr) _
-                                      .Replace("{0index}", paddedIndex) _
-                                      .Replace("{season}", currentSeason) _
-                                      .Replace("{year}", currentYear) _
-                                      .Replace("{date}", currentDate) _
-                                      .Replace("{0date}", paddedDate) _
-                                      .Replace("{month}", currentMonth) _
-                                      .Replace("{0month}", paddedMonth)
+                               .Replace("{0name}", originalName) _
+                               .Replace("{name}", originalName0) _
+                               .Replace("{suffix}", "") _
+                               .Replace("{index}", indexStr) _
+                               .Replace("{0index}", paddedIndex) _
+                               .Replace("{season}", currentSeason) _
+                               .Replace("{year}", currentYear) _
+                               .Replace("{date}", currentDate) _
+                               .Replace("{0date}", paddedDate) _
+                               .Replace("{month}", currentMonth) _
+                               .Replace("{0month}", paddedMonth)
             newName &= fileExtension
-            ListViewPre.Items(i).SubItems(1).Text = newName
+            item.SubItems(1).Text = newName
+
+            ' 检查是否有改动，添加*到序号
+            If newName <> originalName Then
+                item.BackColor = Color.Lavender
+            End If
         Next
     End Sub
 
+    ' Button4_Click：还原并去掉所有*
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        For i As Integer = 0 To ListViewPre.Items.Count - 1
+        ' 仅还原选中项
+        For Each item As ListViewItem In ListViewPre.SelectedItems
+            Dim i As Integer = item.Index
             If originalNames.ContainsKey(i) Then
-                ListViewPre.Items(i).SubItems(1).Text = originalNames(i)
+                item.SubItems(1).Text = originalNames(i)
             End If
+            ' 去掉序号后的*
+            item.BackColor = Color.White
         Next
         originalNames.Clear()
     End Sub
@@ -423,13 +503,13 @@ Public Class Form6
     End Sub
 
     Private Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
-        If ComboBox1.Text = "(无)" Or ComboBox1.Text = "" Then
-            ApplyButton.Visible = False
-            Button7.Visible = False
-        Else
-            ApplyButton.Visible = True
-            Button7.Visible = True
-        End If
+        'If ComboBox1.Text = "(无)" Or ComboBox1.Text = "" Then
+        '    ApplyButton.Visible = False
+        '    Button7.Visible = False
+        'Else
+        '    ApplyButton.Visible = True
+        '    Button7.Visible = True
+        'End If
     End Sub
 
     Private Sub ListViewPre_DoubleClick(sender As Object, e As EventArgs) Handles ListViewPre.DoubleClick
@@ -446,59 +526,6 @@ Public Class Form6
                 MessageBox.Show("无法打开。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End If
-    End Sub
-
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        Dim formatString As String = ComboBox1.Text
-        If String.IsNullOrWhiteSpace(formatString) Then Return
-        If ListViewPre.SelectedItems.Count = 0 Then
-            MessageBox.Show("请选择至少一个项目进行修改。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Return
-        End If
-        Dim startIndex As Integer = If(Integer.TryParse(TextBoxStart.Text, Nothing), CInt(TextBoxStart.Text), 1)
-        Dim currentMonth As String = DateTime.Now.Month.ToString
-        Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
-        Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
-        Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c)
-        Dim currentYear As String = DateTime.Now.Year.ToString
-        Dim currentSeason As String = ""
-        Select Case currentMonth
-            Case "3", "4", "5" : currentSeason = "春"
-            Case "6", "7", "8" : currentSeason = "夏"
-            Case "9", "10", "11" : currentSeason = "秋"
-            Case "12", "1", "2" : currentSeason = "冬"
-        End Select
-        Dim maxIndexLength As Integer = (startIndex + ListViewPre.Items.Count - 1).ToString().Length
-
-        For Each item As ListViewItem In ListViewPre.SelectedItems
-            Dim i As Integer = item.Index
-            Dim originalName As String
-            If originalNames.ContainsKey(i) Then
-                originalName = originalNames(i)
-            Else
-                originalName = item.SubItems(1).Text
-                originalNames(i) = originalName
-            End If
-            Dim originalName0 As String = IO.Path.GetFileNameWithoutExtension(originalName)
-            Dim fileExtension As String = IO.Path.GetExtension(originalName)
-            Dim indexValue As Integer = startIndex + i
-            Dim indexStr As String = indexValue.ToString()
-            Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c)
-            Dim newName As String = formatString.Replace("{prefix}", "") _
-                                   .Replace("{0name}", originalName) _
-                                   .Replace("{name}", originalName0) _
-                                   .Replace("{suffix}", "") _
-                                   .Replace("{index}", indexStr) _
-                                   .Replace("{0index}", paddedIndex) _
-                                   .Replace("{season}", currentSeason) _
-                                   .Replace("{year}", currentYear) _
-                                   .Replace("{date}", currentDate) _
-                                   .Replace("{0date}", paddedDate) _
-                                   .Replace("{month}", currentMonth) _
-                                   .Replace("{0month}", paddedMonth)
-            newName &= fileExtension
-            item.SubItems(1).Text = newName
-        Next
     End Sub
 
     ' 当文件拖入窗口时触发，判断是否是文件夹

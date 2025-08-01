@@ -26,28 +26,28 @@ Partial Class Form4
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
         Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
-        Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.MetroTrackBar1 = New MetroFramework.Controls.MetroTrackBar()
         Me.MetroTabPage3 = New MetroFramework.Controls.MetroTabPage()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
         Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.MetroTabPage5 = New MetroFramework.Controls.MetroTabPage()
         Me.MetroTabPage6 = New MetroFramework.Controls.MetroTabPage()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.MetroTrackBar1 = New MetroFramework.Controls.MetroTrackBar()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
-        Me.MetroTabPage3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.MetroTabPage3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -67,8 +67,8 @@ Partial Class Form4
         'MetroTabControl1
         '
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage1)
-        Me.MetroTabControl1.Controls.Add(Me.MetroTabPage2)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage3)
+        Me.MetroTabControl1.Controls.Add(Me.MetroTabPage2)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage4)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage5)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage6)
@@ -76,7 +76,7 @@ Partial Class Form4
         Me.MetroTabControl1.Location = New System.Drawing.Point(27, 32)
         Me.MetroTabControl1.Multiline = True
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 456)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 0
@@ -92,24 +92,62 @@ Partial Class Form4
         Me.MetroTabPage1.Name = "MetroTabPage1"
         Me.MetroTabPage1.Size = New System.Drawing.Size(321, 380)
         Me.MetroTabPage1.TabIndex = 0
-        Me.MetroTabPage1.Text = "PicoFilter  "
+        Me.MetroTabPage1.Text = "首页  "
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
         Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage1.VerticalScrollbarSize = 10
         '
-        'MetroTabPage2
+        'GroupBox1
         '
-        Me.MetroTabPage2.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage2.HorizontalScrollbarSize = 10
-        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 72)
-        Me.MetroTabPage2.Name = "MetroTabPage2"
-        Me.MetroTabPage2.Size = New System.Drawing.Size(321, 380)
-        Me.MetroTabPage2.TabIndex = 1
-        Me.MetroTabPage2.Text = "显示 "
-        Me.MetroTabPage2.VerticalScrollbarBarColor = True
-        Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage2.VerticalScrollbarSize = 10
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.MetroTrackBar1)
+        Me.GroupBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 3)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(321, 79)
+        Me.GroupBox1.TabIndex = 5
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "不透明度"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label1.Location = New System.Drawing.Point(6, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(99, 20)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "窗体不透明度"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label2.Location = New System.Drawing.Point(270, 23)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(45, 20)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "100%"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'MetroTrackBar1
+        '
+        Me.MetroTrackBar1.BackColor = System.Drawing.Color.Transparent
+        Me.MetroTrackBar1.Location = New System.Drawing.Point(10, 46)
+        Me.MetroTrackBar1.Name = "MetroTrackBar1"
+        Me.MetroTrackBar1.Size = New System.Drawing.Size(305, 20)
+        Me.MetroTrackBar1.TabIndex = 3
+        Me.MetroTrackBar1.Text = "MetroTrackBar1"
         '
         'MetroTabPage3
         '
@@ -126,19 +164,133 @@ Partial Class Form4
         Me.MetroTabPage3.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage3.VerticalScrollbarSize = 10
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox2.Controls.Add(Me.CheckBox5)
+        Me.GroupBox2.Controls.Add(Me.CheckBox4)
+        Me.GroupBox2.Controls.Add(Me.CheckBox3)
+        Me.GroupBox2.Controls.Add(Me.CheckBox2)
+        Me.GroupBox2.Controls.Add(Me.CheckBox1)
+        Me.GroupBox2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.GroupBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 3)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(321, 179)
+        Me.GroupBox2.TabIndex = 6
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "PicoFilter"
+        '
+        'CheckBox5
+        '
+        Me.CheckBox5.AutoSize = True
+        Me.CheckBox5.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox5.Location = New System.Drawing.Point(6, 146)
+        Me.CheckBox5.Name = "CheckBox5"
+        Me.CheckBox5.Size = New System.Drawing.Size(136, 24)
+        Me.CheckBox5.TabIndex = 7
+        Me.CheckBox5.Text = "查找「关于」时"
+        Me.CheckBox5.UseVisualStyleBackColor = True
+        '
+        'CheckBox4
+        '
+        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox4.Location = New System.Drawing.Point(6, 116)
+        Me.CheckBox4.Name = "CheckBox4"
+        Me.CheckBox4.Size = New System.Drawing.Size(136, 24)
+        Me.CheckBox4.TabIndex = 6
+        Me.CheckBox4.Text = "「查找」完毕时"
+        Me.CheckBox4.UseVisualStyleBackColor = True
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox3.Location = New System.Drawing.Point(6, 86)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(136, 24)
+        Me.CheckBox3.TabIndex = 5
+        Me.CheckBox3.Text = "查看「分析」时"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox2.Location = New System.Drawing.Point(6, 56)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(136, 24)
+        Me.CheckBox2.TabIndex = 4
+        Me.CheckBox2.Text = "「筛选」完毕时"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox1.Location = New System.Drawing.Point(6, 26)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(256, 24)
+        Me.CheckBox1.TabIndex = 3
+        Me.CheckBox1.Text = "数据加载完毕（包括重新整理）时"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'MetroTabPage2
+        '
+        Me.MetroTabPage2.HorizontalScrollbarBarColor = True
+        Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage2.HorizontalScrollbarSize = 10
+        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 72)
+        Me.MetroTabPage2.Name = "MetroTabPage2"
+        Me.MetroTabPage2.Size = New System.Drawing.Size(321, 380)
+        Me.MetroTabPage2.TabIndex = 1
+        Me.MetroTabPage2.Text = "显示 "
+        Me.MetroTabPage2.VerticalScrollbarBarColor = True
+        Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage2.VerticalScrollbarSize = 10
+        '
         'MetroTabPage4
         '
         Me.MetroTabPage4.HorizontalScrollbarBarColor = True
         Me.MetroTabPage4.HorizontalScrollbarHighlightOnWheel = False
         Me.MetroTabPage4.HorizontalScrollbarSize = 10
-        Me.MetroTabPage4.Location = New System.Drawing.Point(4, 38)
+        Me.MetroTabPage4.Location = New System.Drawing.Point(4, 72)
         Me.MetroTabPage4.Name = "MetroTabPage4"
-        Me.MetroTabPage4.Size = New System.Drawing.Size(321, 414)
+        Me.MetroTabPage4.Size = New System.Drawing.Size(321, 380)
         Me.MetroTabPage4.TabIndex = 3
-        Me.MetroTabPage4.Text = "MetroTabPage4"
+        Me.MetroTabPage4.Text = "星标"
         Me.MetroTabPage4.VerticalScrollbarBarColor = True
         Me.MetroTabPage4.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage4.VerticalScrollbarSize = 10
+        '
+        'MetroTabPage5
+        '
+        Me.MetroTabPage5.HorizontalScrollbarBarColor = True
+        Me.MetroTabPage5.HorizontalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage5.HorizontalScrollbarSize = 10
+        Me.MetroTabPage5.Location = New System.Drawing.Point(4, 72)
+        Me.MetroTabPage5.Name = "MetroTabPage5"
+        Me.MetroTabPage5.Size = New System.Drawing.Size(321, 380)
+        Me.MetroTabPage5.TabIndex = 4
+        Me.MetroTabPage5.Text = "MetroTabPage5"
+        Me.MetroTabPage5.VerticalScrollbarBarColor = True
+        Me.MetroTabPage5.VerticalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage5.VerticalScrollbarSize = 10
+        '
+        'MetroTabPage6
+        '
+        Me.MetroTabPage6.HorizontalScrollbarBarColor = True
+        Me.MetroTabPage6.HorizontalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage6.HorizontalScrollbarSize = 10
+        Me.MetroTabPage6.Location = New System.Drawing.Point(4, 72)
+        Me.MetroTabPage6.Name = "MetroTabPage6"
+        Me.MetroTabPage6.Size = New System.Drawing.Size(321, 380)
+        Me.MetroTabPage6.TabIndex = 5
+        Me.MetroTabPage6.Text = "MetroTabPage6"
+        Me.MetroTabPage6.VerticalScrollbarBarColor = True
+        Me.MetroTabPage6.VerticalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage6.VerticalScrollbarSize = 10
         '
         'Button4
         '
@@ -178,158 +330,6 @@ Partial Class Form4
         Me.Button3.Text = "取消"
         Me.Button3.UseVisualStyleBackColor = False
         '
-        'MetroTabPage5
-        '
-        Me.MetroTabPage5.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage5.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage5.HorizontalScrollbarSize = 10
-        Me.MetroTabPage5.Location = New System.Drawing.Point(4, 72)
-        Me.MetroTabPage5.Name = "MetroTabPage5"
-        Me.MetroTabPage5.Size = New System.Drawing.Size(321, 380)
-        Me.MetroTabPage5.TabIndex = 4
-        Me.MetroTabPage5.Text = "MetroTabPage5"
-        Me.MetroTabPage5.VerticalScrollbarBarColor = True
-        Me.MetroTabPage5.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage5.VerticalScrollbarSize = 10
-        '
-        'MetroTabPage6
-        '
-        Me.MetroTabPage6.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage6.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage6.HorizontalScrollbarSize = 10
-        Me.MetroTabPage6.Location = New System.Drawing.Point(4, 72)
-        Me.MetroTabPage6.Name = "MetroTabPage6"
-        Me.MetroTabPage6.Size = New System.Drawing.Size(321, 380)
-        Me.MetroTabPage6.TabIndex = 5
-        Me.MetroTabPage6.Text = "MetroTabPage6"
-        Me.MetroTabPage6.VerticalScrollbarBarColor = True
-        Me.MetroTabPage6.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage6.VerticalScrollbarSize = 10
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label1.Location = New System.Drawing.Point(6, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(99, 20)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "窗体不透明度"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'MetroTrackBar1
-        '
-        Me.MetroTrackBar1.BackColor = System.Drawing.Color.Transparent
-        Me.MetroTrackBar1.Location = New System.Drawing.Point(10, 46)
-        Me.MetroTrackBar1.Name = "MetroTrackBar1"
-        Me.MetroTrackBar1.Size = New System.Drawing.Size(305, 20)
-        Me.MetroTrackBar1.TabIndex = 3
-        Me.MetroTrackBar1.Text = "MetroTrackBar1"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label2.Location = New System.Drawing.Point(270, 23)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(45, 20)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "100%"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.MetroTrackBar1)
-        Me.GroupBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 3)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(321, 79)
-        Me.GroupBox1.TabIndex = 5
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "不透明度"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox2.Controls.Add(Me.CheckBox5)
-        Me.GroupBox2.Controls.Add(Me.CheckBox4)
-        Me.GroupBox2.Controls.Add(Me.CheckBox3)
-        Me.GroupBox2.Controls.Add(Me.CheckBox2)
-        Me.GroupBox2.Controls.Add(Me.CheckBox1)
-        Me.GroupBox2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.GroupBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 3)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(321, 179)
-        Me.GroupBox2.TabIndex = 6
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "PicoFilter"
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox1.Location = New System.Drawing.Point(6, 26)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(256, 24)
-        Me.CheckBox1.TabIndex = 3
-        Me.CheckBox1.Text = "数据加载完毕（包括重新整理）时"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox2.Location = New System.Drawing.Point(6, 56)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(136, 24)
-        Me.CheckBox2.TabIndex = 4
-        Me.CheckBox2.Text = "「筛选」完毕时"
-        Me.CheckBox2.UseVisualStyleBackColor = True
-        '
-        'CheckBox3
-        '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox3.Location = New System.Drawing.Point(6, 86)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(136, 24)
-        Me.CheckBox3.TabIndex = 5
-        Me.CheckBox3.Text = "查看「分析」时"
-        Me.CheckBox3.UseVisualStyleBackColor = True
-        '
-        'CheckBox4
-        '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox4.Location = New System.Drawing.Point(6, 116)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(136, 24)
-        Me.CheckBox4.TabIndex = 6
-        Me.CheckBox4.Text = "「查找」完毕时"
-        Me.CheckBox4.UseVisualStyleBackColor = True
-        '
-        'CheckBox5
-        '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.CheckBox5.Location = New System.Drawing.Point(6, 146)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(136, 24)
-        Me.CheckBox5.TabIndex = 7
-        Me.CheckBox5.Text = "查找「关于」时"
-        Me.CheckBox5.UseVisualStyleBackColor = True
-        '
         'Form4
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
@@ -348,9 +348,9 @@ Partial Class Form4
         Me.Panel1.ResumeLayout(False)
         Me.MetroTabControl1.ResumeLayout(False)
         Me.MetroTabPage1.ResumeLayout(False)
-        Me.MetroTabPage3.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.MetroTabPage3.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)

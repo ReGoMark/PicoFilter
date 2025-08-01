@@ -760,6 +760,7 @@ Partial Class Form3
         Me.Label44.TabIndex = 55
         Me.Label44.Text = "单击""确认筛选""刷新数据。"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label44.Visible = False
         '
         'TableLayoutPanel1
         '

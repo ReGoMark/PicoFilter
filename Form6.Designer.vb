@@ -103,14 +103,12 @@ Partial Class Form6
         Me.ApplyButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ApplyButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.ApplyButton.Image = CType(resources.GetObject("ApplyButton.Image"), System.Drawing.Image)
-        Me.ApplyButton.Location = New System.Drawing.Point(127, 497)
+        Me.ApplyButton.Location = New System.Drawing.Point(173, 497)
         Me.ApplyButton.Name = "ApplyButton"
-        Me.ApplyButton.Size = New System.Drawing.Size(72, 26)
+        Me.ApplyButton.Size = New System.Drawing.Size(26, 26)
         Me.ApplyButton.TabIndex = 57
-        Me.ApplyButton.Text = "全部"
         Me.ApplyButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.ApplyButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.ApplyButton, "全部重命名预览。")
         Me.ApplyButton.UseVisualStyleBackColor = False
         '
         'Button1
@@ -166,18 +164,18 @@ Partial Class Form6
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.Location = New System.Drawing.Point(276, 497)
+        Me.Button3.Location = New System.Drawing.Point(300, 419)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(65, 26)
         Me.Button3.TabIndex = 58
         Me.Button3.Text = "取消"
         Me.Button3.UseVisualStyleBackColor = False
+        Me.Button3.Visible = False
         '
         'Panel1
         '
         Me.Panel1.AllowDrop = True
-        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.GhostWhite
         Me.Panel1.Controls.Add(Me.TextBoxStart)
@@ -417,7 +415,7 @@ Partial Class Form6
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button4.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button4.Location = New System.Drawing.Point(205, 497)
+        Me.Button4.Location = New System.Drawing.Point(276, 497)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(65, 26)
         Me.Button4.TabIndex = 74
@@ -473,14 +471,13 @@ Partial Class Form6
         Me.Button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.Button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.Button7.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.Location = New System.Drawing.Point(95, 497)
+        Me.Button7.Location = New System.Drawing.Point(205, 497)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(26, 26)
+        Me.Button7.Size = New System.Drawing.Size(65, 26)
         Me.Button7.TabIndex = 77
-        Me.ToolTip1.SetToolTip(Me.Button7, "仅选中项的重命名预览。")
+        Me.Button7.Text = "应用"
         Me.Button7.UseVisualStyleBackColor = False
         '
         'Panel3
@@ -498,6 +495,7 @@ Partial Class Form6
         Me.Panel3.Controls.Add(Me.mnsButton)
         Me.Panel3.Controls.Add(Me.moreButton)
         Me.Panel3.Controls.Add(Me.Button2)
+        Me.Panel3.Controls.Add(Me.Button3)
         Me.Panel3.Controls.Add(Me.ListViewPre)
         Me.Panel3.Location = New System.Drawing.Point(-26, -28)
         Me.Panel3.Name = "Panel3"
@@ -556,7 +554,6 @@ Partial Class Form6
         Me.Controls.Add(Me.topButton)
         Me.Controls.Add(Me.absbButton)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Panel3)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form6"
