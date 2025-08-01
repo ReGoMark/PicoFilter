@@ -111,6 +111,7 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.updateButton = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.PictureBox13 = New System.Windows.Forms.PictureBox()
@@ -143,7 +144,6 @@ Partial Class Form1
         Me.deskButton = New System.Windows.Forms.Button()
         Me.videoButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
@@ -1035,7 +1035,7 @@ Partial Class Form1
         Me.infoButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.infoButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.infoButton.Image = CType(resources.GetObject("infoButton.Image"), System.Drawing.Image)
-        Me.infoButton.Location = New System.Drawing.Point(103, 9)
+        Me.infoButton.Location = New System.Drawing.Point(0, 9)
         Me.infoButton.Name = "infoButton"
         Me.infoButton.Size = New System.Drawing.Size(73, 26)
         Me.infoButton.TabIndex = 10
@@ -1235,12 +1235,13 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.Button3)
         Me.Panel3.Controls.Add(Me.Button5)
+        Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Controls.Add(Me.Button2)
         Me.Panel3.Controls.Add(Me.updateButton)
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox13)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(46, 103)
+        Me.Panel3.Location = New System.Drawing.Point(44, 103)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(236, 155)
         Me.Panel3.TabIndex = 44
@@ -1298,6 +1299,29 @@ Partial Class Form1
         Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.White
+        Me.Button2.CausesValidation = False
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button2.Location = New System.Drawing.Point(148, 54)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(73, 26)
+        Me.Button2.TabIndex = 100
+        Me.Button2.Text = "窗口"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button2, "单击此处查看联机说明文档。")
+        Me.Button2.UseVisualStyleBackColor = False
+        Me.Button2.Visible = False
         '
         'updateButton
         '
@@ -1369,7 +1393,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-799, 177)
+        Me.Label7.Location = New System.Drawing.Point(-801, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1922,7 +1946,7 @@ Partial Class Form1
         Me.videoButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.videoButton.Image = CType(resources.GetObject("videoButton.Image"), System.Drawing.Image)
         Me.videoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.videoButton.Location = New System.Drawing.Point(182, 9)
+        Me.videoButton.Location = New System.Drawing.Point(103, 9)
         Me.videoButton.Name = "videoButton"
         Me.videoButton.Size = New System.Drawing.Size(103, 26)
         Me.videoButton.TabIndex = 73
@@ -1944,7 +1968,7 @@ Partial Class Form1
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(0, 9)
+        Me.Button1.Location = New System.Drawing.Point(123, 110)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(73, 26)
         Me.Button1.TabIndex = 91
@@ -1952,29 +1976,6 @@ Partial Class Form1
         Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button1, "单击此处查看联机说明文档。")
         Me.Button1.UseVisualStyleBackColor = False
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.White
-        Me.Button2.CausesValidation = False
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
-        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.Location = New System.Drawing.Point(148, 54)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(73, 26)
-        Me.Button2.TabIndex = 100
-        Me.Button2.Text = "窗口"
-        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button2, "单击此处查看联机说明文档。")
-        Me.Button2.UseVisualStyleBackColor = False
-        Me.Button2.Visible = False
         '
         'PictureBox7
         '
@@ -2523,7 +2524,6 @@ Partial Class Form1
         'MetroTabPage6
         '
         Me.MetroTabPage6.Controls.Add(Me.PictureBox14)
-        Me.MetroTabPage6.Controls.Add(Me.Button1)
         Me.MetroTabPage6.Controls.Add(Me.infoButton)
         Me.MetroTabPage6.Controls.Add(Me.videoButton)
         Me.MetroTabPage6.HorizontalScrollbarBarColor = True
