@@ -41,11 +41,11 @@ Partial Class Form2
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
+        Me.MetroTabPage3 = New MetroFramework.Controls.MetroTabPage()
         Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.MetroTabPage3 = New MetroFramework.Controls.MetroTabPage()
         Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -55,8 +55,8 @@ Partial Class Form2
         Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabControl1.SuspendLayout()
-        Me.MetroTabPage2.SuspendLayout()
         Me.MetroTabPage3.SuspendLayout()
+        Me.MetroTabPage2.SuspendLayout()
         Me.MetroTabPage4.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabPage1.SuspendLayout()
@@ -239,7 +239,7 @@ Partial Class Form2
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(84, 20)
         Me.Label4.TabIndex = 49
-        Me.Label4.Text = "版本：2.0.3"
+        Me.Label4.Text = "版本：2.0.4"
         '
         'Label14
         '
@@ -296,6 +296,24 @@ Partial Class Form2
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 58
         Me.MetroTabControl1.UseSelectable = True
+        '
+        'MetroTabPage3
+        '
+        Me.MetroTabPage3.Controls.Add(Me.ListBox1)
+        Me.MetroTabPage3.Controls.Add(Me.Label1)
+        Me.MetroTabPage3.Controls.Add(Me.Label5)
+        Me.MetroTabPage3.Controls.Add(Me.Label10)
+        Me.MetroTabPage3.HorizontalScrollbarBarColor = True
+        Me.MetroTabPage3.HorizontalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage3.HorizontalScrollbarSize = 10
+        Me.MetroTabPage3.Location = New System.Drawing.Point(4, 38)
+        Me.MetroTabPage3.Name = "MetroTabPage3"
+        Me.MetroTabPage3.Size = New System.Drawing.Size(321, 295)
+        Me.MetroTabPage3.TabIndex = 2
+        Me.MetroTabPage3.Text = "已安装  "
+        Me.MetroTabPage3.VerticalScrollbarBarColor = True
+        Me.MetroTabPage3.VerticalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage3.VerticalScrollbarSize = 10
         '
         'MetroTabPage2
         '
@@ -358,24 +376,6 @@ Partial Class Form2
         Me.Label12.Size = New System.Drawing.Size(315, 43)
         Me.Label12.TabIndex = 14
         Me.Label12.Text = "本程序遵循 MIT 许可协议，用户需阅读并遵守以下内容："
-        '
-        'MetroTabPage3
-        '
-        Me.MetroTabPage3.Controls.Add(Me.ListBox1)
-        Me.MetroTabPage3.Controls.Add(Me.Label1)
-        Me.MetroTabPage3.Controls.Add(Me.Label5)
-        Me.MetroTabPage3.Controls.Add(Me.Label10)
-        Me.MetroTabPage3.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage3.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage3.HorizontalScrollbarSize = 10
-        Me.MetroTabPage3.Location = New System.Drawing.Point(4, 38)
-        Me.MetroTabPage3.Name = "MetroTabPage3"
-        Me.MetroTabPage3.Size = New System.Drawing.Size(321, 295)
-        Me.MetroTabPage3.TabIndex = 2
-        Me.MetroTabPage3.Text = "已安装  "
-        Me.MetroTabPage3.VerticalScrollbarBarColor = True
-        Me.MetroTabPage3.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage3.VerticalScrollbarSize = 10
         '
         'MetroTabPage4
         '
@@ -496,10 +496,10 @@ Partial Class Form2
         Me.Text = "关于"
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MetroTabControl1.ResumeLayout(False)
-        Me.MetroTabPage2.ResumeLayout(False)
-        Me.MetroTabPage2.PerformLayout()
         Me.MetroTabPage3.ResumeLayout(False)
         Me.MetroTabPage3.PerformLayout()
+        Me.MetroTabPage2.ResumeLayout(False)
+        Me.MetroTabPage2.PerformLayout()
         Me.MetroTabPage4.ResumeLayout(False)
         Me.MetroTabPage4.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

@@ -348,11 +348,11 @@ Partial Class Form8
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Enabled = False
-        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label1.Location = New System.Drawing.Point(302, 7)
+        Me.Label1.Location = New System.Drawing.Point(304, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(21, 20)
+        Me.Label1.Size = New System.Drawing.Size(16, 18)
         Me.Label1.TabIndex = 93
         Me.Label1.Text = "%"
         '
@@ -363,7 +363,7 @@ Partial Class Form8
         Me.Label2.Enabled = False
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label2.Location = New System.Drawing.Point(202, 7)
+        Me.Label2.Location = New System.Drawing.Point(202, 8)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 20)
         Me.Label2.TabIndex = 92
@@ -376,13 +376,13 @@ Partial Class Form8
         Me.cobQuality.BackColor = System.Drawing.Color.GhostWhite
         Me.cobQuality.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.cobQuality.Enabled = False
-        Me.cobQuality.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.cobQuality.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.cobQuality.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.cobQuality.Location = New System.Drawing.Point(237, 7)
+        Me.cobQuality.Location = New System.Drawing.Point(237, 9)
         Me.cobQuality.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.cobQuality.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.cobQuality.Name = "cobQuality"
-        Me.cobQuality.Size = New System.Drawing.Size(61, 23)
+        Me.cobQuality.Size = New System.Drawing.Size(61, 21)
         Me.cobQuality.TabIndex = 90
         Me.cobQuality.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ToolTip1.SetToolTip(Me.cobQuality, "设置转换质量，仅限目标为JPEG格式的图像。")

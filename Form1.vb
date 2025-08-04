@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
+Imports System.IO.Compression
 Imports OfficeOpenXml
 
 '考虑到.net支持的图片格式只有这五种，像其他图像格式如webp等，后续需要添加第三方库才有可能解决。
@@ -27,7 +28,7 @@ Public Class Form1
 
     Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
-    Public verinfo As String = "PicoFilter 2.0.3" '存储版本信息
+    Public verinfo As String = "PicoFilter 2.0.4" '存储版本信息
     Private opttext As String = "使用提示" '存储操作按钮默认文本
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
@@ -2508,8 +2509,49 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Panel8_Paint(sender As Object, e As PaintEventArgs) Handles Panel8.Paint
+    Private Sub Button6_Click_2(sender As Object, e As EventArgs) Handles Button6.Click
+        If ListViewRT.Items.Count = 0 Then
+            MessageBox.Show("筛选结果不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
 
+        Using sfd As New SaveFileDialog()
+            sfd.Title = "保存为压缩包"
+            sfd.Filter = "ZIP 压缩包 (*.zip)|*.zip"
+            sfd.FileName = "筛选结果_" & DateTime.Now.ToString("yyyyMMddHHmmss") & ".zip"
+            If sfd.ShowDialog() = DialogResult.OK Then
+                Dim zipPath As String = sfd.FileName
+                Dim tempDir As String = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString())
+                Directory.CreateDirectory(tempDir)
+                Try
+                    'optChange("压缩正在进行，请稍候...", Color.LemonChiffon, 1)
+                    ' 复制所有文件到临时目录
+                    For Each item As ListViewItem In ListViewRT.Items
+                        Dim fileName As String = item.SubItems(2).Text
+                        Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName)
+                        Dim destPath As String = Path.Combine(tempDir, fileName)
+                        If File.Exists(sourcePath) Then
+                            File.Copy(sourcePath, destPath, True)
+                        End If
+                    Next
+                    ' 压缩临时目录
+                    If File.Exists(zipPath) Then File.Delete(zipPath)
+                    ZipFile.CreateFromDirectory(tempDir, zipPath, Compression.CompressionLevel.Optimal, False)
+                    'MessageBox.Show("压缩包已保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    If MessageBox.Show("压缩包保存成功。点击按钮打开文件", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                        Process.Start(zipPath)
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("压缩失败：" & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Finally
+                    ' 清理临时目录
+                    Try
+                        Directory.Delete(tempDir, True)
+                    Catch
+                    End Try
+                End Try
+            End If
+        End Using
     End Sub
 
     '同步宽高数值

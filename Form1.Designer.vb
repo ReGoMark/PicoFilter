@@ -144,6 +144,7 @@ Partial Class Form1
         Me.rbID = New System.Windows.Forms.RadioButton()
         Me.deskButton = New System.Windows.Forms.Button()
         Me.videoButton = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
@@ -1005,19 +1006,19 @@ Partial Class Form1
         Me.xlsxButton.BackColor = System.Drawing.Color.White
         Me.xlsxButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.xlsxButton.CausesValidation = False
-        Me.xlsxButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen
+        Me.xlsxButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
         Me.xlsxButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.xlsxButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.xlsxButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.xlsxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.xlsxButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.xlsxButton.ForeColor = System.Drawing.Color.DarkGreen
+        Me.xlsxButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.xlsxButton.Image = CType(resources.GetObject("xlsxButton.Image"), System.Drawing.Image)
         Me.xlsxButton.Location = New System.Drawing.Point(613, 9)
         Me.xlsxButton.Name = "xlsxButton"
-        Me.xlsxButton.Size = New System.Drawing.Size(153, 26)
+        Me.xlsxButton.Size = New System.Drawing.Size(123, 26)
         Me.xlsxButton.TabIndex = 6
-        Me.xlsxButton.Text = "导出数据为表格"
+        Me.xlsxButton.Text = "导出为表格"
         Me.xlsxButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.xlsxButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.xlsxButton, "保存筛选页的数据和详细信息为xlsx文件。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "xlsx 格式是Microsoft Office Excel 的表格文档格式。")
@@ -1240,7 +1241,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox13)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(10, 103)
+        Me.Panel3.Location = New System.Drawing.Point(2, 103)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(236, 155)
         Me.Panel3.TabIndex = 44
@@ -1379,7 +1380,7 @@ Partial Class Form1
         '
         Me.PictureBox6.BackColor = System.Drawing.Color.White
         Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
-        Me.PictureBox6.Location = New System.Drawing.Point(203, 92)
+        Me.PictureBox6.Location = New System.Drawing.Point(200, 92)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(18, 18)
         Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -1391,7 +1392,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-835, 177)
+        Me.Label7.Location = New System.Drawing.Point(-843, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1969,12 +1970,35 @@ Partial Class Form1
         Me.videoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.videoButton.Location = New System.Drawing.Point(103, 9)
         Me.videoButton.Name = "videoButton"
-        Me.videoButton.Size = New System.Drawing.Size(103, 26)
+        Me.videoButton.Size = New System.Drawing.Size(174, 26)
         Me.videoButton.TabIndex = 73
-        Me.videoButton.Text = "说明文档"
+        Me.videoButton.Text = "查看联机说明文档"
         Me.videoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.videoButton, "单击此处查看联机说明文档。")
         Me.videoButton.UseVisualStyleBackColor = False
+        '
+        'Button6
+        '
+        Me.Button6.BackColor = System.Drawing.Color.White
+        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button6.CausesValidation = False
+        Me.Button6.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button6.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.Button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button6.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
+        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button6.Location = New System.Drawing.Point(742, 9)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(133, 26)
+        Me.Button6.TabIndex = 91
+        Me.Button6.Text = "导出为压缩包"
+        Me.Button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button6, "保存筛选结果为压缩包格式。")
+        Me.Button6.UseVisualStyleBackColor = False
         '
         'PictureBox7
         '
@@ -2077,7 +2101,7 @@ Partial Class Form1
         Me.Button10.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button10.BackColor = System.Drawing.Color.GhostWhite
         Me.Button10.CausesValidation = False
-        Me.Button10.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button10.FlatAppearance.BorderColor = System.Drawing.Color.Lavender
         Me.Button10.FlatAppearance.BorderSize = 0
         Me.Button10.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.Button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
@@ -2099,7 +2123,7 @@ Partial Class Form1
         Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button7.BackColor = System.Drawing.Color.GhostWhite
         Me.Button7.CausesValidation = False
-        Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.Lavender
         Me.Button7.FlatAppearance.BorderSize = 0
         Me.Button7.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.Button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
@@ -2121,7 +2145,7 @@ Partial Class Form1
         Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button8.BackColor = System.Drawing.Color.GhostWhite
         Me.Button8.CausesValidation = False
-        Me.Button8.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button8.FlatAppearance.BorderColor = System.Drawing.Color.Lavender
         Me.Button8.FlatAppearance.BorderSize = 0
         Me.Button8.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.Button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
@@ -2296,7 +2320,7 @@ Partial Class Form1
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(75, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 4
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(1024, 80)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 48
@@ -2393,6 +2417,7 @@ Partial Class Form1
         '
         'MetroTabPage3
         '
+        Me.MetroTabPage3.Controls.Add(Me.Button6)
         Me.MetroTabPage3.Controls.Add(Me.deskButton)
         Me.MetroTabPage3.Controls.Add(Me.PictureBox5)
         Me.MetroTabPage3.Controls.Add(Me.PictureBox4)
@@ -2495,7 +2520,7 @@ Partial Class Form1
         Me.Button16.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button16.BackColor = System.Drawing.Color.GhostWhite
         Me.Button16.CausesValidation = False
-        Me.Button16.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button16.FlatAppearance.BorderColor = System.Drawing.Color.Lavender
         Me.Button16.FlatAppearance.BorderSize = 0
         Me.Button16.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.Button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
@@ -2890,4 +2915,5 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents PictureBox14 As PictureBox
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button6 As Button
 End Class
