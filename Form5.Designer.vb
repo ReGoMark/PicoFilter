@@ -30,6 +30,10 @@ Partial Class Form5
         Me.ProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
+        Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -37,17 +41,19 @@ Partial Class Form5
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.sltLabel0 = New System.Windows.Forms.Label()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
+        Me.sltLabel0 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
+        Me.ContextMenuStrip3.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -144,6 +150,7 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TreeView1.BackColor = System.Drawing.Color.White
         Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TreeView1.ContextMenuStrip = Me.ContextMenuStrip3
         Me.TreeView1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.TreeView1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.TreeView1.FullRowSelect = True
@@ -155,6 +162,43 @@ Partial Class Form5
         Me.TreeView1.SelectedImageIndex = 1
         Me.TreeView1.Size = New System.Drawing.Size(330, 355)
         Me.TreeView1.TabIndex = 37
+        '
+        'ContextMenuStrip3
+        '
+        Me.ContextMenuStrip3.BackColor = System.Drawing.Color.White
+        Me.ContextMenuStrip3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.ContextMenuStrip3.ImageScalingSize = New System.Drawing.Size(26, 26)
+        Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem17, Me.ToolStripSeparator3, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1})
+        Me.ContextMenuStrip3.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.ContextMenuStrip3.Size = New System.Drawing.Size(188, 82)
+        '
+        'ToolStripMenuItem17
+        '
+        Me.ToolStripMenuItem17.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.ToolStripMenuItem17.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.ToolStripMenuItem17.Image = CType(resources.GetObject("ToolStripMenuItem17.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem17.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem17.Name = "ToolStripMenuItem17"
+        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(187, 24)
+        Me.ToolStripMenuItem17.Text = "跳转(&D)"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(182, 6)
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStripMenuItem2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.ToolStripMenuItem2.Image = CType(resources.GetObject("ToolStripMenuItem2.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(187, 24)
+        Me.ToolStripMenuItem2.Text = "展开全部节点(&X)"
         '
         'ImageList1
         '
@@ -272,20 +316,22 @@ Partial Class Form5
         Me.Panel2.Size = New System.Drawing.Size(329, 428)
         Me.Panel2.TabIndex = 58
         '
-        'sltLabel0
+        'TableLayoutPanel1
         '
-        Me.sltLabel0.AutoEllipsis = True
-        Me.sltLabel0.BackColor = System.Drawing.Color.GhostWhite
-        Me.sltLabel0.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.sltLabel0.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.sltLabel0.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.sltLabel0.ImageIndex = 0
-        Me.sltLabel0.Location = New System.Drawing.Point(34, 0)
-        Me.sltLabel0.Name = "sltLabel0"
-        Me.sltLabel0.Size = New System.Drawing.Size(292, 38)
-        Me.sltLabel0.TabIndex = 38
-        Me.sltLabel0.Text = " 当前"
-        Me.sltLabel0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.TableLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.GhostWhite
+        Me.TableLayoutPanel1.ColumnCount = 2
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.sltLabel0, 1, 0)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 390)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 1
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 38)
+        Me.TableLayoutPanel1.TabIndex = 41
         '
         'Label1
         '
@@ -308,6 +354,21 @@ Partial Class Form5
         Me.ImageList3.Images.SetKeyName(0, "unfolder.ico")
         Me.ImageList3.Images.SetKeyName(1, "folder.ico")
         Me.ImageList3.Images.SetKeyName(2, "images.ico")
+        '
+        'sltLabel0
+        '
+        Me.sltLabel0.AutoEllipsis = True
+        Me.sltLabel0.BackColor = System.Drawing.Color.GhostWhite
+        Me.sltLabel0.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.sltLabel0.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.sltLabel0.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.sltLabel0.ImageIndex = 0
+        Me.sltLabel0.Location = New System.Drawing.Point(34, 0)
+        Me.sltLabel0.Name = "sltLabel0"
+        Me.sltLabel0.Size = New System.Drawing.Size(292, 38)
+        Me.sltLabel0.TabIndex = 38
+        Me.sltLabel0.Text = " 当前"
+        Me.sltLabel0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Button3
         '
@@ -348,22 +409,15 @@ Partial Class Form5
         Me.Panel3.Size = New System.Drawing.Size(428, 514)
         Me.Panel3.TabIndex = 61
         '
-        'TableLayoutPanel1
+        'ToolStripMenuItem1
         '
-        Me.TableLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.GhostWhite
-        Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.sltLabel0, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 390)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 38)
-        Me.TableLayoutPanel1.TabIndex = 41
+        Me.ToolStripMenuItem1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.ToolStripMenuItem1.Image = CType(resources.GetObject("ToolStripMenuItem1.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(187, 24)
+        Me.ToolStripMenuItem1.Text = "折叠全部节点(&E)"
         '
         'Form5
         '
@@ -381,9 +435,10 @@ Partial Class Form5
         Me.Text = "概览"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.ContextMenuStrip3.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -408,4 +463,9 @@ Partial Class Form5
     Friend WithEvents ImageList2 As ImageList
     Friend WithEvents ImageList3 As ImageList
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents ContextMenuStrip3 As ContextMenuStrip
+    Friend WithEvents ToolStripMenuItem17 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
 End Class

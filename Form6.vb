@@ -26,7 +26,10 @@ Public Class Form6
         toolTip.ToolTipIcon = ToolTipIcon.Info
         toolTip.ToolTipTitle = "可用格式"
         toolTip.SetToolTip(ComboBox1, "{name} - 原文件名(xxxx)" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)" & vbCrLf & "{season} - 季(春/夏/秋/冬)")
+        ContextMenuStrip1.Renderer = New ModernMenuRenderer()
+        ContextMenuStrip3.Renderer = New ModernMenuRenderer()
     End Sub
+
     Private Sub bksbutton_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
         If ListViewPre.SelectedItems.Count > 0 Then '确保 ListView2 中有选中的项
             Dim result As DialogResult = MessageBox.Show("确定要移除选定项吗？", "确认移除", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -585,4 +588,149 @@ Public Class Form6
     Private Sub Form6_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         Me.MinimumSize = New Size(371, 582)
     End Sub
+
+    Private Sub ToolStripMenuItem17_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem17.Click
+        If ListViewPre.SelectedItems.Count = 1 Then
+            Dim selectedItem As ListViewItem = ListViewPre.SelectedItems(0)
+            Dim fileName As String = selectedItem.SubItems(1).Text '获取选中的文件名
+            Dim folderPath As String = Publicpath '文件夹路径
+            TextBox1.Text = Publicpath
+            Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
+            Console.WriteLine("打开文件：" & filePath)
+            Try
+                Process.Start(filePath) ' 使用默认程序打开文件
+            Catch ex As Exception
+                MessageBox.Show("无法打开。" & vbCrLf & ex.Message, "失败", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Sub 移除选中项DToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 移除选中项DToolStripMenuItem.Click
+        If ListViewPre.SelectedItems.Count > 0 Then '确保 ListView2 中有选中的项
+            Dim result As DialogResult = MessageBox.Show("确定要移除选定项吗？", "确认移除", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+            If result = DialogResult.Yes Then
+                '从 ListView2 中删除选中的项
+                Dim index As Integer = ListViewPre.SelectedItems(0).Index
+                For Each selectedItem As ListViewItem In ListViewPre.SelectedItems
+                    ListViewPre.Items.Remove(selectedItem)
+                Next
+
+                If ListViewPre.Items.Count > 0 Then
+                    If index < ListViewPre.Items.Count Then
+                        ListViewPre.Items(index).Selected = True
+                        ListViewPre.Items(index).Focused = True
+                    Else
+                        ListViewPre.Items(ListViewPre.Items.Count - 1).Selected = True
+                        ListViewPre.Items(ListViewPre.Items.Count - 1).Focused = True
+                    End If
+                End If
+
+                ' 重新排序动态序号
+                UpdateDynamicIndex()
+            End If
+        Else
+            MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem14_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem14.Click
+        ' 如果列表内存在项目，点击后全部选中
+        If ListViewPre.Items.Count > 0 Then
+            For Each item As ListViewItem In ListViewPre.Items
+                item.Selected = True
+            Next
+        End If
+    End Sub
+    ' 在 ListView0
+    Private Sub ListView0_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListViewPre.SelectedIndexChanged
+        If ListViewPre.SelectedItems.Count = 1 Then
+            ListViewPre.ContextMenuStrip = ContextMenuStrip3
+        Else
+            ListViewPre.ContextMenuStrip = ContextMenuStrip1
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        If ListViewPre.SelectedItems.Count > 0 Then '确保 ListView2 中有选中的项
+            Dim result As DialogResult = MessageBox.Show("确定要移除选定项吗？", "确认移除", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+            If result = DialogResult.Yes Then
+                '从 ListView2 中删除选中的项
+                Dim index As Integer = ListViewPre.SelectedItems(0).Index
+                For Each selectedItem As ListViewItem In ListViewPre.SelectedItems
+                    ListViewPre.Items.Remove(selectedItem)
+                Next
+
+                If ListViewPre.Items.Count > 0 Then
+                    If index < ListViewPre.Items.Count Then
+                        ListViewPre.Items(index).Selected = True
+                        ListViewPre.Items(index).Focused = True
+                    Else
+                        ListViewPre.Items(ListViewPre.Items.Count - 1).Selected = True
+                        ListViewPre.Items(ListViewPre.Items.Count - 1).Focused = True
+                    End If
+                End If
+
+                ' 重新排序动态序号
+                UpdateDynamicIndex()
+            End If
+        Else
+            MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+    ' 自定义现代风格渲染器
+    Public Class ModernMenuRenderer
+        Inherits ToolStripProfessionalRenderer
+
+        Public Sub New()
+            MyBase.New(New ModernColorTable())
+        End Sub
+
+        ' 新增：自定义左侧图标区域渐变色
+        Protected Overrides Sub OnRenderImageMargin(e As ToolStripRenderEventArgs)
+            Dim marginRect As Rectangle = e.AffectedBounds
+            ' 你可以自定义渐变色，这里以蓝紫渐变为例
+            Using brush As New Drawing2D.LinearGradientBrush(
+                marginRect,
+                Color.Lavender, ' 渐变起始色
+                Color.White, ' 渐变结束色
+                Drawing2D.LinearGradientMode.Horizontal)
+                e.Graphics.FillRectangle(brush, marginRect)
+            End Using
+        End Sub
+
+        Protected Overrides Sub OnRenderSeparator(e As ToolStripSeparatorRenderEventArgs)
+            Dim g = e.Graphics
+            Dim bounds = e.Item.ContentRectangle
+            Dim y = bounds.Top + bounds.Height \ 2
+            Using pen As New Pen(Color.Lavender, 1)
+                g.DrawLine(pen, bounds.Left + 25, y, bounds.Right - 4, y)
+            End Using
+        End Sub
+
+    End Class
+
+    ' 自定义颜色表
+    Public Class ModernColorTable
+        Inherits ProfessionalColorTable
+
+        Public Overrides ReadOnly Property MenuItemSelected As Color
+            Get
+                Return Color.Lavender
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property MenuItemBorder As Color
+            Get
+                Return Color.FromArgb(180, 180, 220)
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property MenuBorder As Color
+            Get
+                Return Color.FromArgb(180, 180, 220)
+            End Get
+        End Property
+    End Class
 End Class

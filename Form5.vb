@@ -15,6 +15,7 @@ Public Class Form5
             Me.CenterToScreen()
         End If
         TreeView1.AllowDrop = True
+        ContextMenuStrip3.Renderer = New ModernMenuRenderer()
     End Sub
 
     ' 加载 TreeView1，显示文件夹和图像文件
@@ -351,5 +352,102 @@ Public Class Form5
 
     Private Sub Form5_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         Me.MinimumSize = New Size(371, 582) ' 设置最小尺寸
+    End Sub
+
+    Private Sub ToolStripMenuItem17_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem17.Click
+        Dim folderPath As String = TryCast(Button2.Tag, String)
+
+        If Not String.IsNullOrEmpty(folderPath) AndAlso IO.Directory.Exists(folderPath) Then
+            Form1.openText.Text = folderPath
+            Form1.加载图片(folderPath)
+            ' 重新绘制TreeView，只显示当前目录
+            toForm1Path = folderPath
+            LoadTreeView(folderPath)
+        End If
+    End Sub
+    ' 自定义现代风格渲染器
+    Public Class ModernMenuRenderer
+        Inherits ToolStripProfessionalRenderer
+
+        Public Sub New()
+            MyBase.New(New ModernColorTable())
+        End Sub
+
+        ' 新增：自定义左侧图标区域渐变色
+        Protected Overrides Sub OnRenderImageMargin(e As ToolStripRenderEventArgs)
+            Dim marginRect As Rectangle = e.AffectedBounds
+            ' 你可以自定义渐变色，这里以蓝紫渐变为例
+            Using brush As New Drawing2D.LinearGradientBrush(
+                marginRect,
+                Color.Lavender, ' 渐变起始色
+                Color.White, ' 渐变结束色
+                Drawing2D.LinearGradientMode.Horizontal)
+                e.Graphics.FillRectangle(brush, marginRect)
+            End Using
+        End Sub
+
+        Protected Overrides Sub OnRenderSeparator(e As ToolStripSeparatorRenderEventArgs)
+            Dim g = e.Graphics
+            Dim bounds = e.Item.ContentRectangle
+            Dim y = bounds.Top + bounds.Height \ 2
+            Using pen As New Pen(Color.Lavender, 1)
+                g.DrawLine(pen, bounds.Left + 25, y, bounds.Right - 4, y)
+            End Using
+        End Sub
+
+    End Class
+
+    ' 自定义颜色表
+    Public Class ModernColorTable
+        Inherits ProfessionalColorTable
+
+        Public Overrides ReadOnly Property MenuItemSelected As Color
+            Get
+                Return Color.Lavender
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property MenuItemBorder As Color
+            Get
+                Return Color.FromArgb(180, 180, 220)
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property MenuBorder As Color
+            Get
+                Return Color.FromArgb(180, 180, 220)
+            End Get
+        End Property
+
+    End Class
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        If isExpanded Then
+            ' 如果已经展开，则折叠所有节点
+            TreeView1.CollapseAll()
+            Button5.Text = "展开全部节点"
+        Else
+            ' 如果是折叠状态，则展开所有节点
+            TreeView1.ExpandAll()
+            Button5.Text = "折叠全部节点"
+        End If
+
+        ' 切换展开状态
+        isExpanded = Not isExpanded
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        If isExpanded Then
+            ' 如果已经展开，则折叠所有节点
+            TreeView1.CollapseAll()
+            Button5.Text = "展开全部节点"
+        Else
+            ' 如果是折叠状态，则展开所有节点
+            TreeView1.ExpandAll()
+            Button5.Text = "折叠全部节点"
+        End If
+
+        ' 切换展开状态
+        isExpanded = Not isExpanded
     End Sub
 End Class

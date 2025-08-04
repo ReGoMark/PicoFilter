@@ -475,7 +475,7 @@ Public Class Form1
         ' 检查分辨率是否小于指定值
         If screenWidth < 1066 OrElse screenHeight < 630 Then
             MessageBox.Show("检测到当前监视器分辨率低于 1066x630，程序布局可能无法正常显示。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            optChange("警告：当前监视器分辨率过低。", Color.LemonChiffon, 4)
+            optChange("警告：监视器分辨率低于阈值。", Color.LemonChiffon, 4)
         End If
         'If currentUserName = "ReGoMark" Then
         '    qrButton.Visible = True
@@ -2363,7 +2363,7 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem16_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem16.Click
-        If ListViewLT.SelectedItems.Count > 0 Then
+        If ListViewLT.SelectedItems.Count = 1 Then
             Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
             Dim fileName As String = selectedItem.SubItems(2).Text '获取文件名
             Dim folderPath As String = openText.Text.Trim() '获取文件夹路径

@@ -27,6 +27,8 @@ Public Class Form8
         InitializeControls()
         MetroProgressBar1.Value = False
         EnableListViewDoubleBuffering()
+        ContextMenuStrip1.Renderer = New ModernMenuRenderer()
+        ContextMenuStrip3.Renderer = New ModernMenuRenderer()
     End Sub
 
     ' 控件初始化
@@ -398,10 +400,11 @@ Public Class Form8
             MessageBox.Show("请选择要删除的项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
         End If
-
-        If MessageBox.Show("确定要移除选定项吗？", "确认移除",
+        If ListView1.SelectedItems.Count > 0 Then
+            If MessageBox.Show("确定要移除选定项吗？", "确认移除",
                           MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-            RemoveSelectedItems()
+                RemoveSelectedItems()
+            End If
         End If
     End Sub
 
@@ -577,4 +580,116 @@ Public Class Form8
     Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
 
     End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        If ListView1.SelectedItems.Count = 0 Then
+            MessageBox.Show("请选择要删除的项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+        If ListView1.SelectedItems.Count > 0 Then
+            If MessageBox.Show("确定要移除选定项吗？", "确认移除",
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                RemoveSelectedItems()
+            End If
+        End If
+    End Sub
+
+    Private Sub 移除选中项DToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 移除选中项DToolStripMenuItem.Click
+        If ListView1.SelectedItems.Count = 0 Then
+            MessageBox.Show("请选择要删除的项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+        If ListView1.SelectedItems.Count > 0 Then
+            If MessageBox.Show("确定要移除选定项吗？", "确认移除",
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                RemoveSelectedItems()
+            End If
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem14_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem14.Click
+        If ListView1.Items.Count > 0 Then
+            For Each item As ListViewItem In ListView1.Items
+                item.Selected = True
+            Next
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem17_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem17.Click
+        If ListView1.SelectedItems.Count > 0 Then
+            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+            Dim filePath As String = selectedItem.Tag.ToString()
+            If File.Exists(filePath) Then
+                Try
+                    Process.Start(filePath)
+                Catch ex As Exception
+                    MessageBox.Show("无法打开文件。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Else
+                MessageBox.Show("文件不存在: " & filePath, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+    End Sub
+
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+        If ListView1.SelectedItems.Count = 1 Then
+            ListView1.ContextMenuStrip = ContextMenuStrip3
+        Else
+            ListView1.ContextMenuStrip = ContextMenuStrip1
+        End If
+    End Sub
+    ' 自定义现代风格渲染器
+    Public Class ModernMenuRenderer
+        Inherits ToolStripProfessionalRenderer
+
+        Public Sub New()
+            MyBase.New(New ModernColorTable())
+        End Sub
+
+        ' 新增：自定义左侧图标区域渐变色
+        Protected Overrides Sub OnRenderImageMargin(e As ToolStripRenderEventArgs)
+            Dim marginRect As Rectangle = e.AffectedBounds
+            ' 你可以自定义渐变色，这里以蓝紫渐变为例
+            Using brush As New Drawing2D.LinearGradientBrush(
+                marginRect,
+                Color.Lavender, ' 渐变起始色
+                Color.White, ' 渐变结束色
+                Drawing2D.LinearGradientMode.Horizontal)
+                e.Graphics.FillRectangle(brush, marginRect)
+            End Using
+        End Sub
+
+        Protected Overrides Sub OnRenderSeparator(e As ToolStripSeparatorRenderEventArgs)
+            Dim g = e.Graphics
+            Dim bounds = e.Item.ContentRectangle
+            Dim y = bounds.Top + bounds.Height \ 2
+            Using pen As New Pen(Color.Lavender, 1)
+                g.DrawLine(pen, bounds.Left + 25, y, bounds.Right - 4, y)
+            End Using
+        End Sub
+
+    End Class
+
+    ' 自定义颜色表
+    Public Class ModernColorTable
+        Inherits ProfessionalColorTable
+
+        Public Overrides ReadOnly Property MenuItemSelected As Color
+            Get
+                Return Color.Lavender
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property MenuItemBorder As Color
+            Get
+                Return Color.FromArgb(180, 180, 220)
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property MenuBorder As Color
+            Get
+                Return Color.FromArgb(180, 180, 220)
+            End Get
+        End Property
+    End Class
 End Class

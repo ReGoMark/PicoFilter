@@ -208,7 +208,7 @@ Partial Class Form2
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(318, 52)
         Me.Label8.TabIndex = 54
-        Me.Label8.Text = "作者 @ReGoMark" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "问题反馈请联系 regmvks@outlook.com"
+        Me.Label8.Text = "作者 @ReGoMark" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "问题反馈联系 regmvks@outlook.com"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.Label8, "单击此处发送电子邮件。")
         '
@@ -222,7 +222,7 @@ Partial Class Form2
         Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Items.AddRange(New Object() {"PicoFilt 图像筛选 - 2.0.0", "PicoSplit 文件名切割 - 0.1.0", "PicoName 批量重命名 - 1.0.2", "PicoConvert 格式转换 - 0.8.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 默认显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 用于表格导出 - 7.3.2", "MetroModernUI 标签页控件 - 1.4.0", ".NET Framework 运行库 - 4.7.2"})
+        Me.ListBox1.Items.AddRange(New Object() {"PicoFilt 图像筛选 - 2.0.4", "PicoSplit 文件名切割 - 0.1.0", "PicoName 批量重命名 - 1.2.0", "PicoConvert 格式转换 - 1.2.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 默认显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 用于表格导出 - 7.3.2", "MetroModernUI 标签页控件 - 1.4.0", ".NET Framework 运行库 - 4.7.2"})
         Me.ListBox1.Location = New System.Drawing.Point(3, 32)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(315, 180)
