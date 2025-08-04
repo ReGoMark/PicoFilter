@@ -688,7 +688,7 @@ Partial Class Form3
         Me.topButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.topButton.Appearance = System.Windows.Forms.Appearance.Button
-        Me.topButton.BackColor = System.Drawing.Color.White
+        Me.topButton.BackColor = System.Drawing.Color.Transparent
         Me.topButton.CausesValidation = False
         Me.topButton.Checked = True
         Me.topButton.CheckState = System.Windows.Forms.CheckState.Checked

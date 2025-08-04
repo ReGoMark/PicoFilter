@@ -1,49 +1,77 @@
-﻿'Imports System.Diagnostics
+﻿'Imports System.Windows.Forms
 
 'Public Class Form9
-'    Private WithEvents Timer1 As New Timer()
+'    Private WithEvents timer As New Timer()
 
 '    Private Sub Form9_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-'        ListView1.View = View.Details
-'        ListView1.Columns.Clear()
-'        ListView1.Columns.Add("窗口名", 100)
-'        ListView1.Columns.Add("窗口状态", 100)
-
-'        Timer1.Interval = 1000
-'        Timer1.Start()
+'        ' 设置定时器，每秒刷新一次
+'        timer.Interval = 1000
+'        timer.Start()
+'        EnableListViewDoubleBuffering() ' 启用双缓冲
+'        UpdateWindowStatus()
 '    End Sub
 
-'    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+'    Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
+'        UpdateWindowStatus()
+'    End Sub
+
+'    Private Sub EnableListViewDoubleBuffering()
+'        Dim prop = GetType(Control).GetProperty("DoubleBuffered", Reflection.BindingFlags.Instance Or Reflection.BindingFlags.NonPublic)
+'        If prop IsNot Nothing Then
+'            prop.SetValue(ListView1, True, Nothing)
+'        End If
+'    End Sub
+
+'    Private Sub UpdateWindowStatus()
 '        ' 记录当前选中的窗口名
-'        Dim selectedNames As New List(Of String)
-'        For Each item As ListViewItem In ListView1.SelectedItems
-'            selectedNames.Add(item.Text)
-'        Next
+'        Dim selectedName As String = Nothing
+'        If ListView1.SelectedItems.Count > 0 Then
+'            selectedName = ListView1.SelectedItems(0).Text
+'        End If
 
+'        ListView1.BeginUpdate()
 '        ListView1.Items.Clear()
-
-'        Dim forms As Form() = {Form1, Form2, Form3, Form4, Form5, Form6, Form7, Form8, Me}
-'        For Each frm As Form In forms
-'            If frm.Visible Then
-'                Dim name As String = frm.Name
-'                Dim state As String = GetWindowState(frm)
-'                Dim item As New ListViewItem({name, state})
+'        Dim toSelect As ListViewItem = Nothing
+'        For i As Integer = 1 To 9
+'            Dim formName As String = "Form" & i.ToString()
+'            Dim frm As Form = GetOpenFormByName(formName)
+'            If frm IsNot Nothing AndAlso frm IsNot Me Then
+'                Dim state As String = ""
+'                Select Case frm.WindowState
+'                    Case FormWindowState.Maximized
+'                        state = "最大化"
+'                    Case FormWindowState.Minimized
+'                        state = "最小化"
+'                    Case FormWindowState.Normal
+'                        state = "常规"
+'                End Select
+'                Dim topMost As String = If(frm.TopMost, "置顶", "未置顶")
+'                Dim item As New ListViewItem(formName)
+'                item.SubItems.Add(state)
+'                item.SubItems.Add(topMost)
 '                ListView1.Items.Add(item)
-'                If selectedNames.Contains(name) Then
-'                    item.Selected = True
+'                ' 刷新后恢复选中项
+'                If selectedName IsNot Nothing AndAlso formName = selectedName Then
+'                    toSelect = item
 '                End If
 '            End If
 '        Next
+'        If toSelect IsNot Nothing Then
+'            toSelect.Selected = True
+'            toSelect.Focused = True
+'            ListView1.EnsureVisible(toSelect.Index)
+'        End If
+'        ListView1.EndUpdate()
 '    End Sub
 
-'    Private Function GetWindowState(frm As Form) As String
-'        Select Case frm.WindowState
-'            Case FormWindowState.Maximized
-'                Return "最大化"
-'            Case FormWindowState.Minimized
-'                Return "最小化"
-'            Case Else
-'                Return "常规"
-'        End Select
+'    Private Function GetOpenFormByName(name As String) As Form
+'        For Each frm As Form In Application.OpenForms
+'            If frm.Name = name Then
+'                Return frm
+'            End If
+'        Next
+'        Return Nothing
 '    End Function
+
+'    ' 确保窗体上有一个多行TextBox，命名为TextBox1
 'End Class

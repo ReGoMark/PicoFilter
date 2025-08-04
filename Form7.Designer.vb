@@ -88,7 +88,7 @@ Partial Class Form7
         Me.MetroTabPage1.Name = "MetroTabPage1"
         Me.MetroTabPage1.Size = New System.Drawing.Size(321, 389)
         Me.MetroTabPage1.TabIndex = 0
-        Me.MetroTabPage1.Text = "依据词典   "
+        Me.MetroTabPage1.Text = "依词典拆分   "
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
         Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage1.VerticalScrollbarSize = 10

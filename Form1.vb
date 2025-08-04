@@ -190,6 +190,13 @@ Public Class Form1
         bmpLT = bmpCount
         gifLT = gifCount
         icoLT = icoCount
+
+        ' 检查是否存在子文件夹
+        Dim hasSubDir As Boolean = Directory.GetDirectories(folderPath).Length > 0
+        If hasSubDir Then
+            optChange("转到「概览」以查看子文件夹项", Color.White, 4)
+        End If
+
     End Sub
 
     Private Function 获取图片分辨率(filePath As String) As String
@@ -1680,11 +1687,11 @@ Public Class Form1
             Dim selectedCount As Integer = ListViewLT.SelectedItems.Count
             If ListViewLT.SelectedItems.Count > 1 Then
                 'sltLblLT.Text = $" 复选 {selectedCount} 项"
-                Label1.Text = $" 复选 {selectedCount} 项"
+                Label1.Text = $"复选 {selectedCount} 项"
                 ListViewLT.ContextMenuStrip = ContextMenuStrip2
             Else
                 'sltLblLT.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}｛vbCrLf｝{selectedItem.SubItems(3).Text} PX  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
-                Label1.Text = $" [{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} 像素  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
+                Label1.Text = $"[{selectedItem.SubItems(0).Text}]  {selectedItem.SubItems(2).Text}  |  {selectedItem.SubItems(3).Text} 像素  |  {selectedItem.SubItems(5).Text}  |  {selectedItem.SubItems(6).Text}"
                 ListViewLT.ContextMenuStrip = ContextMenuStrip1
             End If
         Else
@@ -2499,6 +2506,10 @@ Public Class Form1
         Else
             Form9.Show()
         End If
+    End Sub
+
+    Private Sub Panel8_Paint(sender As Object, e As PaintEventArgs) Handles Panel8.Paint
+
     End Sub
 
     '同步宽高数值

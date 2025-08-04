@@ -39,6 +39,7 @@ Partial Class Form8
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.colorButton = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -48,7 +49,6 @@ Partial Class Form8
         Me.rbJPG = New System.Windows.Forms.RadioButton()
         Me.rbBMP = New System.Windows.Forms.RadioButton()
         Me.MetroProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -286,6 +286,26 @@ Partial Class Form8
         Me.Panel1.Size = New System.Drawing.Size(329, 396)
         Me.Panel1.TabIndex = 82
         '
+        'Button3
+        '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.BackColor = System.Drawing.Color.White
+        Me.Button3.CausesValidation = False
+        Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button3.Location = New System.Drawing.Point(264, 328)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(65, 26)
+        Me.Button3.TabIndex = 81
+        Me.Button3.Text = "取消"
+        Me.Button3.UseVisualStyleBackColor = False
+        Me.Button3.Visible = False
+        '
         'Panel5
         '
         Me.Panel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
@@ -455,26 +475,6 @@ Partial Class Form8
         Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroProgressBar1.TabIndex = 90
         Me.MetroProgressBar1.Visible = False
-        '
-        'Button3
-        '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.BackColor = System.Drawing.Color.White
-        Me.Button3.CausesValidation = False
-        Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.Location = New System.Drawing.Point(264, 328)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(65, 26)
-        Me.Button3.TabIndex = 81
-        Me.Button3.Text = "取消"
-        Me.Button3.UseVisualStyleBackColor = False
-        Me.Button3.Visible = False
         '
         'Panel3
         '

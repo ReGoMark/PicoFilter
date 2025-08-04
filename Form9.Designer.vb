@@ -31,6 +31,8 @@ Partial Class Form9
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Panel1.SuspendLayout()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
@@ -103,6 +105,7 @@ Partial Class Form9
         '
         'MetroTabPage1
         '
+        Me.MetroTabPage1.Controls.Add(Me.TextBox1)
         Me.MetroTabPage1.Controls.Add(Me.ListView1)
         Me.MetroTabPage1.HorizontalScrollbarBarColor = True
         Me.MetroTabPage1.HorizontalScrollbarHighlightOnWheel = False
@@ -120,7 +123,7 @@ Partial Class Form9
         '
         Me.ListView1.AutoArrange = False
         Me.ListView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.ListView1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListView1.FullRowSelect = True
         Me.ListView1.HideSelection = False
@@ -138,8 +141,8 @@ Partial Class Form9
         '
         'ColumnHeader2
         '
-        Me.ColumnHeader2.Text = "当前状态"
-        Me.ColumnHeader2.Width = 106
+        Me.ColumnHeader2.Text = "状态"
+        Me.ColumnHeader2.Width = 76
         '
         'MetroTabPage2
         '
@@ -154,6 +157,18 @@ Partial Class Form9
         Me.MetroTabPage2.VerticalScrollbarBarColor = True
         Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.VerticalScrollbarSize = 10
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(11, 347)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(299, 25)
+        Me.TextBox1.TabIndex = 3
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "行为"
+        Me.ColumnHeader3.Width = 78
         '
         'Form9
         '
@@ -172,6 +187,7 @@ Partial Class Form9
         Me.Panel1.ResumeLayout(False)
         Me.MetroTabControl1.ResumeLayout(False)
         Me.MetroTabPage1.ResumeLayout(False)
+        Me.MetroTabPage1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -185,4 +201,6 @@ Partial Class Form9
     Friend WithEvents ListView1 As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents ColumnHeader3 As ColumnHeader
 End Class
