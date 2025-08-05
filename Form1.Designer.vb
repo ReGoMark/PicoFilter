@@ -193,6 +193,7 @@ Partial Class Form1
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.PictureBox10 = New System.Windows.Forms.PictureBox()
+        Me.MetroProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1170,11 +1171,13 @@ Partial Class Form1
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.Color.White
+        Me.SplitContainer1.Panel1.Controls.Add(Me.ProgressBar1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ListViewLT)
         '
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.Color.White
+        Me.SplitContainer1.Panel2.Controls.Add(Me.MetroProgressBar1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel3)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label7)
         Me.SplitContainer1.Panel2.Controls.Add(Me.ListViewRT)
@@ -1243,7 +1246,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox13)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(-4, 103)
+        Me.Panel3.Location = New System.Drawing.Point(-8, 103)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(264, 155)
         Me.Panel3.TabIndex = 44
@@ -1429,7 +1432,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-849, 177)
+        Me.Label7.Location = New System.Drawing.Point(-853, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -2063,6 +2066,7 @@ Partial Class Form1
         Me.ImageList5.Images.SetKeyName(2, "tips_search_black.ico")
         Me.ImageList5.Images.SetKeyName(3, "tips_star_black.ico")
         Me.ImageList5.Images.SetKeyName(4, "tips_warn_black.ico")
+        Me.ImageList5.Images.SetKeyName(5, "tips_output_black.ico")
         '
         'PictureBox12
         '
@@ -2187,7 +2191,6 @@ Partial Class Form1
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.CausesValidation = False
-        Me.Panel1.Controls.Add(Me.ProgressBar1)
         Me.Panel1.Controls.Add(Me.openText)
         Me.Panel1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Panel1.Location = New System.Drawing.Point(109, 9)
@@ -2199,9 +2202,9 @@ Partial Class Form1
         '
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(-1, 19)
+        Me.ProgressBar1.Location = New System.Drawing.Point(-5, -4)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(436, 10)
+        Me.ProgressBar1.Size = New System.Drawing.Size(509, 10)
         Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
         Me.ProgressBar1.TabIndex = 17
         Me.ProgressBar1.Visible = False
@@ -2322,7 +2325,7 @@ Partial Class Form1
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(75, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 5
+        Me.MetroTabControl1.SelectedIndex = 2
         Me.MetroTabControl1.Size = New System.Drawing.Size(1024, 80)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 48
@@ -2674,6 +2677,17 @@ Partial Class Form1
         Me.PictureBox10.TabIndex = 54
         Me.PictureBox10.TabStop = False
         '
+        'MetroProgressBar1
+        '
+        Me.MetroProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MetroProgressBar1.Location = New System.Drawing.Point(-8, -4)
+        Me.MetroProgressBar1.Name = "MetroProgressBar1"
+        Me.MetroProgressBar1.Size = New System.Drawing.Size(518, 10)
+        Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
+        Me.MetroProgressBar1.TabIndex = 18
+        Me.MetroProgressBar1.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -2916,4 +2930,5 @@ Partial Class Form1
     Friend WithEvents PictureBox14 As PictureBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Button6 As Button
+    Friend WithEvents MetroProgressBar1 As MetroFramework.Controls.MetroProgressBar
 End Class

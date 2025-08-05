@@ -34,6 +34,7 @@ Partial Class Form5
         Me.ToolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -48,7 +49,6 @@ Partial Class Form5
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -187,7 +187,7 @@ Partial Class Form5
         '
         Me.ToolStripSeparator3.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(182, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(184, 6)
         '
         'ToolStripMenuItem2
         '
@@ -199,6 +199,16 @@ Partial Class Form5
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
         Me.ToolStripMenuItem2.Size = New System.Drawing.Size(187, 24)
         Me.ToolStripMenuItem2.Text = "展开全部节点(&X)"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.ToolStripMenuItem1.Image = CType(resources.GetObject("ToolStripMenuItem1.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(187, 24)
+        Me.ToolStripMenuItem1.Text = "折叠全部节点(&E)"
         '
         'ImageList1
         '
@@ -408,16 +418,6 @@ Partial Class Form5
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(428, 514)
         Me.Panel3.TabIndex = 61
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.ToolStripMenuItem1.Image = CType(resources.GetObject("ToolStripMenuItem1.Image"), System.Drawing.Image)
-        Me.ToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(187, 24)
-        Me.ToolStripMenuItem1.Text = "折叠全部节点(&E)"
         '
         'Form5
         '

@@ -195,7 +195,7 @@ Public Class Form1
         ' 检查是否存在子文件夹
         Dim hasSubDir As Boolean = Directory.GetDirectories(folderPath).Length > 0
         If hasSubDir Then
-            optChange("转到「概览」以查看子文件夹项", Color.White, 4)
+            optChange("转到「概览」以查看子文件夹项", Color.White, 0)
         End If
 
     End Sub
@@ -322,10 +322,9 @@ Public Class Form1
                     Case ".BMP"
                         bmpCount += 1
                 End Select
-                optChange("筛选已完成", Color.White, 0)
             End If
         Next
-
+        optChange("筛选已完成", Color.White, 0)
         Dim result As New List(Of String)
         result.Add($"结果 {matchingFileCount} 项")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
@@ -798,7 +797,7 @@ Public Class Form1
                     ListViewRT.Items.Remove(selectedItem)
                 Next
 
-                optChange("选定项已移除", Color.LemonChiffon, 0)
+                optChange("选定项已移除", Color.White, 0)
 
                 If ListViewRT.Items.Count > 0 Then
                     If index < ListViewRT.Items.Count Then
@@ -824,7 +823,7 @@ Public Class Form1
         If topButton.Checked = True Then
             TopMost = True
             topButton.ImageIndex = 1
-            optChange("窗口已置顶", Color.LemonChiffon, 0)
+            optChange("窗口已置顶", Color.White, 4)
         Else
             TopMost = False
             topButton.ImageIndex = 0
@@ -1054,48 +1053,56 @@ Public Class Form1
             Dim loadedTimeStr = FormatTime(loadedTime)
             Dim result = GetFilterConditions(jpgSelected, pngSelected, gifSelected, bmpSelected, icoSelected, inreslnSelected, volreslnSelected, reslnSelected, plsreslnSelected, mnsreslnSelected)
 
-            ' 选择保存路径
             Using saveFileDialog As New SaveFileDialog
                 saveFileDialog.FileName = "筛选结果" & formattedDateTime & ".xlsx"
                 saveFileDialog.Filter = "Excel 文件 (*.xlsx)|*.xlsx"
                 saveFileDialog.Title = "导出为 Excel 文件"
-                ' 设置初始目录为当前打开的文件夹路径
                 Dim currentFolder As String = openText.Text.Trim()
                 If Directory.Exists(currentFolder) Then
                     saveFileDialog.InitialDirectory = currentFolder
                 End If
 
-                ' 确认用户选择了保存路径
                 If saveFileDialog.ShowDialog() = DialogResult.OK Then
                     Try
                         Dim filePath As String = saveFileDialog.FileName
                         Dim fileInfo As New FileInfo(filePath)
 
-                        ' 使用 EPPlus 创建 Excel 文件
+                        ' 进度条初始化
+                        MetroProgressBar1.Value = 0
+                        MetroProgressBar1.Maximum = ListViewRT.Items.Count
+                        MetroProgressBar1.Visible = True
+                        optChange("表格：正在导出，请稍候", Color.White, 5, autoHide:=False)
+
                         Using package As New ExcelPackage(fileInfo)
-                            ' 创建一个新的工作表
                             Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
-
-                            ' 添加 Label6 和 Label2 的内容在顶部
                             AddHeaderInfo(worksheet, sumLblLT.Text, sumsizestr, loadedTimeStr, sumLblRT.Text, String.Join(" ", result))
-
-                            ' 设置表头（对应 ListView2 的列，从第1行开始）
                             SetListViewHeaders(worksheet, ListViewRT)
 
-                            ' 填充 ListView2 的数据（从第2行开始）
-                            FillListViewData(worksheet, ListViewRT)
+                            ' 填充数据并更新进度条
+                            For i As Integer = 0 To ListViewRT.Items.Count - 1
+                                For j As Integer = 0 To ListViewRT.Items(i).SubItems.Count - 1
+                                    Dim cell = worksheet.Cells(i + 2, j + 1)
+                                    cell.Value = ListViewRT.Items(i).SubItems(j).Text
+                                    Dim lvItemColor As Color = ListViewRT.Items(i).BackColor
+                                    If lvItemColor = Color.Empty Then lvItemColor = ListViewRT.BackColor
+                                    cell.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
+                                    cell.Style.Fill.BackgroundColor.SetColor(lvItemColor)
+                                Next
+                                MetroProgressBar1.Value = i + 1
+                                Application.DoEvents()
+                            Next
 
-                            ' 保存 Excel 文件
                             package.Save()
                         End Using
 
-                        Dim opt = MessageBox.Show("表格已导出成功！点击按钮立即打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                        MetroProgressBar1.Visible = False
+                        optChange(opttext, optcolor, 0, True)
+                        Dim opt = MessageBox.Show("表格已导出成功！点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                         If opt = DialogResult.Yes Then
-                            ' 打开文件
                             Process.Start("explorer.exe", filePath)
                         End If
-                        'Form9.RichTextBox1.Text += consoletime & "Save Xlsx at: " & openText.Text.trim() & vbCrLf
                     Catch ex As Exception
+                        MetroProgressBar1.Visible = False
                         MessageBox.Show("表格导出时发生错误: " & ex.Message, "未完成", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -2143,7 +2150,7 @@ Public Class Form1
     'End Sub
 
     ' 更改按钮文本、背景色和图像的方法
-    Public Sub optChange(newText As String, newColor As Color, Optional newImageIndex As Integer = -1)
+    Public Sub optChange(newText As String, newColor As Color, Optional newImageIndex As Integer = -1, Optional autoHide As Boolean = True)
         optButton.Visible = True
         optButton.Text = newText
         optButton.ImageAlign = ContentAlignment.MiddleCenter
@@ -2155,7 +2162,9 @@ Public Class Form1
         End If
 
         optTimer.Stop() ' 防止重复触发
-        optTimer.Start() ' 启动定时器
+        If autoHide Then
+            optTimer.Start() ' 启动定时器
+        End If
     End Sub
 
     Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles videoButton.Click
@@ -2516,39 +2525,93 @@ Public Class Form1
         End If
 
         Using sfd As New SaveFileDialog()
-            sfd.Title = "保存为压缩包"
+            sfd.Title = "导出为 Zip 文件"
             sfd.Filter = "ZIP 压缩包 (*.zip)|*.zip"
-            sfd.FileName = "筛选结果_" & DateTime.Now.ToString("yyyyMMddHHmmss") & ".zip"
+            sfd.FileName = "压缩结果_" & DateTime.Now.ToString("yyyyMMddHHmmss") & ".zip"
+
             If sfd.ShowDialog() = DialogResult.OK Then
                 Dim zipPath As String = sfd.FileName
-                Dim tempDir As String = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString())
-                Directory.CreateDirectory(tempDir)
+                Dim totalFiles As Integer = ListViewRT.Items.Count
+                Dim currentFile As Integer = 0
+
                 Try
-                    'optChange("压缩正在进行，请稍候...", Color.LemonChiffon, 1)
-                    ' 复制所有文件到临时目录
-                    For Each item As ListViewItem In ListViewRT.Items
-                        Dim fileName As String = item.SubItems(2).Text
-                        Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName)
-                        Dim destPath As String = Path.Combine(tempDir, fileName)
-                        If File.Exists(sourcePath) Then
-                            File.Copy(sourcePath, destPath, True)
-                        End If
-                    Next
-                    ' 压缩临时目录
                     If File.Exists(zipPath) Then File.Delete(zipPath)
-                    ZipFile.CreateFromDirectory(tempDir, zipPath, Compression.CompressionLevel.Optimal, False)
-                    'MessageBox.Show("压缩包已保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    If MessageBox.Show("压缩包保存成功。点击按钮打开文件", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+
+                    ' 显示进度条
+                    MetroProgressBar1.Value = 0
+                    MetroProgressBar1.Maximum = totalFiles
+                    MetroProgressBar1.Visible = True
+                    optChange("压缩：正在生成，请稍候", Color.White, 5, autoHide:=False)
+
+                    ' 创建一个4MB的缓冲区
+                    Const BufferSize As Integer = 4 * 1024 * 1024
+
+                    Using zipStream As FileStream = New FileStream(zipPath, FileMode.Create)
+                        Using archive As New ZipArchive(zipStream, ZipArchiveMode.Create)
+                            ' 并行处理大文件
+                            Dim largeFiles = From item In ListViewRT.Items.Cast(Of ListViewItem)()
+                                             Let fileSize = New FileInfo(Path.Combine(openText.Text.Trim(), item.SubItems(2).Text)).Length
+                                             Where fileSize > BufferSize
+                                             Select item
+
+                            ' 处理大文件
+                            For Each item In largeFiles
+                                Dim fileName As String = item.SubItems(2).Text
+                                Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName)
+
+                                If File.Exists(sourcePath) Then
+                                    Dim entry = archive.CreateEntry(fileName, Compression.CompressionLevel.Fastest)
+                                    Using entryStream = entry.Open()
+                                        Using fileStream = File.OpenRead(sourcePath)
+                                            Dim buffer(BufferSize - 1) As Byte
+                                            Dim bytesRead As Integer
+
+                                            While (bytesRead = fileStream.Read(buffer, 0, buffer.Length)) > 0
+                                                entryStream.Write(buffer, 0, bytesRead)
+                                            End While
+                                        End Using
+                                    End Using
+                                End If
+
+                                currentFile += 1
+                                MetroProgressBar1.Value = currentFile
+                                'Me.Text = $"{verinfo}  |  正在压缩... {currentFile}/{totalFiles} ({CInt(currentFile / totalFiles * 100)}%)"
+                                Application.DoEvents()
+                            Next
+
+                            ' 处理小文件
+                            For Each item As ListViewItem In ListViewRT.Items
+                                Dim fileName As String = item.SubItems(2).Text
+                                Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName)
+
+                                If File.Exists(sourcePath) AndAlso Not largeFiles.Contains(item) Then
+                                    Dim entry = archive.CreateEntry(fileName, Compression.CompressionLevel.Optimal)
+                                    Using entryStream = entry.Open(), fileStream = File.OpenRead(sourcePath)
+                                        fileStream.CopyTo(entryStream, BufferSize)
+                                    End Using
+                                End If
+
+                                currentFile += 1
+                                MetroProgressBar1.Value = currentFile
+                                'Me.Text = $"{verinfo}  |  正在压缩... {currentFile}/{totalFiles} ({CInt(currentFile / totalFiles * 100)}%)"
+                                Application.DoEvents()
+                            Next
+                        End Using
+                    End Using
+
+                    ' 恢复界面
+                    MetroProgressBar1.Visible = False
+                    optChange(opttext, optcolor, 0, True)
+                    'Me.Text = verinfo
+
+                    If MessageBox.Show("压缩包保存成功。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
                         Process.Start(zipPath)
                     End If
+
                 Catch ex As Exception
+                    MetroProgressBar1.Visible = False
+                    'Me.Text = verinfo
                     MessageBox.Show("压缩失败：" & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Finally
-                    ' 清理临时目录
-                    Try
-                        Directory.Delete(tempDir, True)
-                    Catch
-                    End Try
                 End Try
             End If
         End Using

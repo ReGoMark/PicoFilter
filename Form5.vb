@@ -450,4 +450,8 @@ Public Class Form5
         ' 切换展开状态
         isExpanded = Not isExpanded
     End Sub
+
+    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
+
+    End Sub
 End Class

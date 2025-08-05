@@ -437,11 +437,11 @@ Partial Class Form8
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Enabled = False
-        Me.Label1.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label1.Location = New System.Drawing.Point(304, 9)
+        Me.Label1.Location = New System.Drawing.Point(301, 8)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(16, 18)
+        Me.Label1.Size = New System.Drawing.Size(21, 20)
         Me.Label1.TabIndex = 93
         Me.Label1.Text = "%"
         '
@@ -616,7 +616,7 @@ Partial Class Form8
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(211, 56)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(176, 28)
         '
         'ToolStripMenuItem1
         '
@@ -626,7 +626,7 @@ Partial Class Form8
         Me.ToolStripMenuItem1.Image = CType(resources.GetObject("ToolStripMenuItem1.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(210, 24)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(175, 24)
         Me.ToolStripMenuItem1.Text = "移除选中项(&R)"
         '
         'Form8
