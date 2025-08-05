@@ -1,8 +1,9 @@
 ﻿Imports System.Drawing.Text
 Imports System.IO
+Imports System.IO.Compression
+Imports System.Security.Cryptography
 Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
-Imports System.IO.Compression
 Imports OfficeOpenXml
 
 '考虑到.net支持的图片格式只有这五种，像其他图像格式如webp等，后续需要添加第三方库才有可能解决。
@@ -1071,7 +1072,7 @@ Public Class Form1
                         MetroProgressBar1.Value = 0
                         MetroProgressBar1.Maximum = ListViewRT.Items.Count
                         MetroProgressBar1.Visible = True
-                        optChange("表格：正在导出，请稍候", Color.White, 5, autoHide:=False)
+                        optChange("表格正在导出，请稍候", Color.White, 5, autoHide:=False)
 
                         Using package As New ExcelPackage(fileInfo)
                             Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
@@ -1440,7 +1441,7 @@ Public Class Form1
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles searchButton0.Click
         If searchText.Text = "" Then
-            MessageBox.Show("请输入搜索内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("请输入查找内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         Dim keyword As String = searchText.Text.Trim()
         Dim type As SearchType
@@ -1462,7 +1463,7 @@ Public Class Form1
 
     Private Sub btnSearch1_Click(sender As Object, e As EventArgs) Handles searchButton1.Click
         If searchText.Text = "" Then
-            MessageBox.Show("请输入搜索内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("请输入查找内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         Dim keyword As String = searchText.Text.Trim()
         Dim type As SearchType
@@ -2540,7 +2541,7 @@ Public Class Form1
                     MetroProgressBar1.Value = 0
                     MetroProgressBar1.Maximum = totalFiles
                     MetroProgressBar1.Visible = True
-                    optChange("压缩：正在生成，请稍候", Color.White, 5, autoHide:=False)
+                    optChange("压缩包正在生成，请稍候", Color.White, 5, autoHide:=False)
 
                     ' 创建一个4MB的缓冲区
                     Const BufferSize As Integer = 4 * 1024 * 1024
@@ -2615,6 +2616,97 @@ Public Class Form1
             End If
         End Using
     End Sub
+
+    Private Sub Button9_Click_1(sender As Object, e As EventArgs) Handles Button9.Click
+        If ListViewLT.Items.Count = 0 Then
+            MessageBox.Show("加载页内容为空。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        ' 清除原有选择
+        For Each item As ListViewItem In ListViewLT.Items
+            item.Selected = False
+        Next
+
+        ' 第一步：用文件大小和修改时间分组
+        Dim groupDict As New Dictionary(Of String, List(Of ListViewItem))()
+        For Each item As ListViewItem In ListViewLT.Items
+            Dim fileName As String = item.SubItems(2).Text
+            Dim filePath As String = Path.Combine(openText.Text.Trim(), fileName)
+            If File.Exists(filePath) Then
+                Dim fileInfo As New FileInfo(filePath)
+                Dim key As String = fileInfo.Length.ToString() & "|" & fileInfo.LastWriteTimeUtc.Ticks.ToString()
+                If groupDict.ContainsKey(key) Then
+                    groupDict(key).Add(item)
+                Else
+                    groupDict(key) = New List(Of ListViewItem) From {item}
+                End If
+            End If
+        Next
+
+        ' 进度条初始化
+        ProgressBar1.Value = 0
+        ProgressBar1.Maximum = groupDict.Values.Count
+        ProgressBar1.Visible = True
+
+        ' 第二步：仅对同组(大于1)的文件再比哈希
+        Dim hashDict As New Dictionary(Of String, List(Of ListViewItem))()
+        Dim duplicateCount As Integer = 0
+        Dim groupIndex As Integer = 0
+
+        For Each group In groupDict.Values
+            If group.Count > 1 Then
+                Dim tempHashDict As New Dictionary(Of String, List(Of ListViewItem))()
+                For Each item In group
+                    Dim fileName As String = item.SubItems(2).Text
+                    Dim filePath As String = Path.Combine(openText.Text.Trim(), fileName)
+                    Dim hash As String = GetFileMD5(filePath)
+                    If tempHashDict.ContainsKey(hash) Then
+                        tempHashDict(hash).Add(item)
+                    Else
+                        tempHashDict(hash) = New List(Of ListViewItem) From {item}
+                    End If
+                Next
+                ' 合并到总哈希字典
+                For Each pair In tempHashDict
+                    If pair.Value.Count > 1 Then
+                        If hashDict.ContainsKey(pair.Key) Then
+                            hashDict(pair.Key).AddRange(pair.Value)
+                        Else
+                            hashDict(pair.Key) = New List(Of ListViewItem)(pair.Value)
+                        End If
+                    End If
+                Next
+            End If
+            groupIndex += 1
+            ProgressBar1.Value = groupIndex
+            Application.DoEvents()
+        Next
+
+        ' 选中所有重复项
+        For Each pair In hashDict
+            For Each dupItem In pair.Value
+                dupItem.Selected = True
+            Next
+            duplicateCount += pair.Value.Count
+        Next
+        ProgressBar1.Visible = False
+        If duplicateCount > 0 Then
+            optChange("重复：结果 " & duplicateCount & " 项", Color.White, 2, True)
+        Else
+            MessageBox.Show("未检测到重复文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    ' 计算文件MD5
+    Private Function GetFileMD5(filePath As String) As String
+        Using md5 As MD5 = md5.Create()
+            Using stream As FileStream = File.OpenRead(filePath)
+                Dim hashBytes = md5.ComputeHash(stream)
+                Return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant()
+            End Using
+        End Using
+    End Function
 
     '同步宽高数值
     Private Sub Label4_DoubleClick(sender As Object, e As EventArgs) Handles Label4.DoubleClick

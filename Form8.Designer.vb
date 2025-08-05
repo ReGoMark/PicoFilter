@@ -127,11 +127,14 @@ Partial Class Form8
         Me.btnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCopy.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.btnCopy.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.btnCopy.Location = New System.Drawing.Point(297, 47)
+        Me.btnCopy.Image = CType(resources.GetObject("btnCopy.Image"), System.Drawing.Image)
+        Me.btnCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCopy.Location = New System.Drawing.Point(281, 47)
         Me.btnCopy.Name = "btnCopy"
-        Me.btnCopy.Size = New System.Drawing.Size(72, 26)
+        Me.btnCopy.Size = New System.Drawing.Size(88, 26)
         Me.btnCopy.TabIndex = 78
         Me.btnCopy.Text = "另存为"
+        Me.btnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.btnCopy, "保存转换后文件的副本。")
         Me.btnCopy.UseVisualStyleBackColor = False
         '

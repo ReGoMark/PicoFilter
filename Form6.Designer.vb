@@ -233,11 +233,14 @@ Partial Class Form6
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button2.Location = New System.Drawing.Point(293, 38)
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button2.Location = New System.Drawing.Point(277, 38)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(72, 26)
+        Me.Button2.Size = New System.Drawing.Size(88, 26)
         Me.Button2.TabIndex = 55
         Me.Button2.Text = "另存为"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button2, "保存重命名文件的副本。")
         Me.Button2.UseVisualStyleBackColor = False
         '

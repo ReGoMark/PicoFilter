@@ -394,11 +394,11 @@ Partial Class Form5
         Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.Location = New System.Drawing.Point(281, 38)
+        Me.Button3.Location = New System.Drawing.Point(251, 38)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(72, 26)
+        Me.Button3.Size = New System.Drawing.Size(103, 26)
         Me.Button3.TabIndex = 60
-        Me.Button3.Text = "提取"
+        Me.Button3.Text = "遍历提取"
         Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button3, "遍历当前目录下所有图像文件并复制到指定位置。")
         Me.Button3.UseVisualStyleBackColor = False
