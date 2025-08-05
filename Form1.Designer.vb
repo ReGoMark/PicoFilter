@@ -107,6 +107,8 @@ Partial Class Form1
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
+        Me.MetroProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -158,7 +160,6 @@ Partial Class Form1
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.ProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -193,7 +194,7 @@ Partial Class Form1
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.PictureBox10 = New System.Windows.Forms.PictureBox()
-        Me.MetroProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1231,11 +1232,34 @@ Partial Class Form1
         Me.ToolStripMenuItem8.Size = New System.Drawing.Size(146, 24)
         Me.ToolStripMenuItem8.Text = "调整为 2:1"
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ProgressBar1.Location = New System.Drawing.Point(-5, -4)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(509, 10)
+        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
+        Me.ProgressBar1.TabIndex = 17
+        Me.ProgressBar1.Visible = False
+        '
+        'MetroProgressBar1
+        '
+        Me.MetroProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MetroProgressBar1.Location = New System.Drawing.Point(-8, -4)
+        Me.MetroProgressBar1.Name = "MetroProgressBar1"
+        Me.MetroProgressBar1.Size = New System.Drawing.Size(516, 10)
+        Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
+        Me.MetroProgressBar1.TabIndex = 18
+        Me.MetroProgressBar1.Visible = False
+        '
         'Panel3
         '
         Me.Panel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.Button9)
         Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.Button3)
         Me.Panel3.Controls.Add(Me.PictureBox7)
@@ -1246,7 +1270,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox13)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(-8, 103)
+        Me.Panel3.Location = New System.Drawing.Point(-10, 103)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(264, 155)
         Me.Panel3.TabIndex = 44
@@ -1432,7 +1456,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-853, 177)
+        Me.Label7.Location = New System.Drawing.Point(-855, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -2198,17 +2222,6 @@ Partial Class Form1
         Me.Panel1.Size = New System.Drawing.Size(422, 26)
         Me.Panel1.TabIndex = 35
         '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(-5, -4)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(509, 10)
-        Me.ProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
-        Me.ProgressBar1.TabIndex = 17
-        Me.ProgressBar1.Visible = False
-        '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
@@ -2325,7 +2338,7 @@ Partial Class Form1
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(75, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.SelectedIndex = 3
         Me.MetroTabControl1.Size = New System.Drawing.Size(1024, 80)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 48
@@ -2677,16 +2690,28 @@ Partial Class Form1
         Me.PictureBox10.TabIndex = 54
         Me.PictureBox10.TabStop = False
         '
-        'MetroProgressBar1
+        'Button9
         '
-        Me.MetroProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MetroProgressBar1.Location = New System.Drawing.Point(-8, -4)
-        Me.MetroProgressBar1.Name = "MetroProgressBar1"
-        Me.MetroProgressBar1.Size = New System.Drawing.Size(518, 10)
-        Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
-        Me.MetroProgressBar1.TabIndex = 18
-        Me.MetroProgressBar1.Visible = False
+        Me.Button9.BackColor = System.Drawing.Color.White
+        Me.Button9.CausesValidation = False
+        Me.Button9.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button9.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.Button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button9.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button9.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button9.Image = CType(resources.GetObject("Button9.Image"), System.Drawing.Image)
+        Me.Button9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button9.Location = New System.Drawing.Point(136, 81)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(103, 26)
+        Me.Button9.TabIndex = 101
+        Me.Button9.Text = "选取重复"
+        Me.Button9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button9, "单击此处查看联机说明文档。")
+        Me.Button9.UseVisualStyleBackColor = False
+        Me.Button9.Visible = False
         '
         'Form1
         '
@@ -2931,4 +2956,5 @@ Partial Class Form1
     Friend WithEvents Button2 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents MetroProgressBar1 As MetroFramework.Controls.MetroProgressBar
+    Friend WithEvents Button9 As Button
 End Class

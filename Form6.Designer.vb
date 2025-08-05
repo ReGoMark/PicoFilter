@@ -111,7 +111,7 @@ Partial Class Form6
         Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem17, Me.ToolStripSeparator3, Me.移除选中项DToolStripMenuItem, Me.ToolStripMenuItem14, Me.ToolStripSeparator5, Me.ToolStripMenuItem9, Me.还原列宽OToolStripMenuItem})
         Me.ContextMenuStrip3.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ContextMenuStrip3.Size = New System.Drawing.Size(211, 164)
+        Me.ContextMenuStrip3.Size = New System.Drawing.Size(177, 136)
         '
         'ToolStripMenuItem17
         '
@@ -136,7 +136,7 @@ Partial Class Form6
         Me.移除选中项DToolStripMenuItem.Image = CType(resources.GetObject("移除选中项DToolStripMenuItem.Image"), System.Drawing.Image)
         Me.移除选中项DToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.移除选中项DToolStripMenuItem.Name = "移除选中项DToolStripMenuItem"
-        Me.移除选中项DToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.移除选中项DToolStripMenuItem.Size = New System.Drawing.Size(176, 24)
         Me.移除选中项DToolStripMenuItem.Text = "移除选中项(&R)"
         '
         'ToolStripMenuItem14
@@ -154,7 +154,7 @@ Partial Class Form6
         '
         Me.ToolStripSeparator5.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(207, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(173, 6)
         Me.ToolStripSeparator5.Visible = False
         '
         'ToolStripMenuItem9
@@ -164,7 +164,7 @@ Partial Class Form6
         Me.ToolStripMenuItem9.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.ToolStripMenuItem9.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
-        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(210, 24)
+        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(176, 24)
         Me.ToolStripMenuItem9.Text = "列宽自适应(&I)"
         Me.ToolStripMenuItem9.Visible = False
         '
@@ -175,7 +175,7 @@ Partial Class Form6
         Me.还原列宽OToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.还原列宽OToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.还原列宽OToolStripMenuItem.Name = "还原列宽OToolStripMenuItem"
-        Me.还原列宽OToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.还原列宽OToolStripMenuItem.Size = New System.Drawing.Size(176, 24)
         Me.还原列宽OToolStripMenuItem.Text = "列宽复原(&O)"
         Me.还原列宽OToolStripMenuItem.Visible = False
         '
@@ -647,7 +647,7 @@ Partial Class Form6
         Me.ToolStripMenuItem2.Image = CType(resources.GetObject("ToolStripMenuItem2.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(210, 24)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(175, 24)
         Me.ToolStripMenuItem2.Text = "移除选中项(&R)"
         '
         'Form6

@@ -195,7 +195,7 @@ Public Class Form1
         ' 检查是否存在子文件夹
         Dim hasSubDir As Boolean = Directory.GetDirectories(folderPath).Length > 0
         If hasSubDir Then
-            optChange("转到「概览」以查看子文件夹项", Color.White, 0)
+            optChange("转到「概览」查看子文件夹内容", Color.White, 0)
         End If
 
     End Sub
@@ -1620,7 +1620,6 @@ Public Class Form1
         Form3.Label20.Text = (Int(icoLT / sumLT * 1000) / 10).ToString("F1") & " %"
         Form3.Label21.Text = (Int(gifLT / sumLT * 1000) / 10).ToString("F1") & " %"
         Form3.Label22.Text = " - " & (Int(sumRT / sumLT * 1000) / 10).ToString("F1") & " %"
-
         ' 计算格式占比（ListViewRT中的文件）
         Form3.Label40.Text = (Int(pngRT / sumRT * 1000) / 10).ToString("F1") & " %"
         Form3.Label39.Text = (Int(jpgRT / sumRT * 1000) / 10).ToString("F1") & " %"
@@ -2520,7 +2519,7 @@ Public Class Form1
 
     Private Sub Button6_Click_2(sender As Object, e As EventArgs) Handles Button6.Click
         If ListViewRT.Items.Count = 0 Then
-            MessageBox.Show("筛选结果不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("没有可压缩的数据。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
         End If
 

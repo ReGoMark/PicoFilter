@@ -98,13 +98,12 @@ Partial Class Form2
         Me.Label44.BackColor = System.Drawing.Color.Transparent
         Me.Label44.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(126, 499)
+        Me.Label44.Location = New System.Drawing.Point(110, 499)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(144, 20)
+        Me.Label44.Size = New System.Drawing.Size(160, 20)
         Me.Label44.TabIndex = 47
-        Me.Label44.Text = "单击邮箱进行反馈。"
+        Me.Label44.Text = "最后更新：2025/08/05"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Label44.Visible = False
         '
         'Button2
         '
