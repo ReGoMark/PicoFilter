@@ -18,6 +18,19 @@ Public Class Form7
         'panelSelectionOverlay.Dock = DockStyle.Fill
         'panelSelectionOverlay.BringToFront()
         'panelSelectionOverlay.Cursor = Cursors.Cross
+        If absbButton.Checked = True Then
+            Me.Location = New Point(Form1.Location.X - Me.Width, Form1.Location.Y)
+        Else
+            Me.CenterToScreen()
+        End If
+    End Sub
+
+    Private Sub absbButton_CheckStateChanged(sender As Object, e As EventArgs) Handles absbButton.CheckStateChanged
+        If absbButton.Checked = True Then
+            Me.Location = New Point(Form1.Location.X - Me.Width, Form1.Location.Y)
+        Else
+            'Me.CenterToScreen()
+        End If
     End Sub
 
     'Private Sub panelSelectionOverlay_MouseDown(sender As Object, e As MouseEventArgs) Handles panelSelectionOverlay.MouseDown
@@ -204,21 +217,23 @@ Public Class Form7
             Dim combinedText = String.Join("", selectedWords)
             Clipboard.SetText(combinedText)
             MessageBox.Show("取词已复制:" & vbCrLf & combinedText, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("该功能仅支持「自动」选项卡，请右键复制所选文本。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ElseIf MetroTabControl1.SelectedIndex = 1 Then
+            Clipboard.SetText(TextBox1.Text)
+            MessageBox.Show("文本已复制。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'MessageBox.Show("该功能仅支持「词典拆分」选项卡，请右键复制所选文本。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If FlowLayoutPanel1.Controls.Count > 0 Then
-            Dim result As DialogResult = MessageBox.Show("确认要关闭吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If result = DialogResult.Yes Then
-                Me.Close()
-            End If
-        ElseIf FlowLayoutPanel1.Controls.Count = 0 Then
-            Me.Close()
-        End If
-    End Sub
+    'Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    '    'If FlowLayoutPanel1.Controls.Count > 0 Then
+    '    '    Dim result As DialogResult = MessageBox.Show("确认要关闭吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+    '    '    If result = DialogResult.Yes Then
+    '    '        Me.Close()
+    '    '    End If
+    '    'ElseIf FlowLayoutPanel1.Controls.Count = 0 Then
+    '    '    Me.Close()
+    '    'End If
+    'End Sub
 
     Private Sub topButton_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
         If topButton.Checked = True Then
@@ -242,12 +257,12 @@ Public Class Form7
             End If
         Next
         If selectedWords.Count = 0 Then
-            MessageBox.Show("请先选择。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("请先取词。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
         Dim combinedText = String.Join("", selectedWords)
         Form1.searchText.Text = combinedText
-        Form1.optChange("转到「查找」选项卡以继续。", Color.Lavender, 0)
+        Form1.optChange("转到「查找」选项卡以继续", Color.White, 0)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -266,15 +281,13 @@ Public Class Form7
         End If
         Dim combinedText = String.Join("", selectedWords)
         Form1.starText.Text = "{" & combinedText & "}{}{}"
-        Form1.optChange("转到「星标」选项卡以继续。", Color.Lavender, 0)
-    End Sub
-
-    Private Sub FlowLayoutPanel1_Click(sender As Object, e As EventArgs) Handles FlowLayoutPanel1.Click
-
+        Form1.optChange("转到「星标」选项卡以继续", Color.White, 0)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If MetroTabControl1.SelectedIndex = 0 Then
+            Button4.Visible = True
+            ButtonCopySelected.Visible = True
             Dim totalCount As Integer = 0
             Dim checkedCount As Integer = 0
 
@@ -296,11 +309,53 @@ Public Class Form7
                     cb.Checked = selectAll
                 End If
             Next
+            '' 可选：更新按钮文字
+            'Button4.Text = If(selectAll, "取消选中", "全选选中")
+        ElseIf MetroTabControl1.SelectedIndex = 1 Then
+            TextBox1.SelectAll()   '选中全部文本
+        End If
+    End Sub
 
-            ' 可选：更新按钮文字
-            Button4.Text = If(selectAll, "取消选中", "全选选中")
-        Else
-            MessageBox.Show("该功能仅支持「自动」选项卡。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        If MetroTabControl1.SelectedIndex = 0 Then
+            Dim sfd As New SaveFileDialog()
+            Dim selectedWords As New List(Of String)
+            For Each ctrl As Control In FlowLayoutPanel1.Controls
+                If TypeOf ctrl Is CheckBox Then
+                    Dim cb As CheckBox = DirectCast(ctrl, CheckBox)
+                    If cb.Checked Then
+                        selectedWords.Add(cb.Text)
+                    End If
+                End If
+            Next
+            If selectedWords.Count = 0 Then
+                MessageBox.Show("请先选择要复制的词", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+            End If
+            Dim combinedText = String.Join("", selectedWords)
+            sfd.Title = "保存文本文件"
+            sfd.Filter = "文本文件 (*.txt)|*.txt|所有文件 (*.*)|*.*"
+            sfd.FileName = "取词文本.txt" '默认文件名
+            sfd.DefaultExt = "txt"
+
+            If sfd.ShowDialog() = DialogResult.OK Then
+                System.IO.File.WriteAllText(sfd.FileName, combinedText, System.Text.Encoding.UTF8)
+                If MessageBox.Show("文本保存成功，点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                    Process.Start(sfd.FileName)
+                End If
+            End If
+        ElseIf MetroTabControl1.SelectedIndex = 1 Then
+            Dim sfd As New SaveFileDialog()
+            sfd.Title = "保存文本文件"
+            sfd.Filter = "文本文件 (*.txt)|*.txt|所有文件 (*.*)|*.*"
+            sfd.FileName = "文件名文本.txt" '默认文件名
+            sfd.DefaultExt = "txt"
+            If sfd.ShowDialog() = DialogResult.OK Then
+                System.IO.File.WriteAllText(sfd.FileName, TextBox1.Text, System.Text.Encoding.UTF8)
+                If MessageBox.Show("文本保存成功，点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                    Process.Start(sfd.FileName)
+                End If
+            End If
         End If
     End Sub
 End Class

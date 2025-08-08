@@ -507,6 +507,17 @@ Public Class Form8
 
     Private Sub Form8_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         Me.MinimumSize = New Size(371, 582)
+        If Me.WindowState = FormWindowState.Maximized Then
+            ListView1.Columns(0).Width = 60
+            ListView1.Columns(1).Width = 600
+            ListView1.Columns(2).Width = 100
+            ListView1.Columns(3).Width = 100
+        ElseIf Me.WindowState = FormWindowState.Normal Then
+            ListView1.Columns(0).Width = 60
+            ListView1.Columns(1).Width = 120
+            ListView1.Columns(2).Width = 60
+            ListView1.Columns(3).Width = 60
+        End If
     End Sub
 
     Public Class 列表比较器
@@ -692,4 +703,28 @@ Public Class Form8
             End Get
         End Property
     End Class
+
+    Private Sub ToolStripMenuItem9_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem9.Click
+        ListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
+    End Sub
+
+    Private Sub ListView1_ColumnWidthChanged(sender As Object, e As ColumnWidthChangedEventArgs) Handles ListView1.ColumnWidthChanged
+        Label3.Text = "列宽: " & ListView1.Columns(0).Width.ToString() &
+            "列宽: " & ListView1.Columns(1).Width.ToString() &
+            "列宽: " & ListView1.Columns(2).Width.ToString()
+    End Sub
+
+    Private Sub 还原列宽OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 还原列宽OToolStripMenuItem.Click
+        If Me.WindowState = FormWindowState.Normal Then
+            ListView1.Columns(0).Width = 60
+            ListView1.Columns(1).Width = 120
+            ListView1.Columns(2).Width = 60
+            ListView1.Columns(3).Width = 60
+        ElseIf Me.WindowState = FormWindowState.Maximized Then
+            ListView1.Columns(0).Width = 60
+            ListView1.Columns(1).Width = 600
+            ListView1.Columns(2).Width = 100
+            ListView1.Columns(3).Width = 100
+        End If
+    End Sub
 End Class

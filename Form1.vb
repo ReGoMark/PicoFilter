@@ -175,8 +175,14 @@ Public Class Form1
             End If
         End If
 
+        ' 检查是否存在子文件夹
+        Dim hasSubDir As Boolean = Directory.GetDirectories(folderPath).Length > 0
+        If hasSubDir Then
+            optChange("转到「概览」查看子文件夹内容", Color.White, 0)
+        End If
+
         If tagCount > 0 Then
-            optChange("星标：找到 " & tagCount & “ 项”, Color.White, 2)
+            optChange("星标：找到 " & tagCount & “ 项”, Color.White, 3)
         End If
         sumLblLT.Text = String.Join("  |  ", result)
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr & "  |  " & createTime.ToString("yy/MM/dd, HH:mm:ss")
@@ -193,11 +199,7 @@ Public Class Form1
         gifLT = gifCount
         icoLT = icoCount
 
-        ' 检查是否存在子文件夹
-        Dim hasSubDir As Boolean = Directory.GetDirectories(folderPath).Length > 0
-        If hasSubDir Then
-            optChange("转到「概览」查看子文件夹内容", Color.White, 0)
-        End If
+
 
     End Sub
 
@@ -765,6 +767,14 @@ Public Class Form1
 
     '从左侧添加项到右侧
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles addButton.Click
+        Dim totalToAdd As Integer = ListViewLT.SelectedItems.Count
+        If totalToAdd > 20 Then
+            MetroProgressBar1.Value = 0
+            MetroProgressBar1.Maximum = totalToAdd
+            MetroProgressBar1.Visible = True
+        End If
+
+        Dim addedCount As Integer = 0
         For Each selectedItem As ListViewItem In ListViewLT.SelectedItems ' 遍历左侧选中项
             ' 检查右侧中是否已经存在该文件
             Dim fileName As String = selectedItem.SubItems(2).Text
@@ -782,7 +792,15 @@ Public Class Form1
                 ListViewRT.Items.Add(newItem) '
                 newItem.BackColor = Color.Lavender '新项目背景色设置
             End If
+            addedCount += 1
+            If totalToAdd > 20 Then
+                MetroProgressBar1.Value = addedCount
+                Application.DoEvents()
+            End If
         Next
+        If totalToAdd > 20 Then
+            MetroProgressBar1.Visible = False
+        End If
         更新右侧结果标签()
         更新统计信息()
     End Sub
@@ -1386,6 +1404,11 @@ Public Class Form1
 
         PlayNotificationSound3()
         optChange("加载页：结果 " & ListViewLT.SelectedItems.Count & " 项", Color.White, 2)
+        If ListViewLT.SelectedItems.Count > 0 Then
+            MetroTabPage4.Text = "查找 " & FormatSearchCount(ListViewLT.SelectedItems.Count)
+        Else
+            MetroTabPage4.Text = "查找"
+        End If
     End Sub
 
     Private Sub SearchListView1(keyword As String, searchType As SearchType)
@@ -1433,7 +1456,25 @@ Public Class Form1
 
         PlayNotificationSound3()
         optChange("筛选页：结果 " & ListViewRT.SelectedItems.Count & " 项", Color.White, 2)
+        If ListViewLT.SelectedItems.Count > 0 Then
+            MetroTabPage4.Text = "查找 " & FormatSearchCount(ListViewLT.SelectedItems.Count)
+        Else
+            MetroTabPage4.Text = "查找"
+        End If
     End Sub
+
+    ' 格式化查找结果数目显示
+    Private Function FormatSearchCount(count As Integer) As String
+        If count < 100 Then
+            Return count.ToString()
+        ElseIf count < 500 Then
+            Return "C"
+        ElseIf count < 1000 Then
+            Return "D"
+        Else
+            Return "M"
+        End If
+    End Function
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs)
         loadedTime += 1
@@ -1442,7 +1483,10 @@ Public Class Form1
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles searchButton0.Click
         If searchText.Text = "" Then
             MessageBox.Show("请输入查找内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
         End If
+
+
         Dim keyword As String = searchText.Text.Trim()
         Dim type As SearchType
 
@@ -1464,7 +1508,9 @@ Public Class Form1
     Private Sub btnSearch1_Click(sender As Object, e As EventArgs) Handles searchButton1.Click
         If searchText.Text = "" Then
             MessageBox.Show("请输入查找内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
         End If
+
         Dim keyword As String = searchText.Text.Trim()
         Dim type As SearchType
 
@@ -2032,12 +2078,19 @@ Public Class Form1
                 subForm2.Location = New Point(Me.Location.X + Me.Width, Me.Location.Y)
             End If
         End If
-        ' 获取 Form8 实例
-        Dim subForm3 As Form8 = TryCast(Application.OpenForms("Form8"), Form8)
+        Dim subForm3 As Form7 = TryCast(Application.OpenForms("Form7"), Form7)
         If subForm3 IsNot Nothing Then
+            If Form7.absbButton.CheckState = CheckState.Checked Then
+                ' 让 Form6 吸附在 Form1 右侧
+                subForm3.Location = New Point(Me.Location.X - Form5.Width, Me.Location.Y)
+            End If
+        End If
+        ' 获取 Form8 实例
+        Dim subForm4 As Form8 = TryCast(Application.OpenForms("Form8"), Form8)
+        If subForm4 IsNot Nothing Then
             If Form8.absbButton.CheckState = CheckState.Checked Then
                 ' 让 Form6 吸附在 Form1 右侧
-                subForm3.Location = New Point(Me.Location.X + Me.Width, Me.Location.Y)
+                subForm4.Location = New Point(Me.Location.X + Me.Width, Me.Location.Y)
             End If
         End If
     End Sub
@@ -2219,22 +2272,18 @@ Public Class Form1
     End Sub
 
     Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
-        tagButton.Checked = True
         starText.Text = "{屏幕截图}{}{}"
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs)
-        tagButton.Checked = True
         starText.Text = "{screenshot}{}{}"
     End Sub
 
     Private Sub Button8_Click_1(sender As Object, e As EventArgs) Handles Button8.Click
-        tagButton.Checked = True
         starText.Text = "{微信图片}{}{}"
     End Sub
 
     Private Sub Button10_Click_1(sender As Object, e As EventArgs) Handles Button10.Click
-        tagButton.Checked = True
         starText.Text = "{副本}{}{}"
     End Sub
 
@@ -2713,6 +2762,17 @@ Public Class Form1
         htText.Text = Val（widText.Text）
     End Sub
 
+    Private Sub Button11_Click_1(sender As Object, e As EventArgs) Handles Button11.Click
+        searchText.Text = ""
+        MetroTabPage3.Text = "查找"
+    End Sub
+
+    'Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+    '    starText.Text = ""
+    '    MetroTabPage4.Text = "星标"
+    '    tagCount = 0
+    'End Sub
+
     Private Sub Form1_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
         If e.Button = MouseButtons.Middle Then
             Me.Size = New Size(1066, 630)
@@ -2766,6 +2826,72 @@ Public Class Form1
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub tagButton_CheckedChanged(sender As Object, e As EventArgs) Handles tagButton.CheckedChanged
+        Dim tagCount As Integer = 0
+        For Each item As ListViewItem In ListViewLT.Items
+            Dim fileName As String = item.SubItems(2).Text
+            ' 跳过临时星标（手动添加的星标）
+            If item.Tag IsNot Nothing AndAlso item.Tag.ToString = "manualstar" Then
+                Continue For
+            End If
+
+            If tagButton.Checked Then
+                ' 自动标记逻辑
+                If (mark1 <> "" AndAlso fileName.Contains(mark1)) OrElse
+                   (mark2 <> "" AndAlso fileName.Contains(mark2)) OrElse
+                   (mark3 <> "" AndAlso fileName.Contains(mark3)) Then
+                    item.SubItems(1).Text = "★"
+                    tagCount += 1
+
+                Else
+                    item.SubItems(1).Text = ""
+                End If
+            Else
+                ' 取消自动标记显示
+                item.SubItems(1).Text = ""
+            End If
+        Next
+        ' 更新星标计数和界面
+        Me.tagCount = tagCount
+        If tagCount > 0 And tagButton.Checked = True Then
+            MetroTabPage5.Text = "查找 " & FormatSearchCount(tagCount)
+        ElseIf tagCount <= 0 Or tagButton.Checked = False Then
+            MetroTabPage5.Text = "查找"
+        End If
+
+        更新统计信息()
+
+        ' 统计各类数量并更新sumLblLT
+        Dim totalCount As Integer = ListViewLT.Items.Count
+        Dim jpgCount As Integer = 0, pngCount As Integer = 0, gifCount As Integer = 0, bmpCount As Integer = 0, icoCount As Integer = 0
+        Dim sumSize As Double = 0
+
+        For Each item As ListViewItem In ListViewLT.Items
+            Dim format As String = item.SubItems(4).Text.ToUpper()
+            Select Case format
+                Case ".JPG", ".JPEG"
+                    jpgCount += 1
+                Case ".PNG"
+                    pngCount += 1
+                Case ".GIF"
+                    gifCount += 1
+                Case ".BMP"
+                    bmpCount += 1
+                Case ".ICO"
+                    icoCount += 1
+            End Select
+        Next
+        Dim result As New List(Of String)
+        result.Add($"总计 {totalCount} 项")
+        If Me.tagCount > 0 Then result.Add($"星标 {Me.tagCount}")
+        If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
+        If pngCount > 0 Then result.Add($"PNG {pngCount}")
+        If gifCount > 0 Then result.Add($"GIF {gifCount}")
+        If bmpCount > 0 Then result.Add($"BMP {bmpCount}")
+        If icoCount > 0 Then result.Add($"ICO {icoCount}")
+        sumLblLT.Text = String.Join("  |  ", result)
     End Sub
 
 End Class

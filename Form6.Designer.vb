@@ -155,7 +155,6 @@ Partial Class Form6
         Me.ToolStripSeparator5.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
         Me.ToolStripSeparator5.Size = New System.Drawing.Size(173, 6)
-        Me.ToolStripSeparator5.Visible = False
         '
         'ToolStripMenuItem9
         '
@@ -166,7 +165,6 @@ Partial Class Form6
         Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
         Me.ToolStripMenuItem9.Size = New System.Drawing.Size(176, 24)
         Me.ToolStripMenuItem9.Text = "列宽自适应(&I)"
-        Me.ToolStripMenuItem9.Visible = False
         '
         '还原列宽OToolStripMenuItem
         '
@@ -177,7 +175,6 @@ Partial Class Form6
         Me.还原列宽OToolStripMenuItem.Name = "还原列宽OToolStripMenuItem"
         Me.还原列宽OToolStripMenuItem.Size = New System.Drawing.Size(176, 24)
         Me.还原列宽OToolStripMenuItem.Text = "列宽复原(&O)"
-        Me.还原列宽OToolStripMenuItem.Visible = False
         '
         'ApplyButton
         '
@@ -212,7 +209,7 @@ Partial Class Form6
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button1.Location = New System.Drawing.Point(303, 102)
+        Me.Button1.Location = New System.Drawing.Point(303, 146)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(62, 26)
         Me.Button1.TabIndex = 56
@@ -235,11 +232,11 @@ Partial Class Form6
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.Location = New System.Drawing.Point(277, 38)
+        Me.Button2.Location = New System.Drawing.Point(262, 38)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(88, 26)
+        Me.Button2.Size = New System.Drawing.Size(103, 26)
         Me.Button2.TabIndex = 55
-        Me.Button2.Text = "另存为"
+        Me.Button2.Text = "保存副本"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button2, "保存重命名文件的副本。")
         Me.Button2.UseVisualStyleBackColor = False
@@ -439,7 +436,6 @@ Partial Class Form6
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.GhostWhite
         Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
-        Me.absbButton.FlatAppearance.BorderSize = 0
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -491,6 +487,7 @@ Partial Class Form6
         Me.loadButton.Size = New System.Drawing.Size(109, 26)
         Me.loadButton.TabIndex = 73
         Me.loadButton.Text = "拉取/浏览"
+        Me.loadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.loadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.loadButton, "点击按钮从筛选页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl从加载页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift以浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹到列表加载数据；")
         Me.loadButton.UseVisualStyleBackColor = False

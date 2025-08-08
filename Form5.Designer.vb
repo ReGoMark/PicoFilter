@@ -100,9 +100,9 @@ Partial Class Form5
         Me.btnGoUp.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnGoUp.Location = New System.Drawing.Point(24, 37)
         Me.btnGoUp.Name = "btnGoUp"
-        Me.btnGoUp.Size = New System.Drawing.Size(85, 28)
+        Me.btnGoUp.Size = New System.Drawing.Size(116, 28)
         Me.btnGoUp.TabIndex = 52
-        Me.btnGoUp.Text = "上一级"
+        Me.btnGoUp.Text = "返回上一级"
         Me.btnGoUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级目录。")
         Me.btnGoUp.UseVisualStyleBackColor = False
@@ -160,7 +160,7 @@ Partial Class Form5
         Me.TreeView1.Location = New System.Drawing.Point(0, 32)
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 1
-        Me.TreeView1.Size = New System.Drawing.Size(330, 355)
+        Me.TreeView1.Size = New System.Drawing.Size(329, 352)
         Me.TreeView1.TabIndex = 37
         '
         'ContextMenuStrip3
@@ -230,7 +230,7 @@ Partial Class Form5
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(115, 37)
+        Me.Button2.Location = New System.Drawing.Point(146, 38)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(72, 26)
         Me.Button2.TabIndex = 43
@@ -295,8 +295,7 @@ Partial Class Form5
         Me.absbButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.GhostWhite
-        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.Gold
-        Me.absbButton.FlatAppearance.BorderSize = 0
+        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -369,7 +368,6 @@ Partial Class Form5
         '
         Me.sltLabel0.AutoEllipsis = True
         Me.sltLabel0.BackColor = System.Drawing.Color.GhostWhite
-        Me.sltLabel0.Dock = System.Windows.Forms.DockStyle.Fill
         Me.sltLabel0.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.sltLabel0.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sltLabel0.ImageIndex = 0

@@ -74,11 +74,11 @@ Partial Class Form3
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label50 = New System.Windows.Forms.Label()
-        Me.Label52 = New System.Windows.Forms.Label()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label51 = New System.Windows.Forms.Label()
+        Me.Label50 = New System.Windows.Forms.Label()
+        Me.Label52 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -606,9 +606,9 @@ Partial Class Form3
         Me.Label41.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Label41.Location = New System.Drawing.Point(3, 374)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(39, 20)
+        Me.Label41.Size = New System.Drawing.Size(54, 20)
         Me.Label41.TabIndex = 47
-        Me.Label41.Text = "精度"
+        Me.Label41.Text = "精度差"
         Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label42
@@ -664,7 +664,6 @@ Partial Class Form3
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.Transparent
         Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
-        Me.absbButton.FlatAppearance.BorderSize = 0
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -840,35 +839,6 @@ Partial Class Form3
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 456)
         Me.TableLayoutPanel1.TabIndex = 57
         '
-        'Label50
-        '
-        Me.Label50.BackColor = System.Drawing.Color.White
-        Me.TableLayoutPanel1.SetColumnSpan(Me.Label50, 2)
-        Me.Label50.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label50.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label50.ForeColor = System.Drawing.Color.Black
-        Me.Label50.Location = New System.Drawing.Point(83, 66)
-        Me.Label50.Name = "Label50"
-        Me.Label50.Size = New System.Drawing.Size(243, 22)
-        Me.Label50.TabIndex = 61
-        Me.Label50.Text = "Label50"
-        Me.Label50.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label52
-        '
-        Me.Label52.BackColor = System.Drawing.Color.White
-        Me.TableLayoutPanel1.SetColumnSpan(Me.Label52, 2)
-        Me.Label52.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label52.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.Label52.ForeColor = System.Drawing.Color.Black
-        Me.Label52.Location = New System.Drawing.Point(83, 88)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(243, 22)
-        Me.Label52.TabIndex = 65
-        Me.Label52.Text = "Label52"
-        Me.Label52.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Label52.Visible = False
-        '
         'Label49
         '
         Me.Label49.AutoSize = True
@@ -911,6 +881,35 @@ Partial Class Form3
         Me.Label51.Text = "最后修改"
         Me.Label51.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Label51.Visible = False
+        '
+        'Label50
+        '
+        Me.Label50.BackColor = System.Drawing.Color.White
+        Me.TableLayoutPanel1.SetColumnSpan(Me.Label50, 2)
+        Me.Label50.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label50.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.Label50.ForeColor = System.Drawing.Color.Black
+        Me.Label50.Location = New System.Drawing.Point(83, 66)
+        Me.Label50.Name = "Label50"
+        Me.Label50.Size = New System.Drawing.Size(243, 22)
+        Me.Label50.TabIndex = 61
+        Me.Label50.Text = "Label50"
+        Me.Label50.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label52
+        '
+        Me.Label52.BackColor = System.Drawing.Color.White
+        Me.TableLayoutPanel1.SetColumnSpan(Me.Label52, 2)
+        Me.Label52.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label52.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.Label52.ForeColor = System.Drawing.Color.Black
+        Me.Label52.Location = New System.Drawing.Point(83, 88)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(243, 22)
+        Me.Label52.TabIndex = 65
+        Me.Label52.Text = "Label52"
+        Me.Label52.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label52.Visible = False
         '
         'Panel1
         '

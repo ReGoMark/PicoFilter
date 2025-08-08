@@ -47,6 +47,7 @@ Partial Class Form8
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.colorButton = New System.Windows.Forms.Button()
@@ -89,6 +90,7 @@ Partial Class Form8
         Me.btnLoad.Size = New System.Drawing.Size(109, 26)
         Me.btnLoad.TabIndex = 86
         Me.btnLoad.Text = "拉取/浏览"
+        Me.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.btnLoad, "点击按钮从筛选页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Ctrl从加载页拉取数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住Shift以浏览文件夹；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹到列表加载数据；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.btnLoad.UseVisualStyleBackColor = False
@@ -108,9 +110,8 @@ Partial Class Form8
         Me.bksbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.bksbutton.Location = New System.Drawing.Point(155, 47)
         Me.bksbutton.Name = "bksbutton"
-        Me.bksbutton.Size = New System.Drawing.Size(72, 26)
+        Me.bksbutton.Size = New System.Drawing.Size(26, 26)
         Me.bksbutton.TabIndex = 85
-        Me.bksbutton.Text = "移除"
         Me.bksbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.bksbutton, "移除选定项")
         Me.bksbutton.UseVisualStyleBackColor = False
@@ -129,11 +130,11 @@ Partial Class Form8
         Me.btnCopy.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.btnCopy.Image = CType(resources.GetObject("btnCopy.Image"), System.Drawing.Image)
         Me.btnCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCopy.Location = New System.Drawing.Point(281, 47)
+        Me.btnCopy.Location = New System.Drawing.Point(266, 47)
         Me.btnCopy.Name = "btnCopy"
-        Me.btnCopy.Size = New System.Drawing.Size(88, 26)
+        Me.btnCopy.Size = New System.Drawing.Size(103, 26)
         Me.btnCopy.TabIndex = 78
-        Me.btnCopy.Text = "另存为"
+        Me.btnCopy.Text = "保存副本"
         Me.btnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.btnCopy, "保存转换后文件的副本。")
         Me.btnCopy.UseVisualStyleBackColor = False
@@ -229,7 +230,6 @@ Partial Class Form8
         Me.ToolStripSeparator5.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
         Me.ToolStripSeparator5.Size = New System.Drawing.Size(173, 6)
-        Me.ToolStripSeparator5.Visible = False
         '
         'ToolStripMenuItem9
         '
@@ -240,7 +240,6 @@ Partial Class Form8
         Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
         Me.ToolStripMenuItem9.Size = New System.Drawing.Size(176, 24)
         Me.ToolStripMenuItem9.Text = "列宽自适应(&I)"
-        Me.ToolStripMenuItem9.Visible = False
         '
         '还原列宽OToolStripMenuItem
         '
@@ -251,7 +250,6 @@ Partial Class Form8
         Me.还原列宽OToolStripMenuItem.Name = "还原列宽OToolStripMenuItem"
         Me.还原列宽OToolStripMenuItem.Size = New System.Drawing.Size(176, 24)
         Me.还原列宽OToolStripMenuItem.Text = "列宽复原(&O)"
-        Me.还原列宽OToolStripMenuItem.Visible = False
         '
         'btnApplySelected
         '
@@ -348,7 +346,6 @@ Partial Class Form8
         Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.absbButton.BackColor = System.Drawing.Color.GhostWhite
         Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
-        Me.absbButton.FlatAppearance.BorderSize = 0
         Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -370,6 +367,7 @@ Partial Class Form8
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Controls.Add(Me.ListView1)
@@ -377,6 +375,16 @@ Partial Class Form8
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(329, 396)
         Me.Panel1.TabIndex = 82
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(19, 106)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(50, 16)
+        Me.Label3.TabIndex = 90
+        Me.Label3.Text = "Label3"
+        Me.Label3.Visible = False
         '
         'Button3
         '
@@ -654,6 +662,7 @@ Partial Class Form8
         Me.Text = "转换"
         Me.ContextMenuStrip3.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         CType(Me.cobQuality, System.ComponentModel.ISupportInitialize).EndInit()
@@ -704,4 +713,5 @@ Partial Class Form8
     Friend WithEvents 还原列宽OToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents Label3 As Label
 End Class

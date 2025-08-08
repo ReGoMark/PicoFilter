@@ -72,7 +72,7 @@ Partial Class Form2
         Me.Label1.BackColor = System.Drawing.Color.White
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label1.Location = New System.Drawing.Point(3, 275)
+        Me.Label1.Location = New System.Drawing.Point(0, 275)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(214, 20)
         Me.Label1.TabIndex = 1
@@ -147,11 +147,11 @@ Partial Class Form2
         Me.Label5.BackColor = System.Drawing.Color.White
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(3, 215)
+        Me.Label5.Location = New System.Drawing.Point(0, 215)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(315, 60)
         Me.Label5.TabIndex = 48
-        Me.Label5.Text = "敬告：软件包含的其他资源的版权归各自公司所有。本程序完全开源且免费，请勿擅自非法盈利，由此造成的一切责任作者概不负责。"
+        Me.Label5.Text = "敬告：软件内含的其他资源版权归各自公司所有。本程序完全开源且免费，请勿擅自非法盈利，由此造成的一切责任作者概不负责。"
         '
         'Process1
         '
@@ -172,11 +172,11 @@ Partial Class Form2
         Me.Label10.BackColor = System.Drawing.Color.White
         Me.Label10.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(3, 9)
+        Me.Label10.Location = New System.Drawing.Point(0, 9)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(159, 20)
+        Me.Label10.Size = New System.Drawing.Size(198, 20)
         Me.Label10.TabIndex = 50
-        Me.Label10.Text = "本程序包含以下内容："
+        Me.Label10.Text = "已安装到 PicoFilter 的组件："
         Me.ToolTip1.SetToolTip(Me.Label10, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
         "单击""支持""寻求联机支持。")
         '
@@ -190,9 +190,9 @@ Partial Class Form2
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(3, 9)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(315, 91)
+        Me.Label3.Size = New System.Drawing.Size(322, 60)
         Me.Label3.TabIndex = 51
-        Me.Label3.Text = "如果您觉得本项目还不错，可以扫描下方的二维码，赞助一下作者。付费不会解锁任何额外功能，本程序全部功能均可免费使用，开源免费项目严禁用做商业用途！"
+        Me.Label3.Text = "如果您觉得本项目还不错，可以扫描下方的二维码赞助一下作者。本程序全部功能均可免费使用，严禁用做商业用途！"
         Me.ToolTip1.SetToolTip(Me.Label3, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
         "单击""支持""寻求联机支持。")
         '
@@ -221,7 +221,7 @@ Partial Class Form2
         Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Items.AddRange(New Object() {"PicoFilt 图像筛选 - 2.0.4", "PicoSplit 文件名切割 - 0.1.0", "PicoName 批量重命名 - 1.2.0", "PicoConvert 格式转换 - 1.2.0", "方正黑体 默认显示字体 - 5.3.0", "微软雅黑 默认显示字体 - 11.3.0", "Consola 等宽字符显示字体- 7.0.0", "EPPlus 用于表格导出 - 7.3.2", "MetroModernUI 标签页控件 - 1.4.0", ".NET Framework 运行库 - 4.7.2"})
+        Me.ListBox1.Items.AddRange(New Object() {"PicoFilt - 图像筛选 - 2.0.4", "PicoSplit - 文件名切割 - 0.1.0", "PicoName - 批量重命名 - 1.2.0", "PicoConvert - 批量格式转换 - 1.2.0", "方正黑体 - 默认显示字体 - 5.3.0", "微软雅黑 - 默认显示字体 - 11.3.0", "Consolas - 等宽字符显示字体- 7.0.0", "EPPlus - 表格导出 - 7.3.2", "MetroModernUI - 标签页控件 - 1.4.0", ".NET Framework - 基础运行库 - 4.7.2"})
         Me.ListBox1.Location = New System.Drawing.Point(3, 32)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(315, 180)
@@ -336,12 +336,12 @@ Partial Class Form2
         Me.TextBox2.BackColor = System.Drawing.Color.GhostWhite
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox2.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(3, 55)
+        Me.TextBox2.Location = New System.Drawing.Point(0, 32)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
         Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox2.Size = New System.Drawing.Size(315, 217)
+        Me.TextBox2.Size = New System.Drawing.Size(318, 240)
         Me.TextBox2.TabIndex = 60
         Me.TextBox2.Text = resources.GetString("TextBox2.Text")
         '
@@ -355,11 +355,11 @@ Partial Class Form2
         Me.Label16.Cursor = System.Windows.Forms.Cursors.Help
         Me.Label16.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label16.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label16.Location = New System.Drawing.Point(3, 275)
+        Me.Label16.Location = New System.Drawing.Point(0, 275)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(189, 20)
+        Me.Label16.Size = New System.Drawing.Size(234, 20)
         Me.Label16.TabIndex = 59
-        Me.Label16.Text = "单击此处查看字体许可协议"
+        Me.Label16.Text = "单击此处查看字体资源的许可协议"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label12
@@ -367,14 +367,15 @@ Partial Class Form2
         Me.Label12.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
         Me.Label12.BackColor = System.Drawing.Color.White
         Me.Label12.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(3, 9)
+        Me.Label12.Location = New System.Drawing.Point(0, 9)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(315, 43)
+        Me.Label12.Size = New System.Drawing.Size(197, 20)
         Me.Label12.TabIndex = 14
-        Me.Label12.Text = "本程序遵循 MIT 许可协议，用户需阅读并遵守以下内容："
+        Me.Label12.Text = "PicoFilter 使用 MIT 许可证：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'MetroTabPage4
         '
@@ -411,9 +412,9 @@ Partial Class Form2
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(7, 103)
+        Me.PictureBox1.Location = New System.Drawing.Point(7, 72)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(152, 149)
+        Me.PictureBox1.Size = New System.Drawing.Size(174, 200)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 52
         Me.PictureBox1.TabStop = False

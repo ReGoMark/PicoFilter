@@ -110,6 +110,7 @@ Partial Class Form1
         Me.ProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.MetroProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Button12 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
@@ -149,6 +150,7 @@ Partial Class Form1
         Me.deskButton = New System.Windows.Forms.Button()
         Me.videoButton = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.optButton = New System.Windows.Forms.Button()
@@ -748,7 +750,7 @@ Partial Class Form1
         Me.移除选中项DToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.移除选中项DToolStripMenuItem.Name = "移除选中项DToolStripMenuItem"
         Me.移除选中项DToolStripMenuItem.Size = New System.Drawing.Size(202, 24)
-        Me.移除选中项DToolStripMenuItem.Text = "移除选中项(&R)"
+        Me.移除选中项DToolStripMenuItem.Text = "移除选定项(&R)"
         '
         'ToolStripMenuItem2
         '
@@ -1245,11 +1247,9 @@ Partial Class Form1
         '
         'MetroProgressBar1
         '
-        Me.MetroProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MetroProgressBar1.Location = New System.Drawing.Point(-8, -4)
         Me.MetroProgressBar1.Name = "MetroProgressBar1"
-        Me.MetroProgressBar1.Size = New System.Drawing.Size(498, 10)
+        Me.MetroProgressBar1.Size = New System.Drawing.Size(517, 10)
         Me.MetroProgressBar1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroProgressBar1.TabIndex = 18
         Me.MetroProgressBar1.Visible = False
@@ -1259,6 +1259,7 @@ Partial Class Form1
         Me.Panel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.Button12)
         Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.Button3)
         Me.Panel3.Controls.Add(Me.PictureBox7)
@@ -1269,11 +1270,32 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox13)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(-28, 103)
+        Me.Panel3.Location = New System.Drawing.Point(-54, 103)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(264, 155)
         Me.Panel3.TabIndex = 44
         Me.Panel3.Visible = False
+        '
+        'Button12
+        '
+        Me.Button12.BackColor = System.Drawing.Color.White
+        Me.Button12.CausesValidation = False
+        Me.Button12.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button12.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.Button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button12.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button12.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button12.Image = CType(resources.GetObject("Button12.Image"), System.Drawing.Image)
+        Me.Button12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button12.Location = New System.Drawing.Point(236, 92)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(26, 26)
+        Me.Button12.TabIndex = 102
+        Me.Button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button12, "清除星标关键词。")
+        Me.Button12.UseVisualStyleBackColor = False
         '
         'Label2
         '
@@ -1455,7 +1477,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-873, 177)
+        Me.Label7.Location = New System.Drawing.Point(-899, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1464,6 +1486,7 @@ Partial Class Form1
         '
         'Button9
         '
+        Me.Button9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button9.BackColor = System.Drawing.Color.White
         Me.Button9.CausesValidation = False
         Me.Button9.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -1690,7 +1713,7 @@ Partial Class Form1
         Me.searchText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.searchText.Location = New System.Drawing.Point(4, 4)
         Me.searchText.Name = "searchText"
-        Me.searchText.Size = New System.Drawing.Size(370, 17)
+        Me.searchText.Size = New System.Drawing.Size(291, 17)
         Me.searchText.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.searchText, "输入一个查找目标，在右侧设定搜索范围。")
         '
@@ -1858,7 +1881,7 @@ Partial Class Form1
         Me.tabButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.tabButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.tabButton.Image = CType(resources.GetObject("tabButton.Image"), System.Drawing.Image)
-        Me.tabButton.Location = New System.Drawing.Point(468, 9)
+        Me.tabButton.Location = New System.Drawing.Point(469, 9)
         Me.tabButton.Name = "tabButton"
         Me.tabButton.Size = New System.Drawing.Size(73, 26)
         Me.tabButton.TabIndex = 93
@@ -2062,6 +2085,28 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.Button6, "保存筛选结果为压缩包格式。")
         Me.Button6.UseVisualStyleBackColor = False
         '
+        'Button11
+        '
+        Me.Button11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button11.BackColor = System.Drawing.Color.White
+        Me.Button11.CausesValidation = False
+        Me.Button11.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button11.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.Button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button11.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button11.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button11.Image = CType(resources.GetObject("Button11.Image"), System.Drawing.Image)
+        Me.Button11.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button11.Location = New System.Drawing.Point(542, 9)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(26, 26)
+        Me.Button11.TabIndex = 101
+        Me.Button11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button11, "清除查找关键词。")
+        Me.Button11.UseVisualStyleBackColor = False
+        '
         'ImageList2
         '
         Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
@@ -2133,7 +2178,7 @@ Partial Class Form1
         Me.starText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.starText.Location = New System.Drawing.Point(4, 4)
         Me.starText.Name = "starText"
-        Me.starText.Size = New System.Drawing.Size(320, 17)
+        Me.starText.Size = New System.Drawing.Size(321, 17)
         Me.starText.TabIndex = 1
         '
         'PictureBox11
@@ -2161,7 +2206,7 @@ Partial Class Form1
         Me.Button10.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button10.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button10.Location = New System.Drawing.Point(855, 9)
+        Me.Button10.Location = New System.Drawing.Point(856, 9)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(73, 26)
         Me.Button10.TabIndex = 97
@@ -2183,7 +2228,7 @@ Partial Class Form1
         Me.Button7.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button7.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button7.Location = New System.Drawing.Point(547, 9)
+        Me.Button7.Location = New System.Drawing.Point(548, 9)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(100, 26)
         Me.Button7.TabIndex = 94
@@ -2205,7 +2250,7 @@ Partial Class Form1
         Me.Button8.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button8.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button8.Location = New System.Drawing.Point(653, 9)
+        Me.Button8.Location = New System.Drawing.Point(654, 9)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(100, 26)
         Me.Button8.TabIndex = 95
@@ -2266,7 +2311,7 @@ Partial Class Form1
         Me.Panel4.Controls.Add(Me.searchText)
         Me.Panel4.Location = New System.Drawing.Point(206, 9)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(379, 26)
+        Me.Panel4.Size = New System.Drawing.Size(330, 26)
         Me.Panel4.TabIndex = 37
         '
         'ContextMenuStrip2
@@ -2334,7 +2379,7 @@ Partial Class Form1
         Me.ToolStripMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
         Me.ToolStripMenuItem5.Size = New System.Drawing.Size(174, 24)
-        Me.ToolStripMenuItem5.Text = "移除选中项(&D)"
+        Me.ToolStripMenuItem5.Text = "移除选定项(&D)"
         '
         'indexTimer
         '
@@ -2359,8 +2404,9 @@ Partial Class Form1
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(75, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
+        Me.MetroTabControl1.SelectedIndex = 3
         Me.MetroTabControl1.Size = New System.Drawing.Size(1024, 80)
+        Me.MetroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 48
         Me.MetroTabControl1.UseSelectable = True
@@ -2500,6 +2546,7 @@ Partial Class Form1
         '
         'MetroTabPage4
         '
+        Me.MetroTabPage4.Controls.Add(Me.Button11)
         Me.MetroTabPage4.Controls.Add(Me.PictureBox12)
         Me.MetroTabPage4.Controls.Add(Me.Panel5)
         Me.MetroTabPage4.Controls.Add(Me.searchButton1)
@@ -2526,7 +2573,7 @@ Partial Class Form1
         Me.Panel5.Controls.Add(Me.rbDate)
         Me.Panel5.Controls.Add(Me.rbName)
         Me.Panel5.Controls.Add(Me.rbFormat)
-        Me.Panel5.Location = New System.Drawing.Point(591, 9)
+        Me.Panel5.Location = New System.Drawing.Point(574, 9)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(368, 26)
         Me.Panel5.TabIndex = 13
@@ -2567,7 +2614,7 @@ Partial Class Form1
         Me.Button16.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button16.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button16.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button16.Location = New System.Drawing.Point(759, 9)
+        Me.Button16.Location = New System.Drawing.Point(760, 9)
         Me.Button16.Name = "Button16"
         Me.Button16.Size = New System.Drawing.Size(90, 26)
         Me.Button16.TabIndex = 98
@@ -2585,7 +2632,7 @@ Partial Class Form1
         Me.Panel10.Controls.Add(Me.starText)
         Me.Panel10.Location = New System.Drawing.Point(133, 9)
         Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(329, 26)
+        Me.Panel10.Size = New System.Drawing.Size(330, 26)
         Me.Panel10.TabIndex = 92
         '
         'MetroTabPage6
@@ -2956,4 +3003,6 @@ Partial Class Form1
     Friend WithEvents Button6 As Button
     Friend WithEvents MetroProgressBar1 As MetroFramework.Controls.MetroProgressBar
     Friend WithEvents Button9 As Button
+    Friend WithEvents Button11 As Button
+    Friend WithEvents Button12 As Button
 End Class

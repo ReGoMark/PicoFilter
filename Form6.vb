@@ -587,6 +587,13 @@ Public Class Form6
 
     Private Sub Form6_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
         Me.MinimumSize = New Size(371, 582)
+        If Me.WindowState = FormWindowState.Maximized Then
+            ListViewPre.Columns(0).Width = 60
+            ListViewPre.Columns(1).Width = 600
+        ElseIf Me.WindowState = FormWindowState.Normal Then
+            ListViewPre.Columns(0).Width = 60
+            ListViewPre.Columns(1).Width = 240
+        End If
     End Sub
 
     Private Sub ToolStripMenuItem17_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem17.Click
@@ -733,4 +740,18 @@ Public Class Form6
             End Get
         End Property
     End Class
+
+    Private Sub ToolStripMenuItem9_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem9.Click
+        ListViewPre.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
+    End Sub
+
+    Private Sub 还原列宽OToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 还原列宽OToolStripMenuItem.Click
+        If Me.WindowState = FormWindowState.Normal Then
+            ListViewPre.Columns(0).Width = 60
+            ListViewPre.Columns(1).Width = 240
+        ElseIf Me.WindowState = FormWindowState.Maximized Then
+            ListViewPre.Columns(0).Width = 60
+            ListViewPre.Columns(1).Width = 600
+        End If
+    End Sub
 End Class
