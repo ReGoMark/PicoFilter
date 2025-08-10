@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.IO.Compression
 Imports System.Security.Cryptography
 Imports System.Text.RegularExpressions
+Imports MetroFramework.Controls
 Imports Microsoft.VisualBasic.FileIO
 Imports OfficeOpenXml
 
@@ -186,21 +187,16 @@ Public Class Form1
         End If
         sumLblLT.Text = String.Join("  |  ", result)
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr & "  |  " & createTime.ToString("yy/MM/dd, HH:mm:ss")
-
         ProgressBar1.Visible = False
-        更新统计信息()
+
         PlayNotificationSound3()
-        'Form9.RichTextBox1.Text += consoletime & "Read Folder From: " & openText.Text.trim() & vbCrLf
-        'optChange("加载已完成。点击「分析」查看详细信息。", Color.Lavender)
+        更新统计信息()
         sumLT = files.Count
         jpgLT = jpgCount
         pngLT = pngCount
         bmpLT = bmpCount
         gifLT = gifCount
         icoLT = icoCount
-
-
-
     End Sub
 
     Private Function 获取图片分辨率(filePath As String) As String
@@ -451,7 +447,7 @@ Public Class Form1
         'ListViewRT.Width = 505
         SetDoubleBuffered(ListViewLT)
         SetDoubleBuffered(ListViewRT)
-        'SetDoubleBuffered(Me)
+        SetDoubleBuffered(Me)
         Me.Text = verinfo
         Me.KeyPreview = True ' 确保表单可以捕获键盘事件
         Me.MinimumSize = New Size(1066, 630) ' 设置最小窗口大小
@@ -469,7 +465,7 @@ Public Class Form1
             Else
                 If 确认字体安装(fontName2) Then
                 Else
-                    optChange("安装「方正黑体GBK」获得最佳视觉体验", Color.LemonChiffon, 4)
+                    optChange("安装「方正黑体_GBK」获得最佳视觉体验", Color.LemonChiffon, 4)
                 End If
             End If
         End If
@@ -477,7 +473,7 @@ Public Class Form1
         ' 检查分辨率是否小于指定值
         If screenWidth < 1066 OrElse screenHeight < 630 Then
             MessageBox.Show("检测到当前监视器分辨率低于 1066x630，程序布局可能无法正常显示。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            optChange("警告：监视器分辨率低于阈值。", Color.LemonChiffon, 4)
+            optChange("警告：当前监视器分辨率过低。", Color.LemonChiffon, 4)
         End If
         'If currentUserName = "ReGoMark" Then
         '    qrButton.Visible = True
@@ -487,8 +483,6 @@ Public Class Form1
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "格式说明"
         ToolTip2.SetToolTip(starText, "自定义三个标记词，用{}分隔；” & vbCrLf & “{x}{y}{z} - 标记带有x, y, z的项；" & vbCrLf & “{x}{y}{} - 标记带有x, y的项；" & vbCrLf & "不填写的以{}格式留空。")
-        MetroTabControl1.ImageList = ImageList1
-        MetroTabControl1.TabPages(0).ImageIndex = 0
     End Sub
 
     Private Function 确认字体安装(fontName As String) As Boolean
@@ -1486,7 +1480,6 @@ Public Class Form1
             Exit Sub
         End If
 
-
         Dim keyword As String = searchText.Text.Trim()
         Dim type As SearchType
 
@@ -2229,7 +2222,7 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub indexTimer_Tick(sender As Object, e As EventArgs) Handles indexTimer.Tick
+    Private Sub indexTimer_Tick(sender As Object, e As EventArgs)
         'consoletime = $"[{Now.Year}.{Now.Month}.{Now.Day}-{Now.Hour}:{Now.Minute}:{Now.Second}] "
         Dim checkedCount As Integer = 0 ' 统计选中状态的 CheckBox 数量
         Dim formatCheckedCount As Integer = 0 ' 统计格式 CheckBox 的选中数量
@@ -2656,7 +2649,6 @@ Public Class Form1
                     If MessageBox.Show("压缩包保存成功。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
                         Process.Start(zipPath)
                     End If
-
                 Catch ex As Exception
                     MetroProgressBar1.Visible = False
                     'Me.Text = verinfo
@@ -2749,7 +2741,7 @@ Public Class Form1
 
     ' 计算文件MD5
     Private Function GetFileMD5(filePath As String) As String
-        Using md5 As MD5 = md5.Create()
+        Using md5 As MD5 = MD5.Create()
             Using stream As FileStream = File.OpenRead(filePath)
                 Dim hashBytes = md5.ComputeHash(stream)
                 Return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant()
@@ -2844,7 +2836,6 @@ Public Class Form1
                    (mark3 <> "" AndAlso fileName.Contains(mark3)) Then
                     item.SubItems(1).Text = "★"
                     tagCount += 1
-
                 Else
                     item.SubItems(1).Text = ""
                 End If

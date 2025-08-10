@@ -33,54 +33,6 @@ Public Class Form7
         End If
     End Sub
 
-    'Private Sub panelSelectionOverlay_MouseDown(sender As Object, e As MouseEventArgs) Handles panelSelectionOverlay.MouseDown
-    '    isSelecting = True
-    '    selectStart = e.Location
-    '    selectionRect = New Rectangle(e.Location, Size.Empty)
-    '    panelSelectionOverlay.Invalidate()
-    'End Sub
-
-    'Private Sub panelSelectionOverlay_MouseMove(sender As Object, e As MouseEventArgs) Handles panelSelectionOverlay.MouseMove
-    '    If isSelecting Then
-    '        Dim x = Math.Min(selectStart.X, e.X)
-    '        Dim y = Math.Min(selectStart.Y, e.Y)
-    '        Dim width = Math.Abs(e.X - selectStart.X)
-    '        Dim height = Math.Abs(e.Y - selectStart.Y)
-    '        selectionRect = New Rectangle(x, y, width, height)
-    '        panelSelectionOverlay.Invalidate()
-    '    End If
-    'End Sub
-
-    'Private Sub panelSelectionOverlay_MouseUp(sender As Object, e As MouseEventArgs) Handles panelSelectionOverlay.MouseUp
-    '    isSelecting = False
-    '    panelSelectionOverlay.Invalidate()
-
-    '    ' 检查被选中的 CheckBox
-    '    For Each ctrl As Control In FlowLayoutPanel1.Controls
-    '        If TypeOf ctrl Is CheckBox Then
-    '            Dim cb = DirectCast(ctrl, CheckBox)
-    '            ' 获取控件相对于 selectionOverlay 的位置
-    '            Dim ctrlBounds = cb.Bounds
-    '            Dim ctrlLocation = FlowLayoutPanel1.PointToScreen(cb.Location)
-    '            ctrlLocation = panelSelectionOverlay.PointToClient(ctrlLocation)
-    '            ctrlBounds.Location = ctrlLocation
-
-    '            If selectionRect.IntersectsWith(ctrlBounds) Then
-    '                cb.Checked = Not My.Computer.Keyboard.CtrlKeyDown ' Ctrl 取消勾选
-    '            End If
-    '        End If
-    '    Next
-    'End Sub
-
-    'Private Sub panelSelectionOverlay_Paint(sender As Object, e As PaintEventArgs) Handles panelSelectionOverlay.Paint
-    '    If isSelecting Then
-    '        Using pen As New Pen(Color.Blue, 1)
-    '            pen.DashStyle = Drawing2D.DashStyle.Dot
-    '            e.Graphics.DrawRectangle(pen, selectionRect)
-    '        End Using
-    '    End If
-    'End Sub
-
     ''' <summary>
     ''' 外部调用接口：传入文件名，进行分词并生成标签
     ''' </summary>
@@ -223,17 +175,6 @@ Public Class Form7
             'MessageBox.Show("该功能仅支持「词典拆分」选项卡，请右键复制所选文本。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
-
-    'Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-    '    'If FlowLayoutPanel1.Controls.Count > 0 Then
-    '    '    Dim result As DialogResult = MessageBox.Show("确认要关闭吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-    '    '    If result = DialogResult.Yes Then
-    '    '        Me.Close()
-    '    '    End If
-    '    'ElseIf FlowLayoutPanel1.Controls.Count = 0 Then
-    '    '    Me.Close()
-    '    'End If
-    'End Sub
 
     Private Sub topButton_CheckStateChanged(sender As Object, e As EventArgs) Handles topButton.CheckStateChanged
         If topButton.Checked = True Then

@@ -1,5 +1,5 @@
-﻿Imports System.IO
-Imports System.Drawing.Imaging
+﻿Imports System.Drawing.Imaging
+Imports System.IO
 
 Public Class Form8
     ' 常量定义

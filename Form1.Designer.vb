@@ -151,8 +151,6 @@ Partial Class Form1
         Me.videoButton = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.optButton = New System.Windows.Forms.Button()
         Me.ImageList5 = New System.Windows.Forms.ImageList(Me.components)
         Me.PictureBox12 = New System.Windows.Forms.PictureBox()
@@ -172,7 +170,6 @@ Partial Class Form1
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip5 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.indexTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
         Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
@@ -1270,7 +1267,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox13)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(-54, 103)
+        Me.Panel3.Location = New System.Drawing.Point(-68, 103)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(264, 155)
         Me.Panel3.TabIndex = 44
@@ -1477,7 +1474,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-899, 177)
+        Me.Label7.Location = New System.Drawing.Point(-913, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1677,8 +1674,8 @@ Partial Class Form1
         '
         Me.ImageList3.ImageStream = CType(resources.GetObject("ImageList3.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList3.Images.SetKeyName(0, "locked_1.ico")
-        Me.ImageList3.Images.SetKeyName(1, "unlocked_1.ico")
+        Me.ImageList3.Images.SetKeyName(0, "lock_black.ico")
+        Me.ImageList3.Images.SetKeyName(1, "unlocked_black.ico")
         '
         'stsButton
         '
@@ -2107,42 +2104,27 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.Button11, "清除查找关键词。")
         Me.Button11.UseVisualStyleBackColor = False
         '
-        'ImageList2
-        '
-        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList2.Images.SetKeyName(0, "top.ico")
-        Me.ImageList2.Images.SetKeyName(1, "topped.ico")
-        '
-        'ImageList1
-        '
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "locked.ico")
-        Me.ImageList1.Images.SetKeyName(1, "unlocked.ico")
-        '
         'optButton
         '
         Me.optButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.optButton.AutoEllipsis = True
         Me.optButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.optButton.BackColor = System.Drawing.Color.White
         Me.optButton.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.optButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Gainsboro
-        Me.optButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.optButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
+        Me.optButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.optButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.optButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.optButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.optButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.optButton.ImageIndex = 0
         Me.optButton.ImageList = Me.ImageList5
-        Me.optButton.Location = New System.Drawing.Point(3, 11)
+        Me.optButton.Location = New System.Drawing.Point(3, 2)
         Me.optButton.Name = "optButton"
-        Me.optButton.Size = New System.Drawing.Size(339, 26)
+        Me.optButton.Size = New System.Drawing.Size(339, 44)
         Me.optButton.TabIndex = 47
-        Me.optButton.Text = "使用提示"
+        Me.optButton.Text = "使用提示" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.optButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.optButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.optButton.UseVisualStyleBackColor = False
@@ -2153,8 +2135,8 @@ Partial Class Form1
         Me.ImageList5.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList5.Images.SetKeyName(0, "tips_black.ico")
         Me.ImageList5.Images.SetKeyName(1, "tips_leslie_black.ico")
-        Me.ImageList5.Images.SetKeyName(2, "tips_search_black.ico")
-        Me.ImageList5.Images.SetKeyName(3, "tips_star_black.ico")
+        Me.ImageList5.Images.SetKeyName(2, "tips_star_black.ico")
+        Me.ImageList5.Images.SetKeyName(3, "tips_search_black.ico")
         Me.ImageList5.Images.SetKeyName(4, "tips_warn_black.ico")
         Me.ImageList5.Images.SetKeyName(5, "tips_output_black.ico")
         '
@@ -2380,11 +2362,6 @@ Partial Class Form1
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
         Me.ToolStripMenuItem5.Size = New System.Drawing.Size(174, 24)
         Me.ToolStripMenuItem5.Text = "移除选定项(&D)"
-        '
-        'indexTimer
-        '
-        Me.indexTimer.Enabled = True
-        Me.indexTimer.Interval = 1000
         '
         'ToolTip2
         '
@@ -2869,7 +2846,6 @@ Partial Class Form1
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lockButton As CheckBox
-    Friend WithEvents ImageList1 As ImageList
     Friend WithEvents Panel4 As Panel
     Friend WithEvents searchText As TextBox
     Friend WithEvents searchButton0 As Button
@@ -2923,7 +2899,6 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem14 As ToolStripMenuItem
     Friend WithEvents renameButton As Button
-    Friend WithEvents indexTimer As Timer
     Friend WithEvents ToolTip2 As ToolTip
     Friend WithEvents videoButton As Button
     Friend WithEvents MetroTabControl1 As MetroFramework.Controls.MetroTabControl
@@ -2947,7 +2922,6 @@ Partial Class Form1
     Friend WithEvents starText As TextBox
     Friend WithEvents Panel9 As Panel
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
-    Friend WithEvents ImageList2 As ImageList
     Friend WithEvents tabButton As Button
     Friend WithEvents sumLblLT As Label
     Friend WithEvents sumLblRT As Label

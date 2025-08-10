@@ -40,8 +40,8 @@ Partial Class Form7
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.topButton = New System.Windows.Forms.CheckBox()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.absbButton = New System.Windows.Forms.CheckBox()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
@@ -320,6 +320,27 @@ Partial Class Form7
         Me.ImageList1.Images.SetKeyName(0, "pin.ico")
         Me.ImageList1.Images.SetKeyName(1, "pinned.ico")
         '
+        'absbButton
+        '
+        Me.absbButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
+        Me.absbButton.BackColor = System.Drawing.Color.GhostWhite
+        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
+        Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.absbButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.absbButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.absbButton.ForeColor = System.Drawing.Color.SlateBlue
+        Me.absbButton.Image = CType(resources.GetObject("absbButton.Image"), System.Drawing.Image)
+        Me.absbButton.Location = New System.Drawing.Point(44, 497)
+        Me.absbButton.Name = "absbButton"
+        Me.absbButton.Size = New System.Drawing.Size(26, 26)
+        Me.absbButton.TabIndex = 95
+        Me.absbButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.absbButton, "吸附窗体（左）")
+        Me.absbButton.UseVisualStyleBackColor = False
+        '
         'Button4
         '
         Me.Button4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
@@ -341,27 +362,6 @@ Partial Class Form7
         Me.Button4.TabIndex = 94
         Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button4.UseVisualStyleBackColor = False
-        '
-        'absbButton
-        '
-        Me.absbButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.absbButton.Appearance = System.Windows.Forms.Appearance.Button
-        Me.absbButton.BackColor = System.Drawing.Color.GhostWhite
-        Me.absbButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
-        Me.absbButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
-        Me.absbButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.absbButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.absbButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.absbButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.absbButton.ForeColor = System.Drawing.Color.SlateBlue
-        Me.absbButton.Image = CType(resources.GetObject("absbButton.Image"), System.Drawing.Image)
-        Me.absbButton.Location = New System.Drawing.Point(44, 497)
-        Me.absbButton.Name = "absbButton"
-        Me.absbButton.Size = New System.Drawing.Size(26, 26)
-        Me.absbButton.TabIndex = 95
-        Me.absbButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.absbButton, "吸附窗体（左）")
-        Me.absbButton.UseVisualStyleBackColor = False
         '
         'Form7
         '
