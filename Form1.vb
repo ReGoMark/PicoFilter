@@ -366,17 +366,26 @@ Public Class Form1
         'F1-F5切换选项卡
         Select Case e.KeyCode
             Case Keys.F1
-                SelectTabPage(5)
+                Form2.Show()
             Case Keys.F2
-                SelectTabPage(0)
+                renameButton.PerformClick()
             Case Keys.F3
-                SelectTabPage(1)
+                openButton.PerformClick()
             Case Keys.F4
-                SelectTabPage(2)
+                treeButton.PerformClick()
             Case Keys.F5
-                SelectTabPage(3)
+                rfhButton.PerformClick()
             Case Keys.F6
-                SelectTabPage(4)
+                convertButton.PerformClick()
+            Case Keys.F7
+                stsButton.PerformClick()
+            Case Keys.F8
+                If topButton.Checked = True Then
+                    topButton.CheckState = CheckState.Unchecked
+                Else
+                    topButton.CheckState = CheckState.Checked
+                End If
+
         End Select
     End Sub
 
@@ -405,6 +414,61 @@ Public Class Form1
                 e.Effect = DragDropEffects.None
             End If
         End If
+    End Sub
+
+    Private Sub BindContextMenuToAllTextBoxes(parent As Control, menu As ContextMenuStrip)
+        For Each ctrl As Control In parent.Controls
+            If TypeOf ctrl Is TextBox Then
+                ctrl.ContextMenuStrip = menu
+            End If
+            ' 如果控件里还有子控件，递归处理
+            If ctrl.HasChildren Then
+                BindContextMenuToAllTextBoxes(ctrl, menu)
+            End If
+        Next
+    End Sub
+
+    ' 获取触发菜单的 TextBox
+    Private Function GetTargetTextBox() As TextBox
+        Return TryCast(ContextMenuStrip6.SourceControl, TextBox)
+    End Function
+
+    ' 撤销
+    Private Sub 撤销UToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 撤销ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Undo()
+    End Sub
+
+    ' 剪切
+    Private Sub 剪切PToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 剪切ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Cut()
+    End Sub
+
+    ' 复制
+    Private Sub 复制CToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 复制ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Copy()
+    End Sub
+
+    ' 粘贴
+    Private Sub 粘贴TToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 粘贴ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Paste()
+    End Sub
+
+    ' 删除
+    Private Sub 删除DToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing AndAlso tb.SelectionLength > 0 Then
+            tb.SelectedText = ""
+        End If
+    End Sub
+
+    ' 全选
+    Private Sub 全选AToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 全选ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.SelectAll()
     End Sub
 
     '当拖放文件到按钮上时触发的事件
@@ -441,6 +505,9 @@ Public Class Form1
         ContextMenuStrip3.Renderer = New ModernMenuRenderer()
         ContextMenuStrip4.Renderer = New ModernMenuRenderer()
         ContextMenuStrip5.Renderer = New ModernMenuRenderer()
+        ContextMenuStrip6.Renderer = New ModernMenuRenderer()
+
+        BindContextMenuToAllTextBoxes(Me, ContextMenuStrip6)
 
         ProgressBar1.Maximum = 0
         loadedCount = 0
@@ -1462,11 +1529,11 @@ Public Class Form1
         If count < 100 Then
             Return count.ToString()
         ElseIf count < 500 Then
-            Return "C"
+            Return "FH"
         ElseIf count < 1000 Then
-            Return "D"
+            Return "KL"
         Else
-            Return "M"
+            Return "TK"
         End If
     End Function
 
@@ -2553,11 +2620,11 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
-        If Form9.Visible = True Then
-            Form9.Close()
-        Else
-            Form9.Show()
-        End If
+        'If Form9.Visible = True Then
+        '    Form9.Close()
+        'Else
+        '    Form9.Show()
+        'End If
     End Sub
 
     Private Sub Button6_Click_2(sender As Object, e As EventArgs) Handles Button6.Click
@@ -2885,6 +2952,12 @@ Public Class Form1
         sumLblLT.Text = String.Join("  |  ", result)
     End Sub
 
+    Private Sub starText_KeyDown(sender As Object, e As KeyEventArgs) Handles starText.KeyDown
+        If e.KeyCode = Keys.Tab Then
+            e.SuppressKeyPress = True  ' 阻止焦点跳转
+            tabButton.PerformClick()     ' 触发按钮点击
+        End If
+    End Sub
 End Class
 
 ' 自定义现代风格渲染器
@@ -2940,5 +3013,4 @@ Public Class ModernColorTable
             Return Color.FromArgb(180, 180, 220)
         End Get
     End Property
-
 End Class

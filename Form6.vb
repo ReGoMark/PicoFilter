@@ -14,6 +14,61 @@ Public Class Form6
         End If
     End Sub
 
+    Private Sub BindContextMenuToAllTextBoxes(parent As Control, menu As ContextMenuStrip)
+        For Each ctrl As Control In parent.Controls
+            If TypeOf ctrl Is TextBox Then
+                ctrl.ContextMenuStrip = menu
+            End If
+            ' 如果控件里还有子控件，递归处理
+            If ctrl.HasChildren Then
+                BindContextMenuToAllTextBoxes(ctrl, menu)
+            End If
+        Next
+    End Sub
+
+    ' 获取触发菜单的 TextBox
+    Private Function GetTargetTextBox() As TextBox
+        Return TryCast(ContextMenuStrip6.SourceControl, TextBox)
+    End Function
+
+    ' 撤销
+    Private Sub 撤销UToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 撤销ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Undo()
+    End Sub
+
+    ' 剪切
+    Private Sub 剪切PToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 剪切ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Cut()
+    End Sub
+
+    ' 复制
+    Private Sub 复制CToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 复制ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Copy()
+    End Sub
+
+    ' 粘贴
+    Private Sub 粘贴TToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 粘贴ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Paste()
+    End Sub
+
+    ' 删除
+    Private Sub 删除DToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing AndAlso tb.SelectionLength > 0 Then
+            tb.SelectedText = ""
+        End If
+    End Sub
+
+    ' 全选
+    Private Sub 全选AToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 全选ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.SelectAll()
+    End Sub
+
     ' 2. 在Form6_Load中调用
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ComboBox1.SelectedIndex = 0
@@ -24,10 +79,12 @@ Public Class Form6
         ' 添加工具提示，展示所有可用格式
         Dim toolTip As New ToolTip()
         toolTip.ToolTipIcon = ToolTipIcon.Info
-        toolTip.ToolTipTitle = "可用格式"
+        toolTip.ToolTipTitle = "格式说明"
         toolTip.SetToolTip(ComboBox1, "{name} - 原文件名(xxxx)" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)" & vbCrLf & "{season} - 季(春/夏/秋/冬)")
         ContextMenuStrip1.Renderer = New ModernMenuRenderer()
         ContextMenuStrip3.Renderer = New ModernMenuRenderer()
+        ContextMenuStrip6.Renderer = New ModernMenuRenderer()
+        BindContextMenuToAllTextBoxes(Me, ContextMenuStrip6)
     End Sub
 
     Private Sub bksbutton_Click(sender As Object, e As EventArgs) Handles bksbutton.Click
@@ -187,6 +244,7 @@ Public Class Form6
     End Sub
 
     ' Button7_Click：对选中项应用格式
+    ' Button7_Click：对选中项应用格式
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim formatString As String = ComboBox1.Text
         If String.IsNullOrWhiteSpace(formatString) Then Return
@@ -195,6 +253,7 @@ Public Class Form6
             Return
         End If
         Dim startIndex As Integer = If(Integer.TryParse(TextBoxStart.Text, Nothing), CInt(TextBoxStart.Text), 1)
+        Dim stepSize As Integer = CInt(NumericUpDown1.Value) ' 获取步长值
         Dim currentMonth As String = DateTime.Now.Month.ToString
         Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
         Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
@@ -207,7 +266,9 @@ Public Class Form6
             Case "9", "10", "11" : currentSeason = "秋"
             Case "12", "1", "2" : currentSeason = "冬"
         End Select
-        Dim maxIndexLength As Integer = (startIndex + ListViewPre.Items.Count - 1).ToString().Length
+        ' 修改maxIndexLength的计算，考虑步长的影响
+        Dim maxIndex As Integer = startIndex + (ListViewPre.SelectedItems.Count - 1) * stepSize
+        Dim maxIndexLength As Integer = maxIndex.ToString().Length
 
         For Each item As ListViewItem In ListViewPre.SelectedItems
             Dim i As Integer = item.Index
@@ -220,7 +281,8 @@ Public Class Form6
             End If
             Dim originalName0 As String = IO.Path.GetFileNameWithoutExtension(originalName)
             Dim fileExtension As String = IO.Path.GetExtension(originalName)
-            Dim indexValue As Integer = startIndex + i
+            ' 修改indexValue的计算，使用步长
+            Dim indexValue As Integer = startIndex + (i * stepSize)
             Dim indexStr As String = indexValue.ToString()
             Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c)
             Dim newName As String = formatString.Replace("{prefix}", "") _
@@ -244,6 +306,7 @@ Public Class Form6
             End If
         Next
     End Sub
+
 
     ' Button4_Click：还原并去掉所有*
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -754,4 +817,65 @@ Public Class Form6
             ListViewPre.Columns(1).Width = 600
         End If
     End Sub
+
+    '' 获取 ComboBox 内部的 TextBox
+    'Private Function GetComboBoxTextBox(cb As ComboBox) As TextBox
+    '    For Each ctrl As Control In cb.Controls
+    '        If TypeOf ctrl Is TextBox Then
+    '            Return DirectCast(ctrl, TextBox)
+    '        End If
+    '    Next
+    '    Return Nothing
+    'End Function
+
+    'Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+    '    Dim tb = GetComboBoxTextBox(ComboBox1)
+    '    If tb IsNot Nothing Then
+    '        tb.Focus() ' 确保获得焦点
+    '        If tb.CanUndo Then tb.Undo()
+    '    End If
+    'End Sub
+
+    'Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
+    '    Dim tb = GetComboBoxTextBox(ComboBox1)
+    '    If tb IsNot Nothing Then
+    '        tb.Focus()
+    '        tb.Cut()
+    '    End If
+    'End Sub
+
+    'Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
+    '    Dim tb = GetComboBoxTextBox(ComboBox1)
+    '    If tb IsNot Nothing Then
+    '        tb.Focus()
+    '        tb.Copy()
+    '    End If
+    'End Sub
+
+    'Private Sub ToolStripMenuItem5_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem5.Click
+    '    Dim tb = GetComboBoxTextBox(ComboBox1)
+    '    If tb IsNot Nothing Then
+    '        tb.Focus()
+    '        tb.Paste()
+    '    End If
+    'End Sub
+
+    'Private Sub ToolStripMenuItem6_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem6.Click
+    '    Dim tb = GetComboBoxTextBox(ComboBox1)
+    '    If tb IsNot Nothing Then
+    '        tb.Focus()
+    '        If tb.SelectionLength > 0 Then
+    '            tb.SelectedText = ""
+    '        End If
+    '    End If
+    'End Sub
+
+    'Private Sub ToolStripMenuItem7_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem7.Click
+    '    Dim tb = GetComboBoxTextBox(ComboBox1)
+    '    If tb IsNot Nothing Then
+    '        tb.Focus()
+    '        tb.SelectAll()
+    '    End If
+    'End Sub
+    '假设ContextMenuStrip2中有以下菜单项，我们需要为它们添加事件处理程序
 End Class

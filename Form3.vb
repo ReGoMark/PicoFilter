@@ -35,4 +35,12 @@
     Private Sub Form1_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
         Me.CenterToScreen()
     End Sub
+
+    Private Sub Label16_MouseHover(sender As Object, e As EventArgs) Handles Label16.MouseHover
+        ToolTip1.SetToolTip(Label16, Label16.Text)
+    End Sub
+
+    Private Sub Label45_MouseHover(sender As Object, e As EventArgs) Handles Label45.MouseHover
+        ToolTip1.SetToolTip(Label45, Label45.Text)
+    End Sub
 End Class

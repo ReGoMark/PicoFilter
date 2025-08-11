@@ -9,6 +9,61 @@ Public Class Form7
     'Private selectStart As Point
     'Private selectionRect As Rectangle
 
+    Private Sub BindContextMenuToAllTextBoxes(parent As Control, menu As ContextMenuStrip)
+        For Each ctrl As Control In parent.Controls
+            If TypeOf ctrl Is TextBox Then
+                ctrl.ContextMenuStrip = menu
+            End If
+            ' 如果控件里还有子控件，递归处理
+            If ctrl.HasChildren Then
+                BindContextMenuToAllTextBoxes(ctrl, menu)
+            End If
+        Next
+    End Sub
+
+    ' 获取触发菜单的 TextBox
+    Private Function GetTargetTextBox() As TextBox
+        Return TryCast(ContextMenuStrip6.SourceControl, TextBox)
+    End Function
+
+    ' 撤销
+    Private Sub 撤销UToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 撤销ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Undo()
+    End Sub
+
+    ' 剪切
+    Private Sub 剪切PToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 剪切ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Cut()
+    End Sub
+
+    ' 复制
+    Private Sub 复制CToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 复制ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Copy()
+    End Sub
+
+    ' 粘贴
+    Private Sub 粘贴TToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 粘贴ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.Paste()
+    End Sub
+
+    ' 删除
+    Private Sub 删除DToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing AndAlso tb.SelectionLength > 0 Then
+            tb.SelectedText = ""
+        End If
+    End Sub
+
+    ' 全选
+    Private Sub 全选AToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 全选ToolStripMenuItem.Click
+        Dim tb = GetTargetTextBox()
+        If tb IsNot Nothing Then tb.SelectAll()
+    End Sub
+
     Private Sub Form7_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' 默认使用基础分组
         FlowLayoutPanel1.AutoScroll = True
@@ -23,6 +78,7 @@ Public Class Form7
         Else
             Me.CenterToScreen()
         End If
+        ''BindContextMenuToAllTextBoxes(Me, ContextMenuStrip6)
     End Sub
 
     Private Sub absbButton_CheckStateChanged(sender As Object, e As EventArgs) Handles absbButton.CheckStateChanged

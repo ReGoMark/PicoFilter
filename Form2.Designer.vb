@@ -102,7 +102,7 @@ Partial Class Form2
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(160, 20)
         Me.Label44.TabIndex = 47
-        Me.Label44.Text = "最后更新：2025/08/05"
+        Me.Label44.Text = "最后更新：2025/08/11"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
@@ -221,7 +221,7 @@ Partial Class Form2
         Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Items.AddRange(New Object() {"PicoFilt - 图像筛选 - 2.0.4", "PicoSplit - 文件名切割 - 0.1.0", "PicoName - 批量重命名 - 1.2.0", "PicoConvert - 批量格式转换 - 1.2.0", "方正黑体 - 默认显示字体 - 5.3.0", "微软雅黑 - 默认显示字体 - 11.3.0", "Consolas - 等宽字符显示字体- 7.0.0", "EPPlus - 表格导出 - 7.3.2", "MetroModernUI - 标签页控件 - 1.4.0", ".NET Framework - 基础运行库 - 4.7.2"})
+        Me.ListBox1.Items.AddRange(New Object() {"PicoFilt - 图像筛选 - 2.0.5", "PicoSplit - 文件名切割 - 0.1.1", "PicoName - 批量重命名 - 1.2.1", "PicoConvert - 批量格式转换 - 1.2.1", "方正黑体 - 默认显示字体 - 5.3.0", "微软雅黑 - 默认显示字体 - 11.3.0", "Consolas - 等宽字符显示字体- 7.0.0", "EPPlus - 表格导出 - 7.3.2", "MetroModernUI - 标签页控件 - 1.4.0", ".NET Framework - 基础运行库 - 4.7.2"})
         Me.ListBox1.Location = New System.Drawing.Point(3, 32)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(315, 180)

@@ -42,11 +42,21 @@ Partial Class Form7
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.ContextMenuStrip6 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.撤销ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
+        Me.剪切ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.复制ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.粘贴ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.删除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
+        Me.全选ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.MetroTabPage2.SuspendLayout()
+        Me.ContextMenuStrip6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -75,7 +85,7 @@ Partial Class Form7
         Me.MetroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular
         Me.MetroTabControl1.Location = New System.Drawing.Point(24, 52)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 1
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 431)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 90
@@ -87,9 +97,9 @@ Partial Class Form7
         Me.MetroTabPage1.HorizontalScrollbarBarColor = True
         Me.MetroTabPage1.HorizontalScrollbarHighlightOnWheel = False
         Me.MetroTabPage1.HorizontalScrollbarSize = 10
-        Me.MetroTabPage1.Location = New System.Drawing.Point(4, 40)
+        Me.MetroTabPage1.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage1.Name = "MetroTabPage1"
-        Me.MetroTabPage1.Size = New System.Drawing.Size(321, 387)
+        Me.MetroTabPage1.Size = New System.Drawing.Size(321, 389)
         Me.MetroTabPage1.TabIndex = 0
         Me.MetroTabPage1.Text = "词典拆分   "
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
@@ -153,9 +163,9 @@ Partial Class Form7
         Me.MetroTabPage2.HorizontalScrollbarBarColor = True
         Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.HorizontalScrollbarSize = 10
-        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 38)
+        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 40)
         Me.MetroTabPage2.Name = "MetroTabPage2"
-        Me.MetroTabPage2.Size = New System.Drawing.Size(321, 389)
+        Me.MetroTabPage2.Size = New System.Drawing.Size(321, 387)
         Me.MetroTabPage2.TabIndex = 1
         Me.MetroTabPage2.Text = "手动选取   "
         Me.MetroTabPage2.VerticalScrollbarBarColor = True
@@ -167,11 +177,11 @@ Partial Class Form7
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(0, 5)
+        Me.TextBox1.Location = New System.Drawing.Point(2, 9)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(321, 384)
+        Me.TextBox1.Size = New System.Drawing.Size(315, 377)
         Me.TextBox1.TabIndex = 2
         '
         'Button5
@@ -218,7 +228,7 @@ Partial Class Form7
         Me.Button1.TabIndex = 90
         Me.Button1.Text = "到星标"
         Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button1, "发送到「星标」标记框。")
+        Me.ToolTip1.SetToolTip(Me.Button1, "发送到「星标」标记框")
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Button2
@@ -242,7 +252,7 @@ Partial Class Form7
         Me.Button2.TabIndex = 91
         Me.Button2.Text = "到查找"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button2, "发送到「搜索」文本框。")
+        Me.ToolTip1.SetToolTip(Me.Button2, "发送到「查找」文本框")
         Me.Button2.UseVisualStyleBackColor = False
         '
         'ButtonCopySelected
@@ -258,13 +268,12 @@ Partial Class Form7
         Me.ButtonCopySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonCopySelected.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ButtonCopySelected.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.ButtonCopySelected.Image = CType(resources.GetObject("ButtonCopySelected.Image"), System.Drawing.Image)
         Me.ButtonCopySelected.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ButtonCopySelected.Location = New System.Drawing.Point(150, 497)
+        Me.ButtonCopySelected.Location = New System.Drawing.Point(182, 497)
         Me.ButtonCopySelected.Name = "ButtonCopySelected"
-        Me.ButtonCopySelected.Size = New System.Drawing.Size(120, 26)
+        Me.ButtonCopySelected.Size = New System.Drawing.Size(88, 26)
         Me.ButtonCopySelected.TabIndex = 89
-        Me.ButtonCopySelected.Text = "复制选中词"
+        Me.ButtonCopySelected.Text = "复制选中"
         Me.ButtonCopySelected.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ButtonCopySelected.UseVisualStyleBackColor = False
         '
@@ -356,12 +365,97 @@ Partial Class Form7
         Me.Button4.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button4.Location = New System.Drawing.Point(118, 497)
+        Me.Button4.Location = New System.Drawing.Point(150, 497)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(26, 26)
         Me.Button4.TabIndex = 94
         Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button4, "全选")
         Me.Button4.UseVisualStyleBackColor = False
+        '
+        'ContextMenuStrip6
+        '
+        Me.ContextMenuStrip6.BackColor = System.Drawing.Color.White
+        Me.ContextMenuStrip6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.ContextMenuStrip6.ImageScalingSize = New System.Drawing.Size(26, 26)
+        Me.ContextMenuStrip6.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.撤销ToolStripMenuItem, Me.ToolStripSeparator14, Me.剪切ToolStripMenuItem, Me.复制ToolStripMenuItem, Me.粘贴ToolStripMenuItem, Me.删除ToolStripMenuItem, Me.ToolStripSeparator15, Me.全选ToolStripMenuItem})
+        Me.ContextMenuStrip6.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip6.Size = New System.Drawing.Size(130, 160)
+        '
+        '撤销ToolStripMenuItem
+        '
+        Me.撤销ToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
+        Me.撤销ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.撤销ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.撤销ToolStripMenuItem.Image = CType(resources.GetObject("撤销ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.撤销ToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.撤销ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.撤销ToolStripMenuItem.Name = "撤销ToolStripMenuItem"
+        Me.撤销ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.撤销ToolStripMenuItem.Text = "撤销(&U)"
+        '
+        'ToolStripSeparator14
+        '
+        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(126, 6)
+        '
+        '剪切ToolStripMenuItem
+        '
+        Me.剪切ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.剪切ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.剪切ToolStripMenuItem.Image = CType(resources.GetObject("剪切ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.剪切ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.剪切ToolStripMenuItem.Name = "剪切ToolStripMenuItem"
+        Me.剪切ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.剪切ToolStripMenuItem.Text = "剪切(&P)"
+        '
+        '复制ToolStripMenuItem
+        '
+        Me.复制ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.复制ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.复制ToolStripMenuItem.Image = CType(resources.GetObject("复制ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.复制ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem"
+        Me.复制ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.复制ToolStripMenuItem.Text = "复制(&C)"
+        '
+        '粘贴ToolStripMenuItem
+        '
+        Me.粘贴ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.粘贴ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.粘贴ToolStripMenuItem.Image = CType(resources.GetObject("粘贴ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.粘贴ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem"
+        Me.粘贴ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.粘贴ToolStripMenuItem.Text = "粘贴(&T)"
+        '
+        '删除ToolStripMenuItem
+        '
+        Me.删除ToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
+        Me.删除ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.删除ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.删除ToolStripMenuItem.Image = CType(resources.GetObject("删除ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.删除ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
+        Me.删除ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.删除ToolStripMenuItem.Text = "删除(&D)"
+        '
+        'ToolStripSeparator15
+        '
+        Me.ToolStripSeparator15.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
+        Me.ToolStripSeparator15.Size = New System.Drawing.Size(126, 6)
+        '
+        '全选ToolStripMenuItem
+        '
+        Me.全选ToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
+        Me.全选ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.全选ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.全选ToolStripMenuItem.Image = CType(resources.GetObject("全选ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.全选ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.全选ToolStripMenuItem.Name = "全选ToolStripMenuItem"
+        Me.全选ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.全选ToolStripMenuItem.Text = "全选(&A)"
         '
         'Form7
         '
@@ -387,6 +481,7 @@ Partial Class Form7
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.MetroTabPage2.ResumeLayout(False)
         Me.MetroTabPage2.PerformLayout()
+        Me.ContextMenuStrip6.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -409,4 +504,13 @@ Partial Class Form7
     Friend WithEvents Button5 As Button
     Friend WithEvents mentionButton As CheckBox
     Friend WithEvents absbButton As CheckBox
+    Friend WithEvents ContextMenuStrip6 As ContextMenuStrip
+    Friend WithEvents 撤销ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator14 As ToolStripSeparator
+    Friend WithEvents 剪切ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 复制ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 粘贴ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 删除ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator15 As ToolStripSeparator
+    Friend WithEvents 全选ToolStripMenuItem As ToolStripMenuItem
 End Class

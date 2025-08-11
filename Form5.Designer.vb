@@ -104,7 +104,7 @@ Partial Class Form5
         Me.btnGoUp.TabIndex = 52
         Me.btnGoUp.Text = "返回上一级"
         Me.btnGoUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级目录。")
+        Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级目录")
         Me.btnGoUp.UseVisualStyleBackColor = False
         '
         'ProgressBar1
@@ -140,7 +140,7 @@ Partial Class Form5
         Me.CheckBox1.Text = "详细模式"
         Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.CheckBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.CheckBox1, "在目录结构中也显示图像文件。")
+        Me.ToolTip1.SetToolTip(Me.CheckBox1, "在层级结构中显示图像文件")
         Me.CheckBox1.UseVisualStyleBackColor = False
         '
         'TreeView1
@@ -236,7 +236,7 @@ Partial Class Form5
         Me.Button2.TabIndex = 43
         Me.Button2.Text = "跳转"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button2, "立即加载当前数据到PicoFilter。")
+        Me.ToolTip1.SetToolTip(Me.Button2, "立即加载到 PicoFilter")
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Button5
@@ -256,7 +256,6 @@ Partial Class Form5
         Me.Button5.Size = New System.Drawing.Size(118, 26)
         Me.Button5.TabIndex = 54
         Me.Button5.Text = "展开全部节点"
-        Me.ToolTip1.SetToolTip(Me.Button5, "展开当前位置所有节点。")
         Me.Button5.UseVisualStyleBackColor = False
         '
         'topButton
@@ -398,7 +397,7 @@ Partial Class Form5
         Me.Button3.TabIndex = 60
         Me.Button3.Text = "遍历提取"
         Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button3, "遍历当前目录下所有图像文件并复制到指定位置。")
+        Me.ToolTip1.SetToolTip(Me.Button3, "遍历所有图像文件保存到指定文件夹")
         Me.Button3.UseVisualStyleBackColor = False
         '
         'Panel3
