@@ -71,7 +71,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取JPEG、PNG�
 * 筛选
 <img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/filt.png" />
 
-* 搜索
+* 查找
 <img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/search.png" />
 
 * 星标
@@ -94,7 +94,7 @@ PicoFilter 是一款简单易用的图片整理工具，支持读取JPEG、PNG�
 
 ## ⏬下载
 * 发布页（优先更新）：https://github.com/ReGoMark/PicoFilter/releases
-* 蓝奏云（随后更新）：https://wwza.lanzouo.com/iFBhJ33063ri
+* 蓝奏云（随后更新）：https://wwza.lanzouo.com/iD3NE336lw0b
 
 ## 💗打赏
 如果你喜欢这个程序，觉得它对你有帮助，欢迎通过赞助支持作者的持续开发与维护！每一份支持，都是我继续优化和更新的动力。无论是一次性打赏，还是持续支持，都将被深深感激！
