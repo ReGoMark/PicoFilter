@@ -30,7 +30,7 @@ Public Class Form1
 
     Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
-    Public verinfo As String = "PicoFilter 3.0" '存储版本信息
+    Public verinfo As String = "PicoFilter 2.0.4" '存储版本信息
     Private opttext As String = "使用提示" '存储操作按钮默认文本
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
@@ -140,7 +140,7 @@ Public Class Form1
                 item.SubItems.Add(resolution) '添加分辨率
                 item.SubItems.Add(format) '添加格式
                 item.SubItems.Add(sizeFormatted) '添加大小
-                item.SubItems.Add(fileInfo.LastWriteTime.ToString("yy/MM/dd, HH:mm:ss")) ' **第四列：修改日期**
+                item.SubItems.Add(fileInfo.LastWriteTime.ToString("yyyy/MM/dd, HH:mm:ss")) ' **第四列：修改日期**
                 listViewItems.Add(item)
 
                 sumSize += fileSize
@@ -186,7 +186,7 @@ Public Class Form1
             optChange("星标：找到 " & tagCount & “ 项”, Color.White, 3)
         End If
         sumLblLT.Text = String.Join("  |  ", result)
-        Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr & "  |  " & createTime.ToString("yy/MM/dd, HH:mm:ss")
+        Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr & "  |  " & createTime.ToString("yyyy/MM/dd, HH:mm:ss")
         ProgressBar1.Visible = False
 
         PlayNotificationSound3()
@@ -1006,8 +1006,8 @@ Public Class Form1
                         returnVal = size1.CompareTo(size2)
                     Case 6 ' 创建日期（按日期时间排序）
                         Dim date1, date2 As DateTime
-                        If DateTime.TryParseExact(item1.SubItems(col).Text, "yy/MM/dd, HH:mm:ss", Nothing, Globalization.DateTimeStyles.None, date1) AndAlso
-                   DateTime.TryParseExact(item2.SubItems(col).Text, "yy/MM/dd, HH:mm:ss", Nothing, Globalization.DateTimeStyles.None, date2) Then
+                        If DateTime.TryParseExact(item1.SubItems(col).Text, "yyyy/MM/dd, HH:mm:ss", Nothing, Globalization.DateTimeStyles.None, date1) AndAlso
+                   DateTime.TryParseExact(item2.SubItems(col).Text, "yyyy/MM/dd, HH:mm:ss", Nothing, Globalization.DateTimeStyles.None, date2) Then
                             returnVal = date1.CompareTo(date2)
                         Else
                             returnVal = 0 ' 解析失败，不排序
@@ -1381,28 +1381,28 @@ Public Class Form1
 
     '双重锁定
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If lockButton.Checked = True Then
-            ' 检查 ListViewLT 和 ListView2 是否有内容
-            If ListViewRT.Items.Count > 0 Then
-                ' 弹出消息框
-                Dim result As DialogResult = MessageBox.Show("确定要关闭吗？", "关闭", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
-                If result = DialogResult.Cancel Then
-                    ' 用户选择了取消，阻止关闭
-                    e.Cancel = True
-                End If
+        ' 检查lockButton是否勾选且ListViewRT是否有内容
+        If lockButton.Checked AndAlso ListViewRT.Items.Count > 0 Then
+            ' 弹出消息框
+            Dim result As DialogResult = MessageBox.Show("确定要关闭吗？", "关闭", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+            If result = DialogResult.Cancel Then
+                ' 用户选择了取消，阻止关闭并退出
+                e.Cancel = True
+                Exit Sub
             End If
-            ' 如果没有内容或用户选择了确定，窗口将继续关闭
-
-            Form2.Close()
-            Form3.Close()
-            Form5.Close()
-            Form6.Close()
-            Form7.Close()
-            Form8.Close()
         End If
+
+        ' 关闭其他窗口（无论lockButton是否勾选）
+        Form2.Close()
+        Form3.Close()
+        Form5.Close()
+        Form6.Close()
+        Form7.Close()
+        Form8.Close()
     End Sub
 
-    '双重锁定判定
+
+    '双重锁定切换
     Private Sub CheckBox12_CheckStateChanged(sender As Object, e As EventArgs) Handles lockButton.CheckStateChanged
         If lockButton.Checked = True Then
             lockButton.ImageIndex = 0
@@ -1782,15 +1782,15 @@ Public Class Form1
                 Dim dirInfo As New DirectoryInfo(folderPath)
                 Dim createTime As DateTime = dirInfo.CreationTime
                 Dim modifyTime As DateTime = dirInfo.LastWriteTime
-                Form3.Label50.Text = createTime.ToString("yy/MM/dd,HH:mm:ss")
-                Form3.Label52.Text = modifyTime.ToString("yy/MM/dd,HH:mm:ss")
+                Form3.Label50.Text = createTime.ToString("yyyy/MM/dd,HH:mm:ss")
+                Form3.Label52.Text = modifyTime.ToString("yyyy/MM/dd,HH:mm:ss")
             Else
-                Form3.Label50.Text = "yy/MM/dd,HH:mm:ss"
-                Form3.Label52.Text = "yy/MM/dd,HH:mm:ss"
+                Form3.Label50.Text = "yyyy/MM/dd,HH:mm:ss"
+                Form3.Label52.Text = "yyyy/MM/dd,HH:mm:ss"
             End If
         Catch ex As Exception
-            Form3.Label50.Text = "读取失败"
-            Form3.Label52.Text = "读取失败"
+            '    Form3.Label50.Text = "error"
+            '    Form3.Label52.Text = "读取失败"
         End Try
     End Sub
 
