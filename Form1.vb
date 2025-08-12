@@ -764,7 +764,7 @@ Public Class Form1
     '筛选结果隔离
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles dvdButton.Click
         Dim now As DateTime = DateTime.Now
-        Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
+        Dim formattedDateTime As String = now.ToString("yyyyMMddHHmmss")
         Dim sourceFolder As String = openText.Text.Trim() ' 源文件夹路径
         Dim resultFolder As String = Path.Combine(sourceFolder, "隔离结果" & formattedDateTime)
         If ListViewRT.Items.Count > 0 Then
@@ -795,7 +795,7 @@ Public Class Form1
     '快速保存到桌面
     Private Sub Buttonsave_Click(sender As Object, e As EventArgs) Handles deskButton.Click
         Dim now As DateTime = DateTime.Now
-        Dim formattedDateTime As String = now.ToString("yyyyMMddHHmm")
+        Dim formattedDateTime As String = now.ToString("yyyyMMddHHmmss")
         Dim sourceFolder As String = openText.Text.Trim() ' 源文件夹路径
         Dim desktopPath As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         Dim resultFolder As String = Path.Combine(desktopPath, "快存结果" & formattedDateTime)
@@ -1367,7 +1367,7 @@ Public Class Form1
             ListViewLT.Columns(3).Width = 100
             ListViewLT.Columns(4).Width = 63
             ListViewLT.Columns(5).Width = 87
-            ListViewLT.Columns(6).Width = 150
+            ListViewLT.Columns(6).Width = 160
 
             ListViewRT.Columns(0).Width = 50
             ListViewRT.Columns(1).Width = 30
@@ -1375,7 +1375,7 @@ Public Class Form1
             ListViewRT.Columns(3).Width = 100
             ListViewRT.Columns(4).Width = 63
             ListViewRT.Columns(5).Width = 87
-            ListViewRT.Columns(6).Width = 150
+            ListViewRT.Columns(6).Width = 160
         End If
     End Sub
 
@@ -2823,7 +2823,7 @@ Public Class Form1
 
     Private Sub Button11_Click_1(sender As Object, e As EventArgs) Handles Button11.Click
         searchText.Text = ""
-        MetroTabPage3.Text = "查找"
+        MetroTabPage4.Text = "查找"
     End Sub
 
     'Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click

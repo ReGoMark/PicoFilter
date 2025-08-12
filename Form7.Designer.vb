@@ -29,7 +29,7 @@ Partial Class Form7
         Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Label44 = New System.Windows.Forms.Label()
-        Me.mentionButton = New System.Windows.Forms.CheckBox()
+        Me.conjButton = New System.Windows.Forms.CheckBox()
         Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -112,7 +112,7 @@ Partial Class Form7
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.White
         Me.FlowLayoutPanel1.Controls.Add(Me.Label44)
-        Me.FlowLayoutPanel1.Controls.Add(Me.mentionButton)
+        Me.FlowLayoutPanel1.Controls.Add(Me.conjButton)
         Me.FlowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Default
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 3)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -133,29 +133,29 @@ Partial Class Form7
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.Label44.Visible = False
         '
-        'mentionButton
+        'conjButton
         '
-        Me.mentionButton.Appearance = System.Windows.Forms.Appearance.Button
-        Me.mentionButton.BackColor = System.Drawing.Color.White
-        Me.mentionButton.CausesValidation = False
-        Me.mentionButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.mentionButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
-        Me.mentionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.mentionButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.mentionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.mentionButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.mentionButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.mentionButton.Image = CType(resources.GetObject("mentionButton.Image"), System.Drawing.Image)
-        Me.mentionButton.Location = New System.Drawing.Point(63, 3)
-        Me.mentionButton.Name = "mentionButton"
-        Me.mentionButton.Size = New System.Drawing.Size(114, 26)
-        Me.mentionButton.TabIndex = 95
-        Me.mentionButton.Text = "包含连接符"
-        Me.mentionButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.mentionButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.mentionButton, "包含原始的连接字符。")
-        Me.mentionButton.UseVisualStyleBackColor = False
-        Me.mentionButton.Visible = False
+        Me.conjButton.Appearance = System.Windows.Forms.Appearance.Button
+        Me.conjButton.BackColor = System.Drawing.Color.White
+        Me.conjButton.CausesValidation = False
+        Me.conjButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.conjButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.conjButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.conjButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.conjButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.conjButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.conjButton.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.conjButton.Image = CType(resources.GetObject("conjButton.Image"), System.Drawing.Image)
+        Me.conjButton.Location = New System.Drawing.Point(63, 3)
+        Me.conjButton.Name = "conjButton"
+        Me.conjButton.Size = New System.Drawing.Size(114, 26)
+        Me.conjButton.TabIndex = 95
+        Me.conjButton.Text = "包含连接符"
+        Me.conjButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.conjButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.conjButton, "包含原始的连接字符。")
+        Me.conjButton.UseVisualStyleBackColor = False
+        Me.conjButton.Visible = False
         '
         'MetroTabPage2
         '
@@ -502,7 +502,7 @@ Partial Class Form7
     Friend WithEvents Label44 As Label
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
-    Friend WithEvents mentionButton As CheckBox
+    Friend WithEvents conjButton As CheckBox
     Friend WithEvents absbButton As CheckBox
     Friend WithEvents ContextMenuStrip6 As ContextMenuStrip
     Friend WithEvents 撤销ToolStripMenuItem As ToolStripMenuItem

@@ -404,7 +404,7 @@ Partial Class Form1
         '
         Me.ColumnHeader13.Text = "修改日期"
         Me.ColumnHeader13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.ColumnHeader13.Width = 150
+        Me.ColumnHeader13.Width = 160
         '
         'ContextMenuStrip1
         '
@@ -784,7 +784,7 @@ Partial Class Form1
         '
         Me.ColumnHeader14.Text = "修改日期"
         Me.ColumnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.ColumnHeader14.Width = 150
+        Me.ColumnHeader14.Width = 160
         '
         'ContextMenuStrip3
         '
@@ -1362,7 +1362,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox13)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(-1, 103)
+        Me.Panel3.Location = New System.Drawing.Point(-3, 103)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(264, 155)
         Me.Panel3.TabIndex = 44
@@ -1568,7 +1568,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-969, 177)
+        Me.Label7.Location = New System.Drawing.Point(-971, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
