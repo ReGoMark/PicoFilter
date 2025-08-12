@@ -4,7 +4,7 @@
     End Sub
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'PlayNotificationSound()
+        PlayNotificationSound()
     End Sub
     Private Sub PlayNotificationSound()
         Try
