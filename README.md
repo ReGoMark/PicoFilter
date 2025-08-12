@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/head.png">
+
 ## PicoFilter - 图片筛选、命名、排序和格式转换程序    
 
 <a href="./LICENSE">
@@ -80,32 +82,35 @@ PicoFilter 使用了以下字体资源：
 PicoFilter 的诞生离不开开源社区的支持。
 
 ## 📸软件截图
-* 主界面
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/main0.png" />
+* 主页
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/main.png" />
 
 * 筛选
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/filt.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/filt.png" />
+
+* 导出
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/output.png">
 
 * 查找
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/search.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/search.png" />
 
 * 星标
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/tag.png"  />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/star.png"  />
 
-* 导视
+* 概览
 <img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/guide.png" />
 
 * 重命名
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/rename.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/rename.png" />
 
 * 格式转换
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/convert.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/convert.png" />
 
 * 文件名拆分
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/split.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/split.png" />
 
 * 分析
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/analysis.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/analysis.png" />
 
 ## 💗打赏
 如果你喜欢这个程序，觉得它对你有帮助，欢迎通过赞助支持作者的持续开发与维护！每一份支持，都是我继续优化和更新的动力。无论是一次性打赏，还是持续支持，都将被深深感激！
