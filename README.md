@@ -75,7 +75,7 @@ PicoFilter 使用了以下字体资源：
 * [方正黑体_GBK](https://www.foundertype.com/index.php/FontInfo/index/id/131)（默认显示字体）
 * [Consolas](https://fonts.adobe.com/fonts/consolas) （等宽字符显示字体）
 * [微软雅黑](https://learn.microsoft.com/zh-cn/typography/font-list/microsoft-yahei)（内容区默认显示字体）
-* 字体资源以及其他资源的引用参照非商业许可授权
+* 字体资源以及其他资源的许可仅限非商业用途范围
 
 PicoFilter 的诞生离不开开源社区的支持。
 
