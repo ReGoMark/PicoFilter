@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/head.png">
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/head.png">
 
 ## PicoFilter - 图片筛选、命名、排序和格式转换程序    
 
@@ -52,7 +52,7 @@ PicoFilter 是一款简易图片整理工具，支持读取`JPEG`、`PNG`、`BMP
 
 * 具体使用方法和其他功能请参见使用说明。
 
-| 功能 | 备注|
+| 功能 | 说明 |
 |-----------|--------|
 |批量筛选|支持`格式`筛选和`分辨率`筛选
 |批量格式转换|支持设置转换质量
@@ -83,37 +83,37 @@ PicoFilter 的诞生离不开开源社区的支持。
 
 ## 📸软件截图
 * 主页
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/main.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/main.png" />
 
 * 筛选
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/filt.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/filt.png" />
 
 * 导出
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/output.png">
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/output.png">
 
 * 查找
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/search.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/search.png" />
 
 * 星标
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/star.png"  />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/star.png"  />
 
 * 概览
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Screenshots/guide.png" />
-
-* 重命名
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/rename.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/treeview.png" />
 
 * 格式转换
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/convert.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/convert.png" />
 
-* 文件名拆分
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/split.png" />
+* 重命名
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/rename.png" />
 
 * 分析
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Images/analysis.png" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/analysis.png" />
+
+* 文件名拆分
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/split.png" />
 
 ## 💗打赏
 如果你喜欢这个程序，觉得它对你有帮助，欢迎通过赞助支持作者的持续开发与维护！每一份支持，都是我继续优化和更新的动力。无论是一次性打赏，还是持续支持，都将被深深感激！
 
-<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Assets/wechat_sponsor.jpg" alt="二维码截图" style="max-width: 80%; height: auto;" />
+<img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Pictures/sponsor.png" alt="二维码截图" style="max-width: 80%; height: auto;" />
 
