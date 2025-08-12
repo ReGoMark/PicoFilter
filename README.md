@@ -115,6 +115,3 @@ PicoFilter 的诞生离不开开源社区的支持。
 
 <img src="https://raw.githubusercontent.com/ReGoMark/PicoFilter/refs/heads/main/Resources/Assets/wechat_sponsor.jpg" alt="二维码截图" style="max-width: 80%; height: auto;" />
 
-
-
-
