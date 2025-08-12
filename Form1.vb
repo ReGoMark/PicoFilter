@@ -2914,9 +2914,9 @@ Public Class Form1
         ' 更新星标计数和界面
         Me.tagCount = tagCount
         If tagCount > 0 And tagButton.Checked = True Then
-            MetroTabPage5.Text = "查找 " & FormatSearchCount(tagCount)
+            MetroTabPage5.Text = "星标 " & FormatSearchCount(tagCount)
         ElseIf tagCount <= 0 Or tagButton.Checked = False Then
-            MetroTabPage5.Text = "查找"
+            MetroTabPage5.Text = "星标"
         End If
 
         更新统计信息()
