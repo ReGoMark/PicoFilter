@@ -35,8 +35,6 @@ PicoFilter 是一款简易图片整理工具，支持读取`JPEG`、`PNG`、`BMP
 - [🙏致谢](#致谢)
 - [📸软件截图](#软件截图)
 - [💗赞助](#打赏)
-- [💾PICOFILTER 许可协议](https://github.com/ReGoMark/PicoFilter/blob/0676005b5875f35327bca930f663c78daa085f33/LICENSE)
-- [💾字体资源 许可协议](https://github.com/ReGoMark/PicoFilter/blob/b5f17258e014ead0f17e5795f446b78cd2ae6bc7/Fonts/%E5%A3%B0%E6%98%8E%20-%20Statement.txt)
 
 </details>
 
