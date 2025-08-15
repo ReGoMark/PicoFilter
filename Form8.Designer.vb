@@ -47,7 +47,6 @@ Partial Class Form8
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.colorButton = New System.Windows.Forms.Button()
@@ -57,6 +56,7 @@ Partial Class Form8
         Me.rbPNG = New System.Windows.Forms.RadioButton()
         Me.rbJPG = New System.Windows.Forms.RadioButton()
         Me.rbBMP = New System.Windows.Forms.RadioButton()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.MetroProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -182,7 +182,7 @@ Partial Class Form8
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "格式"
+        Me.ColumnHeader3.Text = "原始"
         '
         'ColumnHeader4
         '
@@ -378,7 +378,6 @@ Partial Class Form8
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Controls.Add(Me.ListView1)
@@ -386,16 +385,6 @@ Partial Class Form8
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(329, 396)
         Me.Panel1.TabIndex = 82
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(19, 106)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 16)
-        Me.Label3.TabIndex = 90
-        Me.Label3.Text = "Label3"
-        Me.Label3.Visible = False
         '
         'Button3
         '
@@ -576,6 +565,16 @@ Partial Class Form8
         Me.ToolTip1.SetToolTip(Me.rbBMP, "转换为BMP格式")
         Me.rbBMP.UseVisualStyleBackColor = False
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(117, 502)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(50, 16)
+        Me.Label3.TabIndex = 90
+        Me.Label3.Text = "Label3"
+        Me.Label3.Visible = False
+        '
         'MetroProgressBar1
         '
         Me.MetroProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -741,6 +740,7 @@ Partial Class Form8
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnApplyAll)
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btnApplySelected)
@@ -757,7 +757,6 @@ Partial Class Form8
         Me.Text = "转换"
         Me.ContextMenuStrip3.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         CType(Me.cobQuality, System.ComponentModel.ISupportInitialize).EndInit()
@@ -767,6 +766,7 @@ Partial Class Form8
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ContextMenuStrip6.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 

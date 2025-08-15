@@ -3,7 +3,6 @@ Imports System.IO
 Imports System.IO.Compression
 Imports System.Security.Cryptography
 Imports System.Text.RegularExpressions
-Imports MetroFramework.Controls
 Imports Microsoft.VisualBasic.FileIO
 Imports OfficeOpenXml
 
@@ -13,35 +12,35 @@ Imports OfficeOpenXml
 Public Class Form1
     Dim loadedCount As Integer '计数已加载文件数量
     Dim loadedTime As Integer '计量扫描文件耗时
-    Dim sumSize As Double '计量扫描总大小
     Dim tagCount As Integer
+
+    Dim sumSize As Double '计量扫描总大小
     Dim sumRT, sumLT As Double '计量右侧项目总和，左侧项目总和
     Dim jpgRT, jpgLT As Double '计量右侧和左侧jpg数量，下同
     Dim pngRT, pngLT As Double
     Dim gifRT, gifLT As Double
     Dim bmpRT, bmpLT As Double
     Dim icoRT, icoLT As Double
+
     Dim mark1 As String = "未填写"
     Dim mark2 As String = "未填写"
     Dim mark3 As String = "未填写"
-
-    'Public consoletime As String
     Dim lbldStr As String '存储标记文件的文本
-
     Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
     Public verinfo As String = "PicoFilter 2.0.4" '存储版本信息
     Private opttext As String = "使用提示" '存储操作按钮默认文本
+
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
     Private currentItem As ListViewItem = Nothing
     Private isMouseOverTab As Boolean = False
-    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
     Private manualStarCount As Integer = 0
     Private fontCollection As New PrivateFontCollection()  ' 声明字体集合为类成员
+    Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
 
-    ' 在窗体或控件初始化后调用
+    ' 开启双缓冲以减少闪烁
     Private Sub SetDoubleBuffered(ctrl As Control)
         Dim t As Type = ctrl.GetType()
         Dim pi = t.GetProperty("DoubleBuffered", Reflection.BindingFlags.Instance Or Reflection.BindingFlags.NonPublic)
@@ -50,8 +49,27 @@ Public Class Form1
         End If
     End Sub
 
+    Private Function 获取图片分辨率(filePath As String) As String
+        Try
+            Using fs As New FileStream(filePath, FileMode.Open, FileAccess.Read)
+                Using img As Image = Image.FromStream(fs, False, False)
+                    Return $"{img.Width}×{img.Height}"
+                End Using
+            End Using
+        Catch
+            Return "0×0"
+        End Try
+    End Function
+
+    Private Function 格式化文件大小(sizeInBytes As Double) As String
+        If sizeInBytes >= 1024 Then
+            Return String.Format("{0:N0}", Math.Round(sizeInBytes / 1024, 0)) & " KB"
+        Else
+            Return String.Format("{0:N0}", sizeInBytes) & " B"
+        End If
+    End Function
+
     Public Sub 加载图片(folderPath As String)
-        '计数器重置
         loadedCount = 0
         loadedTime = 0
         sumSize = 0
@@ -62,9 +80,6 @@ Public Class Form1
         ProgressBar1.Value = 0
         ProgressBar1.Visible = True
 
-        Dim loadedTimer As New Stopwatch()
-        Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
-        Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower())).ToList()
         Dim index As Integer = 1
         Dim jpgCount As Integer = 0,
             pngCount As Integer = 0,
@@ -72,21 +87,27 @@ Public Class Form1
             bmpCount As Integer = 0,
             icoCount As Integer = 0
 
+        Dim 图片扩展名 As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
         Dim folderName As String = Path.GetFileName(openText.Text.Trim()) '截取文件夹名
         Dim sumSizeStr As String = 格式化文件大小(sumSize)  '计量扫描文件的总大小
 
-        ProgressBar1.Maximum = files.Count()
-
+        Dim loadedTimer As New Stopwatch()
+        Dim files = Directory.GetFiles(folderPath).Where(Function(f) 图片扩展名.Contains(Path.GetExtension(f).ToLower())).ToList()
         Dim listViewItems As New List(Of ListViewItem) ' **批量存储 ListViewItem**
-        loadedTimer.Start()
         Dim dirInfo As New DirectoryInfo(folderPath)
         Dim createTime As DateTime = dirInfo.CreationTime
 
+        ProgressBar1.Maximum = files.Count()
+        loadedTimer.Start()
+
         For Each file In files
             Try
-                Dim fileName As String = Path.GetFileName(file)
                 Dim fileInfo As New FileInfo(file)
+                Dim item As New ListViewItem(index.ToString())
+
                 Dim fileSize As Double = fileInfo.Length ' 获取文件大小
+
+                Dim fileName As String = Path.GetFileName(file)
                 Dim sizeFormatted As String = 格式化文件大小(fileSize) ' 转换大小单位
                 Dim format As String = fileInfo.Extension.ToUpper() '快速获取图片分辨率
                 Dim resolution As String = 获取图片分辨率(file)
@@ -105,11 +126,10 @@ Public Class Form1
                         bmpCount += 1
                 End Select
 
-                '创建ListViewItem
-                Dim item As New ListViewItem(index.ToString())
                 '文件名高亮标记
                 If tagButton.Checked = True Then
-                    Dim highlightMark As String = "" '未标记项目的处理办法
+                    Dim highlightMark As String = "" '标记项目的处理办法
+
                     If fileName.Contains(mark3) Then
                         'item.BackColor = Color.MistyRose
                         tagCount += 1
@@ -126,15 +146,8 @@ Public Class Form1
                         highlightMark = "★"
                     End If
                     item.SubItems.Add(highlightMark) '添加标记
-
-                    'If tagCount > 0 Then
-                    '    MetroTabPage5.Text = "星标 " & tagCount
-                    'Else
-                    '    MetroTabPage5.Text = "星标"
-                    'End If
                 Else
-                    'MetroTabPage5.Text = "星标"
-                    item.SubItems.Add(“”) '添加标记
+                    item.SubItems.Add("") '添加标记
                 End If
                 item.SubItems.Add(fileName) '添加文件名
                 item.SubItems.Add(resolution) '添加分辨率
@@ -153,6 +166,7 @@ Public Class Form1
                 If opt = DialogResult.No Then Exit For
             End Try
         Next
+
         ListViewLT.Items.AddRange(listViewItems.ToArray())  '一次性添加到 ListView，减少 UI 刷新次数
 
         loadedTimer.Stop()
@@ -181,15 +195,15 @@ Public Class Form1
         If hasSubDir Then
             optChange("转到「概览」查看子文件夹内容", Color.White, 0)
         End If
-
         If tagCount > 0 Then
             optChange("星标：找到 " & tagCount & “ 项”, Color.White, 3)
         End If
+
+        ProgressBar1.Visible = False
         sumLblLT.Text = String.Join("  |  ", result)
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr & "  |  " & createTime.ToString("yyyy/MM/dd, HH:mm:ss")
-        ProgressBar1.Visible = False
 
-        PlayNotificationSound3()
+        播放ALERT()
         更新统计信息()
         sumLT = files.Count
         jpgLT = jpgCount
@@ -197,29 +211,13 @@ Public Class Form1
         bmpLT = bmpCount
         gifLT = gifCount
         icoLT = icoCount
+        'Dim items As New ListViewItem(consoletime)
+        'items.SubItems.Add(consoletime)
+        'items.SubItems.Add("加载")
+        'items.SubItems.Add(openText.Text)
+        'Form4.ListView1.Items.Add(items)
     End Sub
 
-    Private Function 获取图片分辨率(filePath As String) As String
-        Try
-            Using fs As New FileStream(filePath, FileMode.Open, FileAccess.Read)
-                Using img As Image = Image.FromStream(fs, False, False)
-                    Return $"{img.Width}×{img.Height}"
-                End Using
-            End Using
-        Catch
-            Return "0×0"
-        End Try
-    End Function
-
-    Private Function 格式化文件大小(sizeInBytes As Double) As String
-        If sizeInBytes >= 1024 Then
-            Return String.Format("{0:N0}", Math.Round(sizeInBytes / 1024, 0)) & " KB"
-        Else
-            Return String.Format("{0:N0}", sizeInBytes) & " B"
-        End If
-    End Function
-
-    ' 加载图片从指定文件夹，到右侧
     Private Sub 筛选图片()
         ListViewRT.Items.Clear()
 
@@ -228,8 +226,6 @@ Public Class Form1
         Dim heightFilter As Integer = 0
         If Not Integer.TryParse(widText.Text, widthFilter) Then widthFilter = 0
         If Not Integer.TryParse(htText.Text, heightFilter) Then heightFilter = 0
-
-        ' 获取筛选条件
         Dim jpgSelected As Boolean = jpgButton.Checked 'jpg筛选
         Dim pngSelected As Boolean = pngButton.Checked 'png筛选
         Dim gifSelected As Boolean = gifButton.Checked 'gif筛选
@@ -240,33 +236,34 @@ Public Class Form1
         Dim volreslnSelected As Boolean = volButton.Checked '分辨率宽高互换筛选
         Dim plsreslnSelected As Boolean = moreButton.Checked '分辨率大于筛选
         Dim mnsreslnSelected As Boolean = mnsButton.Checked '分辨率小于筛选
+        Dim formatFilterEnabled As Boolean = jpgSelected Or pngSelected Or gifSelected Or bmpSelected Or icoSelected '判断是否启用了格式筛选
 
         Dim jpgCount As Integer = 0,
             pngCount As Integer = 0,
             gifCount As Integer = 0,
             bmpCount As Integer = 0,
             icoCount As Integer = 0
-        Dim matchingFileCount As Integer = 0
         Dim tagCount As Integer = 0
+        Dim matchingFileCount As Integer = 0
 
-        '判断是否启用了格式筛选
-        Dim formatFilterEnabled As Boolean = jpgSelected Or pngSelected Or gifSelected Or bmpSelected Or icoSelected
         '遍历左侧数据进行筛选
         For Each item As ListViewItem In ListViewLT.Items
-            Dim resolutionParts As String() = item.SubItems(3).Text.Split("×"c)
-            Dim width As Integer = Integer.Parse(resolutionParts(0))
-            Dim height As Integer = Integer.Parse(resolutionParts(1))
+
             Dim format As String = item.SubItems(4).Text
             Dim sizeKB As String = item.SubItems(5).Text
-            '格式匹配
-            Dim formatsMatch As Boolean = False
+            Dim resolutionParts As String() = item.SubItems(3).Text.Split("×"c)
+
+            Dim width As Integer = Integer.Parse(resolutionParts(0))
+            Dim height As Integer = Integer.Parse(resolutionParts(1))
+            Dim formatsMatch As Boolean = False '格式匹配
+
             If jpgSelected AndAlso (format = ".JPG" OrElse format = ".JPEG") Then formatsMatch = True
             If pngSelected AndAlso format = ".PNG" Then formatsMatch = True
             If bmpSelected AndAlso format = ".BMP" Then formatsMatch = True
             If icoSelected AndAlso format = ".ICO" Then formatsMatch = True
             If gifSelected AndAlso format = ".GIF" Then formatsMatch = True
-            '分辨率匹配
-            Dim resolutionMatch As Boolean = False
+
+            Dim resolutionMatch As Boolean = False '分辨率匹配
             If reslnSelected Then
                 If exreslnSelected Then
                     resolutionMatch = (width <> widthFilter AndAlso height <> heightFilter)
@@ -281,8 +278,8 @@ Public Class Form1
                     resolutionMatch = (width = widthFilter AndAlso height = heightFilter)
                 End If
             End If
-            '是否满足筛选
-            Dim isMatch As Boolean = False
+
+            Dim isMatch As Boolean = False '是否满足筛选
             If formatFilterEnabled AndAlso reslnSelected Then
                 isMatch = formatsMatch AndAlso resolutionMatch ' 同时启用了格式和分辨率筛选时，必须同时满足两者条件
             ElseIf formatFilterEnabled Then
@@ -292,12 +289,12 @@ Public Class Form1
             Else
                 isMatch = False ' 如果两个筛选条件都未启用时的动作
             End If
+
             '特殊标签筛选
             Dim isSpecialMatch As Boolean = False
             Dim fileName As String = item.SubItems(1).Text
 
-            '最终是否添加
-            If isMatch OrElse isSpecialMatch Then
+            If isMatch OrElse isSpecialMatch Then '最终是否添加
                 Dim newItem As New ListViewItem(item.SubItems(0).Text) '保留序号
                 newItem.SubItems.Add(item.SubItems(1).Text) '保留标记
                 newItem.SubItems.Add(item.SubItems(2).Text) '保留文件名
@@ -308,8 +305,7 @@ Public Class Form1
                 ListViewRT.Items.Add(newItem)
                 matchingFileCount += 1 ' 符合条件的文件计数
 
-                ' 更新各格式计数
-                Select Case format
+                Select Case format' 更新各格式计数
                     Case ".JPG", ".JPEG"
                         jpgCount += 1
                     Case ".PNG"
@@ -323,7 +319,9 @@ Public Class Form1
                 End Select
             End If
         Next
+
         optChange("筛选已完成", Color.White, 0)
+
         Dim result As New List(Of String)
         result.Add($"结果 {matchingFileCount} 项")
         If jpgCount > 0 Then result.Add($"JPG {jpgCount}")
@@ -334,8 +332,6 @@ Public Class Form1
         sumLblRT.Text = String.Join("  |  ", result)
 
         更新统计信息()
-        'PlayNotificationSound()
-
         sumRT = matchingFileCount
         jpgRT = jpgCount
         pngRT = pngCount
@@ -506,6 +502,7 @@ Public Class Form1
         ContextMenuStrip4.Renderer = New ModernMenuRenderer()
         ContextMenuStrip5.Renderer = New ModernMenuRenderer()
         ContextMenuStrip6.Renderer = New ModernMenuRenderer()
+        ContextMenuStrip7.Renderer = New ModernMenuRenderer()
 
         BindContextMenuToAllTextBoxes(Me, ContextMenuStrip6)
 
@@ -1401,7 +1398,6 @@ Public Class Form1
         Form8.Close()
     End Sub
 
-
     '双重锁定切换
     Private Sub CheckBox12_CheckStateChanged(sender As Object, e As EventArgs) Handles lockButton.CheckStateChanged
         If lockButton.Checked = True Then
@@ -1463,7 +1459,7 @@ Public Class Form1
             If match Then item.EnsureVisible()
         Next
 
-        PlayNotificationSound3()
+        播放ALERT()
         optChange("加载页：结果 " & ListViewLT.SelectedItems.Count & " 项", Color.White, 2)
         If ListViewLT.SelectedItems.Count > 0 Then
             MetroTabPage4.Text = "查找 " & FormatSearchCount(ListViewLT.SelectedItems.Count)
@@ -1515,7 +1511,7 @@ Public Class Form1
             If match Then item.EnsureVisible()
         Next
 
-        PlayNotificationSound3()
+        播放ALERT()
         optChange("筛选页：结果 " & ListViewRT.SelectedItems.Count & " 项", Color.White, 2)
         If ListViewLT.SelectedItems.Count > 0 Then
             MetroTabPage4.Text = "查找 " & FormatSearchCount(ListViewLT.SelectedItems.Count)
@@ -1642,7 +1638,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub PlayNotificationSound3()
+    Private Sub 播放ALERT()
         Try
             ' 从资源播放音效
             My.Computer.Audio.Play(My.Resources.ALERT, AudioPlayMode.Background)
@@ -1789,8 +1785,7 @@ Public Class Form1
                 Form3.Label52.Text = "yyyy/MM/dd,HH:mm:ss"
             End If
         Catch ex As Exception
-            '    Form3.Label50.Text = "error"
-            '    Form3.Label52.Text = "读取失败"
+            ' Form3.Label50.Text = "error" Form3.Label52.Text = "读取失败"
         End Try
     End Sub
 
@@ -2410,7 +2405,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button14_Click(sender As Object, e As EventArgs) Handles updateButton.Click
+    Private Sub Button14_Click(sender As Object, e As EventArgs)
         ' 使用Process.Start打开默认浏览器访问GitHub Releases页面
         Try
             Process.Start("https://github.com/ReGoMark/PicoFilter/releases")
@@ -2838,6 +2833,39 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Button13_Click_1(sender As Object, e As EventArgs) Handles Button13.Click
+        Form4.Show()
+    End Sub
+
+    Private Sub ToolStripMenuItem33_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem33.Click
+        Form4.Show()
+    End Sub
+
+    Private Sub ToolStripMenuItem27_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem27.Click
+        Me.CenterToScreen()
+    End Sub
+
+    Private Sub ToolStripMenuItem32_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem32.Click
+        Me.Close()
+    End Sub
+
+    Private Sub ToolStripMenuItem30_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem30.Click
+        Me.topButton.CheckState = CheckState.Unchecked
+        Form3.topButton.CheckState = CheckState.Unchecked
+        Form5.topButton.CheckState = CheckState.Unchecked
+        Form6.topButton.CheckState = CheckState.Unchecked
+        Form7.topButton.CheckState = CheckState.Unchecked
+        Form8.topButton.CheckState = CheckState.Unchecked
+    End Sub
+
+    Private Sub ToolStripMenuItem31_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem31.Click
+        Form3.absbButton.CheckState = CheckState.Unchecked
+        Form5.absbButton.CheckState = CheckState.Unchecked
+        Form6.absbButton.CheckState = CheckState.Unchecked
+        Form7.absbButton.CheckState = CheckState.Unchecked
+        Form8.absbButton.CheckState = CheckState.Unchecked
+    End Sub
+
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles starText.TextChanged
         Dim input As String = starText.Text
         Dim pattern As String = "^\{([^{}]*)\}\{([^{}]*)\}\{([^{}]*)\}$" ' 允许 {} 内留空
@@ -2958,6 +2986,7 @@ Public Class Form1
             tabButton.PerformClick()     ' 触发按钮点击
         End If
     End Sub
+
 End Class
 
 ' 自定义现代风格渲染器
@@ -3013,4 +3042,5 @@ Public Class ModernColorTable
             Return Color.FromArgb(180, 180, 220)
         End Get
     End Property
+
 End Class

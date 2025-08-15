@@ -1,6 +1,8 @@
-﻿Public Class Form2
+﻿Imports System.ComponentModel
 
-    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+Public Class Form2
+
+    Private Sub Label9_Click(sender As Object, e As EventArgs)
         Dim url As String = "https://github.com/ReGoMark/PicoFilter"
         Try
             ' 使用默认浏览器打开网页
@@ -66,11 +68,14 @@
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MetroTabControl1.SelectedTab = MetroTabControl1.TabPages(0)
         Me.ActiveControl = Nothing ' 取消默认控件焦点
-        MetroTabControl1.TabPages.Remove(MetroTabPage1)
-        PlayNotificationSound()
+        'PlayNotificationSound()
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs)
-
+    Private Sub Form2_HelpButtonClicked(sender As Object, e As CancelEventArgs) Handles Me.HelpButtonClicked
+        Try
+            Process.Start("https://flowus.cn/regmvks/share/e717713c-be23-4124-b364-878960e75a4e?code=98NZC1")
+        Catch ex As Exception
+            MessageBox.Show("无法打开链接。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

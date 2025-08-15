@@ -82,7 +82,7 @@ Partial Class Form5
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
         Me.TextBox1.Size = New System.Drawing.Size(323, 17)
         Me.TextBox1.TabIndex = 50
-        Me.ToolTip1.SetToolTip(Me.TextBox1, "此处显示当前路径；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "要浏览或选择一个位置，请转到PicoFilter。")
+        Me.ToolTip1.SetToolTip(Me.TextBox1, "此处显示当前路径" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "要浏览或选择一个位置，请转到PicoFilter")
         '
         'btnGoUp
         '

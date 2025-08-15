@@ -28,8 +28,8 @@ Partial Class Form7
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
         Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Label44 = New System.Windows.Forms.Label()
         Me.conjButton = New System.Windows.Forms.CheckBox()
+        Me.Label44 = New System.Windows.Forms.Label()
         Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -111,27 +111,13 @@ Partial Class Form7
         Me.FlowLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.White
-        Me.FlowLayoutPanel1.Controls.Add(Me.Label44)
         Me.FlowLayoutPanel1.Controls.Add(Me.conjButton)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Label44)
         Me.FlowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Default
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 3)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(321, 386)
         Me.FlowLayoutPanel1.TabIndex = 0
-        '
-        'Label44
-        '
-        Me.Label44.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label44.BackColor = System.Drawing.Color.GhostWhite
-        Me.Label44.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label44.Location = New System.Drawing.Point(3, 3)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(54, 26)
-        Me.Label44.TabIndex = 91
-        Me.Label44.Text = "选取文本以实现快速复制、查找和星标。"
-        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Label44.Visible = False
         '
         'conjButton
         '
@@ -146,7 +132,7 @@ Partial Class Form7
         Me.conjButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.conjButton.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.conjButton.Image = CType(resources.GetObject("conjButton.Image"), System.Drawing.Image)
-        Me.conjButton.Location = New System.Drawing.Point(63, 3)
+        Me.conjButton.Location = New System.Drawing.Point(3, 3)
         Me.conjButton.Name = "conjButton"
         Me.conjButton.Size = New System.Drawing.Size(114, 26)
         Me.conjButton.TabIndex = 95
@@ -156,6 +142,20 @@ Partial Class Form7
         Me.ToolTip1.SetToolTip(Me.conjButton, "包含原始的连接字符。")
         Me.conjButton.UseVisualStyleBackColor = False
         Me.conjButton.Visible = False
+        '
+        'Label44
+        '
+        Me.Label44.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label44.BackColor = System.Drawing.Color.GhostWhite
+        Me.Label44.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label44.Location = New System.Drawing.Point(3, 32)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(307, 26)
+        Me.Label44.TabIndex = 91
+        Me.Label44.Text = "选取文本以实现快速复制、查找和星标。"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label44.Visible = False
         '
         'MetroTabPage2
         '

@@ -27,19 +27,20 @@ Partial Class Form2
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Process1 = New System.Diagnostics.Process()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
         Me.MetroTabPage3 = New MetroFramework.Controls.MetroTabPage()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -47,9 +48,6 @@ Partial Class Form2
         Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabControl1.SuspendLayout()
@@ -57,7 +55,6 @@ Partial Class Form2
         Me.MetroTabPage2.SuspendLayout()
         Me.MetroTabPage4.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MetroTabPage1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -70,9 +67,9 @@ Partial Class Form2
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.Label2.Location = New System.Drawing.Point(114, 73)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(219, 20)
+        Me.Label2.Size = New System.Drawing.Size(189, 20)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "图片筛选、命名和格式转换工具"
+        Me.Label2.Text = "版权所有，保留所有权利。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label44
         '
@@ -80,12 +77,12 @@ Partial Class Form2
         Me.Label44.AutoSize = True
         Me.Label44.BackColor = System.Drawing.Color.Transparent
         Me.Label44.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label44.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.Label44.Location = New System.Drawing.Point(110, 499)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(160, 20)
         Me.Label44.TabIndex = 47
-        Me.Label44.Text = "最后更新：2025/08/12"
+        Me.Label44.Text = "最后更新：2025/08/13"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
@@ -93,34 +90,19 @@ Partial Class Form2
         Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Button2.BackColor = System.Drawing.Color.White
         Me.Button2.CausesValidation = False
-        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.Button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
         Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
         Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.Button2.Location = New System.Drawing.Point(276, 497)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(65, 26)
         Me.Button2.TabIndex = 42
         Me.Button2.Text = "完成"
         Me.Button2.UseVisualStyleBackColor = False
-        '
-        'Label9
-        '
-        Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Label9.AutoEllipsis = True
-        Me.Label9.Cursor = System.Windows.Forms.Cursors.Help
-        Me.Label9.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.DimGray
-        Me.Label9.Location = New System.Drawing.Point(109, 50)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(145, 20)
-        Me.Label9.TabIndex = 17
-        Me.Label9.Text = "获取更新：github.com/ReGoMark/PicoFilter"
-        Me.ToolTip1.SetToolTip(Me.Label9, "点击访问")
-        Me.Label9.Visible = False
         '
         'Label5
         '
@@ -129,12 +111,12 @@ Partial Class Form2
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.BackColor = System.Drawing.Color.White
         Me.Label5.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label5.Location = New System.Drawing.Point(0, 235)
+        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.Label5.Location = New System.Drawing.Point(0, 236)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(325, 60)
+        Me.Label5.Size = New System.Drawing.Size(325, 69)
         Me.Label5.TabIndex = 48
-        Me.Label5.Text = "敬告：字体资源以及其他资源的许可仅限非商业用途范围，严禁用于商业盈利，由此产生的商业纠纷和法律责任作者一概不承担。"
+        Me.Label5.Text = "敬告：字体资源和他资源的许可仅限非商业用途范围，严禁用于商业盈利，由此造成的问题与本作者无关。"
         '
         'Process1
         '
@@ -146,6 +128,21 @@ Partial Class Form2
         Me.Process1.StartInfo.UserName = ""
         Me.Process1.SynchronizingObject = Me
         '
+        'Label8
+        '
+        Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label8.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.Label8.Cursor = System.Windows.Forms.Cursors.Help
+        Me.Label8.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.Label8.Location = New System.Drawing.Point(39, 98)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(321, 51)
+        Me.Label8.TabIndex = 54
+        Me.Label8.Text = "作者：@ReGoMark" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "联系和反馈：regmvks@outlook.com"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.Label8, "单击此处编辑邮件到：Regmvks@outlook.com")
+        '
         'Label10
         '
         Me.Label10.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -154,14 +151,12 @@ Partial Class Form2
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.White
         Me.Label10.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.Black
+        Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.Label10.Location = New System.Drawing.Point(0, 9)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(198, 20)
         Me.Label10.TabIndex = 50
         Me.Label10.Text = "已安装到 PicoFilter 的组件："
-        Me.ToolTip1.SetToolTip(Me.Label10, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
-        "单击""支持""寻求联机支持。")
         '
         'Label3
         '
@@ -173,42 +168,24 @@ Partial Class Form2
         Me.Label3.ForeColor = System.Drawing.Color.Black
         Me.Label3.Location = New System.Drawing.Point(0, 9)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(325, 64)
+        Me.Label3.Size = New System.Drawing.Size(329, 64)
         Me.Label3.TabIndex = 51
         Me.Label3.Text = "如果您觉得本项目还不错，可以扫描下方的二维码赞助一下作者，感谢您的支持！付费不会解锁任何额外功能，本程序免费使用。"
-        Me.ToolTip1.SetToolTip(Me.Label3, "选中应用程序，右键单击""属性""，切换至""兼容性""选项卡，点击""更改高DPI设置""。在弹出页面中勾选两个已存在的复选框。" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "如果仍存在显示问题，可尝试调整部分选项或" &
-        "单击""支持""寻求联机支持。")
-        '
-        'Label8
-        '
-        Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Label8.BackColor = System.Drawing.Color.LavenderBlush
-        Me.Label8.Cursor = System.Windows.Forms.Cursors.Help
-        Me.Label8.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.Label8.Location = New System.Drawing.Point(39, 98)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(321, 51)
-        Me.Label8.TabIndex = 54
-        Me.Label8.Text = "作者：@ReGoMark" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "联系和反馈：regmvks@outlook.com"
-        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Label8, "单击此处与作者进行邮件联络")
         '
         'ListBox1
         '
         Me.ListBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ListBox1.BackColor = System.Drawing.Color.GhostWhite
+        Me.ListBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(247, Byte), Integer))
         Me.ListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ListBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Items.AddRange(New Object() {"PicoFilt - 图像筛选 - 2.0.5", "PicoSplit - 文件名切割 - 0.1.1", "PicoName - 批量重命名 - 1.2.1", "PicoConvert - 批量格式转换 - 1.2.1", "方正黑体 - 默认显示字体 - 5.3.0", "微软雅黑 - 默认显示字体 - 11.3.0", "Consolas - 等宽字符显示字体- 7.0.0", "EPPlus - 表格导出 - 7.3.2", "MetroModernUI - UI框架控件 - 1.4.0", ".NET Framework - 基础运行库 - 4.7.2"})
-        Me.ListBox1.Location = New System.Drawing.Point(3, 32)
+        Me.ListBox1.Items.AddRange(New Object() {"PicoFilter  –  基础筛选功能  –  2.0.5", "PicoSplit  –  字符串拆分和词典  –  0.1.1", "PicoReName  –  重命名批处理  –  1.2.1", "PicoConvert  –  格式转换批处理  –  1.2.1"})
+        Me.ListBox1.Location = New System.Drawing.Point(0, 30)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.ScrollAlwaysVisible = True
-        Me.ListBox1.Size = New System.Drawing.Size(315, 200)
+        Me.ListBox1.Size = New System.Drawing.Size(318, 80)
         Me.ListBox1.TabIndex = 51
         '
         'Label4
@@ -220,18 +197,18 @@ Partial Class Form2
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.Label4.Location = New System.Drawing.Point(114, 53)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 20)
+        Me.Label4.Size = New System.Drawing.Size(178, 20)
         Me.Label4.TabIndex = 49
-        Me.Label4.Text = "版本：2.0.4"
+        Me.Label4.Text = "版本：2.0.4（20250815）"
         '
         'PictureBox2
         '
         Me.PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.PictureBox2.BackColor = System.Drawing.Color.White
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(43, 27)
+        Me.PictureBox2.Location = New System.Drawing.Point(39, 27)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(65, 66)
+        Me.PictureBox2.Size = New System.Drawing.Size(66, 66)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PictureBox2.TabIndex = 56
         Me.PictureBox2.TabStop = False
@@ -254,12 +231,11 @@ Partial Class Form2
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage3)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage2)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage4)
-        Me.MetroTabControl1.Controls.Add(Me.MetroTabPage1)
         Me.MetroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
+        Me.MetroTabControl1.SelectedIndex = 2
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 58
@@ -267,6 +243,8 @@ Partial Class Form2
         '
         'MetroTabPage3
         '
+        Me.MetroTabPage3.Controls.Add(Me.Label1)
+        Me.MetroTabPage3.Controls.Add(Me.ListBox2)
         Me.MetroTabPage3.Controls.Add(Me.ListBox1)
         Me.MetroTabPage3.Controls.Add(Me.Label5)
         Me.MetroTabPage3.Controls.Add(Me.Label10)
@@ -277,10 +255,41 @@ Partial Class Form2
         Me.MetroTabPage3.Name = "MetroTabPage3"
         Me.MetroTabPage3.Size = New System.Drawing.Size(321, 295)
         Me.MetroTabPage3.TabIndex = 2
-        Me.MetroTabPage3.Text = "已安装  "
+        Me.MetroTabPage3.Text = "说明  "
         Me.MetroTabPage3.VerticalScrollbarBarColor = True
         Me.MetroTabPage3.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage3.VerticalScrollbarSize = 10
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.White
+        Me.Label1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.Label1.Location = New System.Drawing.Point(0, 113)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(198, 20)
+        Me.Label1.TabIndex = 54
+        Me.Label1.Text = "已安装到 PicoFilter 的资源："
+        '
+        'ListBox2
+        '
+        Me.ListBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ListBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.ListBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.ListBox2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.ListBox2.FormattingEnabled = True
+        Me.ListBox2.ItemHeight = 20
+        Me.ListBox2.Items.AddRange(New Object() {"方正黑体  –  默认显示字体  –  5.3.0", "微软雅黑  –  默认显示字体  –  11.3.0", "Consolas  –  默认等宽字体  –  7.0.0", "EPPlus  –  表格导出扩展  –  7.3.2", "MetroModernUI  –  控件扩展 –  1.4.0", ".NET Framework  –  基础框架  –  4.7.2"})
+        Me.ListBox2.Location = New System.Drawing.Point(0, 133)
+        Me.ListBox2.Name = "ListBox2"
+        Me.ListBox2.Size = New System.Drawing.Size(318, 100)
+        Me.ListBox2.TabIndex = 53
         '
         'MetroTabPage2
         '
@@ -294,16 +303,17 @@ Partial Class Form2
         Me.MetroTabPage2.Name = "MetroTabPage2"
         Me.MetroTabPage2.Size = New System.Drawing.Size(321, 295)
         Me.MetroTabPage2.TabIndex = 1
-        Me.MetroTabPage2.Text = "许可证  "
+        Me.MetroTabPage2.Text = "许可  "
         Me.MetroTabPage2.VerticalScrollbarBarColor = True
         Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.VerticalScrollbarSize = 10
         '
         'TextBox2
         '
-        Me.TextBox2.BackColor = System.Drawing.Color.GhostWhite
+        Me.TextBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(247, Byte), Integer))
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox2.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.TextBox2.ForeColor = System.Drawing.Color.Black
         Me.TextBox2.Location = New System.Drawing.Point(0, 32)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
@@ -322,7 +332,7 @@ Partial Class Form2
         Me.Label16.BackColor = System.Drawing.Color.Transparent
         Me.Label16.Cursor = System.Windows.Forms.Cursors.Help
         Me.Label16.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
         Me.Label16.Location = New System.Drawing.Point(0, 275)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(219, 20)
@@ -338,7 +348,7 @@ Partial Class Form2
         Me.Label12.AutoSize = True
         Me.Label12.BackColor = System.Drawing.Color.White
         Me.Label12.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.Black
+        Me.Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.Label12.Location = New System.Drawing.Point(0, 9)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(212, 20)
@@ -368,12 +378,12 @@ Partial Class Form2
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label7.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label7.Location = New System.Drawing.Point(0, 252)
+        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
+        Me.Label7.Location = New System.Drawing.Point(0, 243)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(325, 43)
+        Me.Label7.Size = New System.Drawing.Size(325, 52)
         Me.Label7.TabIndex = 56
-        Me.Label7.Text = "PicoFilter 的诞生离不开 GitHub 开源社区的支持，同时也感谢一路走来帮助过我的朋友们。"
+        Me.Label7.Text = "PicoFilter 的诞生离不开 GitHub 和其他开源社区的支持，也感谢一路走来帮助过我的朋友们。"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.BottomLeft
         '
         'PictureBox1
@@ -386,50 +396,6 @@ Partial Class Form2
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 52
         Me.PictureBox1.TabStop = False
-        '
-        'MetroTabPage1
-        '
-        Me.MetroTabPage1.Controls.Add(Me.Label9)
-        Me.MetroTabPage1.Controls.Add(Me.TextBox1)
-        Me.MetroTabPage1.Controls.Add(Me.Label15)
-        Me.MetroTabPage1.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage1.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage1.HorizontalScrollbarSize = 10
-        Me.MetroTabPage1.Location = New System.Drawing.Point(4, 38)
-        Me.MetroTabPage1.Name = "MetroTabPage1"
-        Me.MetroTabPage1.Size = New System.Drawing.Size(321, 295)
-        Me.MetroTabPage1.TabIndex = 0
-        Me.MetroTabPage1.Text = "贡献者  "
-        Me.MetroTabPage1.VerticalScrollbarBarColor = True
-        Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage1.VerticalScrollbarSize = 10
-        '
-        'TextBox1
-        '
-        Me.TextBox1.BackColor = System.Drawing.Color.GhostWhite
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(3, 36)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(318, 236)
-        Me.TextBox1.TabIndex = 15
-        Me.TextBox1.Text = "感谢 Microsoft Visual Studio 2022 提供 IDE；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "感谢 MertoModernUI，用于选项卡控件和进度条控件；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "感谢 EPPl" &
-    "us ，用于表格导出功能支持；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "此外本程序还使用了 Consola 字体 和方正黑体，感谢这些字体的作者们；" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "还有许许多多帮助过的朋友，在此我不胜感激。"
-        '
-        'Label15
-        '
-        Me.Label15.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label15.BackColor = System.Drawing.Color.Transparent
-        Me.Label15.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label15.Location = New System.Drawing.Point(3, 9)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(295, 24)
-        Me.Label15.TabIndex = 13
-        Me.Label15.Text = "PicoFilter 的诞生离不开开源社区的支持。"
         '
         'Panel1
         '
@@ -448,13 +414,15 @@ Partial Class Form2
         'Form2
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.BackColor = System.Drawing.Color.GhostWhite
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(247, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(353, 535)
         Me.Controls.Add(Me.MetroTabControl1)
         Me.Controls.Add(Me.Label44)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Panel1)
+        Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.HelpButton = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -469,8 +437,6 @@ Partial Class Form2
         Me.MetroTabPage2.PerformLayout()
         Me.MetroTabPage4.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MetroTabPage1.ResumeLayout(False)
-        Me.MetroTabPage1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -478,7 +444,6 @@ Partial Class Form2
 
     End Sub
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label9 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Label44 As Label
     Friend WithEvents Label5 As Label
@@ -491,10 +456,8 @@ Partial Class Form2
     Friend WithEvents Label11 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents MetroTabControl1 As MetroFramework.Controls.MetroTabControl
-    Friend WithEvents MetroTabPage1 As MetroFramework.Controls.MetroTabPage
     Friend WithEvents MetroTabPage2 As MetroFramework.Controls.MetroTabPage
     Friend WithEvents MetroTabPage3 As MetroFramework.Controls.MetroTabPage
-    Friend WithEvents Label15 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents Panel1 As Panel
@@ -502,6 +465,7 @@ Partial Class Form2
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents ListBox2 As ListBox
+    Friend WithEvents Label1 As Label
 End Class
