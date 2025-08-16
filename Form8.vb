@@ -11,7 +11,7 @@ Public Class Form8
     Private LastSavePath As String = String.Empty '存储最后保存的路径
     Private backgroundColor As Color = Color.White ' 默认背景色
     Private colorDialog As New ColorDialog()
-
+    Private failedFiles As New List(Of (index As Integer, fileName As String))    ' 创建一个列表来存储失败文件信息
     ' 初始化窗体
     ' 在Form8类中添加以下方法和在Form8_Load中调用
     ' 启用ListView1的双缓冲以减少闪烁
@@ -129,8 +129,13 @@ Public Class Form8
 
     ' 根据格式选择显示/隐藏背景色控件
     Private Sub UpdateBackgroundColorControl()
-        Dim hasTransparency As Boolean = rbPNG.Checked
+        Dim hasTransparency As Boolean = rbPNG.Checked OrElse rbICO.Checked
         colorButton.Visible = Not hasTransparency
+    End Sub
+
+    ' 5. 添加ICO相关事件处理
+    Private Sub rbICO_CheckedChanged(sender As Object, e As EventArgs) Handles rbICO.CheckedChanged
+        UpdateBackgroundColorControl()
     End Sub
 
     ' 拖放文件处理
@@ -278,6 +283,7 @@ Public Class Form8
         If rbPNG.Checked Then Return "PNG"
         If rbJPG.Checked Then Return "JPG"
         If rbBMP.Checked Then Return "BMP"
+        If rbICO.Checked Then Return "ICO"
         Return DEFAULT_FORMAT
     End Function
 
@@ -340,13 +346,15 @@ Public Class Form8
     'Private Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btnConvert.Click
     '    ProcessImages(String.Empty, False)
     'End Sub
-
+    ' 修改ProcessImages方法，在转换失败时记录文件信息
     Private Sub ProcessImages(savePath As String, isCopy As Boolean)
         If ListView1.Items.Count = 0 Then Exit Sub
 
         Dim quality = CInt(cobQuality.Value)
-        'Dim logPath = Path.Combine(Application.StartupPath, "convert_errors.log")
         Dim failedCount = 0
+
+        ' 清空之前的失败记录
+        failedFiles.Clear()
 
         With MetroProgressBar1
             .Visible = True
@@ -366,7 +374,8 @@ Public Class Form8
                 Application.DoEvents()
             Catch ex As Exception
                 failedCount += 1
-                'LogError(logPath, ListView1.Items(i).Tag.ToString(), ex)
+                ' 记录失败文件信息
+                failedFiles.Add((i + 1, ListView1.Items(i).SubItems(1).Text))
             End Try
         Next
         MetroProgressBar1.Visible = False
@@ -382,32 +391,34 @@ Public Class Form8
         End If
     End Function
 
+    ' 6. 修改ConvertImage方法以支持ICO格式
     Private Sub ConvertImage(sourcePath As String, targetPath As String, format As String, quality As Integer)
         Using sourceImg As Image = Image.FromFile(sourcePath)
-            ' 如果目标格式不支持透明度，则创建新图像并填充背景色
-            If format.ToUpper() <> "PNG" Then
-                Using newBitmap As New Bitmap(sourceImg.Width, sourceImg.Height)
-                    Using g As Graphics = Graphics.FromImage(newBitmap)
-                        ' 填充背景色
-                        g.Clear(backgroundColor)
-                        ' 绘制原始图像
-                        g.DrawImage(sourceImg, 0, 0, sourceImg.Width, sourceImg.Height)
+            Select Case format.ToUpper()
+                Case "PNG", "ICO"
+                    ' PNG和ICO格式直接保存
+                    sourceImg.Save(targetPath, If(format.ToUpper() = "PNG", ImageFormat.Png, ImageFormat.Icon))
+                Case "JPG", "BMP"
+                    ' 如果目标格式不支持透明度，则创建新图像并填充背景色
+                    Using newBitmap As New Bitmap(sourceImg.Width, sourceImg.Height)
+                        Using g As Graphics = Graphics.FromImage(newBitmap)
+                            ' 填充背景色
+                            g.Clear(backgroundColor)
+                            ' 绘制原始图像
+                            g.DrawImage(sourceImg, 0, 0, sourceImg.Width, sourceImg.Height)
+                        End Using
+
+                        ' 保存转换后的图像
+                        Dim codec = GetCodec(format)
+                        Dim parameters = GetEncoderParameters(format, quality)
+
+                        If codec IsNot Nothing Then
+                            newBitmap.Save(targetPath, codec, parameters)
+                        Else
+                            newBitmap.Save(targetPath)
+                        End If
                     End Using
-
-                    ' 保存转换后的图像
-                    Dim codec = GetCodec(format)
-                    Dim parameters = GetEncoderParameters(format, quality)
-
-                    If codec IsNot Nothing Then
-                        newBitmap.Save(targetPath, codec, parameters)
-                    Else
-                        newBitmap.Save(targetPath)
-                    End If
-                End Using
-            Else
-                ' PNG格式直接保存
-                sourceImg.Save(targetPath, ImageFormat.Png)
-            End If
+            End Select
         End Using
     End Sub
 
@@ -430,18 +441,21 @@ Public Class Form8
         MessageBox.Show($"{message}: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
-    'Private Sub LogError(logPath As String, filePath As String, ex As Exception)
-    '    File.AppendAllText(logPath,
-    '        $"[{DateTime.Now}] 文件: {filePath}{Environment.NewLine}错误: {ex.Message}{Environment.NewLine}{Environment.NewLine}")
-    'End Sub
-
+    ' 修改ShowProcessResult方法以显示失败文件列表
     Private Sub ShowProcessResult(failedCount As Integer)
         If failedCount > 0 Then
-            MessageBox.Show($"部分转换完成，其中{failedCount}个文件转换失败。",
-                          "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            ' 创建失败文件列表
+            Dim fileList = String.Join(vbCrLf & Environment.NewLine,
+            failedFiles.Select(Function(f) $"{f.index}. {f.fileName}"))
+            MessageBox.Show($"部分转换完成，其中{failedCount}个文件转换失败：" & vbCrLf & fileList,
+                      "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            If MessageBox.Show("文件转换完成。点击按钮打开", "提示",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                Process.Start("explorer.exe", LastSavePath)
+            End If
         Else
             If MessageBox.Show("文件转换完成。点击按钮打开", "提示",
-                             MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
                 Process.Start("explorer.exe", LastSavePath)
             End If
         End If
@@ -550,11 +564,9 @@ Public Class Form8
         If rbJPG.Checked Then
             Label1.Enabled = True
             cobQuality.Enabled = True
-            Label2.Enabled = True
         Else
             Label1.Enabled = False
             cobQuality.Enabled = False
-            Label2.Enabled = False
         End If
     End Sub
 

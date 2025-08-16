@@ -26,7 +26,6 @@ Partial Class Form6
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form6))
         Me.ListViewPre = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -82,6 +81,7 @@ Partial Class Form6
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,7 +103,7 @@ Partial Class Form6
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListViewPre.BackColor = System.Drawing.Color.White
         Me.ListViewPre.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.ListViewPre.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
+        Me.ListViewPre.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader3})
         Me.ListViewPre.ContextMenuStrip = Me.ContextMenuStrip3
         Me.ListViewPre.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(238, Byte))
         Me.ListViewPre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
@@ -119,11 +119,6 @@ Partial Class Form6
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "#"
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "文件名"
-        Me.ColumnHeader2.Width = 240
         '
         'ContextMenuStrip3
         '
@@ -859,6 +854,11 @@ Partial Class Form6
         Me.ToolStripMenuItem7.Size = New System.Drawing.Size(129, 24)
         Me.ToolStripMenuItem7.Text = "全选(&A)"
         '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "重命名"
+        Me.ColumnHeader3.Width = 220
+        '
         'Form6
         '
         Me.AllowDrop = True
@@ -896,7 +896,6 @@ Partial Class Form6
 
     Friend WithEvents ListViewPre As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents ApplyButton As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
@@ -952,4 +951,5 @@ Partial Class Form6
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem7 As ToolStripMenuItem
     Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents ColumnHeader3 As ColumnHeader
 End Class

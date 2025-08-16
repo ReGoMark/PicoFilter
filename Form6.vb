@@ -3,6 +3,8 @@ Public Class Form6
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
     Private originalNames As New Dictionary(Of Integer, String)()
+    ' 在类级别添加一个列表来存储重命名失败的文件信息
+    Private renameFailedFiles As New List(Of (index As Integer, fileName As String, newName As String))
     Dim Publicpath As String
 
     ' 在Form6类中添加以下方法和调用，实现ListViewPre的双缓冲
@@ -244,7 +246,6 @@ Public Class Form6
     End Sub
 
     ' Button7_Click：对选中项应用格式
-    ' Button7_Click：对选中项应用格式
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim formatString As String = ComboBox1.Text
         If String.IsNullOrWhiteSpace(formatString) Then Return
@@ -357,7 +358,7 @@ Public Class Form6
                         .Visible = True
                     End With
 
-                    Dim failedCount As Integer = 0
+                    Dim failedFiles As New List(Of String) ' 存储失败文件的信息
                     Dim processedCount As Integer = 0
 
                     For Each item As ListViewItem In ListViewPre.Items
@@ -369,7 +370,8 @@ Public Class Form6
                                 IO.File.Copy(originalFilePath, newFilePath, True) ' 复制文件
                             End If
                         Catch ex As Exception
-                            failedCount += 1
+                            ' 记录失败文件的信息
+                            failedFiles.Add(originalNames(item.Index))
                         Finally
                             processedCount += 1
                             MetroProgressBar1.Value = processedCount
@@ -379,8 +381,23 @@ Public Class Form6
 
                     MetroProgressBar1.Visible = False
 
-                    If failedCount > 0 Then
-                        MessageBox.Show($"部分重命名完成，其中{failedCount}个文件重命名失败。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    If failedFiles.Count > 0 Then
+                        ' 构建错误信息字符串
+                        Dim failedFilesList As String = ""
+                        For Each failedFile In failedFiles
+                            failedFilesList &= failedFile & vbCrLf
+                        Next
+
+                        MessageBox.Show($"部分重命名完成，其中{failedFiles.Count}个文件重命名失败。{vbCrLf}{failedFilesList}",
+                                  "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        ' 修改这里：添加询问是否打开目标文件夹
+                        If MessageBox.Show("重命名副本已保存。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                            Try
+                                Process.Start("explorer.exe", targetPath)
+                            Catch ex As Exception
+                                MessageBox.Show("无法打开目标文件夹。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End Try
+                        End If
                     Else
                         ' 修改这里：添加询问是否打开目标文件夹
                         If MessageBox.Show("重命名副本已保存。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then

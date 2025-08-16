@@ -49,9 +49,9 @@ Partial Class Form8
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.rbICO = New System.Windows.Forms.RadioButton()
         Me.colorButton = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.cobQuality = New System.Windows.Forms.NumericUpDown()
         Me.rbPNG = New System.Windows.Forms.RadioButton()
         Me.rbJPG = New System.Windows.Forms.RadioButton()
@@ -411,9 +411,9 @@ Partial Class Form8
         Me.Panel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel5.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel5.Controls.Add(Me.rbICO)
         Me.Panel5.Controls.Add(Me.colorButton)
         Me.Panel5.Controls.Add(Me.Label1)
-        Me.Panel5.Controls.Add(Me.Label2)
         Me.Panel5.Controls.Add(Me.cobQuality)
         Me.Panel5.Controls.Add(Me.rbPNG)
         Me.Panel5.Controls.Add(Me.rbJPG)
@@ -422,6 +422,31 @@ Partial Class Form8
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(329, 36)
         Me.Panel5.TabIndex = 89
+        '
+        'rbICO
+        '
+        Me.rbICO.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.rbICO.Appearance = System.Windows.Forms.Appearance.Button
+        Me.rbICO.BackColor = System.Drawing.Color.GhostWhite
+        Me.rbICO.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.rbICO.FlatAppearance.BorderSize = 0
+        Me.rbICO.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.rbICO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.rbICO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.rbICO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.rbICO.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
+        Me.rbICO.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.rbICO.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.rbICO.Location = New System.Drawing.Point(141, 5)
+        Me.rbICO.Name = "rbICO"
+        Me.rbICO.Size = New System.Drawing.Size(45, 26)
+        Me.rbICO.TabIndex = 94
+        Me.rbICO.Text = "ICO"
+        Me.rbICO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.rbICO.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.rbICO, "转换为ICO格式")
+        Me.rbICO.UseVisualStyleBackColor = False
         '
         'colorButton
         '
@@ -435,11 +460,11 @@ Partial Class Form8
         Me.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.colorButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.colorButton.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.colorButton.Location = New System.Drawing.Point(152, 8)
+        Me.colorButton.Location = New System.Drawing.Point(192, 8)
         Me.colorButton.Name = "colorButton"
-        Me.colorButton.Size = New System.Drawing.Size(44, 20)
+        Me.colorButton.Size = New System.Drawing.Size(39, 20)
         Me.colorButton.TabIndex = 90
-        Me.ToolTip1.SetToolTip(Me.colorButton, "设置透明通道背景色")
+        Me.ToolTip1.SetToolTip(Me.colorButton, "设置透明通道填充色")
         Me.colorButton.UseVisualStyleBackColor = False
         Me.colorButton.Visible = False
         '
@@ -455,19 +480,6 @@ Partial Class Form8
         Me.Label1.Size = New System.Drawing.Size(21, 20)
         Me.Label1.TabIndex = 93
         Me.Label1.Text = "%"
-        '
-        'Label2
-        '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.AutoSize = True
-        Me.Label2.Enabled = False
-        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Label2.Location = New System.Drawing.Point(202, 8)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 20)
-        Me.Label2.TabIndex = 92
-        Me.Label2.Text = "质量"
         '
         'cobQuality
         '
@@ -520,7 +532,7 @@ Partial Class Form8
         Me.rbJPG.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.rbJPG.Appearance = System.Windows.Forms.Appearance.Button
-        Me.rbJPG.BackColor = System.Drawing.Color.Transparent
+        Me.rbJPG.BackColor = System.Drawing.Color.GhostWhite
         Me.rbJPG.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.rbJPG.FlatAppearance.BorderSize = 0
         Me.rbJPG.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
@@ -530,7 +542,7 @@ Partial Class Form8
         Me.rbJPG.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.rbJPG.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbJPG.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbJPG.Location = New System.Drawing.Point(54, 5)
+        Me.rbJPG.Location = New System.Drawing.Point(51, 5)
         Me.rbJPG.Name = "rbJPG"
         Me.rbJPG.Size = New System.Drawing.Size(45, 26)
         Me.rbJPG.TabIndex = 40
@@ -545,7 +557,7 @@ Partial Class Form8
         Me.rbBMP.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.rbBMP.Appearance = System.Windows.Forms.Appearance.Button
-        Me.rbBMP.BackColor = System.Drawing.Color.Transparent
+        Me.rbBMP.BackColor = System.Drawing.Color.GhostWhite
         Me.rbBMP.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.rbBMP.FlatAppearance.BorderSize = 0
         Me.rbBMP.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
@@ -555,7 +567,7 @@ Partial Class Form8
         Me.rbBMP.Font = New System.Drawing.Font("Consolas", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(0, Byte))
         Me.rbBMP.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.rbBMP.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.rbBMP.Location = New System.Drawing.Point(102, 5)
+        Me.rbBMP.Location = New System.Drawing.Point(96, 5)
         Me.rbBMP.Name = "rbBMP"
         Me.rbBMP.Size = New System.Drawing.Size(45, 26)
         Me.rbBMP.TabIndex = 41
@@ -796,7 +808,6 @@ Partial Class Form8
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents Label1 As Label
     Friend WithEvents colorButton As Button
-    Friend WithEvents Label2 As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents ContextMenuStrip3 As ContextMenuStrip
@@ -819,4 +830,5 @@ Partial Class Form8
     Friend WithEvents 删除ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator15 As ToolStripSeparator
     Friend WithEvents 全选ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents rbICO As RadioButton
 End Class
