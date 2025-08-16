@@ -1500,8 +1500,7 @@ Public Class Form1
             MetroTabPage4.Text = "查找"
         End If
     End Sub
-
-    '下一条（到最后一个时提示并循环到第一个）
+    '====================  下一条 or 全选 ====================
     Private Sub NextResult(listView As ListView,
                        ByRef resultList As List(Of Integer),
                        ByRef currentIndex As Integer)
@@ -1511,14 +1510,36 @@ Public Class Form1
             Return
         End If
 
+        ' 判断是否按下 Shift 键 → 一次性选中全部
+        If Control.ModifierKeys.HasFlag(Keys.Shift) Then
+            listView.SelectedItems.Clear()
+            For Each idx In resultList
+                Dim it = listView.Items(idx)
+                it.Selected = True
+            Next
+            listView.Focus()
+            'MessageBox.Show("已选中所有搜索结果。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+
+        ' 普通模式 → 循环选中下一个
         If currentIndex < resultList.Count - 1 Then
             currentIndex += 1
         Else
-            MessageBox.Show("已是最后一项，返回第一项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("已到达最后一项，即将返回第一项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             currentIndex = 0
         End If
 
         HighlightItem(listView, resultList(currentIndex))
+    End Sub
+
+    '====================  NextButton 点击事件 ====================
+    Private Sub nextButton_Click(sender As Object, e As EventArgs) Handles nextButton.Click
+        If rbRlist.Checked Then
+            NextResult(ListViewRT, searchResultsRT, currentIndexRT)
+        Else
+            NextResult(ListViewLT, searchResultsLT, currentIndexLT)
+        End If
     End Sub
 
     '====================  其他保留函数  ====================
@@ -1565,15 +1586,6 @@ Public Class Form1
         Else
             '默认左侧
             DoSearch(ListViewLT, keyword, type, searchResultsLT, currentIndexLT, "加载页")
-        End If
-    End Sub
-
-    '====================  事件：nextButton（合并）  ====================
-    Private Sub nextButton_Click(sender As Object, e As EventArgs) Handles nextButton.Click
-        If rbRlist.Checked Then
-            NextResult(ListViewRT, searchResultsRT, currentIndexRT)
-        Else
-            NextResult(ListViewLT, searchResultsLT, currentIndexLT)
         End If
     End Sub
 
