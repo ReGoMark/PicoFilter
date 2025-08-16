@@ -196,7 +196,7 @@ Public Class Form1
             optChange("转到「概览」查看子文件夹内容", Color.White, 0)
         End If
         If tagCount > 0 Then
-            optChange("星标：找到 " & tagCount & “ 项”, Color.White, 3)
+            optChange("星标：找到 " & tagCount & “ 项”, Color.White, 2)
         End If
 
         ProgressBar1.Visible = False
@@ -1406,8 +1406,7 @@ Public Class Form1
             lockButton.ImageIndex = 1
         End If
     End Sub
-
-    ' 搜索类型枚举
+    '====================  搜索枚举  ====================
     Enum SearchType
         All
         Index
@@ -1416,111 +1415,113 @@ Public Class Form1
         eDate
     End Enum
 
-    Private Sub SearchListView(keyword As String, searchType As SearchType)
-        Dim lowerKeyword As String = keyword.ToLower()
+    '====================  全局状态  ====================
+    Private searchResultsLT As New List(Of Integer)
+    Private searchResultsRT As New List(Of Integer)
+    Private currentIndexLT As Integer = -1
+    Private currentIndexRT As Integer = -1
 
-        For Each item As ListViewItem In ListViewLT.Items
+    '====================  工具函数  ====================
+    Private Sub ClearHighlights(listView As ListView)
+        For Each it As ListViewItem In listView.Items
+            it.BackColor = listView.BackColor   '用控件原色，避免主题下是纯白
+        Next
+    End Sub
+
+    Private Sub HighlightItem(listView As ListView, idx As Integer)
+        If idx < 0 OrElse idx >= listView.Items.Count Then Return
+        listView.SelectedItems.Clear()
+        Dim it = listView.Items(idx)
+        it.Selected = True
+        it.Focused = True
+        it.EnsureVisible()
+        listView.Focus()
+    End Sub
+
+    '通用搜索
+    Private Sub DoSearch(listView As ListView,
+                     keyword As String,
+                     searchType As SearchType,
+                     ByRef resultList As List(Of Integer),
+                     ByRef currentIndex As Integer,
+                     uiTag As String)
+
+        Dim lowerKeyword As String = keyword.ToLower()
+        resultList.Clear()
+        currentIndex = -1
+
+        ClearHighlights(listView)
+
+        For i As Integer = 0 To listView.Items.Count - 1
+            Dim item As ListViewItem = listView.Items(i)
             Dim match As Boolean = False
 
             Select Case searchType
                 Case SearchType.All
                     match = item.Text.ToLower().Contains(lowerKeyword) OrElse
-                    item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
-                    Any(Function(subItem) subItem.Text.ToLower().Contains(lowerKeyword))
+                        item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
+                        Any(Function(s) s.Text.ToLower().Contains(lowerKeyword))
 
                 Case SearchType.Index
-                    ' 假设序号是第0列
                     match = item.Text.ToLower().Contains(lowerKeyword)
 
-                Case SearchType.FileName
-                    ' 假设文件名是第2列（索引从0开始）
+                Case SearchType.FileName     '假设文件名在第2列
                     If item.SubItems.Count > 2 Then
                         match = item.SubItems(2).Text.ToLower().Contains(lowerKeyword)
                     End If
 
-                Case SearchType.Format
-                    ' 假设格式是第4列，判断是否是合法格式关键字
+                Case SearchType.Format       '假设格式在第4列
                     If item.SubItems.Count > 4 Then
-                        Dim formatText As String = item.SubItems(4).Text.ToLower()
+                        Dim formatText = item.SubItems(4).Text.ToLower()
                         If {".png", ".jpg", ".jpeg", ".ico", ".bmp", ".gif"}.Any(Function(ext) formatText.Contains(ext)) Then
                             match = formatText.Contains(lowerKeyword)
                         End If
                     End If
 
-                Case SearchType.eDate
-                    ' 假设日期是第6列（yy/MM/dd, HH:mm:ss 格式）
+                Case SearchType.eDate        '假设日期在第6列
                     If item.SubItems.Count > 6 Then
-                        Dim dateText As String = item.SubItems(6).Text.ToLower()
+                        Dim dateText = item.SubItems(6).Text.ToLower()
                         match = dateText.Contains(lowerKeyword)
                     End If
             End Select
 
-            item.Selected = match
-            If match Then item.EnsureVisible()
+            If match Then
+                item.BackColor = Color.LemonChiffon
+                resultList.Add(i)
+            End If
         Next
 
         播放ALERT()
-        optChange("加载页：结果 " & ListViewLT.SelectedItems.Count & " 项", Color.White, 2)
-        If ListViewLT.SelectedItems.Count > 0 Then
-            MetroTabPage4.Text = "查找 " & FormatSearchCount(ListViewLT.SelectedItems.Count)
+        optChange(uiTag & "：结果 " & resultList.Count & " 项", Color.White, 3)
+
+        If resultList.Count > 0 Then
+            MetroTabPage4.Text = "查找 " & FormatSearchCount(resultList.Count)
         Else
             MetroTabPage4.Text = "查找"
         End If
     End Sub
 
-    Private Sub SearchListView1(keyword As String, searchType As SearchType)
-        Dim lowerKeyword As String = keyword.ToLower()
+    '下一条（到最后一个时提示并循环到第一个）
+    Private Sub NextResult(listView As ListView,
+                       ByRef resultList As List(Of Integer),
+                       ByRef currentIndex As Integer)
 
-        For Each item As ListViewItem In ListViewRT.Items
-            Dim match As Boolean = False
-
-            Select Case searchType
-                Case SearchType.All
-                    match = item.Text.ToLower().Contains(lowerKeyword) OrElse
-                    item.SubItems.Cast(Of ListViewItem.ListViewSubItem)().
-                    Any(Function(subItem) subItem.Text.ToLower().Contains(lowerKeyword))
-
-                Case SearchType.Index
-                    ' 假设序号是第0列
-                    match = item.Text.ToLower().Contains(lowerKeyword)
-
-                Case SearchType.FileName
-                    ' 假设文件名是第2列（索引从0开始）
-                    If item.SubItems.Count > 2 Then
-                        match = item.SubItems(2).Text.ToLower().Contains(lowerKeyword)
-                    End If
-
-                Case SearchType.Format
-                    ' 假设格式是第4列，判断是否是合法格式关键字
-                    If item.SubItems.Count > 4 Then
-                        Dim formatText As String = item.SubItems(4).Text.ToLower()
-                        If {".png", ".jpg", ".jpeg", ".ico", ".bmp", ".gif"}.Any(Function(ext) formatText.Contains(ext)) Then
-                            match = formatText.Contains(lowerKeyword)
-                        End If
-                    End If
-
-                Case SearchType.eDate
-                    ' 假设日期是第6列（yy/MM/dd, HH:mm:ss 格式）
-                    If item.SubItems.Count > 6 Then
-                        Dim dateText As String = item.SubItems(6).Text.ToLower()
-                        match = dateText.Contains(lowerKeyword)
-                    End If
-            End Select
-
-            item.Selected = match
-            If match Then item.EnsureVisible()
-        Next
-
-        播放ALERT()
-        optChange("筛选页：结果 " & ListViewRT.SelectedItems.Count & " 项", Color.White, 2)
-        If ListViewLT.SelectedItems.Count > 0 Then
-            MetroTabPage4.Text = "查找 " & FormatSearchCount(ListViewLT.SelectedItems.Count)
-        Else
-            MetroTabPage4.Text = "查找"
+        If resultList.Count = 0 Then
+            MessageBox.Show("没有搜索结果。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
         End If
+
+        If currentIndex < resultList.Count - 1 Then
+            currentIndex += 1
+        Else
+            MessageBox.Show("已是最后一项，返回第一项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            currentIndex = 0
+        End If
+
+        HighlightItem(listView, resultList(currentIndex))
     End Sub
 
-    ' 格式化查找结果数目显示
+    '====================  其他保留函数  ====================
     Private Function FormatSearchCount(count As Integer) As String
         If count < 100 Then
             Return count.ToString()
@@ -1537,15 +1538,15 @@ Public Class Form1
         loadedTime += 1
     End Sub
 
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles searchButton0.Click
-        If searchText.Text = "" Then
+    '====================  事件：搜索按钮（合并）  ====================
+    Private Sub searchButton0_Click(sender As Object, e As EventArgs) Handles searchButton0.Click
+        If String.IsNullOrWhiteSpace(searchText.Text) Then
             MessageBox.Show("请输入查找内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
         End If
 
         Dim keyword As String = searchText.Text.Trim()
         Dim type As SearchType
-
         If rbID.Checked Then
             type = SearchType.Index
         ElseIf rbName.Checked Then
@@ -1558,31 +1559,22 @@ Public Class Form1
             type = SearchType.All
         End If
 
-        SearchListView(keyword, type)
+        '决定在哪个列表搜索：rbLlist(加载) / rbRlist(筛选)
+        If rbRlist.Checked Then
+            DoSearch(ListViewRT, keyword, type, searchResultsRT, currentIndexRT, "筛选页")
+        Else
+            '默认左侧
+            DoSearch(ListViewLT, keyword, type, searchResultsLT, currentIndexLT, "加载页")
+        End If
     End Sub
 
-    Private Sub btnSearch1_Click(sender As Object, e As EventArgs) Handles searchButton1.Click
-        If searchText.Text = "" Then
-            MessageBox.Show("请输入查找内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
-
-        Dim keyword As String = searchText.Text.Trim()
-        Dim type As SearchType
-
-        If rbID.Checked Then
-            type = SearchType.Index
-        ElseIf rbName.Checked Then
-            type = SearchType.FileName
-        ElseIf rbFormat.Checked Then
-            type = SearchType.Format
-        ElseIf rbDate.Checked Then
-            type = SearchType.eDate
+    '====================  事件：nextButton（合并）  ====================
+    Private Sub nextButton_Click(sender As Object, e As EventArgs) Handles nextButton.Click
+        If rbRlist.Checked Then
+            NextResult(ListViewRT, searchResultsRT, currentIndexRT)
         Else
-            type = SearchType.All
+            NextResult(ListViewLT, searchResultsLT, currentIndexLT)
         End If
-
-        SearchListView1(keyword, type)
     End Sub
 
     Private Sub 更新标题()
@@ -2817,8 +2809,23 @@ Public Class Form1
     End Sub
 
     Private Sub Button11_Click_1(sender As Object, e As EventArgs) Handles Button11.Click
+        ' 清空搜索框 & Tab 名称
         searchText.Text = ""
         MetroTabPage4.Text = "查找"
+
+        ' 清除左侧列表高亮
+        For Each it As ListViewItem In ListViewLT.Items
+            If it.BackColor = Color.LemonChiffon Then
+                it.BackColor = Color.Empty   '还原为默认背景色
+            End If
+        Next
+
+        ' 清除右侧列表高亮
+        For Each it As ListViewItem In ListViewRT.Items
+            If it.BackColor = Color.LemonChiffon Then
+                it.BackColor = Color.Empty
+            End If
+        Next
     End Sub
 
     'Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click

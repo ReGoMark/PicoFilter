@@ -26,6 +26,7 @@ Partial Class Form6
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form6))
         Me.ListViewPre = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -81,7 +82,6 @@ Partial Class Form6
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -119,6 +119,11 @@ Partial Class Form6
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "#"
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "重命名"
+        Me.ColumnHeader3.Width = 220
         '
         'ContextMenuStrip3
         '
@@ -853,11 +858,6 @@ Partial Class Form6
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
         Me.ToolStripMenuItem7.Size = New System.Drawing.Size(129, 24)
         Me.ToolStripMenuItem7.Text = "全选(&A)"
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "重命名"
-        Me.ColumnHeader3.Width = 220
         '
         'Form6
         '
