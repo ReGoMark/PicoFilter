@@ -1391,7 +1391,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(21, 162)
+        Me.Panel3.Location = New System.Drawing.Point(17, 162)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(330, 214)
         Me.Panel3.TabIndex = 44
@@ -1536,8 +1536,8 @@ Partial Class Form1
         '
         Me.ImageList3.ImageStream = CType(resources.GetObject("ImageList3.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList3.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList3.Images.SetKeyName(0, "unlock_black.ico")
-        Me.ImageList3.Images.SetKeyName(1, "lock_black.ico")
+        Me.ImageList3.Images.SetKeyName(0, "lock_black.ico")
+        Me.ImageList3.Images.SetKeyName(1, "unlock_black.ico")
         '
         'Button3
         '
@@ -1705,7 +1705,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-1065, 177)
+        Me.Label7.Location = New System.Drawing.Point(-1069, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1730,7 +1730,7 @@ Partial Class Form1
         Me.nextButton.Size = New System.Drawing.Size(26, 26)
         Me.nextButton.TabIndex = 102
         Me.nextButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.nextButton, "点击转到下一个查找结果" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住 Shift 选中现有查找结果")
+        Me.ToolTip1.SetToolTip(Me.nextButton, "点击转到下一个查找结果" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "按住 Shift 选中所有查找结果")
         Me.nextButton.UseVisualStyleBackColor = False
         '
         'Button9
@@ -1936,7 +1936,7 @@ Partial Class Form1
         Me.ToolStripMenuItem30.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem30.Name = "ToolStripMenuItem30"
         Me.ToolStripMenuItem30.Size = New System.Drawing.Size(194, 24)
-        Me.ToolStripMenuItem30.Text = "解除现有置顶(&D)"
+        Me.ToolStripMenuItem30.Text = "解除所有置顶(&D)"
         '
         'ToolStripMenuItem31
         '
@@ -1946,7 +1946,7 @@ Partial Class Form1
         Me.ToolStripMenuItem31.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem31.Name = "ToolStripMenuItem31"
         Me.ToolStripMenuItem31.Size = New System.Drawing.Size(194, 24)
-        Me.ToolStripMenuItem31.Text = "解除现有停靠(&F)"
+        Me.ToolStripMenuItem31.Text = "解除所有停靠(&F)"
         '
         'ToolStripMenuItem27
         '
@@ -1964,7 +1964,7 @@ Partial Class Form1
         Me.ToolStripMenuItem34.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem34.Name = "ToolStripMenuItem34"
         Me.ToolStripMenuItem34.Size = New System.Drawing.Size(194, 24)
-        Me.ToolStripMenuItem34.Text = "关闭现有窗口(&X)"
+        Me.ToolStripMenuItem34.Text = "关闭所有窗口(&X)"
         '
         'ToolStripSeparator13
         '
@@ -2774,7 +2774,7 @@ Partial Class Form1
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Multiline = True
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.SelectedIndex = 3
         Me.MetroTabControl1.Size = New System.Drawing.Size(1024, 80)
         Me.MetroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
