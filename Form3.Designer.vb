@@ -669,7 +669,7 @@ Partial Class Form3
         Me.topButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.topButton.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.topButton.ForeColor = System.Drawing.Color.SlateBlue
-        Me.topButton.ImageIndex = 1
+        Me.topButton.ImageIndex = 0
         Me.topButton.ImageList = Me.ImageList1
         Me.topButton.Location = New System.Drawing.Point(12, 497)
         Me.topButton.Name = "topButton"

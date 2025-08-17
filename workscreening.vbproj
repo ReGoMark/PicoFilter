@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F575B19B-9E99-4302-9948-695B65D76126}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>PicoFilter204.My.MyApplication</StartupObject>
-    <RootNamespace>PicoFilter204</RootNamespace>
-    <AssemblyName>PicoFilter 2.0.4</AssemblyName>
+    <StartupObject>PicoFilter205.My.MyApplication</StartupObject>
+    <RootNamespace>PicoFilter205</RootNamespace>
+    <AssemblyName>PicoFilter 2.0.5</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -38,7 +38,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>PicoFilter 2.0.4.xml</DocumentationFile>
+    <DocumentationFile>PicoFilter 2.0.5.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
     <PreferNativeArm64>false</PreferNativeArm64>
@@ -50,7 +50,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>PicoFilter 2.0.4.xml</DocumentationFile>
+    <DocumentationFile>PicoFilter 2.0.5.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>

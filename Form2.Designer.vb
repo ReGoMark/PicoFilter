@@ -78,11 +78,11 @@ Partial Class Form2
         Me.Label44.BackColor = System.Drawing.Color.Transparent
         Me.Label44.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.FromArgb(CType(CType(145, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(52, Byte), Integer))
-        Me.Label44.Location = New System.Drawing.Point(110, 499)
+        Me.Label44.Location = New System.Drawing.Point(96, 499)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(160, 20)
+        Me.Label44.Size = New System.Drawing.Size(174, 20)
         Me.Label44.TabIndex = 47
-        Me.Label44.Text = "最后更新：2025/08/13"
+        Me.Label44.Text = "永远年轻，永远热泪盈眶"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Button2
@@ -199,7 +199,7 @@ Partial Class Form2
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(178, 20)
         Me.Label4.TabIndex = 49
-        Me.Label4.Text = "版本：2.0.4（20250815）"
+        Me.Label4.Text = "版本：2.0.5（20250817）"
         '
         'PictureBox2
         '
@@ -235,7 +235,7 @@ Partial Class Form2
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(100, 34)
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 141)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(329, 337)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 58

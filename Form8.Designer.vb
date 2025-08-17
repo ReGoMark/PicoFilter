@@ -73,6 +73,7 @@ Partial Class Form8
         Me.删除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
         Me.全选ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.ContextMenuStrip3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -379,6 +380,7 @@ Partial Class Form8
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Controls.Add(Me.Button3)
+        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Controls.Add(Me.ListView1)
         Me.Panel1.Location = New System.Drawing.Point(12, 76)
@@ -411,13 +413,14 @@ Partial Class Form8
         Me.Panel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel5.BackColor = System.Drawing.Color.GhostWhite
-        Me.Panel5.Controls.Add(Me.rbICO)
         Me.Panel5.Controls.Add(Me.colorButton)
+        Me.Panel5.Controls.Add(Me.rbICO)
         Me.Panel5.Controls.Add(Me.Label1)
         Me.Panel5.Controls.Add(Me.cobQuality)
         Me.Panel5.Controls.Add(Me.rbPNG)
         Me.Panel5.Controls.Add(Me.rbJPG)
         Me.Panel5.Controls.Add(Me.rbBMP)
+        Me.Panel5.Controls.Add(Me.Label2)
         Me.Panel5.Location = New System.Drawing.Point(0, 360)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(329, 36)
@@ -425,8 +428,7 @@ Partial Class Form8
         '
         'rbICO
         '
-        Me.rbICO.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.rbICO.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.rbICO.Appearance = System.Windows.Forms.Appearance.Button
         Me.rbICO.BackColor = System.Drawing.Color.GhostWhite
         Me.rbICO.FlatAppearance.BorderColor = System.Drawing.Color.White
@@ -450,7 +452,7 @@ Partial Class Form8
         '
         'colorButton
         '
-        Me.colorButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.colorButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.colorButton.BackColor = System.Drawing.Color.White
         Me.colorButton.CausesValidation = False
         Me.colorButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
@@ -470,7 +472,7 @@ Partial Class Form8
         '
         'Label1
         '
-        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Enabled = False
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
@@ -483,8 +485,7 @@ Partial Class Form8
         '
         'cobQuality
         '
-        Me.cobQuality.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cobQuality.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cobQuality.BackColor = System.Drawing.Color.GhostWhite
         Me.cobQuality.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.cobQuality.Enabled = False
@@ -502,8 +503,7 @@ Partial Class Form8
         '
         'rbPNG
         '
-        Me.rbPNG.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.rbPNG.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.rbPNG.Appearance = System.Windows.Forms.Appearance.Button
         Me.rbPNG.BackColor = System.Drawing.Color.Transparent
         Me.rbPNG.Checked = True
@@ -529,8 +529,7 @@ Partial Class Form8
         '
         'rbJPG
         '
-        Me.rbJPG.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.rbJPG.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.rbJPG.Appearance = System.Windows.Forms.Appearance.Button
         Me.rbJPG.BackColor = System.Drawing.Color.GhostWhite
         Me.rbJPG.FlatAppearance.BorderColor = System.Drawing.Color.White
@@ -554,8 +553,7 @@ Partial Class Form8
         '
         'rbBMP
         '
-        Me.rbBMP.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.rbBMP.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.rbBMP.Appearance = System.Windows.Forms.Appearance.Button
         Me.rbBMP.BackColor = System.Drawing.Color.GhostWhite
         Me.rbBMP.FlatAppearance.BorderColor = System.Drawing.Color.White
@@ -580,11 +578,12 @@ Partial Class Form8
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(117, 502)
+        Me.Label3.ForeColor = System.Drawing.Color.DimGray
+        Me.Label3.Location = New System.Drawing.Point(59, 230)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 16)
+        Me.Label3.Size = New System.Drawing.Size(37, 16)
         Me.Label3.TabIndex = 90
-        Me.Label3.Text = "Label3"
+        Me.Label3.Text = "背景"
         Me.Label3.Visible = False
         '
         'MetroProgressBar1
@@ -746,13 +745,24 @@ Partial Class Form8
         Me.全选ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
         Me.全选ToolStripMenuItem.Text = "全选(&A)"
         '
+        'Label2
+        '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.Label2.ForeColor = System.Drawing.Color.DimGray
+        Me.Label2.Location = New System.Drawing.Point(192, 8)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 20)
+        Me.Label2.TabIndex = 91
+        Me.Label2.Text = "填充"
+        '
         'Form8
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnApplyAll)
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btnApplySelected)
@@ -769,6 +779,7 @@ Partial Class Form8
         Me.Text = "转换"
         Me.ContextMenuStrip3.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         CType(Me.cobQuality, System.ComponentModel.ISupportInitialize).EndInit()
@@ -778,7 +789,6 @@ Partial Class Form8
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ContextMenuStrip6.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -831,4 +841,5 @@ Partial Class Form8
     Friend WithEvents ToolStripSeparator15 As ToolStripSeparator
     Friend WithEvents 全选ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents rbICO As RadioButton
+    Friend WithEvents Label2 As Label
 End Class

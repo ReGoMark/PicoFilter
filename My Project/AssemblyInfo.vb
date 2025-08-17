@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyCompany("2025 ReGoMark")>
 <Assembly: AssemblyProduct("PicoFilter")>
 <Assembly: AssemblyCopyright("Copyright © 2025 ReGoMark")>
-<Assembly: AssemblyTrademark("PICOFILTER™️")>
+<Assembly: AssemblyTrademark("PICOFILTER is a trademark registered by ReGoMark.")>
 
 <Assembly: ComVisible(False)>
 
@@ -27,5 +27,5 @@ Imports System.Runtime.InteropServices
 '      修订号
 '
 
-<Assembly: AssemblyVersion("2.0.4.0")>
-<Assembly: AssemblyFileVersion("2.0.4.0")>
+<Assembly: AssemblyVersion("2.0.5.0")>
+<Assembly: AssemblyFileVersion("2.0.5.0")>

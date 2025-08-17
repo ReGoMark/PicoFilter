@@ -101,9 +101,7 @@ Public Class Form7
         ' 默认使用基础分组（推荐）
         parts = BasicSplit(nameOnly)
 
-        ' 若启用词典分组，请取消下方注释并注释上方
-        ' EnsureDictionariesLoaded()
-        ' parts = DictSplit(nameOnly)
+        ' 若启用词典分组，请取消下方注释并注释上方 EnsureDictionariesLoaded() parts = DictSplit(nameOnly)
 
         ' 生成 CheckBox 控件
         For Each word In parts

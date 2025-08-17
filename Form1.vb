@@ -28,7 +28,7 @@ Public Class Form1
     Dim lbldStr As String '存储标记文件的文本
     Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
-    Public verinfo As String = "PicoFilter 2.0.4" '存储版本信息
+    Public verinfo As String = "PicoFilter 2.0.5" '存储版本信息
     Private opttext As String = "使用提示" '存储操作按钮默认文本
 
     Private optcolor As Color = Color.White '存储操作按钮默认颜色
@@ -211,11 +211,7 @@ Public Class Form1
         bmpLT = bmpCount
         gifLT = gifCount
         icoLT = icoCount
-        'Dim items As New ListViewItem(consoletime)
-        'items.SubItems.Add(consoletime)
-        'items.SubItems.Add("加载")
-        'items.SubItems.Add(openText.Text)
-        'Form4.ListView1.Items.Add(items)
+
     End Sub
 
     Private Sub 筛选图片()
@@ -559,29 +555,69 @@ Public Class Form1
         Return False
     End Function
 
-    ''左侧标签点击复制文件地址
-    'Private Sub sltLblLT_Click(sender As Object, e As EventArgs) Handles sltLblLT.Click
-    '    If ListViewLT.SelectedItems.Count > 0 Then
-    '        Dim selectedItem As ListViewItem = ListViewLT.SelectedItems(0)
-    '        Dim fileName As String = selectedItem.SubItems(2).Text '获取选中的文件名
-    '        Dim folderPath As String = openText.Text.trim() '文件夹路径
-    '        Dim filePath As String = Path.Combine(folderPath, fileName) '拼接完整的文件路径
-    '        Clipboard.SetText(filePath) '复制文件路径到剪贴板
-    '        MessageBox.Show("路径已复制：" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '    End If
-    'End Sub
+    Private Sub Timer1_1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Dim openForms As New List(Of String)
+        Dim count As Integer = 0
 
-    ''右侧标签点击复制文件地址
-    'Private Sub sltLblRT_Click(sender As Object, e As EventArgs) Handles sltLblRT.Click
-    '    If ListViewRT.SelectedItems.Count > 0 Then
-    '        Dim selectedItem As ListViewItem = ListViewRT.SelectedItems(0)
-    '        Dim fileName As String = selectedItem.SubItems(2).Text    '获取选中的文件名
-    '        Dim folderPath As String = openText.Text ' 文件夹路径
-    '        Dim filePath As String = Path.Combine(folderPath, fileName)   '拼接完整的文件路径
-    '        Clipboard.SetText(filePath) '复制文件路径到剪贴板
-    '        MessageBox.Show("路径已复制：" & vbCrLf & filePath, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '    End If
-    'End Sub
+        ' 前面几个格式，无条件计数
+        If jpgButton.Checked Then count += 1
+        If bmpButton.Checked Then count += 1
+        If icoButton.Checked Then count += 1
+        If gifButton.Checked Then count += 1
+        If pngButton.Checked Then count += 1
+
+        ' reslnButton 本身计数
+        If reslnButton.Checked Then
+            count += 1
+
+            ' 后面几个按钮，只有 reslnButton 开启时才计数
+            If volButton.Checked Then count += 1
+            If exButton.Checked Then count += 1
+            If moreButton.Checked Or mnsButton.Checked Then count += 1
+            'If mnsButton.Checked Then count += 1
+        End If
+
+        ' 更新 MetroTabPage(1) 标题
+        If count = 0 Then
+            MetroTabControl1.TabPages(1).Text = "筛选"
+        Else
+            MetroTabControl1.TabPages(1).Text = "筛选 " & count.ToString()
+        End If
+
+        For Each f As Form In Application.OpenForms
+            If TypeOf f Is Form2 OrElse
+               TypeOf f Is Form3 OrElse
+               TypeOf f Is Form5 OrElse
+               TypeOf f Is Form6 OrElse
+               TypeOf f Is Form7 OrElse
+               TypeOf f Is Form8 Then
+                openForms.Add(f.Text) ' 收集标题
+            End If
+        Next
+
+        ' 设置按钮图标
+        If openForms.Count = 0 Then
+            Button14.ImageIndex = 0
+            'ToolTip1.SetToolTip(Button14, "选项")
+        Else
+            Button14.ImageIndex = openForms.Count
+            'ToolTip1.SetToolTip(Button14, "活跃窗口：" & vbCrLf & String.Join(vbCrLf, openForms))
+        End If
+    End Sub
+
+    ' moreButton CheckedChanged
+    Private Sub moreButton_CheckedChanged(sender As Object, e As EventArgs) Handles moreButton.CheckedChanged
+        If moreButton.Checked Then
+            mnsButton.Checked = False
+        End If
+    End Sub
+
+    ' mnsButton CheckedChanged
+    Private Sub mnsButton_CheckedChanged(sender As Object, e As EventArgs) Handles mnsButton.CheckedChanged
+        If mnsButton.Checked Then
+            moreButton.Checked = False
+        End If
+    End Sub
 
     '左侧双击预览
     Private Sub ListViewLT_DoubleClick(sender As Object, e As EventArgs) Handles ListViewLT.DoubleClick
@@ -1406,7 +1442,8 @@ Public Class Form1
             lockButton.ImageIndex = 1
         End If
     End Sub
-    '====================  搜索枚举  ====================
+
+    '搜索枚举
     Enum SearchType
         All
         Index
@@ -1415,13 +1452,14 @@ Public Class Form1
         eDate
     End Enum
 
-    '====================  全局状态  ====================
+    '全局状态
     Private searchResultsLT As New List(Of Integer)
+
     Private searchResultsRT As New List(Of Integer)
     Private currentIndexLT As Integer = -1
     Private currentIndexRT As Integer = -1
 
-    '====================  工具函数  ====================
+    '工具函数
     Private Sub ClearHighlights(listView As ListView)
         For Each it As ListViewItem In listView.Items
             it.BackColor = listView.BackColor   '用控件原色，避免主题下是纯白
@@ -1500,7 +1538,8 @@ Public Class Form1
             MetroTabPage4.Text = "查找"
         End If
     End Sub
-    '====================  下一条 or 全选 ====================
+
+    '下一条 or 全选
     Private Sub NextResult(listView As ListView,
                        ByRef resultList As List(Of Integer),
                        ByRef currentIndex As Integer)
@@ -1510,30 +1549,49 @@ Public Class Form1
             Return
         End If
 
-        ' 判断是否按下 Shift 键 → 一次性选中全部
+        ' Shift 按下 → 一次性选中全部结果
         If Control.ModifierKeys.HasFlag(Keys.Shift) Then
             listView.SelectedItems.Clear()
             For Each idx In resultList
-                Dim it = listView.Items(idx)
-                it.Selected = True
+                listView.Items(idx).Selected = True
             Next
             listView.Focus()
-            'MessageBox.Show("已选中所有搜索结果。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("已选中所有搜索结果。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
         End If
 
-        ' 普通模式 → 循环选中下一个
-        If currentIndex < resultList.Count - 1 Then
-            currentIndex += 1
-        Else
-            MessageBox.Show("已到达最后一项，即将返回第一项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            currentIndex = 0
+        '========== 普通 Next ==========
+        Dim startIndex As Integer = -1
+
+        ' 如果当前有选中项，就以它为基准
+        If listView.SelectedItems.Count > 0 Then
+            startIndex = listView.SelectedItems(0).Index
         End If
 
-        HighlightItem(listView, resultList(currentIndex))
+        ' 在搜索结果里找“比当前选中项靠后的第一个结果”
+        Dim nextResultIdx As Integer = -1
+        For Each idx In resultList
+            If idx > startIndex Then
+                nextResultIdx = idx
+                Exit For
+            End If
+        Next
+
+        ' 如果没找到（说明当前选中项已经在最后面），就循环到第一个结果
+        If nextResultIdx = -1 Then
+            MessageBox.Show("已是最后一项，返回第一项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            nextResultIdx = resultList(0)
+        End If
+
+        ' 更新 currentIndex（保持和新逻辑一致）
+        currentIndex = resultList.IndexOf(nextResultIdx)
+
+        ' 选中并滚动到目标项
+        HighlightItem(listView, nextResultIdx)
     End Sub
 
-    '====================  NextButton 点击事件 ====================
+
+    'NextButton 点击事件
     Private Sub nextButton_Click(sender As Object, e As EventArgs) Handles nextButton.Click
         If rbRlist.Checked Then
             NextResult(ListViewRT, searchResultsRT, currentIndexRT)
@@ -1542,7 +1600,7 @@ Public Class Form1
         End If
     End Sub
 
-    '====================  其他保留函数  ====================
+    '其他保留函数
     Private Function FormatSearchCount(count As Integer) As String
         If count < 100 Then
             Return count.ToString()
@@ -1559,7 +1617,7 @@ Public Class Form1
         loadedTime += 1
     End Sub
 
-    '====================  事件：搜索按钮（合并）  ====================
+    '搜索按钮（合并）
     Private Sub searchButton0_Click(sender As Object, e As EventArgs) Handles searchButton0.Click
         If String.IsNullOrWhiteSpace(searchText.Text) Then
             MessageBox.Show("请输入查找内容。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -2856,11 +2914,11 @@ Public Class Form1
         Form4.Show()
     End Sub
 
-    Private Sub ToolStripMenuItem33_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem33.Click
+    Private Sub ToolStripMenuItem33_Click(sender As Object, e As EventArgs)
         Form4.Show()
     End Sub
 
-    Private Sub ToolStripMenuItem27_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem27.Click
+    Private Sub ToolStripMenuItem27_Click(sender As Object, e As EventArgs)
         Me.CenterToScreen()
     End Sub
 
@@ -2883,6 +2941,120 @@ Public Class Form1
         Form6.absbButton.CheckState = CheckState.Unchecked
         Form7.absbButton.CheckState = CheckState.Unchecked
         Form8.absbButton.CheckState = CheckState.Unchecked
+    End Sub
+
+    Private Sub Button14_Click_1(sender As Object, e As EventArgs) Handles Button14.Click
+        ContextMenuStrip7.Show(Button14, -ContextMenuStrip7.Width + Button14.Width, Button14.Height)
+    End Sub
+
+    Private Sub ToolStripMenuItem28_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem28.Click
+        ' 起始位置
+        Dim startX As Integer = 50
+        Dim startY As Integer = 50
+        Dim offset As Integer = 50 ' 堆叠的偏移量，调大间距
+
+        Dim count As Integer = 0
+
+        For Each f As Form In Application.OpenForms
+            If TypeOf f Is Form2 OrElse
+           TypeOf f Is Form3 OrElse
+           TypeOf f Is Form5 OrElse
+           TypeOf f Is Form6 OrElse
+           TypeOf f Is Form7 OrElse
+           TypeOf f Is Form8 Then
+
+                f.Location = New Point(startX + count * offset, startY + count * offset)
+                f.BringToFront()
+                count += 1
+            End If
+        Next
+    End Sub
+
+    Private Sub ToolStripMenuItem33_Click_1(sender As Object, e As EventArgs) Handles ToolStripMenuItem33.Click
+        ' 收集要排列的窗口
+        Dim forms As New List(Of Form)
+        For i As Integer = 0 To Application.OpenForms.Count - 1
+            Dim f As Form = Application.OpenForms(i)
+            If TypeOf f Is Form2 OrElse
+           TypeOf f Is Form3 OrElse
+           TypeOf f Is Form5 OrElse
+           TypeOf f Is Form6 OrElse
+           TypeOf f Is Form7 OrElse
+           TypeOf f Is Form8 Then
+                forms.Add(f)
+            End If
+        Next
+
+        If forms.Count = 0 Then Exit Sub
+
+        ' 获取屏幕可用区域
+        Dim screenBounds As Rectangle = Screen.PrimaryScreen.WorkingArea
+        Dim startX As Integer = screenBounds.X + 20
+        Dim startY As Integer = screenBounds.Y + 20
+        Dim currentX As Integer = startX
+        Dim currentY As Integer = startY
+        Dim margin As Integer = 10 ' 窗口间距
+
+        For Each f As Form In forms
+            ' 超出屏幕宽度换行
+            If currentX + f.Width > screenBounds.Right Then
+                currentX = startX
+                currentY += f.Height + margin
+            End If
+
+            f.Location = New Point(currentX, currentY)
+            f.BringToFront()
+
+            currentX += f.Width + margin
+        Next
+    End Sub
+
+    Private Sub ToolStripMenuItem35_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem35.Click
+        ' 收集要居中的窗口
+        Dim forms As New List(Of Form)
+        For i As Integer = 0 To Application.OpenForms.Count - 1
+            Dim f As Form = Application.OpenForms(i)
+            If TypeOf f Is Form2 OrElse
+           TypeOf f Is Form3 OrElse
+           TypeOf f Is Form5 OrElse
+           TypeOf f Is Form6 OrElse
+           TypeOf f Is Form7 OrElse
+           TypeOf f Is Form8 Then
+                forms.Add(f)
+            End If
+        Next
+
+        If forms.Count = 0 Then Exit Sub
+
+        ' 获取屏幕可用区域
+        Dim screenBounds As Rectangle = Screen.PrimaryScreen.WorkingArea
+
+        For Each f As Form In forms
+            ' 计算居中位置
+            Dim centerX As Integer = screenBounds.X + (screenBounds.Width - f.Width) \ 2
+            Dim centerY As Integer = screenBounds.Y + (screenBounds.Height - f.Height) \ 2
+
+            f.Location = New Point(centerX, centerY)
+            f.BringToFront()
+        Next
+    End Sub
+
+    Private Sub ToolStripMenuItem34_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem34.Click
+        Form2.Close()
+        Form3.Close()
+        Form5.Close()
+        Form6.Close()
+        Form7.Close()
+        Form8.Close()
+    End Sub
+
+    Private Sub ToolStripMenuItem27_Click_1(sender As Object, e As EventArgs) Handles ToolStripMenuItem27.Click
+        Form2.Show()
+        Form3.Show()
+        Form5.Show()
+        Form6.Show()
+        Form7.Show()
+        Form8.Show()
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles starText.TextChanged

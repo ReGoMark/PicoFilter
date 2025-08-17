@@ -12,9 +12,7 @@ Public Class Form8
     Private backgroundColor As Color = Color.White ' 默认背景色
     Private colorDialog As New ColorDialog()
     Private failedFiles As New List(Of (index As Integer, fileName As String))    ' 创建一个列表来存储失败文件信息
-    ' 初始化窗体
-    ' 在Form8类中添加以下方法和在Form8_Load中调用
-    ' 启用ListView1的双缓冲以减少闪烁
+    ' 初始化窗体 在Form8类中添加以下方法和在Form8_Load中调用 启用ListView1的双缓冲以减少闪烁
     Private Sub EnableListViewDoubleBuffering()
         Dim prop = GetType(Control).GetProperty("DoubleBuffered", Reflection.BindingFlags.Instance Or Reflection.BindingFlags.NonPublic)
         If prop IsNot Nothing Then
@@ -110,8 +108,10 @@ Public Class Form8
         ' 初始化背景色控件
         With colorButton
             .BackColor = backgroundColor
-            .FlatStyle = FlatStyle.Flat
+            '.FlatStyle = FlatStyle.Flat
+            '.FlatAppearance.BorderColor = Color.DarkSlateBlue
             .Visible = False  ' 默认隐藏
+            '.Enabled = False
         End With
 
         ' 颜色对话框设置
@@ -131,6 +131,8 @@ Public Class Form8
     Private Sub UpdateBackgroundColorControl()
         Dim hasTransparency As Boolean = rbPNG.Checked OrElse rbICO.Checked
         colorButton.Visible = Not hasTransparency
+        'colorButton.Enabled = Not hasTransparency
+        'colorButton.FlatAppearance.BorderColor = Color.DarkSlateBlue
     End Sub
 
     ' 5. 添加ICO相关事件处理
@@ -255,10 +257,8 @@ Public Class Form8
     '        Return False
     '    End If
 
-    '    If Form1.ListViewRT.Items.Count = 0 Then
-    '        MessageBox.Show("没有可以拉取的数据。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '        Return False
-    '    End If
+    ' If Form1.ListViewRT.Items.Count = 0 Then MessageBox.Show("没有可以拉取的数据。", "提示",
+    ' MessageBoxButtons.OK, MessageBoxIcon.Information) Return False End If
 
     '    Return True
     'End Function

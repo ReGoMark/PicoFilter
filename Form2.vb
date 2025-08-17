@@ -78,4 +78,5 @@ Public Class Form2
             MessageBox.Show("无法打开链接。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 End Class
