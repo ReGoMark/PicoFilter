@@ -68,17 +68,13 @@ Public Class Form7
         ' 默认使用基础分组
         FlowLayoutPanel1.AutoScroll = True
         MetroTabControl1.SelectedTab = MetroTabControl1.TabPages(0)
-
-        'panelSelectionOverlay.BackColor = Color.Transparent
-        'panelSelectionOverlay.Dock = DockStyle.Fill
-        'panelSelectionOverlay.BringToFront()
-        'panelSelectionOverlay.Cursor = Cursors.Cross
         If absbButton.Checked = True Then
             Me.Location = New Point(Form1.Location.X - Me.Width, Form1.Location.Y)
         Else
             Me.CenterToScreen()
         End If
-        ''BindContextMenuToAllTextBoxes(Me, ContextMenuStrip6)
+        BindContextMenuToAllTextBoxes(Me, ContextMenuStrip6)
+        ContextMenuStrip6.Renderer = New ModernMenuRenderer()
     End Sub
 
     Private Sub absbButton_CheckStateChanged(sender As Object, e As EventArgs) Handles absbButton.CheckStateChanged
@@ -257,7 +253,7 @@ Public Class Form7
         End If
         Dim combinedText = String.Join("", selectedWords)
         Form1.searchText.Text = combinedText
-        Form1.optChange("转到「查找」选项卡以继续", Color.White, 0)
+        Form1.optChange("转到「查找」选项卡以继续", 0)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -276,7 +272,7 @@ Public Class Form7
         End If
         Dim combinedText = String.Join("", selectedWords)
         Form1.starText.Text = "{" & combinedText & "}{}{}"
-        Form1.optChange("转到「星标」选项卡以继续", Color.White, 0)
+        Form1.optChange("转到「星标」选项卡以继续", 0)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -353,4 +349,60 @@ Public Class Form7
             End If
         End If
     End Sub
+
+    ' 自定义现代风格渲染器
+    Public Class ModernMenuRenderer
+        Inherits ToolStripProfessionalRenderer
+
+        Public Sub New()
+            MyBase.New(New ModernColorTable())
+        End Sub
+
+        ' 新增：自定义左侧图标区域渐变色
+        Protected Overrides Sub OnRenderImageMargin(e As ToolStripRenderEventArgs)
+            Dim marginRect As Rectangle = e.AffectedBounds
+            ' 你可以自定义渐变色，这里以蓝紫渐变为例
+            Using brush As New Drawing2D.LinearGradientBrush(
+            marginRect,
+            Color.Lavender, ' 渐变起始色
+            Color.Lavender, ' 渐变结束色
+            Drawing2D.LinearGradientMode.Horizontal)
+                e.Graphics.FillRectangle(brush, marginRect)
+            End Using
+        End Sub
+
+        Protected Overrides Sub OnRenderSeparator(e As ToolStripSeparatorRenderEventArgs)
+            Dim g = e.Graphics
+            Dim bounds = e.Item.ContentRectangle
+            Dim y = bounds.Top + bounds.Height \ 2
+            Using pen As New Pen(Color.Lavender, 1)
+                g.DrawLine(pen, bounds.Left + 25, y, bounds.Right - 4, y)
+            End Using
+        End Sub
+
+    End Class
+
+    ' 自定义颜色表
+    Public Class ModernColorTable
+        Inherits ProfessionalColorTable
+
+        Public Overrides ReadOnly Property MenuItemSelected As Color
+            Get
+                Return Color.Lavender
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property MenuItemBorder As Color
+            Get
+                Return Color.Lavender
+            End Get
+        End Property
+
+        Public Overrides ReadOnly Property MenuBorder As Color
+            Get
+                Return Color.Lavender
+            End Get
+        End Property
+
+    End Class
 End Class

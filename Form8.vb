@@ -12,6 +12,7 @@ Public Class Form8
     Private backgroundColor As Color = Color.White ' 默认背景色
     Private colorDialog As New ColorDialog()
     Private failedFiles As New List(Of (index As Integer, fileName As String))    ' 创建一个列表来存储失败文件信息
+
     ' 初始化窗体 在Form8类中添加以下方法和在Form8_Load中调用 启用ListView1的双缓冲以减少闪烁
     Private Sub EnableListViewDoubleBuffering()
         Dim prop = GetType(Control).GetProperty("DoubleBuffered", Reflection.BindingFlags.Instance Or Reflection.BindingFlags.NonPublic)
@@ -718,6 +719,7 @@ Public Class Form8
             ListView1.ContextMenuStrip = ContextMenuStrip1
         End If
     End Sub
+
     ' 自定义现代风格渲染器
     Public Class ModernMenuRenderer
         Inherits ToolStripProfessionalRenderer
@@ -731,10 +733,10 @@ Public Class Form8
             Dim marginRect As Rectangle = e.AffectedBounds
             ' 你可以自定义渐变色，这里以蓝紫渐变为例
             Using brush As New Drawing2D.LinearGradientBrush(
-                marginRect,
-                Color.Lavender, ' 渐变起始色
-                Color.White, ' 渐变结束色
-                Drawing2D.LinearGradientMode.Horizontal)
+            marginRect,
+            Color.Lavender, ' 渐变起始色
+            Color.Lavender, ' 渐变结束色
+            Drawing2D.LinearGradientMode.Horizontal)
                 e.Graphics.FillRectangle(brush, marginRect)
             End Using
         End Sub
@@ -762,15 +764,16 @@ Public Class Form8
 
         Public Overrides ReadOnly Property MenuItemBorder As Color
             Get
-                Return Color.FromArgb(180, 180, 220)
+                Return Color.Lavender
             End Get
         End Property
 
         Public Overrides ReadOnly Property MenuBorder As Color
             Get
-                Return Color.FromArgb(180, 180, 220)
+                Return Color.Lavender
             End Get
         End Property
+
     End Class
 
     Private Sub ToolStripMenuItem9_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem9.Click
@@ -794,6 +797,35 @@ Public Class Form8
             ListView1.Columns(1).Width = 600
             ListView1.Columns(2).Width = 100
             ListView1.Columns(3).Width = 100
+        End If
+    End Sub
+
+    Private Sub btnLoad_MouseDown(sender As Object, e As MouseEventArgs) Handles btnLoad.MouseDown
+        If e.Button = MouseButtons.Right Then
+            ' 按住Shift，弹出文件夹选择对话框
+            Using fbd As New FolderBrowserDialog()
+                If fbd.ShowDialog() = DialogResult.OK Then
+                    ListView1.Items.Clear()
+                    LoadImagesFromDirectory(fbd.SelectedPath)
+                    ' 显示文件夹路径
+                    TextBox1.Text = fbd.SelectedPath
+                    TextBox1.SelectionStart = TextBox1.Text.Length
+                    TextBox1.ScrollToCaret()
+                End If
+            End Using
+        ElseIf e.Button = MouseButtons.Middle Then
+            ' 按住Control，从Form1.ListViewLT拉取数据
+            basePath = Form1.openText.Text.Trim()
+            ListView1.Items.Clear()
+            Dim index = 1
+            For Each item As ListViewItem In Form1.ListViewLT.Items
+                ProcessForm1Item(item, index)
+                index += 1
+            Next
+            TextBox1.Text = "来自 PicoFilter 加载页"
+            TextBox1.SelectionStart = TextBox1.Text.Length
+            TextBox1.ScrollToCaret()
+            Exit Sub
         End If
     End Sub
 End Class

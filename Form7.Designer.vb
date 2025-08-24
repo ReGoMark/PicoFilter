@@ -101,7 +101,7 @@ Partial Class Form7
         Me.MetroTabPage1.Name = "MetroTabPage1"
         Me.MetroTabPage1.Size = New System.Drawing.Size(321, 389)
         Me.MetroTabPage1.TabIndex = 0
-        Me.MetroTabPage1.Text = "词典拆分   "
+        Me.MetroTabPage1.Text = "字典拆分   "
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
         Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage1.VerticalScrollbarSize = 10
@@ -181,7 +181,7 @@ Partial Class Form7
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(315, 377)
+        Me.TextBox1.Size = New System.Drawing.Size(319, 377)
         Me.TextBox1.TabIndex = 2
         '
         'Button5
@@ -273,7 +273,7 @@ Partial Class Form7
         Me.ButtonCopySelected.Name = "ButtonCopySelected"
         Me.ButtonCopySelected.Size = New System.Drawing.Size(88, 26)
         Me.ButtonCopySelected.TabIndex = 89
-        Me.ButtonCopySelected.Text = "复制选中"
+        Me.ButtonCopySelected.Text = "复制文本"
         Me.ButtonCopySelected.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ButtonCopySelected.UseVisualStyleBackColor = False
         '
@@ -380,24 +380,24 @@ Partial Class Form7
         Me.ContextMenuStrip6.ImageScalingSize = New System.Drawing.Size(26, 26)
         Me.ContextMenuStrip6.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.撤销ToolStripMenuItem, Me.ToolStripSeparator14, Me.剪切ToolStripMenuItem, Me.复制ToolStripMenuItem, Me.粘贴ToolStripMenuItem, Me.删除ToolStripMenuItem, Me.ToolStripSeparator15, Me.全选ToolStripMenuItem})
         Me.ContextMenuStrip6.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip6.Size = New System.Drawing.Size(130, 160)
+        Me.ContextMenuStrip6.Size = New System.Drawing.Size(132, 160)
         '
         '撤销ToolStripMenuItem
         '
         Me.撤销ToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
-        Me.撤销ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.撤销ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.撤销ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.撤销ToolStripMenuItem.Image = CType(resources.GetObject("撤销ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.撤销ToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.撤销ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.撤销ToolStripMenuItem.Name = "撤销ToolStripMenuItem"
-        Me.撤销ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.撤销ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
         Me.撤销ToolStripMenuItem.Text = "撤销(&U)"
         '
         'ToolStripSeparator14
         '
         Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
-        Me.ToolStripSeparator14.Size = New System.Drawing.Size(126, 6)
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(128, 6)
         '
         '剪切ToolStripMenuItem
         '
@@ -406,7 +406,7 @@ Partial Class Form7
         Me.剪切ToolStripMenuItem.Image = CType(resources.GetObject("剪切ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.剪切ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.剪切ToolStripMenuItem.Name = "剪切ToolStripMenuItem"
-        Me.剪切ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.剪切ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
         Me.剪切ToolStripMenuItem.Text = "剪切(&P)"
         '
         '复制ToolStripMenuItem
@@ -416,7 +416,7 @@ Partial Class Form7
         Me.复制ToolStripMenuItem.Image = CType(resources.GetObject("复制ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.复制ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem"
-        Me.复制ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.复制ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
         Me.复制ToolStripMenuItem.Text = "复制(&C)"
         '
         '粘贴ToolStripMenuItem
@@ -426,7 +426,7 @@ Partial Class Form7
         Me.粘贴ToolStripMenuItem.Image = CType(resources.GetObject("粘贴ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.粘贴ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem"
-        Me.粘贴ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.粘贴ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
         Me.粘贴ToolStripMenuItem.Text = "粘贴(&T)"
         '
         '删除ToolStripMenuItem
@@ -437,14 +437,14 @@ Partial Class Form7
         Me.删除ToolStripMenuItem.Image = CType(resources.GetObject("删除ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.删除ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
-        Me.删除ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.删除ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
         Me.删除ToolStripMenuItem.Text = "删除(&D)"
         '
         'ToolStripSeparator15
         '
         Me.ToolStripSeparator15.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
-        Me.ToolStripSeparator15.Size = New System.Drawing.Size(126, 6)
+        Me.ToolStripSeparator15.Size = New System.Drawing.Size(128, 6)
         '
         '全选ToolStripMenuItem
         '
@@ -454,7 +454,7 @@ Partial Class Form7
         Me.全选ToolStripMenuItem.Image = CType(resources.GetObject("全选ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.全选ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.全选ToolStripMenuItem.Name = "全选ToolStripMenuItem"
-        Me.全选ToolStripMenuItem.Size = New System.Drawing.Size(129, 24)
+        Me.全选ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
         Me.全选ToolStripMenuItem.Text = "全选(&A)"
         '
         'Form7

@@ -33,6 +33,9 @@ Partial Class Form5
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
@@ -49,11 +52,21 @@ Partial Class Form5
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.ContextMenuStrip6 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.撤销ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
+        Me.剪切ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.复制ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.粘贴ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.删除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
+        Me.全选ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.ContextMenuStrip6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -81,7 +94,7 @@ Partial Class Form5
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
         Me.TextBox1.Size = New System.Drawing.Size(323, 17)
-        Me.TextBox1.TabIndex = 50
+        Me.TextBox1.TabIndex = 4
         Me.ToolTip1.SetToolTip(Me.TextBox1, "此处显示当前路径" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "要浏览或选择一个位置，请转到PicoFilter")
         '
         'btnGoUp
@@ -101,10 +114,9 @@ Partial Class Form5
         Me.btnGoUp.Location = New System.Drawing.Point(24, 37)
         Me.btnGoUp.Name = "btnGoUp"
         Me.btnGoUp.Size = New System.Drawing.Size(116, 28)
-        Me.btnGoUp.TabIndex = 52
+        Me.btnGoUp.TabIndex = 1
         Me.btnGoUp.Text = "返回上一级"
         Me.btnGoUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级目录")
         Me.btnGoUp.UseVisualStyleBackColor = False
         '
         'ProgressBar1
@@ -136,11 +148,11 @@ Partial Class Form5
         Me.CheckBox1.Location = New System.Drawing.Point(117, 497)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(100, 26)
-        Me.CheckBox1.TabIndex = 59
+        Me.CheckBox1.TabIndex = 8
         Me.CheckBox1.Text = "详细模式"
         Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.CheckBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.CheckBox1, "在层级结构中显示图像文件")
+        Me.ToolTip1.SetToolTip(Me.CheckBox1, "在概览中显示图像文件")
         Me.CheckBox1.UseVisualStyleBackColor = False
         '
         'TreeView1
@@ -161,17 +173,17 @@ Partial Class Form5
         Me.TreeView1.Name = "TreeView1"
         Me.TreeView1.SelectedImageIndex = 1
         Me.TreeView1.Size = New System.Drawing.Size(329, 352)
-        Me.TreeView1.TabIndex = 37
+        Me.TreeView1.TabIndex = 5
         '
         'ContextMenuStrip3
         '
         Me.ContextMenuStrip3.BackColor = System.Drawing.Color.White
         Me.ContextMenuStrip3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ContextMenuStrip3.ImageScalingSize = New System.Drawing.Size(26, 26)
-        Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem17, Me.ToolStripSeparator3, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1})
+        Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem17, Me.ToolStripSeparator3, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ToolStripSeparator1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1})
         Me.ContextMenuStrip3.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ContextMenuStrip3.Size = New System.Drawing.Size(188, 82)
+        Me.ContextMenuStrip3.Size = New System.Drawing.Size(190, 136)
         '
         'ToolStripMenuItem17
         '
@@ -180,14 +192,39 @@ Partial Class Form5
         Me.ToolStripMenuItem17.Image = CType(resources.GetObject("ToolStripMenuItem17.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem17.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem17.Name = "ToolStripMenuItem17"
-        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(187, 24)
+        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(189, 24)
         Me.ToolStripMenuItem17.Text = "跳转(&D)"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(184, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(186, 6)
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.ToolStripMenuItem3.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.ToolStripMenuItem3.Image = CType(resources.GetObject("ToolStripMenuItem3.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem3.Text = "启用详细模式(&D)"
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.ToolStripMenuItem4.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.ToolStripMenuItem4.Image = CType(resources.GetObject("ToolStripMenuItem4.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem4.Text = "禁用详细模式(&F)"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(186, 6)
         '
         'ToolStripMenuItem2
         '
@@ -197,8 +234,8 @@ Partial Class Form5
         Me.ToolStripMenuItem2.Image = CType(resources.GetObject("ToolStripMenuItem2.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(187, 24)
-        Me.ToolStripMenuItem2.Text = "展开全部节点(&X)"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem2.Text = "展开全部节点(&N)"
         '
         'ToolStripMenuItem1
         '
@@ -207,8 +244,8 @@ Partial Class Form5
         Me.ToolStripMenuItem1.Image = CType(resources.GetObject("ToolStripMenuItem1.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(187, 24)
-        Me.ToolStripMenuItem1.Text = "折叠全部节点(&E)"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem1.Text = "折叠全部节点(&X)"
         '
         'ImageList1
         '
@@ -233,10 +270,9 @@ Partial Class Form5
         Me.Button2.Location = New System.Drawing.Point(146, 38)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(72, 26)
-        Me.Button2.TabIndex = 43
+        Me.Button2.TabIndex = 2
         Me.Button2.Text = "跳转"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button2, "立即加载到 PicoFilter")
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Button5
@@ -254,7 +290,7 @@ Partial Class Form5
         Me.Button5.Location = New System.Drawing.Point(223, 497)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(118, 26)
-        Me.Button5.TabIndex = 54
+        Me.Button5.TabIndex = 9
         Me.Button5.Text = "展开全部节点"
         Me.Button5.UseVisualStyleBackColor = False
         '
@@ -276,7 +312,7 @@ Partial Class Form5
         Me.topButton.Location = New System.Drawing.Point(12, 497)
         Me.topButton.Name = "topButton"
         Me.topButton.Size = New System.Drawing.Size(26, 26)
-        Me.topButton.TabIndex = 56
+        Me.topButton.TabIndex = 6
         Me.topButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.topButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.topButton, "置顶窗体")
@@ -305,7 +341,7 @@ Partial Class Form5
         Me.absbButton.Location = New System.Drawing.Point(44, 497)
         Me.absbButton.Name = "absbButton"
         Me.absbButton.Size = New System.Drawing.Size(26, 26)
-        Me.absbButton.TabIndex = 55
+        Me.absbButton.TabIndex = 7
         Me.absbButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.absbButton, "吸附窗体（左）")
         Me.absbButton.UseVisualStyleBackColor = False
@@ -391,13 +427,13 @@ Partial Class Form5
         Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.Location = New System.Drawing.Point(251, 38)
+        Me.Button3.Location = New System.Drawing.Point(250, 38)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(103, 26)
-        Me.Button3.TabIndex = 60
+        Me.Button3.TabIndex = 3
         Me.Button3.Text = "遍历提取"
         Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button3, "遍历所有图像文件保存到指定文件夹")
+        Me.ToolTip1.SetToolTip(Me.Button3, "遍历所有目录的图像文件提取")
         Me.Button3.UseVisualStyleBackColor = False
         '
         'Panel3
@@ -415,6 +451,90 @@ Partial Class Form5
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(428, 514)
         Me.Panel3.TabIndex = 61
+        '
+        'ContextMenuStrip6
+        '
+        Me.ContextMenuStrip6.BackColor = System.Drawing.Color.White
+        Me.ContextMenuStrip6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.ContextMenuStrip6.ImageScalingSize = New System.Drawing.Size(26, 26)
+        Me.ContextMenuStrip6.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.撤销ToolStripMenuItem, Me.ToolStripSeparator14, Me.剪切ToolStripMenuItem, Me.复制ToolStripMenuItem, Me.粘贴ToolStripMenuItem, Me.删除ToolStripMenuItem, Me.ToolStripSeparator15, Me.全选ToolStripMenuItem})
+        Me.ContextMenuStrip6.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip6.Size = New System.Drawing.Size(132, 160)
+        '
+        '撤销ToolStripMenuItem
+        '
+        Me.撤销ToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
+        Me.撤销ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.撤销ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.撤销ToolStripMenuItem.Image = CType(resources.GetObject("撤销ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.撤销ToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.撤销ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.撤销ToolStripMenuItem.Name = "撤销ToolStripMenuItem"
+        Me.撤销ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
+        Me.撤销ToolStripMenuItem.Text = "撤销(&U)"
+        '
+        'ToolStripSeparator14
+        '
+        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(128, 6)
+        '
+        '剪切ToolStripMenuItem
+        '
+        Me.剪切ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.剪切ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.剪切ToolStripMenuItem.Image = CType(resources.GetObject("剪切ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.剪切ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.剪切ToolStripMenuItem.Name = "剪切ToolStripMenuItem"
+        Me.剪切ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
+        Me.剪切ToolStripMenuItem.Text = "剪切(&P)"
+        '
+        '复制ToolStripMenuItem
+        '
+        Me.复制ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.复制ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.复制ToolStripMenuItem.Image = CType(resources.GetObject("复制ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.复制ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem"
+        Me.复制ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
+        Me.复制ToolStripMenuItem.Text = "复制(&C)"
+        '
+        '粘贴ToolStripMenuItem
+        '
+        Me.粘贴ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.粘贴ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.粘贴ToolStripMenuItem.Image = CType(resources.GetObject("粘贴ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.粘贴ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem"
+        Me.粘贴ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
+        Me.粘贴ToolStripMenuItem.Text = "粘贴(&T)"
+        '
+        '删除ToolStripMenuItem
+        '
+        Me.删除ToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
+        Me.删除ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.删除ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.删除ToolStripMenuItem.Image = CType(resources.GetObject("删除ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.删除ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem"
+        Me.删除ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
+        Me.删除ToolStripMenuItem.Text = "删除(&D)"
+        '
+        'ToolStripSeparator15
+        '
+        Me.ToolStripSeparator15.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
+        Me.ToolStripSeparator15.Size = New System.Drawing.Size(128, 6)
+        '
+        '全选ToolStripMenuItem
+        '
+        Me.全选ToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
+        Me.全选ToolStripMenuItem.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.全选ToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.全选ToolStripMenuItem.Image = CType(resources.GetObject("全选ToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.全选ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.全选ToolStripMenuItem.Name = "全选ToolStripMenuItem"
+        Me.全选ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
+        Me.全选ToolStripMenuItem.Text = "全选(&A)"
         '
         'Form5
         '
@@ -436,6 +556,7 @@ Partial Class Form5
         Me.Panel2.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
+        Me.ContextMenuStrip6.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -465,4 +586,16 @@ Partial Class Form5
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ContextMenuStrip6 As ContextMenuStrip
+    Friend WithEvents 撤销ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator14 As ToolStripSeparator
+    Friend WithEvents 剪切ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 复制ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 粘贴ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 删除ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator15 As ToolStripSeparator
+    Friend WithEvents 全选ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
 End Class

@@ -1,0 +1,34 @@
+让出所有的fn键(在选项卡内不许使用)
+
+浏览文件夹 ct o
+添加 ct +
+移除 ct -
+重复 ct r
+查找选项卡 ct f
+星标选项卡ct m
+
+确认筛选 ct q
+文件隔离 ct i
+移至回收站 ct del
+导出为表格 ct e
+
+开始页面f2
+筛选页面f3
+导出页面f4
+关于页面 f1
+
+概览f6
+转换f7
+命名f8
+分析f9
+窗口ct w
+锁定 ct l
+置顶 ct t
+
+If e.Control AndAlso e.KeyCode = Keys.N Then
+            ButtonAdd.PerformClick()
+        End If
+        If e.Control AndAlso e.KeyCode = Keys.S Then
+            ButtonSave.PerformClick()
+        End If
+end if

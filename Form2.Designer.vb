@@ -100,7 +100,7 @@ Partial Class Form2
         Me.Button2.Location = New System.Drawing.Point(276, 497)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(65, 26)
-        Me.Button2.TabIndex = 42
+        Me.Button2.TabIndex = 1
         Me.Button2.Text = "完成"
         Me.Button2.UseVisualStyleBackColor = False
         '
@@ -185,6 +185,7 @@ Partial Class Form2
         Me.ListBox1.Items.AddRange(New Object() {"PicoFilter  –  基础筛选功能  –  2.0.5", "PicoSplit  –  字符串拆分和词典  –  0.1.1", "PicoReName  –  重命名批处理  –  1.2.1", "PicoConvert  –  格式转换批处理  –  1.2.1"})
         Me.ListBox1.Location = New System.Drawing.Point(0, 30)
         Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.ScrollAlwaysVisible = True
         Me.ListBox1.Size = New System.Drawing.Size(318, 80)
         Me.ListBox1.TabIndex = 51
         '

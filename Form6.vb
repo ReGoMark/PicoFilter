@@ -142,6 +142,7 @@ Public Class Form6
                 Dim item As ListViewItem = Form1.ListViewLT.Items(i)
                 Dim newItem As New ListViewItem((i + 1).ToString())
                 newItem.SubItems.Add(item.SubItems(2).Text) ' 只添加文件名
+                newItem.SubItems.Add(item.SubItems(2).Text) ' 新增：原始文件名
                 newItem.Tag = item.Tag
                 ListViewPre.Items.Add(newItem)
                 originalNames(i) = item.SubItems(2).Text
@@ -168,10 +169,11 @@ Public Class Form6
         For i As Integer = 0 To Form1.ListViewRT.Items.Count - 1
             Dim item As ListViewItem = Form1.ListViewRT.Items(i)
             Dim newItem As New ListViewItem((i + 1).ToString())
-            newItem.SubItems.Add(item.SubItems(2).Text) ' 只添加文件名
+            newItem.SubItems.Add(item.SubItems(2).Text) ' 第二列：当前文件名
+            newItem.SubItems.Add(item.SubItems(2).Text) ' 第三列：原始文件名
             newItem.Tag = item.Tag
             ListViewPre.Items.Add(newItem)
-            originalNames(i) = item.SubItems(2).Text ' 存储原始文件名
+            originalNames(i) = item.SubItems(2).Text
         Next
         Publicpath = Form1.openText.Text
         TextBox2.Text = "PicoFilter"
@@ -447,7 +449,7 @@ Public Class Form6
             columnHeader.Text = columnHeader.Text.Replace("▲", "").Replace("▼", "")
 
             ' 仅为列 1, 2, 添加箭头
-            If i = 0 Or i = 1 Then
+            If i = 0 Or i = 1 Or i = 2 Then
                 If i = currentColumn Then
                     If currentOrder = SortOrder.Ascending Then
                         columnHeader.Text &= "▲"
@@ -652,6 +654,7 @@ Public Class Form6
                 Dim fileName As String = Path.GetFileName(filePath)
                 Dim newItem As New ListViewItem((ListViewPre.Items.Count + 1).ToString()) ' 第一栏显示动态序号
                 newItem.SubItems.Add(fileName) ' 第二栏是文件名
+                newItem.SubItems.Add(fileName) ' 新增：原始文件名
                 newItem.Tag = filePath ' 保存完整文件路径，方便后续重命名
                 ListViewPre.Items.Add(newItem)
                 originalNames(ListViewPre.Items.Count - 1) = fileName ' 存储原始文件名
@@ -669,10 +672,12 @@ Public Class Form6
         Me.MinimumSize = New Size(371, 582)
         If Me.WindowState = FormWindowState.Maximized Then
             ListViewPre.Columns(0).Width = 60
-            ListViewPre.Columns(1).Width = 600
+            ListViewPre.Columns(1).Width = 400
+            ListViewPre.Columns(2).Width = 400
         ElseIf Me.WindowState = FormWindowState.Normal Then
             ListViewPre.Columns(0).Width = 60
-            ListViewPre.Columns(1).Width = 240
+            ListViewPre.Columns(1).Width = 150
+            ListViewPre.Columns(2).Width = 150
         End If
     End Sub
 
@@ -766,6 +771,7 @@ Public Class Form6
             MessageBox.Show("选择一个项。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
+
     ' 自定义现代风格渲染器
     Public Class ModernMenuRenderer
         Inherits ToolStripProfessionalRenderer
@@ -779,10 +785,10 @@ Public Class Form6
             Dim marginRect As Rectangle = e.AffectedBounds
             ' 你可以自定义渐变色，这里以蓝紫渐变为例
             Using brush As New Drawing2D.LinearGradientBrush(
-                marginRect,
-                Color.Lavender, ' 渐变起始色
-                Color.White, ' 渐变结束色
-                Drawing2D.LinearGradientMode.Horizontal)
+            marginRect,
+            Color.Lavender, ' 渐变起始色
+            Color.Lavender, ' 渐变结束色
+            Drawing2D.LinearGradientMode.Horizontal)
                 e.Graphics.FillRectangle(brush, marginRect)
             End Using
         End Sub
@@ -810,15 +816,16 @@ Public Class Form6
 
         Public Overrides ReadOnly Property MenuItemBorder As Color
             Get
-                Return Color.FromArgb(180, 180, 220)
+                Return Color.Lavender
             End Get
         End Property
 
         Public Overrides ReadOnly Property MenuBorder As Color
             Get
-                Return Color.FromArgb(180, 180, 220)
+                Return Color.Lavender
             End Get
         End Property
+
     End Class
 
     Private Sub ToolStripMenuItem9_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem9.Click
@@ -832,6 +839,39 @@ Public Class Form6
         ElseIf Me.WindowState = FormWindowState.Maximized Then
             ListViewPre.Columns(0).Width = 60
             ListViewPre.Columns(1).Width = 600
+        End If
+    End Sub
+
+    Private Sub loadButton_MouseDown(sender As Object, e As MouseEventArgs) Handles loadButton.MouseDown
+        If e.Button = MouseButtons.Right Then
+            ' Shift+点击，浏览文件夹
+            Using fbd As New FolderBrowserDialog()
+                If fbd.ShowDialog() = DialogResult.OK Then
+                    Publicpath = ""
+                    拖入重命名(fbd.SelectedPath)
+                    ' 显示路径到TextBox2
+                    TextBox2.Text = fbd.SelectedPath
+                    TextBox2.SelectionStart = TextBox2.Text.Length
+                    TextBox2.ScrollToCaret()
+                End If
+            End Using
+        ElseIf e.Button = MouseButtons.Middle Then
+            ListViewPre.Items.Clear()
+            originalNames.Clear()
+            For i As Integer = 0 To Form1.ListViewLT.Items.Count - 1
+                Dim item As ListViewItem = Form1.ListViewLT.Items(i)
+                Dim newItem As New ListViewItem((i + 1).ToString())
+                newItem.SubItems.Add(item.SubItems(2).Text) ' 只添加文件名
+                newItem.SubItems.Add(item.SubItems(2).Text) ' 新增：原始文件名
+                newItem.Tag = item.Tag
+                ListViewPre.Items.Add(newItem)
+                originalNames(i) = item.SubItems(2).Text
+            Next
+            Publicpath = Form1.openText.Text
+            TextBox2.Text = "来自 PicoFilter 加载页"
+            TextBox2.SelectionStart = TextBox2.Text.Length
+            TextBox2.ScrollToCaret()
+            Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
         End If
     End Sub
 End Class

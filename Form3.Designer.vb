@@ -629,7 +629,7 @@ Partial Class Form3
         Me.Button2.Location = New System.Drawing.Point(276, 497)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(65, 26)
-        Me.Button2.TabIndex = 41
+        Me.Button2.TabIndex = 3
         Me.Button2.Text = "完成"
         Me.Button2.UseVisualStyleBackColor = False
         '
@@ -650,7 +650,7 @@ Partial Class Form3
         Me.absbButton.Location = New System.Drawing.Point(44, 497)
         Me.absbButton.Name = "absbButton"
         Me.absbButton.Size = New System.Drawing.Size(26, 26)
-        Me.absbButton.TabIndex = 50
+        Me.absbButton.TabIndex = 2
         Me.absbButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.ToolTip1.SetToolTip(Me.absbButton, "吸附窗体（右）")
         Me.absbButton.UseVisualStyleBackColor = False
@@ -674,7 +674,7 @@ Partial Class Form3
         Me.topButton.Location = New System.Drawing.Point(12, 497)
         Me.topButton.Name = "topButton"
         Me.topButton.Size = New System.Drawing.Size(26, 26)
-        Me.topButton.TabIndex = 51
+        Me.topButton.TabIndex = 1
         Me.topButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.topButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.topButton, "置顶窗体")
