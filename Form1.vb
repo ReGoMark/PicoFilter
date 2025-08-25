@@ -1,19 +1,20 @@
 ﻿Imports System.Drawing.Text
 Imports System.IO
 Imports System.IO.Compression
-'Imports System.Runtime.InteropServices
 Imports System.Security.Cryptography
 Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO
 Imports OfficeOpenXml
 
+'Imports System.Runtime.InteropServices
 '考虑到.net支持的图片格式只有这五种，像其他图像格式如webp等，后续需要添加第三方库才有可能解决。
 'ver 1.2, 2024/9/26, ver 2.0, 2025/6/10
 
 Public Class Form1
     Dim loadedCount As Integer '计数已加载文件数量
     Dim loadedTime As Integer '计量扫描文件耗时
-    Dim tagCount As Integer
+    Dim tagCount As Integer ' 计量星标文件数量
+    Dim manualStarCount As Integer = 0 '手动标记星号数量
 
     Dim sumSize As Double '计量扫描总大小
     Dim sumRT, sumLT As Double '计量右侧项目总和，左侧项目总和
@@ -30,14 +31,20 @@ Public Class Form1
     Dim formattedString As String '存储格式化后的字符串
     Public toForm5Path As String '传递路径文本到form5
     Public verinfo As String = "PicoFilter 2.0.5" '存储版本信息
-    Private opttext As String = "使用提示" '存储操作按钮默认文本
 
-    Private optcolor As Color = Color.White '存储操作按钮默认颜色
+    Private optMsgQueue As New Queue(Of OptMessage)
+    Private optMsgCurrent As OptMessage
+    Private optMsgIsShowing As Boolean = False
+    Private optMsgTimer As New Timer()
+    Private opttext As String = "使用提示" '存储操作按钮默认文本
+    Private optbackcolor As Color = Color.White '存储操作按钮默认颜色
+    Private optforecolor As Color = Color.FromArgb(43, 43, 43)
+
     Private currentColumn As Integer = -1 '存储当前排序的列和顺序
     Private currentOrder As SortOrder = SortOrder.Ascending '存储当前排序的列和顺序
     Private currentItem As ListViewItem = Nothing
+
     Private isMouseOverTab As Boolean = False
-    Private manualStarCount As Integer = 0
     Private fontCollection As New PrivateFontCollection()  ' 声明字体集合为类成员
     Private WithEvents optTimer As New Timer() '计量操作按钮显示时间
 
@@ -193,11 +200,12 @@ Public Class Form1
 
         ' 检查是否存在子文件夹
         Dim hasSubDir As Boolean = Directory.GetDirectories(folderPath).Length > 0
+
+        If tagCount > 0 Then
+            optChange("「星标」结果 " & tagCount & “ 项”, 6)
+        End If
         If hasSubDir Then
             optChange("转到「概览」查看子文件夹内容", 0)
-        End If
-        If tagCount > 0 Then
-            optChange("星标：结果 " & tagCount & “ 项”, 5)
         End If
 
         ProgressBar1.Visible = False
@@ -214,6 +222,7 @@ Public Class Form1
         icoLT = icoCount
 
     End Sub
+
     ' 分辨率筛选支持“*”模糊，且输入框仅允许数字和*，若宽高均为*则提示
     Private Sub 筛选图片()
         ListViewRT.Items.Clear()
@@ -345,7 +354,7 @@ Public Class Form1
             End If
         Next
 
-        optChange("筛选：结果 " & matchingFileCount & " 项", 2)
+        optChange("「筛选」结果 " & matchingFileCount & " 项", 3)
 
         Dim result As New List(Of String)
         result.Add($"结果 {matchingFileCount} 项")
@@ -441,7 +450,7 @@ Public Class Form1
         End If
         '选取重复项
         If e.Control AndAlso e.KeyCode = Keys.R Then
-            rptbutton.PerformClick()
+            rptButton.PerformClick()
         End If
         '查找
         If e.Control AndAlso e.KeyCode = Keys.F Then
@@ -621,28 +630,29 @@ Public Class Form1
         Me.MinimumSize = New Size(1066, 630) ' 设置最小窗口大小
         openButton.AllowDrop = True ' 启用拖放功能
         optButton.Text = opttext        '初始化操作中心
-        optButton.BackColor = optcolor
+        optButton.BackColor = optbackcolor
         optTimer.Interval = 4000 '设置定时器间隔为 5 秒
         MetroTabControl1.SelectedTab = MetroTabPage1 '默认选中第一个选项卡
+        InitOptMsgQueue()
 
         ' 检测当前日期是否为4月1日
         If DateTime.Now.Month = 4 AndAlso DateTime.Now.Day = 1 Then
-            optChange("即使我来时没有爱 / 离别盛载满是情", 1, , Color.RoyalBlue)
+            optChange("即使我来时没有爱 / 离别盛载满是情", 2,, Color.RoyalBlue)
         Else
             If 确认字体安装(fontName1) Then
             Else
                 If 确认字体安装(fontName2) Then
                 Else
-                    optChange("缺少字体「方正黑体_GBK」", 7, , Color.Chocolate)
+                    optChange("缺少字体「方正黑体_GBK」", 1,, Color.FromArgb(145, 29, 52))
                 End If
-                optChange("缺少字体「方正黑体_GBK」", 7,, Color.Chocolate)
+                optChange("缺少字体「方正黑体_GBK」", 1,, Color.FromArgb(145, 29, 52))
             End If
         End If
 
         ' 检查分辨率是否小于指定值
         If screenWidth < 1066 OrElse screenHeight < 630 Then
             MessageBox.Show("当前显示器分辨率低于 1024×768，程序布局可能会出现问题", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            optChange("警告：当前显示器分辨率过低", 7, , Color.Chocolate)
+            optChange("「警告」当前显示器分辨率过低", 1, , Color.FromArgb(145, 29, 52))
         End If
         ToolTip2.ToolTipIcon = ToolTipIcon.Info
         ToolTip2.ToolTipTitle = "格式说明"
@@ -787,7 +797,7 @@ Public Class Form1
 
             ' 提示操作结果
             If successCount > 0 Then
-                optChange($"警告：回收完成，点击「重新整理」刷新", 7,, Color.Chocolate)
+                optChange($"「警告」回收完成，点击「重新整理」刷新", 1,, Color.FromArgb(145, 29, 52))
             End If
 
             If failedFiles.Count > 0 Then
@@ -878,7 +888,7 @@ Public Class Form1
                         Dim sourcePath As String = Path.Combine(openText.Text.Trim(), fileName) '源文件路径
                         Try
                             File.Move(sourcePath, Path.Combine(targetFolder, fileName))
-                            optChange("警告：移动完成，点击「重新整理」刷新", 7,, Color.Chocolate)
+                            optChange("「警告」移动完成，点击「重新整理」刷新", 1,, Color.FromArgb(145, 29, 52))
                             'Form9.RichTextBox1.Text += consoletime & "Move Result at: " & targetFolder & "\" & fileName & vbCrLf
                         Catch ex As Exception
                             MessageBox.Show("移动失败，请重新整理后再试。" & vbCrLf & ex.Message, "未完成", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -912,7 +922,7 @@ Public Class Form1
                 Dim sourcePath As String = Path.Combine(sourceFolder, fileName) ' 源文件路径
                 Try
                     File.Move(sourcePath, Path.Combine(resultFolder, fileName))
-                    optChange("警告：隔离完成，点击「重新整理」刷新", 7,, Color.Chocolate)
+                    optChange("「警告」隔离完成，点击「重新整理」刷新", 1,, Color.FromArgb(145, 29, 52))
                 Catch ex As Exception
                     MessageBox.Show("隔离失败，请重新整理后再试。" & vbCrLf & ex.Message, "未完成", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -1270,7 +1280,7 @@ Public Class Form1
                         MetroProgressBar1.Value = 0
                         MetroProgressBar1.Maximum = ListViewRT.Items.Count
                         MetroProgressBar1.Visible = True
-                        optChange("表格正在导出，请稍候", 3, autoHide:=False)
+                        optChange("表格正在导出，请稍候", 4, -1)
 
                         Using package As New ExcelPackage(fileInfo)
                             Dim worksheet = package.Workbook.Worksheets.Add("筛选结果" & formattedDateTime)
@@ -1295,7 +1305,7 @@ Public Class Form1
                         End Using
 
                         MetroProgressBar1.Visible = False
-                        optChange(opttext, 0, True)
+                        optChange(opttext, 0)
                         Dim opt = MessageBox.Show("表格已导出成功！点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                         If opt = DialogResult.Yes Then
                             Process.Start("explorer.exe", filePath)
@@ -1616,7 +1626,7 @@ Public Class Form1
         Next
 
         播放ALERT()
-        optChange(uiTag & "：结果 " & resultList.Count & " 项", 4)
+        optChange("「" & uiTag & "」结果 " & resultList.Count & " 项", 5)
 
         If resultList.Count > 0 Then
             MetroTabPage4.Text = "查找 " & FormatSearchCount(resultList.Count)
@@ -2095,7 +2105,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("转到「筛选」选项卡以继续", 0)
+            optChange("转到「筛选」选项卡继续", 0)
 
         End If
     End Sub
@@ -2342,7 +2352,7 @@ Public Class Form1
             ' 填充分辨率到对应的文本框
             widText.Text = width
             htText.Text = height
-            optChange("转到「筛选」选项卡以继续", 0)
+            optChange("转到「筛选」选项卡继续", 0)
         End If
     End Sub
 
@@ -2390,57 +2400,109 @@ Public Class Form1
         End If
     End Sub
 
-    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-    '    ' 确保有选中的项
-    '    If ListViewRT.SelectedItems.Count = 0 Then Exit Sub
+    ' 消息队列结构体
+    Private Structure OptMessage
+        Public Text As String
+        Public ImageIndex As Integer
+        Public Duration As Integer ' 毫秒，-1为常驻
+        Public ForeColor As Color
+        Public BackColor As Color
+    End Structure
 
-    ' ' 禁用重绘，避免闪烁 ListViewRT.BeginUpdate()
+    ' 初始化队列定时器
+    Private Sub InitOptMsgQueue()
+        optMsgTimer.Interval = 3000
+        AddHandler optMsgTimer.Tick, AddressOf OptMsgTimer_Tick
+    End Sub
 
-    ' ' 存储选中的项 Dim selectedItems As New List(Of ListViewItem) For Each item As ListViewItem In
-    ' ListViewRT.SelectedItems selectedItems.Add(item) Next
+    ' 队列版 optChange
+    Public Sub optChange(newText As String,
+                     Optional newImageIndex As Integer = -1,
+                     Optional durationMs As Integer = 3000,
+                     Optional newForeColor As Color = Nothing,
+                     Optional newBackColor As Color = Nothing)
+        ' 默认色
+        If newForeColor = Nothing Then newForeColor = optforecolor
+        If newBackColor = Nothing Then newBackColor = optbackcolor
 
-    ' ' 按索引降序排序，避免调整时影响顺序 selectedItems.Sort(Function(x, y) y.Index.CompareTo(x.Index))
+        Dim msg As New OptMessage With {
+        .Text = newText,
+        .ImageIndex = newImageIndex,
+        .Duration = durationMs,
+        .ForeColor = newForeColor,
+        .BackColor = newBackColor
+    }
+        optMsgQueue.Enqueue(msg)
+        ShowNextOptMsg()
+    End Sub
 
-    ' ' 移动项 For Each item As ListViewItem In selectedItems Dim index As Integer = item.Index If
-    ' index < ListViewRT.Items.Count - 1 Then ListViewRT.Items.RemoveAt(index)
-    ' ListViewRT.Items.Insert(index + 1, item) End If Next
+    ' 显示下一个消息
+    Private Sub ShowNextOptMsg()
+        If optMsgIsShowing OrElse optMsgQueue.Count = 0 Then Return
 
-    '    ' 重新选中移动后的项
-    '    For Each item As ListViewItem In selectedItems
-    '        item.Selected = True
-    '    Next
-    '    ListViewRT.EndUpdate()
-    'End Sub
+        optMsgCurrent = optMsgQueue.Dequeue()
+        optMsgIsShowing = True
 
-    ' 修改后的 optChange 方法，支持自定义字体颜色
-    Public Sub optChange(newText As String, Optional newImageIndex As Integer = -1, Optional autoHide As Boolean = True, Optional newForeColor As Color = Nothing)
         optButton.Visible = True
-        optButton.Text = newText
+        optButton.Text = optMsgCurrent.Text
+        optButton.ForeColor = optMsgCurrent.ForeColor
+        optButton.BackColor = optMsgCurrent.BackColor
         optButton.ImageAlign = ContentAlignment.MiddleCenter
-        'optButton.BackColor = newBackColor
 
-        ' 设置字体颜色（如果未指定则用默认色）
-        If newForeColor = Nothing Then
-            optButton.ForeColor = Color.FromArgb(43, 43, 43)
+        If optMsgCurrent.ImageIndex >= 0 AndAlso optMsgCurrent.ImageIndex < optButton.ImageList.Images.Count Then
+            optButton.ImageIndex = optMsgCurrent.ImageIndex
+        End If
+
+        If optMsgCurrent.Duration < 0 Then
+            optMsgTimer.Stop()
         Else
-            optButton.ForeColor = newForeColor
-        End If
-
-        ' 如果设置了有效的 ImageIndex，则切换图像
-        If newImageIndex >= 0 AndAlso newImageIndex < optButton.ImageList.Images.Count Then
-            optButton.ImageIndex = newImageIndex
-        End If
-
-        optTimer.Stop() ' 防止重复触发
-        If autoHide Then
-            optTimer.Start() ' 启动定时器
+            optMsgTimer.Interval = optMsgCurrent.Duration
+            optMsgTimer.Start()
         End If
     End Sub
+
+    ' 定时器事件：显示下一个消息或恢复默认
+    Private Sub OptMsgTimer_Tick(sender As Object, e As EventArgs)
+        optMsgTimer.Stop()
+        optMsgIsShowing = False
+
+        If optMsgQueue.Count > 0 Then
+            ShowNextOptMsg()
+        Else
+            ' 恢复默认
+            optButton.Text = opttext
+            optButton.BackColor = optbackcolor
+            optButton.ImageIndex = 0
+            optButton.TextAlign = ContentAlignment.MiddleRight
+            optButton.ImageAlign = ContentAlignment.MiddleRight
+            optButton.ForeColor = Color.FromArgb(43, 43, 43)
+            optButton.Visible = True
+        End If
+    End Sub
+
+    '' 修改后的 optChange 方法，支持自定义字体颜色
+    'Public Sub optChange(newText As String, Optional newImageIndex As Integer = -1, Optional autoHide As Boolean = True, Optional newForeColor As Color = Nothing)
+    '    optButton.Visible = True
+    '    optButton.Text = newText
+    '    optButton.ImageAlign = ContentAlignment.MiddleCenter
+    '    'optButton.BackColor = newBackColor
+
+    ' ' 设置字体颜色（如果未指定则用默认色） If newForeColor = Nothing Then optButton.ForeColor = Color.FromArgb(43,
+    ' 43, 43) Else optButton.ForeColor = newForeColor End If
+
+    ' ' 如果设置了有效的 ImageIndex，则切换图像 If newImageIndex >= 0 AndAlso newImageIndex <
+    ' optButton.ImageList.Images.Count Then optButton.ImageIndex = newImageIndex End If
+
+    '    optTimer.Stop() ' 防止重复触发
+    '    If autoHide Then
+    '        optTimer.Start() ' 启动定时器
+    '    End If
+    'End Sub
 
     ' 同时建议将 optTimer_Tick 事件中 optButton.ForeColor 也恢复为默认色
     Private Sub optTimer_Tick(sender As Object, e As EventArgs) Handles optTimer.Tick
         optButton.Text = opttext
-        optButton.BackColor = optcolor
+        optButton.BackColor = optbackcolor
         optButton.ImageIndex = 0
         optButton.TextAlign = ContentAlignment.MiddleRight
         optButton.ImageAlign = ContentAlignment.MiddleRight
@@ -2792,7 +2854,7 @@ Public Class Form1
                     MetroProgressBar1.Value = 0
                     MetroProgressBar1.Maximum = totalFiles
                     MetroProgressBar1.Visible = True
-                    optChange("压缩包正在生成，请稍候", 4, autoHide:=False)
+                    optChange("压缩包正在生成，请稍候", 4, -1)
 
                     ' 创建一个4MB的缓冲区
                     Const BufferSize As Integer = 4 * 1024 * 1024
@@ -2852,7 +2914,7 @@ Public Class Form1
 
                     ' 恢复界面
                     MetroProgressBar1.Visible = False
-                    optChange(opttext, 0, True)
+                    optChange(opttext, 0)
                     'Me.Text = verinfo
 
                     If MessageBox.Show("压缩包保存成功。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
@@ -2942,7 +3004,7 @@ Public Class Form1
         Next
         ProgressBar1.Visible = False
         If duplicateCount > 0 Then
-            optChange("重复：结果 " & duplicateCount & " 项", 6, True)
+            optChange("「重复」结果 " & duplicateCount & " 项", 7)
         Else
             MessageBox.Show("未检测到重复文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
@@ -3258,6 +3320,10 @@ Public Class Form1
         isMouseOverTab = True
     End Sub
 
+    Private Sub Panel8_Paint(sender As Object, e As PaintEventArgs) Handles Panel8.Paint
+
+    End Sub
+
     ' 添加 MouseLeave 事件处理
     Private Sub MetroTabControl1_MouseLeave(sender As Object, e As EventArgs) Handles MetroTabControl1.MouseLeave
         isMouseOverTab = False
@@ -3375,6 +3441,7 @@ Public Class Form1
             End If
         End If
     End Sub
+
 End Class
 
 ' 自定义现代风格渲染器

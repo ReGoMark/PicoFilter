@@ -1354,7 +1354,7 @@ Partial Class Form1
         Me.ToolStripMenuItem6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.ToolStripMenuItem6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(210, 24)
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(169, 24)
         Me.ToolStripMenuItem6.Text = "调整为 1:2(&L)"
         '
         'ToolStripMenuItem7
@@ -1365,7 +1365,7 @@ Partial Class Form1
         Me.ToolStripMenuItem7.Image = CType(resources.GetObject("ToolStripMenuItem7.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem7.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(210, 24)
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(169, 24)
         Me.ToolStripMenuItem7.Text = "调整为 1:1(&M)"
         '
         'ToolStripMenuItem8
@@ -1376,7 +1376,7 @@ Partial Class Form1
         Me.ToolStripMenuItem8.Image = CType(resources.GetObject("ToolStripMenuItem8.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem8.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(210, 24)
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(169, 24)
         Me.ToolStripMenuItem8.Text = "调整为 2:1(&R)"
         '
         'ProgressBar1
@@ -1420,7 +1420,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(-12, 166)
+        Me.Panel3.Location = New System.Drawing.Point(-18, 166)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(330, 214)
         Me.Panel3.TabIndex = 44
@@ -1436,7 +1436,7 @@ Partial Class Form1
         Me.Button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
         Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button18.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Button18.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button18.ForeColor = System.Drawing.Color.IndianRed
         Me.Button18.Image = CType(resources.GetObject("Button18.Image"), System.Drawing.Image)
         Me.Button18.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button18.Location = New System.Drawing.Point(190, 155)
@@ -1743,7 +1743,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-1147, 177)
+        Me.Label7.Location = New System.Drawing.Point(-1153, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -2626,9 +2626,9 @@ Partial Class Form1
         Me.optButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.optButton.ImageIndex = 0
         Me.optButton.ImageList = Me.ImageList5
-        Me.optButton.Location = New System.Drawing.Point(0, 2)
+        Me.optButton.Location = New System.Drawing.Point(3, 11)
         Me.optButton.Name = "optButton"
-        Me.optButton.Size = New System.Drawing.Size(320, 44)
+        Me.optButton.Size = New System.Drawing.Size(317, 26)
         Me.optButton.TabIndex = 47
         Me.optButton.TabStop = False
         Me.optButton.Text = "使用提示" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
@@ -2641,13 +2641,13 @@ Partial Class Form1
         Me.ImageList5.ImageStream = CType(resources.GetObject("ImageList5.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList5.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList5.Images.SetKeyName(0, "tips_black.ico")
-        Me.ImageList5.Images.SetKeyName(1, "tips_leslie.ico")
-        Me.ImageList5.Images.SetKeyName(2, "tips_filt.ico")
-        Me.ImageList5.Images.SetKeyName(3, "tips_save.ico")
-        Me.ImageList5.Images.SetKeyName(4, "tips_search.ico")
-        Me.ImageList5.Images.SetKeyName(5, "tips_mark.ico")
-        Me.ImageList5.Images.SetKeyName(6, "tips_repeat.ico")
-        Me.ImageList5.Images.SetKeyName(7, "tips_warn.ico")
+        Me.ImageList5.Images.SetKeyName(1, "tips_warn.ico")
+        Me.ImageList5.Images.SetKeyName(2, "tips_leslie.ico")
+        Me.ImageList5.Images.SetKeyName(3, "tips_filt.ico")
+        Me.ImageList5.Images.SetKeyName(4, "tips_save.ico")
+        Me.ImageList5.Images.SetKeyName(5, "tips_search.ico")
+        Me.ImageList5.Images.SetKeyName(6, "tips_mark.ico")
+        Me.ImageList5.Images.SetKeyName(7, "tips_repeat.ico")
         '
         'starText
         '
@@ -2880,7 +2880,7 @@ Partial Class Form1
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Multiline = True
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 4
+        Me.MetroTabControl1.SelectedIndex = 1
         Me.MetroTabControl1.Size = New System.Drawing.Size(1024, 80)
         Me.MetroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
@@ -3149,12 +3149,12 @@ Partial Class Form1
         Me.Panel7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel7.BackColor = System.Drawing.Color.White
+        Me.Panel7.Controls.Add(Me.optButton)
         Me.Panel7.Controls.Add(Me.winButton)
         Me.Panel7.Controls.Add(Me.treeButton)
         Me.Panel7.Controls.Add(Me.convertButton)
         Me.Panel7.Controls.Add(Me.lockButton)
         Me.Panel7.Controls.Add(Me.renameButton)
-        Me.Panel7.Controls.Add(Me.optButton)
         Me.Panel7.Controls.Add(Me.topButton)
         Me.Panel7.Controls.Add(Me.stsButton)
         Me.Panel7.Location = New System.Drawing.Point(375, 1)
