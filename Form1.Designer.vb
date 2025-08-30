@@ -1420,7 +1420,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(-18, 166)
+        Me.Panel3.Location = New System.Drawing.Point(-28, 166)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(330, 214)
         Me.Panel3.TabIndex = 44
@@ -1743,7 +1743,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-1153, 177)
+        Me.Label7.Location = New System.Drawing.Point(-1163, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1938,7 +1938,6 @@ Partial Class Form1
         Me.lockButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lockButton.Appearance = System.Windows.Forms.Appearance.Button
         Me.lockButton.BackColor = System.Drawing.Color.White
-        Me.lockButton.ContextMenuStrip = Me.ContextMenuStrip7
         Me.lockButton.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.lockButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Gainsboro
         Me.lockButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
@@ -2880,7 +2879,7 @@ Partial Class Form1
         Me.MetroTabControl1.Location = New System.Drawing.Point(12, 6)
         Me.MetroTabControl1.Multiline = True
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 1
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(1024, 80)
         Me.MetroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
