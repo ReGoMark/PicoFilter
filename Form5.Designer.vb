@@ -33,6 +33,8 @@ Partial Class Form5
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -46,11 +48,13 @@ Partial Class Form5
         Me.absbButton = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ImageList3 = New System.Windows.Forms.ImageList(Me.components)
         Me.sltLabel0 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ContextMenuStrip6 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.撤销ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -61,6 +65,7 @@ Partial Class Form5
         Me.删除ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
         Me.全选ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -113,10 +118,11 @@ Partial Class Form5
         Me.btnGoUp.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnGoUp.Location = New System.Drawing.Point(24, 37)
         Me.btnGoUp.Name = "btnGoUp"
-        Me.btnGoUp.Size = New System.Drawing.Size(116, 28)
+        Me.btnGoUp.Size = New System.Drawing.Size(90, 28)
         Me.btnGoUp.TabIndex = 1
-        Me.btnGoUp.Text = "返回上一级"
+        Me.btnGoUp.Text = "上一级"
         Me.btnGoUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btnGoUp, "返回上一级目录(BACKSPACE)")
         Me.btnGoUp.UseVisualStyleBackColor = False
         '
         'ProgressBar1
@@ -145,11 +151,11 @@ Partial Class Form5
         Me.CheckBox1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.CheckBox1.Image = CType(resources.GetObject("CheckBox1.Image"), System.Drawing.Image)
         Me.CheckBox1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckBox1.Location = New System.Drawing.Point(117, 497)
+        Me.CheckBox1.Location = New System.Drawing.Point(177, 497)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(100, 26)
+        Me.CheckBox1.Size = New System.Drawing.Size(73, 26)
         Me.CheckBox1.TabIndex = 8
-        Me.CheckBox1.Text = "详细模式"
+        Me.CheckBox1.Text = "详细"
         Me.CheckBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.CheckBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.CheckBox1, "在概览中显示图像文件")
@@ -180,10 +186,10 @@ Partial Class Form5
         Me.ContextMenuStrip3.BackColor = System.Drawing.Color.White
         Me.ContextMenuStrip3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ContextMenuStrip3.ImageScalingSize = New System.Drawing.Size(26, 26)
-        Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem17, Me.ToolStripSeparator3, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ToolStripSeparator1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1})
+        Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem17, Me.ToolStripSeparator3, Me.ToolStripMenuItem6, Me.ToolStripMenuItem5, Me.ToolStripSeparator2, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ToolStripSeparator1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1})
         Me.ContextMenuStrip3.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ContextMenuStrip3.Size = New System.Drawing.Size(190, 136)
+        Me.ContextMenuStrip3.Size = New System.Drawing.Size(211, 218)
         '
         'ToolStripMenuItem17
         '
@@ -192,14 +198,33 @@ Partial Class Form5
         Me.ToolStripMenuItem17.Image = CType(resources.GetObject("ToolStripMenuItem17.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem17.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem17.Name = "ToolStripMenuItem17"
-        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(210, 24)
         Me.ToolStripMenuItem17.Text = "跳转(&D)"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(186, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(207, 6)
+        '
+        'ToolStripMenuItem6
+        '
+        Me.ToolStripMenuItem6.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.ToolStripMenuItem6.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.ToolStripMenuItem6.Image = CType(resources.GetObject("ToolStripMenuItem6.Image"), System.Drawing.Image)
+        Me.ToolStripMenuItem6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(210, 24)
+        Me.ToolStripMenuItem6.Text = "启用单点模式(&S)"
+        '
+        'ToolStripMenuItem5
+        '
+        Me.ToolStripMenuItem5.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.ToolStripMenuItem5.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.ToolStripMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(210, 24)
+        Me.ToolStripMenuItem5.Text = "禁用单点模式(&E)"
         '
         'ToolStripMenuItem3
         '
@@ -208,43 +233,40 @@ Partial Class Form5
         Me.ToolStripMenuItem3.Image = CType(resources.GetObject("ToolStripMenuItem3.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(210, 24)
         Me.ToolStripMenuItem3.Text = "启用详细模式(&D)"
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.ToolStripMenuItem4.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.ToolStripMenuItem4.Image = CType(resources.GetObject("ToolStripMenuItem4.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(210, 24)
         Me.ToolStripMenuItem4.Text = "禁用详细模式(&F)"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(186, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(207, 6)
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripMenuItem2.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.ToolStripMenuItem2.Image = CType(resources.GetObject("ToolStripMenuItem2.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(210, 24)
         Me.ToolStripMenuItem2.Text = "展开全部节点(&N)"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Font = New System.Drawing.Font("微软雅黑", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.ToolStripMenuItem1.Image = CType(resources.GetObject("ToolStripMenuItem1.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(189, 24)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(210, 24)
         Me.ToolStripMenuItem1.Text = "折叠全部节点(&X)"
         '
         'ImageList1
@@ -267,12 +289,13 @@ Partial Class Form5
         Me.Button2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(146, 38)
+        Me.Button2.Location = New System.Drawing.Point(120, 38)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(72, 26)
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "跳转"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button2, "立即加载到 PicoFilter(RETURN)")
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Button5
@@ -287,11 +310,11 @@ Partial Class Form5
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button5.Location = New System.Drawing.Point(223, 497)
+        Me.Button5.Location = New System.Drawing.Point(256, 497)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(118, 26)
+        Me.Button5.Size = New System.Drawing.Size(85, 26)
         Me.Button5.TabIndex = 9
-        Me.Button5.Text = "展开全部节点"
+        Me.Button5.Text = "展开全部"
         Me.Button5.UseVisualStyleBackColor = False
         '
         'topButton
@@ -353,6 +376,7 @@ Partial Class Form5
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.Controls.Add(Me.TableLayoutPanel1)
+        Me.Panel2.Controls.Add(Me.sltLabel0)
         Me.Panel2.Controls.Add(Me.Panel1)
         Me.Panel2.Controls.Add(Me.TreeView1)
         Me.Panel2.Location = New System.Drawing.Point(12, 44)
@@ -368,14 +392,32 @@ Partial Class Form5
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.sltLabel0, 1, 0)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 390)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.RowCount = 2
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 38)
         Me.TableLayoutPanel1.TabIndex = 41
+        '
+        'Label2
+        '
+        Me.Label2.AutoEllipsis = True
+        Me.Label2.BackColor = System.Drawing.Color.GhostWhite
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Label2.ImageIndex = 0
+        Me.Label2.Location = New System.Drawing.Point(34, 0)
+        Me.Label2.Name = "Label2"
+        Me.TableLayoutPanel1.SetRowSpan(Me.Label2, 2)
+        Me.Label2.Size = New System.Drawing.Size(292, 38)
+        Me.Label2.TabIndex = 42
+        Me.Label2.Text = "当前"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label1
         '
@@ -387,6 +429,7 @@ Partial Class Form5
         Me.Label1.ImageList = Me.ImageList3
         Me.Label1.Location = New System.Drawing.Point(3, 0)
         Me.Label1.Name = "Label1"
+        Me.TableLayoutPanel1.SetRowSpan(Me.Label1, 2)
         Me.Label1.Size = New System.Drawing.Size(25, 38)
         Me.Label1.TabIndex = 40
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -406,12 +449,13 @@ Partial Class Form5
         Me.sltLabel0.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.sltLabel0.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.sltLabel0.ImageIndex = 0
-        Me.sltLabel0.Location = New System.Drawing.Point(34, 0)
+        Me.sltLabel0.Location = New System.Drawing.Point(0, 366)
         Me.sltLabel0.Name = "sltLabel0"
-        Me.sltLabel0.Size = New System.Drawing.Size(292, 38)
+        Me.sltLabel0.Size = New System.Drawing.Size(329, 18)
         Me.sltLabel0.TabIndex = 38
-        Me.sltLabel0.Text = " 当前"
+        Me.sltLabel0.Text = "当前"
         Me.sltLabel0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.sltLabel0.Visible = False
         '
         'Button3
         '
@@ -435,6 +479,31 @@ Partial Class Form5
         Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button3, "遍历所有目录的图像文件提取")
         Me.Button3.UseVisualStyleBackColor = False
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckBox2.Appearance = System.Windows.Forms.Appearance.Button
+        Me.CheckBox2.BackColor = System.Drawing.Color.White
+        Me.CheckBox2.CausesValidation = False
+        Me.CheckBox2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
+        Me.CheckBox2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CheckBox2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox2.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.CheckBox2.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.CheckBox2.Image = CType(resources.GetObject("CheckBox2.Image"), System.Drawing.Image)
+        Me.CheckBox2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.CheckBox2.Location = New System.Drawing.Point(98, 497)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(73, 26)
+        Me.CheckBox2.TabIndex = 62
+        Me.CheckBox2.Text = "单点"
+        Me.CheckBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.CheckBox2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.CheckBox2, "只保留选中的目录")
+        Me.CheckBox2.UseVisualStyleBackColor = False
         '
         'Panel3
         '
@@ -536,11 +605,17 @@ Partial Class Form5
         Me.全选ToolStripMenuItem.Size = New System.Drawing.Size(131, 24)
         Me.全选ToolStripMenuItem.Text = "全选(&A)"
         '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(207, 6)
+        '
         'Form5
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(353, 535)
+        Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Panel2)
@@ -598,4 +673,9 @@ Partial Class Form5
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents Label2 As Label
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents ToolStripMenuItem6 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem5 As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
 End Class

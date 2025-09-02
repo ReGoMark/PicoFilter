@@ -37,9 +37,7 @@ Partial Class Form6
         Me.ToolStripMenuItem9 = New System.Windows.Forms.ToolStripMenuItem()
         Me.还原列宽OToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ApplyButton = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.TextBoxStart = New System.Windows.Forms.NumericUpDown()
@@ -58,6 +56,7 @@ Partial Class Form6
         Me.moreButton = New System.Windows.Forms.Button()
         Me.mnsButton = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -216,27 +215,6 @@ Partial Class Form6
         Me.ToolTip1.SetToolTip(Me.ApplyButton, "全选")
         Me.ApplyButton.UseVisualStyleBackColor = False
         '
-        'Button1
-        '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.CausesValidation = False
-        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button1.Location = New System.Drawing.Point(303, 146)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(62, 26)
-        Me.Button1.TabIndex = 56
-        Me.Button1.Text = "覆盖"
-        Me.ToolTip1.SetToolTip(Me.Button1, "覆盖原始文件名。")
-        Me.Button1.UseVisualStyleBackColor = False
-        Me.Button1.Visible = False
-        '
         'Button2
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -251,34 +229,14 @@ Partial Class Form6
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.Location = New System.Drawing.Point(262, 38)
+        Me.Button2.Location = New System.Drawing.Point(292, 38)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(103, 26)
+        Me.Button2.Size = New System.Drawing.Size(73, 26)
         Me.Button2.TabIndex = 55
-        Me.Button2.Text = "保存副本"
+        Me.Button2.Text = "副本"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button2, "保存重命名副本到...")
         Me.Button2.UseVisualStyleBackColor = False
-        '
-        'Button3
-        '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.BackColor = System.Drawing.Color.White
-        Me.Button3.CausesValidation = False
-        Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
-        Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.DarkSlateBlue
-        Me.Button3.Location = New System.Drawing.Point(300, 419)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(65, 26)
-        Me.Button3.TabIndex = 58
-        Me.Button3.Text = "取消"
-        Me.Button3.UseVisualStyleBackColor = False
-        Me.Button3.Visible = False
         '
         'Panel1
         '
@@ -526,7 +484,7 @@ Partial Class Form6
         Me.loadButton.Text = "拉取/浏览"
         Me.loadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.loadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.loadButton, "加载页拉取(点击)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹(列表)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "浏览文件夹(SHIFT+点击)(中键)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "加载页拉取(CTRL+点击)(右键)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.ToolTip1.SetToolTip(Me.loadButton, "筛选页拉取(点击)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹(列表)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "浏览文件夹(SHIFT+点击)(右键)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "加载页拉取(CTRL+点击)(中键)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.loadButton.UseVisualStyleBackColor = False
         '
         'Button4
@@ -550,9 +508,9 @@ Partial Class Form6
         '
         'moreButton
         '
-        Me.moreButton.BackColor = System.Drawing.Color.White
+        Me.moreButton.BackColor = System.Drawing.Color.GhostWhite
         Me.moreButton.CausesValidation = False
-        Me.moreButton.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.moreButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
         Me.moreButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.moreButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.moreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -560,7 +518,7 @@ Partial Class Form6
         Me.moreButton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.moreButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.moreButton.Image = CType(resources.GetObject("moreButton.Image"), System.Drawing.Image)
-        Me.moreButton.Location = New System.Drawing.Point(183, 38)
+        Me.moreButton.Location = New System.Drawing.Point(109, 497)
         Me.moreButton.Name = "moreButton"
         Me.moreButton.Size = New System.Drawing.Size(26, 26)
         Me.moreButton.TabIndex = 75
@@ -569,9 +527,9 @@ Partial Class Form6
         '
         'mnsButton
         '
-        Me.mnsButton.BackColor = System.Drawing.Color.White
+        Me.mnsButton.BackColor = System.Drawing.Color.GhostWhite
         Me.mnsButton.CausesValidation = False
-        Me.mnsButton.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.mnsButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
         Me.mnsButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.Lavender
         Me.mnsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.mnsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
@@ -579,12 +537,35 @@ Partial Class Form6
         Me.mnsButton.Font = New System.Drawing.Font("等线", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.mnsButton.ForeColor = System.Drawing.Color.SlateBlue
         Me.mnsButton.Image = CType(resources.GetObject("mnsButton.Image"), System.Drawing.Image)
-        Me.mnsButton.Location = New System.Drawing.Point(215, 38)
+        Me.mnsButton.Location = New System.Drawing.Point(141, 497)
         Me.mnsButton.Name = "mnsButton"
         Me.mnsButton.Size = New System.Drawing.Size(26, 26)
         Me.mnsButton.TabIndex = 76
         Me.ToolTip1.SetToolTip(Me.mnsButton, "向下移动")
         Me.mnsButton.UseVisualStyleBackColor = False
+        '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.Color.White
+        Me.Button1.CausesValidation = False
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.Location = New System.Drawing.Point(213, 38)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(73, 26)
+        Me.Button1.TabIndex = 93
+        Me.Button1.Text = "保存"
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button1, "覆盖重命名文件")
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Button7
         '
@@ -612,16 +593,13 @@ Partial Class Form6
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel3.Controls.Add(Me.Panel2)
         Me.Panel3.Controls.Add(Me.Button1)
+        Me.Panel3.Controls.Add(Me.Panel2)
         Me.Panel3.Controls.Add(Me.Button6)
         Me.Panel3.Controls.Add(Me.Panel4)
         Me.Panel3.Controls.Add(Me.MetroProgressBar1)
         Me.Panel3.Controls.Add(Me.bksbutton)
-        Me.Panel3.Controls.Add(Me.mnsButton)
-        Me.Panel3.Controls.Add(Me.moreButton)
         Me.Panel3.Controls.Add(Me.Button2)
-        Me.Panel3.Controls.Add(Me.Button3)
         Me.Panel3.Controls.Add(Me.ListViewPre)
         Me.Panel3.Location = New System.Drawing.Point(-26, -28)
         Me.Panel3.Name = "Panel3"
@@ -780,9 +758,11 @@ Partial Class Form6
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.loadButton)
+        Me.Controls.Add(Me.mnsButton)
         Me.Controls.Add(Me.ApplyButton)
         Me.Controls.Add(Me.xlsxButton)
         Me.Controls.Add(Me.topButton)
+        Me.Controls.Add(Me.moreButton)
         Me.Controls.Add(Me.absbButton)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
@@ -808,9 +788,7 @@ Partial Class Form6
     Friend WithEvents ListViewPre As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ApplyButton As Button
-    Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents xlsxButton As Button
     Friend WithEvents topButton As CheckBox
@@ -855,4 +833,5 @@ Partial Class Form6
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents ColumnHeader3 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents Button1 As Button
 End Class

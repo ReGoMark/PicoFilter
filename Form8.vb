@@ -344,10 +344,7 @@ Public Class Form8
         End Using
     End Sub
 
-    'Private Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btnConvert.Click
-    '    ProcessImages(String.Empty, False)
-    'End Sub
-    ' 修改ProcessImages方法，在转换失败时记录文件信息
+    ' 修改后的 ProcessImages 方法
     Private Sub ProcessImages(savePath As String, isCopy As Boolean)
         If ListView1.Items.Count = 0 Then Exit Sub
 
@@ -370,7 +367,22 @@ Public Class Form8
                 Dim targetFormat = item.SubItems(3).Text
                 Dim targetPath = GetTargetPath(sourcePath, targetFormat, savePath, isCopy)
 
+                ' 执行转换
                 ConvertImage(sourcePath, targetPath, targetFormat, quality)
+
+                ' 覆盖模式：如果扩展名不同，删除原始文件，避免产生两个文件
+                If Not isCopy Then
+                    Dim sourceExt = Path.GetExtension(sourcePath).ToLower()
+                    Dim targetExt = Path.GetExtension(targetPath).ToLower()
+                    If sourceExt <> targetExt AndAlso File.Exists(sourcePath) Then
+                        Try
+                            File.Delete(sourcePath)
+                        Catch ex As Exception
+                            ' 删除失败时忽略，不影响整体流程
+                        End Try
+                    End If
+                End If
+
                 MetroProgressBar1.Value = i + 1
                 Application.DoEvents()
             Catch ex As Exception
@@ -379,9 +391,17 @@ Public Class Form8
                 failedFiles.Add((i + 1, ListView1.Items(i).SubItems(1).Text))
             End Try
         Next
+
+        ' 覆盖模式：保存目录设为第一个文件的所在目录
+        If Not isCopy AndAlso ListView1.Items.Count > 0 Then
+            Dim firstItemPath = ListView1.Items(0).Tag.ToString()
+            LastSavePath = Path.GetDirectoryName(firstItemPath)
+        End If
+
         MetroProgressBar1.Visible = False
         ShowProcessResult(failedCount)
     End Sub
+
 
     Private Function GetTargetPath(sourcePath As String, format As String, savePath As String, isCopy As Boolean) As String
         If isCopy Then
@@ -828,4 +848,20 @@ Public Class Form8
             Exit Sub
         End If
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If ListView1.Items.Count = 0 Then
+            MessageBox.Show("没有可转换的文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Dim result As DialogResult = MessageBox.Show("此操作将覆盖原始文件，是否继续？", "确认覆盖",
+                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+        If result = DialogResult.Yes Then
+            ' 直接覆盖，不选择新路径
+            ProcessImages(String.Empty, False)
+        End If
+    End Sub
+
 End Class

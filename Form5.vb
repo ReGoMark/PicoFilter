@@ -138,6 +138,7 @@ Public Class Form5
             Button2.Enabled = False
             sltLabel0.Text = " 当前"
             Label1.ImageIndex = -1 ' 清除图标
+            Label2.Text = "" ' 清空Label2
             Exit Sub
         End If
 
@@ -150,11 +151,27 @@ Public Class Form5
 
             ' 判断是否是图片
             Dim ext As String = IO.Path.GetExtension(selectedPath).ToLower()
-            Dim imageExtensions As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico", ".tiff", ".webp"}
+            Dim imageExtensions As String() = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".ico"}
             If imageExtensions.Contains(ext) Then
                 Label1.ImageIndex = 2 ' 图片
+                ' 显示分辨率
+                Try
+                    Using img As Image = Image.FromFile(selectedPath)
+                        Label2.Text = $"{img.Width}×{img.Height} 像素"
+                    End Using
+                Catch
+                    Label2.Text = "无法读取分辨率"
+                End Try
             Else
                 Label1.ImageIndex = -1 ' 非图片文件
+                ' 显示其所在文件夹的统计
+                If IO.Directory.Exists(parentPath) Then
+                    Dim dirCount As Integer = IO.Directory.GetDirectories(parentPath).Length
+                    Dim fileCount As Integer = IO.Directory.GetFiles(parentPath).Length
+                    Label2.Text = $"文件 {fileCount} 项  |  文件夹 {dirCount} 项"
+                Else
+                    Label2.Text = ""
+                End If
             End If
 
         ElseIf IO.Directory.Exists(selectedPath) Then
@@ -164,11 +181,17 @@ Public Class Form5
             Button2.Tag = selectedPath
             Label1.ImageIndex = 1 ' 文件夹
 
+            ' 统计当前文件夹下的文件夹和文件数
+            Dim dirCount As Integer = IO.Directory.GetDirectories(selectedPath).Length
+            Dim fileCount As Integer = IO.Directory.GetFiles(selectedPath).Length
+            Label2.Text = $"文件 {fileCount} 项  |  文件夹 {dirCount} 项"
+
         Else
             ' 路径无效
             TextBox1.Text = ""
             Button2.Enabled = False
             Label1.ImageIndex = -1
+            Label2.Text = ""
         End If
 
         ' 设置光标位置和滚动
@@ -177,9 +200,9 @@ Public Class Form5
 
         ' 设置标签文本
         If TreeView1.SelectedNode IsNot Nothing Then
-            sltLabel0.Text = " " & TreeView1.SelectedNode.Text
+            sltLabel0.Text = TreeView1.SelectedNode.Text
         Else
-            sltLabel0.Text = " 当前"
+            sltLabel0.Text = "当前"
         End If
     End Sub
 
@@ -189,11 +212,24 @@ Public Class Form5
         If Not String.IsNullOrEmpty(folderPath) AndAlso IO.Directory.Exists(folderPath) Then
             Form1.openText.Text = folderPath
             Form1.加载图片(folderPath)
-            ' 重新绘制TreeView，只显示当前目录
             toForm1Path = folderPath
-            LoadTreeView(folderPath)
+
+            If CheckBox2.Checked Then
+                ' 勾选：清除其他节点，只保留选中节点
+                LoadTreeView(folderPath)
+            Else
+                ' 不勾选：只定位到选中节点，不清除其他节点
+                ' 先找到选中节点
+                Dim nodes As TreeNode() = TreeView1.Nodes.Find(IO.Path.GetFileName(folderPath), True)
+                If nodes.Length > 0 Then
+                    TreeView1.SelectedNode = nodes(0)
+                    TreeView1.SelectedNode.Expand()
+                    TreeView1.SelectedNode.EnsureVisible()
+                End If
+            End If
         End If
     End Sub
+
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         TextBox1.SelectionStart = Form1.openText.Text.Length
@@ -250,11 +286,11 @@ Public Class Form5
         If isExpanded Then
             ' 如果已经展开，则折叠所有节点
             TreeView1.CollapseAll()
-            Button5.Text = "展开全部节点"
+            Button5.Text = "展开全部"
         Else
             ' 如果是折叠状态，则展开所有节点
             TreeView1.ExpandAll()
-            Button5.Text = "折叠全部节点"
+            Button5.Text = "折叠全部"
         End If
 
         ' 切换展开状态
@@ -273,11 +309,38 @@ Public Class Form5
         e.Node.SelectedImageIndex = 1
     End Sub
 
-    'Private Sub sltLabel0_MouseHover(sender As Object, e As EventArgs) Handles sltLabel0.MouseHover
-    '    If TreeView1.SelectedNode IsNot Nothing Then
-    '        ToolTip1.SetToolTip(sltLabel0, TreeView1.SelectedNode.Text)
-    '    End If
-    'End Sub
+    Private Sub TreeView1_KeyDown(sender As Object, e As KeyEventArgs) Handles TreeView1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            ' 模拟 Button2_Click 的逻辑，但不调用 PerformClick（避免 Button2 抢焦点）
+            Dim folderPath As String = TryCast(Button2.Tag, String)
+
+            If Not String.IsNullOrEmpty(folderPath) AndAlso IO.Directory.Exists(folderPath) Then
+                Form1.openText.Text = folderPath
+                Form1.加载图片(folderPath)
+                toForm1Path = folderPath
+
+                If CheckBox2.Checked Then
+                    ' 勾选时：清除其他节点
+                    LoadTreeView(folderPath)
+                Else
+                    ' 未勾选时：只展开定位到选中节点
+                    Dim nodes As TreeNode() = TreeView1.Nodes.Find(IO.Path.GetFileName(folderPath), True)
+                    If nodes.Length > 0 Then
+                        TreeView1.SelectedNode = nodes(0)
+                        TreeView1.SelectedNode.Expand()
+                        TreeView1.SelectedNode.EnsureVisible()
+                    End If
+                End If
+            End If
+
+            ' 阻止系统“叮”声
+            e.Handled = True
+        End If
+        If e.KeyCode = Keys.Back Then
+            btnGoUp.PerformClick()
+        End If
+    End Sub
+
 
     Private Sub TextBox1_MouseUp(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseUp
         ' 判断是否为鼠标中键点击
@@ -442,11 +505,11 @@ Public Class Form5
         If isExpanded Then
             ' 如果已经展开，则折叠所有节点
             TreeView1.CollapseAll()
-            Button5.Text = "展开全部节点"
+            Button5.Text = "展开全部"
         Else
             ' 如果是折叠状态，则展开所有节点
             TreeView1.ExpandAll()
-            Button5.Text = "折叠全部节点"
+            Button5.Text = "折叠全部"
         End If
 
         ' 切换展开状态
@@ -516,4 +579,12 @@ Public Class Form5
         End Property
 
     End Class
+
+    Private Sub ToolStripMenuItem6_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem6.Click
+        CheckBox2.Checked = True
+    End Sub
+
+    Private Sub ToolStripMenuItem5_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem5.Click
+        CheckBox2.Checked = False
+    End Sub
 End Class

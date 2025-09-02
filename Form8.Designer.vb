@@ -58,6 +58,7 @@ Partial Class Form8
         Me.rbJPG = New System.Windows.Forms.RadioButton()
         Me.rbBMP = New System.Windows.Forms.RadioButton()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.MetroProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -103,7 +104,7 @@ Partial Class Form8
         Me.btnLoad.Text = "拉取/浏览"
         Me.btnLoad.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnLoad, "加载页拉取(点击)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹(列表)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "浏览文件夹(SHIFT+点击)(中键)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "加载页拉取(CTRL+点击)(右键)")
+        Me.ToolTip1.SetToolTip(Me.btnLoad, "筛选页拉取(点击)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "拖入文件夹(列表)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "浏览文件夹(SHIFT+点击)(右键)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "加载页拉取(CTRL+点击)(中键)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.btnLoad.UseVisualStyleBackColor = False
         '
         'bksbutton
@@ -141,11 +142,11 @@ Partial Class Form8
         Me.btnCopy.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.btnCopy.Image = CType(resources.GetObject("btnCopy.Image"), System.Drawing.Image)
         Me.btnCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCopy.Location = New System.Drawing.Point(266, 47)
+        Me.btnCopy.Location = New System.Drawing.Point(296, 47)
         Me.btnCopy.Name = "btnCopy"
-        Me.btnCopy.Size = New System.Drawing.Size(103, 26)
+        Me.btnCopy.Size = New System.Drawing.Size(73, 26)
         Me.btnCopy.TabIndex = 3
-        Me.btnCopy.Text = "保存副本"
+        Me.btnCopy.Text = "副本"
         Me.btnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.btnCopy, "保存转换副本到...")
         Me.btnCopy.UseVisualStyleBackColor = False
@@ -598,6 +599,29 @@ Partial Class Form8
         Me.Label2.TabIndex = 91
         Me.Label2.Text = "填充"
         '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.Color.White
+        Me.Button1.CausesValidation = False
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LemonChiffon
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.Location = New System.Drawing.Point(217, 47)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(73, 26)
+        Me.Button1.TabIndex = 92
+        Me.Button1.Text = "保存"
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button1, "覆盖转换文件")
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'MetroProgressBar1
         '
         Me.MetroProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -616,6 +640,7 @@ Partial Class Form8
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.Color.White
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Controls.Add(Me.Panel2)
         Me.Panel3.Controls.Add(Me.MetroProgressBar1)
         Me.Panel3.Controls.Add(Me.bksbutton)
@@ -842,4 +867,5 @@ Partial Class Form8
     Friend WithEvents 全选ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents rbICO As RadioButton
     Friend WithEvents Label2 As Label
+    Friend WithEvents Button1 As Button
 End Class

@@ -200,7 +200,7 @@ Partial Class Form2
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(178, 20)
         Me.Label4.TabIndex = 49
-        Me.Label4.Text = "版本：2.0.5（20250817）"
+        Me.Label4.Text = "版本：2.0.5（20250831）"
         '
         'PictureBox2
         '

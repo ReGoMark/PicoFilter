@@ -415,7 +415,7 @@ Public Class Form1
 
     ' 处理键盘事件，绑定 F2 键到 openButton
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        'Fn
+        'Fn 快捷键
         Select Case e.KeyCode
             Case Keys.F1 '关于
                 MetroTabControl1.SelectedIndex = 5
@@ -436,6 +436,8 @@ Public Class Form1
             Case Keys.F9 '分析
                 stsButton.PerformClick()
         End Select
+
+        'Ctrl + 快捷键
         '浏览文件夹
         If e.Control AndAlso e.KeyCode = Keys.O Then
             openButton.PerformClick()
@@ -495,6 +497,22 @@ Public Class Form1
             Else
                 topButton.Checked = False
             End If
+        End If
+
+        'Shift 快捷键
+        '仅加载页
+        If e.Shift AndAlso e.KeyCode = Keys.Up Then
+            ToolStripMenuItem29.PerformClick()
+        End If
+        '仅筛选页
+        If e.Shift AndAlso e.KeyCode = Keys.Down Then
+            ToolStripMenuItem30.PerformClick()
+        End If
+        If e.Shift AndAlso e.KeyCode = Keys.Left Then
+            ToolStripMenuItem6.PerformClick()
+        End If
+        If e.Shift AndAlso e.KeyCode = Keys.Right Then
+            ToolStripMenuItem8.PerformClick()
         End If
     End Sub
 
@@ -2190,14 +2208,20 @@ Public Class Form1
     End Sub
 
     Private Sub ToolStripMenuItem6_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem6.Click
+        SplitContainer1.Panel1Collapsed = False
+        SplitContainer1.Panel2Collapsed = False
         SplitContainer1.SplitterDistance = SplitContainer1.Width / 3 - 4
     End Sub
 
     Private Sub ToolStripMenuItem7_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem7.Click
+        SplitContainer1.Panel1Collapsed = False
+        SplitContainer1.Panel2Collapsed = False
         SplitContainer1.SplitterDistance = SplitContainer1.Width / 2 - 4
     End Sub
 
     Private Sub ToolStripMenuItem8_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem8.Click
+        SplitContainer1.Panel1Collapsed = False
+        SplitContainer1.Panel2Collapsed = False
         SplitContainer1.SplitterDistance = SplitContainer1.Width / 3 * 2 - 4
     End Sub
 
@@ -2386,6 +2410,7 @@ Public Class Form1
         Else
             Form6.Show()
         End If
+
     End Sub
 
     Private Sub ListView0_DragEnter(sender As Object, e As DragEventArgs) Handles ListViewLT.DragEnter
@@ -3311,13 +3336,17 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub MetroTabPage4_Click(sender As Object, e As EventArgs) Handles MetroTabPage4.Click
-
-    End Sub
-
     ' 添加 MouseEnter 事件处理
     Private Sub MetroTabControl1_MouseEnter(sender As Object, e As EventArgs) Handles MetroTabControl1.MouseEnter
         isMouseOverTab = True
+    End Sub
+
+    Private Sub ToolStripMenuItem29_Click_1(sender As Object, e As EventArgs) Handles ToolStripMenuItem29.Click
+        SplitContainer1.Panel2Collapsed = True
+    End Sub
+
+    Private Sub ToolStripMenuItem36_Click_1(sender As Object, e As EventArgs) Handles ToolStripMenuItem36.Click
+        SplitContainer1.Panel1Collapsed = True
     End Sub
 
     Private Sub Panel8_Paint(sender As Object, e As PaintEventArgs) Handles Panel8.Paint

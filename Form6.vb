@@ -333,7 +333,7 @@ Public Class Form6
         ComboBox1.Text = "{name}_{0date}"
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         If ListViewPre.Items.Count > 0 Then
             Dim result As DialogResult = MessageBox.Show("确认要关闭吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result = DialogResult.Yes Then
@@ -393,7 +393,7 @@ Public Class Form6
                         MessageBox.Show($"部分重命名完成，其中{failedFiles.Count}个文件重命名失败。{vbCrLf}{failedFilesList}",
                                   "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         ' 修改这里：添加询问是否打开目标文件夹
-                        If MessageBox.Show("重命名副本已保存。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                        If MessageBox.Show("重命名已完成。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
                             Try
                                 Process.Start("explorer.exe", targetPath)
                             Catch ex As Exception
@@ -402,7 +402,7 @@ Public Class Form6
                         End If
                     Else
                         ' 修改这里：添加询问是否打开目标文件夹
-                        If MessageBox.Show("重命名副本已保存。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                        If MessageBox.Show("重命名已完成。点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
                             Try
                                 Process.Start("explorer.exe", targetPath)
                             Catch ex As Exception
@@ -872,6 +872,74 @@ Public Class Form6
             TextBox2.SelectionStart = TextBox2.Text.Length
             TextBox2.ScrollToCaret()
             Console.WriteLine("ListViewPre 中的项目数量：" & ListViewPre.Items.Count)
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If ListViewPre.Items.Count = 0 Then
+            MessageBox.Show("没有可重命名的文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(Publicpath) OrElse Not IO.Directory.Exists(Publicpath) Then
+            MessageBox.Show("源文件夹无效。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        Dim confirm = MessageBox.Show("即将覆盖原文件，是否继续？", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If confirm <> DialogResult.Yes Then Exit Sub
+
+        Dim failedFiles As New List(Of String)
+        Dim processedCount As Integer = 0
+
+        With MetroProgressBar1
+            .Minimum = 0
+            .Maximum = ListViewPre.Items.Count
+            .Value = 0
+            .Visible = True
+        End With
+
+        For Each item As ListViewItem In ListViewPre.Items
+            Try
+                Dim oldName As String = originalNames(item.Index)
+                Dim newName As String = item.SubItems(1).Text
+                If oldName = newName Then
+                    ' 跳过未更名项
+                    processedCount += 1
+                    MetroProgressBar1.Value = processedCount
+                    Continue For
+                End If
+
+                Dim oldPath As String = IO.Path.Combine(Publicpath, oldName)
+                Dim newPath As String = IO.Path.Combine(Publicpath, newName)
+
+                If IO.File.Exists(oldPath) Then
+                    ' 若目标文件已存在，先删除
+                    If IO.File.Exists(newPath) Then IO.File.Delete(newPath)
+                    IO.File.Move(oldPath, newPath)
+                End If
+            Catch ex As Exception
+                failedFiles.Add(originalNames(item.Index))
+            Finally
+                processedCount += 1
+                MetroProgressBar1.Value = processedCount
+                Application.DoEvents()
+            End Try
+        Next
+
+        MetroProgressBar1.Visible = False
+
+        If failedFiles.Count > 0 Then
+            Dim failedFilesList As String = String.Join(vbCrLf, failedFiles)
+            MessageBox.Show($"部分文件重命名失败：{vbCrLf}{failedFilesList}", "未完成", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Else
+            If MessageBox.Show("文件重命名完成，点击按钮打开文件夹", "完成", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+                Try
+                    Process.Start("explorer.exe", Publicpath)
+                Catch ex As Exception
+                    MessageBox.Show("无法打开文件夹。" & vbCrLf & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
         End If
     End Sub
 End Class
