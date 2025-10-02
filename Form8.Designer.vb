@@ -184,7 +184,7 @@ Partial Class Form8
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "原始"
+        Me.ColumnHeader3.Text = "格式"
         '
         'ColumnHeader4
         '

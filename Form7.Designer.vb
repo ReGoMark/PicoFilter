@@ -83,10 +83,10 @@ Partial Class Form7
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage1)
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage2)
         Me.MetroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular
-        Me.MetroTabControl1.Location = New System.Drawing.Point(24, 52)
+        Me.MetroTabControl1.Location = New System.Drawing.Point(20, 52)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
-        Me.MetroTabControl1.Size = New System.Drawing.Size(329, 431)
+        Me.MetroTabControl1.SelectedIndex = 1
+        Me.MetroTabControl1.Size = New System.Drawing.Size(337, 431)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Silver
         Me.MetroTabControl1.TabIndex = 90
         Me.MetroTabControl1.UseSelectable = True
@@ -99,7 +99,7 @@ Partial Class Form7
         Me.MetroTabPage1.HorizontalScrollbarSize = 10
         Me.MetroTabPage1.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage1.Name = "MetroTabPage1"
-        Me.MetroTabPage1.Size = New System.Drawing.Size(321, 389)
+        Me.MetroTabPage1.Size = New System.Drawing.Size(329, 389)
         Me.MetroTabPage1.TabIndex = 0
         Me.MetroTabPage1.Text = "字典拆分   "
         Me.MetroTabPage1.VerticalScrollbarBarColor = True
@@ -116,7 +116,7 @@ Partial Class Form7
         Me.FlowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Default
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 3)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(321, 386)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(329, 386)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'conjButton
@@ -163,9 +163,9 @@ Partial Class Form7
         Me.MetroTabPage2.HorizontalScrollbarBarColor = True
         Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.HorizontalScrollbarSize = 10
-        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 40)
+        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 38)
         Me.MetroTabPage2.Name = "MetroTabPage2"
-        Me.MetroTabPage2.Size = New System.Drawing.Size(321, 387)
+        Me.MetroTabPage2.Size = New System.Drawing.Size(329, 389)
         Me.MetroTabPage2.TabIndex = 1
         Me.MetroTabPage2.Text = "手动选取   "
         Me.MetroTabPage2.VerticalScrollbarBarColor = True
@@ -181,7 +181,7 @@ Partial Class Form7
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(319, 377)
+        Me.TextBox1.Size = New System.Drawing.Size(327, 377)
         Me.TextBox1.TabIndex = 2
         '
         'Button5
@@ -222,11 +222,11 @@ Partial Class Form7
         Me.Button1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(265, 20)
+        Me.Button1.Location = New System.Drawing.Point(280, 20)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(88, 26)
+        Me.Button1.Size = New System.Drawing.Size(73, 26)
         Me.Button1.TabIndex = 90
-        Me.Button1.Text = "到星标"
+        Me.Button1.Text = "星标"
         Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button1, "发送到「星标」标记框")
         Me.Button1.UseVisualStyleBackColor = False
@@ -246,11 +246,11 @@ Partial Class Form7
         Me.Button2.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.Location = New System.Drawing.Point(177, 20)
+        Me.Button2.Location = New System.Drawing.Point(201, 20)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(82, 26)
+        Me.Button2.Size = New System.Drawing.Size(73, 26)
         Me.Button2.TabIndex = 91
-        Me.Button2.Text = "到查找"
+        Me.Button2.Text = "查找"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button2, "发送到「查找」文本框")
         Me.Button2.UseVisualStyleBackColor = False

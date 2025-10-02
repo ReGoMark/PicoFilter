@@ -630,8 +630,8 @@ Public Class Form8
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
-                    Case 1 ' 其他列（按字符串排序）
-                        returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
+                    Case 1 ' 文件名列（自然排序）
+                        returnVal = 自然排序(item1.SubItems(col).Text, item2.SubItems(col).Text)
                     Case Else ' 其他列（按字符串排序）
                         returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
                 End Select
@@ -640,6 +640,36 @@ Public Class Form8
                 returnVal *= -1
             End If
             Return returnVal
+        End Function
+        ' ===== 新增：自然排序方法 =====
+        Private Function 自然排序(strA As String, strB As String) As Integer
+            Dim regex As New System.Text.RegularExpressions.Regex("(\d+)|(\D+)")
+            Dim matchesA = regex.Matches(strA)
+            Dim matchesB = regex.Matches(strB)
+
+            Dim i As Integer = 0
+            While i < matchesA.Count AndAlso i < matchesB.Count
+                Dim partA As String = matchesA(i).Value
+                Dim partB As String = matchesB(i).Value
+
+                Dim numA, numB As Integer
+                If Integer.TryParse(partA, numA) AndAlso Integer.TryParse(partB, numB) Then
+                    ' 数字部分 → 按数值比较
+                    If numA <> numB Then
+                        Return numA.CompareTo(numB)
+                    End If
+                Else
+                    ' 非数字部分 → 按字符串比较
+                    Dim cmp As Integer = String.Compare(partA, partB, StringComparison.CurrentCultureIgnoreCase)
+                    If cmp <> 0 Then
+                        Return cmp
+                    End If
+                End If
+                i += 1
+            End While
+
+            ' 如果前面都一样 → 长度短的在前
+            Return matchesA.Count.CompareTo(matchesB.Count)
         End Function
     End Class
 

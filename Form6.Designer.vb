@@ -295,7 +295,7 @@ Partial Class Form6
         Me.ComboBox1.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
         Me.ComboBox1.ForeColor = System.Drawing.Color.DarkSlateBlue
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"(无)", "{0date}_{0index}", "{0date}_{0index}_{name}", "{0index}_{0date}_{name}", "{0index}_{date}", "{0index}_{name}"})
+        Me.ComboBox1.Items.AddRange(New Object() {"(无)", "{0index}_{0date}", "{0index}_{0name}", "{0index}_{folder}", "{index}_{date}", "{index}_{folder}", "{index}_{name}"})
         Me.ComboBox1.Location = New System.Drawing.Point(6, 6)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(165, 24)
@@ -508,6 +508,7 @@ Partial Class Form6
         '
         'moreButton
         '
+        Me.moreButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.moreButton.BackColor = System.Drawing.Color.GhostWhite
         Me.moreButton.CausesValidation = False
         Me.moreButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite
@@ -527,6 +528,7 @@ Partial Class Form6
         '
         'mnsButton
         '
+        Me.mnsButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.mnsButton.BackColor = System.Drawing.Color.GhostWhite
         Me.mnsButton.CausesValidation = False
         Me.mnsButton.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite

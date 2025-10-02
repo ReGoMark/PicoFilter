@@ -82,7 +82,17 @@ Public Class Form6
         Dim toolTip As New ToolTip()
         toolTip.ToolTipIcon = ToolTipIcon.Info
         toolTip.ToolTipTitle = "格式说明"
-        toolTip.SetToolTip(ComboBox1, "{name} - 原文件名(xxxx)" & vbCrLf & "{index} - 序号(!)" & vbCrLf & "{0index} - 补齐0的序号(0!)" & vbCrLf & "{year} - 年(yyyy)" & vbCrLf & "{month} - 月(M)" & vbCrLf & "{0month} - 补齐0的月(0M)" & vbCrLf & "{date} - 日期(yyyyMd)" & vbCrLf & "{0date} - 补齐0的日期(yyyy0M0d)" & vbCrLf & "{season} - 季(春/夏/秋/冬)")
+        toolTip.SetToolTip(ComboBox1,
+    "{name} - 原文件名(xxxx)" & vbCrLf &
+    "{index} - 序号(!)" & vbCrLf &
+    "{0index} - 补齐0的序号(0!)" & vbCrLf &
+    "{year} - 年(yyyy)" & vbCrLf &
+    "{month} - 月(M)" & vbCrLf &
+    "{0month} - 补齐0的月(0M)" & vbCrLf &
+    "{date} - 日期(yyyyMd)" & vbCrLf &
+    "{0date} - 补齐0的日期(yyyy0M0d)" & vbCrLf &
+    "{season} - 季(春/夏/秋/冬)" & vbCrLf &
+    "{folder} - 当前文件夹名称")
         ContextMenuStrip1.Renderer = New ModernMenuRenderer()
         ContextMenuStrip3.Renderer = New ModernMenuRenderer()
         ContextMenuStrip6.Renderer = New ModernMenuRenderer()
@@ -192,64 +202,14 @@ Public Class Form6
         End If
 
         ' 以下为原有批量应用格式的代码（如需恢复可取消注释）
-        'Dim formatString As String = ComboBox1.Text
-        'If String.IsNullOrWhiteSpace(formatString) Then Return
-
-        'Dim startIndex As Integer = If(Integer.TryParse(TextBoxStart.Text, Nothing), CInt(TextBoxStart.Text), 1)
-        'Dim currentMonth As String = DateTime.Now.Month.ToString
-        'Dim paddedMonth As String = DateTime.Now.Month.ToString.PadLeft(2, "0"c)
-        'Dim currentDate As String = DateTime.Now.ToString("yyyyMMdd")
-        'Dim currentYear As String = DateTime.Now.Year.ToString
-        'Dim currentSeason As String = ""
-        'Select Case currentMonth
-        '    Case 3 To 5 : currentSeason = "春"
-        '    Case 6 To 8 : currentSeason = "夏"
-        '    Case 9 To 11 : currentSeason = "秋"
-        '    Case 12, 1, 2 : currentSeason = "冬"
-        'End Select
-        'Dim paddedDate As String = DateTime.Now.ToString("yyyyMMdd").PadLeft(8, "0"c)
-        'Dim maxIndexLength As Integer = (startIndex + ListViewPre.Items.Count - 1).ToString().Length
-
-        'For i As Integer = 0 To ListViewPre.Items.Count - 1
-        '    Dim originalName As String
-        '    If originalNames.ContainsKey(i) Then
-        '        originalName = originalNames(i)
-        '    Else
-        '        originalName = ListViewPre.Items(i).SubItems(1).Text
-        '        originalNames(i) = originalName
-        '    End If
-        '    Dim originalName0 As String = Path.GetFileNameWithoutExtension(originalName)
-        '    Dim indexValue As Integer = startIndex + i
-        '    Dim indexStr As String = indexValue.ToString()
-        '    Dim paddedIndex As String = indexStr.PadLeft(maxIndexLength, "0"c)
-        '    Dim fileExtension As String = IO.Path.GetExtension(originalName)
-        '    Dim newName As String = formatString.Replace("{prefix}", "") _
-        '                              .Replace("{0name}", originalName) _
-        '                              .Replace("{name}", originalName0) _
-        '                              .Replace("{suffix}", "") _
-        '                              .Replace("{index}", indexStr) _
-        '                              .Replace("{0index}", paddedIndex) _
-        '                              .Replace("{season}", currentSeason) _
-        '                              .Replace("{year}", currentYear) _
-        '                              .Replace("{date}", currentDate) _
-        '                              .Replace("{0date}", paddedDate) _
-        '                              .Replace("{month}", currentMonth) _
-        '                              .Replace("{0month}", paddedMonth)
-        '    newName &= fileExtension
-        '    ListViewPre.Items(i).SubItems(1).Text = newName
-
-        '    ' 检查是否有改动，添加*到序号
-        '    If newName <> originalName Then
-        '        If Not ListViewPre.Items(i).SubItems(0).Text.EndsWith("*") Then
-        '            ListViewPre.Items(i).SubItems(0).Text &= "*"
-        '        End If
-        '    End If
-        'Next
     End Sub
 
     ' Button7_Click：对选中项应用格式
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim formatString As String = ComboBox1.Text
+        Dim folderName As String = If(Not String.IsNullOrEmpty(Publicpath),
+                               Path.GetFileName(Publicpath.TrimEnd(Path.DirectorySeparatorChar)),
+                               "")
         If String.IsNullOrWhiteSpace(formatString) Then Return
         If ListViewPre.SelectedItems.Count = 0 Then
             MessageBox.Show("请选择至少一个项目进行修改。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -299,7 +259,8 @@ Public Class Form6
                                .Replace("{date}", currentDate) _
                                .Replace("{0date}", paddedDate) _
                                .Replace("{month}", currentMonth) _
-                               .Replace("{0month}", paddedMonth)
+                               .Replace("{0month}", paddedMonth) _
+                               .Replace("{folder}", folderName)
             newName &= fileExtension
             item.SubItems(1).Text = newName
 
@@ -315,14 +276,19 @@ Public Class Form6
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         ' 仅还原选中项
         For Each item As ListViewItem In ListViewPre.SelectedItems
-            Dim i As Integer = item.Index
-            If originalNames.ContainsKey(i) Then
-                item.SubItems(1).Text = originalNames(i)
+            ' 使用第三列保存的原始文件名进行还原（避免依赖索引）
+            Dim originalName As String = ""
+            If item.SubItems.Count >= 3 Then
+                originalName = item.SubItems(2).Text
             End If
-            ' 去掉序号后的*
+
+            If Not String.IsNullOrEmpty(originalName) Then
+                item.SubItems(1).Text = originalName
+            End If
+            ' 去掉变更标记背景色
             item.BackColor = Color.White
         Next
-        originalNames.Clear()
+        ' 不再 Clear originalNames（避免破坏其它逻辑）
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -365,15 +331,18 @@ Public Class Form6
 
                     For Each item As ListViewItem In ListViewPre.Items
                         Try
-                            Dim originalFilePath As String = IO.Path.Combine(sourcePath, originalNames(item.Index))
+                            ' 使用第三列原始文件名来确定原路径（避免索引映射问题）
+                            Dim origName As String = If(item.SubItems.Count >= 3, item.SubItems(2).Text, item.SubItems(1).Text)
+                            Dim originalFilePath As String = IO.Path.Combine(sourcePath, origName)
                             Dim newFilePath As String = IO.Path.Combine(targetPath, item.SubItems(1).Text)
 
                             If IO.File.Exists(originalFilePath) Then
                                 IO.File.Copy(originalFilePath, newFilePath, True) ' 复制文件
                             End If
                         Catch ex As Exception
-                            ' 记录失败文件的信息
-                            failedFiles.Add(originalNames(item.Index))
+                            ' 记录失败文件的信息，尽量从第三列读取原名
+                            Dim failedName As String = If(item.SubItems.Count >= 3, item.SubItems(2).Text, item.SubItems(1).Text)
+                            failedFiles.Add(failedName)
                         Finally
                             processedCount += 1
                             MetroProgressBar1.Value = processedCount
@@ -470,7 +439,6 @@ Public Class Form6
             Me.col = column
             Me.order = order
         End Sub
-
         Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
             Dim returnVal As Integer = 0
             If TypeOf x Is ListViewItem AndAlso TypeOf y Is ListViewItem Then
@@ -481,14 +449,49 @@ Public Class Form6
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
-                    Case 1 ' 其他列（按字符串排序）
-                        returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
+
+                    Case 1 ' 文件名列（自然排序）
+                        returnVal = 自然排序(item1.SubItems(col).Text, item2.SubItems(col).Text)
+
+                    Case 2 ' 文件名2（自然排序）
+                        returnVal = 自然排序(item1.SubItems(col).Text, item2.SubItems(col).Text)
                 End Select
             End If
             If order = SortOrder.Descending Then ' 根据排序顺序调整结果
                 returnVal *= -1
             End If
             Return returnVal
+        End Function
+
+        ' ===== 新增：自然排序方法 =====
+        Private Function 自然排序(strA As String, strB As String) As Integer
+            Dim regex As New System.Text.RegularExpressions.Regex("(\d+)|(\D+)")
+            Dim matchesA = regex.Matches(strA)
+            Dim matchesB = regex.Matches(strB)
+
+            Dim i As Integer = 0
+            While i < matchesA.Count AndAlso i < matchesB.Count
+                Dim partA As String = matchesA(i).Value
+                Dim partB As String = matchesB(i).Value
+
+                Dim numA, numB As Integer
+                If Integer.TryParse(partA, numA) AndAlso Integer.TryParse(partB, numB) Then
+                    ' 数字部分 → 按数值比较
+                    If numA <> numB Then
+                        Return numA.CompareTo(numB)
+                    End If
+                Else
+                    ' 非数字部分 → 按字符串比较
+                    Dim cmp As Integer = String.Compare(partA, partB, StringComparison.CurrentCultureIgnoreCase)
+                    If cmp <> 0 Then
+                        Return cmp
+                    End If
+                End If
+                i += 1
+            End While
+
+            ' 如果前面都一样 → 长度短的在前
+            Return matchesA.Count.CompareTo(matchesB.Count)
         End Function
     End Class
 
@@ -511,74 +514,50 @@ Public Class Form6
     End Sub
 
     Private Sub moreButton_Click(sender As Object, e As EventArgs) Handles moreButton.Click
-        ' 确保有选中的项
         If ListViewPre.SelectedItems.Count = 0 Then Exit Sub
 
-        ' 禁用重绘，避免闪烁
+        ' 取消排序器，保证移动的是当前显示顺序
+        ListViewPre.ListViewItemSorter = Nothing
+
         ListViewPre.BeginUpdate()
-
-        ' 存储选中的项
-        Dim selectedItems As New List(Of ListViewItem)
-        For Each item As ListViewItem In ListViewPre.SelectedItems
-            selectedItems.Add(item)
-        Next
-
-        ' 按索引升序排序，避免调整时影响顺序
-        selectedItems.Sort(Function(x, y) x.Index.CompareTo(y.Index))
-
-        ' 移动项
-        For Each item As ListViewItem In selectedItems
-            Dim index As Integer = item.Index
-            If index > 0 Then
-                ListViewPre.Items.RemoveAt(index)
-                ListViewPre.Items.Insert(index - 1, item)
+        ' 选中项按索引升序排列，避免顺序错乱
+        Dim selectedItems = ListViewPre.SelectedItems.Cast(Of ListViewItem).OrderBy(Function(x) x.Index).ToList()
+        For Each item In selectedItems
+            Dim idx = item.Index
+            If idx > 0 Then
+                ListViewPre.Items.RemoveAt(idx)
+                ListViewPre.Items.Insert(idx - 1, item)
             End If
         Next
-
-        ' 重新选中移动后的项
-        For Each item As ListViewItem In selectedItems
+        ' 恢复选中
+        For Each item In selectedItems
             item.Selected = True
         Next
-
-        ' 结束更新
         ListViewPre.EndUpdate()
-        ' 重新排序动态序号
         UpdateDynamicIndex()
     End Sub
 
     Private Sub mnsButton_Click(sender As Object, e As EventArgs) Handles mnsButton.Click
-        ' 确保有选中的项
         If ListViewPre.SelectedItems.Count = 0 Then Exit Sub
 
-        ' 禁用重绘，避免闪烁
+        ' 取消排序器，保证移动的是当前显示顺序
+        ListViewPre.ListViewItemSorter = Nothing
+
         ListViewPre.BeginUpdate()
-
-        ' 存储选中的项
-        Dim selectedItems As New List(Of ListViewItem)
-        For Each item As ListViewItem In ListViewPre.SelectedItems
-            selectedItems.Add(item)
-        Next
-
-        ' 按索引降序排序，避免调整时影响顺序
-        selectedItems.Sort(Function(x, y) y.Index.CompareTo(x.Index))
-
-        ' 移动项
-        For Each item As ListViewItem In selectedItems
-            Dim index As Integer = item.Index
-            If index < ListViewPre.Items.Count - 1 Then
-                ListViewPre.Items.RemoveAt(index)
-                ListViewPre.Items.Insert(index + 1, item)
+        ' 选中项按索引降序排列，避免顺序错乱
+        Dim selectedItems = ListViewPre.SelectedItems.Cast(Of ListViewItem).OrderByDescending(Function(x) x.Index).ToList()
+        For Each item In selectedItems
+            Dim idx = item.Index
+            If idx < ListViewPre.Items.Count - 1 Then
+                ListViewPre.Items.RemoveAt(idx)
+                ListViewPre.Items.Insert(idx + 1, item)
             End If
         Next
-
-        ' 重新选中移动后的项
-        For Each item As ListViewItem In selectedItems
+        ' 恢复选中
+        For Each item In selectedItems
             item.Selected = True
         Next
-
-        ' 结束更新
         ListViewPre.EndUpdate()
-        ' 重新排序动态序号
         UpdateDynamicIndex()
     End Sub
     Private Sub UpdateDynamicIndex()
@@ -901,7 +880,8 @@ Public Class Form6
 
         For Each item As ListViewItem In ListViewPre.Items
             Try
-                Dim oldName As String = originalNames(item.Index)
+                ' 使用第三列原始文件名来获取 oldName（避免排序后索引不一致）
+                Dim oldName As String = If(item.SubItems.Count >= 3, item.SubItems(2).Text, item.SubItems(1).Text)
                 Dim newName As String = item.SubItems(1).Text
                 If oldName = newName Then
                     ' 跳过未更名项
@@ -919,7 +899,8 @@ Public Class Form6
                     IO.File.Move(oldPath, newPath)
                 End If
             Catch ex As Exception
-                failedFiles.Add(originalNames(item.Index))
+                Dim failedName As String = If(item.SubItems.Count >= 3, item.SubItems(2).Text, item.SubItems(1).Text)
+                failedFiles.Add(failedName)
             Finally
                 processedCount += 1
                 MetroProgressBar1.Value = processedCount

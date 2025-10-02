@@ -518,8 +518,7 @@ Partial Class Form1
         Me.添加到右侧ToolStripMenuItem.Image = CType(resources.GetObject("添加到右侧ToolStripMenuItem.Image"), System.Drawing.Image)
         Me.添加到右侧ToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.添加到右侧ToolStripMenuItem.Name = "添加到右侧ToolStripMenuItem"
-        Me.添加到右侧ToolStripMenuItem.ShortcutKeyDisplayString = ""
-        Me.添加到右侧ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Oemplus), System.Windows.Forms.Keys)
+        Me.添加到右侧ToolStripMenuItem.ShortcutKeyDisplayString = "CTRL+LPLUS"
         Me.添加到右侧ToolStripMenuItem.ShowShortcutKeys = False
         Me.添加到右侧ToolStripMenuItem.Size = New System.Drawing.Size(204, 24)
         Me.添加到右侧ToolStripMenuItem.Text = "添加选定项(&A)"
@@ -565,6 +564,8 @@ Partial Class Form1
         Me.ToolStripMenuItem11.Image = CType(resources.GetObject("ToolStripMenuItem11.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem11.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem11.Name = "ToolStripMenuItem11"
+        Me.ToolStripMenuItem11.ShortcutKeyDisplayString = "F5"
+        Me.ToolStripMenuItem11.ShowShortcutKeys = False
         Me.ToolStripMenuItem11.Size = New System.Drawing.Size(204, 24)
         Me.ToolStripMenuItem11.Text = "重新整理(&H)"
         '
@@ -576,6 +577,8 @@ Partial Class Form1
         Me.ToolStripMenuItem13.Image = CType(resources.GetObject("ToolStripMenuItem13.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem13.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem13.Name = "ToolStripMenuItem13"
+        Me.ToolStripMenuItem13.ShortcutKeyDisplayString = "CTRL+A"
+        Me.ToolStripMenuItem13.ShowShortcutKeys = False
         Me.ToolStripMenuItem13.Size = New System.Drawing.Size(204, 24)
         Me.ToolStripMenuItem13.Text = "选定现有项(&N)"
         '
@@ -800,7 +803,7 @@ Partial Class Form1
         '
         'ColumnHeader12
         '
-        Me.ColumnHeader12.Text = "☆"
+        Me.ColumnHeader12.Text = "★"
         Me.ColumnHeader12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.ColumnHeader12.Width = 30
         '
@@ -888,6 +891,8 @@ Partial Class Form1
         Me.移除选中项DToolStripMenuItem.Image = CType(resources.GetObject("移除选中项DToolStripMenuItem.Image"), System.Drawing.Image)
         Me.移除选中项DToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.移除选中项DToolStripMenuItem.Name = "移除选中项DToolStripMenuItem"
+        Me.移除选中项DToolStripMenuItem.ShortcutKeyDisplayString = "CTRL+LMINUS"
+        Me.移除选中项DToolStripMenuItem.ShowShortcutKeys = False
         Me.移除选中项DToolStripMenuItem.Size = New System.Drawing.Size(204, 24)
         Me.移除选中项DToolStripMenuItem.Text = "移除选定项(&D)"
         '
@@ -1347,7 +1352,7 @@ Partial Class Form1
         Me.ContextMenuStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem6, Me.ToolStripMenuItem7, Me.ToolStripMenuItem8, Me.ToolStripSeparator16, Me.ToolStripMenuItem29, Me.ToolStripMenuItem36})
         Me.ContextMenuStrip4.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table
         Me.ContextMenuStrip4.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip4.Size = New System.Drawing.Size(170, 130)
+        Me.ContextMenuStrip4.Size = New System.Drawing.Size(161, 130)
         '
         'ToolStripMenuItem6
         '
@@ -1358,7 +1363,9 @@ Partial Class Form1
         Me.ToolStripMenuItem6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.ToolStripMenuItem6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(169, 24)
+        Me.ToolStripMenuItem6.ShortcutKeyDisplayString = "SHIFT+左"
+        Me.ToolStripMenuItem6.ShowShortcutKeys = False
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(160, 24)
         Me.ToolStripMenuItem6.Text = "调整为 1:2(&L)"
         '
         'ToolStripMenuItem7
@@ -1369,7 +1376,9 @@ Partial Class Form1
         Me.ToolStripMenuItem7.Image = CType(resources.GetObject("ToolStripMenuItem7.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem7.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(169, 24)
+        Me.ToolStripMenuItem7.ShortcutKeyDisplayString = "中键"
+        Me.ToolStripMenuItem7.ShowShortcutKeys = False
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(160, 24)
         Me.ToolStripMenuItem7.Text = "调整为 1:1(&M)"
         '
         'ToolStripMenuItem8
@@ -1380,13 +1389,15 @@ Partial Class Form1
         Me.ToolStripMenuItem8.Image = CType(resources.GetObject("ToolStripMenuItem8.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem8.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(169, 24)
+        Me.ToolStripMenuItem8.ShortcutKeyDisplayString = "SHIFT+右"
+        Me.ToolStripMenuItem8.ShowShortcutKeys = False
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(160, 24)
         Me.ToolStripMenuItem8.Text = "调整为 2:1(&R)"
         '
         'ToolStripSeparator16
         '
         Me.ToolStripSeparator16.Name = "ToolStripSeparator16"
-        Me.ToolStripSeparator16.Size = New System.Drawing.Size(166, 6)
+        Me.ToolStripSeparator16.Size = New System.Drawing.Size(157, 6)
         '
         'ToolStripMenuItem29
         '
@@ -1396,7 +1407,9 @@ Partial Class Form1
         Me.ToolStripMenuItem29.Image = CType(resources.GetObject("ToolStripMenuItem29.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem29.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem29.Name = "ToolStripMenuItem29"
-        Me.ToolStripMenuItem29.Size = New System.Drawing.Size(169, 24)
+        Me.ToolStripMenuItem29.ShortcutKeyDisplayString = "SHIFT+上"
+        Me.ToolStripMenuItem29.ShowShortcutKeys = False
+        Me.ToolStripMenuItem29.Size = New System.Drawing.Size(160, 24)
         Me.ToolStripMenuItem29.Text = "仅加载页(&O)"
         '
         'ToolStripMenuItem36
@@ -1407,7 +1420,9 @@ Partial Class Form1
         Me.ToolStripMenuItem36.Image = CType(resources.GetObject("ToolStripMenuItem36.Image"), System.Drawing.Image)
         Me.ToolStripMenuItem36.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripMenuItem36.Name = "ToolStripMenuItem36"
-        Me.ToolStripMenuItem36.Size = New System.Drawing.Size(169, 24)
+        Me.ToolStripMenuItem36.ShortcutKeyDisplayString = "SHIFT+下"
+        Me.ToolStripMenuItem36.ShowShortcutKeys = False
+        Me.ToolStripMenuItem36.Size = New System.Drawing.Size(160, 24)
         Me.ToolStripMenuItem36.Text = "仅筛选页(&F)"
         '
         'ProgressBar1
@@ -1452,7 +1467,7 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Controls.Add(Me.Button4)
         Me.Panel3.Controls.Add(Me.PictureBox6)
-        Me.Panel3.Location = New System.Drawing.Point(3, 167)
+        Me.Panel3.Location = New System.Drawing.Point(-5, 167)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(330, 214)
         Me.Panel3.TabIndex = 44
@@ -1798,7 +1813,7 @@ Partial Class Form1
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("方正黑体_GBK", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label7.Location = New System.Drawing.Point(-1171, 177)
+        Me.Label7.Location = New System.Drawing.Point(-1179, 177)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 16)
         Me.Label7.TabIndex = 34
@@ -1860,7 +1875,7 @@ Partial Class Form1
         Me.convertButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
         Me.convertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.convertButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.convertButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.convertButton.ForeColor = System.Drawing.Color.Black
         Me.convertButton.Image = CType(resources.GetObject("convertButton.Image"), System.Drawing.Image)
         Me.convertButton.Location = New System.Drawing.Point(384, 11)
         Me.convertButton.Name = "convertButton"
@@ -1907,7 +1922,7 @@ Partial Class Form1
         Me.renameButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
         Me.renameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.renameButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.renameButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.renameButton.ForeColor = System.Drawing.Color.Black
         Me.renameButton.Image = CType(resources.GetObject("renameButton.Image"), System.Drawing.Image)
         Me.renameButton.Location = New System.Drawing.Point(449, 11)
         Me.renameButton.Name = "renameButton"
@@ -2022,7 +2037,7 @@ Partial Class Form1
         Me.stsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
         Me.stsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.stsButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.stsButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.stsButton.ForeColor = System.Drawing.Color.Black
         Me.stsButton.Image = CType(resources.GetObject("stsButton.Image"), System.Drawing.Image)
         Me.stsButton.Location = New System.Drawing.Point(514, 11)
         Me.stsButton.Name = "stsButton"
@@ -2126,7 +2141,7 @@ Partial Class Form1
         Me.treeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
         Me.treeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.treeButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.treeButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.treeButton.ForeColor = System.Drawing.Color.Black
         Me.treeButton.Image = CType(resources.GetObject("treeButton.Image"), System.Drawing.Image)
         Me.treeButton.Location = New System.Drawing.Point(319, 11)
         Me.treeButton.Name = "treeButton"
@@ -2676,7 +2691,7 @@ Partial Class Form1
         Me.optButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.optButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optButton.Font = New System.Drawing.Font("方正黑体_GBK", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, CType(134, Byte))
-        Me.optButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.optButton.ForeColor = System.Drawing.Color.Black
         Me.optButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.optButton.ImageIndex = 0
         Me.optButton.ImageList = Me.ImageList5

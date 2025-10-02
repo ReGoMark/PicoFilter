@@ -506,8 +506,9 @@ Public Class Form1
         End If
         '仅筛选页
         If e.Shift AndAlso e.KeyCode = Keys.Down Then
-            ToolStripMenuItem30.PerformClick()
+            ToolStripMenuItem36.PerformClick()
         End If
+
         If e.Shift AndAlso e.KeyCode = Keys.Left Then
             ToolStripMenuItem6.PerformClick()
         End If
@@ -1144,7 +1145,6 @@ Public Class Form1
             Me.col = column
             Me.order = order
         End Sub
-
         Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
             Dim returnVal As Integer = 0
             If TypeOf x Is ListViewItem AndAlso TypeOf y Is ListViewItem Then
@@ -1155,18 +1155,20 @@ Public Class Form1
                         Dim num1 As Integer = Integer.Parse(item1.SubItems(col).Text)
                         Dim num2 As Integer = Integer.Parse(item2.SubItems(col).Text)
                         returnVal = num1.CompareTo(num2)
-                    Case 2 ' 文件名长度（按字符串长度排序）
-                        Dim length1 As Integer = System.Text.Encoding.UTF8.GetByteCount(item1.SubItems(col).Text)
-                        Dim length2 As Integer = System.Text.Encoding.UTF8.GetByteCount(item2.SubItems(col).Text)
-                        returnVal = length1.CompareTo(length2)
+
+                    Case 2 ' 文件名列（自然排序）
+                        returnVal = 自然排序(item1.SubItems(col).Text, item2.SubItems(col).Text)
+
                     Case 3 ' 分辨率（按像素总数排序）
                         Dim pixels1 As Integer = 解析分辨率(item1.SubItems(col).Text)
                         Dim pixels2 As Integer = 解析分辨率(item2.SubItems(col).Text)
                         returnVal = pixels1.CompareTo(pixels2)
+
                     Case 5 ' 文件大小列（按数值大小排序）
                         Dim size1 As Double = 解析文件大小(item1.SubItems(col).Text)
                         Dim size2 As Double = 解析文件大小(item2.SubItems(col).Text)
                         returnVal = size1.CompareTo(size2)
+
                     Case 6 ' 创建日期（按日期时间排序）
                         Dim date1, date2 As DateTime
                         If DateTime.TryParseExact(item1.SubItems(col).Text, "yyyy/MM/dd, HH:mm:ss", Nothing, Globalization.DateTimeStyles.None, date1) AndAlso
@@ -1175,6 +1177,7 @@ Public Class Form1
                         Else
                             returnVal = 0 ' 解析失败，不排序
                         End If
+
                     Case Else ' 其他列（按字符串排序）
                         returnVal = String.Compare(item1.SubItems(col).Text, item2.SubItems(col).Text)
                 End Select
@@ -1184,6 +1187,38 @@ Public Class Form1
             End If
             Return returnVal
         End Function
+
+        ' ===== 新增：自然排序方法 =====
+        Private Function 自然排序(strA As String, strB As String) As Integer
+            Dim regex As New System.Text.RegularExpressions.Regex("(\d+)|(\D+)")
+            Dim matchesA = regex.Matches(strA)
+            Dim matchesB = regex.Matches(strB)
+
+            Dim i As Integer = 0
+            While i < matchesA.Count AndAlso i < matchesB.Count
+                Dim partA As String = matchesA(i).Value
+                Dim partB As String = matchesB(i).Value
+
+                Dim numA, numB As Integer
+                If Integer.TryParse(partA, numA) AndAlso Integer.TryParse(partB, numB) Then
+                    ' 数字部分 → 按数值比较
+                    If numA <> numB Then
+                        Return numA.CompareTo(numB)
+                    End If
+                Else
+                    ' 非数字部分 → 按字符串比较
+                    Dim cmp As Integer = String.Compare(partA, partB, StringComparison.CurrentCultureIgnoreCase)
+                    If cmp <> 0 Then
+                        Return cmp
+                    End If
+                End If
+                i += 1
+            End While
+
+            ' 如果前面都一样 → 长度短的在前
+            Return matchesA.Count.CompareTo(matchesB.Count)
+        End Function
+
 
         ' 解析文件大小
         Private Function 解析文件大小(sizeText As String) As Double
