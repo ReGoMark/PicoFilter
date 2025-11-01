@@ -85,8 +85,8 @@ Public Class Form1
         manualStarCount = 0
         ListViewLT.Items.Clear()
         ListViewRT.Items.Clear()
-        ProgressBar1.Value = 0
-        ProgressBar1.Visible = True
+        ProgressBar2.Value = 0
+        ProgressBar2.Visible = True
 
         Dim index As Integer = 1
         Dim jpgCount As Integer = 0,
@@ -105,7 +105,7 @@ Public Class Form1
         Dim dirInfo As New DirectoryInfo(folderPath)
         Dim createTime As DateTime = dirInfo.CreationTime
 
-        ProgressBar1.Maximum = files.Count()
+        ProgressBar2.Maximum = files.Count()
         loadedTimer.Start()
 
         For Each file In files
@@ -166,7 +166,7 @@ Public Class Form1
 
                 sumSize += fileSize
                 index += 1
-                ProgressBar1.Value += 1
+                ProgressBar2.Value += 1
                 loadedCount += 1
                 更新标题()
             Catch ex As Exception
@@ -208,7 +208,7 @@ Public Class Form1
             optChange("转到「概览」查看子文件夹内容", 0)
         End If
 
-        ProgressBar1.Visible = False
+        ProgressBar2.Visible = False
         sumLblLT.Text = String.Join("  |  ", result)
         Me.Text = verinfo & "  |  " & folderName & "  |  " & sumSizeStr & "  |  " & createTime.ToString("yyyy/MM/dd, HH:mm:ss")
 
@@ -638,7 +638,7 @@ Public Class Form1
 
         BindContextMenuToAllTextBoxes(Me, ContextMenuStrip6)
 
-        ProgressBar1.Maximum = 0
+        ProgressBar2.Maximum = 0
         loadedCount = 0
         'ListViewRT.Width = 505
         SetDoubleBuffered(ListViewLT)
@@ -994,9 +994,9 @@ Public Class Form1
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles addButton.Click
         Dim totalToAdd As Integer = ListViewLT.SelectedItems.Count
         If totalToAdd > 20 Then
-            MetroProgressBar1.Value = 0
-            MetroProgressBar1.Maximum = totalToAdd
-            MetroProgressBar1.Visible = True
+            ProgressBar3.Value = 0
+            ProgressBar3.Maximum = totalToAdd
+            ProgressBar3.Visible = True
         End If
 
         Dim addedCount As Integer = 0
@@ -1019,12 +1019,12 @@ Public Class Form1
             End If
             addedCount += 1
             If totalToAdd > 20 Then
-                MetroProgressBar1.Value = addedCount
+                ProgressBar3.Value = addedCount
                 Application.DoEvents()
             End If
         Next
         If totalToAdd > 20 Then
-            MetroProgressBar1.Visible = False
+            ProgressBar3.Visible = False
         End If
         更新右侧结果标签()
         更新统计信息()
@@ -1330,9 +1330,9 @@ Public Class Form1
                         Dim fileInfo As New FileInfo(filePath)
 
                         ' 进度条初始化
-                        MetroProgressBar1.Value = 0
-                        MetroProgressBar1.Maximum = ListViewRT.Items.Count
-                        MetroProgressBar1.Visible = True
+                        ProgressBar3.Value = 0
+                        ProgressBar3.Maximum = ListViewRT.Items.Count
+                        ProgressBar3.Visible = True
                         optChange("表格正在导出，请稍候", 4, -1)
 
                         Using package As New ExcelPackage(fileInfo)
@@ -1350,21 +1350,21 @@ Public Class Form1
                                     cell.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid
                                     cell.Style.Fill.BackgroundColor.SetColor(lvItemColor)
                                 Next
-                                MetroProgressBar1.Value = i + 1
+                                ProgressBar3.Value = i + 1
                                 Application.DoEvents()
                             Next
 
                             package.Save()
                         End Using
 
-                        MetroProgressBar1.Visible = False
+                        ProgressBar3.Visible = False
                         optChange(opttext, 0)
                         Dim opt = MessageBox.Show("表格已导出成功！点击按钮打开", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                         If opt = DialogResult.Yes Then
                             Process.Start("explorer.exe", filePath)
                         End If
                     Catch ex As Exception
-                        MetroProgressBar1.Visible = False
+                        ProgressBar3.Visible = False
                         MessageBox.Show("表格导出时发生错误: " & ex.Message, "未完成", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -1813,7 +1813,7 @@ Public Class Form1
     End Sub
 
     Private Sub 更新标题()
-        Me.Text = verinfo & "  |  已扫描 " & loadedCount & “ / ” & ProgressBar1.Maximum & “ 项  |  ” & Int(ProgressBar1.Value / ProgressBar1.Maximum * 1000) / 10 & " %"
+        Me.Text = verinfo & "  |  已扫描 " & loadedCount & “ / ” & ProgressBar2.Maximum & “ 项  |  ” & Int(ProgressBar2.Value / ProgressBar2.Maximum * 1000) / 10 & " %"
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles stsButton.Click
@@ -2911,9 +2911,9 @@ Public Class Form1
                     If File.Exists(zipPath) Then File.Delete(zipPath)
 
                     ' 显示进度条
-                    MetroProgressBar1.Value = 0
-                    MetroProgressBar1.Maximum = totalFiles
-                    MetroProgressBar1.Visible = True
+                    ProgressBar3.Value = 0
+                    ProgressBar3.Maximum = totalFiles
+                    ProgressBar3.Visible = True
                     optChange("压缩包正在生成，请稍候", 4, -1)
 
                     ' 创建一个4MB的缓冲区
@@ -2947,7 +2947,7 @@ Public Class Form1
                                 End If
 
                                 currentFile += 1
-                                MetroProgressBar1.Value = currentFile
+                                ProgressBar3.Value = currentFile
                                 'Me.Text = $"{verinfo}  |  正在压缩... {currentFile}/{totalFiles} ({CInt(currentFile / totalFiles * 100)}%)"
                                 Application.DoEvents()
                             Next
@@ -2965,7 +2965,7 @@ Public Class Form1
                                 End If
 
                                 currentFile += 1
-                                MetroProgressBar1.Value = currentFile
+                                ProgressBar3.Value = currentFile
                                 'Me.Text = $"{verinfo}  |  正在压缩... {currentFile}/{totalFiles} ({CInt(currentFile / totalFiles * 100)}%)"
                                 Application.DoEvents()
                             Next
@@ -2973,7 +2973,7 @@ Public Class Form1
                     End Using
 
                     ' 恢复界面
-                    MetroProgressBar1.Visible = False
+                    ProgressBar3.Visible = False
                     optChange(opttext, 0)
                     'Me.Text = verinfo
 
@@ -2981,7 +2981,7 @@ Public Class Form1
                         Process.Start(zipPath)
                     End If
                 Catch ex As Exception
-                    MetroProgressBar1.Visible = False
+                    ProgressBar3.Visible = False
                     'Me.Text = verinfo
                     MessageBox.Show("压缩失败：" & ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -3017,9 +3017,9 @@ Public Class Form1
         Next
 
         ' 进度条初始化
-        ProgressBar1.Value = 0
-        ProgressBar1.Maximum = groupDict.Values.Count
-        ProgressBar1.Visible = True
+        ProgressBar2.Value = 0
+        ProgressBar2.Maximum = groupDict.Values.Count
+        ProgressBar2.Visible = True
 
         ' 第二步：仅对同组(大于1)的文件再比哈希
         Dim hashDict As New Dictionary(Of String, List(Of ListViewItem))()
@@ -3051,7 +3051,7 @@ Public Class Form1
                 Next
             End If
             groupIndex += 1
-            ProgressBar1.Value = groupIndex
+            ProgressBar2.Value = groupIndex
             Application.DoEvents()
         Next
 
@@ -3062,7 +3062,7 @@ Public Class Form1
             Next
             duplicateCount += pair.Value.Count
         Next
-        ProgressBar1.Visible = False
+        ProgressBar2.Visible = False
         If duplicateCount > 0 Then
             optChange("「重复」结果 " & duplicateCount & " 项", 7)
         Else
